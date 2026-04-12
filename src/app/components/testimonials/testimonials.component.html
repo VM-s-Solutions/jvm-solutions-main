@@ -1,0 +1,55 @@
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="testimonials__header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'testimonials.sectionLabel' | translate }}</span>
+      <h2 id="testimonials-title" class="testimonials__title">
+        {{ 'testimonials.title1' | translate }} <span class="gradient-text">{{ 'testimonials.title2' | translate }}</span> {{ 'testimonials.title3' | translate }}
+      </h2>
+    </div>
+
+    <!-- Testimonial cards -->
+    <div class="testimonials__grid">
+      @for (t of testimonials; track t.author; let i = $index) {
+        <blockquote
+          class="testimonials__card"
+          appScrollReveal
+          revealClass="reveal"
+        >
+          <!-- Stars -->
+          <div class="testimonials__stars" aria-label="5 stars">
+            @for (_ of [1,2,3,4,5]; track $index) {
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            }
+          </div>
+
+          <p class="testimonials__quote">"{{ t.quote }}"</p>
+
+          <footer class="testimonials__author">
+            <div class="testimonials__avatar" aria-hidden="true">{{ t.initials }}</div>
+            <div>
+              <cite class="testimonials__name">{{ t.author }}</cite>
+              <p class="testimonials__role">{{ t.role }}, {{ t.company }}</p>
+            </div>
+          </footer>
+        </blockquote>
+      }
+    </div>
+
+    <!-- Client logos -->
+    <div class="testimonials__clients" appScrollReveal revealClass="reveal">
+      <p class="testimonials__clients-label">{{ 'testimonials.clientsLabel' | translate }}</p>
+      <div class="testimonials__logos" role="list">
+        @for (client of clients; track client.name) {
+          <div class="testimonials__logo" role="listitem" [attr.aria-label]="client.name">
+            <span>{{ client.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

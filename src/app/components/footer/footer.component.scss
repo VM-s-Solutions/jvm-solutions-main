@@ -1,0 +1,149 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+  border-top: 1px solid $border-color;
+  padding: $space-16 $space-6 $space-8;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+    padding-bottom: $space-12;
+    border-bottom: 1px solid $border-color;
+
+    @include md {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+
+  // ── Brand ─────────────────────────────────────────────────────────────────
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3em;
+    font-family: $font-heading;
+    font-size: $text-xl;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  &__logo-jvm {
+    @include gradient-text;
+    font-weight: 800;
+  }
+
+  &__logo-solutions {
+    color: $text-secondary;
+    font-weight: 400;
+    font-size: $text-base;
+  }
+
+  &__tagline {
+    color: $text-muted;
+    font-size: $text-sm;
+    line-height: 1.7;
+  }
+
+  // ── Socials ───────────────────────────────────────────────────────────────
+  &__socials {
+    display: flex;
+    gap: $space-3;
+    margin-top: $space-2;
+  }
+
+  &__social {
+    width: 38px;
+    height: 38px;
+    border-radius: $radius-lg;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-muted;
+    transition: border-color $transition-base, color $transition-base, background $transition-base;
+
+    &:hover {
+      border-color: rgba($purple, 0.4);
+      color: $purple-light;
+      background: rgba($purple, 0.08);
+    }
+  }
+
+  // ── Nav ───────────────────────────────────────────────────────────────────
+  &__nav-title {
+    font-size: $text-sm;
+    font-weight: 600;
+    color: $text-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-4;
+  }
+
+  &__nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__link {
+    color: $text-muted;
+    font-size: $text-sm;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover { color: $text-primary; }
+  }
+
+  // ── Contact col ───────────────────────────────────────────────────────────
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__availability {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $text-xs;
+    color: $green-light;
+    font-weight: 500;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    background: $green;
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  // ── Bottom bar ────────────────────────────────────────────────────────────
+  &__bottom {
+    @include flex-between;
+    padding-top: $space-8;
+    flex-wrap: wrap;
+    gap: $space-4;
+
+    p {
+      color: $text-muted;
+      font-size: $text-sm;
+    }
+  }
+
+  &__built {
+    @include gradient-text;
+    font-size: $text-sm !important;
+    font-weight: 600;
+  }
+}

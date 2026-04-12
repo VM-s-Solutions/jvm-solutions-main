@@ -1,0 +1,95 @@
+<nav class="navbar" [class.scrolled]="scrolled()">
+  <div class="navbar__inner container">
+
+    <!-- Wordmark -->
+    <a class="navbar__logo" routerLink="/" (click)="closeMenu()" aria-label="JVM Solutions home">
+      <span class="navbar__logo-jvm">JVM</span>
+      <span class="navbar__logo-solutions">Solutions</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="navbar__links" role="list">
+      @for (link of navLinks; track link.label) {
+        <li>
+          @if (link.routerLink) {
+            <a class="navbar__link" [routerLink]="link.routerLink" (click)="closeMenu()">
+              {{ link.label | translate }}
+            </a>
+          } @else {
+            <a class="navbar__link" href="#{{ link.fragment }}" (click)="scrollToSection(link.fragment!, $event)">
+              {{ link.label | translate }}
+            </a>
+          }
+        </li>
+      }
+    </ul>
+
+    <!-- Language switcher (desktop) -->
+    <div class="navbar__lang" role="group" aria-label="Language switcher">
+      @for (lang of languages; track lang.code) {
+        <button
+          class="navbar__lang-btn"
+          [class.is-active]="translate.currentLang === lang.code"
+          (click)="switchLang(lang.code)"
+          [attr.aria-pressed]="translate.currentLang === lang.code"
+        >{{ lang.label }}</button>
+      }
+    </div>
+
+    <!-- CTA -->
+    <a class="navbar__cta btn-primary" routerLink="/contact" (click)="closeMenu()">
+      {{ 'nav.getInTouch' | translate }}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+    <!-- Hamburger -->
+    <button
+      class="navbar__hamburger"
+      [class.is-open]="menuOpen()"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle mobile menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile" [class.is-open]="menuOpen()" role="dialog" aria-modal="true">
+    <ul role="list">
+      @for (link of navLinks; track link.label) {
+        <li>
+          @if (link.routerLink) {
+            <a class="navbar__mobile-link" [routerLink]="link.routerLink" (click)="closeMenu()">
+              {{ link.label | translate }}
+            </a>
+          } @else {
+            <a class="navbar__mobile-link" href="#{{ link.fragment }}" (click)="scrollToSection(link.fragment!, $event)">
+              {{ link.label | translate }}
+            </a>
+          }
+        </li>
+      }
+      <!-- Language switcher (mobile) -->
+      <li class="navbar__mobile-lang">
+        @for (lang of languages; track lang.code) {
+          <button
+            class="navbar__lang-btn"
+            [class.is-active]="translate.currentLang === lang.code"
+            (click)="switchLang(lang.code)"
+            [attr.aria-pressed]="translate.currentLang === lang.code"
+          >{{ lang.label }}</button>
+        }
+      </li>
+      <li>
+        <a class="btn-primary navbar__mobile-cta" routerLink="/contact" (click)="closeMenu()">
+          {{ 'nav.getInTouch' | translate }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

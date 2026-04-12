@@ -1,0 +1,140 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.testimonials {
+  background: linear-gradient(180deg, $bg-primary 0%, rgba($purple, 0.03) 50%, $bg-primary 100%);
+  @include section-padding;
+
+  &__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto $space-16;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: clamp($text-3xl, 5vw, $text-5xl);
+    letter-spacing: -0.02em;
+  }
+
+  // ── Cards grid ────────────────────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+    margin-bottom: $space-16;
+
+    @include md {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    @include card;
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    margin: 0;
+  }
+
+  // ── Stars ─────────────────────────────────────────────────────────────────
+  &__stars {
+    display: flex;
+    gap: $space-1;
+    color: #F59E0B;
+  }
+
+  // ── Quote ─────────────────────────────────────────────────────────────────
+  &__quote {
+    color: $text-secondary;
+    font-size: $text-base;
+    line-height: 1.75;
+    flex: 1;
+    font-style: normal;
+  }
+
+  // ── Author ────────────────────────────────────────────────────────────────
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    border-top: 1px solid $border-color;
+    padding-top: $space-6;
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $gradient-brand;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: $text-sm;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: $text-sm;
+    color: $text-primary;
+  }
+
+  &__role {
+    font-size: $text-xs;
+    color: $text-muted;
+    margin-top: 2px;
+  }
+
+  // ── Clients ───────────────────────────────────────────────────────────────
+  &__clients {
+    text-align: center;
+  }
+
+  &__clients-label {
+    color: $text-muted;
+    font-size: $text-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $space-8;
+  }
+
+  &__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $space-4;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-3 $space-6;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-lg;
+    color: $text-muted;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: $text-sm;
+    letter-spacing: 0.04em;
+    transition: border-color $transition-base, color $transition-base;
+    min-width: 120px;
+
+    &:hover {
+      border-color: rgba($purple, 0.3);
+      color: $text-secondary;
+    }
+  }
+}

@@ -1,0 +1,105 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cta {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid $border-color;
+  @include section-padding;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    contain: strict;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+
+    &--left {
+      @include orb($purple, 500px, 100px);
+      left: -150px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    &--right {
+      @include orb($green, 400px, 80px);
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: float-reverse 10s ease-in-out infinite;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $space-10;
+
+    @include lg {
+      flex-direction: row;
+      text-align: left;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+
+    @include lg {
+      align-items: flex-start;
+      max-width: 560px;
+    }
+  }
+
+  &__title {
+    font-size: clamp($text-3xl, 5vw, $text-5xl);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  &__description {
+    color: $text-secondary;
+    font-size: $text-lg;
+    line-height: 1.7;
+    max-width: 500px;
+    min-height: 3.4em;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+    flex-shrink: 0;
+
+    @include lg { align-items: flex-start; }
+  }
+
+  &__btn {
+    padding: $space-4 $space-10;
+    font-size: $text-base;
+    white-space: nowrap;
+  }
+
+  &__email {
+    color: $text-muted;
+    font-size: $text-sm;
+    transition: color $transition-fast;
+
+    &:hover { color: $purple-light; }
+  }
+}

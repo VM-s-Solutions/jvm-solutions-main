@@ -1,0 +1,213 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-nav;
+  padding: $space-4 $space-6;
+  transition: background $transition-slow, border-color $transition-slow, backdrop-filter $transition-slow;
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    @include glass(rgba(9, 9, 15, 0.9));
+    border-bottom-color: $border-color;
+  }
+
+  &__inner {
+    @include flex-between;
+    gap: $space-6;
+  }
+
+  // ── Wordmark ───────────────────────────────────────────────────────────────
+  &__logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+    font-family: $font-heading;
+    font-size: $text-xl;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  &__logo-jvm {
+    @include gradient-text;
+    font-weight: 800;
+  }
+
+  &__logo-solutions {
+    color: $text-secondary;
+    font-weight: 400;
+    font-size: $text-base;
+  }
+
+  // ── Desktop links ──────────────────────────────────────────────────────────
+  &__links {
+    display: none;
+    list-style: none;
+    align-items: center;
+    gap: $space-8;
+
+    @include md {
+      display: flex;
+    }
+  }
+
+  &__link {
+    color: $text-secondary;
+    font-size: $text-sm;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color $transition-fast;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $gradient-brand;
+      border-radius: $radius-full;
+      transition: width $transition-base;
+    }
+
+    &:hover {
+      color: $text-primary;
+
+      &::after { width: 100%; }
+    }
+  }
+
+  // ── CTA ───────────────────────────────────────────────────────────────────
+  &__cta {
+    display: none;
+
+    @include md {
+      display: inline-flex;
+      padding: $space-2 $space-4;
+      font-size: $text-sm;
+      min-width: 155px;
+      justify-content: center;
+      white-space: nowrap;
+    }
+  }
+
+  // ── Language switcher ─────────────────────────────────────────────────────
+  &__lang {
+    display: none;
+    align-items: center;
+    gap: $space-1;
+
+    @include md { display: flex; }
+  }
+
+  &__lang-btn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    color: $text-muted;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px $space-2;
+    cursor: pointer;
+    transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+      border-color: $border-light;
+    }
+
+    &.is-active {
+      color: $purple-light;
+      border-color: rgba($purple, 0.5);
+      background: rgba($purple, 0.08);
+    }
+  }
+
+  // ── Hamburger ─────────────────────────────────────────────────────────────
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: $space-2;
+    cursor: pointer;
+
+    @include md { display: none; }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $text-primary;
+      border-radius: $radius-full;
+      transition: transform $transition-base, opacity $transition-base;
+    }
+
+    &.is-open {
+      span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+  }
+
+  // ── Mobile Menu ───────────────────────────────────────────────────────────
+  &__mobile {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-slow, padding $transition-slow;
+
+    @include max-md {
+      display: block;
+    }
+
+    &.is-open {
+      max-height: 400px;
+      padding-bottom: $space-4;
+    }
+
+    ul {
+      list-style: none;
+      padding: $space-4 $space-6;
+      display: flex;
+      flex-direction: column;
+      gap: $space-2;
+      border-top: 1px solid $border-color;
+    }
+  }
+
+  &__mobile-link {
+    display: block;
+    padding: $space-3 0;
+    color: $text-secondary;
+    font-size: $text-base;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color $transition-fast;
+    border-bottom: 1px solid $border-color;
+
+    &:hover { color: $text-primary; }
+  }
+
+  &__mobile-cta {
+    margin-top: $space-3;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__mobile-lang {
+    padding: $space-2 0;
+    display: flex;
+    gap: $space-2;
+    border-bottom: 1px solid $border-color;
+  }
+}

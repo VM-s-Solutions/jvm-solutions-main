@@ -1,0 +1,42 @@
+<section class="services" id="services" aria-labelledby="services-title">
+  <div class="container">
+
+    <div class="services__header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'services.sectionLabel' | translate }}</span>
+      <h2 id="services-title" class="services__title">
+        {{ 'services.title1' | translate }} <span class="gradient-text">{{ 'services.title2' | translate }}</span>
+      </h2>
+      <p class="services__subtitle">
+        {{ 'services.subtitle' | translate }}
+      </p>
+    </div>
+
+    <div class="services__grid">
+      @for (service of services; track service.id; let i = $index) {
+        <article
+          [class]="'services__card services__card--' + service.accent"
+          appScrollReveal
+          revealClass="reveal"
+        >
+          <div class="services__card-icon" aria-hidden="true">
+            <span [innerHTML]="service.icon"></span>
+          </div>
+
+          <div class="services__card-body">
+            <h3 class="services__card-title">{{ service.titleKey | translate }}</h3>
+            <p class="services__card-description">{{ service.descriptionKey | translate }}</p>
+          </div>
+
+          <div class="services__card-tags">
+            @for (tag of service.tags; track tag) {
+              <span class="services__tag">{{ tag }}</span>
+            }
+          </div>
+
+          <div class="services__card-glow" aria-hidden="true"></div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

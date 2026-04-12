@@ -1,0 +1,79 @@
+<app-navbar />
+
+<main class="about-page">
+
+  <!-- Background orbs -->
+  <div class="about-page__bg" aria-hidden="true">
+    <div class="about-page__orb about-page__orb--purple"></div>
+    <div class="about-page__orb about-page__orb--green"></div>
+  </div>
+
+  <div class="about-page__inner container">
+
+    <!-- Page header -->
+    <header class="about-header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'about.sectionLabel' | translate }}</span>
+      <h1 class="about-header__title">
+        {{ 'about.titlePart1' | translate }} <span class="gradient-text">{{ 'about.titleGrad' | translate }}</span> {{ 'about.titlePart2' | translate }}
+      </h1>
+      <p class="about-header__subtitle">
+        {{ 'about.description' | translate }}
+      </p>
+    </header>
+
+    <!-- Team grid -->
+    <div class="team-grid">
+      @for (member of team; track member.initials) {
+        <article class="team-card" appScrollReveal revealClass="reveal">
+
+          <!-- Avatar -->
+          <div class="team-card__avatar-wrap">
+            @if (member.photo) {
+              <img
+                class="team-card__photo"
+                [src]="member.photo"
+                [alt]="member.name"
+              />
+            } @else {
+              <div class="team-card__initials" [attr.data-initials]="member.initials">
+                {{ member.initials }}
+              </div>
+            }
+            <div class="team-card__avatar-ring" aria-hidden="true"></div>
+          </div>
+
+          <!-- Info -->
+          <div class="team-card__body">
+            <h2 class="team-card__name">{{ member.name }}</h2>
+            <p class="team-card__role">{{ member.roleKey | translate }}</p>
+            <p class="team-card__bio">{{ member.bioKey | translate }}</p>
+          </div>
+
+          <!-- LinkedIn -->
+          <a
+            class="team-card__linkedin"
+            [href]="member.linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="member.name + ' on LinkedIn'"
+          >
+            <svg class="team-card__linkedin-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <span class="team-card__linkedin-url">{{ member.linkedin }}</span>
+          </a>
+
+        </article>
+      }
+    </div>
+
+  </div>
+</main>
+
+@defer (on viewport) {
+  <app-footer />
+} @placeholder {
+  <div></div>
+}

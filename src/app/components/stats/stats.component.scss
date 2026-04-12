@@ -1,0 +1,85 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.stats {
+  padding: $space-16 $space-6;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  background: linear-gradient(135deg, rgba($purple, 0.04) 0%, rgba($green, 0.04) 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba($purple, 0.06), transparent);
+    pointer-events: none;
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $space-8;
+
+    @include md {
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    text-align: center;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  &__divider {
+    display: none;
+    width: 1px;
+    height: 60px;
+    background: $border-color;
+
+    @include md { display: block; }
+  }
+
+  &__number {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+    font-family: $font-heading;
+    margin-bottom: $space-2;
+  }
+
+  &__value {
+    font-size: clamp($text-4xl, 5vw, $text-6xl);
+    font-weight: 700;
+    @include gradient-text;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    min-width: 2ch;
+    display: inline-block;
+  }
+
+  &__suffix {
+    font-size: clamp($text-2xl, 3vw, $text-4xl);
+    font-weight: 700;
+    @include gradient-text;
+    line-height: 1;
+  }
+
+  &__label {
+    color: $text-secondary;
+    font-size: $text-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

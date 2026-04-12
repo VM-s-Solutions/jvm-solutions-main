@@ -1,0 +1,313 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.contact-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+
+    &--purple {
+      @include orb($purple, 500px, 120px);
+      top: -50px;
+      left: -100px;
+    }
+
+    &--green {
+      @include orb($green, 400px, 100px);
+      bottom: 100px;
+      right: -100px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-16;
+    padding-top: $space-16;
+    padding-bottom: $space-24;
+
+    @include lg {
+      grid-template-columns: 1fr 1.4fr;
+      align-items: start;
+    }
+  }
+}
+
+// ── Contact Info Panel ──────────────────────────────────────────────────────
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__back {
+    margin-bottom: $space-2;
+  }
+
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: $text-muted;
+    font-size: $text-sm;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover { color: $text-primary; }
+  }
+
+  &__title {
+    font-size: clamp($text-3xl, 5vw, $text-5xl);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  &__description {
+    color: $text-secondary;
+    font-size: $text-lg;
+    line-height: 1.7;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+    padding: $space-8;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-xl;
+    margin-top: $space-4;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: $radius-lg;
+    background: rgba($purple, 0.1);
+    border: 1px solid rgba($purple, 0.2);
+    color: $purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    font-size: $text-xs;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-1;
+  }
+
+  &__value {
+    color: $text-primary;
+    font-size: $text-sm;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    a { color: inherit; }
+    &:hover { color: $purple-light; }
+  }
+}
+
+// ── Form Wrap ───────────────────────────────────────────────────────────────
+.contact-form-wrap {
+  background: $bg-surface;
+  border: 1px solid $border-color;
+  border-radius: $radius-2xl;
+  padding: $space-10;
+
+  @include md { padding: $space-12; }
+}
+
+// ── State panels ────────────────────────────────────────────────────────────
+.contact-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $space-4;
+  padding: $space-12 0;
+  animation: fade-in 0.4s ease both;
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: $text-2xl;
+    font-weight: 600;
+  }
+
+  p {
+    color: $text-secondary;
+    max-width: 360px;
+
+    a {
+      color: $purple-light;
+      text-decoration: underline;
+    }
+  }
+
+  &--success {
+    .contact-state__icon {
+      background: rgba($green, 0.12);
+      border: 1px solid rgba($green, 0.3);
+      color: $green;
+    }
+    h3 { color: $green-light; }
+  }
+
+  &--error {
+    .contact-state__icon {
+      background: rgba(239, 68, 68, 0.1);
+      color: #EF4444;
+    }
+    h3 { color: #EF4444; }
+  }
+}
+
+// ── Form ────────────────────────────────────────────────────────────────────
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include sm {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    &.is-invalid {
+      .contact-form__input,
+      .contact-form__select,
+      .contact-form__textarea {
+        border-color: #EF4444;
+
+        &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); }
+      }
+    }
+  }
+
+  &__label {
+    font-size: $text-sm;
+    font-weight: 500;
+    color: $text-secondary;
+    letter-spacing: 0.01em;
+
+    span[aria-hidden] { color: $purple; }
+  }
+
+  &__optional {
+    color: $text-muted;
+    font-weight: 400;
+    font-size: $text-xs;
+  }
+
+  %input-base {
+    width: 100%;
+    background: $bg-elevated;
+    border: 1px solid $border-color;
+    border-radius: $radius-lg;
+    padding: $space-3 $space-4;
+    color: $text-primary;
+    font-family: $font-body;
+    font-size: $text-base;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    outline: none;
+
+    &::placeholder { color: $text-muted; }
+
+    &:focus {
+      border-color: $purple;
+      box-shadow: 0 0 0 3px rgba($purple, 0.15);
+    }
+  }
+
+  &__input  { @extend %input-base; }
+  &__select { @extend %input-base; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+
+    option {
+      background: $bg-surface;
+      color: $text-primary;
+    }
+  }
+  &__textarea { @extend %input-base; resize: vertical; min-height: 140px; }
+
+  &__error {
+    font-size: $text-xs;
+    color: #EF4444;
+    font-weight: 500;
+  }
+
+  &__submit {
+    align-self: flex-start;
+    padding: $space-4 $space-8;
+    font-size: $text-base;
+    margin-top: $space-2;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  }
+
+  &__spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "testimonials": "Testimonials",
+    "about": "About",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch"
+  },
+  "hero": {
+    "badge": "Available for new projects",
+    "headlinePart1": "We craft software",
+    "headlinePart2": "that",
+    "headlineGrad1": "scales",
+    "headlineGrad2": "matters",
+    "typewriter": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Systems",
+      "mobile": "Mobile Applications",
+      "ai": "AI Automation"
+    },
+    "description": "JVM Solutions builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
+    "ctaPrimary": "Start a Project",
+    "ctaSecondary": "View Our Work",
+    "statsProjects": "Projects delivered",
+    "statsExperience": "Industry experience",
+    "statsClients": "Happy clients"
+  },
+  "services": {
+    "sectionLabel": "What We Build",
+    "title1": "End-to-end",
+    "title2": "digital solutions",
+    "subtitle": "Whatever your challenge — we have the expertise to engineer the right solution.",
+    "frontend": {
+      "title": "Frontend Development",
+      "description": "Blazing-fast, accessible web applications built with Angular, React or Vue. Pixel-perfect UIs with sophisticated animations and seamless UX."
+    },
+    "backend": {
+      "title": "Backend Systems",
+      "description": "Scalable APIs, microservices and cloud infrastructure built primarily on .NET. From REST to gRPC, designed for reliability, security and high throughput."
+    },
+    "mobile": {
+      "title": "Mobile Applications",
+      "description": "Native iOS and Android apps built with Swift and Kotlin. Full-native performance, platform-specific UX, and direct access to every device API."
+    },
+    "ai": {
+      "title": "AI Automation",
+      "description": "LLM integrations, intelligent agents, and workflow automation that reduce manual effort and unlock new capabilities for your business."
+    }
+  },
+  "stats": {
+    "projects": "Projects Delivered",
+    "experience": "Years of Experience",
+    "clients": "Happy Clients",
+    "services": "Core Services"
+  },
+  "portfolio": {
+    "sectionLabel": "Selected Work",
+    "title1": "Projects we're",
+    "title2": "proud of",
+    "subtitle": "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
+    "caseStudy": "Case Study →",
+    "fintech": {
+      "title": "FinFlow — Analytics Dashboard",
+      "description": "Real-time financial analytics platform with interactive charts, multi-currency support, and AI-driven forecasting.",
+      "category": "Frontend + Backend"
+    },
+    "logistics": {
+      "title": "TrackMate — Logistics Mobile",
+      "description": "Cross-platform logistics management app for iOS & Android. Real-time tracking, driver assignment, and delivery confirmation.",
+      "category": "Mobile"
+    },
+    "ai": {
+      "title": "FlowBot — AI Workflow Engine",
+      "description": "Intelligent automation platform using LLMs to process documents, extract data, and trigger business workflows autonomously.",
+      "category": "AI Automation"
+    },
+    "ecommerce": {
+      "title": "Nexshop — E-commerce Platform",
+      "description": "High-performance headless e-commerce with custom CMS, multi-region inventory, and personalisation engine.",
+      "category": "Frontend + Backend"
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "Testimonials",
+    "title1": "Trusted by",
+    "title2": "forward-thinking",
+    "title3": "teams",
+    "clientsLabel": "Companies we've worked with"
+  },
+  "cta": {
+    "sectionLabel": "Let's Build Together",
+    "title1": "Ready to turn your idea",
+    "title2": "into",
+    "titleGrad": "reality?",
+    "description": "Tell us about your project and we'll get back to you within 24 hours with a clear plan and next steps.",
+    "btn": "Start a Conversation"
+  },
+  "footer": {
+    "tagline": "Engineering software that scales, performs, and lasts.",
+    "nav": "Navigation",
+    "contact": "Get in Touch",
+    "available": "Available for new projects",
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Angular"
+  },
+  "contact": {
+    "sectionLabel": "Contact Us",
+    "backHome": "Back to home",
+    "title1": "Let's build",
+    "titleGrad": "something great",
+    "description": "Tell us about your project and we'll get back to you within 24 hours with a tailored proposal.",
+    "emailLabel": "Email",
+    "responseLabel": "Response time",
+    "responseValue": "Within 24 hours",
+    "locationLabel": "Location",
+    "locationValue": "Czech Republic & Remote",
+    "form": {
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Jan Novák",
+      "nameError": "Please enter your name (min. 2 characters).",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jan@company.cz",
+      "emailError": "Please enter a valid email address.",
+      "companyLabel": "Company",
+      "companyOptional": "(optional)",
+      "companyPlaceholder": "Acme Inc.",
+      "serviceLabel": "I need",
+      "servicePlaceholder": "Select a service…",
+      "serviceError": "Please select a service.",
+      "messageLabel": "Your Message",
+      "messagePlaceholder": "Describe your project, goals, timeline…",
+      "messageError": "Message must be at least 20 characters.",
+      "submit": "Send Message",
+      "submitting": "Sending…"
+    },
+    "services": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Systems",
+      "mobile": "Mobile Application",
+      "ai": "AI Automation",
+      "fullstack": "Full-stack Product",
+      "other": "Other"
+    },
+    "success": {
+      "title": "Message sent!",
+      "message": "Thanks for reaching out. We'll get back to you within 24 hours.",
+      "btn": "Send another message"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "message": "Please try again or email us directly at",
+      "btn": "Try again"
+    }
+  },
+  "about": {
+    "sectionLabel": "Who we are",
+    "titlePart1": "Meet the",
+    "titleGrad": "team",
+    "titlePart2": "behind JVM",
+    "description": "We are three developers united by a shared passion for building world-class digital products. Every line of code we write is driven by craftsmanship, performance, and lasting impact.",
+    "janis": {
+      "role": "Co-founder & Full-stack Developer",
+      "bio": "Passionate about building scalable web applications and delivering exceptional user experiences."
+    },
+    "vit": {
+      "role": "Co-founder & Full-stack Developer",
+      "bio": "Specializes in crafting pixel-perfect interfaces and performant frontend architectures."
+    },
+    "michael": {
+      "role": "Co-founder & Full-stack Engineer",
+      "bio": "Expert in backend systems, APIs, and mobile development with a focus on scalability."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
+  <div class="container">
+
+    <div class="portfolio__header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'portfolio.sectionLabel' | translate }}</span>
+      <h2 id="portfolio-title" class="portfolio__title">
+        {{ 'portfolio.title1' | translate }} <span class="gradient-text">{{ 'portfolio.title2' | translate }}</span>
+      </h2>
+      <p class="portfolio__subtitle">
+        {{ 'portfolio.subtitle' | translate }}
+      </p>
+    </div>
+
+    <div class="portfolio__grid">
+      @for (project of projects; track project.id; let i = $index) {
+        <article
+          class="portfolio__card"
+          appScrollReveal
+          revealClass="reveal"
+        >
+          <!-- Thumbnail -->
+          <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
+            <div class="portfolio__thumb-grid"></div>
+            <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
+          </div>
+
+          <!-- Content -->
+          <div class="portfolio__content">
+            <h3 class="portfolio__project-title">{{ project.titleKey | translate }}</h3>
+            <p class="portfolio__description">{{ project.descriptionKey | translate }}</p>
+
+            <div class="portfolio__footer">
+              <div class="portfolio__tags">
+                @for (tag of project.tags; track tag) {
+                  <span class="portfolio__tag">{{ tag }}</span>
+                }
+              </div>
+              <span class="portfolio__coming-soon" aria-label="Case study coming soon">
+                {{ 'portfolio.caseStudy' | translate }}
+              </span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

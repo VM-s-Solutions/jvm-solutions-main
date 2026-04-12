@@ -1,0 +1,235 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.about-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+
+    &--purple {
+      width: 600px;
+      height: 600px;
+      background: $purple;
+      top: -100px;
+      left: -150px;
+    }
+
+    &--green {
+      width: 400px;
+      height: 400px;
+      background: $green;
+      bottom: 100px;
+      right: -100px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    padding-top: $space-16;
+    padding-bottom: $space-24;
+    display: flex;
+    flex-direction: column;
+    gap: $space-16;
+  }
+}
+
+// ── Section label & gradient text helpers (shared with other pages) ──────────
+.section-label {
+  display: inline-block;
+  font-size: $text-sm;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $purple-light;
+  margin-bottom: $space-4;
+}
+
+.gradient-text {
+  @include gradient-text;
+}
+
+// ── Page header ──────────────────────────────────────────────────────────────
+.about-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $text-4xl;
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.15;
+    margin-bottom: $space-6;
+
+    @include md { font-size: $text-5xl; }
+  }
+
+  &__subtitle {
+    font-size: $text-lg;
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+}
+
+// ── Reveal animation ─────────────────────────────────────────────────────────
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── Team grid ────────────────────────────────────────────────────────────────
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+
+  @include md { grid-template-columns: repeat(2, 1fr); }
+  @include lg { grid-template-columns: repeat(3, 1fr); }
+}
+
+// ── Team card ────────────────────────────────────────────────────────────────
+.team-card {
+  @include card;
+  padding: $space-8 $space-6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+  text-align: center;
+
+  // stagger reveal
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 80}ms;
+    }
+  }
+
+  // ── Avatar wrapper ──────────────────────────────────────────────────────
+  &__avatar-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  &__avatar-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: $gradient-brand;
+    z-index: 0;
+    opacity: 0.6;
+    transition: opacity $transition-base;
+  }
+
+  &:hover &__avatar-ring {
+    opacity: 1;
+  }
+
+  &__photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid $bg-elevated;
+  }
+
+  &__initials {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: $gradient-brand;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-heading;
+    font-size: $text-4xl;
+    font-weight: 700;
+    color: $text-primary;
+    border: 3px solid $bg-elevated;
+    user-select: none;
+  }
+
+  // ── Info ────────────────────────────────────────────────────────────────
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    flex: 1;
+  }
+
+  &__name {
+    font-family: $font-heading;
+    font-size: $text-xl;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  &__role {
+    font-size: $text-sm;
+    font-weight: 600;
+    color: $purple-light;
+    letter-spacing: 0.03em;
+  }
+
+  &__bio {
+    font-size: $text-sm;
+    color: $text-secondary;
+    line-height: 1.65;
+    margin-top: $space-2;
+  }
+
+  // ── LinkedIn ────────────────────────────────────────────────────────────
+  &__linkedin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+    color: $text-muted;
+    text-decoration: none;
+    border-top: 1px solid $border-color;
+    padding-top: $space-6;
+    width: 100%;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $purple-light;
+    }
+  }
+
+  &__linkedin-icon {
+    flex-shrink: 0;
+  }
+
+  &__linkedin-url {
+    font-size: $text-xs;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,222 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  @include flex-center;
+  padding: 100px $space-6 $space-16;
+  overflow: hidden;
+
+  // ── Background ────────────────────────────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;    contain: strict;  }
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba($border-color, 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($border-color, 0.6) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    animation: grid-fade 1s ease forwards;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+
+    &--purple {
+      @include orb($purple, 600px, 120px);
+      top: -100px;
+      left: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    &--green {
+      @include orb($green, 500px, 100px);
+      top: 100px;
+      right: -150px;
+      animation: float-reverse 10s ease-in-out infinite;
+    }
+
+    &--purple-sm {
+      @include orb($purple, 300px, 80px);
+      bottom: 100px;
+      left: 30%;
+      animation: float 12s ease-in-out infinite 2s;
+    }
+  }
+
+  // ── Content ───────────────────────────────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $space-6;
+    max-width: 860px;
+    margin: 0 auto;
+    animation: fade-in-up 0.8s ease both;
+  }
+
+  // ── Badge ─────────────────────────────────────────────────────────────────
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    background: rgba($green, 0.08);
+    border: 1px solid rgba($green, 0.2);
+    border-radius: $radius-full;
+    color: $green-light;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    animation: fade-in 0.6s ease 0.1s both;
+  }
+
+  &__badge-dot {
+    width: 7px;
+    height: 7px;
+    background: $green;
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  // ── Headline ──────────────────────────────────────────────────────────────
+  &__headline {
+    font-size: clamp($text-4xl, 7vw, $text-7xl);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: $text-primary;
+    animation: fade-in-up 0.7s ease 0.15s both;
+
+    .gradient-text {
+      background-size: 200% 200%;
+      animation: gradient-shift 4s ease infinite;
+    }
+  }
+
+  // ── Typed text ────────────────────────────────────────────────────────────
+  &__typed {
+    font-family: $font-heading;
+    font-size: clamp($text-lg, 3vw, $text-2xl);
+    color: $text-secondary;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    animation: fade-in 0.7s ease 0.25s both;
+  }
+
+  &__typed-text {
+    color: $purple-light;
+    font-weight: 500;
+  }
+
+  &__cursor {
+    color: $purple;
+    font-weight: 300;
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
+  }
+
+  // ── Description ───────────────────────────────────────────────────────────
+  &__description {
+    max-width: 600px;
+    color: $text-secondary;
+    font-size: clamp($text-base, 2vw, $text-lg);
+    line-height: 1.7;
+    min-height: 5.1em;
+    animation: fade-in-up 0.7s ease 0.35s both;
+  }
+
+  // ── Actions ───────────────────────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    justify-content: center;
+    animation: fade-in-up 0.7s ease 0.45s both;
+  }
+
+  &__cta-primary {
+    padding: $space-4 $space-8;
+    font-size: $text-base;
+  }
+
+  &__cta-secondary {
+    padding: $space-4 $space-8;
+    font-size: $text-base;
+  }
+
+  // ── Stats ─────────────────────────────────────────────────────────────────
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: $space-8;
+    padding-top: $space-6;
+    border-top: 1px solid $border-color;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fade-in 0.7s ease 0.55s both;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-1;
+    min-width: 140px;
+
+    strong {
+      font-family: $font-heading;
+      font-size: $text-2xl;
+      font-weight: 700;
+      @include gradient-text;
+    }
+
+    span {
+      font-size: $text-xs;
+      color: $text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: $border-color;
+  }
+
+  // ── Scroll indicator ──────────────────────────────────────────────────────
+  &__scroll {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fade-in 1s ease 1.5s both;
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient($border-light, transparent);
+    margin: 0 auto;
+    animation: float 2s ease-in-out infinite;
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "services": "Služby",
+    "work": "Portfólio",
+    "testimonials": "Referencie",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "getInTouch": "Kontaktujte nás"
+  },
+  "hero": {
+    "badge": "Dostupní pre nové projekty",
+    "headlinePart1": "Tvoríme softvér",
+    "headlinePart2": "ktorý",
+    "headlineGrad1": "rastie",
+    "headlineGrad2": "funguje",
+    "typewriter": {
+      "frontend": "Vývoj frontendu",
+      "backend": "Backendové systémy",
+      "mobile": "Mobilné aplikácie",
+      "ai": "AI automatizácia"
+    },
+    "description": "JVM Solutions vytvára vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
+    "ctaPrimary": "Spustiť projekt",
+    "ctaSecondary": "Zobraziť naše práce",
+    "statsProjects": "Dokončených projektov",
+    "statsExperience": "Rokov skúseností",
+    "statsClients": "Spokojných klientov"
+  },
+  "services": {
+    "sectionLabel": "Čo stavíme",
+    "title1": "Komplexné",
+    "title2": "digitálne riešenia",
+    "subtitle": "Nech je vaša výzva akákoľvek — máme odbornosť pre správne riešenie.",
+    "frontend": {
+      "title": "Vývoj frontendu",
+      "description": "Rýchle, prístupné webové aplikácie vytvorené v Angular, React alebo Vue. Pixel-perfect rozhrania so sofistikovanými animáciami a plynulým UX."
+    },
+    "backend": {
+      "title": "Backendové systémy",
+      "description": "Škálovateľné API, mikroservisy a cloudová infraštruktúra primárne na .NET. Od REST po gRPC, navrhnuté pre spoľahlivosť, bezpečnosť a vysoký výkon."
+    },
+    "mobile": {
+      "title": "Mobilné aplikácie",
+      "description": "Natívne aplikácie pre iOS a Android vyvíjané vo Swift a Kotlin. Plný natívny výkon, UX prispôsobené platforme a priamy prístup ku každému API zariadenia."
+    },
+    "ai": {
+      "title": "AI automatizácia",
+      "description": "Integrácie LLM, inteligentní agenti a automatizácia pracovných postupov, ktorá znižuje manuálne úsilie a odomyká nové možnosti pre vaše podnikanie."
+    }
+  },
+  "stats": {
+    "projects": "Dokončených projektov",
+    "experience": "Rokov skúseností",
+    "clients": "Spokojných klientov",
+    "services": "Kľúčové služby"
+  },
+  "portfolio": {
+    "sectionLabel": "Vybrané práce",
+    "title1": "Projekty, na ktoré sme",
+    "title2": "hrdí",
+    "subtitle": "Ukážka toho, čo sme vytvorili — každý projekt je partnerstvom, výzvou a dodaným riešením.",
+    "caseStudy": "Prípadová štúdia →",
+    "fintech": {
+      "title": "FinFlow — Analytický dashboard",
+      "description": "Real-time platforma finančnej analytiky s interaktívnymi grafmi, podporou viacerých mien a AI prognózami.",
+      "category": "Frontend + Backend"
+    },
+    "logistics": {
+      "title": "TrackMate — Logistická mobilná aplikácia",
+      "description": "Multiplatformová aplikácia pre správu logistiky pre iOS a Android. Real-time sledovanie, priradenie vodičov a potvrdenie doručenia.",
+      "category": "Mobilné"
+    },
+    "ai": {
+      "title": "FlowBot — AI workflow engine",
+      "description": "Inteligentná automatizačná platforma využívajúca LLM na spracovanie dokumentov, extrakciu dát a autonómne spúšťanie obchodných procesov.",
+      "category": "AI automatizácia"
+    },
+    "ecommerce": {
+      "title": "Nexshop — E-commerce platforma",
+      "description": "Vysokovýkonný headless e-commerce s vlastným CMS, viacregionálnym skladom a personalizačným enginom.",
+      "category": "Frontend + Backend"
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "Referencie",
+    "title1": "Dôverujú nám",
+    "title2": "progresívne",
+    "title3": "tímy",
+    "clientsLabel": "Firmy, s ktorými sme spolupracovali"
+  },
+  "cta": {
+    "sectionLabel": "Poďme stavať spoločne",
+    "title1": "Pripravení premeniť váš",
+    "title2": "nápad na",
+    "titleGrad": "skutočnosť?",
+    "description": "Povedzte nám o svojom projekte a do 24 hodín sa ohlásime s jasným plánom a ďalšími krokmi.",
+    "btn": "Začať rozhovor"
+  },
+  "footer": {
+    "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží.",
+    "nav": "Navigácia",
+    "contact": "Kontakty",
+    "available": "Dostupní pre nové projekty",
+    "rights": "Všetky práva vyhradené.",
+    "builtWith": "Vytvorené v Angular"
+  },
+  "contact": {
+    "sectionLabel": "Kontaktujte nás",
+    "backHome": "Späť na hlavnú stránku",
+    "title1": "Poďme vytvoriť",
+    "titleGrad": "niečo skvelé",
+    "description": "Povedzte nám o svojom projekte a do 24 hodín sa ohlásime s individuálnou ponukou.",
+    "emailLabel": "E-mail",
+    "responseLabel": "Doba odpovede",
+    "responseValue": "Do 24 hodín",
+    "locationLabel": "Sídlo",
+    "locationValue": "Česká republika & vzdialene",
+    "form": {
+      "nameLabel": "Celé meno",
+      "namePlaceholder": "Ján Novák",
+      "nameError": "Zadajte prosím svoje meno (min. 2 znaky).",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "jan@firma.sk",
+      "emailError": "Zadajte prosím platnú e-mailovú adresu.",
+      "companyLabel": "Firma",
+      "companyOptional": "(voliteľné)",
+      "companyPlaceholder": "Acme s.r.o.",
+      "serviceLabel": "Potrebujem",
+      "servicePlaceholder": "Vyberte službu…",
+      "serviceError": "Vyberte prosím službu.",
+      "messageLabel": "Vaša správa",
+      "messagePlaceholder": "Opíšte svoj projekt, ciele, termíny…",
+      "messageError": "Správa musí mať aspoň 20 znakov.",
+      "submit": "Odoslať správu",
+      "submitting": "Odosielanie…"
+    },
+    "services": {
+      "frontend": "Vývoj frontendu",
+      "backend": "Backendové systémy",
+      "mobile": "Mobilná aplikácia",
+      "ai": "AI automatizácia",
+      "fullstack": "Full-stack produkt",
+      "other": "Iné"
+    },
+    "success": {
+      "title": "Správa odoslaná!",
+      "message": "Ďakujeme za váš záujem. Ozveme sa vám do 24 hodín.",
+      "btn": "Odoslať ďalšiu správu"
+    },
+    "error": {
+      "title": "Niečo sa pokazilo",
+      "message": "Skúste to prosím znovu alebo nám napíšte priamo na",
+      "btn": "Skúsiť znova"
+    }
+  },
+  "about": {
+    "sectionLabel": "Kto sme",
+    "titlePart1": "Spoznajte",
+    "titleGrad": "tím",
+    "titlePart2": "za JVM",
+    "description": "Sme traja vývojári spojení spoločnou vášňou pre tvorbu digitálnych produktov svetového kalibru. Každý riadok kódu, ktorý napíšeme, je riadený remeselnosťou, výkonom a trvalým dopadom.",
+    "janis": {
+      "role": "Spoluzakladateľ & Full-stack Developer",
+      "bio": "Vášeň pre tvorbu škálovateľných webových aplikácií a poskytovanie výnimočných používateľských zážitkov."
+    },
+    "vit": {
+      "role": "Spoluzakladateľ & Full-stack Developer",
+      "bio": "Špecializuje sa na tvorbu pixel-perfect rozhraní a výkonných frontendových architektúr."
+    },
+    "michael": {
+      "role": "Spoluzakladateľ & Full-stack Engineer",
+      "bio": "Odborník na backendové systémy, API a mobilný vývoj so zameraním na škálovateľnosť."
+    }
+  }
+}
