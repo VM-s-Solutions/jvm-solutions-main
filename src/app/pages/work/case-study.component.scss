@@ -17,8 +17,12 @@
 
 .case-study__hero-inner {
   @include container;
-  padding-top: 3rem;
-  padding-bottom: 4rem;
+  padding: 3rem $space-6 4rem;
+
+  @include md {
+    padding-left: $space-8;
+    padding-right: $space-8;
+  }
 }
 
 .case-study__back {

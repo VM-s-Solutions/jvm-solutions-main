@@ -163,15 +163,16 @@
   &__mobile {
     display: none;
     max-height: 0;
-    overflow: hidden;
-    transition: max-height $transition-slow, padding $transition-slow;
+    overflow: hidden;    background: rgba($bg-primary, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);    transition: max-height $transition-slow, padding $transition-slow;
 
     @include max-md {
       display: block;
     }
 
     &.is-open {
-      max-height: 400px;
+      max-height: 600px;
       padding-bottom: $space-4;
     }
 

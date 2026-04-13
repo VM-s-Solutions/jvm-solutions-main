@@ -122,13 +122,48 @@ export class FeatureComponent {
 
 ## Styling Rules
 
-- Use design tokens from `src/styles/_variables.scss` — no magic numbers.
-- Use mixins from `src/styles/_mixins.scss` for responsive breakpoints and common patterns.
+### 7-1 SCSS Architecture
+
+Global styles follow the **7-1 pattern** — 7 folders, 1 entry file. All partials are prefixed with `_`. Only `styles.scss` uses `@use`/`@forward` to import them.
+
+```text
+src/styles/
+├── abstracts/          # No CSS output — only tools
+│   ├── _variables.scss   design tokens (colors, spacing, typography, z-index, breakpoints)
+│   ├── _mixins.scss      responsive helpers, card, glass, btn-*, section-*, orb
+│   └── _functions.scss   pure SCSS functions (if needed)
+├── base/               # Unclassed HTML element defaults
+│   ├── _reset.scss       box-sizing, margin/padding resets
+│   └── _typography.scss  font-face, body, headings, links
+├── layout/             # Structural regions shared across pages
+│   └── _grid.scss        container, section-padding defaults
+├── components/         # Reusable visual patterns not tied to one Angular component
+│   └── _buttons.scss     .btn-primary / .btn-outline global classes (if used outside Angular)
+├── pages/              # One-off page overrides that cannot live in a component
+│   └── _home.scss
+├── themes/             # Reserved — dark theme variables live in abstracts/_variables.scss
+└── vendors/            # Third-party style overrides only
+└── styles.scss         # Entry point — @use each folder partial, no rules here
+```
+
+**Rules:**
+
+- `abstracts/` must never produce CSS output on its own (variables + mixins only).
+- Component-scoped styles (`.component.scss`) are **not** part of the 7-1 tree — they live co-located with their component and import from `abstracts/` via `@use '../../../styles/abstracts/variables' as *`.
+- Never write rules directly in `styles.scss` — it is a manifest only.
+- Add a new partial to the correct folder; never dump unrelated rules into an existing partial.
+- Folder order in `styles.scss` must match the hierarchy above (abstracts → base → layout → components → pages → themes → vendors).
+
+### General Styling Rules
+
+- Use design tokens from `abstracts/_variables.scss` — no magic numbers.
+- Use mixins from `abstracts/_mixins.scss` for responsive breakpoints and common patterns.
 - Component styles are scoped (`:host` selector) — never use `ViewEncapsulation.None` without strong justification.
 - Mobile-first: base styles for smallest viewport, override upwards via `@include sm/md/lg/xl`.
 - Dark theme is the only theme — do not introduce light-mode branches.
-- Animations belong in `_animations.scss` as keyframes or `.reveal-*` utility classes; use `scroll-reveal.directive.ts` for scroll-triggered animation.
+- Animations belong in `base/_animations.scss` as keyframes or `.reveal-*` utility classes; use `scroll-reveal.directive.ts` for scroll-triggered animation.
 - Never use inline `style=""` bindings for layout — that is CSS's job.
+- Never place a plain declaration after a nested rule or `@include` that expands to a nested rule — move it above or wrap in `& {}`.
 
 ---
 

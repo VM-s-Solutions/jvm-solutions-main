@@ -37,6 +37,7 @@
   }
 
   &__content {
+    @include container;
     position: relative;
     z-index: 1;
     display: flex;
@@ -76,7 +77,6 @@
     font-size: $text-lg;
     line-height: 1.7;
     max-width: 500px;
-    min-height: 3.4em;
   }
 
   &__actions {

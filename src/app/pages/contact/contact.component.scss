@@ -45,12 +45,15 @@
     z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
-    gap: $space-16;
-    padding-top: $space-16;
-    padding-bottom: $space-24;
+    gap: $space-8;
+    padding-top: $space-10;
+    padding-bottom: $space-16;
 
     @include lg {
       grid-template-columns: 1fr 1.4fr;
+      gap: $space-16;
+      padding-top: $space-16;
+      padding-bottom: $space-24;
       align-items: start;
     }
   }
@@ -145,8 +148,9 @@
   background: $bg-surface;
   border: 1px solid $border-color;
   border-radius: $radius-2xl;
-  padding: $space-10;
+  padding: $space-6;
 
+  @include sm { padding: $space-8; }
   @include md { padding: $space-12; }
 }
 

@@ -43,13 +43,11 @@
 
 .process__title {
   font-family: $font-heading;
-  font-size: $text-4xl;
+  font-size: clamp($text-3xl, 5vw, $text-5xl);
   font-weight: 700;
   color: $text-primary;
   line-height: 1.2;
   margin-bottom: $space-4;
-
-  @include md { font-size: $text-5xl; }
 }
 
 .process__subtitle {
@@ -62,12 +60,14 @@
 .process__steps {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: $space-4;
 
   @include md {
-    flex-direction: row;
-    align-items: flex-start;
+    display: grid;
+    // 4 cards (1fr each) separated by 3 auto-width connectors
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    grid-template-rows: 1fr;
+    align-items: stretch;
     gap: 0;
   }
 }
@@ -78,24 +78,22 @@
   align-items: center;
   justify-content: center;
   color: $text-muted;
-  flex-shrink: 0;
 
-  // vertical on mobile
+  // vertical arrow on mobile
   transform: rotate(90deg);
   padding: $space-2 0;
 
   @include md {
     transform: none;
     padding: 0 $space-2;
+    // grid places connector in its auto column; center it vertically
     align-self: center;
-    margin-top: -$space-8; // pull up to align with icon row
   }
 }
 
 // ── Single step card ──────────────────────────────────────────────────────────
 .process__step {
   @include card;
-  flex: 1;
   padding: $space-8 $space-6;
   display: flex;
   flex-direction: column;
@@ -124,7 +122,12 @@
   color: $purple-light;
   flex-shrink: 0;
 
-  svg { display: block; }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
 }
 
 .process__step-num {
@@ -154,4 +157,5 @@
   font-size: $text-sm;
   color: $text-secondary;
   line-height: 1.7;
+  flex: 1;
 }

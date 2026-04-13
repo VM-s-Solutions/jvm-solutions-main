@@ -82,6 +82,13 @@ button {
 // ─── Utility Classes ──────────────────────────────────────────────────────────
 .container {
   @include container;
+  padding-left: $space-6;
+  padding-right: $space-6;
+
+  @include md {
+    padding-left: $space-8;
+    padding-right: $space-8;
+  }
 }
 
 .gradient-text {

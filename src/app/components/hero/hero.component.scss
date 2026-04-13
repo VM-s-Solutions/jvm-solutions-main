@@ -139,8 +139,10 @@
     color: $text-secondary;
     font-size: clamp($text-base, 2vw, $text-lg);
     line-height: 1.7;
-    min-height: 5.1em;
+    min-height: 2.5em;
     animation: fade-in-up 0.7s ease 0.35s both;
+
+    @include md { min-height: 5.1em; }
   }
 
   // ── Actions ───────────────────────────────────────────────────────────────
@@ -166,13 +168,15 @@
   &__stats {
     display: flex;
     align-items: center;
-    gap: $space-8;
+    gap: $space-3;
     padding-top: $space-6;
     border-top: 1px solid $border-color;
     width: 100%;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     animation: fade-in 0.7s ease 0.55s both;
+
+    @include md { gap: $space-8; }
   }
 
   &__stat {
@@ -180,7 +184,9 @@
     flex-direction: column;
     align-items: center;
     gap: $space-1;
-    min-width: 140px;
+    min-width: 80px;
+
+    @include md { min-width: 140px; }
 
     strong {
       font-family: $font-heading;
