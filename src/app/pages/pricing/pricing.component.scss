@@ -46,11 +46,11 @@
 
 // ---------- Inner wrapper ----------
 .pricing-page__inner {
-  @include container;
-  @include section-padding;
   position: relative;
   z-index: 1;
-  padding-top: 8rem;
+  @include container;
+  @include section-padding;
+  & { padding-top: 8rem; }
 }
 
 // ---------- Page header ----------
