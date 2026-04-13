@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, ElementRef, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit, OnDestroy, ElementRef, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface Stat {
@@ -24,19 +24,27 @@ export class StatsComponent implements OnInit, OnDestroy {
     { value: 4, suffix: '', labelKey: 'stats.services' },
   ];
 
-  displayValues = signal<string[]>(['0', '0', '0', '0']);
+  displayValues = signal<string[]>(this.stats.map(s => s.value.toString()));
 
   private observer!: IntersectionObserver;
   private animated = false;
+  private readonly prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef, private ngZone: NgZone) {}
 
   ngOnInit() {
+    if (this.prefersReducedMotion) return;
+
+    this.displayValues.set(this.stats.map(() => '0'));
+
     this.observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !this.animated) {
           this.animated = true;
-          this.animateAll();
+          // rAF loop runs outside zone — signal updates propagate without zone.js
+          this.ngZone.runOutsideAngular(() => this.animateAll());
           this.observer.disconnect();
         }
       },
@@ -62,7 +70,6 @@ export class StatsComponent implements OnInit, OnDestroy {
     const tick = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * stat.value);
 

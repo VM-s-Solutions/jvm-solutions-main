@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit, OnDestroy, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,6 +19,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   constructor(
     private typewriter: TypewriterService,
     private translate: TranslateService,
+    private ngZone: NgZone,
   ) {}
 
   ngOnInit() {
@@ -40,8 +41,12 @@ export class HeroComponent implements OnInit, OnDestroy {
       this.translate.instant('hero.typewriter.mobile'),
       this.translate.instant('hero.typewriter.ai'),
     ];
-    this.typewriter.start(strings, (text) => {
-      this.typedText.set(text);
+    // Run outside Angular zone — setTimeout polling at 80ms should not trigger
+    // zone.js microtask flushes on every tick. Signal updates propagate without zone.
+    this.ngZone.runOutsideAngular(() => {
+      this.typewriter.start(strings, (text) => {
+        this.typedText.set(text);
+      });
     });
   }
 

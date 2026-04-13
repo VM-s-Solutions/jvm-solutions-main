@@ -3,7 +3,7 @@
     <div class="stats__grid">
       @for (stat of stats; track stat.labelKey; let i = $index) {
         <div class="stats__item">
-          <div class="stats__number" aria-live="polite">
+          <div class="stats__number">
             <span class="stats__value">{{ displayValues()[i] }}</span>
             <span class="stats__suffix">{{ stat.suffix }}</span>
           </div>

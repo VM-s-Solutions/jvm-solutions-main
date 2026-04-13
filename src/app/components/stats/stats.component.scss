@@ -8,6 +8,8 @@
   background: linear-gradient(135deg, rgba($purple, 0.04) 0%, rgba($green, 0.04) 100%);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
 
   &::before {
     content: '';

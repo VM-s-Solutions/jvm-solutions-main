@@ -59,7 +59,7 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div class="navbar__mobile" [class.is-open]="menuOpen()" role="dialog" aria-modal="true">
+  <div class="navbar__mobile" [class.is-open]="menuOpen()" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <ul role="list">
       @for (link of navLinks; track link.label) {
         <li>
