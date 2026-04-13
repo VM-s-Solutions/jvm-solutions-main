@@ -69,7 +69,7 @@ const en = {
     title2: 'proud of',
     subtitle:
       "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
-    caseStudy: 'Case Study →',
+    caseStudy: 'Case Study',
     fintech: {
       title: 'FinFlow — Analytics Dashboard',
       description:

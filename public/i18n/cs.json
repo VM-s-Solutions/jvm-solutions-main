@@ -60,7 +60,7 @@
     "title1": "Projekty, na které jsme",
     "title2": "hrdí",
     "subtitle": "Ukázka toho, co jsme vytvořili — každý projekt je partnerstvím, výzvou a dodaným řešením.",
-    "caseStudy": "Případová studie →",
+    "caseStudy": "Případová studie",
     "fintech": {
       "title": "FinFlow — Analytický dashboard",
       "description": "Real-time platforma finanční analytiky s interaktivními grafy, podporou více měn a AI prognózami.",
@@ -76,10 +76,10 @@
       "description": "Inteligentní automatizační platforma využívající LLM ke zpracování dokumentů, extrakci dat a autonomnímu spouštění obchodních procesů.",
       "category": "AI automatizace"
     },
-    "ecommerce": {
-      "title": "Nexshop — E-commerce platforma",
-      "description": "Vysokovýkonný headless e-commerce s vlastním CMS, víceregionálním skladem a personalizačním enginem.",
-      "category": "Frontend + Backend"
+    "vedos": {
+      "title": "VEDOS — Přepravní portál",
+      "description": "Real-time logistický portál pro slovenského dopravce. Live sledování flotily, automotive JIT okruhy, cold-chain monitoring a správa přeshraniční přepravy (SK→DE) — nasazeno na Azure Static Web Apps.",
+      "category": "Logistika + Frontend"
     }
   },
   "testimonials": {
@@ -251,16 +251,18 @@
     }
   },
   "work": {
-    "back": "← Zpět na portfolio",
+    "back": "Zpět na portfolio",
     "problem": "Problém",
     "solution": "Naše řešení",
     "results": "Výsledky",
     "techStack": "Technologie",
     "timeline": "Délka projektu",
     "notFound": "Případová studie nenalezena.",
+    "ctaText": "Líbí se vám, co vidíte? Pojďme společně něco vytvořit.",
+    "ctaBtn": "Zahájit projekt",
     "fintech": { "subtitle": "Real-time financial analytics platform for mid-market investment firms", "timeline": "9 weeks", "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.", "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports. The architecture was designed for 50+ concurrent users and integrates with their existing Auth0 SSO.", "metric1Val": "12h → 45min", "metric1Label": "týdenní čas reportování", "metric2Val": "60%", "metric2Label": "rychlejší načítání", "metric3Val": "50+", "metric3Label": "analytiků při spuštění" },
     "logistics": { "subtitle": "Cross-platform mobile app for a growing logistics provider", "timeline": "11 weeks", "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism — creating disputes with enterprise clients.", "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery, and GPS coordinates are logged automatically.", "metric1Val": "8% → <0.5%", "metric1Label": "chybovost doručení", "metric2Val": "4.8★", "metric2Label": "hodnocení v App Store", "metric3Val": "11 týdnů", "metric3Label": "od nápadu po App Store" },
     "ai": { "subtitle": "Intelligent document processing and workflow automation engine", "timeline": "8 weeks", "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP. Error rates hovered around 4%, causing reconciliation delays every month-end.", "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST. Edge cases are routed to a human review queue.", "metric1Val": "30h/týden", "metric1Label": "eliminovaná manuální práce", "metric2Val": "4% → 0,3%", "metric2Label": "chybovost", "metric3Val": "Měsíc 1", "metric3Label": "ROI kladné" },
-    "ecommerce": { "subtitle": "Headless e-commerce platform with a personalisation engine", "timeline": "16 weeks", "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.", "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.", "metric1Val": "4s → 0,8s", "metric1Label": "doba načítání stránky", "metric2Val": "72% → 41%", "metric2Label": "míra opuštění košíku", "metric3Val": "+34%", "metric3Label": "tržby v prvním čtvrtletí" }
+    "vedos": { "subtitle": "Real-time logistický portál pro slovenskou přepravní a spediční společnost", "timeline": "10 týdnů", "problem": "VEDOS, logistická společnost provozující automotive JIT okruhy a cold-chain trasy po Slovensku a Německu, řídila dispečink ručně přes telefony a tabulky. Dispečeři neměli živý přehled o pozicích vozidel, stavu JIT okruhů ani teplotních alarmech — nebylo možné reagovat na zpoždění dříve, než se z nich stalo porušení SLA.", "solution": "Vytvořili jsme Angular + Material Design 3 přepravní portál s .NET API. Dispečeři mají live mapu flotily (Leaflet, aktualizace každých 30 sekund), JIT board se SLA trackingem (±15 min), cold-chain monitoring s teplotními alarmy a integrovaný workflow pro cenové nabídky. Portál je nasazen na Azure Static Web Apps.", "metric1Val": "16", "metric1Label": "vozidel sledovaných live", "metric2Val": "90 %", "metric2Label": "plnění SLA", "metric3Val": "10 týdnů", "metric3Label": "od návrhu do produkce" }
   }
 }

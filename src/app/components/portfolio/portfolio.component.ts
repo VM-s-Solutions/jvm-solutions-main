@@ -23,12 +23,12 @@ interface Project {
 export class PortfolioComponent {
   readonly projects: Project[] = [
     {
-      id: 'fintech-dashboard',
-      titleKey: 'portfolio.fintech.title',
-      descriptionKey: 'portfolio.fintech.description',
-      tags: ['Angular', 'Node.js', 'PostgreSQL', 'AI'],
-      categoryKey: 'portfolio.fintech.category',
-      gradient: 'linear-gradient(135deg, #8B5CF6 0%, #4F46E5 100%)',
+      id: 'vedos',
+      titleKey: 'portfolio.vedos.title',
+      descriptionKey: 'portfolio.vedos.description',
+      tags: ['Angular', 'Material Design 3', '.NET', 'Azure'],
+      categoryKey: 'portfolio.vedos.category',
+      gradient: 'linear-gradient(135deg, #E30613 0%, #9B1C1C 100%)',
     },
     {
       id: 'logistics-app',
@@ -47,12 +47,12 @@ export class PortfolioComponent {
       gradient: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)',
     },
     {
-      id: 'ecommerce',
-      titleKey: 'portfolio.ecommerce.title',
-      descriptionKey: 'portfolio.ecommerce.description',
-      tags: ['React', 'GraphQL', 'Microservices'],
-      categoryKey: 'portfolio.ecommerce.category',
-      gradient: 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)',
+      id: 'fintech-dashboard',
+      titleKey: 'portfolio.fintech.title',
+      descriptionKey: 'portfolio.fintech.description',
+      tags: ['Angular', '.NET', 'PostgreSQL', 'AI'],
+      categoryKey: 'portfolio.fintech.category',
+      gradient: 'linear-gradient(135deg, #8B5CF6 0%, #4F46E5 100%)',
     },
   ];
 }

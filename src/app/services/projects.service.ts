@@ -90,6 +90,23 @@ export class ProjectsService {
         { value: 'work.ecommerce.metric3Val', labelKey: 'work.ecommerce.metric3Label' },
       ],
     },
+    {
+      id: 'vedos',
+      titleKey: 'portfolio.vedos.title',
+      descriptionKey: 'portfolio.vedos.description',
+      subtitleKey: 'work.vedos.subtitle',
+      categoryKey: 'portfolio.vedos.category',
+      tags: ['Angular', 'Material Design 3', '.NET', 'Leaflet', 'Azure Static Web Apps'],
+      gradient: 'linear-gradient(135deg, #E30613 0%, #9B1C1C 100%)',
+      timelineKey: 'work.vedos.timeline',
+      problemKey: 'work.vedos.problem',
+      solutionKey: 'work.vedos.solution',
+      metrics: [
+        { value: 'work.vedos.metric1Val', labelKey: 'work.vedos.metric1Label' },
+        { value: 'work.vedos.metric2Val', labelKey: 'work.vedos.metric2Label' },
+        { value: 'work.vedos.metric3Val', labelKey: 'work.vedos.metric3Label' },
+      ],
+    },
   ];
 
   getById(id: string): CaseStudy | undefined {

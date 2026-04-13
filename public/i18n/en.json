@@ -60,7 +60,7 @@
     "title1": "Projects we're",
     "title2": "proud of",
     "subtitle": "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
-    "caseStudy": "Case Study →",
+    "caseStudy": "Case Study",
     "fintech": {
       "title": "FinFlow — Analytics Dashboard",
       "description": "Real-time financial analytics platform with interactive charts, multi-currency support, and AI-driven forecasting.",
@@ -76,10 +76,10 @@
       "description": "Intelligent automation platform using LLMs to process documents, extract data, and trigger business workflows autonomously.",
       "category": "AI Automation"
     },
-    "ecommerce": {
-      "title": "Nexshop — E-commerce Platform",
-      "description": "High-performance headless e-commerce with custom CMS, multi-region inventory, and personalisation engine.",
-      "category": "Frontend + Backend"
+    "vedos": {
+      "title": "VEDOS — Shipper Portal",
+      "description": "Real-time logistics operations portal for a Slovak transport company. Live fleet tracking, automotive JIT circuits, cold-chain monitoring, and cross-border (SK→DE) shipment management — deployed on Azure Static Web Apps.",
+      "category": "Logistics + Frontend"
     }
   },
   "testimonials": {
@@ -251,13 +251,15 @@
     }
   },
   "work": {
-    "back": "← Back to work",
+    "back": "Back to work",
     "problem": "The Problem",
     "solution": "Our Solution",
     "results": "Results",
     "techStack": "Tech Stack",
     "timeline": "Timeline",
     "notFound": "Case study not found.",
+    "ctaText": "Like what you see? Let's build something together.",
+    "ctaBtn": "Start a Project",
     "fintech": {
       "subtitle": "Real-time financial analytics platform for mid-market investment firms",
       "timeline": "9 weeks",
@@ -294,17 +296,17 @@
       "metric3Val": "Month 1",
       "metric3Label": "ROI positive"
     },
-    "ecommerce": {
-      "subtitle": "Headless e-commerce platform with a personalisation engine",
-      "timeline": "16 weeks",
-      "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.",
-      "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.",
-      "metric1Val": "4s → 0.8s",
-      "metric1Label": "page load time",
-      "metric2Val": "72% → 41%",
-      "metric2Label": "cart abandonment rate",
-      "metric3Val": "+34%",
-      "metric3Label": "revenue in first quarter"
+    "vedos": {
+      "subtitle": "Real-time logistics portal for a Slovak transport & freight company",
+      "timeline": "10 weeks",
+      "problem": "VEDOS, a logistics company operating Automotive JIT circuits and cold-chain routes across Slovakia and Germany, managed dispatching through manual phone calls and spreadsheets. Dispatchers had no live visibility of fleet positions, JIT circuit status, or temperature alerts — making it impossible to react to delays before they became SLA breaches.",
+      "solution": "We built an Angular + Material Design 3 shipper portal backed by a .NET API. Dispatchers get a live fleet map (Leaflet, 30-second refresh), an Automotive JIT board with per-circuit SLA tracking (±15 min), cold-chain monitoring with real-time temperature alerts, and an integrated quoting workflow. The portal is role-scoped per customer and deployed globally on Azure Static Web Apps.",
+      "metric1Val": "16",
+      "metric1Label": "vehicles tracked live",
+      "metric2Val": "90%",
+      "metric2Label": "on-time SLA achieved",
+      "metric3Val": "10 weeks",
+      "metric3Label": "design to production"
     }
   }
 }

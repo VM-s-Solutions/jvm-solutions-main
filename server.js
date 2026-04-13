@@ -9,7 +9,7 @@ const DIST = path.join(__dirname, 'dist/jvm-solutions/browser');
 app.use(express.static(DIST));
 
 // SPA fallback — all routes return index.html
-app.get('*', (req, res) => {
+app.get('/{*path}', (req, res) => {
   res.sendFile(path.join(DIST, 'index.html'));
 });
 
