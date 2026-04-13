@@ -88,6 +88,12 @@ const en = {
         'Intelligent automation platform using LLMs to process documents, extract data, and trigger business workflows autonomously.',
       category: 'AI Automation',
     },
+    vedos: {
+      title: 'VEDOS — Shipper Portal',
+      description:
+        'Real-time logistics operations portal for a Slovak transport company. Live fleet tracking, automotive JIT circuits, cold-chain monitoring, and cross-border (SK→DE) shipment management — deployed on Azure Static Web Apps.',
+      category: 'Logistics + Frontend',
+    },
     ecommerce: {
       title: 'Nexshop — E-commerce Platform',
       description:
@@ -267,13 +273,15 @@ const en = {
     },
   },
   work: {
-    back: '← Back to work',
+    back: 'Back to work',
     problem: 'The Problem',
     solution: 'Our Solution',
     results: 'Results',
     techStack: 'Tech Stack',
     timeline: 'Timeline',
     notFound: 'Case study not found.',
+    ctaText: 'Like what you see? Let\'s build something together.',
+    ctaBtn: 'Start a Project',
     fintech: {
       subtitle: 'Real-time financial analytics platform for mid-market investment firms',
       timeline: '9 weeks',
@@ -309,6 +317,18 @@ const en = {
       metric2Label: 'error rate',
       metric3Val: 'Month 1',
       metric3Label: 'ROI positive',
+    },
+    vedos: {
+      subtitle: 'Real-time logistics portal for a Slovak transport & freight company',
+      timeline: '10 weeks',
+      problem: 'VEDOS, a logistics company operating Automotive JIT circuits and cold-chain routes across Slovakia and Germany, managed dispatching through manual phone calls and spreadsheets. Dispatchers had no live visibility of fleet positions, JIT circuit status, or temperature alerts — making it impossible to react to delays before they became SLA breaches.',
+      solution: 'We built an Angular + Material Design 3 shipper portal backed by a .NET API. Dispatchers get a live fleet map (Leaflet, 30-second refresh), an Automotive JIT board with per-circuit SLA tracking (±15 min), cold-chain monitoring with real-time temperature alerts, and an integrated quoting workflow. The portal is role-scoped per customer and deployed globally on Azure Static Web Apps.',
+      metric1Val: '16',
+      metric1Label: 'vehicles tracked live',
+      metric2Val: '90%',
+      metric2Label: 'on-time SLA achieved',
+      metric3Val: '10 weeks',
+      metric3Label: 'design to production',
     },
     ecommerce: {
       subtitle: 'Headless e-commerce platform with a personalisation engine',
