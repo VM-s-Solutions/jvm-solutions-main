@@ -115,7 +115,8 @@
     font-size: $text-xs;
     font-weight: 600;
     letter-spacing: 0.05em;
-    padding: 3px $space-2;
+    padding: $space-2 $space-2;
+    min-height: 28px;
     cursor: pointer;
     transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 

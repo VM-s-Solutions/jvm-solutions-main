@@ -73,8 +73,8 @@
   </div>
 </main>
 
-@defer (on viewport) {
+@defer (on viewport; prefetch on idle) {
   <app-footer />
 } @placeholder {
-  <div></div>
+  <div style="min-height:300px"></div>
 }
