@@ -1,0 +1,104 @@
+<app-navbar />
+
+@if (project(); as p) {
+  <main class="case-study">
+
+    <!-- Hero banner with project gradient -->
+    <div class="case-study__hero" [style.background]="p.gradient" appScrollReveal revealClass="reveal">
+      <div class="case-study__hero-inner container">
+        <a class="case-study__back" routerLink="/" [attr.aria-label]="'work.back' | translate">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          {{ 'work.back' | translate }}
+        </a>
+
+        <div class="case-study__hero-content">
+          <span class="case-study__category">{{ p.categoryKey | translate }}</span>
+          <h1 class="case-study__title">{{ p.titleKey | translate }}</h1>
+          <p class="case-study__subtitle">{{ p.subtitleKey | translate }}</p>
+
+          <ul class="case-study__tags" role="list">
+            @for (tag of p.tags; track tag) {
+              <li class="case-study__tag">{{ tag }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="case-study__body container">
+
+      <!-- Metrics row -->
+      <div class="case-study__metrics" appScrollReveal revealClass="reveal">
+        @for (metric of p.metrics; track metric.labelKey) {
+          <div class="case-study__metric-card">
+            <span class="case-study__metric-value">{{ metric.value | translate }}</span>
+            <span class="case-study__metric-label">{{ metric.labelKey | translate }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Main content: problem + solution + sidebar -->
+      <div class="case-study__content">
+
+        <div class="case-study__main">
+          <!-- Problem -->
+          <section class="case-study__section" appScrollReveal revealClass="reveal">
+            <h2 class="case-study__section-title">{{ 'work.problem' | translate }}</h2>
+            <p class="case-study__section-body">{{ p.problemKey | translate }}</p>
+          </section>
+
+          <!-- Solution -->
+          <section class="case-study__section" appScrollReveal revealClass="reveal">
+            <h2 class="case-study__section-title">{{ 'work.solution' | translate }}</h2>
+            <p class="case-study__section-body">{{ p.solutionKey | translate }}</p>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="case-study__sidebar" appScrollReveal revealClass="reveal">
+          <!-- Timeline -->
+          <div class="case-study__sidebar-card">
+            <span class="case-study__sidebar-label">{{ 'work.timeline' | translate }}</span>
+            <span class="case-study__sidebar-value">{{ p.timelineKey | translate }}</span>
+          </div>
+
+          <!-- Tech stack -->
+          <div class="case-study__sidebar-card">
+            <span class="case-study__sidebar-label">{{ 'work.techStack' | translate }}</span>
+            <ul class="case-study__tags case-study__tags--sidebar" role="list">
+              @for (tag of p.tags; track tag) {
+                <li class="case-study__tag">{{ tag }}</li>
+              }
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- CTA strip -->
+      <div class="case-study__cta-strip" appScrollReveal revealClass="reveal">
+        <p>{{ 'work.ctaText' | translate }}</p>
+        <a class="btn-primary" routerLink="/contact">{{ 'work.ctaBtn' | translate }}</a>
+      </div>
+
+    </div>
+  </main>
+} @else {
+  <!-- 404 state -->
+  <main class="case-study case-study--not-found container">
+    <app-navbar />
+    <div class="case-study__not-found">
+      <h1>{{ 'work.notFound' | translate }}</h1>
+      <a routerLink="/" class="btn-primary">{{ 'work.back' | translate }}</a>
+    </div>
+  </main>
+}
+
+@defer (on viewport) {
+  <app-footer />
+} @placeholder {
+  <div></div>
+}

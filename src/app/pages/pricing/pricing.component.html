@@ -1,0 +1,80 @@
+<app-navbar />
+
+<main class="pricing-page">
+
+  <!-- Background orbs -->
+  <div class="pricing-page__bg" aria-hidden="true">
+    <div class="pricing-page__orb pricing-page__orb--purple"></div>
+    <div class="pricing-page__orb pricing-page__orb--green"></div>
+  </div>
+
+  <div class="pricing-page__inner container">
+
+    <!-- Page header -->
+    <header class="pricing-header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'pricing.sectionLabel' | translate }}</span>
+      <h1 class="pricing-header__title">
+        {{ 'pricing.title1' | translate }} <span class="gradient-text">{{ 'pricing.titleGrad' | translate }}</span>
+      </h1>
+      <p class="pricing-header__subtitle">{{ 'pricing.subtitle' | translate }}</p>
+    </header>
+
+    <!-- Tiers grid -->
+    <div class="pricing-grid">
+      @for (tier of tiers; track tier.labelKey) {
+        <article
+          class="pricing-card"
+          [class.pricing-card--highlighted]="tier.highlighted"
+          appScrollReveal
+          revealClass="reveal"
+        >
+          @if (tier.badgeKey) {
+            <div class="pricing-card__badge">{{ tier.badgeKey | translate }}</div>
+          }
+
+          <div class="pricing-card__header">
+            <h2 class="pricing-card__label">{{ tier.labelKey | translate }}</h2>
+            <div class="pricing-card__price-row">
+              <span class="pricing-card__from">{{ 'pricing.from' | translate }}</span>
+              <span class="pricing-card__price">{{ tier.priceKey | translate }}</span>
+            </div>
+            <span class="pricing-card__period">{{ tier.periodKey | translate }}</span>
+          </div>
+
+          <ul class="pricing-card__features" role="list">
+            @for (feature of tier.features; track feature) {
+              <li class="pricing-card__feature">
+                <svg class="pricing-card__check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20,6 9,17 4,12"/>
+                </svg>
+                <span>{{ feature | translate }}</span>
+              </li>
+            }
+          </ul>
+
+          <a
+            class="pricing-card__cta"
+            [class.btn-primary]="tier.highlighted"
+            [class.btn-outline]="!tier.highlighted"
+            [routerLink]="tier.ctaLink"
+          >
+            {{ tier.ctaKey | translate }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </article>
+      }
+    </div>
+
+    <!-- VAT note -->
+    <p class="pricing-note" appScrollReveal revealClass="reveal">{{ 'pricing.note' | translate }}</p>
+
+  </div>
+</main>
+
+@defer (on viewport) {
+  <app-footer />
+} @placeholder {
+  <div></div>
+}

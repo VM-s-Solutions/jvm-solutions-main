@@ -1,0 +1,98 @@
+import { Injectable } from '@angular/core';
+
+export interface Metric {
+  value: string;
+  labelKey: string;
+}
+
+export interface CaseStudy {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  subtitleKey: string;
+  categoryKey: string;
+  tags: string[];
+  gradient: string;
+  timelineKey: string;
+  problemKey: string;
+  solutionKey: string;
+  metrics: Metric[];
+}
+
+@Injectable({ providedIn: 'root' })
+export class ProjectsService {
+  readonly projects: CaseStudy[] = [
+    {
+      id: 'fintech-dashboard',
+      titleKey: 'portfolio.fintech.title',
+      descriptionKey: 'portfolio.fintech.description',
+      subtitleKey: 'work.fintech.subtitle',
+      categoryKey: 'portfolio.fintech.category',
+      tags: ['Angular', '.NET', 'PostgreSQL', 'WebSocket', 'Chart.js'],
+      gradient: 'linear-gradient(135deg, #8B5CF6 0%, #4F46E5 100%)',
+      timelineKey: 'work.fintech.timeline',
+      problemKey: 'work.fintech.problem',
+      solutionKey: 'work.fintech.solution',
+      metrics: [
+        { value: 'work.fintech.metric1Val', labelKey: 'work.fintech.metric1Label' },
+        { value: 'work.fintech.metric2Val', labelKey: 'work.fintech.metric2Label' },
+        { value: 'work.fintech.metric3Val', labelKey: 'work.fintech.metric3Label' },
+      ],
+    },
+    {
+      id: 'logistics-app',
+      titleKey: 'portfolio.logistics.title',
+      descriptionKey: 'portfolio.logistics.description',
+      subtitleKey: 'work.logistics.subtitle',
+      categoryKey: 'portfolio.logistics.category',
+      tags: ['Flutter', '.NET', 'Firebase', 'Google Maps API', 'iOS', 'Android'],
+      gradient: 'linear-gradient(135deg, #10B981 0%, #0891B2 100%)',
+      timelineKey: 'work.logistics.timeline',
+      problemKey: 'work.logistics.problem',
+      solutionKey: 'work.logistics.solution',
+      metrics: [
+        { value: 'work.logistics.metric1Val', labelKey: 'work.logistics.metric1Label' },
+        { value: 'work.logistics.metric2Val', labelKey: 'work.logistics.metric2Label' },
+        { value: 'work.logistics.metric3Val', labelKey: 'work.logistics.metric3Label' },
+      ],
+    },
+    {
+      id: 'ai-automation',
+      titleKey: 'portfolio.ai.title',
+      descriptionKey: 'portfolio.ai.description',
+      subtitleKey: 'work.ai.subtitle',
+      categoryKey: 'portfolio.ai.category',
+      tags: ['Python', 'FastAPI', 'GPT-4', 'LangChain', 'PostgreSQL'],
+      gradient: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)',
+      timelineKey: 'work.ai.timeline',
+      problemKey: 'work.ai.problem',
+      solutionKey: 'work.ai.solution',
+      metrics: [
+        { value: 'work.ai.metric1Val', labelKey: 'work.ai.metric1Label' },
+        { value: 'work.ai.metric2Val', labelKey: 'work.ai.metric2Label' },
+        { value: 'work.ai.metric3Val', labelKey: 'work.ai.metric3Label' },
+      ],
+    },
+    {
+      id: 'ecommerce',
+      titleKey: 'portfolio.ecommerce.title',
+      descriptionKey: 'portfolio.ecommerce.description',
+      subtitleKey: 'work.ecommerce.subtitle',
+      categoryKey: 'portfolio.ecommerce.category',
+      tags: ['React', 'GraphQL', '.NET', 'Microservices', 'CDN'],
+      gradient: 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)',
+      timelineKey: 'work.ecommerce.timeline',
+      problemKey: 'work.ecommerce.problem',
+      solutionKey: 'work.ecommerce.solution',
+      metrics: [
+        { value: 'work.ecommerce.metric1Val', labelKey: 'work.ecommerce.metric1Label' },
+        { value: 'work.ecommerce.metric2Val', labelKey: 'work.ecommerce.metric2Label' },
+        { value: 'work.ecommerce.metric3Val', labelKey: 'work.ecommerce.metric3Label' },
+      ],
+    },
+  ];
+
+  getById(id: string): CaseStudy | undefined {
+    return this.projects.find(p => p.id === id);
+  }
+}

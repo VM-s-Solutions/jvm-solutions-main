@@ -4,6 +4,7 @@
     "work": "Portfolio",
     "testimonials": "Reference",
     "about": "O nás",
+    "pricing": "Ceník",
     "contact": "Kontakt",
     "getInTouch": "Kontaktujte nás"
   },
@@ -171,5 +172,95 @@
       "role": "Spoluzakladatel & Full-stack Engineer",
       "bio": "Odborník na backendové systémy, API a mobilní vývoj se zaměřením na škálovatelnost."
     }
+  },
+  "process": {
+    "sectionLabel": "Jak pracujeme",
+    "title1": "Navrženo pro",
+    "titleGrad": "předvídatelnost",
+    "subtitle": "Vždy víte, co se děje, co přijde dál a kdy dodáváme.",
+    "step1Num": "01",
+    "step1Title": "Discovery",
+    "step1Desc": "Dvě setkání pro pochopení vašich cílů, omezení a uživatelů. Odcházíme se sdílenou definicí hotového.",
+    "step2Num": "02",
+    "step2Title": "Specifikace a odhad",
+    "step2Desc": "Jasná technická specifikace a odhad s pevným rozsahem — žádné překvapivé faktury.",
+    "step3Num": "03",
+    "step3Title": "Vývoj",
+    "step3Desc": "Týdenní dema, asynchronní aktualizace a testovací prostředí od prvního dne.",
+    "step4Num": "04",
+    "step4Title": "Spuštění a předání",
+    "step4Desc": "Nasazení, kompletní dokumentace a 30denní záruka. Kód je váš."
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title1": "Otázky, které dostáváme",
+    "titleGrad": "každý týden",
+    "q1": "Pracujete se začínajícími startupy?",
+    "a1": "Ano — zhruba polovina našich klientů k nám přichází před první investicí. Víme, jak vytvořit MVP, který bude doručen bez zbytečného plýtvání prostředky.",
+    "q2": "Můžete převzít existující kódovou základnu?",
+    "a2": "Určitě. Zdědili jsme vše od legacy PHP po napůl migrované Angular aplikace. Nejprve provedeme audit, pak se pustíme do práce.",
+    "q3": "Jak vypadá typický časový plán projektu?",
+    "a3": "Vymezený MVP obvykle trvá 6–12 týdnů od startu do produkce. Discovery fáze vám dá reálné číslo před jakýmkoliv závazkem.",
+    "q4": "Podepisujete NDA?",
+    "a4": "Ano, před jakýmkoliv discovery hovorem. Vše, co s námi sdílíte, považujeme za důvěrné.",
+    "q5": "Nabízíte podporu po spuštění?",
+    "a5": "Ano — prostřednictvím měsíčního retaineru. Většina klientů zůstane 3–6 měsíců po spuštění.",
+    "q6": "Pracujete vzdáleně?",
+    "a6": "100% vzdáleně. Sídlíme v České republice a pracujeme s klienty v EU, USA a UK."
+  },
+  "pricing": {
+    "sectionLabel": "Modely spolupráce",
+    "title1": "Transparentní",
+    "titleGrad": "ceník",
+    "subtitle": "Žádné skryté poplatky. Žádné vágní odhady. Vyberte model, který vám vyhovuje.",
+    "note": "Všechny ceny jsou bez DPH. Projekty s pevným rozsahem vyžadují zálohu 50 %.",
+    "from": "od",
+    "project": {
+      "label": "Projekt s pevným rozsahem",
+      "price": "€8 000",
+      "period": "za projekt",
+      "cta": "Začít projekt",
+      "f1": "Kompletní technická specifikace před prvním řádkem kódu",
+      "f2": "Týdenní dema v živém testovacím prostředí",
+      "f3": "Vlastnictví zdrojového kódu — kompletní předání",
+      "f4": "30denní záruka po spuštění",
+      "f5": "Reakce na urgentní chyby do 4 hodin"
+    },
+    "retainer": {
+      "label": "Angažmá celého týmu",
+      "price": "€8 000",
+      "period": "měsíčně",
+      "badge": "Nejoblíbenější",
+      "cta": "Rezervovat discovery hovor",
+      "f1": "Všichni 3 — frontend, backend i mobil",
+      "f2": "Sprintová dodávka s demo každé 2 týdny",
+      "f3": "Async-first přes Slack nebo Linear, denní updaty",
+      "f4": "Prioritní reakce na chyby — tentýž den",
+      "f5": "Zrušení kdykoli, bez závazků"
+    },
+    "consulting": {
+      "label": "Technické poradenství",
+      "price": "€150",
+      "period": "za hodinu",
+      "cta": "Rezervovat schůzku",
+      "f1": "Revize architektury a code audity",
+      "f2": "Mentoring týmu a code review",
+      "f3": "Výběr technologií a studie proveditelnosti",
+      "f4": "Ideální pro CTO a technické vedoucí",
+      "f5": "Výstup: písemná zpráva nebo nahrávka"
+    }
+  },
+  "work": {
+    "back": "← Zpět na portfolio",
+    "problem": "Problém",
+    "solution": "Naše řešení",
+    "results": "Výsledky",
+    "techStack": "Technologie",
+    "timeline": "Délka projektu",
+    "notFound": "Případová studie nenalezena.",
+    "fintech": { "subtitle": "Real-time financial analytics platform for mid-market investment firms", "timeline": "9 weeks", "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.", "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports. The architecture was designed for 50+ concurrent users and integrates with their existing Auth0 SSO.", "metric1Val": "12h → 45min", "metric1Label": "týdenní čas reportování", "metric2Val": "60%", "metric2Label": "rychlejší načítání", "metric3Val": "50+", "metric3Label": "analytiků při spuštění" },
+    "logistics": { "subtitle": "Cross-platform mobile app for a growing logistics provider", "timeline": "11 weeks", "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism — creating disputes with enterprise clients.", "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery, and GPS coordinates are logged automatically.", "metric1Val": "8% → <0.5%", "metric1Label": "chybovost doručení", "metric2Val": "4.8★", "metric2Label": "hodnocení v App Store", "metric3Val": "11 týdnů", "metric3Label": "od nápadu po App Store" },
+    "ai": { "subtitle": "Intelligent document processing and workflow automation engine", "timeline": "8 weeks", "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP. Error rates hovered around 4%, causing reconciliation delays every month-end.", "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST. Edge cases are routed to a human review queue.", "metric1Val": "30h/týden", "metric1Label": "eliminovaná manuální práce", "metric2Val": "4% → 0,3%", "metric2Label": "chybovost", "metric3Val": "Měsíc 1", "metric3Label": "ROI kladné" },
+    "ecommerce": { "subtitle": "Headless e-commerce platform with a personalisation engine", "timeline": "16 weeks", "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.", "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.", "metric1Val": "4s → 0,8s", "metric1Label": "doba načítání stránky", "metric2Val": "72% → 41%", "metric2Label": "míra opuštění košíku", "metric3Val": "+34%", "metric3Label": "tržby v prvním čtvrtletí" }
   }
 }

@@ -4,6 +4,7 @@
     "work": "Work",
     "testimonials": "Testimonials",
     "about": "About",
+    "pricing": "Pricing",
     "contact": "Contact",
     "getInTouch": "Get in Touch"
   },
@@ -170,6 +171,140 @@
     "michael": {
       "role": "Co-founder & Full-stack Engineer",
       "bio": "Expert in backend systems, APIs, and mobile development with a focus on scalability."
+    }
+  },
+  "process": {
+    "sectionLabel": "How We Work",
+    "title1": "Built for",
+    "titleGrad": "predictability",
+    "subtitle": "You always know what's happening, what's next, and when you'll ship.",
+    "step1Num": "01",
+    "step1Title": "Discovery",
+    "step1Desc": "Two focused sessions to understand your goals, constraints, and users. We leave with a shared definition of done.",
+    "step2Num": "02",
+    "step2Title": "Spec & Estimate",
+    "step2Desc": "A clear technical spec, stack decision, and fixed-scope estimate — no surprise invoices.",
+    "step3Num": "03",
+    "step3Title": "Build",
+    "step3Desc": "Weekly demos, async updates, and a staging environment you can access from day one.",
+    "step4Num": "04",
+    "step4Title": "Ship & Hand Over",
+    "step4Desc": "Deploy, full handover docs, and a 30-day warranty. You get the code, you own the code."
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title1": "Questions we get",
+    "titleGrad": "every week",
+    "q1": "Do you work with early-stage startups?",
+    "a1": "Yes — roughly half our clients come to us pre-revenue. We know how to scope an MVP that ships without burning runway.",
+    "q2": "Can you take over an existing codebase?",
+    "a2": "Absolutely. We've inherited everything from legacy PHP to half-migrated Angular apps. We audit first, give you an honest assessment, then move.",
+    "q3": "What does a typical project timeline look like?",
+    "a3": "A scoped MVP is usually 6–12 weeks from kick-off to production. Our Discovery phase gives you the real number before any commitment.",
+    "q4": "Do you sign NDAs?",
+    "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
+    "q5": "Do you offer ongoing support after launch?",
+    "a5": "Yes — through a monthly retainer. Most clients stay on a light retainer for 3–6 months post-launch, then adjust based on need.",
+    "q6": "Do you work remotely?",
+    "a6": "100% remote and async-first. We're based in the Czech Republic and work with clients across EU, US, and UK time zones."
+  },
+  "pricing": {
+    "sectionLabel": "Engagement Models",
+    "title1": "Transparent",
+    "titleGrad": "pricing",
+    "subtitle": "No hidden fees. No vague estimates. Pick the model that fits your situation.",
+    "note": "All prices are excluding VAT. Fixed-scope projects require a 50% upfront deposit.",
+    "from": "from",
+    "project": {
+      "label": "Fixed-Scope Project",
+      "price": "€8,000",
+      "period": "per project",
+      "cta": "Start a Project",
+      "f1": "Full technical spec before we write a line",
+      "f2": "Weekly demos on a live staging environment",
+      "f3": "Source code ownership — full handover",
+      "f4": "30-day post-launch warranty",
+      "f5": "Urgent bug response within 4 hours"
+    },
+    "retainer": {
+      "label": "Full-Team Engagement",
+      "price": "€8,000",
+      "period": "per month",
+      "badge": "Most popular",
+      "cta": "Book a Discovery Call",
+      "f1": "All 3 of us — frontend, backend & mobile",
+      "f2": "Sprint-based delivery with bi-weekly demos",
+      "f3": "Async-first via Slack or Linear, daily updates",
+      "f4": "Priority bug response — same day",
+      "f5": "Cancel anytime, no lock-in"
+    },
+    "consulting": {
+      "label": "Technical Consulting",
+      "price": "€150",
+      "period": "per hour",
+      "cta": "Book a Session",
+      "f1": "Architecture reviews & code audits",
+      "f2": "Team mentorship and code reviews",
+      "f3": "Stack selection & feasibility studies",
+      "f4": "Ideal for CTOs and engineering leads",
+      "f5": "Deliverable: written report or recording"
+    }
+  },
+  "work": {
+    "back": "← Back to work",
+    "problem": "The Problem",
+    "solution": "Our Solution",
+    "results": "Results",
+    "techStack": "Tech Stack",
+    "timeline": "Timeline",
+    "notFound": "Case study not found.",
+    "fintech": {
+      "subtitle": "Real-time financial analytics platform for mid-market investment firms",
+      "timeline": "9 weeks",
+      "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.",
+      "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports. The architecture was designed for 50+ concurrent users and integrates with their existing Auth0 SSO.",
+      "metric1Val": "12h → 45min",
+      "metric1Label": "weekly reporting time",
+      "metric2Val": "60%",
+      "metric2Label": "faster load vs. old tool",
+      "metric3Val": "50+",
+      "metric3Label": "analysts onboarded at launch"
+    },
+    "logistics": {
+      "subtitle": "Cross-platform mobile app for a growing logistics provider",
+      "timeline": "11 weeks",
+      "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism — creating disputes with enterprise clients.",
+      "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery, and GPS coordinates are logged automatically.",
+      "metric1Val": "8% → <0.5%",
+      "metric1Label": "missed delivery rate",
+      "metric2Val": "4.8★",
+      "metric2Label": "App Store rating",
+      "metric3Val": "11 weeks",
+      "metric3Label": "idea to App Store"
+    },
+    "ai": {
+      "subtitle": "Intelligent document processing and workflow automation engine",
+      "timeline": "8 weeks",
+      "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP. Error rates hovered around 4%, causing reconciliation delays every month-end.",
+      "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST. Edge cases are routed to a human review queue.",
+      "metric1Val": "30h/week",
+      "metric1Label": "manual work eliminated",
+      "metric2Val": "4% → 0.3%",
+      "metric2Label": "error rate",
+      "metric3Val": "Month 1",
+      "metric3Label": "ROI positive"
+    },
+    "ecommerce": {
+      "subtitle": "Headless e-commerce platform with a personalisation engine",
+      "timeline": "16 weeks",
+      "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.",
+      "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.",
+      "metric1Val": "4s → 0.8s",
+      "metric1Label": "page load time",
+      "metric2Val": "72% → 41%",
+      "metric2Label": "cart abandonment rate",
+      "metric3Val": "+34%",
+      "metric3Label": "revenue in first quarter"
     }
   }
 }

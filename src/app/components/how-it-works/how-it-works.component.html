@@ -1,0 +1,33 @@
+<section class="process" id="process" aria-labelledby="process-title">
+  <div class="container">
+
+    <div class="process__header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'process.sectionLabel' | translate }}</span>
+      <h2 id="process-title" class="process__title">
+        {{ 'process.title1' | translate }} <span class="gradient-text">{{ 'process.titleGrad' | translate }}</span>
+      </h2>
+      <p class="process__subtitle">{{ 'process.subtitle' | translate }}</p>
+    </div>
+
+    <div class="process__steps">
+      @for (step of steps; track step.numKey; let i = $index; let last = $last) {
+        <div class="process__step" appScrollReveal revealClass="reveal">
+          <div class="process__step-icon" aria-hidden="true">
+            <span [innerHTML]="step.icon"></span>
+          </div>
+          <div class="process__step-num" aria-hidden="true">{{ step.numKey | translate }}</div>
+          <h3 class="process__step-title">{{ step.titleKey | translate }}</h3>
+          <p class="process__step-desc">{{ step.descKey | translate }}</p>
+        </div>
+        @if (!last) {
+          <div class="process__connector" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        }
+      }
+    </div>
+
+  </div>
+</section>

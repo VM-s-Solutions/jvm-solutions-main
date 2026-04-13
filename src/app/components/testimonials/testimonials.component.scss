@@ -66,6 +66,10 @@
     padding-top: $space-6;
   }
 
+  &__author-text {
+    flex: 1;
+  }
+
   &__avatar {
     width: 44px;
     height: 44px;
@@ -79,6 +83,11 @@
     font-size: $text-sm;
     color: white;
     flex-shrink: 0;
+
+    &--photo {
+      background: none;
+      object-fit: cover;
+    }
   }
 
   &__name {
@@ -93,6 +102,28 @@
     font-size: $text-xs;
     color: $text-muted;
     margin-top: 2px;
+  }
+
+  &__linkedin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: $text-muted;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: color $transition-base, border-color $transition-base, background $transition-base;
+
+    &:hover,
+    &:focus-visible {
+      color: #0A66C2;
+      border-color: #0A66C2;
+      background: rgba(#0A66C2, 0.08);
+    }
   }
 
   // ── Clients ───────────────────────────────────────────────────────────────

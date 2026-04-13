@@ -69,6 +69,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'nav.services', fragment: 'services' },
     { label: 'nav.work', fragment: 'portfolio' },
     { label: 'nav.testimonials', fragment: 'testimonials' },
+    { label: 'nav.pricing', routerLink: '/pricing' },
     { label: 'nav.about', routerLink: '/about' },
   ];
 }

@@ -1,0 +1,157 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.process {
+  @include section-padding;
+
+  .container {
+    @include container;
+  }
+}
+
+.gradient-text {
+  @include gradient-text;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: $text-sm;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $purple-light;
+  margin-bottom: $space-4;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.process__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto $space-16;
+}
+
+.process__title {
+  font-family: $font-heading;
+  font-size: $text-4xl;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.2;
+  margin-bottom: $space-4;
+
+  @include md { font-size: $text-5xl; }
+}
+
+.process__subtitle {
+  font-size: $text-lg;
+  color: $text-secondary;
+  line-height: 1.65;
+}
+
+// ── Steps row ─────────────────────────────────────────────────────────────────
+.process__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $space-4;
+
+  @include md {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+
+// ── Connector arrow ───────────────────────────────────────────────────────────
+.process__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-muted;
+  flex-shrink: 0;
+
+  // vertical on mobile
+  transform: rotate(90deg);
+  padding: $space-2 0;
+
+  @include md {
+    transform: none;
+    padding: 0 $space-2;
+    align-self: center;
+    margin-top: -$space-8; // pull up to align with icon row
+  }
+}
+
+// ── Single step card ──────────────────────────────────────────────────────────
+.process__step {
+  @include card;
+  flex: 1;
+  padding: $space-8 $space-6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-3;
+  position: relative;
+  overflow: hidden;
+
+  // stagger
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i * 2 - 1}) {
+      transition-delay: #{($i - 1) * 100}ms;
+    }
+  }
+}
+
+.process__step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: rgba($purple, 0.1);
+  border: 1px solid rgba($purple, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $purple-light;
+  flex-shrink: 0;
+
+  svg { display: block; }
+}
+
+.process__step-num {
+  font-family: $font-heading;
+  font-size: $text-4xl;
+  font-weight: 700;
+  line-height: 1;
+  background: $gradient-brand;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.25;
+  position: absolute;
+  top: $space-6;
+  right: $space-6;
+  user-select: none;
+}
+
+.process__step-title {
+  font-family: $font-heading;
+  font-size: $text-lg;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.process__step-desc {
+  font-size: $text-sm;
+  color: $text-secondary;
+  line-height: 1.7;
+}

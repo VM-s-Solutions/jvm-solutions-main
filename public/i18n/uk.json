@@ -4,6 +4,7 @@
     "work": "Портфоліо",
     "testimonials": "Відгуки",
     "about": "Про нас",
+    "pricing": "Ціни",
     "contact": "Контакт",
     "getInTouch": "Зв'язатися"
   },
@@ -171,5 +172,95 @@
       "role": "Співзасновник & Full-stack Engineer",
       "bio": "Експерт із серверних систем, API та мобільної розробки з фокусом на масштабованість."
     }
+  },
+  "process": {
+    "sectionLabel": "Як ми працюємо",
+    "title1": "Розроблено для",
+    "titleGrad": "передбачуваності",
+    "subtitle": "Ви завжди знаєте, що відбувається, що буде далі і коли доставимо.",
+    "step1Num": "01",
+    "step1Title": "Discovery",
+    "step1Desc": "Дві фокусні сесії для розуміння ваших цілей, обмежень та користувачів. Виходимо зі спільним визначенням готового.",
+    "step2Num": "02",
+    "step2Title": "Специфікація та оцінка",
+    "step2Desc": "Чітка технічна специфікація та оцінка з фіксованим обсягом — ніяких несподіваних рахунків.",
+    "step3Num": "03",
+    "step3Title": "Розробка",
+    "step3Desc": "Щотижневі демо, асинхронні оновлення та тестове середовище з першого дня.",
+    "step4Num": "04",
+    "step4Title": "Запуск та передача",
+    "step4Desc": "Розгортання, повна документація та 30-денна гарантія. Код належить вам."
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title1": "Питання, які ми отримуємо",
+    "titleGrad": "щотижня",
+    "q1": "Чи працюєте з ранніми стартапами?",
+    "a1": "Так — приблизно половина наших клієнтів приходить до нас до перших інвестицій. Ми знаємо, як створити MVP, що запускається без зайвих витрат.",
+    "q2": "Чи зможете взяти наявну кодову базу?",
+    "a2": "Звичайно. Ми приймали все — від legacy PHP до напівмігрованих Angular проєктів. Спочатку аудит, потім — до роботи.",
+    "q3": "Який типовий термін проєкту?",
+    "a3": "Опрацьований MVP зазвичай займає 6–12 тижнів від старту до продакшну. Фаза Discovery дасть реальне число.",
+    "q4": "Чи підписуєте NDA?",
+    "a4": "Так — перед будь-яким discovery-дзвінком. Все, що ви нам передаєте, вважається конфіденційним.",
+    "q5": "Чи пропонуєте підтримку після запуску?",
+    "a5": "Так — через місячний ретейнер. Більшість клієнтів залишаються на 3–6 місяців після запуску.",
+    "q6": "Чи працюєте дистанційно?",
+    "a6": "100% дистанційно та async-first. Базуємось у Чехії й працюємо з клієнтами в ЄС, США та Великобританії."
+  },
+  "pricing": {
+    "sectionLabel": "Моделі співпраці",
+    "title1": "Прозоре",
+    "titleGrad": "ціноутворення",
+    "subtitle": "Жодних прихованих платежів. Жодних розпливчастих оцінок. Оберіть модель, що підходить вам.",
+    "note": "Усі ціни без ПДВ. Проєкти з фіксованим обсягом потребують 50% передоплати.",
+    "from": "від",
+    "project": {
+      "label": "Проєкт з фіксованим обсягом",
+      "price": "€8 000",
+      "period": "за проєкт",
+      "cta": "Розпочати проєкт",
+      "f1": "Повна технічна специфікація до першого рядка коду",
+      "f2": "Щотижневі демо на живому тестовому середовищі",
+      "f3": "Повна передача з правом власності на код",
+      "f4": "30-денна гарантія після запуску",
+      "f5": "Реакція на термінові помилки впродовж 4 годин"
+    },
+    "retainer": {
+      "label": "Повна команда",
+      "price": "€8 000",
+      "period": "на місяць",
+      "badge": "Найпопулярніший",
+      "cta": "Замовити discovery-дзвінок",
+      "f1": "Всі 3 — frontend, backend і мобайл",
+      "f2": "Спринтові поставки з демо кожні 2 тижні",
+      "f3": "Async-first через Slack або Linear, щоденні апдейти",
+      "f4": "Пріоритетна реакція на помилки — того ж дня",
+      "f5": "Скасування будь-коли, без зобов'язань"
+    },
+    "consulting": {
+      "label": "Технічне консультування",
+      "price": "€150",
+      "period": "за годину",
+      "cta": "Записатися на сесію",
+      "f1": "Огляди архітектури та code audits",
+      "f2": "Менторинг команди та code review",
+      "f3": "Вибір технологій і техніко-економічне обґрунтування",
+      "f4": "Ідеально для CTO та технічних керівників",
+      "f5": "Результат: письмовий звіт або запис"
+    }
+  },
+  "work": {
+    "back": "← Назад до портфоліо",
+    "problem": "Проблема",
+    "solution": "Наше рішення",
+    "results": "Результати",
+    "techStack": "Технології",
+    "timeline": "Терміни",
+    "notFound": "Кейс не знайдено.",
+    "fintech": { "subtitle": "Real-time financial analytics platform for mid-market investment firms", "timeline": "9 тижнів", "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.", "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports.", "metric1Val": "12h → 45хв", "metric1Label": "щотижнева звітність", "metric2Val": "60%", "metric2Label": "швидше завантаження", "metric3Val": "50+", "metric3Label": "аналітиків при запуску" },
+    "logistics": { "subtitle": "Cross-platform mobile app for a growing logistics provider", "timeline": "11 тижнів", "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism.", "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery.", "metric1Val": "8% → <0.5%", "metric1Label": "відсоток помилок", "metric2Val": "4.8★", "metric2Label": "рейтинг App Store", "metric3Val": "11 тижнів", "metric3Label": "від ідеї до App Store" },
+    "ai": { "subtitle": "Intelligent document processing and workflow automation engine", "timeline": "8 тижнів", "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP.", "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST.", "metric1Val": "30г/тиждень", "metric1Label": "усунено ручну роботу", "metric2Val": "4% → 0.3%", "metric2Label": "відсоток помилок", "metric3Val": "Місяць 1", "metric3Label": "ROI позитивний" },
+    "ecommerce": { "subtitle": "Headless e-commerce platform with a personalisation engine", "timeline": "16 тижнів", "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%).", "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history.", "metric1Val": "4s → 0.8s", "metric1Label": "час завантаження", "metric2Val": "72% → 41%", "metric2Label": "відмова від кошика", "metric3Val": "+34%", "metric3Label": "дохід за перший квартал" }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "jvm-solutions-api",
+  "version": "1.0.0",
+  "description": "Azure Functions API — contact form handler",
+  "main": "dist/src/functions/*.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.5.0",
+    "@sendgrid/mail": "^8.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "~5.3.0"
+  }
+}

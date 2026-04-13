@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 interface Project {
@@ -14,7 +15,7 @@ interface Project {
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [ScrollRevealDirective, TranslateModule],
+  imports: [ScrollRevealDirective, TranslateModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',

@@ -3,17 +3,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { TeamGridComponent, TeamMember } from '../../components/team-grid/team-grid.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule],
+  imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, TeamGridComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
-  readonly team = [
+  readonly team: TeamMember[] = [
     {
       initials: 'J',
       name: 'Janis Joanu',
