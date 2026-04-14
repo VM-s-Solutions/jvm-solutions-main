@@ -35,17 +35,12 @@ type TurnstileWin = Window & {
 function whenTurnstileReady(callback: () => void): void {
   const win = window as TurnstileWin;
   if (win.turnstile) {
+    // API already loaded (e.g. user navigated back to /contact)
     callback();
-    return;
-  }
-  win._turnstileQueue = win._turnstileQueue ?? [];
-  win._turnstileQueue.push(callback);
-  if (!win.onTurnstileReady) {
-    win.onTurnstileReady = () => {
-      const queue = win._turnstileQueue ?? [];
-      win._turnstileQueue = [];
-      queue.forEach(fn => fn());
-    };
+  } else {
+    // Queue will be drained by window.onTurnstileReady defined in index.html
+    win._turnstileQueue = win._turnstileQueue ?? [];
+    win._turnstileQueue.push(callback);
   }
 }
 

@@ -27,6 +27,7 @@ jobs:
         run: |
           npm ci
           npm run build -- --configuration production
+          npm prune --omit=dev
 
       - name: Install and build API
         working-directory: api
@@ -41,6 +42,7 @@ jobs:
           path: |
             dist/
             api/dist/
+            node_modules/
             server.js
             package.json
             package-lock.json
