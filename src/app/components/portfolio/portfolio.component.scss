@@ -43,6 +43,8 @@
     border: 1px solid $border-color;
     border-radius: $radius-xl;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: border-color $transition-base, box-shadow $transition-base, transform $transition-base;
     cursor: default;
 
@@ -132,13 +134,13 @@
     display: flex;
     flex-direction: column;
     gap: $space-4;
+    flex: 1;
   }
 
   &__project-title {
     font-size: $text-xl;
     font-weight: 600;
     letter-spacing: -0.01em;
-    min-height: 2.8em;
   }
 
   &__description {
@@ -146,13 +148,13 @@
     font-size: $text-sm;
     line-height: 1.7;
     flex: 1;
-    min-height: 5.1em;
   }
 
   &__footer {
     display: flex;
     flex-direction: column;
     gap: $space-3;
+    margin-top: auto;
   }
 
   &__tags {
