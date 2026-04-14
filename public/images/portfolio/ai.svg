@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170">
+
+  <!-- Top bar -->
+  <rect width="560" height="22" fill="rgba(0,0,0,0.32)"/>
+  <rect x="12" y="7" width="44" height="8" rx="2" fill="rgba(255,255,255,0.8)"/>
+  <rect x="68" y="9" width="34" height="5" rx="2" fill="rgba(255,255,255,0.26)"/>
+  <rect x="428" y="6" width="120" height="10" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- Section label -->
+  <rect x="12" y="30" width="90" height="6" rx="2" fill="rgba(255,255,255,0.45)"/>
+
+  <!-- Pipeline: 4 nodes -->
+  <!-- Node 1: PDF Input -->
+  <rect x="12" y="46" width="102" height="62" rx="7" fill="rgba(255,255,255,0.11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+  <rect x="30" y="60" width="18" height="24" rx="2" fill="rgba(255,255,255,0.42)"/>
+  <rect x="33" y="55" width="12" height="8" rx="1" fill="rgba(255,255,255,0.25)"/>
+  <rect x="56" y="62" width="48" height="5" rx="2" fill="rgba(255,255,255,0.62)"/>
+  <rect x="56" y="72" width="38" height="4" rx="2" fill="rgba(255,255,255,0.32)"/>
+  <rect x="56" y="80" width="42" height="4" rx="2" fill="rgba(255,255,255,0.22)"/>
+  <rect x="22" y="96" width="72" height="5" rx="2" fill="rgba(255,255,255,0.42)"/>
+
+  <!-- Arrow 1 -->
+  <path d="M118,77 L148,77" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <path d="M145,73 L152,77 L145,81" fill="none" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Node 2: AI Extract -->
+  <rect x="152" y="46" width="102" height="62" rx="7" fill="rgba(255,255,255,0.11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+  <circle cx="196" cy="70" r="14" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <circle cx="192" cy="68" r="3" fill="rgba(255,255,255,0.65)"/>
+  <circle cx="200" cy="68" r="3" fill="rgba(255,255,255,0.65)"/>
+  <path d="M192,75 C192,78 200,78 200,75" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Processing dots -->
+  <circle cx="224" cy="72" r="3" fill="rgba(255,255,255,0.72)"/>
+  <circle cx="232" cy="72" r="3" fill="rgba(255,255,255,0.48)"/>
+  <circle cx="240" cy="72" r="3" fill="rgba(255,255,255,0.28)"/>
+  <rect x="162" y="96" width="82" height="5" rx="2" fill="rgba(255,255,255,0.42)"/>
+
+  <!-- Arrow 2 -->
+  <path d="M258,77 L288,77" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <path d="M285,73 L292,77 L285,81" fill="none" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Node 3: Validate -->
+  <rect x="292" y="46" width="102" height="62" rx="7" fill="rgba(255,255,255,0.11)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+  <circle cx="336" cy="70" r="14" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <path d="M328,70 L334,76 L345,62" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="302" y="96" width="82" height="5" rx="2" fill="rgba(255,255,255,0.42)"/>
+
+  <!-- Arrow 3 -->
+  <path d="M398,77 L428,77" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <path d="M425,73 L432,77 L425,81" fill="none" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Node 4: ERP -->
+  <rect x="432" y="46" width="116" height="62" rx="7" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+  <ellipse cx="490" cy="63" rx="18" ry="6" fill="rgba(255,255,255,0.38)"/>
+  <rect x="472" y="63" width="36" height="12" fill="rgba(255,255,255,0.22)"/>
+  <ellipse cx="490" cy="75" rx="18" ry="6" fill="rgba(255,255,255,0.38)"/>
+  <rect x="442" y="96" width="96" height="5" rx="2" fill="rgba(255,255,255,0.42)"/>
+
+  <!-- Stats row -->
+  <rect x="12" y="124" width="134" height="34" rx="5" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <rect x="22" y="132" width="52" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+  <rect x="22" y="143" width="84" height="9" rx="2" fill="rgba(255,255,255,0.78)"/>
+
+  <rect x="156" y="124" width="134" height="34" rx="5" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <rect x="166" y="132" width="52" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+  <rect x="166" y="143" width="84" height="9" rx="2" fill="rgba(255,255,255,0.78)"/>
+
+  <rect x="300" y="124" width="134" height="34" rx="5" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <rect x="310" y="132" width="52" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+  <rect x="310" y="143" width="84" height="9" rx="2" fill="rgba(255,255,255,0.78)"/>
+</svg>

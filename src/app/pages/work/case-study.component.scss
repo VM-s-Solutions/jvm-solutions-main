@@ -12,11 +12,28 @@
 
 // ---------- Hero ----------
 .case-study__hero {
+  position: relative;
+  overflow: hidden;
   padding-top: 5rem; // clear fixed navbar
+}
+
+.case-study__hero-thumb {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 55%;
+  object-fit: cover;
+  object-position: left top;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .case-study__hero-inner {
   @include container;
+  position: relative;
+  z-index: 1;
   padding: 3rem $space-6 4rem;
 
   @include md {
@@ -236,6 +253,40 @@
   .btn-primary {
     @include btn-primary;
     text-decoration: none;
+  }
+}
+
+.case-study__scroll-top {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+.case-study__scroll-top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-full;
+  border: 1px solid $border-color;
+  background: $bg-surface;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: border-color $transition-base, color $transition-base, transform $transition-base, box-shadow $transition-base;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba($purple, 0.5);
+    color: $purple-light;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba($purple, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $purple;
+    outline-offset: 2px;
   }
 }
 

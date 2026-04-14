@@ -13,6 +13,7 @@ export interface CaseStudy {
   categoryKey: string;
   tags: string[];
   gradient: string;
+  thumbUrl?: string;
   timelineKey: string;
   problemKey: string;
   solutionKey: string;
@@ -30,6 +31,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.fintech.category',
       tags: ['Angular', '.NET', 'PostgreSQL', 'WebSocket', 'Chart.js'],
       gradient: 'linear-gradient(135deg, #8B5CF6 0%, #4F46E5 100%)',
+      thumbUrl: '/images/portfolio/fintech.svg',
       timelineKey: 'work.fintech.timeline',
       problemKey: 'work.fintech.problem',
       solutionKey: 'work.fintech.solution',
@@ -47,6 +49,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.logistics.category',
       tags: ['Flutter', '.NET', 'Firebase', 'Google Maps API', 'iOS', 'Android'],
       gradient: 'linear-gradient(135deg, #10B981 0%, #0891B2 100%)',
+      thumbUrl: '/images/portfolio/logistics.svg',
       timelineKey: 'work.logistics.timeline',
       problemKey: 'work.logistics.problem',
       solutionKey: 'work.logistics.solution',
@@ -64,6 +67,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.ai.category',
       tags: ['Python', 'FastAPI', 'GPT-4', 'LangChain', 'PostgreSQL'],
       gradient: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)',
+      thumbUrl: '/images/portfolio/ai.svg',
       timelineKey: 'work.ai.timeline',
       problemKey: 'work.ai.problem',
       solutionKey: 'work.ai.solution',
@@ -81,6 +85,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.ecommerce.category',
       tags: ['React', 'GraphQL', '.NET', 'Microservices', 'CDN'],
       gradient: 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)',
+      thumbUrl: '/images/portfolio/ecommerce.svg',
       timelineKey: 'work.ecommerce.timeline',
       problemKey: 'work.ecommerce.problem',
       solutionKey: 'work.ecommerce.solution',
@@ -98,6 +103,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.vedos.category',
       tags: ['Angular', 'Material Design 3', '.NET', 'Leaflet', 'Azure Static Web Apps'],
       gradient: 'linear-gradient(135deg, #E30613 0%, #9B1C1C 100%)',
+      thumbUrl: '/images/portfolio/vedos.svg',
       timelineKey: 'work.vedos.timeline',
       problemKey: 'work.vedos.problem',
       solutionKey: 'work.vedos.solution',
@@ -115,6 +121,7 @@ export class ProjectsService {
       categoryKey: 'portfolio.omida.category',
       tags: ['Angular', 'Angular Material', 'Leaflet', 'SCSS'],
       gradient: 'linear-gradient(135deg, #2B2A29 0%, #d5d913 100%)',
+      thumbUrl: '/images/portfolio/omida.svg',
       timelineKey: 'work.omida.timeline',
       problemKey: 'work.omida.problem',
       solutionKey: 'work.omida.solution',

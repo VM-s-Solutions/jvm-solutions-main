@@ -5,6 +5,9 @@
 
     <!-- Hero banner with project gradient -->
     <div class="case-study__hero" [style.background]="p.gradient" appScrollReveal revealClass="reveal">
+      @if (p.thumbUrl) {
+        <img class="case-study__hero-thumb" [src]="p.thumbUrl" alt="" loading="eager" aria-hidden="true"/>
+      }
       <div class="case-study__hero-inner container">
         <a class="case-study__back" routerLink="/" [attr.aria-label]="'work.back' | translate">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

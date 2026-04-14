@@ -12,6 +12,7 @@ interface Project {
   gradient: string;
   liveUrl?: string;
   isMvp?: boolean;
+  thumbUrl?: string;
 }
 
 @Component({
@@ -33,6 +34,7 @@ export class PortfolioComponent {
       gradient: 'linear-gradient(135deg, #E30613 0%, #9B1C1C 100%)',
       liveUrl: 'https://vedos-app.jvm-solutions.dev/dashboard',
       isMvp: true,
+      thumbUrl: '/images/portfolio/vedos.svg',
     },
     {
       id: 'omida',
@@ -43,6 +45,7 @@ export class PortfolioComponent {
       gradient: 'linear-gradient(135deg, #2B2A29 0%, #d5d913 100%)',
       liveUrl: 'https://omida-app.jvm-solutions.dev/dashboard',
       isMvp: true,
+      thumbUrl: '/images/portfolio/omida.svg',
     },
     {
       id: 'logistics-app',
@@ -51,6 +54,7 @@ export class PortfolioComponent {
       tags: ['Flutter', 'Firebase', 'Maps API'],
       categoryKey: 'portfolio.logistics.category',
       gradient: 'linear-gradient(135deg, #10B981 0%, #0891B2 100%)',
+      thumbUrl: '/images/portfolio/logistics.svg',
     },
     {
       id: 'ai-automation',
@@ -59,6 +63,7 @@ export class PortfolioComponent {
       tags: ['Python', 'OpenAI', 'LangChain', 'FastAPI'],
       categoryKey: 'portfolio.ai.category',
       gradient: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 100%)',
+      thumbUrl: '/images/portfolio/ai.svg',
     },
     {
       id: 'fintech-dashboard',
@@ -67,6 +72,7 @@ export class PortfolioComponent {
       tags: ['Angular', '.NET', 'PostgreSQL', 'AI'],
       categoryKey: 'portfolio.fintech.category',
       gradient: 'linear-gradient(135deg, #8B5CF6 0%, #4F46E5 100%)',
+      thumbUrl: '/images/portfolio/fintech.svg',
     },
   ];
 }

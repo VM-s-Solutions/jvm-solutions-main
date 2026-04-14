@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170">
+  <defs>
+    <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top bar -->
+  <rect width="560" height="22" fill="rgba(0,0,0,0.32)"/>
+  <rect x="12" y="7" width="30" height="8" rx="2" fill="rgba(255,255,255,0.8)"/>
+  <rect x="52" y="9" width="38" height="5" rx="2" fill="rgba(255,255,255,0.28)"/>
+  <rect x="98" y="9" width="38" height="5" rx="2" fill="rgba(255,255,255,0.28)"/>
+  <rect x="144" y="9" width="38" height="5" rx="2" fill="rgba(255,255,255,0.28)"/>
+  <circle cx="534" cy="11" r="7" fill="rgba(255,255,255,0.18)"/>
+
+  <!-- KPI cards -->
+  <rect x="12" y="30" width="96" height="40" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <rect x="22" y="39" width="40" height="5" rx="2" fill="rgba(255,255,255,0.38)"/>
+  <rect x="22" y="50" width="62" height="10" rx="2" fill="rgba(255,255,255,0.85)"/>
+
+  <rect x="118" y="30" width="96" height="40" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <rect x="128" y="39" width="40" height="5" rx="2" fill="rgba(255,255,255,0.38)"/>
+  <rect x="128" y="50" width="52" height="10" rx="2" fill="rgba(255,255,255,0.85)"/>
+
+  <rect x="224" y="30" width="96" height="40" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <rect x="234" y="39" width="40" height="5" rx="2" fill="rgba(255,255,255,0.38)"/>
+  <rect x="234" y="50" width="44" height="10" rx="2" fill="rgba(255,255,255,0.85)"/>
+
+  <!-- Chart panel -->
+  <rect x="12" y="80" width="390" height="80" rx="6" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+  <!-- Grid lines -->
+  <line x1="26" y1="115" x2="390" y2="115" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="26" y1="130" x2="390" y2="130" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <line x1="26" y1="148" x2="390" y2="148" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Area fill -->
+  <path d="M26,152 L70,140 L112,144 L158,128 L200,134 L244,116 L288,123 L332,103 L374,109 L390,106 L390,155 L26,155Z" fill="url(#areaFill)"/>
+  <!-- Chart line -->
+  <path d="M26,152 L70,140 L112,144 L158,128 L200,134 L244,116 L288,123 L332,103 L374,109 L390,106" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Peak dot -->
+  <circle cx="332" cy="103" r="3.5" fill="white" opacity="0.92"/>
+  <circle cx="332" cy="103" r="7" fill="rgba(255,255,255,0.16)"/>
+  <!-- X axis ticks -->
+  <rect x="36" y="157" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+  <rect x="110" y="157" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+  <rect x="184" y="157" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+  <rect x="258" y="157" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+  <rect x="332" y="157" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
+
+  <!-- Currency sidebar -->
+  <rect x="414" y="30" width="134" height="130" rx="6" fill="rgba(0,0,0,0.22)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="426" y="42" width="48" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="426" y="52" width="74" height="9" rx="2" fill="rgba(255,255,255,0.82)"/>
+  <line x1="426" y1="69" x2="536" y2="69" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="426" y="77" width="48" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="426" y="87" width="74" height="9" rx="2" fill="rgba(255,255,255,0.82)"/>
+  <line x1="426" y1="104" x2="536" y2="104" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="426" y="112" width="48" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="426" y="122" width="74" height="9" rx="2" fill="rgba(255,255,255,0.82)"/>
+  <line x1="426" y1="139" x2="536" y2="139" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="426" y="147" width="48" height="5" rx="2" fill="rgba(255,255,255,0.4)"/>
+  <rect x="426" y="154" width="74" height="6" rx="2" fill="rgba(255,255,255,0.6)"/>
+</svg>

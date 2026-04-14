@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170">
+
+  <!-- Top bar -->
+  <rect width="560" height="22" fill="rgba(0,0,0,0.42)"/>
+  <rect x="12" y="7" width="54" height="8" rx="2" fill="rgba(255,255,255,0.8)"/>
+  <rect x="76" y="9" width="40" height="5" rx="2" fill="rgba(255,255,255,0.22)"/>
+  <rect x="124" y="9" width="40" height="5" rx="2" fill="rgba(255,255,255,0.22)"/>
+  <circle cx="538" cy="11" r="7" fill="rgba(255,255,255,0.2)"/>
+
+  <!-- Left entity sidebar -->
+  <rect x="0" y="22" width="142" height="148" fill="rgba(0,0,0,0.32)"/>
+  <line x1="142" y1="22" x2="142" y2="170" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="10" y="30" width="80" height="5" rx="2" fill="rgba(255,255,255,0.36)"/>
+
+  <!-- Entity items (9 companies, colored left bars) -->
+  <rect x="10" y="42" width="122" height="13" rx="3" fill="rgba(213,217,19,0.22)" stroke="rgba(213,217,19,0.42)" stroke-width="1"/>
+  <rect x="14" y="46" width="5" height="5" rx="1" fill="#d5d913"/>
+  <rect x="24" y="48" width="60" height="4" rx="2" fill="rgba(255,255,255,0.72)"/>
+
+  <rect x="10" y="59" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="63" width="5" height="5" rx="1" fill="rgba(107,181,58,0.85)"/>
+  <rect x="24" y="65" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <rect x="10" y="75" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="79" width="5" height="5" rx="1" fill="rgba(84,197,248,0.85)"/>
+  <rect x="24" y="81" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <rect x="10" y="91" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="95" width="5" height="5" rx="1" fill="rgba(239,68,68,0.85)"/>
+  <rect x="24" y="97" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <rect x="10" y="107" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="111" width="5" height="5" rx="1" fill="rgba(249,115,22,0.85)"/>
+  <rect x="24" y="113" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <rect x="10" y="123" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="127" width="5" height="5" rx="1" fill="rgba(168,85,247,0.85)"/>
+  <rect x="24" y="129" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <rect x="10" y="139" width="122" height="12" rx="3" fill="rgba(255,255,255,0.05)"/>
+  <rect x="14" y="143" width="5" height="5" rx="1" fill="rgba(236,72,153,0.85)"/>
+  <rect x="24" y="145" width="56" height="4" rx="2" fill="rgba(255,255,255,0.48)"/>
+
+  <!-- Main content area header -->
+  <rect x="148" y="22" width="412" height="18" fill="rgba(0,0,0,0.22)"/>
+  <rect x="158" y="27" width="86" height="6" rx="2" fill="rgba(255,255,255,0.52)"/>
+  <rect x="492" y="26" width="56" height="8" rx="4" fill="rgba(213,217,19,0.28)" stroke="rgba(213,217,19,0.5)" stroke-width="1"/>
+
+  <!-- Cross-entity shipment rows -->
+  <!-- Row 1 VLS (lime) - active/highlighted -->
+  <rect x="148" y="44" width="412" height="28" rx="4" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <rect x="158" y="52" width="5" height="12" rx="1" fill="#d5d913"/>
+  <rect x="170" y="52" width="74" height="6" rx="2" fill="rgba(255,255,255,0.72)"/>
+  <rect x="170" y="63" width="52" height="4" rx="2" fill="rgba(255,255,255,0.32)"/>
+  <rect x="420" y="53" width="62" height="10" rx="5" fill="rgba(213,217,19,0.2)" stroke="rgba(213,217,19,0.42)" stroke-width="1"/>
+  <rect x="496" y="53" width="52" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Row 2 Sea (blue) -->
+  <rect x="148" y="77" width="412" height="26" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="158" y="84" width="5" height="12" rx="1" fill="rgba(84,197,248,0.75)"/>
+  <rect x="170" y="84" width="74" height="6" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="170" y="95" width="52" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+  <rect x="420" y="85" width="62" height="10" rx="5" fill="rgba(84,197,248,0.15)" stroke="rgba(84,197,248,0.38)" stroke-width="1"/>
+  <rect x="496" y="85" width="52" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Row 3 Warehouse (green) -->
+  <rect x="148" y="108" width="412" height="26" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="158" y="115" width="5" height="12" rx="1" fill="rgba(107,181,58,0.75)"/>
+  <rect x="170" y="115" width="74" height="6" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="170" y="126" width="52" height="4" rx="2" fill="rgba(255,255,255,0.25)"/>
+  <rect x="420" y="116" width="62" height="10" rx="5" fill="rgba(107,181,58,0.15)" stroke="rgba(107,181,58,0.38)" stroke-width="1"/>
+  <rect x="496" y="116" width="52" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Row 4 Rail (orange) -->
+  <rect x="148" y="139" width="412" height="24" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="158" y="146" width="5" height="10" rx="1" fill="rgba(249,115,22,0.75)"/>
+  <rect x="170" y="146" width="74" height="6" rx="2" fill="rgba(255,255,255,0.52)"/>
+  <rect x="420" y="147" width="62" height="10" rx="5" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.38)" stroke-width="1"/>
+  <rect x="496" y="147" width="52" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
+</svg>

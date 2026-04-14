@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { trigger, transition, style, animate, query } from '@angular/animations';
-import { filter } from 'rxjs/operators';
+import { filter, fromEvent } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ScrollService } from './services/scroll.service';
 
 export const routeFadeAnimation = trigger('routeAnimation', [
@@ -24,8 +25,17 @@ export const routeFadeAnimation = trigger('routeAnimation', [
 })
 export class AppComponent implements OnInit {
   private routeState: string | null = null;
+  readonly showScrollTop = signal(false);
 
-  constructor(private router: Router, private scrollService: ScrollService) {}
+  constructor(private router: Router, private scrollService: ScrollService) {
+    fromEvent(window, 'scroll')
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.showScrollTop.set(window.scrollY > 400));
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   ngOnInit(): void {
     this.router.events

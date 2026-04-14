@@ -20,6 +20,9 @@
         >
           <!-- Thumbnail -->
           <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
+            @if (project.thumbUrl) {
+              <img class="portfolio__thumb-img" [src]="project.thumbUrl" alt="" loading="lazy"/>
+            }
             <div class="portfolio__thumb-grid"></div>
             <div class="portfolio__thumb-labels">
               <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
