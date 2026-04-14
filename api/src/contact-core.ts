@@ -127,15 +127,21 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
     ]);
 
     if (notification.error) {
-      console.error('Resend notification error', notification.error);
+      const resendErr = notification.error as { statusCode?: number; message?: string };
+      console.error(`Resend error ${resendErr.statusCode}: ${resendErr.message}`);
+      if (resendErr.statusCode === 401 || resendErr.statusCode === 403) {
+        return { status: 500, body: { error: 'Email service misconfigured. Please contact us directly.' } };
+      }
       return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
     }
 
     if (confirmation.error) {
-      console.warn('Resend confirmation error', confirmation.error);
+      const confErr = confirmation.error as { statusCode?: number; message?: string };
+      console.warn(`Resend confirmation error ${confErr.statusCode}: ${confErr.message}`);
     }
   } catch (err: unknown) {
-    console.error('Resend unexpected error', err);
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('Resend unexpected error:', msg);
     return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
   }
 

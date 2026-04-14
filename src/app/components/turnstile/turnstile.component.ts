@@ -55,6 +55,7 @@ function whenTurnstileReady(callback: () => void): () => void {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div #container></div>`,
+  styles: [':host { display: block; }'],
 })
 export class TurnstileComponent implements OnDestroy {
   readonly siteKey = input.required<string>();
