@@ -1,5 +1,21 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+
+// In dev, load api/local.settings.json as environment variables so the
+// contact handler has RESEND_API_KEY, TURNSTILE_SECRET_KEY, etc.
+if (process.env.NODE_ENV !== 'production') {
+  const settingsPath = path.join(__dirname, 'api', 'local.settings.json');
+  if (fs.existsSync(settingsPath)) {
+    const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+    const values = settings.Values || {};
+    for (const [key, value] of Object.entries(values)) {
+      if (!(key in process.env)) {
+        process.env[key] = String(value);
+      }
+    }
+  }
+}
 
 const app = express();
 const PORT = process.env.PORT || 8080;

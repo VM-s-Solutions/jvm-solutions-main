@@ -24,24 +24,30 @@ interface TurnstileOptions {
   'error-callback'?: () => void;
 }
 
-// Cloudflare calls window.onTurnstileReady() when the API becomes available.
-// We enqueue render callbacks here so SPA navigation works correctly.
+// Zone.js patches window.on* properties, which breaks the onload= callback approach.
+// Instead we poll for window.turnstile every 50 ms (max ~5 s) after the component mounts.
 type TurnstileWin = Window & {
   turnstile?: TurnstileAPI;
-  onTurnstileReady?: () => void;
-  _turnstileQueue?: Array<() => void>;
 };
 
-function whenTurnstileReady(callback: () => void): void {
+function whenTurnstileReady(callback: () => void): () => void {
   const win = window as TurnstileWin;
   if (win.turnstile) {
-    // API already loaded (e.g. user navigated back to /contact)
     callback();
-  } else {
-    // Queue will be drained by window.onTurnstileReady defined in index.html
-    win._turnstileQueue = win._turnstileQueue ?? [];
-    win._turnstileQueue.push(callback);
+    return () => {};
   }
+  let attempts = 0;
+  const id = setInterval(() => {
+    attempts++;
+    if (win.turnstile) {
+      clearInterval(id);
+      callback();
+    } else if (attempts >= 100) {
+      // ~5 s timeout — give up silently; widget simply won't render
+      clearInterval(id);
+    }
+  }, 50);
+  return () => clearInterval(id);
 }
 
 @Component({
@@ -56,10 +62,11 @@ export class TurnstileComponent implements OnDestroy {
 
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
   private widgetId: string | undefined;
+  private cancelPoll: (() => void) | undefined;
 
   constructor() {
     afterNextRender(() => {
-      whenTurnstileReady(() => {
+      this.cancelPoll = whenTurnstileReady(() => {
         const win = window as TurnstileWin;
         this.widgetId = win.turnstile!.render(this.container().nativeElement, {
           sitekey: this.siteKey(),
@@ -81,6 +88,7 @@ export class TurnstileComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.cancelPoll?.();
     const win = window as TurnstileWin;
     if (this.widgetId !== undefined) {
       win.turnstile?.remove(this.widgetId);

@@ -11,6 +11,13 @@ export interface InternalNotificationData {
   rawMessage: string;
 }
 
+// Design tokens (mirrors src/styles/_variables.scss)
+// $bg-primary: #09090F | $bg-surface: #13131A | $bg-elevated: #1A1A24
+// $border-color: #1E1E2E | $border-light: #2A2A3E
+// $purple: #8B5CF6 | $purple-light: #A78BFA | $green: #10B981
+// $text-primary: #F1F5F9 | $text-secondary: #94A3B8 | $text-muted: #64748B
+// $gradient-brand: linear-gradient(135deg, #8B5CF6, #10B981)
+
 export function internalNotificationHtml(d: InternalNotificationData): string {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -18,69 +25,94 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>New enquiry — JVM Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+  </style>
 </head>
-<body style="margin:0;padding:0;background:#0f0f1a;font-family:system-ui,-apple-system,sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f1a;padding:40px 20px;">
+<body style="margin:0;padding:0;background:#09090F;font-family:'Inter','Space Grotesk',system-ui,-apple-system,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#09090F;padding:40px 20px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+               style="max-width:600px;width:100%;border-radius:12px;border:1px solid #1E1E2E;overflow:hidden;">
+
+          <!-- Brand gradient accent bar -->
+          <tr>
+            <td height="3" style="background:#8B5CF6;background:linear-gradient(135deg,#8B5CF6,#10B981);font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
 
           <!-- Header -->
           <tr>
-            <td style="background:linear-gradient(135deg,#1e1e3a 0%,#2a1a4e 100%);border-radius:12px 12px 0 0;padding:32px 40px;text-align:center;">
-              <p style="margin:0 0 8px;font-size:13px;font-weight:600;letter-spacing:2px;color:#8B5CF6;text-transform:uppercase;">JVM Solutions</p>
-              <h1 style="margin:0;font-size:24px;font-weight:700;color:#ffffff;line-height:1.3;">New Website Enquiry</h1>
-              <p style="margin:12px 0 0;font-size:14px;color:#a0a0c0;">Service requested: <strong style="color:#c4b5fd;">${d.safeService}</strong></p>
+            <td style="background:#13131A;padding:32px 40px 28px;text-align:center;">
+              <p style="margin:0 0 6px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;color:#8B5CF6;text-transform:uppercase;">JVM Solutions</p>
+              <h1 style="margin:0 0 12px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:24px;font-weight:700;color:#F1F5F9;line-height:1.3;">New Website Enquiry</h1>
+              <p style="margin:0;font-size:14px;color:#94A3B8;">
+                Service requested:
+                <strong style="color:#A78BFA;">${d.safeService}</strong>
+              </p>
             </td>
           </tr>
 
           <!-- Body -->
           <tr>
-            <td style="background:#16162a;padding:32px 40px;">
+            <td style="background:#13131A;padding:0 40px 32px;">
 
-              <!-- Contact details -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <!-- Divider -->
+              <hr style="border:none;border-top:1px solid #1E1E2E;margin:0 0 28px;">
+
+              <!-- Contact details card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                     style="background:#1A1A24;border:1px solid #1E1E2E;border-radius:8px;margin-bottom:28px;">
                 <tr>
-                  <td style="padding:0 0 16px;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#6b6b8a;text-transform:uppercase;">Name</p>
-                    <p style="margin:0;font-size:16px;color:#e2e2f0;">${d.safeName}</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0 0 16px;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#6b6b8a;text-transform:uppercase;">Email</p>
-                    <p style="margin:0;font-size:16px;"><a href="mailto:${d.safeEmail}" style="color:#8B5CF6;text-decoration:none;">${d.safeEmail}</a></p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0 0 16px;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#6b6b8a;text-transform:uppercase;">Company</p>
-                    <p style="margin:0;font-size:16px;color:#e2e2f0;">${d.safeCompany}</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0 0 0;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#6b6b8a;text-transform:uppercase;">Service</p>
-                    <p style="margin:0;font-size:16px;color:#e2e2f0;">${d.safeService}</p>
+                  <td style="padding:20px 24px 4px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <!-- Name -->
+                      <tr>
+                        <td style="padding-bottom:16px;">
+                          <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Name</p>
+                          <p style="margin:0;font-size:15px;font-family:'Space Grotesk',system-ui,sans-serif;color:#F1F5F9;">${d.safeName}</p>
+                        </td>
+                      </tr>
+                      <!-- Email -->
+                      <tr>
+                        <td style="padding-bottom:16px;border-top:1px solid #1E1E2E;padding-top:16px;">
+                          <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Email</p>
+                          <p style="margin:0;font-size:15px;">
+                            <a href="mailto:${d.safeEmail}" style="color:#8B5CF6;text-decoration:none;font-family:'Space Grotesk',system-ui,sans-serif;">${d.safeEmail}</a>
+                          </p>
+                        </td>
+                      </tr>
+                      <!-- Company -->
+                      <tr>
+                        <td style="padding-bottom:16px;border-top:1px solid #1E1E2E;padding-top:16px;">
+                          <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Company</p>
+                          <p style="margin:0;font-size:15px;font-family:'Space Grotesk',system-ui,sans-serif;color:${d.safeCompany !== '—' ? '#F1F5F9' : '#64748B'};">${d.safeCompany}</p>
+                        </td>
+                      </tr>
+                      <!-- Service -->
+                      <tr>
+                        <td style="padding-bottom:20px;border-top:1px solid #1E1E2E;padding-top:16px;">
+                          <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Service</p>
+                          <p style="margin:0;font-size:15px;font-family:'Space Grotesk',system-ui,sans-serif;color:#F1F5F9;">${d.safeService}</p>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
 
-              <!-- Divider -->
-              <hr style="border:none;border-top:1px solid #2a2a4a;margin:0 0 28px;">
-
               <!-- Message -->
-              <p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#6b6b8a;text-transform:uppercase;">Message</p>
-              <div style="background:#1e1e38;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;padding:20px 24px;font-size:15px;color:#c8c8e0;line-height:1.7;">
+              <p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Message</p>
+              <div style="background:#1A1A24;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;padding:20px 24px;font-size:14px;color:#94A3B8;line-height:1.8;margin-bottom:32px;">
                 ${d.safeMessage}
               </div>
 
-              <!-- Reply CTA -->
-              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:32px auto 0;">
+              <!-- Reply CTA — brand gradient matches site's btn-primary -->
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
                 <tr>
-                  <td align="center">
-                    <a href="mailto:${d.safeEmail}?subject=Re: Your enquiry — ${d.safeService}&body=Hi ${d.rawName},"
-                       style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#8B5CF6);color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;letter-spacing:0.3px;">
+                  <td align="center" style="border-radius:8px;background:#8B5CF6;background:linear-gradient(135deg,#8B5CF6,#10B981);">
+                    <a href="mailto:${d.safeEmail}?subject=Re%3A%20Your%20enquiry%20%E2%80%94%20${encodeURIComponent(d.rawService)}&body=Hi%20${encodeURIComponent(d.rawName)}%2C%0A%0A"
+                       style="display:inline-block;padding:14px 32px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.3px;border-radius:8px;">
                       Reply to ${d.safeName}
                     </a>
                   </td>
@@ -92,8 +124,11 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
 
           <!-- Footer -->
           <tr>
-            <td style="background:#0f0f1a;border-radius:0 0 12px 12px;padding:20px 40px;text-align:center;border-top:1px solid #1e1e38;">
-              <p style="margin:0;font-size:12px;color:#4a4a6a;">This message was sent from the contact form at <strong style="color:#6b6b8a;">jvm-solutions.com</strong></p>
+            <td style="background:#09090F;border-top:1px solid #1E1E2E;padding:20px 40px;text-align:center;">
+              <p style="margin:0;font-size:12px;color:#64748B;">
+                Sent from the contact form at
+                <a href="https://jvm-solutions.dev/contact" style="color:#64748B;text-decoration:none;">jvm-solutions.dev</a>
+              </p>
             </td>
           </tr>
 
@@ -118,5 +153,8 @@ export function internalNotificationText(d: InternalNotificationData): string {
     'Message:',
     '--------',
     d.rawMessage,
+    '',
+    '============================',
+    `Reply: mailto:${d.rawEmail}`,
   ].join('\n');
 }
