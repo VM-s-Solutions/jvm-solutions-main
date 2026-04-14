@@ -1,0 +1,150 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.privacy-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+
+    &--purple {
+      width: 600px;
+      height: 600px;
+      background: $purple;
+      top: -100px;
+      left: -150px;
+    }
+
+    &--green {
+      width: 400px;
+      height: 400px;
+      background: $green;
+      bottom: 100px;
+      right: -100px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    padding-top: $space-16;
+    padding-bottom: $space-24;
+    display: flex;
+    flex-direction: column;
+    gap: $space-12;
+  }
+}
+
+// ── Section label helper ──────────────────────────────────────────────────────
+.section-label {
+  display: inline-block;
+  font-size: $text-sm;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $purple-light;
+  margin-bottom: $space-4;
+}
+
+// ── Page header ──────────────────────────────────────────────────────────────
+.privacy-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp($text-3xl, 5vw, $text-5xl);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.15;
+    margin-bottom: $space-3;
+  }
+
+  &__meta {
+    font-size: $text-sm;
+    color: $text-muted;
+    margin-bottom: $space-6;
+  }
+
+  &__intro {
+    font-size: $text-lg;
+    color: $text-secondary;
+    line-height: 1.7;
+  }
+}
+
+// ── Policy sections grid ─────────────────────────────────────────────────────
+.privacy-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// ── Policy card ──────────────────────────────────────────────────────────────
+.privacy-card {
+  @include card;
+  padding: $space-8;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $text-xl;
+    font-weight: 600;
+    color: $text-primary;
+    margin-bottom: $space-4;
+  }
+
+  &__body {
+    font-size: $text-base;
+    color: $text-secondary;
+    line-height: 1.75;
+  }
+}
+
+// ── Back link ────────────────────────────────────────────────────────────────
+.privacy-back {
+  text-align: center;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: $text-muted;
+    font-size: $text-sm;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}
+
+// ── Reveal animation ─────────────────────────────────────────────────────────
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

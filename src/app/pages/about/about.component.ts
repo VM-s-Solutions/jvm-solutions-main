@@ -20,7 +20,7 @@ export class AboutComponent {
       name: 'Janis Joanu',
       roleKey: 'about.janis.role',
       bioKey: 'about.janis.bio',
-      linkedin: 'https://www.linkedin.com/in/janis-joanu/',
+      linkedin: 'https://www.linkedin.com/in/janis-joanu-678275379/',
       photo: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/486072466_122093528186826207_499545333775373266_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=X53ZYuBhetwQ7kNvwES9qH8&_nc_oc=AdrJwQgi1YFJwnUzQLIzVcFro6bm059zE3FeKs1HW1wu228rnny0nK82SF1Q6_9cdYM&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=b7PJ5E65pV0AsJ3-JUHvyA&_nc_ss=7a3a8&oh=00_Af1QTRk4zYSUJXua6Yh6CHr_smbzJELag2v4JHamVTLghQ&oe=69E1ACBC',
     },
     {

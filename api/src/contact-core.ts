@@ -1,9 +1,10 @@
 import { Resend } from 'resend';
 import { internalNotificationHtml, internalNotificationText } from './templates/internal-notification';
-import { confirmationHtml, confirmationText } from './templates/confirmation';
+import { confirmationHtml, confirmationText, confirmationSubject } from './templates/confirmation';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_LEN = { name: 100, email: 254, company: 200, service: 100, message: 5000 };
+const ALLOWED_LANGS = new Set(['en', 'cs', 'sk', 'uk']);
 
 export interface ContactResult {
   status: number;
@@ -24,7 +25,8 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
     return { status: 400, body: { error: 'Invalid request body' } };
   }
 
-  const { name, email, company, service, message, captchaToken } = rawBody as Record<string, unknown>;
+  const { name, email, company, service, message, captchaToken, lang: rawLang } = rawBody as Record<string, unknown>;
+  const lang = (typeof rawLang === 'string' && ALLOWED_LANGS.has(rawLang)) ? rawLang : 'en';
 
   if (
     typeof name !== 'string' || !name.trim() ||
@@ -50,13 +52,11 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
 
   const apiKey = process.env['RESEND_API_KEY'];
   if (!apiKey) {
-    console.error('RESEND_API_KEY environment variable is not set');
     return { status: 500, body: { error: 'Server configuration error' } };
   }
 
   const toEmail = process.env['CONTACT_TO_EMAIL'];
   if (!toEmail) {
-    console.error('CONTACT_TO_EMAIL environment variable is not set');
     return { status: 500, body: { error: 'Server configuration error' } };
   }
 
@@ -64,7 +64,6 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
 
   const turnstileSecret = process.env['TURNSTILE_SECRET_KEY'];
   if (!turnstileSecret) {
-    console.error('TURNSTILE_SECRET_KEY environment variable is not set');
     return { status: 500, body: { error: 'Server configuration error' } };
   }
 
@@ -81,11 +80,9 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
     const verifyData = await verifyResponse.json() as { success: boolean; 'error-codes'?: string[] };
 
     if (!verifyData.success) {
-      console.warn('Turnstile verification failed', verifyData['error-codes']);
       return { status: 400, body: { error: 'CAPTCHA verification failed. Please try again.' } };
     }
-  } catch (err: unknown) {
-    console.error('Turnstile verification request error', err);
+  } catch {
     return { status: 502, body: { error: 'Could not verify CAPTCHA. Please try again.' } };
   }
 
@@ -105,6 +102,7 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
     rawService: service.trim(),
     rawCompany,
     rawMessage: message.trim(),
+    lang,
   };
 
   try {
@@ -120,28 +118,20 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
       resend.emails.send({
         from: `JVM Solutions <${fromEmail}>`,
         to: [email.trim()],
-        subject: `We've received your message — JVM Solutions`,
+        subject: confirmationSubject(lang),
         text: confirmationText(templateData),
         html: confirmationHtml(templateData),
       }),
     ]);
 
     if (notification.error) {
-      const resendErr = notification.error as { statusCode?: number; message?: string };
-      console.error(`Resend error ${resendErr.statusCode}: ${resendErr.message}`);
+      const resendErr = notification.error as { statusCode?: number };
       if (resendErr.statusCode === 401 || resendErr.statusCode === 403) {
         return { status: 500, body: { error: 'Email service misconfigured. Please contact us directly.' } };
       }
       return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
     }
-
-    if (confirmation.error) {
-      const confErr = confirmation.error as { statusCode?: number; message?: string };
-      console.warn(`Resend confirmation error ${confErr.statusCode}: ${confErr.message}`);
-    }
-  } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.error('Resend unexpected error:', msg);
+  } catch {
     return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
   }
 

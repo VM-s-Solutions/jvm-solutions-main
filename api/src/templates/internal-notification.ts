@@ -86,7 +86,7 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
                       <tr>
                         <td style="padding-bottom:16px;border-top:1px solid #1E1E2E;padding-top:16px;">
                           <p style="margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Company</p>
-                          <p style="margin:0;font-size:15px;font-family:'Space Grotesk',system-ui,sans-serif;color:${d.safeCompany !== '—' ? '#F1F5F9' : '#64748B'};">${d.safeCompany}</p>
+                          <p style="margin:0;font-size:15px;font-family:'Space Grotesk',system-ui,sans-serif;color:${d.safeCompany !== '—' ? '#F1F5F9' : '#475569'};${d.safeCompany === '—' ? 'font-style:italic;' : ''}">${d.safeCompany !== '—' ? d.safeCompany : 'Not filled'}</p>
                         </td>
                       </tr>
                       <!-- Service -->
@@ -103,8 +103,9 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
 
               <!-- Message -->
               <p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">Message</p>
-              <div style="background:#1A1A24;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;padding:20px 24px;font-size:14px;color:#94A3B8;line-height:1.8;margin-bottom:32px;">
-                ${d.safeMessage}
+              <div style="background:#1A1A24;border:1px solid #1E1E2E;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;padding:20px 24px;margin-bottom:32px;">
+                <p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#475569;text-transform:uppercase;font-family:'Space Grotesk',system-ui,sans-serif;">From ${d.safeName}</p>
+                <p style="margin:0;font-size:14px;color:#94A3B8;line-height:1.8;">${d.safeMessage}</p>
               </div>
 
               <!-- Reply CTA — brand gradient matches site's btn-primary -->

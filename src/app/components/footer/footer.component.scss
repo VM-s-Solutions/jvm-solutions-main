@@ -143,6 +143,21 @@
     }
   }
 
+  &__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: $space-6;
+  }
+
+  &__privacy-link {
+    color: $text-muted;
+    font-size: $text-sm;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover { color: $text-primary; }
+  }
+
   &__built {
     @include gradient-text;
     font-size: $text-sm !important;

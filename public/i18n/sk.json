@@ -108,7 +108,8 @@
     "contact": "Kontakty",
     "available": "Dostupní pre nové projekty",
     "rights": "Všetky práva vyhradené.",
-    "builtWith": "Vytvorené v Angular"
+    "builtWith": "Vytvorené v Angular",
+    "privacy": "Zásady ochrany súkromia"
   },
   "contact": {
     "sectionLabel": "Kontaktujte nás",
@@ -254,6 +255,48 @@
       "f3": "Výber technológií a štúdie uskutočniteľnosti",
       "f4": "Ideálne pre CTO a technických vedúcich",
       "f5": "Výstup: písomná správa alebo nahrávka"
+    }
+  },
+  "privacy": {
+    "sectionLabel": "Právne informácie",
+    "title": "Zásady ochrany súkromia",
+    "lastUpdated": "Posledná aktualizácia: apríl 2026",
+    "intro": "Tieto zásady ochrany súkromia vysvetľujú, ako JVM Solutions zhromažďuje, používa a chráni osobné údaje odoslané prostredníctvom tejto webovej stránky. Plne dodržiavame nariadenie GDPR.",
+    "controller": {
+      "title": "Prevádzkovateľ osobných údajov",
+      "body": "JVM Solutions je softvérová agentúra so sídlom v Českej republike. V prípade otázok týkajúcich sa ochrany osobných údajov nás kontaktujte na hello@jvm-solutions.dev."
+    },
+    "dataCollected": {
+      "title": "Aké údaje zhromažďujeme",
+      "body": "Pri odoslaní kontaktného formulára zhromažďujeme: celé meno, e-mailovú adresu, názov spoločnosti (voliteľne), typ požadovanej služby a správu. Žiadne iné osobné údaje prostredníctvom tejto stránky nezhromažďujeme."
+    },
+    "purpose": {
+      "title": "Prečo ich zhromažďujeme",
+      "body": "Vaše kontaktné údaje používame výhradne na odpoveď na váš dopyt a prípadne na zaslanie projektovej ponuky. Bez vášho výslovného súhlasu vám nikdy nezasielame marketingové oznámenia."
+    },
+    "legalBasis": {
+      "title": "Právny základ spracúvania",
+      "body": "Spracúvanie je založené na našom oprávnenom záujme reagovať na obchodné dopyty (čl. 6 ods. 1 písm. f) GDPR). Tam, kde ste udelili výslovný súhlas, je spracúvanie vykonávané na základe čl. 6 ods. 1 písm. a) GDPR."
+    },
+    "retention": {
+      "title": "Doba uchovávania údajov",
+      "body": "Kontaktné formuláre uchovávame po dobu až 12 mesiacov od dátumu odoslania, po ktorom sú všetky osobné údaje trvalo vymazané, pokiaľ ich dlhšie uchovávanie nevyžaduje prebiehajúci zmluvný vzťah."
+    },
+    "thirdParties": {
+      "title": "Tretie strany",
+      "body": "Na ochranu kontaktného formulára pred automatizovaným zneužitím používame Cloudflare Turnstile. Cloudflare môže spracúvať vašu IP adresu a signály prehliadača pre overenie CAPTCHA. Vaše osobné údaje nepredávame ani nezdieľame so žiadnymi inými tretími stranami."
+    },
+    "cookies": {
+      "title": "Cookies a lokálne úložisko",
+      "body": "Táto webová stránka nepoužíva cookies. Prehliadač localStorage využívame výhradne na zapamätanie vášho jazykového nastavenia. Žiadne sledovacie ani reklamné technológie nie sú použité."
+    },
+    "rights": {
+      "title": "Vaše práva",
+      "body": "Podľa GDPR máte právo na prístup k svojim osobným údajom, ich opravu, vymazanie a prenosnosť. Máte tiež právo na obmedzenie spracúvania alebo vzniesť námietku. Na uplatnenie týchto práv nás kontaktujte na hello@jvm-solutions.dev. Máte právo podať sťažnosť na Úrade na ochranu osobných údajov SR."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "body": "Všetky žiadosti, otázky alebo sťažnosti týkajúce sa ochrany osobných údajov zasielajte na hello@jvm-solutions.dev. Odpovieme do 30 dní."
     }
   },
   "work": {

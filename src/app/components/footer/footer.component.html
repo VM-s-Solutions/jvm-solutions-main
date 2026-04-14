@@ -37,7 +37,7 @@
               @if (link.routerLink) {
                 <a [routerLink]="link.routerLink" class="footer__link">{{ link.label | translate }}</a>
               } @else {
-                <a [href]="link.href" class="footer__link">{{ link.label | translate }}</a>
+                <a href="#" (click)="scrollToSection(link.fragment ?? '', $event)" class="footer__link">{{ link.label | translate }}</a>
               }
             </li>
           }
@@ -58,7 +58,10 @@
 
     <div class="footer__bottom">
       <p>&copy; {{ year }} JVM Solutions. {{ 'footer.rights' | translate }}</p>
-      <p class="footer__built">{{ 'footer.builtWith' | translate }}</p>
+      <div class="footer__bottom-right">
+        <a routerLink="/privacy" class="footer__privacy-link">{{ 'footer.privacy' | translate }}</a>
+        <p class="footer__built">{{ 'footer.builtWith' | translate }}</p>
+      </div>
     </div>
   </div>
 </footer>

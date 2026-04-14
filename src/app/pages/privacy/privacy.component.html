@@ -1,0 +1,89 @@
+<app-navbar />
+
+<main id="main-content" class="privacy-page">
+
+  <!-- Background orbs -->
+  <div class="privacy-page__bg" aria-hidden="true">
+    <div class="privacy-page__orb privacy-page__orb--purple"></div>
+    <div class="privacy-page__orb privacy-page__orb--green"></div>
+  </div>
+
+  <div class="privacy-page__inner container">
+
+    <!-- Page header -->
+    <header class="privacy-header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ 'privacy.sectionLabel' | translate }}</span>
+      <h1 class="privacy-header__title">{{ 'privacy.title' | translate }}</h1>
+      <p class="privacy-header__meta">{{ 'privacy.lastUpdated' | translate }}</p>
+      <p class="privacy-header__intro">{{ 'privacy.intro' | translate }}</p>
+    </header>
+
+    <!-- Policy sections -->
+    <div class="privacy-sections">
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.controller.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.controller.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.dataCollected.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.dataCollected.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.purpose.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.purpose.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.legalBasis.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.legalBasis.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.retention.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.retention.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.thirdParties.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.thirdParties.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.cookies.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.cookies.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.rights.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.rights.body' | translate }}</p>
+      </section>
+
+      <section class="privacy-card" appScrollReveal revealClass="reveal">
+        <h2 class="privacy-card__title">{{ 'privacy.contact.title' | translate }}</h2>
+        <p class="privacy-card__body">{{ 'privacy.contact.body' | translate }}</p>
+      </section>
+
+    </div>
+
+    <!-- Back link -->
+    <div class="privacy-back" appScrollReveal revealClass="reveal">
+      <a routerLink="/" class="privacy-back__link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        {{ 'contact.backHome' | translate }}
+      </a>
+    </div>
+
+  </div>
+</main>
+
+@defer (on viewport; prefetch on idle) {
+  <app-footer />
+} @placeholder {
+  <div style="min-height:300px"></div>
+}

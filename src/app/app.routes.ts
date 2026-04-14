@@ -28,6 +28,12 @@ export const routes: Routes = [
     title: 'Case Study — JVM Solutions',
   },
   {
+    path: 'privacy',
+    loadComponent: () =>
+      import('./pages/privacy/privacy.component').then(m => m.PrivacyComponent),
+    title: 'Privacy Policy — JVM Solutions',
+  },
+  {
     path: '**',
     redirectTo: '',
   }

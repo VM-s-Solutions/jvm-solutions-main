@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { TurnstileComponent } from '../../components/turnstile/turnstile.component';
@@ -38,7 +38,8 @@ export class ContactComponent {
 
   constructor(
     private fb: FormBuilder,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private translate: TranslateService
   ) {
     this.form = this.fb.group({
       name:    ['', [Validators.required, Validators.minLength(2)]],
@@ -68,7 +69,7 @@ export class ContactComponent {
     this.captchaMissing.set(false);
     this.status.set('submitting');
 
-    this.contactService.send({ ...this.form.value, captchaToken: this.captchaToken()! }).subscribe({
+    this.contactService.send({ ...this.form.value, captchaToken: this.captchaToken()!, lang: this.translate.currentLang }).subscribe({
       next: () => {
         this.status.set('success');
         this.form.reset();
