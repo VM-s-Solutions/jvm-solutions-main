@@ -1,5 +1,7 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from '@azure/functions';
-import * as sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
+import { internalNotificationHtml, internalNotificationText } from '../templates/internal-notification';
+import { confirmationHtml, confirmationText } from '../templates/confirmation';
 
 interface ContactPayload {
   name: string;
@@ -63,9 +65,9 @@ export async function contactHandler(
     return { status: 400, jsonBody: { error: 'Invalid company field' } };
   }
 
-  const apiKey = process.env['SENDGRID_API_KEY'];
+  const apiKey = process.env['RESEND_API_KEY'];
   if (!apiKey) {
-    context.error('SENDGRID_API_KEY environment variable is not set');
+    context.error('RESEND_API_KEY environment variable is not set');
     return { status: 500, jsonBody: { error: 'Server configuration error' } };
   }
 
@@ -77,7 +79,7 @@ export async function contactHandler(
 
   const fromEmail = process.env['CONTACT_FROM_EMAIL'] ?? toEmail;
 
-  sgMail.setApiKey(apiKey);
+  const resend = new Resend(apiKey);
 
   const safeName    = escapeHtml(name.trim());
   const safeEmail   = escapeHtml(email.trim());
@@ -85,35 +87,47 @@ export async function contactHandler(
   const safeCompany = escapeHtml((company as string | undefined)?.trim() ?? '—');
   const safeMessage = escapeHtml(message.trim()).replace(/\n/g, '<br>');
 
+  const rawCompany = (company as string | undefined)?.trim() ?? '—';
+
+  const templateData = {
+    safeName, safeEmail, safeService, safeCompany, safeMessage,
+    rawName: name.trim(),
+    rawEmail: email.trim(),
+    rawService: service.trim(),
+    rawCompany,
+    rawMessage: message.trim(),
+  };
+
   try {
-    await sgMail.send({
-      to: toEmail,
-      from: { email: fromEmail, name: 'JVM Solutions Website' },
-      replyTo: { email: email.trim(), name: name.trim() },
-      subject: `[JVM Solutions] New enquiry — ${service.trim()}`,
-      text: [
-        `Name:    ${name.trim()}`,
-        `Email:   ${email.trim()}`,
-        `Company: ${(company as string | undefined)?.trim() ?? '—'}`,
-        `Service: ${service.trim()}`,
-        '',
-        message.trim(),
-      ].join('\n'),
-      html: `
-        <table style="font-family:system-ui,sans-serif;font-size:15px;color:#1e1e2e;max-width:600px">
-          <tr><td style="padding:8px 0"><strong>Name:</strong> ${safeName}</td></tr>
-          <tr><td style="padding:8px 0"><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></td></tr>
-          <tr><td style="padding:8px 0"><strong>Company:</strong> ${safeCompany}</td></tr>
-          <tr><td style="padding:8px 0"><strong>Service:</strong> ${safeService}</td></tr>
-          <tr><td style="padding:24px 0 8px"><strong>Message:</strong></td></tr>
-          <tr><td style="background:#f8f9fa;padding:16px;border-left:3px solid #8B5CF6;border-radius:4px">
-            ${safeMessage}
-          </td></tr>
-        </table>
-      `,
-    });
+    const [notification, confirmation] = await Promise.all([
+      resend.emails.send({
+        from: `JVM Solutions Website <${fromEmail}>`,
+        to: [toEmail],
+        replyTo: `${name.trim()} <${email.trim()}>`,
+        subject: `[JVM Solutions] New enquiry — ${service.trim()}`,
+        text: internalNotificationText(templateData),
+        html: internalNotificationHtml(templateData),
+      }),
+      resend.emails.send({
+        from: `JVM Solutions <${fromEmail}>`,
+        to: [email.trim()],
+        subject: `We've received your message — JVM Solutions`,
+        text: confirmationText(templateData),
+        html: confirmationHtml(templateData),
+      }),
+    ]);
+
+    if (notification.error) {
+      context.error('Resend notification error', notification.error);
+      return { status: 502, jsonBody: { error: 'Failed to send email. Please try again.' } };
+    }
+
+    if (confirmation.error) {
+      // Non-fatal: internal notification succeeded; log but don't fail the request
+      context.warn('Resend confirmation error', confirmation.error);
+    }
   } catch (err: unknown) {
-    context.error('SendGrid API error', err);
+    context.error('Resend unexpected error', err);
     return { status: 502, jsonBody: { error: 'Failed to send email. Please try again.' } };
   }
 

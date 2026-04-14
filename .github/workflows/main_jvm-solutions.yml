@@ -28,12 +28,21 @@ jobs:
           npm ci
           npm run build -- --configuration production
 
+      - name: Install and build API
+        working-directory: api
+        run: |
+          npm ci
+          npm run build
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: |
             dist/
+            api/dist/
+            api/package.json
+            api/package-lock.json
             server.js
             package.json
             package-lock.json
@@ -61,3 +70,14 @@ jobs:
           app-name: 'jvm-solutions'
           slot-name: 'Production'
           package: .
+
+      - name: Configure Azure Function App settings
+        uses: azure/appservice-settings@v1
+        with:
+          app-name: 'jvm-solutions'
+          app-settings-json: |
+            [
+              { "name": "RESEND_API_KEY",       "value": "${{ secrets.RESEND_API_KEY }}",       "slotSetting": false },
+              { "name": "CONTACT_TO_EMAIL",     "value": "${{ secrets.CONTACT_TO_EMAIL }}",     "slotSetting": false },
+              { "name": "CONTACT_FROM_EMAIL",   "value": "${{ secrets.CONTACT_FROM_EMAIL }}",   "slotSetting": false }
+            ]
