@@ -130,6 +130,7 @@ const en = {
     available: 'Available for new projects',
     rights: 'All rights reserved.',
     builtWith: 'Built with Angular',
+    privacy: 'Privacy Policy',
   },
   contact: {
     sectionLabel: 'Contact Us',
@@ -256,7 +257,7 @@ const en = {
     },
     retainer: {
       label: 'Full-Team Engagement',
-      price: '€8,000',
+      price: '€20,500',
       period: 'per month',
       badge: 'Most popular',
       cta: 'Book a Discovery Call',
@@ -359,6 +360,49 @@ const en = {
       metric2Label: 'cart abandonment rate',
       metric3Val: '+34%',
       metric3Label: 'revenue in first quarter',
+    },
+  },
+  privacy: {
+    sectionLabel: 'Legal',
+    title: 'Privacy Policy',
+    lastUpdated: 'Last updated: April 2026',
+    intro:
+      'This Privacy Policy explains how JVM Solutions collects, uses, and protects personal data submitted through this website. We are committed to transparency and full compliance with the EU General Data Protection Regulation (GDPR).',
+    controller: {
+      title: 'Data Controller',
+      body: 'JVM Solutions is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-solutions.dev.',
+    },
+    dataCollected: {
+      title: 'What Data We Collect',
+      body: 'When you submit the contact form, we collect: your full name, email address, company name (optional), requested service type, and your message. We do not collect any other personal data through this website.',
+    },
+    purpose: {
+      title: 'Why We Collect It',
+      body: 'We use your contact data solely to respond to your enquiry and, where relevant, to send you a project proposal. We will never send you marketing communications without your explicit consent.',
+    },
+    legalBasis: {
+      title: 'Legal Basis',
+      body: 'Processing is based on our legitimate interest in responding to business enquiries (GDPR Art. 6(1)(f)). Where you have provided explicit consent for a specific purpose, processing is based on GDPR Art. 6(1)(a).',
+    },
+    retention: {
+      title: 'Data Retention',
+      body: 'We retain contact form submissions for up to 12 months from the date of submission, after which all personal data is permanently deleted, unless an ongoing contractual relationship requires longer retention.',
+    },
+    thirdParties: {
+      title: 'Third Parties',
+      body: 'We use Cloudflare Turnstile to protect the contact form against automated abuse. Cloudflare may process your IP address and browser signals for CAPTCHA verification. We do not sell or share your personal data with any other third parties.',
+    },
+    cookies: {
+      title: 'Cookies & Local Storage',
+      body: 'This website does not use cookies. We use browser localStorage solely to remember your language preference. No tracking or advertising technologies are employed.',
+    },
+    rights: {
+      title: 'Your Rights',
+      body: 'Under GDPR you have the right to access, rectify, erase, and port your personal data. You also have the right to restrict or object to processing. To exercise any of these rights, contact us at hello@jvm-solutions.dev. You have the right to lodge a complaint with the Czech Data Protection Authority (UOOU).',
+    },
+    contact: {
+      title: 'Contact',
+      body: 'For all data protection requests, questions, or complaints, please email us at hello@jvm-solutions.dev. We will respond within 30 days.',
     },
   },
 } as const;
