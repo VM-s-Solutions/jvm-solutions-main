@@ -289,6 +289,12 @@
     font-weight: 500;
   }
 
+  &__captcha {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
   &__submit {
     align-self: flex-start;
     padding: $space-4 $space-8;

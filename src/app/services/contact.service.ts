@@ -8,6 +8,7 @@ export interface ContactPayload {
   company?: string;
   service: string;
   message: string;
+  captchaToken: string;
 }
 
 @Injectable({ providedIn: 'root' })

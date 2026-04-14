@@ -138,7 +138,8 @@
       "messagePlaceholder": "Popište svůj projekt, cíle, termíny…",
       "messageError": "Zpráva musí mít alespoň 20 znaků.",
       "submit": "Odeslat zprávu",
-      "submitting": "Odesílání…"
+      "submitting": "Odesílá se…",
+      "captchaError": "Prosím dokončete ověření CAPTCHA."
     },
     "services": {
       "frontend": "Vývoj frontendu",

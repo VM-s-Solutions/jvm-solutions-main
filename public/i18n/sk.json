@@ -138,7 +138,8 @@
       "messagePlaceholder": "Opíšte svoj projekt, ciele, termíny…",
       "messageError": "Správa musí mať aspoň 20 znakov.",
       "submit": "Odoslať správu",
-      "submitting": "Odosielanie…"
+      "submitting": "Odosiela sa…",
+      "captchaError": "Prosím dokončite overenie CAPTCHA."
     },
     "services": {
       "frontend": "Vývoj frontendu",

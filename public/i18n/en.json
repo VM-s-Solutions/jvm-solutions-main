@@ -138,7 +138,8 @@
       "messagePlaceholder": "Describe your project, goals, timeline…",
       "messageError": "Message must be at least 20 characters.",
       "submit": "Send Message",
-      "submitting": "Sending…"
+      "submitting": "Sending…",
+      "captchaError": "Please complete the CAPTCHA verification."
     },
     "services": {
       "frontend": "Frontend Development",

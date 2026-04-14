@@ -182,6 +182,17 @@
             }
           </div>
 
+          <!-- CAPTCHA -->
+          <div class="contact-form__captcha">
+            <app-turnstile
+              [siteKey]="turnstileSiteKey"
+              (resolved)="captchaToken.set($event); captchaMissing.set(false)"
+            />
+            @if (captchaMissing()) {
+              <span class="contact-form__error" role="alert">{{ 'contact.form.captchaError' | translate }}</span>
+            }
+          </div>
+
           <button
             type="submit"
             class="btn-primary contact-form__submit"

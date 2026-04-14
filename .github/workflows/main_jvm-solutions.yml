@@ -41,8 +41,6 @@ jobs:
           path: |
             dist/
             api/dist/
-            api/package.json
-            api/package-lock.json
             server.js
             package.json
             package-lock.json
@@ -77,7 +75,8 @@ jobs:
           app-name: 'jvm-solutions'
           app-settings-json: |
             [
-              { "name": "RESEND_API_KEY",       "value": "${{ secrets.RESEND_API_KEY }}",       "slotSetting": false },
-              { "name": "CONTACT_TO_EMAIL",     "value": "${{ secrets.CONTACT_TO_EMAIL }}",     "slotSetting": false },
-              { "name": "CONTACT_FROM_EMAIL",   "value": "${{ secrets.CONTACT_FROM_EMAIL }}",   "slotSetting": false }
+              { "name": "RESEND_API_KEY",         "value": "${{ secrets.RESEND_API_KEY }}",         "slotSetting": false },
+              { "name": "CONTACT_TO_EMAIL",       "value": "${{ secrets.CONTACT_TO_EMAIL }}",       "slotSetting": false },
+              { "name": "CONTACT_FROM_EMAIL",     "value": "${{ secrets.CONTACT_FROM_EMAIL }}",     "slotSetting": false },
+              { "name": "TURNSTILE_SECRET_KEY",   "value": "${{ secrets.TURNSTILE_SECRET_KEY }}",   "slotSetting": false }
             ]
