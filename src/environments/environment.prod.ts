@@ -2,5 +2,5 @@
 // https://dash.cloudflare.com/ → Turnstile → Add Site
 export const environment = {
   production: true,
-  turnstileSiteKey: 'REPLACE_WITH_TURNSTILE_SITE_KEY',
+  turnstileSiteKey: '0x4AAAAAAC9jfzIOpH06gtoL',
 };

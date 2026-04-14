@@ -159,7 +159,7 @@ export function confirmationText(d: ConfirmationData): string {
   return [
     `Hi ${d.rawName},`,
     '',
-    "Thank you for reaching out to JVM Solutions. We've received your enquiry and will get back to you within 24–48 hours.",
+    "Thank you for reaching out to JVM Solutions. We've received your enquiry and will get back to you within 24 hours.",
     '',
     '--- YOUR SUBMISSION ---',
     `Service: ${d.rawService}`,
@@ -172,7 +172,7 @@ export function confirmationText(d: ConfirmationData): string {
     '',
     'What happens next:',
     '1. Our team reviews your enquiry',
-    '2. We reply within 24–48 hours (business days)',
+    '2. We reply within 24 hours (business days)',
     '3. We schedule a discovery call to define scope and next steps',
     '',
     'This is an automated confirmation. Please do not reply to this email.',
