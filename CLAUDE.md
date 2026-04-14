@@ -217,3 +217,54 @@ src/styles/
 - Do not add speculative abstractions — solve the problem at hand.
 - Do not commit debug code, TODOs without a ticket, or dead import statements.
 - Do not bypass `ChangeDetectionStrategy.OnPush` with `markForCheck()` or `detectChanges()` unless you can justify why the signal/async pipe approach does not work.
+
+---
+
+## Self-Check — Run Before Declaring Any Task Done
+
+After every code change, verify **all** of the following before responding that the task is complete.
+
+### 1. Translations
+
+- Every new user-visible string has a key in **all four** locale files: `public/i18n/en.json`, `cs.json`, `sk.json`, `uk.json`.
+- No hardcoded display strings exist in templates or TypeScript.
+- Key names follow dot-notation namespacing (`section.element.variant`).
+- No orphan keys left in locale files (keys added but not referenced in templates).
+
+### 2. Code hygiene
+
+- Zero `console.log`, `console.warn`, `console.error` in any modified file.
+- Zero TODO / FIXME / HACK comments left in committed code.
+- Zero unused imports — every import at the top of a file is actually used in that file.
+- Zero commented-out code blocks.
+- No `any` types introduced; no unsafe `!` non-null assertions without an explanatory comment.
+
+### 3. Build integrity
+
+Run these checks mentally against every changed file:
+
+- All new components have `standalone: true` and `ChangeDetectionStrategy.OnPush`.
+- Every `@for` loop has a `track` expression.
+- Every subscription is cleaned up (`toSignal()`, `takeUntilDestroyed()`, or explicit `unsubscribe`).
+- No circular imports introduced.
+- No new `NgModule` added anywhere.
+- Template expressions are pure and cheap (no method calls that return new objects/arrays on each CD cycle).
+
+### 4. Performance
+
+- New routes use `loadComponent()` (lazy loading).
+- Heavy or below-the-fold components are wrapped in `@defer`.
+- No inline `style=""` bindings for layout.
+- No new third-party libraries added without explicit user approval.
+- Bundle budget not breached: 500 kB initial chunk, 8 kB per component style.
+
+### 5. SCSS / Styling
+
+- No magic numbers — all values reference design tokens from `abstracts/_variables.scss`.
+- No rules written directly in `styles.scss`.
+- No plain declarations placed after a nested rule or expanding `@include` (move above or wrap in `& {}`).
+- Component styles use `:host` scoping; `ViewEncapsulation.None` not introduced.
+
+### 6. Final gate
+
+If **any** item above fails, fix it before closing the task. Do not ask the user to handle hygiene issues — own them.

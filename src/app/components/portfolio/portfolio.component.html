@@ -21,7 +21,12 @@
           <!-- Thumbnail -->
           <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
             <div class="portfolio__thumb-grid"></div>
-            <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
+            <div class="portfolio__thumb-labels">
+              <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
+              @if (project.isMvp) {
+                <div class="portfolio__mvp-badge">MVP</div>
+              }
+            </div>
           </div>
 
           <!-- Content -->
@@ -32,18 +37,35 @@
             <div class="portfolio__footer">
               <div class="portfolio__tags">
                 @for (tag of project.tags; track tag) {
-                  <span class="portfolio__tag">{{ tag }}</span>
+                  <span class="portfolio__tag" [attr.data-tech]="tag">{{ tag }}</span>
                 }
               </div>
-              <a
-                class="portfolio__case-study-link"
-                [routerLink]="['/work', project.id]"
-              >
-                {{ 'portfolio.caseStudy' | translate }}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
+              <div class="portfolio__actions">
+                @if (project.liveUrl) {
+                  <a
+                    class="portfolio__live-link"
+                    [href]="project.liveUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                  Live Demo
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                }
+                <a
+                  class="portfolio__case-study-link"
+                  [routerLink]="['/work', project.id]"
+                >
+                  {{ 'portfolio.caseStudy' | translate }}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </article>

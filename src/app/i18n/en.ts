@@ -94,6 +94,12 @@ const en = {
         'Real-time logistics operations portal for a Slovak transport company. Live fleet tracking, automotive JIT circuits, cold-chain monitoring, and cross-border (SK→DE) shipment management — deployed on Azure Static Web Apps.',
       category: 'Logistics + Frontend',
     },
+    omida: {
+      title: 'OMIDA Group — Shipper Portal',
+      description:
+        'Unified multi-entity shipper portal prototype for OMIDA Group S.A. — a €330M Polish logistics holding. Real-time cross-entity shipment visibility across road, ocean, rail, and warehousing operations for 9 operating companies under one login.',
+      category: 'Logistics + Frontend',
+    },
     ecommerce: {
       title: 'Nexshop — E-commerce Platform',
       description:
@@ -329,6 +335,18 @@ const en = {
       metric2Label: 'on-time SLA achieved',
       metric3Val: '10 weeks',
       metric3Label: 'design to production',
+    },
+    omida: {
+      subtitle: 'Unified multi-entity shipper portal MVP for a €330M Polish logistics holding',
+      timeline: '6 weeks',
+      problem: 'OMIDA Group S.A. operates 9 separate logistics entities — road, ocean, rail, warehousing, and more — each with its own systems and customer logins. Enterprise clients using multiple OMIDA services had no unified view of their shipments, documents, or invoices, creating fragmented communication and a weak competitive story against integrated rivals like Rohlig SUUS.',
+      solution: 'We built an Angular MVP shipper portal that unifies all 9 OMIDA entities under one login. The centrepiece is a cross-entity shipment timeline showing road, ocean, rail, and warehouse activity in a single dashboard — the story no competitor can tell. The portal includes a live multi-mode map (Leaflet, real OMIDA corridors), a document vault, and an entity-badge system that tags every record with its operating company.',
+      metric1Val: '9',
+      metric1Label: 'entities unified',
+      metric2Val: '1 login',
+      metric2Label: 'for all modes',
+      metric3Val: '6 weeks',
+      metric3Label: 'concept to live MVP',
     },
     ecommerce: {
       subtitle: 'Headless e-commerce platform with a personalisation engine',

@@ -107,6 +107,23 @@ export class ProjectsService {
         { value: 'work.vedos.metric3Val', labelKey: 'work.vedos.metric3Label' },
       ],
     },
+    {
+      id: 'omida',
+      titleKey: 'portfolio.omida.title',
+      descriptionKey: 'portfolio.omida.description',
+      subtitleKey: 'work.omida.subtitle',
+      categoryKey: 'portfolio.omida.category',
+      tags: ['Angular', 'Angular Material', 'Leaflet', 'SCSS'],
+      gradient: 'linear-gradient(135deg, #2B2A29 0%, #d5d913 100%)',
+      timelineKey: 'work.omida.timeline',
+      problemKey: 'work.omida.problem',
+      solutionKey: 'work.omida.solution',
+      metrics: [
+        { value: 'work.omida.metric1Val', labelKey: 'work.omida.metric1Label' },
+        { value: 'work.omida.metric2Val', labelKey: 'work.omida.metric2Label' },
+        { value: 'work.omida.metric3Val', labelKey: 'work.omida.metric3Label' },
+      ],
+    },
   ];
 
   getById(id: string): CaseStudy | undefined {

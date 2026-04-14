@@ -10,6 +10,8 @@ interface Project {
   tags: string[];
   categoryKey: string;
   gradient: string;
+  liveUrl?: string;
+  isMvp?: boolean;
 }
 
 @Component({
@@ -29,6 +31,18 @@ export class PortfolioComponent {
       tags: ['Angular', 'Material Design 3', '.NET', 'Azure'],
       categoryKey: 'portfolio.vedos.category',
       gradient: 'linear-gradient(135deg, #E30613 0%, #9B1C1C 100%)',
+      liveUrl: 'https://vedos-app.jvm-solutions.dev/dashboard',
+      isMvp: true,
+    },
+    {
+      id: 'omida',
+      titleKey: 'portfolio.omida.title',
+      descriptionKey: 'portfolio.omida.description',
+      tags: ['Angular', 'Angular Material', 'Leaflet', 'SCSS'],
+      categoryKey: 'portfolio.omida.category',
+      gradient: 'linear-gradient(135deg, #2B2A29 0%, #d5d913 100%)',
+      liveUrl: 'https://omida-app.jvm-solutions.dev/dashboard',
+      isMvp: true,
     },
     {
       id: 'logistics-app',
