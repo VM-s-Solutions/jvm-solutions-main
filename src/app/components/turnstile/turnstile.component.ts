@@ -24,6 +24,31 @@ interface TurnstileOptions {
   'error-callback'?: () => void;
 }
 
+// Cloudflare calls window.onTurnstileReady() when the API becomes available.
+// We enqueue render callbacks here so SPA navigation works correctly.
+type TurnstileWin = Window & {
+  turnstile?: TurnstileAPI;
+  onTurnstileReady?: () => void;
+  _turnstileQueue?: Array<() => void>;
+};
+
+function whenTurnstileReady(callback: () => void): void {
+  const win = window as TurnstileWin;
+  if (win.turnstile) {
+    callback();
+    return;
+  }
+  win._turnstileQueue = win._turnstileQueue ?? [];
+  win._turnstileQueue.push(callback);
+  if (!win.onTurnstileReady) {
+    win.onTurnstileReady = () => {
+      const queue = win._turnstileQueue ?? [];
+      win._turnstileQueue = [];
+      queue.forEach(fn => fn());
+    };
+  }
+}
+
 @Component({
   selector: 'app-turnstile',
   standalone: true,
@@ -39,9 +64,8 @@ export class TurnstileComponent implements OnDestroy {
 
   constructor() {
     afterNextRender(() => {
-      const win = window as Window & { turnstile?: TurnstileAPI };
-
-      const render = () => {
+      whenTurnstileReady(() => {
+        const win = window as TurnstileWin;
         this.widgetId = win.turnstile!.render(this.container().nativeElement, {
           sitekey: this.siteKey(),
           theme: 'dark',
@@ -49,19 +73,12 @@ export class TurnstileComponent implements OnDestroy {
           'expired-callback': () => this.resolved.emit(null),
           'error-callback': () => this.resolved.emit(null),
         });
-      };
-
-      if (win.turnstile) {
-        render();
-      } else {
-        // Script not yet evaluated (fast navigation / slow connection)
-        window.addEventListener('load', render, { once: true });
-      }
+      });
     });
   }
 
   reset(): void {
-    const win = window as Window & { turnstile?: TurnstileAPI };
+    const win = window as TurnstileWin;
     if (this.widgetId !== undefined) {
       win.turnstile?.reset(this.widgetId);
     }
@@ -69,7 +86,7 @@ export class TurnstileComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    const win = window as Window & { turnstile?: TurnstileAPI };
+    const win = window as TurnstileWin;
     if (this.widgetId !== undefined) {
       win.turnstile?.remove(this.widgetId);
     }
