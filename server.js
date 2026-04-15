@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
 
@@ -23,6 +24,9 @@ const DIST = path.join(__dirname, 'dist/jvm-solutions/browser');
 
 // Parse JSON bodies for API routes (limit to prevent abuse)
 app.use('/api', express.json({ limit: '10kb' }));
+
+// Compress all responses (gzip; skips already-cached immutable assets on repeat visits)
+app.use(compression());
 
 // ── Contact form API ────────────────────────────────────────────────────────
 app.post('/api/contact', async (req, res) => {
