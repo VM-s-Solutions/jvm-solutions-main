@@ -9,17 +9,17 @@
     "build:dev": "ng build --configuration development",
     "dev": "ng serve",
     "build": "ng build",
+    "postbuild": "node scripts/compress-build.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "compression": "^1.8.1",
     "express": "^5.2.1",
+    "express-static-gzip": "^3.0.0",
     "resend": "^4.0.0"
   },
   "devDependencies": {
-    "@types/compression": "^1.8.1",
     "@angular-devkit/build-angular": "^19.2.24",
     "@angular/animations": "^19.2.20",
     "@angular/cli": "^19.2.24",

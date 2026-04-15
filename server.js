@@ -1,5 +1,5 @@
 const express = require('express');
-const compression = require('compression');
+const expressStaticGzip = require('express-static-gzip');
 const path = require('path');
 const fs = require('fs');
 
@@ -25,9 +25,6 @@ const DIST = path.join(__dirname, 'dist/jvm-solutions/browser');
 // Parse JSON bodies for API routes (limit to prevent abuse)
 app.use('/api', express.json({ limit: '10kb' }));
 
-// Compress all responses (gzip; skips already-cached immutable assets on repeat visits)
-app.use(compression());
-
 // ── Contact form API ────────────────────────────────────────────────────────
 app.post('/api/contact', async (req, res) => {
   try {
@@ -40,11 +37,37 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Serve static assets
-app.use(express.static(DIST));
+// Serve pre-compressed static assets (*.br preferred, *.gz fallback, raw otherwise)
+app.use(expressStaticGzip(DIST, {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz'],
+  serveStatic: {
+    maxAge: '1y',
+    immutable: true,
+    setHeaders(res, filePath) {
+      if (filePath.includes('index.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      }
+    },
+  },
+}));
 
-// SPA fallback — all routes return index.html
+// SPA fallback — serve pre-compressed index.html for client-side routes
 app.get('/{*path}', (req, res) => {
+  const ae = req.headers['accept-encoding'] || '';
+  if (ae.includes('br') && fs.existsSync(path.join(DIST, 'index.html.br'))) {
+    res.setHeader('Content-Encoding', 'br');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    return res.sendFile(path.join(DIST, 'index.html.br'));
+  }
+  if (ae.includes('gzip') && fs.existsSync(path.join(DIST, 'index.html.gz'))) {
+    res.setHeader('Content-Encoding', 'gzip');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    return res.sendFile(path.join(DIST, 'index.html.gz'));
+  }
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(DIST, 'index.html'));
 });
 
