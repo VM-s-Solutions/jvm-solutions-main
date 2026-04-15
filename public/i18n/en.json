@@ -61,20 +61,15 @@
     "title2": "proud of",
     "subtitle": "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
     "caseStudy": "Case Study",
-    "fintech": {
-      "title": "FinFlow — Analytics Dashboard",
-      "description": "Real-time financial analytics platform with interactive charts, multi-currency support, and AI-driven forecasting.",
-      "category": "Frontend + Backend"
+    "jp": {
+      "title": "JP Immobilien — Client Portal",
+      "description": "Premium client portal for an Austrian property group. Multi-division access across New Build, Rental Properties, Hospitality, and Serviced Apartments — built with Angular and Angular Material.",
+      "category": "Real Estate + Frontend"
     },
-    "logistics": {
-      "title": "TrackMate — Logistics Mobile",
-      "description": "Cross-platform logistics management app for iOS & Android. Real-time tracking, driver assignment, and delivery confirmation.",
-      "category": "Mobile"
-    },
-    "ai": {
-      "title": "FlowBot — AI Workflow Engine",
-      "description": "Intelligent automation platform using LLMs to process documents, extract data, and trigger business workflows autonomously.",
-      "category": "AI Automation"
+    "karimpol": {
+      "title": "Karimpol — Property Development Portal",
+      "description": "Corporate property development portal for a Central European real estate group. Project management and client access across five markets — Austria, Poland, Slovakia, Czech Republic, and Hungary.",
+      "category": "Real Estate + Frontend"
     },
     "vedos": {
       "title": "VEDOS — Shipper Portal",
@@ -140,7 +135,11 @@
       "messageError": "Message must be at least 20 characters.",
       "submit": "Send Message",
       "submitting": "Sending…",
-      "captchaError": "Please complete the CAPTCHA verification."
+      "captchaError": "Please complete the CAPTCHA verification.",
+      "privacyConsentPre": "I agree to the ",
+      "privacyLink": "Privacy Policy",
+      "privacyConsentPost": " and consent to the processing of my personal data.",
+      "privacyError": "You must accept the Privacy Policy to proceed."
     },
     "services": {
       "frontend": "Frontend Development",

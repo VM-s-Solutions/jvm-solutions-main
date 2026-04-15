@@ -193,6 +193,24 @@
             }
           </div>
 
+          <!-- Privacy consent -->
+          <div class="contact-form__field contact-form__consent-wrap" [class.is-invalid]="isInvalid('privacy')">
+            <label class="contact-form__consent-label" for="privacy">
+              <input
+                id="privacy"
+                type="checkbox"
+                formControlName="privacy"
+                class="contact-form__checkbox"
+                [attr.aria-invalid]="isInvalid('privacy')"
+                aria-describedby="privacy-error"
+              />
+              <span>{{ 'contact.form.privacyConsentPre' | translate }}<a routerLink="/privacy" target="_blank" rel="noopener noreferrer">{{ 'contact.form.privacyLink' | translate }}</a>{{ 'contact.form.privacyConsentPost' | translate }}</span>
+            </label>
+            @if (isInvalid('privacy')) {
+              <span id="privacy-error" class="contact-form__error" role="alert">{{ 'contact.form.privacyError' | translate }}</span>
+            }
+          </div>
+
           <button
             type="submit"
             class="btn-primary contact-form__submit"

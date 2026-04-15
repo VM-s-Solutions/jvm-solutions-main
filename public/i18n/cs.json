@@ -61,20 +61,15 @@
     "title2": "hrdí",
     "subtitle": "Ukázka toho, co jsme vytvořili — každý projekt je partnerstvím, výzvou a dodaným řešením.",
     "caseStudy": "Případová studie",
-    "fintech": {
-      "title": "FinFlow — Analytický dashboard",
-      "description": "Real-time platforma finanční analytiky s interaktivními grafy, podporou více měn a AI prognózami.",
-      "category": "Frontend + Backend"
+    "jp": {
+      "title": "JP Immobilien — Klientský portál",
+      "description": "Prémiový klientský portál pro rakouskou realitní skupinu. Přístup k více divizím — nová výstavba, nájemní nemovitosti, pohostinství a serviced apartments — vytvořeno v Angular a Angular Material.",
+      "category": "Reality + Frontend"
     },
-    "logistics": {
-      "title": "TrackMate — Logistická mobilní aplikace",
-      "description": "Multiplatformní aplikace pro správu logistiky pro iOS a Android. Real-time sledování, přiřazení řidičů a potvrzení doručení.",
-      "category": "Mobilní"
-    },
-    "ai": {
-      "title": "FlowBot — AI workflow engine",
-      "description": "Inteligentní automatizační platforma využívající LLM ke zpracování dokumentů, extrakci dat a autonomnímu spouštění obchodních procesů.",
-      "category": "AI automatizace"
+    "karimpol": {
+      "title": "Karimpol — Portál pro správu nemovitostí",
+      "description": "Firemní portál pro development nemovitostí pro středoevropskou realitní skupinu. Správa projektů a klientský přístup přes pět trhů — Rakousko, Polsko, Slovensko, ČR a Maďarsko.",
+      "category": "Reality + Frontend"
     },
     "vedos": {
       "title": "VEDOS — Přepravní portál",
@@ -140,7 +135,11 @@
       "messageError": "Zpráva musí mít alespoň 20 znaků.",
       "submit": "Odeslat zprávu",
       "submitting": "Odesílá se…",
-      "captchaError": "Prosím dokončete ověření CAPTCHA."
+      "captchaError": "Prosím dokončete ověření CAPTCHA.",
+      "privacyConsentPre": "Souhlasím se ",
+      "privacyLink": "zásadami ochrany soukromí",
+      "privacyConsentPost": " a se zpracováním mých osobních údajů.",
+      "privacyError": "Pro odeslání formuláře musíte přijmout zásady ochrany soukromí."
     },
     "services": {
       "frontend": "Vývoj frontendu",
