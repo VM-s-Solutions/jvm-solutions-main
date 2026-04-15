@@ -47,6 +47,9 @@ app.use(expressStaticGzip(DIST, {
     setHeaders(res, filePath) {
       if (filePath.includes('index.html')) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      } else if (filePath.includes(`${path.sep}i18n${path.sep}`)) {
+        // i18n JSON files have no content hash — use short cache so deploys take effect
+        res.setHeader('Cache-Control', 'public, max-age=3600');
       }
     },
   },

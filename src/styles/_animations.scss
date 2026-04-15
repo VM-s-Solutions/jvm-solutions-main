@@ -122,6 +122,13 @@
   100% { background-position: 200% 0; }
 }
 
+// ─── Route Transition ─────────────────────────────────────────────────────────
+// Plays fade-in when a route component mounts. Targets the activated component
+// element that Angular inserts as a sibling of <router-outlet> inside <main>.
+main > :not(router-outlet) {
+  animation: fade-in 200ms ease-out both;
+}
+
 // ─── Reduced Motion ──────────────────────────────────────────────────────────
 // Respect user OS preference: pause continuous animations, collapse reveals
 @media (prefers-reduced-motion: reduce) {
