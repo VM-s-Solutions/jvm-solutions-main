@@ -23,8 +23,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ];
 
   constructor(public translate: TranslateService, private router: Router, private scrollService: ScrollService) {
+    const SUPPORTED = ['en', 'cs', 'sk', 'uk'];
     const saved = localStorage.getItem('lang');
-    const lang = saved && ['en', 'cs', 'sk', 'uk'].includes(saved) ? saved : 'en';
+    const browser = navigator.language.split('-')[0].toLowerCase();
+    const lang = (saved && SUPPORTED.includes(saved))
+      ? saved
+      : SUPPORTED.includes(browser) ? browser : 'en';
     translate.setDefaultLang('en');
     translate.use(lang);
   }

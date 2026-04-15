@@ -5,7 +5,7 @@
       <!-- Avatar -->
       <div class="team-card__avatar-wrap">
         @if (member.photo) {
-          <img
+          <img loading="lazy"
             class="team-card__photo"
             [src]="member.photo"
             [alt]="member.name"

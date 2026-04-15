@@ -20,8 +20,8 @@ export class AboutComponent {
       name: 'Janis Joanu',
       roleKey: 'about.janis.role',
       bioKey: 'about.janis.bio',
-      linkedin: 'https://www.linkedin.com/in/janis-joanu-678275379/',
-      photo: 'https://scontent-prg1-1.xx.fbcdn.net/v/t39.30808-6/486072466_122093528186826207_499545333775373266_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=X53ZYuBhetwQ7kNvwES9qH8&_nc_oc=AdrJwQgi1YFJwnUzQLIzVcFro6bm059zE3FeKs1HW1wu228rnny0nK82SF1Q6_9cdYM&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_gid=b7PJ5E65pV0AsJ3-JUHvyA&_nc_ss=7a3a8&oh=00_Af1QTRk4zYSUJXua6Yh6CHr_smbzJELag2v4JHamVTLghQ&oe=69E1ACBC',
+      linkedin: 'https://www.linkedin.com/in/janis-joanu/',
+      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHFBY-63jXXJQ/profile-displayphoto-crop_800_800/B4DZ2QWbKvGUAM-/0/1776243292635?e=1778112000&v=beta&t=WBO-MAOCe-cY7xvxEMHqJPsQjbn9zXfMS_F9c1oeohE',
     },
     {
       initials: 'V',
@@ -36,7 +36,7 @@ export class AboutComponent {
       name: 'Michael Chaban',
       roleKey: 'about.michael.role',
       bioKey: 'about.michael.bio',
-      linkedin: 'https://www.linkedin.com/in/michael-chaban-014825236/',
+      linkedin: 'https://www.linkedin.com/in/michael-chaban/',
       photo: 'https://media.licdn.com/dms/image/v2/D4D03AQGUY89Kpcck2A/profile-displayphoto-crop_800_800/B4DZ2CpMucIAAI-/0/1776013334382?e=1777507200&v=beta&t=kGRtCufJ--JkoP5q0O0i2tzFOyX3XzjX0xOmfXCvXxc',
     },
   ];
