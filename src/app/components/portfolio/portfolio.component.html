@@ -11,68 +11,120 @@
       </p>
     </div>
 
-    <div class="portfolio__grid">
-      @for (project of projects; track project.id; let i = $index) {
-        <article
-          class="portfolio__card"
-          appScrollReveal
-          revealClass="reveal"
+    <!-- Carousel -->
+    <div class="portfolio__carousel" appScrollReveal revealClass="reveal">
+
+      <!-- Track -->
+      <div class="portfolio__track-wrapper" role="region" [attr.aria-label]="'portfolio.sectionLabel' | translate" aria-live="polite">
+        <div
+          class="portfolio__track"
+          [style.width]="trackWidth"
+          [style.transform]="trackTransform()"
         >
-          <!-- Thumbnail -->
-          <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
-            @if (project.thumbUrl) {
-              <img class="portfolio__thumb-img" [src]="project.thumbUrl" alt="" loading="lazy"/>
-            }
-            <div class="portfolio__thumb-grid"></div>
-            <div class="portfolio__thumb-labels">
-              <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
-              @if (project.isMvp) {
-                <div class="portfolio__mvp-badge">MVP</div>
+          @for (slide of slides; track $index; let si = $index) {
+            <div class="portfolio__slide" [style.flex]="slideFlex" [attr.aria-hidden]="si !== currentIndex()">
+              @for (project of slide; track project.id) {
+                <article class="portfolio__card">
+              <!-- Thumbnail -->
+              <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
+                @if (project.thumbUrl) {
+                  <img class="portfolio__thumb-img" [src]="project.thumbUrl" alt="" loading="lazy"/>
+                }
+                <div class="portfolio__thumb-grid"></div>
+                <div class="portfolio__thumb-labels">
+                  <div class="portfolio__thumb-label">{{ project.categoryKey | translate }}</div>
+                  @if (project.isMvp) {
+                    <div class="portfolio__mvp-badge">MVP</div>
+                  }
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="portfolio__content">
+                <h3 class="portfolio__project-title">{{ project.titleKey | translate }}</h3>
+                <p class="portfolio__description">{{ project.descriptionKey | translate }}</p>
+
+                <div class="portfolio__footer">
+                  <div class="portfolio__tags">
+                    @for (tag of project.tags; track tag) {
+                      <span class="portfolio__tag" [attr.data-tech]="tag">{{ tag }}</span>
+                    }
+                  </div>
+                  <div class="portfolio__actions">
+                    @if (project.liveUrl) {
+                      <a
+                        class="portfolio__live-link"
+                        [href]="project.liveUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    }
+                    <a
+                      class="portfolio__case-study-link"
+                      [routerLink]="['/work', project.id]"
+                    >
+                      {{ 'portfolio.caseStudy' | translate }}
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
               }
             </div>
-          </div>
+          }
+        </div>
+      </div>
 
-          <!-- Content -->
-          <div class="portfolio__content">
-            <h3 class="portfolio__project-title">{{ project.titleKey | translate }}</h3>
-            <p class="portfolio__description">{{ project.descriptionKey | translate }}</p>
+      <!-- Navigation -->
+      <div class="portfolio__nav">
+        <button
+          class="portfolio__nav-btn"
+          type="button"
+          (click)="prev()"
+          aria-label="Previous project"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
 
-            <div class="portfolio__footer">
-              <div class="portfolio__tags">
-                @for (tag of project.tags; track tag) {
-                  <span class="portfolio__tag" [attr.data-tech]="tag">{{ tag }}</span>
-                }
-              </div>
-              <div class="portfolio__actions">
-                @if (project.liveUrl) {
-                  <a
-                    class="portfolio__live-link"
-                    [href]="project.liveUrl"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                  Live Demo
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/>
-                      <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                  </a>
-                }
-                <a
-                  class="portfolio__case-study-link"
-                  [routerLink]="['/work', project.id]"
-                >
-                  {{ 'portfolio.caseStudy' | translate }}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-      }
+        <!-- Dots -->
+        <div class="portfolio__dots" role="tablist" aria-label="Project navigation">
+          @for (slide of slides; track $index; let i = $index) {
+            <button
+              class="portfolio__dot"
+              [class.portfolio__dot--active]="i === currentIndex()"
+              type="button"
+              role="tab"
+              [attr.aria-selected]="i === currentIndex()"
+              [attr.aria-label]="'Slide ' + (i + 1) + ' of ' + slides.length"
+              (click)="goTo(i)"
+            ></button>
+          }
+        </div>
+
+        <button
+          class="portfolio__nav-btn"
+          type="button"
+          (click)="next()"
+          aria-label="Next project"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+
     </div>
 
   </div>

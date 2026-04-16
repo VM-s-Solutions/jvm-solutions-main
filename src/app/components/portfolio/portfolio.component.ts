@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -69,5 +69,45 @@ export class PortfolioComponent {
       isMvp: true,
       thumbUrl: '/images/portfolio/karimpol.svg',
     },
+    {
+      id: 'neovize',
+      titleKey: 'portfolio.neovize.title',
+      descriptionKey: 'portfolio.neovize.description',
+      tags: ['Angular', 'TypeScript', 'SCSS'],
+      categoryKey: 'portfolio.neovize.category',
+      gradient: 'linear-gradient(135deg, #1E5AA8 0%, #0D9488 100%)',
+      liveUrl: 'https://neovize-app.jvm-solutions.dev/portal/preop',
+      isMvp: true,
+      thumbUrl: '/images/portfolio/neovize.svg',
+    },
   ];
+
+  readonly slides: Project[][] = (() => {
+    const result: Project[][] = [];
+    for (let i = 0; i < this.projects.length; i += 2) {
+      result.push(this.projects.slice(i, i + 2));
+    }
+    return result;
+  })();
+
+  readonly currentIndex = signal(0);
+
+  readonly trackWidth = `${this.slides.length * 100}%`;
+  readonly slideFlex = `0 0 ${100 / this.slides.length}%`;
+
+  readonly trackTransform = computed(
+    () => `translateX(-${(this.currentIndex() / this.slides.length) * 100}%)`
+  );
+
+  next(): void {
+    this.currentIndex.update(i => (i + 1) % this.slides.length);
+  }
+
+  prev(): void {
+    this.currentIndex.update(i => (i - 1 + this.slides.length) % this.slides.length);
+  }
+
+  goTo(index: number): void {
+    this.currentIndex.set(index);
+  }
 }

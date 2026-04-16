@@ -106,7 +106,7 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
   };
 
   try {
-    const [notification, confirmation] = await Promise.all([
+    const [notification] = await Promise.all([
       resend.emails.send({
         from: `JVM Solutions Website <${fromEmail}>`,
         to: [toEmail],

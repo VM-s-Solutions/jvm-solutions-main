@@ -26,32 +26,47 @@
     line-height: 1.7;
   }
 
-  // ── Grid ──────────────────────────────────────────────────────────────────
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $space-6;
+  // ── Carousel ──────────────────────────────────────────────────────────────
 
-    @include md {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  &__carousel {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+  }
+
+  &__track-wrapper {
+    overflow: hidden;
+    border-radius: $radius-xl;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-6;
   }
 
   // ── Card ──────────────────────────────────────────────────────────────────
   &__card {
+    flex-shrink: 0;
+    min-width: 0;
     background: $bg-surface;
     border: 1px solid $border-color;
     border-radius: $radius-xl;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: border-color $transition-base, box-shadow $transition-base, transform $transition-base;
     cursor: default;
+    transition: border-color $transition-base, box-shadow $transition-base;
 
     &:hover {
       border-color: rgba($purple, 0.4);
       box-shadow: 0 12px 48px rgba($purple, 0.12);
-      transform: translateY(-6px);
 
       .portfolio__thumb-grid {
         opacity: 0.3;
@@ -62,13 +77,14 @@
   // ── Thumbnail ─────────────────────────────────────────────────────────────
   &__thumb {
     position: relative;
-    height: 160px;
+    height: 200px;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
     padding: $space-4;
 
-    @include md { height: 220px; }
+    @include md { height: 260px; }
+    @include lg { height: 320px; }
   }
 
   &__thumb-img {
@@ -176,6 +192,7 @@
     &[data-tech="Angular"]          { color: #DD0031; border-color: rgba(#DD0031, 0.3); background: rgba(#DD0031, 0.08); }
     &[data-tech="Angular Material"] { color: #DD0031; border-color: rgba(#DD0031, 0.3); background: rgba(#DD0031, 0.08); }
     &[data-tech="Material Design 3"]{ color: #6750A4; border-color: rgba(#6750A4, 0.3); background: rgba(#6750A4, 0.08); }
+    &[data-tech="TypeScript"]       { color: #3178C6; border-color: rgba(#3178C6, 0.3); background: rgba(#3178C6, 0.08); }
     &[data-tech=".NET"]             { color: #9B59F5; border-color: rgba(#9B59F5, 0.3); background: rgba(#9B59F5, 0.08); }
     &[data-tech="Azure"]            { color: #0078D4; border-color: rgba(#0078D4, 0.3); background: rgba(#0078D4, 0.08); }
     &[data-tech="Flutter"]          { color: #54C5F8; border-color: rgba(#54C5F8, 0.3); background: rgba(#54C5F8, 0.08); }
@@ -233,6 +250,74 @@
     &:focus-visible {
       color: $purple;
       gap: 0.625rem;
+    }
+  }
+
+  // ── Navigation ────────────────────────────────────────────────────────────
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-6;
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-full;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: background $transition-base, border-color $transition-base, color $transition-base, transform $transition-base;
+    flex-shrink: 0;
+
+    &:hover,
+    &:focus-visible {
+      background: $bg-elevated;
+      border-color: rgba($purple, 0.5);
+      color: $text-primary;
+      transform: scale(1.08);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba($purple, 0.6);
+      outline-offset: 2px;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: $radius-full;
+    background: $border-color;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background $transition-base, width $transition-base, transform $transition-base;
+
+    &--active {
+      width: 24px;
+      background: $purple;
+    }
+
+    &:hover:not(&--active) {
+      background: $text-muted;
+      transform: scale(1.2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba($purple, 0.6);
+      outline-offset: 3px;
     }
   }
 }

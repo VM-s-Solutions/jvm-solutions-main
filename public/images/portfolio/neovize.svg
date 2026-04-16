@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1B2E"/>
+      <stop offset="100%" stop-color="#0A2420"/>
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E5AA8"/>
+      <stop offset="100%" stop-color="#1a4f96"/>
+    </linearGradient>
+    <linearGradient id="accentTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#0a7a70"/>
+    </linearGradient>
+    <linearGradient id="accentIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338CA"/>
+      <stop offset="100%" stop-color="#3730b3"/>
+    </linearGradient>
+    <linearGradient id="accentRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#be1a40"/>
+    </linearGradient>
+    <linearGradient id="cardGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E5AA8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D9488" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E5AA8"/>
+      <stop offset="100%" stop-color="#0D9488"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <clipPath id="screenClip">
+      <rect x="0" y="0" width="1200" height="750" rx="0"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E5AA8" stroke-width="0.4" opacity="0.15"/>
+  </pattern>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+
+  <!-- Glow orbs -->
+  <circle cx="150" cy="150" r="200" fill="#1E5AA8" opacity="0.06" filter="url(#softGlow)"/>
+  <circle cx="1050" cy="600" r="180" fill="#0D9488" opacity="0.08" filter="url(#softGlow)"/>
+
+  <!-- ── Top Navigation Bar ────────────────────────────────── -->
+  <rect x="60" y="40" width="1080" height="52" rx="10" fill="#0F1E35" fill-opacity="0.9" filter="url(#shadow)"/>
+  <rect x="60" y="40" width="1080" height="52" rx="10" fill="none" stroke="#1E5AA8" stroke-width="1" opacity="0.4"/>
+
+  <!-- Logo eye icon -->
+  <g transform="translate(88, 56)">
+    <ellipse cx="10" cy="10" rx="10" ry="6" fill="none" stroke="#1E5AA8" stroke-width="1.8"/>
+    <circle cx="10" cy="10" r="3.5" fill="#1E5AA8"/>
+    <circle cx="11.2" cy="8.8" r="1" fill="white" opacity="0.8"/>
+  </g>
+  <text x="114" y="71" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="white" letter-spacing="-0.3">NeoVize</text>
+  <text x="183" y="71" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400" fill="#1E5AA8" opacity="0.7">Group</text>
+
+  <!-- Nav items -->
+  <text x="430" y="71" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94a3b8">Přehled</text>
+  <text x="530" y="71" font-family="Inter, system-ui, sans-serif" font-size="13" fill="white" font-weight="500">Předoperační</text>
+  <text x="659" y="71" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94a3b8">Dokumenty</text>
+  <text x="765" y="71" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94a3b8">Souhlas</text>
+
+  <!-- Active nav indicator -->
+  <rect x="526" y="88" width="94" height="3" rx="1.5" fill="url(#progressGrad)" opacity="0.9"/>
+
+  <!-- User avatar -->
+  <circle cx="1098" cy="66" r="14" fill="url(#accentBlue)"/>
+  <text x="1090.5" y="70.5" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">JN</text>
+
+  <!-- ── Page Title ──────────────────────────────────────────── -->
+  <text x="60" y="132" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#1E5AA8" letter-spacing="1.5" text-transform="uppercase" opacity="0.9">PACIENTSKÝ PORTÁL</text>
+  <text x="60" y="158" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="white" letter-spacing="-0.5">Předoperační hodnocení</text>
+
+  <!-- Progress bar -->
+  <rect x="60" y="175" width="440" height="6" rx="3" fill="#1E2D45"/>
+  <rect x="60" y="175" width="165" height="6" rx="3" fill="url(#progressGrad)"/>
+  <text x="510" y="183" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Krok 2 ze 5</text>
+
+  <!-- ── Product Badges (top right) ────────────────────────── -->
+  <g transform="translate(820, 118)">
+    <!-- NeoVize badge -->
+    <rect x="0" y="0" width="78" height="28" rx="6" fill="#1E5AA8" fill-opacity="0.2" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="12" cy="14" r="4" fill="#1E5AA8" opacity="0.8"/>
+    <text x="22" y="18.5" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#93bbf4">NeoVize</text>
+
+    <!-- DuoVize badge -->
+    <rect x="88" y="0" width="78" height="28" rx="6" fill="#0D9488" fill-opacity="0.15" stroke="#0D9488" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="100" cy="14" r="4" fill="#0D9488" opacity="0.8"/>
+    <text x="110" y="18.5" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#5eead4">DuoVize</text>
+
+    <!-- NeoVizia badge -->
+    <rect x="176" y="0" width="82" height="28" rx="6" fill="#4338CA" fill-opacity="0.15" stroke="#4338CA" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="188" cy="14" r="4" fill="#4338CA" opacity="0.8"/>
+    <text x="198" y="18.5" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#a5b4fc">NeoVizia</text>
+  </g>
+
+  <!-- ── Left Form Panel ────────────────────────────────────── -->
+  <rect x="60" y="202" width="520" height="500" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="60" y="202" width="520" height="500" rx="12" fill="none" stroke="#1E5AA8" stroke-width="1" opacity="0.3"/>
+
+  <!-- Form panel header -->
+  <rect x="60" y="202" width="520" height="50" rx="12" fill="#1E5AA8" fill-opacity="0.15"/>
+  <rect x="60" y="228" width="520" height="24" fill="#1E5AA8" fill-opacity="0.15"/>
+  <text x="84" y="233" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white">Osobní údaje pacienta</text>
+
+  <!-- Form fields -->
+  <!-- Row 1 -->
+  <rect x="84" y="270" width="224" height="36" rx="7" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="100" y="291" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#93bbf4" opacity="0.7">Jméno a příjmení</text>
+  <rect x="332" y="270" width="224" height="36" rx="7" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="348" y="291" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#93bbf4" opacity="0.7">Datum narození</text>
+
+  <!-- Row 2 -->
+  <rect x="84" y="322" width="224" height="36" rx="7" fill="#152438" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="100" y="337" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">Jan Novák</text>
+  <rect x="332" y="322" width="224" height="36" rx="7" fill="#152438" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="348" y="337" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#64748b">15. 3. 1975</text>
+
+  <!-- Row 3 -->
+  <text x="84" y="384" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Diagnóza</text>
+  <rect x="84" y="396" width="472" height="36" rx="7" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="100" y="417" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#93bbf4" opacity="0.7">Typ operačního zákroku</text>
+
+  <!-- Select field -->
+  <rect x="84" y="448" width="472" height="36" rx="7" fill="#152438" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.25"/>
+  <text x="100" y="469" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b">LASIK — korekce krátkozrakosti</text>
+  <path d="M 540 463 L 548 463 L 544 469 Z" fill="#1E5AA8" opacity="0.6"/>
+
+  <!-- Divider -->
+  <line x1="84" y1="502" x2="556" y2="502" stroke="#1E5AA8" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Anamnesis section -->
+  <text x="84" y="526" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white">Anamnéza</text>
+
+  <!-- Checkboxes -->
+  <g transform="translate(84, 542)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#1E5AA8" fill-opacity="0.8"/>
+    <path d="M 3 7 L 6 10 L 11 4" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <text x="22" y="11" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#cbd5e1">Žádná systémová onemocnění</text>
+  </g>
+  <g transform="translate(84, 568)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+    <text x="22" y="11" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8">Diabetes mellitus</text>
+  </g>
+  <g transform="translate(84, 594)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+    <text x="22" y="11" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8">Hypertenze</text>
+  </g>
+  <g transform="translate(84, 620)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#1A2E4A" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+    <text x="22" y="11" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8">Glaukom v rodinné anamnéze</text>
+  </g>
+
+  <!-- Action buttons -->
+  <rect x="84" y="658" width="220" height="38" rx="8" fill="#152438" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="155" y="681" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#93bbf4" text-anchor="middle">Zpět</text>
+
+  <rect x="320" y="658" width="236" height="38" rx="8" fill="url(#progressGrad)"/>
+  <text x="438" y="681" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="white" text-anchor="middle">Pokračovat →</text>
+
+  <!-- ── Right Panel ─────────────────────────────────────────── -->
+  <!-- Stats card -->
+  <rect x="608" y="202" width="252" height="120" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="608" y="202" width="252" height="120" rx="12" fill="none" stroke="#0D9488" stroke-width="1" opacity="0.3"/>
+  <rect x="608" y="202" width="252" height="4" rx="2" fill="url(#accentTeal)"/>
+
+  <text x="632" y="232" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#5eead4" font-weight="600" letter-spacing="0.8">STAV HODNOCENÍ</text>
+
+  <!-- Progress ring placeholder -->
+  <circle cx="775" cy="268" r="30" fill="none" stroke="#1E2D45" stroke-width="5"/>
+  <circle cx="775" cy="268" r="30" fill="none" stroke="url(#progressGrad)" stroke-width="5" stroke-dasharray="75.4 113.1" stroke-linecap="round" transform="rotate(-90 775 268)"/>
+  <text x="775" y="272" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">40%</text>
+
+  <text x="632" y="256" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="800" fill="white">2/5</text>
+  <text x="632" y="276" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">kroků dokončeno</text>
+  <text x="632" y="296" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5eead4">▲ Pokračujte v hodnocení</text>
+
+  <!-- Eye metrics card -->
+  <rect x="608" y="336" width="252" height="158" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="608" y="336" width="252" height="158" rx="12" fill="none" stroke="#1E5AA8" stroke-width="1" opacity="0.3"/>
+  <rect x="608" y="336" width="252" height="4" rx="2" fill="url(#accentBlue)"/>
+
+  <text x="632" y="364" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#93bbf4" font-weight="600" letter-spacing="0.8">OČNÍ PARAMETRY</text>
+
+  <!-- Metric rows -->
+  <text x="632" y="392" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Refrakce (sph)</text>
+  <text x="824" y="392" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="end">−3.75 dpt</text>
+
+  <line x1="632" y1="400" x2="836" y2="400" stroke="#1E2D45" stroke-width="1"/>
+
+  <text x="632" y="420" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Cylindr (cyl)</text>
+  <text x="824" y="420" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="end">−0.50 dpt</text>
+
+  <line x1="632" y1="428" x2="836" y2="428" stroke="#1E2D45" stroke-width="1"/>
+
+  <text x="632" y="448" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Pachymetrie</text>
+  <text x="824" y="448" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#5eead4" text-anchor="end">548 μm</text>
+
+  <line x1="632" y1="456" x2="836" y2="456" stroke="#1E2D45" stroke-width="1"/>
+
+  <text x="632" y="476" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Délka osy</text>
+  <text x="824" y="476" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white" text-anchor="end">23.84 mm</text>
+
+  <!-- Appointment card -->
+  <rect x="608" y="508" width="252" height="100" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="608" y="508" width="252" height="100" rx="12" fill="none" stroke="#4338CA" stroke-width="1" opacity="0.3"/>
+  <rect x="608" y="508" width="252" height="4" rx="2" fill="url(#accentIndigo)"/>
+
+  <text x="632" y="536" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#a5b4fc" font-weight="600" letter-spacing="0.8">TERMÍN OPERACE</text>
+
+  <!-- Calendar icon -->
+  <rect x="632" y="552" width="20" height="20" rx="4" fill="#4338CA" fill-opacity="0.3" stroke="#4338CA" stroke-width="1" stroke-opacity="0.5"/>
+  <path d="M 636 552 L 636 549 M 648 552 L 648 549" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="632" y1="558" x2="652" y2="558" stroke="#4338CA" stroke-width="1" opacity="0.6"/>
+  <text x="636.5" y="568" font-family="Inter, system-ui, sans-serif" font-size="7.5" font-weight="600" fill="#a5b4fc">15</text>
+
+  <text x="660" y="562" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="white">15. května 2025</text>
+  <text x="660" y="578" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">08:30 · Klinika NeoVize Praha</text>
+
+  <!-- Kukátko micro-badge -->
+  <rect x="608" y="622" width="252" height="80" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="608" y="622" width="252" height="80" rx="12" fill="none" stroke="#E11D48" stroke-width="1" opacity="0.25"/>
+  <rect x="608" y="622" width="252" height="4" rx="2" fill="url(#accentRose)"/>
+
+  <g transform="translate(628, 640)">
+    <ellipse cx="9" cy="9" rx="9" ry="5.5" fill="none" stroke="#E11D48" stroke-width="1.5"/>
+    <circle cx="9" cy="9" r="3" fill="#E11D48" opacity="0.7"/>
+    <circle cx="10.2" cy="7.8" r="0.9" fill="white" opacity="0.8"/>
+  </g>
+  <text x="648" y="654" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="white">Kukátko</text>
+  <text x="648" y="670" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b">Dětský oční portál</text>
+
+  <!-- Dispatch check badge -->
+  <rect x="736" y="640" width="96" height="24" rx="6" fill="#E11D48" fill-opacity="0.15" stroke="#E11D48" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="784" y="656" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fda4af" text-anchor="middle">Aktivní portál</text>
+
+  <!-- ── Far right column ──────────────────────────────────── -->
+  <rect x="880" y="202" width="260" height="500" rx="12" fill="#0F1E35" fill-opacity="0.85" filter="url(#shadow)"/>
+  <rect x="880" y="202" width="260" height="500" rx="12" fill="none" stroke="#1E5AA8" stroke-width="1" opacity="0.2"/>
+
+  <!-- Eye diagram area -->
+  <rect x="880" y="202" width="260" height="50" rx="12" fill="#1E5AA8" fill-opacity="0.12"/>
+  <rect x="880" y="228" width="260" height="24" fill="#1E5AA8" fill-opacity="0.12"/>
+  <text x="904" y="233" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#93bbf4">Vizualizace</text>
+
+  <!-- Stylized eye cross-section diagram -->
+  <g transform="translate(1010, 340)">
+    <!-- Outer eye shape -->
+    <ellipse cx="0" cy="0" rx="80" ry="50" fill="none" stroke="#1E5AA8" stroke-width="1.5" opacity="0.5"/>
+    <!-- Cornea arc -->
+    <path d="M -20 -45 Q 0 -65 20 -45" fill="none" stroke="#0D9488" stroke-width="2" opacity="0.7"/>
+    <!-- Iris -->
+    <circle cx="0" cy="0" r="34" fill="#0D1B2E" stroke="#1E5AA8" stroke-width="1.5" opacity="0.7"/>
+    <!-- Iris detail rings -->
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#1E5AA8" stroke-width="8" stroke-dasharray="4 3" opacity="0.2"/>
+    <!-- Pupil -->
+    <circle cx="0" cy="0" r="16" fill="#000d1a"/>
+    <!-- Pupil glow -->
+    <circle cx="0" cy="0" r="16" fill="url(#accentBlue)" opacity="0.3"/>
+    <!-- Corneal highlight -->
+    <ellipse cx="-10" cy="-12" rx="6" ry="4" fill="white" opacity="0.15"/>
+    <!-- Measurement lines -->
+    <line x1="0" y1="-34" x2="0" y2="-50" stroke="#0D9488" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+    <line x1="34" y1="0" x2="52" y2="0" stroke="#0D9488" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+    <text x="56" y="4" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5eead4">Ø 11.8mm</text>
+    <text x="4" y="-38" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#5eead4">548μm</text>
+  </g>
+
+  <!-- Scan lines -->
+  <line x1="904" y1="430" x2="1116" y2="430" stroke="#1E2D45" stroke-width="1"/>
+
+  <!-- Legend items -->
+  <circle cx="916" cy="454" r="5" fill="#1E5AA8"/>
+  <text x="928" y="458" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">Rohovka</text>
+
+  <circle cx="1000" cy="454" r="5" fill="#0D9488"/>
+  <text x="1012" y="458" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">Čočka</text>
+
+  <circle cx="1072" cy="454" r="5" fill="#4338CA"/>
+  <text x="1084" y="458" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">Sítnice</text>
+
+  <!-- Status pills -->
+  <rect x="904" y="476" width="216" height="30" rx="8" fill="#0a2420" stroke="#0D9488" stroke-width="1" stroke-opacity="0.4"/>
+  <circle cx="920" cy="491" r="5" fill="#0D9488"/>
+  <text x="933" y="495" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#5eead4">Topografie OK · Pachymetrie OK</text>
+
+  <rect x="904" y="516" width="216" height="30" rx="8" fill="#0d1526" stroke="#F59E0B" stroke-width="1" stroke-opacity="0.4"/>
+  <circle cx="920" cy="531" r="5" fill="#F59E0B"/>
+  <text x="933" y="535" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#fcd34d">Zkontrolujte refrakci před op.</text>
+
+  <rect x="904" y="556" width="216" height="30" rx="8" fill="#0a1a2e" stroke="#1E5AA8" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="920" cy="571" r="5" fill="#1E5AA8" opacity="0.7"/>
+  <text x="933" y="575" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#93bbf4">Čeká se na souhlas pacienta</text>
+
+  <!-- Bottom action -->
+  <rect x="904" y="604" width="216" height="38" rx="8" fill="url(#progressGrad)"/>
+  <text x="1012" y="627" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">Generovat zprávu</text>
+
+  <!-- NeoVize branded watermark bottom right -->
+  <text x="1140" y="738" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#1E5AA8" opacity="0.35" text-anchor="end">NeoVize Group · Pacientský portál</text>
+</svg>

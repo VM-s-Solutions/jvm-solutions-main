@@ -93,6 +93,12 @@ const cs = {
         'Prototyp unifikovaného multi-entitního portálu přepravce pro OMIDA Group S.A. — polský logistický holding s obratem €330M. Real-time přehled zásilek napříč silniční, námořní, železniční a skladovací přepravou 9 provozních společností.',
       category: 'Logistika + Frontend',
     },
+    neovize: {
+      title: 'NeoVize — Pacientský portál',
+      description:
+        'Portál pro pacienty oftalmologické praxe NeoVize Group. Předoperační hodnocení, správa souhlasů a produktové portály NeoVize, DuoVize, NeoVizia a Kukátko — s vlastním modrým a tyrkysovým designovým systémem.',
+      category: 'Zdravotnictví + Frontend',
+    },
   },
   testimonials: {
     sectionLabel: 'Reference',

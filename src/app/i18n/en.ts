@@ -94,6 +94,12 @@ const en = {
         'Unified multi-entity shipper portal prototype for OMIDA Group S.A. — a €330M Polish logistics holding. Real-time cross-entity shipment visibility across road, ocean, rail, and warehousing operations for 9 operating companies under one login.',
       category: 'Logistics + Frontend',
     },
+    neovize: {
+      title: 'NeoVize — Patient Portal',
+      description:
+        "Patient-facing portal for NeoVize Group's ophthalmology practice. Pre-operative assessment flows, consent management, and product-specific portals for NeoVize, DuoVize, NeoVizia, and Kukátko — built with a custom blue & teal design system.",
+      category: 'Healthcare + Frontend',
+    },
     ecommerce: {
       title: 'Nexshop — E-commerce Platform',
       description:
