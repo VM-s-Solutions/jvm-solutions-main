@@ -32,7 +32,8 @@
   // Skip layout + paint for off-screen sections — browser renders on demand
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
-  @include md { padding: $space-32 $space-8; }
+  @include md { padding: $space-24 $space-8; }
+  @include lg { padding: $space-32 $space-8; }
 }
 
 @mixin container {

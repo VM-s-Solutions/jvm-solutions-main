@@ -50,7 +50,7 @@
     grid-template-columns: 1fr;
     gap: $space-6;
 
-    @include md { grid-template-columns: 1fr 1fr; }
+    @include lg { grid-template-columns: 1fr 1fr; }
   }
 
   // ── Card ──────────────────────────────────────────────────────────────────
@@ -334,7 +334,7 @@
     animation: portfolio-hint-in 0.5s ease both;
     pointer-events: none;
 
-    @include md { display: none; }
+    @include lg { display: none; }
   }
 
   &__swipe-arrow {

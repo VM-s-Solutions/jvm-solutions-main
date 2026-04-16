@@ -31,7 +31,10 @@
           @for (slide of slides(); track $index; let si = $index) {
             <div class="portfolio__slide" [style.flex]="slideFlex()" [attr.aria-hidden]="si !== currentIndex()">
               @for (project of slide; track project.id) {
-                <article class="portfolio__card">
+                <article class="portfolio__card"
+                  (mouseenter)="pauseAutoplay()"
+                  (mouseleave)="resumeAutoplay()"
+                >
               <!-- Thumbnail -->
               <div class="portfolio__thumb" [style.background]="project.gradient" aria-hidden="true">
                 @if (project.thumbUrl) {

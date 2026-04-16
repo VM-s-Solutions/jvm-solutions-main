@@ -72,7 +72,7 @@
     }
 
     .faq__answer {
-      max-height: 400px;
+      grid-template-rows: 1fr;
       opacity: 1;
       padding-bottom: $space-6;
     }
@@ -113,11 +113,15 @@
 
 // ── Answer ────────────────────────────────────────────────────────────────────
 .faq__answer {
-  max-height: 0;
-  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
   padding-bottom: 0;
-  transition: max-height $transition-slow, opacity $transition-slow, padding $transition-slow;
+  transition: grid-template-rows $transition-base, opacity $transition-base, padding $transition-base;
+}
+
+.faq__answer-inner {
+  overflow: hidden;
 
   p {
     font-size: $text-base;

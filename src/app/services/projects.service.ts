@@ -167,6 +167,42 @@ export class ProjectsService {
         { value: 'work.neovize.metric3Val', labelKey: 'work.neovize.metric3Label' },
       ],
     },
+    {
+      id: 'jp-immobilien',
+      titleKey: 'portfolio.jp.title',
+      descriptionKey: 'portfolio.jp.description',
+      subtitleKey: 'work.jp.subtitle',
+      categoryKey: 'portfolio.jp.category',
+      tags: ['Angular', 'Angular Material', 'TypeScript', 'SCSS'],
+      gradient: 'linear-gradient(135deg, #0A2540 0%, #C8A15A 100%)',
+      thumbUrl: '/images/portfolio/jp-immobilien.svg',
+      timelineKey: 'work.jp.timeline',
+      problemKey: 'work.jp.problem',
+      solutionKey: 'work.jp.solution',
+      metrics: [
+        { value: 'work.jp.metric1Val', labelKey: 'work.jp.metric1Label' },
+        { value: 'work.jp.metric2Val', labelKey: 'work.jp.metric2Label' },
+        { value: 'work.jp.metric3Val', labelKey: 'work.jp.metric3Label' },
+      ],
+    },
+    {
+      id: 'karimpol',
+      titleKey: 'portfolio.karimpol.title',
+      descriptionKey: 'portfolio.karimpol.description',
+      subtitleKey: 'work.karimpol.subtitle',
+      categoryKey: 'portfolio.karimpol.category',
+      tags: ['Angular', 'Angular Material', 'TypeScript', 'SCSS'],
+      gradient: 'linear-gradient(135deg, #0D0D0D 0%, #0073B7 100%)',
+      thumbUrl: '/images/portfolio/karimpol.svg',
+      timelineKey: 'work.karimpol.timeline',
+      problemKey: 'work.karimpol.problem',
+      solutionKey: 'work.karimpol.solution',
+      metrics: [
+        { value: 'work.karimpol.metric1Val', labelKey: 'work.karimpol.metric1Label' },
+        { value: 'work.karimpol.metric2Val', labelKey: 'work.karimpol.metric2Label' },
+        { value: 'work.karimpol.metric3Val', labelKey: 'work.karimpol.metric3Label' },
+      ],
+    },
   ];
 
   getById(id: string): CaseStudy | undefined {

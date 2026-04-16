@@ -3,49 +3,55 @@
 <main id="main-content">
   <app-hero />
 
-  @defer (on viewport) {
-    <app-services />
-  } @placeholder {
-    <div id="services" style="min-height:700px"></div>
-  }
+  <div id="services">
+    @defer (on viewport; on idle) {
+      <app-services />
+    } @placeholder {
+      <div style="min-height:700px"></div>
+    }
+  </div>
 
-  @defer (on viewport) {
+  @defer (on viewport; on idle) {
     <app-how-it-works />
   } @placeholder {
     <div style="min-height:500px"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on viewport; on idle) {
     <app-stats />
   } @placeholder {
     <div style="min-height:180px"></div>
   }
 
-  @defer (on viewport) {
-    <app-portfolio />
-  } @placeholder {
-    <div id="portfolio" style="min-height:700px"></div>
-  }
+  <div id="portfolio">
+    @defer (on viewport; on idle) {
+      <app-portfolio />
+    } @placeholder {
+      <div style="min-height:700px"></div>
+    }
+  </div>
 
-  @defer (on viewport) {
-    <app-testimonials />
-  } @placeholder {
-    <div id="testimonials" style="min-height:580px"></div>
-  }
+  <div id="testimonials">
+    @defer (on viewport; on idle) {
+      <app-testimonials />
+    } @placeholder {
+      <div style="min-height:580px"></div>
+    }
+  </div>
 
-  @defer (on viewport) {
+  @defer (on viewport; on idle) {
     <app-faq />
   } @placeholder {
     <div style="min-height:480px"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on viewport; on idle) {
     <app-contact-cta />
   } @placeholder {
     <div style="min-height:300px"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on viewport; on idle) {
     <app-footer />
   } @placeholder {
     <div style="min-height:300px"></div>

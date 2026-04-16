@@ -28,7 +28,9 @@
             role="region"
             [attr.aria-hidden]="openIndex() !== i"
           >
-            <p>{{ item.aKey | translate }}</p>
+            <div class="faq__answer-inner">
+              <p>{{ item.aKey | translate }}</p>
+            </div>
           </div>
         </div>
       }

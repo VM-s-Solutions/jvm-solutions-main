@@ -60,6 +60,7 @@ export class PortfolioComponent {
       liveUrl: 'https://jp-immobilien-app.jvm-solutions.dev',
       isMvp: true,
       thumbUrl: '/images/portfolio/jp-immobilien.svg',
+      hasCaseStudy: true,
     },
     {
       id: 'karimpol',
@@ -71,6 +72,7 @@ export class PortfolioComponent {
       liveUrl: 'https://karimpol-app.jvm-solutions.dev',
       isMvp: true,
       thumbUrl: '/images/portfolio/karimpol.svg',
+      hasCaseStudy: true,
     },
     {
       id: 'neovize',
@@ -103,6 +105,8 @@ export class PortfolioComponent {
   readonly currentIndex = signal(0);
   readonly swipeHintVisible = signal(false);
 
+  private autoplayId: ReturnType<typeof setInterval> | null = null;
+  private resumeTimerId: ReturnType<typeof setTimeout> | null = null;
   private touchStartX = 0;
   private touchStartY = 0;
 
@@ -124,7 +128,7 @@ export class PortfolioComponent {
 
   constructor() {
     afterNextRender(() => {
-      const mq = window.matchMedia('(min-width: 768px)');
+      const mq = window.matchMedia('(min-width: 1024px)');
       this.cardsPerSlide.set(mq.matches ? 2 : 1);
       const handler = () => this.cardsPerSlide.set(mq.matches ? 2 : 1);
       mq.addEventListener('change', handler);
@@ -134,6 +138,9 @@ export class PortfolioComponent {
         const timer = setTimeout(() => this.swipeHintVisible.set(false), 4000);
         this.destroyRef.onDestroy(() => clearTimeout(timer));
       }
+
+      this.resumeAutoplay();
+      this.destroyRef.onDestroy(() => this.pauseAutoplay());
 
       this.destroyRef.onDestroy(() => mq.removeEventListener('change', handler));
     });
@@ -145,16 +152,23 @@ export class PortfolioComponent {
     });
   }
 
+  private advance(): void {
+    this.currentIndex.update(i => (i + 1) % this.slides().length);
+  }
+
   next(): void {
     this.currentIndex.update(i => (i + 1) % this.slides().length);
+    this.pauseTemporarily(30_000);
   }
 
   prev(): void {
     this.currentIndex.update(i => (i - 1 + this.slides().length) % this.slides().length);
+    this.pauseTemporarily(30_000);
   }
 
   goTo(index: number): void {
     this.currentIndex.set(index);
+    this.pauseTemporarily(30_000);
   }
 
   onTouchStart(e: TouchEvent): void {
@@ -169,5 +183,26 @@ export class PortfolioComponent {
     if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) {
       dx < 0 ? this.next() : this.prev();
     }
+  }
+
+  pauseAutoplay(): void {
+    if (this.autoplayId !== null) {
+      clearInterval(this.autoplayId);
+      this.autoplayId = null;
+    }
+    if (this.resumeTimerId !== null) {
+      clearTimeout(this.resumeTimerId);
+      this.resumeTimerId = null;
+    }
+  }
+
+  resumeAutoplay(): void {
+    this.pauseAutoplay();
+    this.autoplayId = setInterval(() => this.advance(), 5000);
+  }
+
+  private pauseTemporarily(ms: number): void {
+    this.pauseAutoplay();
+    this.resumeTimerId = setTimeout(() => this.resumeAutoplay(), ms);
   }
 }
