@@ -131,6 +131,42 @@ export class ProjectsService {
         { value: 'work.omida.metric3Val', labelKey: 'work.omida.metric3Label' },
       ],
     },
+    {
+      id: 'adentics',
+      titleKey: 'portfolio.adentics.title',
+      descriptionKey: 'portfolio.adentics.description',
+      subtitleKey: 'work.adentics.subtitle',
+      categoryKey: 'portfolio.adentics.category',
+      tags: ['Angular', 'TypeScript', 'Azure Static Web Apps', 'SCSS'],
+      gradient: 'linear-gradient(135deg, #0F4C5C 0%, #C9A96E 100%)',
+      thumbUrl: '/images/portfolio/adentics.svg',
+      timelineKey: 'work.adentics.timeline',
+      problemKey: 'work.adentics.problem',
+      solutionKey: 'work.adentics.solution',
+      metrics: [
+        { value: 'work.adentics.metric1Val', labelKey: 'work.adentics.metric1Label' },
+        { value: 'work.adentics.metric2Val', labelKey: 'work.adentics.metric2Label' },
+        { value: 'work.adentics.metric3Val', labelKey: 'work.adentics.metric3Label' },
+      ],
+    },
+    {
+      id: 'neovize',
+      titleKey: 'portfolio.neovize.title',
+      descriptionKey: 'portfolio.neovize.description',
+      subtitleKey: 'work.neovize.subtitle',
+      categoryKey: 'portfolio.neovize.category',
+      tags: ['Angular', 'TypeScript', 'SCSS'],
+      gradient: 'linear-gradient(135deg, #1E5AA8 0%, #0D9488 100%)',
+      thumbUrl: '/images/portfolio/neovize.svg',
+      timelineKey: 'work.neovize.timeline',
+      problemKey: 'work.neovize.problem',
+      solutionKey: 'work.neovize.solution',
+      metrics: [
+        { value: 'work.neovize.metric1Val', labelKey: 'work.neovize.metric1Label' },
+        { value: 'work.neovize.metric2Val', labelKey: 'work.neovize.metric2Label' },
+        { value: 'work.neovize.metric3Val', labelKey: 'work.neovize.metric3Label' },
+      ],
+    },
   ];
 
   getById(id: string): CaseStudy | undefined {

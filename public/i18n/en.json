@@ -85,6 +85,11 @@
       "title": "NeoVize — Patient Portal",
       "description": "Patient-facing portal for NeoVize Group's ophthalmology practice. Pre-operative assessment flows, consent management, and product-specific portals for NeoVize, DuoVize, NeoVizia, and Kukátko — built with a custom blue & teal design system.",
       "category": "Healthcare + Frontend"
+    },
+    "adentics": {
+      "title": "Adentics — Dental Patient Portal",
+      "description": "Multi-site dental patient portal for German-speaking markets. Unified cross-clinic identity, treatment timelines, appointment scheduling, patient retention workflows, and family & referral tracking — deployed on Azure Static Web Apps.",
+      "category": "Healthcare + Frontend"
     }
   },
   "testimonials": {
@@ -371,6 +376,30 @@
       "metric2Label": "for all modes",
       "metric3Val": "6 weeks",
       "metric3Label": "concept to live MVP"
+    },
+    "adentics": {
+      "subtitle": "Premium multi-site patient portal for a German-speaking dental practice group",
+      "timeline": "8 weeks",
+      "problem": "A multi-location dental group operating across German-speaking cities had no unified digital experience for patients. Each clinic ran independently — separate appointment systems, no shared treatment history, and no structured retention process. Patients churned between visits, referrals were tracked manually, and staff had no central queue.",
+      "solution": "We built Adentics in Angular: a cross-site patient portal where patients authenticate once and access their full treatment history across all clinic locations. Five patient modules cover the full journey — Treatment Timeline, Termine (appointment booking), Nachrichten (in-app messaging), Family & Referrals management, and an Academy for patient education. The admin side provides a Treatment Queue for staff. A premium teal-and-gold design system signals clinical trust. Deployed on Azure Static Web Apps.",
+      "metric1Val": "1 login",
+      "metric1Label": "across all clinic locations",
+      "metric2Val": "5 modules",
+      "metric2Label": "patient-facing features",
+      "metric3Val": "8 weeks",
+      "metric3Label": "concept to live portal"
+    },
+    "neovize": {
+      "subtitle": "Patient-facing multi-product ophthalmology portal for NeoVize Group",
+      "timeline": "8 weeks",
+      "problem": "NeoVize Group operates four distinct ophthalmology product brands — NeoVize (premium laser correction), DuoVize (duet vision packages), NeoVizia (IOL replacement), and Kukátko (paediatric vision) — each with its own consent documents and pre-operative assessment flows. Without a unified platform, patient coordinators managed paper forms and email threads per product, creating delays, compliance risk, and a fragmented patient experience.",
+      "solution": "We built a unified Angular patient portal that adapts per brand. Patients select their product portal on login and work through a structured digital pre-op assessment — biometric uploads, health questionnaire, and consent forms with e-signature capture. A custom blue & teal design system matches NeoVize Group's clinical identity across all four brands, while coordinators monitor pending assessments from a shared dashboard.",
+      "metric1Val": "4",
+      "metric1Label": "product portals unified",
+      "metric2Val": "100%",
+      "metric2Label": "digital consent",
+      "metric3Val": "8 weeks",
+      "metric3Label": "concept to live portal"
     }
   }
 }

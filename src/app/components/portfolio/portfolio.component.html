@@ -15,14 +15,21 @@
     <div class="portfolio__carousel" appScrollReveal revealClass="reveal">
 
       <!-- Track -->
-      <div class="portfolio__track-wrapper" role="region" [attr.aria-label]="'portfolio.sectionLabel' | translate" aria-live="polite">
+      <div
+        class="portfolio__track-wrapper"
+        role="region"
+        [attr.aria-label]="'portfolio.sectionLabel' | translate"
+        aria-live="polite"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
+      >
         <div
           class="portfolio__track"
-          [style.width]="trackWidth"
+          [style.width]="trackWidth()"
           [style.transform]="trackTransform()"
         >
-          @for (slide of slides; track $index; let si = $index) {
-            <div class="portfolio__slide" [style.flex]="slideFlex" [attr.aria-hidden]="si !== currentIndex()">
+          @for (slide of slides(); track $index; let si = $index) {
+            <div class="portfolio__slide" [style.flex]="slideFlex()" [attr.aria-hidden]="si !== currentIndex()">
               @for (project of slide; track project.id) {
                 <article class="portfolio__card">
               <!-- Thumbnail -->
@@ -66,15 +73,17 @@
                         </svg>
                       </a>
                     }
-                    <a
-                      class="portfolio__case-study-link"
-                      [routerLink]="['/work', project.id]"
-                    >
-                      {{ 'portfolio.caseStudy' | translate }}
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
-                    </a>
+                    @if (project.hasCaseStudy) {
+                      <a
+                        class="portfolio__case-study-link"
+                        [routerLink]="['/work', project.id]"
+                      >
+                        {{ 'portfolio.caseStudy' | translate }}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    }
                   </div>
                 </div>
               </div>
@@ -84,6 +93,19 @@
           }
         </div>
       </div>
+
+      <!-- Swipe hint — mobile only, dismisses on first touch or after 4 s -->
+      @if (swipeHintVisible()) {
+        <div class="portfolio__swipe-hint" aria-hidden="true">
+          <svg class="portfolio__swipe-arrow portfolio__swipe-arrow--left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+          <span class="portfolio__swipe-label">swipe</span>
+          <svg class="portfolio__swipe-arrow portfolio__swipe-arrow--right" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </div>
+      }
 
       <!-- Navigation -->
       <div class="portfolio__nav">
@@ -100,14 +122,14 @@
 
         <!-- Dots -->
         <div class="portfolio__dots" role="tablist" aria-label="Project navigation">
-          @for (slide of slides; track $index; let i = $index) {
+          @for (slide of slides(); track $index; let i = $index) {
             <button
               class="portfolio__dot"
               [class.portfolio__dot--active]="i === currentIndex()"
               type="button"
               role="tab"
               [attr.aria-selected]="i === currentIndex()"
-              [attr.aria-label]="'Slide ' + (i + 1) + ' of ' + slides.length"
+              [attr.aria-label]="'Slide ' + (i + 1) + ' of ' + slides().length"
               (click)="goTo(i)"
             ></button>
           }

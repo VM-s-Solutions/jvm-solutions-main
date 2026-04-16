@@ -99,6 +99,12 @@ const cs = {
         'Portál pro pacienty oftalmologické praxe NeoVize Group. Předoperační hodnocení, správa souhlasů a produktové portály NeoVize, DuoVize, NeoVizia a Kukátko — s vlastním modrým a tyrkysovým designovým systémem.',
       category: 'Zdravotnictví + Frontend',
     },
+    adentics: {
+      title: 'Adentics — Zubní pacientský portál',
+      description:
+        'Multi-site pacientský portál pro německy mluvící trhy. Jednotná křížová identita klinik, přehledy léčby, objednávání termínů, retence pacientů a sledování rodinných doporučení — nasazeno na Azure Static Web Apps.',
+      category: 'Zdravotnictví + Frontend',
+    },
   },
   testimonials: {
     sectionLabel: 'Reference',
@@ -354,6 +360,34 @@ const cs = {
       metric2Label: 'pro všechny mody',
       metric3Val: '6 týdnů',
       metric3Label: 'od konceptu k live MVP',
+    },
+    adentics: {
+      subtitle: 'Prémiový multi-site pacientský portál pro německy mluvící zubní skupinu',
+      timeline: '8 týdnů',
+      problem:
+        'Zubní skupina s více pobočkami v německy mluvících městech neměla jednotný digitální zážitek pro pacienty. Každá klinika fungovala samostatně — oddělené objednávkové systémy, žádná sdílená historie léčby a žádný strukturovaný retenční proces. Pacienti odcházeli bez následné péče a personál neměl centrální přehled fronty.',
+      solution:
+        'Vytvořili jsme Adentics v Angular: cross-site portál, kde se pacienti přihlásí jednou a přistupují k celé historii léčby napříč všemi pobočkami. Pět pacientských modulů: Treatment Timeline, Termine (objednávání), Nachrichten (zprávy), Family & Referrals a Academy. Admin strana nabízí Treatment Queue pro personál. Prémiový design v tyrkysové a zlaté. Nasazeno na Azure Static Web Apps.',
+      metric1Val: '1 přihlášení',
+      metric1Label: 'pro všechny pobočky',
+      metric2Val: '5 modulů',
+      metric2Label: 'pro pacienty',
+      metric3Val: '8 týdnů',
+      metric3Label: 'od konceptu k portálu',
+    },
+    neovize: {
+      subtitle: 'Pacientský portál pro multi-produktovou oftalmologickou praxi NeoVize Group',
+      timeline: '8 týdnů',
+      problem:
+        'NeoVize Group provozuje čtyři různé oftalmologické produktové značky — NeoVize (prémiová laserová korekce), DuoVize (balíčky duetního vidění), NeoVizia (výměna IOL) a Kukátko (dětské vidění) — každá s vlastními souhlasy a předoperačními hodnotícími procesy. Bez jednotné platformy koordinátoři pacientů spravovali papírové formuláře a e-mailové vlákna pro každý produkt, což způsobovalo prodlevy, compliance rizika a roztříštěný zážitek pacienta.',
+      solution:
+        'Vytvořili jsme jednotný Angular portál pro pacienty, který se přizpůsobuje každé značce. Pacienti si při přihlášení zvolí produktový portál a projdou strukturovaným digitálním předoperačním hodnocením — nahrávání biometrických údajů, zdravotní dotazník a souhlasy s elektronickým podpisem. Vlastní modrý a tyrkysový designový systém odpovídá klinické identitě NeoVize Group napříč všemi čtyřmi značkami, zatímco koordinátoři sledují nevyřízená hodnocení ze sdíleného dashboardu.',
+      metric1Val: '4',
+      metric1Label: 'portálů sjednoceno',
+      metric2Val: '100 %',
+      metric2Label: 'digitální souhlas',
+      metric3Val: '8 týdnů',
+      metric3Label: 'od konceptu k živému portálu',
     },
   },
 } as const;

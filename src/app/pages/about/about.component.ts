@@ -37,7 +37,7 @@ export class AboutComponent {
       roleKey: 'about.michael.role',
       bioKey: 'about.michael.bio',
       linkedin: 'https://www.linkedin.com/in/michael-chaban/',
-      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQGUY89Kpcck2A/profile-displayphoto-crop_800_800/B4DZ2CpMucIAAI-/0/1776013334382?e=1777507200&v=beta&t=kGRtCufJ--JkoP5q0O0i2tzFOyX3XzjX0xOmfXCvXxc',
+      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHRCYo7tlGUkw/profile-displayphoto-crop_800_800/B4DZ2QmhQKHMAI-/0/1776247513036?e=1778112000&v=beta&t=JamnnXEfL6pgkof1__NQyBx5tfsQdF0NFf64geca-P0',
     },
   ];
 }
