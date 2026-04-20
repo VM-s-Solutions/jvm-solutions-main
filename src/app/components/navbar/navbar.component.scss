@@ -10,6 +10,7 @@
   z-index: $z-nav;
   transition: background $transition-slow, border-color $transition-slow, transform $transition-base;
   border-bottom: 1px solid transparent;
+  will-change: transform;
 
   &.scrolled {
     @include glass(rgba(9, 9, 15, 0.9));
@@ -173,25 +174,30 @@
   // ── Mobile Menu ───────────────────────────────────────────────────────────
   &__mobile {
     display: none;
-    max-height: 0;
-    overflow: hidden;
-    background: rgba($bg-primary, 0.97);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: max-height $transition-slow, padding $transition-slow;
 
     @include max-lg {
       display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba($bg-primary, 0.98);
+      border-bottom: 1px solid $border-color;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     &.is-open {
-      max-height: 600px;
-      padding-bottom: $space-4;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     ul {
       list-style: none;
-      padding: $space-4 $space-6;
+      padding: $space-4 $space-6 $space-6;
       display: flex;
       flex-direction: column;
       gap: $space-2;

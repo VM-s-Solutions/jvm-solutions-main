@@ -58,11 +58,11 @@ export class NavbarComponent {
 
         this.scrolled.set(y > 32);
 
-        if (y <= 50) {
+        if (y <= 60) {
           this.hidden.set(false);
-        } else if (!this.menuOpen() && delta > 4) {
+        } else if (!this.menuOpen() && y > 120 && delta > 6) {
           this.hidden.set(true);
-        } else if (delta < -4) {
+        } else if (delta < -6) {
           this.hidden.set(false);
         }
       };
