@@ -23,22 +23,6 @@
     <div style="min-height:180px"></div>
   }
 
-  <div id="portfolio">
-    @defer (on viewport; on idle) {
-      <app-portfolio />
-    } @placeholder {
-      <div style="min-height:700px"></div>
-    }
-  </div>
-
-  <div id="testimonials">
-    @defer (on viewport; on idle) {
-      <app-testimonials />
-    } @placeholder {
-      <div style="min-height:580px"></div>
-    }
-  </div>
-
   @defer (on viewport; on idle) {
     <app-faq />
   } @placeholder {

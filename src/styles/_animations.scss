@@ -11,6 +11,16 @@
   66%       { transform: translateY(8px) rotate(1deg); }
 }
 
+@keyframes float-card {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes float-icon {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-4px) scale(1.08); }
+}
+
 // ─── Gradient Shift ───────────────────────────────────────────────────────────
 @keyframes gradient-shift {
   0%   { background-position: 0% 50%; }

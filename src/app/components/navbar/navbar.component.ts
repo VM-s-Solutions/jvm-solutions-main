@@ -34,9 +34,7 @@ export class NavbarComponent {
 
   readonly navLinks: { label: string; fragment?: string; routerLink?: string }[] = [
     { label: 'nav.services', fragment: 'services' },
-    { label: 'nav.work', fragment: 'portfolio' },
-    { label: 'nav.testimonials', fragment: 'testimonials' },
-    { label: 'nav.pricing', routerLink: '/pricing' },
+{ label: 'nav.pricing', routerLink: '/pricing' },
     { label: 'nav.about', routerLink: '/about' },
   ];
 

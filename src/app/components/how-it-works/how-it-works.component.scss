@@ -56,39 +56,33 @@
   line-height: 1.65;
 }
 
-// ── Steps row ─────────────────────────────────────────────────────────────────
+// ── Steps column ──────────────────────────────────────────────────────────────
 .process__steps {
   display: flex;
   flex-direction: column;
-  gap: $space-4;
-
-  @include md {
-    display: grid;
-    // 4 cards (1fr each) separated by 3 auto-width connectors
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-    grid-template-rows: 1fr;
-    align-items: stretch;
-    gap: 0;
-  }
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-// ── Connector arrow ───────────────────────────────────────────────────────────
-.process__connector {
+// ── Dot spacer ────────────────────────────────────────────────────────────────
+.process__spacer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: $text-muted;
+  gap: $space-2;
+  padding: $space-4 0;
+}
 
-  // vertical arrow on mobile
-  transform: rotate(90deg);
-  padding: $space-2 0;
+.process__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $purple;
+  opacity: 0.3;
+  animation: pulse-glow 2s ease-in-out infinite;
 
-  @include md {
-    transform: none;
-    padding: 0 $space-2;
-    // grid places connector in its auto column; center it vertically
-    align-self: center;
-  }
+  &:nth-child(2) { animation-delay: 0.35s; }
+  &:nth-child(3) { animation-delay: 0.7s; }
 }
 
 // ── Single step card ──────────────────────────────────────────────────────────
@@ -101,13 +95,17 @@
   gap: $space-3;
   position: relative;
   overflow: hidden;
+  width: 80%;
 
-  // stagger
-  @for $i from 1 through 4 {
-    &:nth-child(#{$i * 2 - 1}) {
-      transition-delay: #{($i - 1) * 100}ms;
-    }
+  &--right {
+    align-self: flex-end;
   }
+
+  // Float after reveal — each step gets its own cadence
+  &:nth-child(1).revealed { animation: float-card 4.2s ease-in-out 0.7s infinite; }
+  &:nth-child(3).revealed { animation: float-card 3.8s ease-in-out 1.0s infinite; }
+  &:nth-child(5).revealed { animation: float-card 4.5s ease-in-out 0.8s infinite; }
+  &:nth-child(7).revealed { animation: float-card 4.0s ease-in-out 1.2s infinite; }
 }
 
 .process__step-icon {
@@ -121,6 +119,7 @@
   justify-content: center;
   color: $purple-light;
   flex-shrink: 0;
+  box-shadow: 0 0 12px rgba($purple, 0.15);
 
   span {
     display: flex;
@@ -129,6 +128,12 @@
     line-height: 0;
   }
 }
+
+// Each icon floats with a unique offset so they never sync up
+.process__step:nth-child(1) .process__step-icon { animation: float-icon 3.6s ease-in-out 0.0s infinite; }
+.process__step:nth-child(3) .process__step-icon { animation: float-icon 4.1s ease-in-out 0.8s infinite; }
+.process__step:nth-child(5) .process__step-icon { animation: float-icon 3.4s ease-in-out 0.4s infinite; }
+.process__step:nth-child(7) .process__step-icon { animation: float-icon 4.3s ease-in-out 1.2s infinite; }
 
 .process__step-num {
   font-family: $font-heading;
