@@ -71,9 +71,6 @@
       transform: rotate(180deg);
     }
 
-    .faq__answer {
-      max-height: 320px;
-    }
   }
 }
 
@@ -112,7 +109,8 @@
 // ── Answer ────────────────────────────────────────────────────────────────────
 .faq__answer {
   overflow: hidden;
-  max-height: 0;
+  height: 0;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq__answer-inner {
