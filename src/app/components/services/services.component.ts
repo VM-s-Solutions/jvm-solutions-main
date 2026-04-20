@@ -48,7 +48,7 @@ export class ServicesComponent {
         titleKey: 'services.mobile.title',
         descriptionKey: 'services.mobile.description',
         icon: safe(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" stroke-linecap="round"/></svg>`),
-        tags: ['Flutter', 'Swift', 'iOS', 'Android'],
+        tags: ['Kotlin', 'Swift', 'iOS', 'Android'],
         accent: 'purple',
       },
       {
@@ -56,7 +56,7 @@ export class ServicesComponent {
         titleKey: 'services.ai.title',
         descriptionKey: 'services.ai.description',
         icon: safe(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 0 6h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1 0-6h1V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1" fill="currentColor" stroke="none"/></svg>`),
-        tags: ['OpenAI', 'LangChain', 'Python', 'Agents'],
+        tags: ['Claude', 'LangChain', 'Python', 'Agents'],
         accent: 'green',
       },
     ];
