@@ -3,10 +3,11 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { filter, fromEvent } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ScrollService } from './services/scroll.service';
+import { ScrollFlareComponent } from './components/scroll-flare/scroll-flare.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ScrollFlareComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

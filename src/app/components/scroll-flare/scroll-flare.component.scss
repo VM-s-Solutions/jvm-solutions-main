@@ -1,0 +1,36 @@
+@use '../../../styles/variables' as *;
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  contain: layout;
+}
+
+.node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  margin-left: -55px;
+  margin-top: -55px;
+  will-change: transform;
+  opacity: 0.38;
+  filter:
+    drop-shadow(0 0 8px  rgba(139, 92, 246, 0.8))
+    drop-shadow(0 0 24px rgba(139, 92, 246, 0.35))
+    drop-shadow(0 0 50px rgba(16, 185, 129, 0.18));
+
+  svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host { display: none; }
+}

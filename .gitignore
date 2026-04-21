@@ -44,3 +44,7 @@ Thumbs.db
 api/local.settings.json
 api/dist
 api/node_modules
+
+
+.nx/cache
+.nx/workspace-data
