@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { TypewriterService } from '../../services/typewriter.service';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'jvm-hero',
   standalone: true,
   imports: [RouterLink, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

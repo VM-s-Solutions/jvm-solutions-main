@@ -6,7 +6,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
-  selector: 'app-privacy',
+  selector: 'jvm-privacy',
   standalone: true,
   imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,

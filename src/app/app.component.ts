@@ -6,7 +6,7 @@ import { ScrollService } from './services/scroll.service';
 import { ScrollFlareComponent } from './components/scroll-flare/scroll-flare.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'jvm-root',
   imports: [RouterOutlet, ScrollFlareComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

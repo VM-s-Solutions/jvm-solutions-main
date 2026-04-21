@@ -11,7 +11,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-scroll-flare',
+  selector: 'jvm-scroll-flare',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

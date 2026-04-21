@@ -17,7 +17,7 @@ interface PricingTier {
 }
 
 @Component({
-  selector: 'app-pricing',
+  selector: 'jvm-pricing',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],

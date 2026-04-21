@@ -13,7 +13,7 @@ interface Service {
 }
 
 @Component({
-  selector: 'app-services',
+  selector: 'jvm-services',
   standalone: true,
   imports: [ScrollRevealDirective, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

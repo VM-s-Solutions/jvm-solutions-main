@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
 @Component({
-  selector: 'app-contact-cta',
+  selector: 'jvm-contact-cta',
   standalone: true,
   imports: [RouterLink, ScrollRevealDirective, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

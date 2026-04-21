@@ -11,7 +11,7 @@ interface Step {
 }
 
 @Component({
-  selector: 'app-how-it-works',
+  selector: 'jvm-how-it-works',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, ScrollRevealDirective],

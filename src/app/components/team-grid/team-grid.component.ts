@@ -12,7 +12,7 @@ export interface TeamMember {
 }
 
 @Component({
-  selector: 'app-team-grid',
+  selector: 'jvm-team-grid',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, ScrollRevealDirective],

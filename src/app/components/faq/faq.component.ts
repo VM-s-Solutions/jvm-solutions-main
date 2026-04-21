@@ -8,7 +8,7 @@ interface FaqItem {
 }
 
 @Component({
-  selector: 'app-faq',
+  selector: 'jvm-faq',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, ScrollRevealDirective],

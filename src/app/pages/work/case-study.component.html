@@ -1,4 +1,4 @@
-<app-navbar />
+<jvm-navbar />
 
 @if (project(); as p) {
   <main id="main-content" class="case-study">
@@ -92,7 +92,7 @@
 } @else {
   <!-- 404 state -->
   <main class="case-study case-study--not-found container">
-    <app-navbar />
+    <jvm-navbar />
     <div class="case-study__not-found">
       <h1>{{ 'work.notFound' | translate }}</h1>
       <a routerLink="/" class="btn-primary">{{ 'work.back' | translate }}</a>
@@ -101,7 +101,7 @@
 }
 
 @defer (on viewport; prefetch on idle) {
-  <app-footer />
+  <jvm-footer />
 } @placeholder {
   <div style="min-height:300px"></div>
 }

@@ -9,7 +9,7 @@ import { ContactCtaComponent } from '../../components/contact-cta/contact-cta.co
 import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'jvm-home',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [

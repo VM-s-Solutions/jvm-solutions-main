@@ -51,7 +51,7 @@ function whenTurnstileReady(callback: () => void): () => void {
 }
 
 @Component({
-  selector: 'app-turnstile',
+  selector: 'jvm-turnstile',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div #container></div>`,

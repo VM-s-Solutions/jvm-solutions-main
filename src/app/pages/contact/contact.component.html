@@ -1,4 +1,4 @@
-<app-navbar />
+<jvm-navbar />
 
 <main id="main-content" class="contact-page">
   <!-- Background decorations -->
@@ -184,7 +184,7 @@
 
           <!-- CAPTCHA -->
           <div class="contact-form__captcha">
-            <app-turnstile
+            <jvm-turnstile
               [siteKey]="turnstileSiteKey"
               (resolved)="captchaToken.set($event); captchaMissing.set(false)"
             />
@@ -233,7 +233,7 @@
 </main>
 
 @defer (on viewport; prefetch on idle) {
-  <app-footer />
+  <jvm-footer />
 } @placeholder {
   <div style="min-height:300px"></div>
 }

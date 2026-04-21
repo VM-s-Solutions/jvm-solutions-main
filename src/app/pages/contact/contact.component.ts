@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'jvm-contact',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink, NavbarComponent, FooterComponent, TranslateModule, TurnstileComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

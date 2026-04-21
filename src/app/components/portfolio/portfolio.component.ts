@@ -17,7 +17,7 @@ interface Project {
 }
 
 @Component({
-  selector: 'app-portfolio',
+  selector: 'jvm-portfolio',
   standalone: true,
   imports: [ScrollRevealDirective, TranslateModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,

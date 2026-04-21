@@ -1,42 +1,42 @@
-<app-navbar />
+<jvm-navbar />
 
 <main id="main-content">
-  <app-hero />
+  <jvm-hero />
 
   <div id="services">
-    @defer (on viewport; on idle) {
-      <app-services />
+    @defer (on viewport; prefetch on idle) {
+      <jvm-services />
     } @placeholder {
       <div style="min-height:700px"></div>
     }
   </div>
 
-  @defer (on viewport; on idle) {
-    <app-how-it-works />
+  @defer (on viewport) {
+    <jvm-how-it-works />
   } @placeholder {
     <div style="min-height:500px"></div>
   }
 
-  @defer (on viewport; on idle) {
-    <app-stats />
+  @defer (on viewport) {
+    <jvm-stats />
   } @placeholder {
     <div style="min-height:180px"></div>
   }
 
-  @defer (on viewport; on idle) {
-    <app-faq />
+  @defer (on viewport) {
+    <jvm-faq />
   } @placeholder {
     <div style="min-height:480px"></div>
   }
 
-  @defer (on viewport; on idle) {
-    <app-contact-cta />
+  @defer (on viewport) {
+    <jvm-contact-cta />
   } @placeholder {
     <div style="min-height:300px"></div>
   }
 
-  @defer (on viewport; on idle) {
-    <app-footer />
+  @defer (on viewport) {
+    <jvm-footer />
   } @placeholder {
     <div style="min-height:300px"></div>
   }

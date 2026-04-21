@@ -30,7 +30,7 @@
     }
   },
   "sourceRoot": "src",
-  "prefix": "app",
+  "prefix": "jvm",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",

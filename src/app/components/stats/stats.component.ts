@@ -9,7 +9,7 @@ interface Stat {
 }
 
 @Component({
-  selector: 'app-stats',
+  selector: 'jvm-stats',
   standalone: true,
   imports: [TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -18,7 +18,7 @@ interface ClientLogo {
 }
 
 @Component({
-  selector: 'app-testimonials',
+  selector: 'jvm-testimonials',
   standalone: true,
   imports: [ScrollRevealDirective, TranslateModule, NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,4 @@
-<app-navbar />
+<jvm-navbar />
 
 <main id="main-content" class="about-page">
 
@@ -22,13 +22,13 @@
     </header>
 
     <!-- Team grid -->
-    <app-team-grid [members]="team" />
+    <jvm-team-grid [members]="team" />
 
   </div>
 </main>
 
 @defer (on viewport; prefetch on idle) {
-  <app-footer />
+  <jvm-footer />
 } @placeholder {
   <div style="min-height:300px"></div>
 }

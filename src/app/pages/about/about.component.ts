@@ -6,7 +6,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 import { TeamGridComponent, TeamMember } from '../../components/team-grid/team-grid.component';
 
 @Component({
-  selector: 'app-about',
+  selector: 'jvm-about',
   standalone: true,
   imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, TeamGridComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

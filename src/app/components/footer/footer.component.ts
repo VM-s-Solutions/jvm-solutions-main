@@ -10,7 +10,7 @@ interface FooterLink {
 }
 
 @Component({
-  selector: 'app-footer',
+  selector: 'jvm-footer',
   standalone: true,
   imports: [RouterLink, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

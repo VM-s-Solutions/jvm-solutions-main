@@ -9,7 +9,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 import { ProjectsService, CaseStudy } from '../../services/projects.service';
 
 @Component({
-  selector: 'app-case-study',
+  selector: 'jvm-case-study',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],
