@@ -199,18 +199,18 @@ const en = {
     titleGrad: 'team',
     titlePart2: 'behind JVM',
     description:
-      'We are three developers united by a shared passion for building world-class digital products. Every line of code we write is driven by craftsmanship, performance, and lasting impact.',
+      'Two engineers and a business mind united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.',
     janis: {
-      role: 'Co-founder & Full-stack Developer',
-      bio: 'Passionate about building scalable web applications and delivering exceptional user experiences.',
+      role: 'Co-founder & Managing Director',
+      bio: 'Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds.',
     },
     vit: {
-      role: 'Co-founder & Full-stack Developer',
-      bio: 'Specializes in crafting pixel-perfect interfaces and performant frontend architectures.',
+      role: 'Co-founder & Full-stack Engineer',
+      bio: 'Builds across the full stack — Angular frontends, .NET backends, and native mobile in Swift and Kotlin. Obsessed with performance and clean architecture.',
     },
     michael: {
       role: 'Co-founder & Full-stack Engineer',
-      bio: 'Expert in backend systems, APIs, and mobile development with a focus on scalability.',
+      bio: 'Full-stack across Angular, .NET, Swift, and Kotlin. Brings engineering precision to every layer — from data model to polished mobile UI.',
     },
   },
   process: {

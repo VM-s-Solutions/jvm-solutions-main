@@ -175,18 +175,18 @@
     "titlePart1": "Poznejte",
     "titleGrad": "tým",
     "titlePart2": "za JVM",
-    "description": "Jsme tři vývojáři spojení společnou vášní pro tvorbu digitálních produktů světové úrovně. Každý řádek kódu, který napíšeme, je řízen řemeslností, výkonem a trvalým dopadem.",
+    "description": "Dva inženýři a jeden businessman spojení jediným cílem: dodávat software, na který se klienti mohou spolehnout. Technická hloubka a obchodní jasnost — každý projekt, včas a v rozpočtu.",
     "janis": {
-      "role": "Spoluzakladatel & Full-stack Developer",
-      "bio": "Vášeň pro tvorbu škálovatelných webových aplikací a poskytování výjimečných uživatelských zážitků."
+      "role": "Spoluzakladatel & jednatel",
+      "bio": "Řídí klientské vztahy, dodávku projektů a rozvoj obchodu. Překlenovací článek mezi tím, co klienti potřebují, a tím, co tým dokáže postavit."
     },
     "vit": {
-      "role": "Spoluzakladatel & Full-stack Developer",
-      "bio": "Specializuje se na tvorbu pixel-perfect rozhraní a výkonných frontendových architektur."
+      "role": "Spoluzakladatel & full-stack inženýr",
+      "bio": "Staví napříč celým stackem — Angular frontendy, .NET backendy a nativní mobilní aplikace ve Swift a Kotlinu. Posedlý výkonem a čistou architekturou."
     },
     "michael": {
-      "role": "Spoluzakladatel & Full-stack Engineer",
-      "bio": "Odborník na backendové systémy, API a mobilní vývoj se zaměřením na škálovatelnost."
+      "role": "Spoluzakladatel & full-stack inženýr",
+      "bio": "Full-stack přes Angular, .NET, Swift a Kotlin. Přináší technickou preciznost na každou vrstvu — od datového modelu po vybroušené mobilní UI."
     }
   },
   "process": {
