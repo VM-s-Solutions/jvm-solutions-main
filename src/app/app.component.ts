@@ -3,6 +3,7 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { filter, fromEvent } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ScrollService } from './services/scroll.service';
+import { SmoothScrollService } from './services/smooth-scroll.service';
 import { ScrollFlareComponent } from './components/scroll-flare/scroll-flare.component';
 
 @Component({
@@ -14,10 +15,13 @@ import { ScrollFlareComponent } from './components/scroll-flare/scroll-flare.com
 export class AppComponent {
   private readonly router = inject(Router);
   private readonly scrollService = inject(ScrollService);
+  private readonly smoothScroll = inject(SmoothScrollService);
 
   readonly showScrollTop = signal(false);
 
   constructor() {
+    this.smoothScroll.init();
+
     fromEvent(window, 'scroll')
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.showScrollTop.set(window.scrollY > 400));

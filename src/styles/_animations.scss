@@ -133,10 +133,10 @@
 }
 
 // ─── Route Transition ─────────────────────────────────────────────────────────
-// Plays fade-in when a route component mounts. Targets the activated component
-// element that Angular inserts as a sibling of <router-outlet> inside <main>.
+// Transform-only so opacity stays 1 at t=0 — avoids hiding the LCP element
+// (h1 headline) behind an opacity:0 ancestor during the animation fill phase.
 main > :not(router-outlet) {
-  animation: fade-in 200ms ease-out both;
+  animation: slide-in-up 200ms ease-out both;
 }
 
 // ─── Reduced Motion ──────────────────────────────────────────────────────────

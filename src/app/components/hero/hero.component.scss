@@ -40,6 +40,8 @@
       top: -100px;
       left: -100px;
       animation: float 8s ease-in-out infinite;
+      // Hide on mobile — 120px blur is a significant GPU raster cost before LCP
+      @include max-md { display: none; }
       // 2× DPR: same perceived softness at ¼ the GPU raster cost
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) { filter: blur(60px); }
     }
