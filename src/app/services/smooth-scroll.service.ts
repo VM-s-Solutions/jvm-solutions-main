@@ -11,14 +11,15 @@ export class SmoothScrollService {
 
   private targetY = 0;
   private currentY = 0;
+  private startY = 0;
+  private startTime = 0;
+  private needsRestart = false;
   private rafId: number | null = null;
-  private lastTime = 0;
 
-  // Reference lerp factor at 60 fps. Lower = longer, silkier deceleration tail.
-  // 0.08 gives ~1 s of glide after the last wheel event at 60 Hz.
-  private readonly LERP = 0.08;
-  // Clamp the pixel displacement added by a single wheel event.
-  // Prevents one aggressive notch from teleporting the view instead of gliding.
+  // Duration of the ease-out deceleration after the last wheel event (ms).
+  // 500 ms gives a silky tail without feeling like the content lags behind input.
+  private readonly DURATION = 500;
+  // Clamp per-event delta so aggressive spinning accumulates smoothly.
   private readonly MAX_DELTA = 300;
 
   init(): void {
@@ -43,57 +44,66 @@ export class SmoothScrollService {
     ).subscribe(() => {
       this.targetY = 0;
       this.currentY = 0;
-      this.lastTime = 0;
+      this.startY = 0;
+      this.needsRestart = false;
     });
   }
 
   private handleWheel(e: WheelEvent): void {
     if (this.isInsideScrollable(e.target as Element)) return;
 
-    // Re-sync if anchor click or programmatic scroll moved the page externally
+    // Re-sync if anchor click or programmatic scroll moved the page externally.
     const actual = window.scrollY;
     if (Math.abs(actual - this.currentY) > 60) {
       this.targetY = actual;
       this.currentY = actual;
     }
 
+    // Safari fires non-cancelable wheel events during its inertia phase.
+    // Calling preventDefault on those silently fails and lets native scroll
+    // fight our animation, producing the double-scroll / tearing effect.
+    if (!e.cancelable) return;
     e.preventDefault();
 
     let delta = e.deltaY;
     if (e.deltaMode === WheelEvent.DOM_DELTA_LINE) delta *= 40;
     else if (e.deltaMode === WheelEvent.DOM_DELTA_PAGE) delta *= window.innerHeight;
-    // Clamp so fast spinning accumulates smoothly rather than jumping
     delta = Math.sign(delta) * Math.min(Math.abs(delta), this.MAX_DELTA);
 
     const maxY = document.documentElement.scrollHeight - window.innerHeight;
     this.targetY = Math.max(0, Math.min(this.targetY + delta, maxY));
+
+    // Signal tick() to capture the current visual position as the new animation
+    // origin and reset the ease-out timer. Done inside tick() so startY is snapped
+    // at the actual frame boundary — avoids a one-frame backward jump.
+    this.needsRestart = true;
 
     if (this.rafId === null) {
       this.rafId = requestAnimationFrame(this.tick);
     }
   }
 
-  // Arrow property so it can be passed directly to rAF without a wrapper closure.
   private readonly tick = (time: number): void => {
-    // Normalise dt to 60 fps so the lerp factor is screen-refresh-independent.
-    // A 120 Hz screen fires twice as many frames — without normalisation the
-    // scroll would feel twice as fast there as on a 60 Hz screen.
-    // Cap at 4× to absorb tab-visibility gaps without a sudden lurch.
-    const dt = this.lastTime
-      ? Math.min((time - this.lastTime) / (1000 / 60), 4)
-      : 1;
-    this.lastTime = time;
+    if (this.needsRestart) {
+      this.needsRestart = false;
+      this.startY = this.currentY; // origin = where content visually sits right now
+      this.startTime = time;
+    }
 
-    const alpha = 1 - Math.pow(1 - this.LERP, dt);
-    this.currentY += (this.targetY - this.currentY) * alpha;
+    const elapsed = time - this.startTime;
+    const t = Math.min(elapsed / this.DURATION, 1);
+    // Ease-out cubic: covers ~79 % of distance in the first half of the duration
+    // (fast initial response) then decelerates smoothly to a complete stop.
+    const eased = 1 - Math.pow(1 - t, 3);
 
-    if (Math.abs(this.targetY - this.currentY) > 0.5) {
-      window.scrollTo(0, this.currentY);
+    this.currentY = this.startY + (this.targetY - this.startY) * eased;
+    window.scrollTo(0, Math.round(this.currentY));
+
+    if (t < 1) {
       this.rafId = requestAnimationFrame(this.tick);
     } else {
-      window.scrollTo(0, this.targetY);
       this.currentY = this.targetY;
-      this.lastTime = 0;
+      this.startY = this.targetY;
       this.rafId = null;
     }
   };
