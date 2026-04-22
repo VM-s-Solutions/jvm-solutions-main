@@ -12,9 +12,14 @@ export class SmoothScrollService {
   private targetY = 0;
   private currentY = 0;
   private rafId: number | null = null;
+  private lastTime = 0;
 
-  // 10% of remaining distance per frame — smooth deceleration without overshoot
-  private readonly LERP = 0.1;
+  // Reference lerp factor at 60 fps. Lower = longer, silkier deceleration tail.
+  // 0.08 gives ~1 s of glide after the last wheel event at 60 Hz.
+  private readonly LERP = 0.08;
+  // Clamp the pixel displacement added by a single wheel event.
+  // Prevents one aggressive notch from teleporting the view instead of gliding.
+  private readonly MAX_DELTA = 300;
 
   init(): void {
     if (typeof window === 'undefined') return;
@@ -32,21 +37,20 @@ export class SmoothScrollService {
       });
     });
 
-    // Reset after router navigation so scroll-position-restoration's scrollTo(0,0)
-    // doesn't fight our interpolated currentY on the next wheel event.
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd),
       takeUntilDestroyed(this.destroyRef),
     ).subscribe(() => {
       this.targetY = 0;
       this.currentY = 0;
+      this.lastTime = 0;
     });
   }
 
   private handleWheel(e: WheelEvent): void {
     if (this.isInsideScrollable(e.target as Element)) return;
 
-    // Re-sync if an anchor click or programmatic scroll moved the page externally
+    // Re-sync if anchor click or programmatic scroll moved the page externally
     const actual = window.scrollY;
     if (Math.abs(actual - this.currentY) > 60) {
       this.targetY = actual;
@@ -58,6 +62,8 @@ export class SmoothScrollService {
     let delta = e.deltaY;
     if (e.deltaMode === WheelEvent.DOM_DELTA_LINE) delta *= 40;
     else if (e.deltaMode === WheelEvent.DOM_DELTA_PAGE) delta *= window.innerHeight;
+    // Clamp so fast spinning accumulates smoothly rather than jumping
+    delta = Math.sign(delta) * Math.min(Math.abs(delta), this.MAX_DELTA);
 
     const maxY = document.documentElement.scrollHeight - window.innerHeight;
     this.targetY = Math.max(0, Math.min(this.targetY + delta, maxY));
@@ -67,8 +73,19 @@ export class SmoothScrollService {
     }
   }
 
-  private readonly tick = (): void => {
-    this.currentY += (this.targetY - this.currentY) * this.LERP;
+  // Arrow property so it can be passed directly to rAF without a wrapper closure.
+  private readonly tick = (time: number): void => {
+    // Normalise dt to 60 fps so the lerp factor is screen-refresh-independent.
+    // A 120 Hz screen fires twice as many frames — without normalisation the
+    // scroll would feel twice as fast there as on a 60 Hz screen.
+    // Cap at 4× to absorb tab-visibility gaps without a sudden lurch.
+    const dt = this.lastTime
+      ? Math.min((time - this.lastTime) / (1000 / 60), 4)
+      : 1;
+    this.lastTime = time;
+
+    const alpha = 1 - Math.pow(1 - this.LERP, dt);
+    this.currentY += (this.targetY - this.currentY) * alpha;
 
     if (Math.abs(this.targetY - this.currentY) > 0.5) {
       window.scrollTo(0, this.currentY);
@@ -76,12 +93,11 @@ export class SmoothScrollService {
     } else {
       window.scrollTo(0, this.targetY);
       this.currentY = this.targetY;
+      this.lastTime = 0;
       this.rafId = null;
     }
   };
 
-  // Skip interception for elements that own their own scroll axis
-  // (e.g. a horizontally-scrolling carousel track).
   private isInsideScrollable(el: Element | null): boolean {
     while (el && el !== document.body) {
       const { overflowY, overflowX } = getComputedStyle(el);
