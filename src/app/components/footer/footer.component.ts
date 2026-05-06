@@ -24,12 +24,9 @@ export class FooterComponent {
   readonly year = new Date().getFullYear();
 
   readonly footerLinks: FooterLink[] = [
-    { label: 'nav.services',    fragment: 'services' },
-    { label: 'nav.work',        fragment: 'portfolio' },
-    { label: 'nav.testimonials', fragment: 'testimonials' },
-    { label: 'nav.about',       routerLink: '/about' },
-    { label: 'nav.contact',     routerLink: '/contact' },
-    { label: 'footer.privacy',  routerLink: '/privacy' },
+    { label: 'nav.services', fragment: 'services' },
+    { label: 'nav.pricing',  routerLink: '/pricing' },
+    { label: 'nav.about',    routerLink: '/about' },
   ];
 
   scrollToSection(fragment: string, event: MouseEvent): void {

@@ -2,7 +2,7 @@
 @use '../../../styles/mixins' as *;
 
 .testimonials {
-  background: linear-gradient(180deg, $bg-primary 0%, rgba($purple, 0.03) 50%, $bg-primary 100%);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba($purple, 0.03) 50%, var(--bg-primary) 100%);
   @include section-padding;
 
   &__header {
@@ -50,7 +50,7 @@
 
   // ── Quote ─────────────────────────────────────────────────────────────────
   &__quote {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-base;
     line-height: 1.75;
     flex: 1;
@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     gap: $space-4;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid var(--border-color);
     padding-top: $space-6;
   }
 
@@ -95,12 +95,12 @@
     font-style: normal;
     font-weight: 600;
     font-size: $text-sm;
-    color: $text-primary;
+    color: var(--text-primary);
   }
 
   &__role {
     font-size: $text-xs;
-    color: $text-muted;
+    color: var(--text-muted);
     margin-top: 2px;
   }
 
@@ -111,9 +111,9 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    color: $text-muted;
-    background: $bg-surface;
-    border: 1px solid $border-color;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     text-decoration: none;
     flex-shrink: 0;
     transition: color $transition-base, border-color $transition-base, background $transition-base;
@@ -132,7 +132,7 @@
   }
 
   &__clients-label {
-    color: $text-muted;
+    color: var(--text-muted);
     font-size: $text-sm;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -152,10 +152,10 @@
     align-items: center;
     justify-content: center;
     padding: $space-3 $space-6;
-    background: $bg-surface;
-    border: 1px solid $border-color;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: $radius-lg;
-    color: $text-muted;
+    color: var(--text-muted);
     font-family: $font-heading;
     font-weight: 600;
     font-size: $text-sm;
@@ -165,7 +165,7 @@
 
     &:hover {
       border-color: rgba($purple, 0.3);
-      color: $text-secondary;
+      color: var(--text-secondary);
     }
   }
 }

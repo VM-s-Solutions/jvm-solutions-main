@@ -73,12 +73,12 @@
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    color: $text-muted;
+    color: var(--text-muted);
     font-size: $text-sm;
     text-decoration: none;
     transition: color $transition-fast;
 
-    &:hover { color: $text-primary; }
+    &:hover { color: var(--text-primary); }
   }
 
   &__title {
@@ -88,7 +88,7 @@
   }
 
   &__description {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-lg;
     line-height: 1.7;
   }
@@ -98,8 +98,8 @@
     flex-direction: column;
     gap: $space-6;
     padding: $space-8;
-    background: $bg-surface;
-    border: 1px solid $border-color;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: $radius-xl;
     margin-top: $space-4;
   }
@@ -125,14 +125,14 @@
 
   &__label {
     font-size: $text-xs;
-    color: $text-muted;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: $space-1;
   }
 
   &__value {
-    color: $text-primary;
+    color: var(--text-primary);
     font-size: $text-sm;
     font-weight: 500;
     text-decoration: none;
@@ -145,8 +145,8 @@
 
 // ── Form Wrap ───────────────────────────────────────────────────────────────
 .contact-form-wrap {
-  background: $bg-surface;
-  border: 1px solid $border-color;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: $radius-2xl;
   padding: $space-6;
 
@@ -179,7 +179,7 @@
   }
 
   p {
-    color: $text-secondary;
+    color: var(--text-secondary);
     max-width: 360px;
 
     a {
@@ -241,31 +241,31 @@
   &__label {
     font-size: $text-sm;
     font-weight: 500;
-    color: $text-secondary;
+    color: var(--text-secondary);
     letter-spacing: 0.01em;
 
     span[aria-hidden] { color: $purple; }
   }
 
   &__optional {
-    color: $text-muted;
+    color: var(--text-muted);
     font-weight: 400;
     font-size: $text-xs;
   }
 
   %input-base {
     width: 100%;
-    background: $bg-elevated;
-    border: 1px solid $border-color;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
     border-radius: $radius-lg;
     padding: $space-3 $space-4;
-    color: $text-primary;
+    color: var(--text-primary);
     font-family: $font-body;
     font-size: $text-base;
     transition: border-color $transition-fast, box-shadow $transition-fast;
     outline: none;
 
-    &::placeholder { color: $text-muted; }
+    &::placeholder { color: var(--text-muted); }
 
     &:focus {
       border-color: $purple;
@@ -277,8 +277,8 @@
   &__select { @extend %input-base; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748B' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
 
     option {
-      background: $bg-surface;
-      color: $text-primary;
+      background: var(--bg-surface);
+      color: var(--text-primary);
     }
   }
   &__textarea { @extend %input-base; resize: vertical; min-height: 140px; }
@@ -305,7 +305,7 @@
     gap: $space-3;
     cursor: pointer;
     font-size: $text-sm;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.6;
 
     a {
@@ -314,7 +314,7 @@
       text-underline-offset: 2px;
       transition: color $transition-fast;
 
-      &:hover { color: $text-primary; }
+      &:hover { color: var(--text-primary); }
     }
   }
 

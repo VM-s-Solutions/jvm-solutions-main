@@ -24,6 +24,8 @@
   <!-- Locale preload: detect browser language early and prefetch the right translation
        file so it downloads in parallel with main.js instead of after Angular boots. -->
   <script>(function(){try{var s=localStorage.getItem('lang'),b=(navigator.language||'').split('-')[0].toLowerCase(),l=s&&['cs','sk','uk'].includes(s)?s:['cs','sk','uk'].includes(b)?b:null;if(l){var e=document.createElement('link');e.rel='preload';e.as='fetch';e.href='/i18n/'+l+'.json';e.crossOrigin='';document.head.appendChild(e);}}catch(e){}})();</script>
+  <!-- Theme: apply before first paint to prevent flash of wrong theme. Default is always dark. -->
+  <script>(function(){try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();</script>
   <!-- Fonts: preconnect first, then load async (non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

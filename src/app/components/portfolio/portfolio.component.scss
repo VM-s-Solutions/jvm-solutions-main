@@ -21,7 +21,7 @@
   }
 
   &__subtitle {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-lg;
     line-height: 1.7;
   }
@@ -57,8 +57,8 @@
   &__card {
     flex-shrink: 0;
     min-width: 0;
-    background: $bg-surface;
-    border: 1px solid $border-color;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     border-radius: $radius-xl;
     overflow: hidden;
     display: flex;
@@ -162,7 +162,7 @@
   }
 
   &__description {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-sm;
     line-height: 1.7;
     flex: 1;
@@ -183,11 +183,11 @@
 
   &__tag {
     padding: $space-1 $space-2;
-    background: rgba($border-light, 0.12);
-    border: 1px solid rgba($border-light, 0.25);
+    background: var(--border-light-12);
+    border: 1px solid var(--border-light-25);
     border-radius: $radius-sm;
     font-size: 11px;
-    color: $text-muted;
+    color: var(--text-muted);
     font-weight: 500;
 
     // ── Per-technology colours ─────────────────────────────────────────────
@@ -270,18 +270,18 @@
     width: 44px;
     height: 44px;
     border-radius: $radius-full;
-    background: $bg-surface;
-    border: 1px solid $border-color;
-    color: $text-secondary;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: background $transition-base, border-color $transition-base, color $transition-base, transform $transition-base;
     flex-shrink: 0;
 
     &:hover,
     &:focus-visible {
-      background: $bg-elevated;
+      background: var(--bg-elevated);
       border-color: rgba($purple, 0.5);
-      color: $text-primary;
+      color: var(--text-primary);
       transform: scale(1.08);
     }
 
@@ -301,7 +301,7 @@
     width: 8px;
     height: 8px;
     border-radius: $radius-full;
-    background: $border-color;
+    background: var(--border-color);
     border: none;
     cursor: pointer;
     padding: 0;
@@ -313,7 +313,7 @@
     }
 
     &:hover:not(&--active) {
-      background: $text-muted;
+      background: var(--text-muted);
       transform: scale(1.2);
     }
 
@@ -330,7 +330,7 @@
     justify-content: center;
     gap: $space-2;
     margin-top: -$space-2;
-    color: $text-muted;
+    color: var(--text-muted);
     animation: portfolio-hint-in 0.5s ease both;
     pointer-events: none;
 

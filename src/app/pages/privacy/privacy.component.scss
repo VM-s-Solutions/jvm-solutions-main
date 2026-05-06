@@ -69,20 +69,20 @@
     font-family: $font-heading;
     font-size: clamp($text-3xl, 5vw, $text-5xl);
     font-weight: 700;
-    color: $text-primary;
+    color: var(--text-primary);
     line-height: 1.15;
     margin-bottom: $space-3;
   }
 
   &__meta {
     font-size: $text-sm;
-    color: $text-muted;
+    color: var(--text-muted);
     margin-bottom: $space-6;
   }
 
   &__intro {
     font-size: $text-lg;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.7;
   }
 }
@@ -107,13 +107,13 @@
     font-family: $font-heading;
     font-size: $text-xl;
     font-weight: 600;
-    color: $text-primary;
+    color: var(--text-primary);
     margin-bottom: $space-4;
   }
 
   &__body {
     font-size: $text-base;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.75;
   }
 }
@@ -126,13 +126,13 @@
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    color: $text-muted;
+    color: var(--text-muted);
     font-size: $text-sm;
     text-decoration: none;
     transition: color $transition-fast;
 
     &:hover {
-      color: $text-primary;
+      color: var(--text-primary);
     }
   }
 }

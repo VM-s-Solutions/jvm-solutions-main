@@ -2,6 +2,7 @@ import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ScrollService } from '../../services/scroll.service';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'jvm-navbar',
@@ -17,6 +18,7 @@ import { ScrollService } from '../../services/scroll.service';
 })
 export class NavbarComponent {
   readonly translate = inject(TranslateService);
+  readonly themeService = inject(ThemeService);
   private readonly router = inject(Router);
   private readonly scrollService = inject(ScrollService);
   private readonly destroyRef = inject(DestroyRef);

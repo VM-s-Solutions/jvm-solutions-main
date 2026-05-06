@@ -2,7 +2,7 @@
 @use '../../../styles/mixins' as *;
 
 .footer {
-  border-top: 1px solid $border-color;
+  border-top: 1px solid var(--border-color);
   padding: $space-16 $space-6 $space-8;
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
@@ -12,7 +12,7 @@
     grid-template-columns: 1fr;
     gap: $space-10;
     padding-bottom: $space-12;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--border-color);
 
     @include md {
       grid-template-columns: 2fr 1fr 1fr;
@@ -43,13 +43,13 @@
   }
 
   &__logo-solutions {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-weight: 400;
     font-size: $text-base;
   }
 
   &__tagline {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-sm;
     line-height: 1.7;
   }
@@ -65,12 +65,12 @@
     width: 38px;
     height: 38px;
     border-radius: $radius-lg;
-    background: $bg-surface;
-    border: 1px solid $border-color;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $text-muted;
+    color: var(--text-muted);
     transition: border-color $transition-base, color $transition-base, background $transition-base;
 
     &:hover {
@@ -84,7 +84,7 @@
   &__nav-title {
     font-size: $text-sm;
     font-weight: 600;
-    color: $text-primary;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: $space-4;
@@ -98,12 +98,12 @@
   }
 
   &__link {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-sm;
     text-decoration: none;
     transition: color $transition-fast;
 
-    &:hover { color: $text-primary; }
+    &:hover { color: var(--text-primary); }
   }
 
   // ── Contact col ───────────────────────────────────────────────────────────
@@ -137,7 +137,7 @@
     gap: $space-4;
 
     p {
-      color: $text-secondary;
+      color: var(--text-secondary);
       font-size: $text-sm;
     }
   }
@@ -149,12 +149,12 @@
   }
 
   &__privacy-link {
-    color: $text-secondary;
+    color: var(--text-secondary);
     font-size: $text-sm;
     text-decoration: none;
     transition: color $transition-fast;
 
-    &:hover { color: $text-primary; }
+    &:hover { color: var(--text-primary); }
   }
 
   &__built {

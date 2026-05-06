@@ -11,7 +11,7 @@
 
 .section-label {
   display: inline-block;
-  color: $text-muted;
+  color: var(--text-muted);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -41,7 +41,7 @@
   font-family: $font-heading;
   font-size: clamp($text-4xl, 5.5vw, $text-6xl);
   font-weight: 700;
-  color: $text-primary;
+  color: var(--text-primary);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -56,10 +56,10 @@
 
 // ── Item ──────────────────────────────────────────────────────────────────────
 .faq__item {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid var(--border-color);
 
   &:first-child {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid var(--border-color);
   }
 
   &.is-open {
@@ -69,7 +69,7 @@
     }
 
     .faq__question {
-      color: $text-primary;
+      color: var(--text-primary);
     }
   }
 }
@@ -86,7 +86,7 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  color: $text-secondary;
+  color: var(--text-secondary);
   font-family: $font-body;
   font-size: $text-base;
   font-weight: 500;
@@ -96,13 +96,13 @@
   @include md { font-size: $text-lg; }
 
   &:hover {
-    color: $text-primary;
+    color: var(--text-primary);
   }
 }
 
 .faq__chevron {
   flex-shrink: 0;
-  color: $text-muted;
+  color: var(--text-muted);
   transition: transform $transition-base, color $transition-base;
 }
 
@@ -116,7 +116,7 @@
 .faq__answer-inner {
   p {
     font-size: $text-base;
-    color: $text-secondary;
+    color: var(--text-secondary);
     line-height: 1.75;
     padding-bottom: $space-6;
     max-width: 560px;

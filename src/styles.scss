@@ -4,6 +4,41 @@
 
 // Fonts are loaded async via <link> in index.html
 
+// ─── CSS Custom Properties (theme tokens) ─────────────────────────────────────
+// Dark is the default. Light overrides applied via [data-theme="light"] on <html>.
+:root {
+  --bg-primary:     #0A0A0A;
+  --bg-surface:     #111111;
+  --bg-elevated:    #181818;
+  --border-color:   #1C1C1C;
+  --border-light:   #282828;
+  --text-primary:   #F1F5F9;
+  --text-secondary: #8A9BB0;
+  --text-muted:     #606E7E;
+  // Pre-multiplied alpha variants used in rgba() contexts
+  --bg-primary-98:    rgba(10, 10, 10, 0.98);
+  --bg-primary-90:    rgba(10, 10, 10, 0.90);
+  --dot-color:        rgba(40, 40, 40, 0.4);
+  --border-light-12:  rgba(40, 40, 40, 0.12);
+  --border-light-25:  rgba(40, 40, 40, 0.25);
+}
+
+[data-theme="light"] {
+  --bg-primary:    #F8F8F8;
+  --bg-surface:    #FFFFFF;
+  --bg-elevated:   #F0F0F0;
+  --border-color:  #E5E5E5;
+  --border-light:  #DCDCDC;
+  --text-primary:  #0F0F0F;
+  --text-secondary:#3F3F46;
+  --text-muted:    #71717A;
+  --bg-primary-98:   rgba(248, 248, 248, 0.98);
+  --bg-primary-90:   rgba(248, 248, 248, 0.90);
+  --dot-color:       rgba(0, 0, 0, 0.07);
+  --border-light-12: rgba(0, 0, 0, 0.05);
+  --border-light-25: rgba(0, 0, 0, 0.09);
+}
+
 // ─── Reset & Base ─────────────────────────────────────────────────────────────
 *, *::before, *::after {
   box-sizing: border-box;
@@ -16,8 +51,8 @@ html {
 }
 
 body {
-  background-color: $bg-primary;
-  color: $text-primary;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: $font-body;
   font-size: $text-base;
   line-height: 1.6;
@@ -31,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-heading;
   font-weight: 600;
   line-height: 1.2;
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 a {
@@ -52,7 +87,7 @@ button {
 // ─── Selection ────────────────────────────────────────────────────────────────
 ::selection {
   background: rgba($red, 0.25);
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 // ─── Scrollbar ────────────────────────────────────────────────────────────────
@@ -61,11 +96,11 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: $bg-primary;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $border-light;
+  background: var(--border-light);
   border-radius: $radius-full;
 
   &:hover { background: $red; }
