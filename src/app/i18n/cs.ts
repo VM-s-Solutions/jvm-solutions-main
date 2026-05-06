@@ -24,7 +24,7 @@ const cs = {
       ai: 'AI automatizace',
     },
     description:
-      'JVM Solutions vytváří vysoce výkonné digitální produkty — od pixel-perfect frontendů po inteligentní backendy, multiplatformní mobilní aplikace a AI automatizaci transformující pracovní postupy.',
+      'JVM Yore vytváří vysoce výkonné digitální produkty — od pixel-perfect frontendů po inteligentní backendy, multiplatformní mobilní aplikace a AI automatizaci transformující pracovní postupy.',
     ctaPrimary: 'Zahájit projekt',
     ctaSecondary: 'Zobrazit naše práce',
     statsProjects: 'Dokončených projektů',
@@ -285,10 +285,10 @@ const cs = {
     title: 'Zásady ochrany soukromí',
     lastUpdated: 'Poslední aktualizace: duben 2026',
     intro:
-      'Tyto zásady ochrany soukromí vysvětlují, jak JVM Solutions shromažďuje, používá a chrání osobní údaje odeslané prostřednictvím tohoto webu. Jsme plně v souladu s nařízením GDPR.',
+      'Tyto zásady ochrany soukromí vysvětlují, jak JVM Yore shromažďuje, používá a chrání osobní údaje odeslané prostřednictvím tohoto webu. Jsme plně v souladu s nařízením GDPR.',
     controller: {
       title: 'Správce osobních údajů',
-      body: 'JVM Solutions je softwarová agentura se sídlem v České republice. V případě dotazů týkajících se ochrany osobních údajů nás kontaktujte na hello@jvm-solutions.dev.',
+      body: 'JVM Yore je softwarová agentura se sídlem v České republice. V případě dotazů týkajících se ochrany osobních údajů nás kontaktujte na hello@jvm-yore.com.',
     },
     dataCollected: {
       title: 'Jaké údaje shromažďujeme',
@@ -316,11 +316,11 @@ const cs = {
     },
     rights: {
       title: 'Vaše práva',
-      body: 'Podle GDPR máte právo na přístup ke svým osobním údajům, jejich opravu, výmaz a přenositelnost. Máte také právo na omezení zpracování nebo vznést námitku. Pro uplatnění těchto práv nás kontaktujte na hello@jvm-solutions.dev. Máte právo podat stížnost u Úřadu pro ochranu osobních údajů (ÚOOÚ).',
+      body: 'Podle GDPR máte právo na přístup ke svým osobním údajům, jejich opravu, výmaz a přenositelnost. Máte také právo na omezení zpracování nebo vznést námitku. Pro uplatnění těchto práv nás kontaktujte na hello@jvm-yore.com. Máte právo podat stížnost u Úřadu pro ochranu osobních údajů (ÚOOÚ).',
     },
     contact: {
       title: 'Kontakt',
-      body: 'Veškeré žádosti, dotazy nebo stížnosti týkající se ochrany osobních údajů zasílejte na hello@jvm-solutions.dev. Odpovíme do 30 dnů.',
+      body: 'Veškeré žádosti, dotazy nebo stížnosti týkající se ochrany osobních údajů zasílejte na hello@jvm-yore.com. Odpovíme do 30 dnů.',
     },
   },
   work: {

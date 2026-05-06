@@ -24,7 +24,7 @@ const en = {
       ai: 'AI Automation',
     },
     description:
-      'JVM Solutions builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.',
+      'JVM Yore builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.',
     ctaPrimary: 'Start a Project',
     ctaSecondary: 'View Our Work',
     statsProjects: 'Projects delivered',
@@ -434,10 +434,10 @@ const en = {
     title: 'Privacy Policy',
     lastUpdated: 'Last updated: April 2026',
     intro:
-      'This Privacy Policy explains how JVM Solutions collects, uses, and protects personal data submitted through this website. We are committed to transparency and full compliance with the EU General Data Protection Regulation (GDPR).',
+      'This Privacy Policy explains how JVM Yore collects, uses, and protects personal data submitted through this website. We are committed to transparency and full compliance with the EU General Data Protection Regulation (GDPR).',
     controller: {
       title: 'Data Controller',
-      body: 'JVM Solutions is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-solutions.dev.',
+      body: 'JVM Yore is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-yore.com.',
     },
     dataCollected: {
       title: 'What Data We Collect',
@@ -465,11 +465,11 @@ const en = {
     },
     rights: {
       title: 'Your Rights',
-      body: 'Under GDPR you have the right to access, rectify, erase, and port your personal data. You also have the right to restrict or object to processing. To exercise any of these rights, contact us at hello@jvm-solutions.dev. You have the right to lodge a complaint with the Czech Data Protection Authority (UOOU).',
+      body: 'Under GDPR you have the right to access, rectify, erase, and port your personal data. You also have the right to restrict or object to processing. To exercise any of these rights, contact us at hello@jvm-yore.com. You have the right to lodge a complaint with the Czech Data Protection Authority (UOOU).',
     },
     contact: {
       title: 'Contact',
-      body: 'For all data protection requests, questions, or complaints, please email us at hello@jvm-solutions.dev. We will respond within 30 days.',
+      body: 'For all data protection requests, questions, or complaints, please email us at hello@jvm-yore.com. We will respond within 30 days.',
     },
   },
 } as const;

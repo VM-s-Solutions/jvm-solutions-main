@@ -1,13 +1,6 @@
 <jvm-navbar />
 
 <main id="main-content" class="pricing-page">
-
-  <!-- Background orbs -->
-  <div class="pricing-page__bg" aria-hidden="true">
-    <div class="pricing-page__orb pricing-page__orb--purple"></div>
-    <div class="pricing-page__orb pricing-page__orb--green"></div>
-  </div>
-
   <div class="pricing-page__inner container">
 
     <!-- Page header -->
@@ -19,32 +12,28 @@
       <p class="pricing-header__subtitle">{{ 'pricing.subtitle' | translate }}</p>
     </header>
 
-    <!-- Tiers grid -->
-    <div class="pricing-grid">
+    <!-- Tiers -->
+    <div class="pricing-tiers" appScrollReveal revealClass="reveal">
       @for (tier of tiers; track tier.labelKey) {
-        <article
-          class="pricing-card"
-          [class.pricing-card--highlighted]="tier.highlighted"
-          appScrollReveal
-          revealClass="reveal"
-        >
+        <article class="pricing-tier" [class.pricing-tier--highlighted]="tier.highlighted">
+
           @if (tier.badgeKey) {
-            <div class="pricing-card__badge">{{ tier.badgeKey | translate }}</div>
+            <span class="pricing-tier__badge">{{ tier.badgeKey | translate }}</span>
           }
 
-          <div class="pricing-card__header">
-            <h2 class="pricing-card__label">{{ tier.labelKey | translate }}</h2>
-            <div class="pricing-card__price-row">
-              <span class="pricing-card__from">{{ 'pricing.from' | translate }}</span>
-              <span class="pricing-card__price">{{ tier.priceKey | translate }}</span>
+          <div class="pricing-tier__header">
+            <h2 class="pricing-tier__label">{{ tier.labelKey | translate }}</h2>
+            <div class="pricing-tier__price-row">
+              <span class="pricing-tier__from">{{ 'pricing.from' | translate }}</span>
+              <span class="pricing-tier__price">{{ tier.priceKey | translate }}</span>
             </div>
-            <span class="pricing-card__period">{{ tier.periodKey | translate }}</span>
+            <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
           </div>
 
-          <ul class="pricing-card__features" role="list">
+          <ul class="pricing-tier__features" role="list">
             @for (feature of tier.features; track feature) {
-              <li class="pricing-card__feature">
-                <svg class="pricing-card__check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <li class="pricing-tier__feature">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="20,6 9,17 4,12"/>
                 </svg>
                 <span>{{ feature | translate }}</span>
@@ -53,7 +42,7 @@
           </ul>
 
           <a
-            class="pricing-card__cta"
+            class="pricing-tier__cta"
             [class.btn-primary]="tier.highlighted"
             [class.btn-outline]="!tier.highlighted"
             [routerLink]="tier.ctaLink"
@@ -63,6 +52,7 @@
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
+
         </article>
       }
     </div>

@@ -3,24 +3,20 @@
 
 .process {
   @include section-padding;
-
-  .container {
-    @include container;
-  }
-}
-
-.gradient-text {
-  @include gradient-text;
 }
 
 .section-label {
   display: inline-block;
-  font-size: $text-sm;
+  color: $text-muted;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $purple-light;
   margin-bottom: $space-4;
+}
+
+.gradient-text {
+  @include gradient-text;
 }
 
 .reveal {
@@ -38,88 +34,89 @@
 .process__header {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto $space-16;
+  margin: 0 auto $space-20;
 }
 
 .process__title {
   font-family: $font-heading;
-  font-size: clamp($text-3xl, 5vw, $text-5xl);
+  font-size: clamp($text-4xl, 5.5vw, $text-6xl);
   font-weight: 700;
   color: $text-primary;
-  line-height: 1.2;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   margin-bottom: $space-4;
 }
 
 .process__subtitle {
-  font-size: $text-lg;
+  font-size: clamp($text-base, 2vw, $text-lg);
   color: $text-secondary;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-// ── Steps column ──────────────────────────────────────────────────────────────
+// ── Steps container with timeline ─────────────────────────────────────────────
 .process__steps {
-  display: flex;
-  flex-direction: column;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-// ── Dot spacer ────────────────────────────────────────────────────────────────
-.process__spacer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $space-2;
-  padding: $space-4 0;
-}
-
-.process__dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: $purple;
-  opacity: 0.3;
-  animation: pulse-glow 2s ease-in-out infinite;
-
-  &:nth-child(2) { animation-delay: 0.35s; }
-  &:nth-child(3) { animation-delay: 0.7s; }
-}
-
-// ── Single step card ──────────────────────────────────────────────────────────
-.process__step {
-  @include card;
-  padding: $space-8 $space-6;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: $space-3;
   position: relative;
-  overflow: hidden;
-  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
 
-  &--right {
-    align-self: flex-end;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 26px;
+    top: $space-6;
+    bottom: $space-6;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba($red, 0.4) 15%,
+      rgba($red, 0.15) 85%,
+      transparent 100%
+    );
+
+    @include md {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
-
-  // Float after reveal — each step gets its own cadence
-  &:nth-child(1).revealed { animation: float-card 4.2s ease-in-out 0.7s infinite; }
-  &:nth-child(3).revealed { animation: float-card 3.8s ease-in-out 1.0s infinite; }
-  &:nth-child(5).revealed { animation: float-card 4.5s ease-in-out 0.8s infinite; }
-  &:nth-child(7).revealed { animation: float-card 4.0s ease-in-out 1.2s infinite; }
 }
 
-.process__step-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: $radius-lg;
-  background: rgba($purple, 0.1);
-  border: 1px solid rgba($purple, 0.2);
+// ── Single step ───────────────────────────────────────────────────────────────
+.process__step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 $space-8;
+  align-items: center;
+  padding: $space-8 0;
+
+  @include md {
+    grid-template-columns: 1fr 52px 1fr;
+    gap: 0 $space-10;
+  }
+}
+
+// ── Timeline node ─────────────────────────────────────────────────────────────
+.process__step-node {
+  grid-column: 1;
+  grid-row: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba($red, 0.25);
+  background: rgba($bg-primary, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $purple-light;
+  color: $red-light;
+  position: relative;
+  z-index: 1;
+  transition: border-color $transition-base, box-shadow $transition-base;
   flex-shrink: 0;
-  box-shadow: 0 0 12px rgba($purple, 0.15);
+
+  .process__step:hover & {
+    border-color: rgba($red, 0.55);
+    box-shadow: 0 0 24px rgba($red, 0.18);
+  }
 
   span {
     display: flex;
@@ -127,40 +124,81 @@
     justify-content: center;
     line-height: 0;
   }
+
+  @include md {
+    grid-column: 2;
+    grid-row: 1;
+  }
 }
 
-// Each icon floats with a unique offset so they never sync up
-.process__step:nth-child(1) .process__step-icon { animation: float-icon 3.6s ease-in-out 0.0s infinite; }
-.process__step:nth-child(3) .process__step-icon { animation: float-icon 4.1s ease-in-out 0.8s infinite; }
-.process__step:nth-child(5) .process__step-icon { animation: float-icon 3.4s ease-in-out 0.4s infinite; }
-.process__step:nth-child(7) .process__step-icon { animation: float-icon 4.3s ease-in-out 1.2s infinite; }
+// ── Step content ──────────────────────────────────────────────────────────────
+.process__step-content {
+  grid-column: 2;
+  grid-row: 1;
+  padding-left: $space-2;
 
+  @include md {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+    padding-left: 0;
+    padding-right: $space-8;
+  }
+}
+
+.process__step--right {
+  .process__step-content {
+    @include md {
+      grid-column: 3;
+      grid-row: 1;
+      text-align: left;
+      padding-right: 0;
+      padding-left: $space-8;
+    }
+  }
+
+  .process__step-node {
+    @include md {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+}
+
+// ── Step text elements ────────────────────────────────────────────────────────
 .process__step-num {
+  display: block;
   font-family: $font-heading;
-  font-size: $text-4xl;
+  font-size: $text-xs;
   font-weight: 700;
-  line-height: 1;
-  background: $gradient-brand;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0.25;
-  position: absolute;
-  top: $space-6;
-  right: $space-6;
-  user-select: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  @include gradient-text;
+  margin-bottom: $space-3;
 }
 
 .process__step-title {
   font-family: $font-heading;
-  font-size: $text-lg;
+  font-size: $text-xl;
   font-weight: 700;
   color: $text-primary;
+  letter-spacing: -0.01em;
+  margin-bottom: $space-3;
 }
 
 .process__step-desc {
   font-size: $text-sm;
   color: $text-secondary;
-  line-height: 1.7;
-  flex: 1;
+  line-height: 1.75;
+  max-width: 280px;
+
+  @include md {
+    margin-left: auto;
+  }
+
+  .process__step--right & {
+    @include md {
+      margin-left: 0;
+    }
+  }
 }

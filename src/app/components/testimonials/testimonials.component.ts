@@ -28,7 +28,7 @@ interface ClientLogo {
 export class TestimonialsComponent {
   readonly testimonials: Testimonial[] = [
     {
-      quote: 'JVM Solutions transformed our internal tooling from a bottleneck into a competitive advantage. The team delivered ahead of schedule with incredible attention to detail.',
+      quote: 'JVM Yore transformed our internal tooling from a bottleneck into a competitive advantage. The team delivered ahead of schedule with incredible attention to detail.',
       author: 'Martin Kovář',
       role: 'CTO',
       company: 'Nexera Systems',

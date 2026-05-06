@@ -2,50 +2,35 @@
 @use '../../../styles/mixins' as *;
 
 .stats {
-  padding: $space-16 $space-6;
-  border-top: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
-  background: linear-gradient(135deg, rgba($purple, 0.04) 0%, rgba($green, 0.04) 100%);
-  position: relative;
-  overflow: hidden;
+  padding: 7rem $space-6;
   content-visibility: auto;
-  contain-intrinsic-size: auto 200px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba($purple, 0.06), transparent);
-    pointer-events: none;
-  }
+  contain-intrinsic-size: auto 320px;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-8;
+    gap: $space-12 $space-8;
 
     @include md {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0;
+      align-items: flex-start;
+      justify-content: center;
+      gap: $space-24;
     }
   }
 
   &__item {
     text-align: center;
 
-    @include md {
-      flex: 1;
-      min-width: 160px;
-    }
+    @include md { flex: 0 0 auto; }
   }
 
   &__divider {
     display: none;
     width: 1px;
-    height: 60px;
+    align-self: stretch;
     background: $border-color;
+    margin-top: 8px;
 
     @include md { display: block; }
   }
@@ -54,37 +39,32 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 2px;
+    gap: 1px;
     font-family: $font-heading;
-    margin-bottom: $space-2;
+    margin-bottom: $space-3;
   }
 
   &__value {
-    font-size: clamp($text-4xl, 5vw, $text-6xl);
+    font-size: clamp(3.25rem, 6vw, 5rem);
+    font-weight: 700;
+    @include gradient-text;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  &__suffix {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 700;
     @include gradient-text;
     line-height: 1;
     letter-spacing: -0.03em;
-    min-width: 2ch;
-    display: inline-block;
-  }
-
-  &__suffix {
-    font-size: clamp($text-2xl, 3vw, $text-4xl);
-    font-weight: 700;
-    @include gradient-text;
-    line-height: 1;
   }
 
   &__label {
-    color: $text-secondary;
-    font-size: $text-sm;
+    color: $text-muted;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 500;
-    min-height: 2.4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    letter-spacing: 0.1em;
+    font-weight: 600;
   }
 }

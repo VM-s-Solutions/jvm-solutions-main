@@ -10,25 +10,17 @@
     </div>
 
     <div class="process__steps">
-      @for (step of steps; track step.numKey; let i = $index; let last = $last) {
-
+      @for (step of steps; track step.numKey; let i = $index) {
         <div class="process__step" [class.process__step--right]="i % 2 !== 0" appScrollReveal revealClass="reveal">
-          <div class="process__step-icon" aria-hidden="true">
+          <div class="process__step-content">
+            <span class="process__step-num" aria-hidden="true">{{ step.numKey | translate }}</span>
+            <h3 class="process__step-title">{{ step.titleKey | translate }}</h3>
+            <p class="process__step-desc">{{ step.descKey | translate }}</p>
+          </div>
+          <div class="process__step-node" aria-hidden="true">
             <span [innerHTML]="step.icon"></span>
           </div>
-          <div class="process__step-num" aria-hidden="true">{{ step.numKey | translate }}</div>
-          <h3 class="process__step-title">{{ step.titleKey | translate }}</h3>
-          <p class="process__step-desc">{{ step.descKey | translate }}</p>
         </div>
-
-        @if (!last) {
-          <div class="process__spacer" aria-hidden="true">
-            <span class="process__dot"></span>
-            <span class="process__dot"></span>
-            <span class="process__dot"></span>
-          </div>
-        }
-
       }
     </div>
 

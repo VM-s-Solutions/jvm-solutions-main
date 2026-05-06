@@ -137,9 +137,9 @@
     }
 
     &.is-active {
-      color: $purple-light;
-      border-color: rgba($purple, 0.5);
-      background: rgba($purple, 0.08);
+      color: $red-light;
+      border-color: rgba($red, 0.4);
+      background: rgba($red, 0.07);
     }
   }
 

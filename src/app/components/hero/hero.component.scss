@@ -3,250 +3,160 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  @include flex-center;
-  padding: 100px $space-6 $space-16;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 110px $space-6 $space-16;
   overflow: hidden;
 
-  // ── Background ────────────────────────────────────────────────────────────
+  // ── Background — very subtle dot grid, fades toward edges ─────────────────
   &__bg {
     position: absolute;
     inset: 0;
-    z-index: 0;
-    overflow: hidden;    contain: strict;  }
-
-  &__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba($border-color, 0.6) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($border-color, 0.6) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-    animation: grid-fade 1s ease forwards;
-
-    // Skip expensive mask-image + gradient grid on mobile — saves ~15ms paint
-    @include max-md { display: none; }
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
     pointer-events: none;
-    will-change: transform;
-
-    &--purple {
-      @include orb($purple, 600px, 120px);
-      top: -100px;
-      left: -100px;
-      animation: float 8s ease-in-out infinite;
-      // Hide on mobile — 120px blur is a significant GPU raster cost before LCP
-      @include max-md { display: none; }
-      // 2× DPR: same perceived softness at ¼ the GPU raster cost
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) { filter: blur(60px); }
-    }
-
-    &--green {
-      @include orb($green, 500px, 100px);
-      top: 100px;
-      right: -150px;
-      animation: float-reverse 10s ease-in-out infinite;
-      // Two GPU-composited blur layers are too costly on mobile
-      @include max-md { display: none; }
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) { filter: blur(50px); }
-    }
-
-    &--purple-sm {
-      @include orb($purple, 300px, 80px);
-      bottom: 100px;
-      left: 30%;
-      animation: float 12s ease-in-out infinite 2s;
-      @include max-md { display: none; }
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) { filter: blur(40px); }
-    }
+    background-image: radial-gradient(rgba($border-light, 0.4) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
   }
 
-  // ── Content ───────────────────────────────────────────────────────────────
-  &__content {
+  // Faint red ambient glow — top-right to feel directional
+  &__glow {
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 640px;
+    height: 640px;
+    background: radial-gradient(ellipse, rgba($red, 0.08) 0%, transparent 70%);
+    filter: blur(64px);
+    pointer-events: none;
+  }
+
+  // ── Inner — left-aligned ──────────────────────────────────────────────────
+  &__inner {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: $space-6;
-    max-width: 860px;
-    margin: 0 auto;
-    // No wrapper animation — avoids opacity:0 container that delays LCP
+    align-items: flex-start;
+    text-align: left;
   }
 
   // ── Badge ─────────────────────────────────────────────────────────────────
-  // @starting-style: element is opacity:1 by default — no animation-fill-mode
-  // hack that Safari defers for ~1s on dynamically inserted route components.
   &__badge {
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    padding: $space-2 $space-4;
-    background: rgba($green, 0.08);
-    border: 1px solid rgba($green, 0.2);
-    border-radius: $radius-full;
-    color: $green-light;
-    font-size: $text-xs;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(12px);
-    }
+    color: $text-muted;
+    font-size: $text-sm;
+    font-weight: 500;
+    margin-bottom: $space-8;
+    animation: fade-in 0.5s ease both;
   }
 
   &__badge-dot {
     width: 7px;
     height: 7px;
-    background: $green;
     border-radius: 50%;
-    animation: pulse-glow 2s ease-in-out infinite;
+    background: $green;
+    box-shadow: 0 0 8px rgba($green, 0.8);
+    flex-shrink: 0;
+    animation: pulse-dot 2.5s ease-in-out infinite;
   }
 
   // ── Headline ──────────────────────────────────────────────────────────────
   &__headline {
-    font-size: clamp($text-4xl, 7vw, $text-7xl);
+    font-size: clamp(2.75rem, 6.5vw, 5.75rem);
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
     color: $text-primary;
-    // slide-in-up keeps opacity:1 so browser paints and measures LCP immediately
+    max-width: 900px;
+    margin-bottom: $space-6;
     animation: slide-in-up 0.6s ease both;
-
-    .gradient-text {
-      background-size: 200% 200%;
-      animation: gradient-shift 4s ease infinite;
-    }
+    animation-delay: 0.08s;
   }
 
-  // ── Typed text ────────────────────────────────────────────────────────────
-  &__typed {
-    font-family: $font-heading;
-    font-size: clamp($text-lg, 3vw, $text-2xl);
-    color: $text-secondary;
-    height: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-  }
-
-  &__typed-text {
-    color: $purple-light;
-    font-weight: 500;
-  }
-
-  &__cursor {
-    color: $purple;
-    font-weight: 300;
-    animation: blink 1s step-end infinite;
-    margin-left: 1px;
+  // The red gradient line — last line of headline
+  &__headline-em {
+    font-style: normal;
+    display: block;
+    @include gradient-text($gradient-brand);
   }
 
   // ── Description ───────────────────────────────────────────────────────────
   &__description {
-    max-width: 600px;
+    max-width: 460px;
     color: $text-secondary;
-    font-size: clamp($text-base, 2vw, $text-lg);
-    line-height: 1.7;
-    min-height: 2.5em;
-    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-
-    @include md { min-height: 5.1em; }
+    font-size: $text-base;
+    line-height: 1.8;
+    margin-bottom: $space-10;
+    animation: fade-in 0.6s ease both;
+    animation-delay: 0.2s;
   }
 
   // ── Actions ───────────────────────────────────────────────────────────────
   &__actions {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
     gap: $space-3;
-    justify-content: center;
-    transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(16px);
-    }
+    flex-wrap: wrap;
+    margin-bottom: $space-12;
+    animation: fade-in 0.6s ease both;
+    animation-delay: 0.3s;
   }
 
-  &__cta-primary {
-    padding: $space-4 $space-8;
-    font-size: $text-base;
-  }
-
-  &__cta-secondary {
-    padding: $space-4 $space-8;
-    font-size: $text-base;
-  }
-
-  // ── Stats ─────────────────────────────────────────────────────────────────
+  // ── Stats — inline row, left-aligned ─────────────────────────────────────
   &__stats {
     display: flex;
     align-items: center;
-    gap: $space-3;
-    padding-top: $space-6;
-    border-top: 1px solid $border-color;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: nowrap;
-    transition: opacity 0.4s ease 0.25s, transform 0.4s ease 0.25s;
-
-    @starting-style {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-
-    @include md { gap: $space-8; }
+    animation: fade-in 0.6s ease both;
+    animation-delay: 0.42s;
   }
 
   &__stat {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: $space-1;
-    min-width: 80px;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 0 $space-8;
 
-    @include md { min-width: 140px; }
+    &:first-child { padding-left: 0; }
+    &:last-child  { padding-right: 0; }
 
     strong {
       font-family: $font-heading;
       font-size: $text-2xl;
       font-weight: 700;
-      @include gradient-text;
+      color: $text-primary;
+      letter-spacing: -0.03em;
     }
 
     span {
       font-size: $text-xs;
       color: $text-muted;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
   }
 
-  &__stat-divider {
+  &__stat-sep {
     width: 1px;
-    height: 40px;
+    height: 24px;
     background: $border-color;
+    flex-shrink: 0;
   }
 
   // ── Scroll indicator ──────────────────────────────────────────────────────
@@ -255,20 +165,15 @@
     bottom: $space-8;
     left: 50%;
     transform: translateX(-50%);
-    transition: opacity 0.5s ease 0.5s;
-    // Not visible on mobile viewports
+    animation: fade-in 0.6s ease both;
+    animation-delay: 0.6s;
     @include max-md { display: none; }
-
-    @starting-style {
-      opacity: 0;
-    }
   }
 
   &__scroll-line {
     width: 1px;
-    height: 60px;
-    background: linear-gradient($border-light, transparent);
+    height: 52px;
+    background: linear-gradient($border-color, transparent);
     margin: 0 auto;
-    animation: float 2s ease-in-out infinite;
   }
 }

@@ -14,15 +14,15 @@ export interface ConfirmationData {
 // Design tokens (mirrors src/styles/_variables.scss)
 // $bg-primary: #09090F | $bg-surface: #13131A | $bg-elevated: #1A1A24
 // $border-color: #1E1E2E | $border-light: #2A2A3E
-// $purple: #8B5CF6 | $purple-light: #A78BFA | $green: #10B981
+// $red: #E53E3E | $red-light: #FC8181 | $green: #10B981
 // $text-primary: #F1F5F9 | $text-secondary: #94A3B8 | $text-muted: #64748B
-// $gradient-brand: linear-gradient(135deg, #8B5CF6, #10B981)
+// $gradient-brand: linear-gradient(135deg, #E53E3E, #F97316)
 
 const I18N = {
   en: {
     subject: "We've received your message \u2014 JVM Solutions",
     title: "We've received your message",
-    greeting: (name: string) => `Hi <strong style='color:#A78BFA;'>${name}</strong>, thanks for reaching out.`,
+    greeting: (name: string) => `Hi <strong style='color:#FC8181;'>${name}</strong>, thanks for reaching out.`,
     greetingPlain: (name: string) => `Hi ${name},`,
     intro: `We'll review your enquiry and get back to you within&nbsp;<strong style='color:#F1F5F9;'>24 hours</strong>.`,
     sectionNext: 'What happens next',
@@ -52,7 +52,7 @@ const I18N = {
   cs: {
     subject: 'P\u0159ijali jsme va\u0161i zpr\u00e1vu \u2014 JVM Solutions',
     title: 'P\u0159ijali jsme va\u0161i zpr\u00e1vu',
-    greeting: (name: string) => `Dobr\u00fd den, <strong style='color:#A78BFA;'>${name}</strong>, d\u011bkujeme za kontakt.`,
+    greeting: (name: string) => `Dobr\u00fd den, <strong style='color:#FC8181;'>${name}</strong>, d\u011bkujeme za kontakt.`,
     greetingPlain: (name: string) => `Dobr\u00fd den, ${name},`,
     intro: `Va\u0161i zpr\u00e1vu prostudujeme a ozveme se v\u00e1m do&nbsp;<strong style='color:#F1F5F9;'>24 hodin</strong>.`,
     sectionNext: 'Co se stane d\u00e1le',
@@ -82,7 +82,7 @@ const I18N = {
   sk: {
     subject: 'Va\u0161a spr\u00e1va bola prijat\u00e1 \u2014 JVM Solutions',
     title: 'Va\u0161a spr\u00e1va bola prijat\u00e1',
-    greeting: (name: string) => `Dobr\u00fd de\u0148, <strong style='color:#A78BFA;'>${name}</strong>, \u010fakujeme za kontakt.`,
+    greeting: (name: string) => `Dobr\u00fd de\u0148, <strong style='color:#FC8181;'>${name}</strong>, \u010fakujeme za kontakt.`,
     greetingPlain: (name: string) => `Dobr\u00fd de\u0148, ${name},`,
     intro: `Va\u0161u spr\u00e1vu preskum\u00e1me a ozveme sa v\u00e1m do&nbsp;<strong style='color:#F1F5F9;'>24 hod\u00edn</strong>.`,
     sectionNext: '\u010co sa stane \u010falej',
@@ -112,7 +112,7 @@ const I18N = {
   uk: {
     subject: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e \u2014 JVM Solutions',
     title: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e',
-    greeting: (name: string) => `\u041f\u0440\u0438\u0432\u0456\u0442, <strong style='color:#A78BFA;'>${name}</strong>, \u0434\u044f\u043a\u0443\u0454\u043c\u043e \u0437\u0430 \u0437\u0432\u0435\u0440\u043d\u0435\u043d\u043d\u044f.`,
+    greeting: (name: string) => `\u041f\u0440\u0438\u0432\u0456\u0442, <strong style='color:#FC8181;'>${name}</strong>, \u0434\u044f\u043a\u0443\u0454\u043c\u043e \u0437\u0430 \u0437\u0432\u0435\u0440\u043d\u0435\u043d\u043d\u044f.`,
     greetingPlain: (name: string) => `\u041f\u0440\u0438\u0432\u0456\u0442, ${name},`,
     intro: `\u041c\u0438 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442 \u0456 \u0437\u0432'\u044f\u0436\u0435\u043c\u043e\u0441\u044f \u0437 \u0432\u0430\u043c\u0438 \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c&nbsp;<strong style='color:#F1F5F9;'>24 \u0433\u043e\u0434\u0438\u043d</strong>.`,
     sectionNext: '\u0429\u043e \u0431\u0443\u0434\u0435 \u0434\u0430\u043b\u0456',
@@ -166,7 +166,7 @@ export function confirmationHtml(d: ConfirmationData): string {
 
           <!-- Brand gradient accent bar -->
           <tr>
-            <td height="3" style="background:#8B5CF6;background:linear-gradient(135deg,#8B5CF6,#10B981);font-size:0;line-height:0;">&nbsp;</td>
+            <td height="3" style="background:#E53E3E;background:linear-gradient(135deg,#E53E3E,#F97316);font-size:0;line-height:0;">&nbsp;</td>
           </tr>
 
           <!-- Header -->
@@ -174,7 +174,7 @@ export function confirmationHtml(d: ConfirmationData): string {
             <td style="background:#13131A;padding:40px 40px 32px;text-align:center;">
               <!-- Logo wordmark -->
               <p style="margin:0 0 28px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;color:#F1F5F9;text-transform:uppercase;">
-                JVM <span style="background:#8B5CF6;background:linear-gradient(135deg,#8B5CF6,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:#8B5CF6;">Solutions</span>
+                JVM <span style="background:#E53E3E;background:linear-gradient(135deg,#E53E3E,#F97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:#E53E3E;">Solutions</span>
               </p>
               <!-- Success icon — green to match site success state -->
               <div style="display:inline-block;width:60px;height:60px;background:rgba(16,185,129,0.1);border:2px solid #10B981;border-radius:50%;text-align:center;line-height:56px;font-size:28px;color:#10B981;margin-bottom:24px;">&#10003;</div>
@@ -203,7 +203,7 @@ export function confirmationHtml(d: ConfirmationData): string {
                     <table role="presentation" cellpadding="0" cellspacing="0">
                       <tr>
                         <td width="46" style="width:46px;vertical-align:top;padding-top:2px;">
-                          <div style="width:32px;height:32px;background:rgba(139,92,246,0.12);border:1.5px solid rgba(139,92,246,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#8B5CF6;font-family:'Space Grotesk',system-ui,sans-serif;">1</div>
+                          <div style="width:32px;height:32px;background:rgba(229,62,62,0.12);border:1.5px solid rgba(229,62,62,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#E53E3E;font-family:'Space Grotesk',system-ui,sans-serif;">1</div>
                         </td>
                         <td style="font-size:14px;color:#94A3B8;line-height:1.6;">
                           <strong style="color:#F1F5F9;font-family:'Space Grotesk',system-ui,sans-serif;">${t.step1title}</strong><br>
@@ -218,7 +218,7 @@ export function confirmationHtml(d: ConfirmationData): string {
                     <table role="presentation" cellpadding="0" cellspacing="0">
                       <tr>
                         <td width="46" style="width:46px;vertical-align:top;padding-top:2px;">
-                          <div style="width:32px;height:32px;background:rgba(139,92,246,0.12);border:1.5px solid rgba(139,92,246,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#8B5CF6;font-family:'Space Grotesk',system-ui,sans-serif;">2</div>
+                          <div style="width:32px;height:32px;background:rgba(229,62,62,0.12);border:1.5px solid rgba(229,62,62,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#E53E3E;font-family:'Space Grotesk',system-ui,sans-serif;">2</div>
                         </td>
                         <td style="font-size:14px;color:#94A3B8;line-height:1.6;">
                           <strong style="color:#F1F5F9;font-family:'Space Grotesk',system-ui,sans-serif;">${t.step2title}</strong><br>
@@ -233,7 +233,7 @@ export function confirmationHtml(d: ConfirmationData): string {
                     <table role="presentation" cellpadding="0" cellspacing="0">
                       <tr>
                         <td width="46" style="width:46px;vertical-align:top;padding-top:2px;">
-                          <div style="width:32px;height:32px;background:rgba(139,92,246,0.12);border:1.5px solid rgba(139,92,246,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#8B5CF6;font-family:'Space Grotesk',system-ui,sans-serif;">3</div>
+                          <div style="width:32px;height:32px;background:rgba(229,62,62,0.12);border:1.5px solid rgba(229,62,62,0.35);border-radius:50%;text-align:center;line-height:32px;font-size:13px;font-weight:700;color:#E53E3E;font-family:'Space Grotesk',system-ui,sans-serif;">3</div>
                         </td>
                         <td style="font-size:14px;color:#94A3B8;line-height:1.6;">
                           <strong style="color:#F1F5F9;font-family:'Space Grotesk',system-ui,sans-serif;">${t.step3title}</strong><br>
@@ -277,7 +277,7 @@ export function confirmationHtml(d: ConfirmationData): string {
 
               <!-- Message recap -->
               <p style="margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:2px;color:#64748B;text-transform:uppercase;">${t.sectionMessage}</p>
-              <div style="background:#1A1A24;border:1px solid #1E1E2E;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;padding:20px 24px;">
+              <div style="background:#1A1A24;border:1px solid #1E1E2E;border-left:3px solid #E53E3E;border-radius:0 8px 8px 0;padding:20px 24px;">
                 <p style="margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#475569;text-transform:uppercase;font-family:'Space Grotesk',system-ui,sans-serif;">${t.from(d.safeName)}</p>
                 <p style="margin:0;font-size:14px;color:#94A3B8;line-height:1.8;">${d.safeMessage}</p>
               </div>
@@ -291,7 +291,7 @@ export function confirmationHtml(d: ConfirmationData): string {
               <p style="margin:0 0 8px;font-size:13px;color:#64748B;line-height:1.6;">
                 ${t.footerAuto}<br>
                 ${t.footerUrgent}
-                <a href="mailto:hello@jvm-solutions.dev" style="color:#8B5CF6;text-decoration:none;">hello@jvm-solutions.dev</a>
+                <a href="mailto:hello@jvm-solutions.dev" style="color:#E53E3E;text-decoration:none;">hello@jvm-solutions.dev</a>
               </p>
               <p style="margin:12px 0 0;font-size:12px;color:#2A2A3E;">
                 &copy; ${new Date().getFullYear()} JVM Solutions &bull;

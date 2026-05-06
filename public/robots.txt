@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jvm-solutions.dev/sitemap.xml
+Sitemap: https://jvm-yore.com/sitemap.xml

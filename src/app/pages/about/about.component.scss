@@ -3,96 +3,55 @@
 
 .about-page {
   min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  padding-top: 80px;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.12;
-
-    &--purple {
-      width: 600px;
-      height: 600px;
-      background: $purple;
-      top: -100px;
-      left: -150px;
-    }
-
-    &--green {
-      width: 400px;
-      height: 400px;
-      background: $green;
-      bottom: 100px;
-      right: -100px;
-    }
-  }
-
-  &__inner {
-    position: relative;
-    z-index: 1;
-    padding-top: $space-16;
-    padding-bottom: $space-24;
-    display: flex;
-    flex-direction: column;
-    gap: $space-16;
-  }
+  background: $bg-primary;
 }
 
-// ── Section label & gradient text helpers (shared with other pages) ──────────
+.about-page__inner {
+  @include section-padding;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: $space-20;
+}
+
+// Helpers
 .section-label {
   display: inline-block;
-  font-size: $text-sm;
+  color: $text-muted;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $purple-light;
   margin-bottom: $space-4;
 }
 
-.gradient-text {
-  @include gradient-text;
-}
+.gradient-text { @include gradient-text; }
 
-// ── Page header ──────────────────────────────────────────────────────────────
-.about-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
-
-  &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-3xl, 5vw, $text-5xl);
-    font-weight: 700;
-    color: $text-primary;
-    line-height: 1.15;
-    margin-bottom: $space-6;
-  }
-
-  &__subtitle {
-    font-size: $text-lg;
-    color: $text-secondary;
-    line-height: 1.7;
-  }
-}
-
-// ── Reveal animation ─────────────────────────────────────────────────────────
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity $transition-slow, transform $transition-slow;
+  &.revealed { opacity: 1; transform: translateY(0); }
+}
 
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
+// Page header
+.about-header {
+  max-width: 640px;
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp($text-4xl, 5.5vw, $text-6xl);
+    font-weight: 700;
+    color: $text-primary;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: $space-6;
+  }
+
+  &__subtitle {
+    font-size: clamp($text-base, 2vw, $text-lg);
+    color: $text-secondary;
+    line-height: 1.7;
+    max-width: 520px;
   }
 }

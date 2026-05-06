@@ -51,7 +51,7 @@ button {
 
 // ─── Selection ────────────────────────────────────────────────────────────────
 ::selection {
-  background: rgba($purple, 0.3);
+  background: rgba($red, 0.25);
   color: $text-primary;
 }
 
@@ -68,12 +68,12 @@ button {
   background: $border-light;
   border-radius: $radius-full;
 
-  &:hover { background: $purple; }
+  &:hover { background: $red; }
 }
 
 // ─── Focus Ring ───────────────────────────────────────────────────────────────
 :focus-visible {
-  outline: 2px solid $purple;
+  outline: 2px solid $red;
   outline-offset: 3px;
   border-radius: $radius-sm;
 }
@@ -85,7 +85,7 @@ button {
   left: $space-4;
   z-index: 9999;
   padding: $space-2 $space-4;
-  background: $purple;
+  background: $red;
   color: #fff;
   border-radius: $radius-lg;
   font-size: $text-sm;

@@ -2,104 +2,48 @@
 @use '../../../styles/mixins' as *;
 
 .cta {
-  position: relative;
-  overflow: hidden;
+  padding: 9rem $space-6;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
   border-top: 1px solid $border-color;
-  @include section-padding;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    contain: strict;
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
-    will-change: transform;
-
-    &--left {
-      @include orb($purple, 500px, 100px);
-      left: -150px;
-      top: 50%;
-      transform: translateY(-50%);
-      animation: float 8s ease-in-out infinite;
-    }
-
-    &--right {
-      @include orb($green, 400px, 80px);
-      right: -100px;
-      top: 50%;
-      transform: translateY(-50%);
-      animation: float-reverse 10s ease-in-out infinite;
-    }
-  }
 
   &__content {
     @include container;
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: $space-10;
-
-    @include lg {
-      flex-direction: row;
-      text-align: left;
-      justify-content: space-between;
-      align-items: center;
-    }
+    gap: $space-8;
   }
 
-  &__text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $space-4;
-
-    @include lg {
-      align-items: flex-start;
-      max-width: 560px;
-    }
+  &__eyebrow {
+    color: $text-muted;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   &__title {
-    font-size: clamp($text-3xl, 5vw, $text-5xl);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-family: $font-heading;
+    font-size: clamp($text-4xl, 6vw, $text-6xl);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    color: $text-primary;
+    max-width: 760px;
   }
 
   &__description {
     color: $text-secondary;
-    font-size: $text-lg;
+    font-size: clamp($text-base, 2vw, $text-lg);
     line-height: 1.7;
-    max-width: 500px;
-  }
-
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $space-4;
-    flex-shrink: 0;
-
-    @include lg { align-items: flex-start; }
+    max-width: 480px;
   }
 
   &__btn {
-    padding: $space-4 $space-10;
+    padding: $space-4 $space-12;
     font-size: $text-base;
-    white-space: nowrap;
-  }
-
-  &__email {
-    color: $text-muted;
-    font-size: $text-sm;
-    transition: color $transition-fast;
-
-    &:hover { color: $purple-light; }
+    margin-top: $space-4;
   }
 }

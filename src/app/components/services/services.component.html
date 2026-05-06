@@ -11,29 +11,30 @@
       </p>
     </div>
 
-    <div class="services__grid">
+    <div class="services__list">
       @for (service of services; track service.id; let i = $index) {
         <article
-          [class]="'services__card services__card--' + service.accent"
+          class="services__item"
+          [class]="'services__item services__item--' + service.accent"
           appScrollReveal
           revealClass="reveal"
         >
-          <div class="services__card-icon" aria-hidden="true">
+          <span class="services__item-num" aria-hidden="true">0{{ i + 1 }}</span>
+
+          <div class="services__item-icon" aria-hidden="true">
             <span [innerHTML]="service.icon"></span>
           </div>
 
-          <div class="services__card-body">
-            <h3 class="services__card-title">{{ service.titleKey | translate }}</h3>
-            <p class="services__card-description">{{ service.descriptionKey | translate }}</p>
+          <div class="services__item-body">
+            <h3 class="services__item-title">{{ service.titleKey | translate }}</h3>
+            <p class="services__item-desc">{{ service.descriptionKey | translate }}</p>
           </div>
 
-          <div class="services__card-tags">
+          <div class="services__item-tags">
             @for (tag of service.tags; track tag) {
               <span class="services__tag" [attr.data-tech]="tag">{{ tag }}</span>
             }
           </div>
-
-          <div class="services__card-glow" aria-hidden="true"></div>
         </article>
       }
     </div>

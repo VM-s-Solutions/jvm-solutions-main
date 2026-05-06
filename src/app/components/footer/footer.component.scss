@@ -123,11 +123,10 @@
   }
 
   &__dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     background: $green;
     border-radius: 50%;
-    animation: pulse-glow 2s ease-in-out infinite;
   }
 
   // ── Bottom bar ────────────────────────────────────────────────────────────

@@ -19,9 +19,9 @@ import { isPlatformBrowser } from '@angular/common';
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <radialGradient id="core" cx="40%" cy="35%" r="68%">
-            <stop offset="0%"   stop-color="#c4b5fd"/>
-            <stop offset="40%"  stop-color="#8B5CF6"/>
-            <stop offset="100%" stop-color="#10B981"/>
+            <stop offset="0%"   stop-color="#FC8181"/>
+            <stop offset="40%"  stop-color="#E53E3E"/>
+            <stop offset="100%" stop-color="#F97316"/>
           </radialGradient>
           <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="2.2" result="b"/>
@@ -40,43 +40,43 @@ import { isPlatformBrowser } from '@angular/common';
         <path id="p4" d="M50,50 L50,90"/>
         <path id="p5" d="M50,50 L15,70"/>
         <path id="p6" d="M50,50 L15,30"/>
-        <use href="#p1" stroke="#8B5CF6" stroke-width="0.9" opacity="0.45"/>
-        <use href="#p2" stroke="#8B5CF6" stroke-width="0.9" opacity="0.45"/>
-        <use href="#p3" stroke="#10B981" stroke-width="0.9" opacity="0.45"/>
-        <use href="#p4" stroke="#10B981" stroke-width="0.9" opacity="0.45"/>
-        <use href="#p5" stroke="#10B981" stroke-width="0.9" opacity="0.45"/>
-        <use href="#p6" stroke="#8B5CF6" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p1" stroke="#E53E3E" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p2" stroke="#E53E3E" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p3" stroke="#F97316" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p4" stroke="#F97316" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p5" stroke="#F97316" stroke-width="0.9" opacity="0.45"/>
+        <use href="#p6" stroke="#E53E3E" stroke-width="0.9" opacity="0.45"/>
 
         <!-- Outer nodes -->
-        <circle cx="50" cy="10" r="3.5" fill="#A78BFA" filter="url(#glow)"/>
-        <circle cx="85" cy="30" r="3.5" fill="#A78BFA" filter="url(#glow)"/>
-        <circle cx="85" cy="70" r="3.5" fill="#34D399" filter="url(#glow)"/>
-        <circle cx="50" cy="90" r="3.5" fill="#34D399" filter="url(#glow)"/>
-        <circle cx="15" cy="70" r="3.5" fill="#34D399" filter="url(#glow)"/>
-        <circle cx="15" cy="30" r="3.5" fill="#A78BFA" filter="url(#glow)"/>
+        <circle cx="50" cy="10" r="3.5" fill="#FC8181" filter="url(#glow)"/>
+        <circle cx="85" cy="30" r="3.5" fill="#FC8181" filter="url(#glow)"/>
+        <circle cx="85" cy="70" r="3.5" fill="#F97316" filter="url(#glow)"/>
+        <circle cx="50" cy="90" r="3.5" fill="#F97316" filter="url(#glow)"/>
+        <circle cx="15" cy="70" r="3.5" fill="#F97316" filter="url(#glow)"/>
+        <circle cx="15" cy="30" r="3.5" fill="#FC8181" filter="url(#glow)"/>
 
         <!-- Signal pulses — staggered so they feel async -->
-        <circle r="2.2" fill="#A78BFA" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#FC8181" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="0s"><mpath href="#p1"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite"/>
         </circle>
-        <circle r="2.2" fill="#A78BFA" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#FC8181" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.27s"><mpath href="#p2"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite" begin="0.27s"/>
         </circle>
-        <circle r="2.2" fill="#34D399" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#F97316" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.54s"><mpath href="#p3"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite" begin="0.54s"/>
         </circle>
-        <circle r="2.2" fill="#34D399" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#F97316" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.81s"><mpath href="#p4"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite" begin="0.81s"/>
         </circle>
-        <circle r="2.2" fill="#34D399" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#F97316" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.08s"><mpath href="#p5"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite" begin="1.08s"/>
         </circle>
-        <circle r="2.2" fill="#A78BFA" filter="url(#pulse-glow)">
+        <circle r="2.2" fill="#FC8181" filter="url(#pulse-glow)">
           <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.35s"><mpath href="#p6"/></animateMotion>
           <animate attributeName="opacity" values="0;0.95;0.95;0" keyTimes="0;0.08;0.88;1" dur="1.6s" repeatCount="indefinite" begin="1.35s"/>
         </circle>

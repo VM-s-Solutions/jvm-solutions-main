@@ -1,80 +1,67 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-// ── Reveal animation ─────────────────────────────────────────────────────────
+// Reveal
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity $transition-slow, transform $transition-slow;
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  &.revealed { opacity: 1; transform: translateY(0); }
 }
 
-// ── Team grid ────────────────────────────────────────────────────────────────
+// List container
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  max-width: 960px;
+  margin: 0 auto;
 
-  @include md { grid-template-columns: repeat(2, 1fr); }
-  @include lg { grid-template-columns: repeat(3, 1fr); }
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-// ── Team card ────────────────────────────────────────────────────────────────
-.team-card {
-  @include card;
-  padding: $space-8 $space-6;
+// Single member column
+.team-member {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: $space-6;
-  text-align: center;
+  gap: $space-4;
+  padding: $space-10 0;
+  border-top: 1px solid $border-color;
 
-  // stagger reveal
+  &:last-child { border-bottom: 1px solid $border-color; }
+
+  // stagger
   @for $i from 1 through 3 {
-    &:nth-child(#{$i}) {
-      transition-delay: #{($i - 1) * 80}ms;
-    }
+    &:nth-child(#{$i}) { transition-delay: #{($i - 1) * 100}ms; }
   }
 
-  // ── Avatar wrapper ──────────────────────────────────────────────────────
-  &__avatar-wrap {
-    position: relative;
-    width: 120px;
-    height: 120px;
+  @include md {
+    padding: $space-12 $space-8;
+    border-top: 1px solid $border-color;
+    border-bottom: none;
+    border-right: 1px solid $border-color;
+
+    &:last-child { border-right: none; border-bottom: none; }
+  }
+
+  &__avatar {
+    width: 72px;
+    height: 72px;
     flex-shrink: 0;
-  }
-
-  &__avatar-ring {
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: $gradient-brand;
-    z-index: 0;
-    opacity: 0.6;
-    transition: opacity $transition-base;
-  }
-
-  &:hover &__avatar-ring {
-    opacity: 1;
+    margin-bottom: $space-2;
   }
 
   &__photo {
-    position: relative;
-    z-index: 1;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid $bg-elevated;
+    object-position: top;
+    border: 1px solid $border-color;
   }
 
   &__initials {
-    position: relative;
-    z-index: 1;
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -83,14 +70,13 @@
     align-items: center;
     justify-content: center;
     font-family: $font-heading;
-    font-size: $text-4xl;
+    font-size: $text-2xl;
     font-weight: 700;
-    color: $text-primary;
-    border: 3px solid $bg-elevated;
+    color: white;
+    border: 1px solid $border-color;
     user-select: none;
   }
 
-  // ── Info ────────────────────────────────────────────────────────────────
   &__body {
     display: flex;
     flex-direction: column;
@@ -98,52 +84,49 @@
     flex: 1;
   }
 
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    margin-bottom: $space-1;
+  }
+
   &__name {
     font-family: $font-heading;
-    font-size: $text-xl;
+    font-size: $text-lg;
     font-weight: 700;
     color: $text-primary;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
   }
 
   &__role {
-    font-size: $text-sm;
-    font-weight: 600;
-    color: $purple-light;
-    letter-spacing: 0.03em;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $red-light;
   }
 
   &__bio {
     font-size: $text-sm;
     color: $text-secondary;
-    line-height: 1.65;
-    margin-top: $space-2;
+    line-height: 1.75;
+    flex: 1;
   }
 
-  // ── LinkedIn ────────────────────────────────────────────────────────────
   &__linkedin {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
     gap: $space-2;
+    font-size: $text-xs;
+    font-weight: 500;
     color: $text-muted;
     text-decoration: none;
-    border-top: 1px solid $border-color;
-    padding-top: $space-6;
-    width: 100%;
+    letter-spacing: 0.02em;
+    margin-top: $space-2;
     transition: color $transition-fast;
 
-    &:hover {
-      color: $purple-light;
-    }
-  }
-
-  &__linkedin-icon {
-    flex-shrink: 0;
-  }
-
-  &__linkedin-url {
-    font-size: $text-xs;
-    word-break: break-all;
-    line-height: 1.4;
+    &:hover { color: $text-primary; }
   }
 }

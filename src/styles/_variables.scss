@@ -1,24 +1,29 @@
 // ─── Colors ───────────────────────────────────────────────────────────────────
-$bg-primary:   #09090F;
-$bg-surface:   #13131A;
-$bg-elevated:  #1A1A24;
-$border-color: #1E1E2E;
-$border-light: #2A2A3E;
+$bg-primary:   #0A0A0A;
+$bg-surface:   #111111;
+$bg-elevated:  #181818;
+$border-color: #1C1C1C;
+$border-light: #282828;
 
-$purple:       #8B5CF6;
-$purple-light: #A78BFA;
-$purple-dark:  #6D28D9;
+$red:          #E53E3E;
+$red-light:    #FC8181;
+$red-dark:     #C53030;
 $green:        #10B981;
 $green-light:  #34D399;
 $green-dark:   #059669;
 
+// Legacy aliases kept so existing component files that reference $purple still compile
+$purple:       $red;
+$purple-light: $red-light;
+$purple-dark:  $red-dark;
+
 $text-primary: #F1F5F9;
-$text-secondary: #94A3B8;
-$text-muted:   #788DA0;
+$text-secondary: #8A9BB0;
+$text-muted:   #606E7E;
 
 // ─── Gradients ────────────────────────────────────────────────────────────────
-$gradient-brand:   linear-gradient(135deg, #{$purple}, #{$green});
-$gradient-purple:  linear-gradient(135deg, #{$purple-dark}, #{$purple});
+$gradient-brand:   linear-gradient(135deg, #{$red}, #F97316);
+$gradient-red:     linear-gradient(135deg, #{$red-dark}, #{$red});
 $gradient-surface: linear-gradient(135deg, #{$bg-surface}, #{$bg-elevated});
 
 // ─── Typography ───────────────────────────────────────────────────────────────
@@ -60,11 +65,14 @@ $radius-2xl: 1.5rem;
 $radius-full: 9999px;
 
 // ─── Shadows ──────────────────────────────────────────────────────────────────
-$shadow-sm:     0 1px 3px rgba(0,0,0,0.4);
-$shadow-md:     0 4px 16px rgba(0,0,0,0.5);
-$shadow-lg:     0 8px 32px rgba(0,0,0,0.6);
-$shadow-purple: 0 0 32px rgba(139, 92, 246, 0.2);
-$shadow-green:  0 0 32px rgba(16, 185, 129, 0.2);
+$shadow-sm:   0 1px 3px rgba(0,0,0,0.5);
+$shadow-md:   0 4px 16px rgba(0,0,0,0.6);
+$shadow-lg:   0 8px 32px rgba(0,0,0,0.7);
+$shadow-red:  0 0 32px rgba(229, 62, 62, 0.2);
+$shadow-green: 0 0 32px rgba(16, 185, 129, 0.2);
+
+// Legacy alias
+$shadow-purple: $shadow-red;
 
 // ─── Transitions ──────────────────────────────────────────────────────────────
 $transition-fast:   150ms ease;

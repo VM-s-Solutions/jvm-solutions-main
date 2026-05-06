@@ -29,7 +29,7 @@ export class AboutComponent {
       roleKey: 'about.vit.role',
       bioKey: 'about.vit.bio',
       linkedin: 'https://www.linkedin.com/in/vitchvoj/',
-      photo: 'https://media.licdn.com/dms/image/v2/D4E03AQF_l_-y5GRpoA/profile-displayphoto-shrink_800_800/B4EZdecuA9HsAc-/0/1749636277675?e=1777507200&v=beta&t=tZrGRa_gjSR781ZImDAaE5MYqJlF3kfixXlK3viNrh8',
+      photo: 'https://media.licdn.com/dms/image/v2/D4E03AQF_l_-y5GRpoA/profile-displayphoto-shrink_800_800/B4EZdecuA9HsAc-/0/1749636277675?e=1779926400&v=beta&t=ldTt9FRv1F2e565clT8hmyQg4LwWDw_9XwkG5oDXuCQ',
     },
     {
       initials: 'M',
