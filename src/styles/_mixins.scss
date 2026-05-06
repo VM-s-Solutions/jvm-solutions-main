@@ -72,12 +72,12 @@
 
 @mixin btn-primary {
   @include btn-base;
-  background: $red;
-  color: white;
+  background: $red-dark; // #C53030 → 5.2:1 contrast on white (WCAG AA)
+  color: #fff;
   box-shadow: 0 2px 16px rgba($red, 0.2);
 
   &:hover {
-    background: $red-light;
+    background: $red; // #E53E3E on hover — acceptable transient state
     box-shadow: 0 4px 24px rgba($red, 0.35);
     transform: translateY(-1px);
   }
