@@ -1,4 +1,4 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject, NgZone, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ScrollService } from '../../services/scroll.service';
@@ -22,6 +22,7 @@ export class NavbarComponent {
   private readonly router = inject(Router);
   private readonly scrollService = inject(ScrollService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly ngZone = inject(NgZone);
 
   readonly scrolled = signal(false);
   readonly hidden = signal(false);
@@ -53,6 +54,9 @@ export class NavbarComponent {
     afterNextRender(() => {
       let lastY = window.scrollY;
 
+      // Run outside NgZone — signals notify the reactive graph directly;
+      // no need to trigger zone-based CD on every scroll event.
+      this.ngZone.runOutsideAngular(() => {
       const onScroll = () => {
         const y = window.scrollY;
         const delta = y - lastY;
@@ -70,8 +74,8 @@ export class NavbarComponent {
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
-
       this.destroyRef.onDestroy(() => window.removeEventListener('scroll', onScroll));
+      }); // end runOutsideAngular
     });
   }
 

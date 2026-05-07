@@ -21,7 +21,7 @@ export class AboutComponent {
       roleKey: 'about.janis.role',
       bioKey: 'about.janis.bio',
       linkedin: 'https://www.linkedin.com/in/janis-joanu/',
-      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHFBY-63jXXJQ/profile-displayphoto-crop_800_800/B4DZ2QWbKvGUAM-/0/1776243292635?e=1778112000&v=beta&t=WBO-MAOCe-cY7xvxEMHqJPsQjbn9zXfMS_F9c1oeohE',
+      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHFBY-63jXXJQ/profile-displayphoto-crop_800_800/B4DZ2QWbKvGUAM-/0/1776243292635?e=1779926400&v=beta&t=CMy1JdanWD6HzkgUVw_V-zLcGReLTkEYde5mGqihb5g',
     },
     {
       initials: 'V',
@@ -37,7 +37,7 @@ export class AboutComponent {
       roleKey: 'about.michael.role',
       bioKey: 'about.michael.bio',
       linkedin: 'https://www.linkedin.com/in/michael-chaban/',
-      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHRCYo7tlGUkw/profile-displayphoto-crop_800_800/B4DZ2QmhQKHMAI-/0/1776247513036?e=1778112000&v=beta&t=JamnnXEfL6pgkof1__NQyBx5tfsQdF0NFf64geca-P0',
+      photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHRCYo7tlGUkw/profile-displayphoto-crop_800_800/B4DZ2QmhQKHMAI-/0/1776247513036?e=1779926400&v=beta&t=8ShtslCQCfH2n8wSi3Ta5IG9ApoaEE6IZxy7nkgIqII',
     },
   ];
 }

@@ -11,6 +11,8 @@
   transition: background $transition-slow, border-color $transition-slow, transform $transition-base;
   border-bottom: 1px solid transparent;
   will-change: transform;
+  // Limit repaint scope so backdrop-filter doesn't invalidate the whole page
+  contain: layout style;
 
   &.scrolled {
     background: var(--bg-primary-98);

@@ -80,7 +80,7 @@
   &__headline {
     font-size: clamp(2.75rem, 6.5vw, 5.75rem);
     font-weight: 700;
-    line-height: 1.0;
+    line-height: 1.06;
     letter-spacing: -0.04em;
     color: var(--text-primary);
     max-width: 900px;
@@ -90,9 +90,12 @@
   }
 
   // The red gradient line — last line of headline
+  // display: inline-block + padding-bottom ensure the background-clip area
+  // covers descenders; without it the gradient is cut off at line-height: 1.0
   &__headline-em {
     font-style: normal;
-    display: block;
+    display: inline-block;
+    padding-bottom: 0.12em;
     @include gradient-text($gradient-brand);
   }
 
