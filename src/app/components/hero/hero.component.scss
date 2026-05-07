@@ -135,17 +135,21 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
-    padding: 0 $space-8;
+    padding: 0 $space-4;
+
+    @include md { padding: 0 $space-8; }
 
     &:first-child { padding-left: 0; }
     &:last-child  { padding-right: 0; }
 
     strong {
       font-family: $font-heading;
-      font-size: $text-2xl;
+      font-size: $text-xl;
       font-weight: 700;
       color: var(--text-primary);
       letter-spacing: -0.03em;
+
+      @include md { font-size: $text-2xl; }
     }
 
     span {
