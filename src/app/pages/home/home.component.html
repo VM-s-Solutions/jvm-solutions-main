@@ -11,31 +11,19 @@
     }
   </div>
 
-  @defer (on viewport) {
+  @defer (on viewport; prefetch on idle) {
     <jvm-how-it-works />
   } @placeholder {
     <div style="min-height:500px"></div>
   }
 
-  @defer (on viewport) {
-    <jvm-stats />
-  } @placeholder {
-    <div style="min-height:180px"></div>
-  }
-
-  @defer (on viewport) {
-    <jvm-faq />
-  } @placeholder {
-    <div style="min-height:480px"></div>
-  }
-
-  @defer (on viewport) {
+  @defer (on viewport; prefetch on idle) {
     <jvm-contact-cta />
   } @placeholder {
     <div style="min-height:300px"></div>
   }
 
-  @defer (on viewport) {
+  @defer (on viewport; prefetch on idle) {
     <jvm-footer />
   } @placeholder {
     <div style="min-height:300px"></div>

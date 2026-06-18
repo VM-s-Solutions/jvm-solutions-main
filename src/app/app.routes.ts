@@ -17,6 +17,11 @@ export const routes: Routes = [
     title: 'About Us — JVM Yore',
   },
   {
+    path: 'faq',
+    loadComponent: () => import('./pages/faq/faq-page.component').then(m => m.FaqPageComponent),
+    title: 'FAQ — JVM Yore',
+  },
+  {
     path: 'pricing',
     loadComponent: () => import('./pages/pricing/pricing.component').then(m => m.PricingComponent),
     title: 'Pricing — JVM Yore',

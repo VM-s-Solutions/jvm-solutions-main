@@ -1,22 +1,21 @@
 <jvm-navbar />
 
 <main id="main-content" class="about-page">
-  <div class="about-page__inner container">
+  <div class="about-page__bg" aria-hidden="true">
+    <div class="about-page__orb about-page__orb--red"></div>
+    <div class="about-page__orb about-page__orb--green"></div>
+  </div>
 
-    <!-- Page header -->
+  <div class="about-page__inner container">
     <header class="about-header" appScrollReveal revealClass="reveal">
       <span class="section-label">{{ 'about.sectionLabel' | translate }}</span>
       <h1 class="about-header__title">
-        {{ 'about.titlePart1' | translate }} <span class="gradient-text">{{ 'about.titleGrad' | translate }}</span> {{ 'about.titlePart2' | translate }}
+        {{ 'about.titlePart1' | translate }} <span class="gradient-text">{{ 'about.titleGrad' | translate }}</span><br>{{ 'about.titlePart2' | translate }}
       </h1>
-      <p class="about-header__subtitle">
-        {{ 'about.description' | translate }}
-      </p>
+      <p class="about-header__subtitle">{{ 'about.description' | translate }}</p>
     </header>
 
-    <!-- Team -->
     <jvm-team-grid [members]="team" />
-
   </div>
 </main>
 

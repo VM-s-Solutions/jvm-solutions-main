@@ -1,49 +1,94 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-.cta {
-  padding: 9rem $space-6;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 500px;
-  border-top: 1px solid var(--border-color);
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity $transition-slow, transform $transition-slow;
 
-  &__content {
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta {
+  padding: 6rem $space-6;
+  border-top: 1px solid var(--border-color);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
+
+  &__inner {
     @include container;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: $space-8;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+
+    @include lg {
+      grid-template-columns: 1fr 1fr;
+      gap: $space-16;
+      align-items: center;
+    }
   }
 
-  &__eyebrow {
-    color: var(--text-muted);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
   }
 
   &__title {
     font-family: $font-heading;
-    font-size: clamp($text-4xl, 6vw, $text-6xl);
+    font-size: clamp($text-3xl, 4vw, $text-5xl);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.08;
+    line-height: 1.1;
     color: var(--text-primary);
-    max-width: 760px;
+    margin: 0;
   }
 
   &__description {
     color: var(--text-secondary);
-    font-size: clamp($text-base, 2vw, $text-lg);
-    line-height: 1.7;
-    max-width: 480px;
+    font-size: $text-base;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 440px;
   }
 
-  &__btn {
-    padding: $space-4 $space-12;
-    font-size: $text-base;
-    margin-top: $space-4;
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @include lg {
+      align-items: flex-end;
+    }
+  }
+
+  &__email {
+    font-family: $font-heading;
+    font-size: clamp($text-xl, 2.2vw, $text-3xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    @include gradient-text($gradient-brand);
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $text-sm;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  &__meta-dot {
+    opacity: 0.35;
   }
 }

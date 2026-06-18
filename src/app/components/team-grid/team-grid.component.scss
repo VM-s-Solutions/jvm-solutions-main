@@ -129,4 +129,9 @@
 
     &:hover { color: var(--text-primary); }
   }
+
+  // Michael's photo is a full-body shot; nudge crop down to centre his face
+  &:nth-child(3) &__photo {
+    object-position: 50% 30%;
+  }
 }

@@ -54,31 +54,15 @@
     text-align: left;
   }
 
-  // ── Badge ─────────────────────────────────────────────────────────────────
-  &__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
-    color: var(--text-muted);
-    font-size: $text-sm;
-    font-weight: 500;
-    margin-bottom: $space-8;
+  // ── Eyebrow ───────────────────────────────────────────────────────────────
+  &__eyebrow {
+    @include section-label;
     animation: fade-in 0.5s ease both;
-  }
-
-  &__badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: $green;
-    box-shadow: 0 0 8px rgba($green, 0.8);
-    flex-shrink: 0;
-    animation: pulse-dot 2.5s ease-in-out infinite;
   }
 
   // ── Headline ──────────────────────────────────────────────────────────────
   &__headline {
-    font-size: clamp(2.75rem, 6.5vw, 5.75rem);
+    font-size: clamp(2.25rem, 4.5vw, 4.25rem);
     font-weight: 700;
     line-height: 1.06;
     letter-spacing: -0.04em;
@@ -89,14 +73,26 @@
     animation-delay: 0.08s;
   }
 
-  // The red gradient line — last line of headline
-  // display: inline-block + padding-bottom ensure the background-clip area
-  // covers descenders; without it the gradient is cut off at line-height: 1.0
-  &__headline-em {
-    font-style: normal;
-    display: inline-block;
-    padding-bottom: 0.12em;
+  // Typewriter line — gradient, same weight as rest of headline
+  &__typewriter {
+    display: block;
     @include gradient-text($gradient-brand);
+    min-height: 1.06em; // prevent layout jump when text is empty on first tick
+  }
+
+  // Blinking cursor
+  &__cursor {
+    display: inline-block;
+    font-weight: 300;
+    opacity: 1;
+    animation: blink-cursor 0.9s step-start infinite;
+    // Override gradient-text fill so the cursor is solid
+    -webkit-text-fill-color: rgba($red-light, 0.7);
+  }
+
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
   }
 
   // ── Description ───────────────────────────────────────────────────────────
@@ -105,65 +101,37 @@
     color: var(--text-secondary);
     font-size: $text-base;
     line-height: 1.8;
-    margin-bottom: $space-10;
+    text-wrap: pretty;
     animation: fade-in 0.6s ease both;
     animation-delay: 0.2s;
   }
 
-  // ── Actions ───────────────────────────────────────────────────────────────
-  &__actions {
-    display: flex;
+  // ── Single editorial CTA ──────────────────────────────────────────────────
+  &__cta {
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: $space-3;
-    flex-wrap: wrap;
-    margin-bottom: $space-12;
+    gap: $space-2;
+    margin-top: $space-8;
+    color: var(--text-secondary);
+    font-size: $text-sm;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.01em;
     animation: fade-in 0.6s ease both;
     animation-delay: 0.3s;
-  }
+    transition: color $transition-base, gap $transition-base;
 
-  // ── Stats — inline row, left-aligned ─────────────────────────────────────
-  &__stats {
-    display: flex;
-    align-items: center;
-    animation: fade-in 0.6s ease both;
-    animation-delay: 0.42s;
-  }
+    svg {
+      transition: transform $transition-base;
+      flex-shrink: 0;
+    }
 
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    padding: 0 $space-4;
-
-    @include md { padding: 0 $space-8; }
-
-    &:first-child { padding-left: 0; }
-    &:last-child  { padding-right: 0; }
-
-    strong {
-      font-family: $font-heading;
-      font-size: $text-xl;
-      font-weight: 700;
+    &:hover {
       color: var(--text-primary);
-      letter-spacing: -0.03em;
+      gap: $space-3;
 
-      @include md { font-size: $text-2xl; }
+      svg { transform: translateX(3px); }
     }
-
-    span {
-      font-size: $text-xs;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-    }
-  }
-
-  &__stat-sep {
-    width: 1px;
-    height: 24px;
-    background: var(--border-color);
-    flex-shrink: 0;
   }
 
   // ── Scroll indicator ──────────────────────────────────────────────────────

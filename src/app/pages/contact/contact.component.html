@@ -1,69 +1,54 @@
 <jvm-navbar />
 
 <main id="main-content" class="contact-page">
-  <!-- Background decorations -->
   <div class="contact-page__bg" aria-hidden="true">
-    <div class="contact-page__orb contact-page__orb--purple"></div>
+    <div class="contact-page__orb contact-page__orb--red"></div>
     <div class="contact-page__orb contact-page__orb--green"></div>
   </div>
 
-  <div class="container contact-page__inner">
+  <div class="contact-page__layout">
 
     <!-- Left panel: info -->
     <aside class="contact-info">
-      <div class="contact-info__back">
-        <a routerLink="/" class="contact-info__back-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          {{ 'contact.backHome' | translate }}
-        </a>
-      </div>
+      <a routerLink="/" class="contact-info__back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        {{ 'contact.backHome' | translate }}
+      </a>
 
-      <span class="section-label">{{ 'contact.sectionLabel' | translate }}</span>
-      <h1 class="contact-info__title">
-        {{ 'contact.title1' | translate }}<br><span class="gradient-text">{{ 'contact.titleGrad' | translate }}</span>
-      </h1>
-      <p class="contact-info__description">
-        {{ 'contact.description' | translate }}
-      </p>
+      <div class="contact-info__body">
+        <span class="section-label">{{ 'contact.sectionLabel' | translate }}</span>
+        <h1 class="contact-info__title">
+          {{ 'contact.title1' | translate }}<br>
+          <span class="gradient-text">{{ 'contact.titleGrad' | translate }}</span>
+        </h1>
+        <p class="contact-info__description">{{ 'contact.description' | translate }}</p>
 
-      <div class="contact-info__details">
-        <div class="contact-info__item">
-          <div class="contact-info__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <p class="contact-info__label">{{ 'contact.emailLabel' | translate }}</p>
-            <a href="mailto:hello@jvm-yore.com" class="contact-info__value">hello&#64;jvm-yore.com</a>
-          </div>
-        </div>
-
-        <div class="contact-info__item">
-          <div class="contact-info__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <p class="contact-info__label">{{ 'contact.responseLabel' | translate }}</p>
-            <p class="contact-info__value">{{ 'contact.responseValue' | translate }}</p>
-          </div>
-        </div>
-
-        <div class="contact-info__item">
-          <div class="contact-info__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <p class="contact-info__label">{{ 'contact.locationLabel' | translate }}</p>
-            <p class="contact-info__value">{{ 'contact.locationValue' | translate }}</p>
-          </div>
-        </div>
+        <ul class="contact-chips" aria-label="{{ 'contact.sectionLabel' | translate }}">
+          <li>
+            <a href="mailto:hello@jvm-yore.com" class="contact-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              hello&#64;jvm-yore.com
+            </a>
+          </li>
+          <li>
+            <span class="contact-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              {{ 'contact.responseValue' | translate }}
+            </span>
+          </li>
+          <li>
+            <span class="contact-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ 'contact.locationValue' | translate }}
+            </span>
+          </li>
+        </ul>
       </div>
     </aside>
 
     <!-- Right panel: form -->
-    <section class="contact-form-wrap" aria-labelledby="form-title">
-      <h2 id="form-title" class="visually-hidden">{{ 'contact.form.nameLabel' | translate }}</h2>
+    <section class="contact-form-panel" [attr.aria-label]="'contact.sectionLabel' | translate">
 
-      <!-- Success state -->
       @if (status() === 'success') {
         <div class="contact-state contact-state--success" role="status">
           <div class="contact-state__icon">
@@ -75,7 +60,6 @@
         </div>
       }
 
-      <!-- Error state -->
       @if (status() === 'error') {
         <div class="contact-state contact-state--error" role="alert">
           <h3>{{ 'contact.error.title' | translate }}</h3>
@@ -84,45 +68,30 @@
         </div>
       }
 
-      <!-- Form -->
       @if (status() === 'idle' || status() === 'submitting') {
-        <form
-          class="contact-form"
-          [formGroup]="form"
-          (ngSubmit)="onSubmit()"
-          novalidate
-        >
+        <form class="contact-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
           <div class="contact-form__row">
-            <!-- Name -->
             <div class="contact-form__field" [class.is-invalid]="isInvalid('name')">
               <label for="name" class="contact-form__label">{{ 'contact.form.nameLabel' | translate }} <span aria-hidden="true">*</span></label>
               <input
-                id="name"
-                type="text"
-                formControlName="name"
-                class="contact-form__input"
+                id="name" type="text" formControlName="name" class="contact-form__input"
                 [placeholder]="'contact.form.namePlaceholder' | translate"
                 autocomplete="name"
-                [attr.aria-invalid]="isInvalid('name')"
-                aria-describedby="name-error"
+                [attr.aria-invalid]="isInvalid('name')" aria-describedby="name-error"
               />
               @if (isInvalid('name')) {
                 <span id="name-error" class="contact-form__error" role="alert">{{ 'contact.form.nameError' | translate }}</span>
               }
             </div>
 
-            <!-- Email -->
             <div class="contact-form__field" [class.is-invalid]="isInvalid('email')">
               <label for="email" class="contact-form__label">{{ 'contact.form.emailLabel' | translate }} <span aria-hidden="true">*</span></label>
               <input
-                id="email"
-                type="email"
-                formControlName="email"
-                class="contact-form__input"
+                id="email" type="email" formControlName="email" class="contact-form__input"
                 [placeholder]="'contact.form.emailPlaceholder' | translate"
                 autocomplete="email"
-                [attr.aria-invalid]="isInvalid('email')"
-                aria-describedby="email-error"
+                [attr.aria-invalid]="isInvalid('email')" aria-describedby="email-error"
               />
               @if (isInvalid('email')) {
                 <span id="email-error" class="contact-form__error" role="alert">{{ 'contact.form.emailError' | translate }}</span>
@@ -131,28 +100,20 @@
           </div>
 
           <div class="contact-form__row">
-            <!-- Company -->
             <div class="contact-form__field">
               <label for="company" class="contact-form__label">{{ 'contact.form.companyLabel' | translate }} <span class="contact-form__optional">{{ 'contact.form.companyOptional' | translate }}</span></label>
               <input
-                id="company"
-                type="text"
-                formControlName="company"
-                class="contact-form__input"
+                id="company" type="text" formControlName="company" class="contact-form__input"
                 [placeholder]="'contact.form.companyPlaceholder' | translate"
                 autocomplete="organization"
               />
             </div>
 
-            <!-- Service -->
             <div class="contact-form__field" [class.is-invalid]="isInvalid('service')">
               <label for="service" class="contact-form__label">{{ 'contact.form.serviceLabel' | translate }} <span aria-hidden="true">*</span></label>
               <select
-                id="service"
-                formControlName="service"
-                class="contact-form__select"
-                [attr.aria-invalid]="isInvalid('service')"
-                aria-describedby="service-error"
+                id="service" formControlName="service" class="contact-form__select"
+                [attr.aria-invalid]="isInvalid('service')" aria-describedby="service-error"
               >
                 <option value="" disabled>{{ 'contact.form.servicePlaceholder' | translate }}</option>
                 @for (option of serviceOptionKeys; track option.value) {
@@ -165,24 +126,19 @@
             </div>
           </div>
 
-          <!-- Message -->
           <div class="contact-form__field" [class.is-invalid]="isInvalid('message')">
             <label for="message" class="contact-form__label">{{ 'contact.form.messageLabel' | translate }} <span aria-hidden="true">*</span></label>
             <textarea
-              id="message"
-              formControlName="message"
-              class="contact-form__textarea"
+              id="message" formControlName="message" class="contact-form__textarea"
               [placeholder]="'contact.form.messagePlaceholder' | translate"
-              rows="6"
-              [attr.aria-invalid]="isInvalid('message')"
-              aria-describedby="message-error"
+              rows="5"
+              [attr.aria-invalid]="isInvalid('message')" aria-describedby="message-error"
             ></textarea>
             @if (isInvalid('message')) {
               <span id="message-error" class="contact-form__error" role="alert">{{ 'contact.form.messageError' | translate }}</span>
             }
           </div>
 
-          <!-- CAPTCHA -->
           <div class="contact-form__captcha">
             <jvm-turnstile
               [siteKey]="turnstileSiteKey"
@@ -193,38 +149,36 @@
             }
           </div>
 
-          <!-- Privacy consent -->
-          <div class="contact-form__field contact-form__consent-wrap" [class.is-invalid]="isInvalid('privacy')">
-            <label class="contact-form__consent-label" for="privacy">
-              <input
-                id="privacy"
-                type="checkbox"
-                formControlName="privacy"
-                class="contact-form__checkbox"
-                [attr.aria-invalid]="isInvalid('privacy')"
-                aria-describedby="privacy-error"
-              />
-              <span>{{ 'contact.form.privacyConsentPre' | translate }}<a routerLink="/privacy" target="_blank" rel="noopener noreferrer">{{ 'contact.form.privacyLink' | translate }}</a>{{ 'contact.form.privacyConsentPost' | translate }}</span>
-            </label>
-            @if (isInvalid('privacy')) {
-              <span id="privacy-error" class="contact-form__error" role="alert">{{ 'contact.form.privacyError' | translate }}</span>
-            }
+          <div class="contact-form__footer">
+            <div class="contact-form__field contact-form__consent-wrap" [class.is-invalid]="isInvalid('privacy')">
+              <label class="contact-form__consent-label" for="privacy">
+                <input
+                  id="privacy" type="checkbox" formControlName="privacy" class="contact-form__checkbox"
+                  [attr.aria-invalid]="isInvalid('privacy')" aria-describedby="privacy-error"
+                />
+                <span>{{ 'contact.form.privacyConsentPre' | translate }}<a routerLink="/privacy" target="_blank" rel="noopener noreferrer">{{ 'contact.form.privacyLink' | translate }}</a>{{ 'contact.form.privacyConsentPost' | translate }}</span>
+              </label>
+              @if (isInvalid('privacy')) {
+                <span id="privacy-error" class="contact-form__error" role="alert">{{ 'contact.form.privacyError' | translate }}</span>
+              }
+            </div>
+
+            <button
+              type="submit"
+              class="btn-primary contact-form__submit"
+              [disabled]="status() === 'submitting'"
+              [attr.aria-busy]="status() === 'submitting'"
+            >
+              @if (status() === 'submitting') {
+                <span class="contact-form__spinner" aria-hidden="true"></span>
+                {{ 'contact.form.submitting' | translate }}
+              } @else {
+                {{ 'contact.form.submit' | translate }}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              }
+            </button>
           </div>
 
-          <button
-            type="submit"
-            class="btn-primary contact-form__submit"
-            [disabled]="status() === 'submitting'"
-            [attr.aria-busy]="status() === 'submitting'"
-          >
-            @if (status() === 'submitting') {
-              <span class="contact-form__spinner" aria-hidden="true"></span>
-              {{ 'contact.form.submitting' | translate }}
-            } @else {
-              {{ 'contact.form.submit' | translate }}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            }
-          </button>
         </form>
       }
     </section>

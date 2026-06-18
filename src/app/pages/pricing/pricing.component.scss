@@ -26,35 +26,31 @@
 .pricing-page {
   position: relative;
   min-height: 100vh;
-  background: var(--bg-primary);
   overflow: hidden;
-}
 
-// Dot grid
-.pricing-page::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 36px 36px;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%);
-  z-index: 0;
-}
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-// Ambient glow — top-left
-.pricing-page::after {
-  content: '';
-  position: absolute;
-  top: -10%;
-  left: -5%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(ellipse, rgba($red, 0.07) 0%, transparent 68%);
-  filter: blur(72px);
-  pointer-events: none;
-  z-index: 0;
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+
+    &--red {
+      @include orb($red, 600px, 140px);
+      top: -80px;
+      left: -150px;
+    }
+
+    &--green {
+      @include orb($green, 400px, 100px);
+      bottom: 100px;
+      right: -100px;
+    }
+  }
 }
 
 .pricing-page__inner {

@@ -1,429 +1,443 @@
 {
-  "nav": {
-    "services": "Services",
-    "work": "Work",
-    "testimonials": "Testimonials",
-    "about": "About",
-    "pricing": "Pricing",
-    "contact": "Contact",
-    "getInTouch": "Get in Touch"
-  },
-  "hero": {
-    "badge": "Available for new projects",
-    "headlinePart1": "We craft software",
-    "headlinePart2": "that",
-    "headlineGrad1": "scales",
-    "headlineGrad2": "matters",
-    "typewriter": {
-      "frontend": "Frontend Development",
-      "backend": "Backend Systems",
-      "mobile": "Mobile Applications",
-      "ai": "AI Automation"
+  "about": {
+    "description": "Two engineers and one R&D engineer united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
+    "janis": {
+      "bio": "Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds.",
+      "role": "Co-founder & Managing Director"
     },
-    "description": "JVM Yore builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
-    "ctaPrimary": "Start a Project",
-    "ctaSecondary": "View Our Work",
-    "statsProjects": "Projects delivered",
-    "statsExperience": "Industry experience",
-    "statsClients": "Happy clients"
-  },
-  "services": {
-    "sectionLabel": "What We Build",
-    "title1": "End-to-end",
-    "title2": "digital solutions",
-    "subtitle": "Whatever your challenge — we have the expertise to engineer the right solution.",
-    "frontend": {
-      "title": "Frontend Development",
-      "description": "Blazing-fast, accessible web applications built with Angular, React or Vue. Pixel-perfect UIs with sophisticated animations and seamless UX."
+    "michael": {
+      "bio": "Full-stack across Angular, .NET, Swift, and Kotlin. Brings engineering precision to every layer — from data model to polished mobile UI.",
+      "role": "Co-founder & Full-stack Engineer"
     },
-    "backend": {
-      "title": "Backend Systems",
-      "description": "Scalable APIs, microservices and cloud infrastructure built primarily on .NET. From REST to gRPC, designed for reliability, security and high throughput."
-    },
-    "mobile": {
-      "title": "Mobile Applications",
-      "description": "Native iOS and Android apps built with Swift and Kotlin. Full-native performance, platform-specific UX, and direct access to every device API."
-    },
-    "ai": {
-      "title": "AI Automation",
-      "description": "LLM integrations, intelligent agents, and workflow automation that reduce manual effort and unlock new capabilities for your business."
+    "sectionLabel": "Our Team",
+    "titleGrad": "team",
+    "titlePart1": "Meet the",
+    "titlePart2": "behind JVM",
+    "vit": {
+      "bio": "Builds across the full stack — Angular frontends, .NET backends, and native mobile in Swift and Kotlin. Obsessed with performance and clean architecture.",
+      "role": "Co-founder & Full-stack Engineer"
     }
-  },
-  "stats": {
-    "projects": "Projects Delivered",
-    "experience": "Years of Experience",
-    "clients": "Happy Clients",
-    "services": "Core Services"
-  },
-  "portfolio": {
-    "sectionLabel": "Selected Work",
-    "title1": "Projects we're",
-    "title2": "proud of",
-    "subtitle": "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
-    "caseStudy": "Case Study",
-    "jp": {
-      "title": "JP Immobilien — Client Portal",
-      "description": "Premium client portal for an Austrian property group. Multi-division access across New Build, Rental Properties, Hospitality, and Serviced Apartments — built with Angular and Angular Material.",
-      "category": "Real Estate + Frontend"
-    },
-    "karimpol": {
-      "title": "Karimpol — Property Development Portal",
-      "description": "Corporate property development portal for a Central European real estate group. Project management and client access across five markets — Austria, Poland, Slovakia, Czech Republic, and Hungary.",
-      "category": "Real Estate + Frontend"
-    },
-    "vedos": {
-      "title": "VEDOS — Shipper Portal",
-      "description": "Real-time logistics operations portal for a Slovak transport company. Live fleet tracking, automotive JIT circuits, cold-chain monitoring, and cross-border (SK→DE) shipment management — deployed on Azure Static Web Apps.",
-      "category": "Logistics + Frontend"
-    },
-    "omida": {
-      "title": "OMIDA Group — Shipper Portal",
-      "description": "Unified multi-entity shipper portal prototype for OMIDA Group S.A. — a €330M Polish logistics holding. Real-time cross-entity shipment visibility across road, ocean, rail, and warehousing operations for 9 operating companies under one login.",
-      "category": "Logistics + Frontend"
-    },
-    "neovize": {
-      "title": "NeoVize — Patient Portal",
-      "description": "Patient-facing portal for NeoVize Group's ophthalmology practice. Pre-operative assessment flows, consent management, and product-specific portals for NeoVize, DuoVize, NeoVizia, and Kukátko — built with a custom blue & teal design system.",
-      "category": "Healthcare + Frontend"
-    },
-    "adentics": {
-      "title": "Adentics — Dental Patient Portal",
-      "description": "Multi-site dental patient portal for German-speaking markets. Unified cross-clinic identity, treatment timelines, appointment scheduling, patient retention workflows, and family & referral tracking — deployed on Azure Static Web Apps.",
-      "category": "Healthcare + Frontend"
-    }
-  },
-  "testimonials": {
-    "sectionLabel": "Testimonials",
-    "title1": "Trusted by",
-    "title2": "forward-thinking",
-    "title3": "teams",
-    "clientsLabel": "Companies we've worked with"
-  },
-  "cta": {
-    "sectionLabel": "Let's Build Together",
-    "title1": "Ready to turn your idea",
-    "title2": "into",
-    "titleGrad": "reality?",
-    "description": "Tell us about your project and we'll get back to you within 24 hours with a clear plan and next steps.",
-    "btn": "Start a Conversation"
-  },
-  "footer": {
-    "tagline": "Engineering software that scales, performs, and lasts.",
-    "nav": "Navigation",
-    "contact": "Get in Touch",
-    "available": "Available for new projects",
-    "rights": "All rights reserved.",
-    "builtWith": "Built with Angular",
-    "privacy": "Privacy Policy"
   },
   "contact": {
-    "sectionLabel": "Contact Us",
     "backHome": "Back to home",
-    "title1": "Let's build",
-    "titleGrad": "something great",
     "description": "Tell us about your project and we'll get back to you within 24 hours with a tailored proposal.",
-    "emailLabel": "Email",
-    "responseLabel": "Response time",
-    "responseValue": "Within 24 hours",
-    "locationLabel": "Location",
-    "locationValue": "Czech Republic & Remote",
+    "error": {
+      "btn": "Try again",
+      "message": "Please try again or email us directly at",
+      "title": "Something went wrong"
+    },
     "form": {
-      "nameLabel": "Full Name",
-      "namePlaceholder": "Jan Novák",
-      "nameError": "Please enter your name (min. 2 characters).",
-      "emailLabel": "Email",
-      "emailPlaceholder": "jan@company.cz",
-      "emailError": "Please enter a valid email address.",
+      "captchaError": "Please complete the CAPTCHA verification.",
       "companyLabel": "Company",
       "companyOptional": "(optional)",
       "companyPlaceholder": "Acme Inc.",
-      "serviceLabel": "I need",
-      "servicePlaceholder": "Select a service…",
-      "serviceError": "Please select a service.",
+      "emailError": "Please enter a valid email address.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jan@company.cz",
+      "messageError": "Message must be at least 20 characters.",
       "messageLabel": "Your Message",
       "messagePlaceholder": "Describe your project, goals, timeline…",
-      "messageError": "Message must be at least 20 characters.",
-      "submit": "Send Message",
-      "submitting": "Sending…",
-      "captchaError": "Please complete the CAPTCHA verification.",
-      "privacyConsentPre": "I agree to the ",
-      "privacyLink": "Privacy Policy",
+      "nameError": "Please enter your name (min. 2 characters).",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Jan Novák",
       "privacyConsentPost": " and consent to the processing of my personal data.",
-      "privacyError": "You must accept the Privacy Policy to proceed."
+      "privacyConsentPre": "I agree to the ",
+      "privacyError": "You must accept the Privacy Policy to proceed.",
+      "privacyLink": "Privacy Policy",
+      "serviceError": "Please select a service.",
+      "serviceLabel": "I need",
+      "servicePlaceholder": "Select a service…",
+      "submit": "Send Message",
+      "submitting": "Sending…"
     },
+    "locationValue": "Praha & Remote",
+    "responseValue": "Within 24 hours",
+    "sectionLabel": "Contact Us",
     "services": {
-      "frontend": "Frontend Development",
-      "backend": "Backend Systems",
-      "mobile": "Mobile Application",
       "ai": "AI Automation",
+      "backend": "Backend Systems",
+      "frontend": "Frontend Development",
       "fullstack": "Full-stack Product",
+      "mobile": "Mobile Application",
       "other": "Other"
     },
     "success": {
-      "title": "Message sent!",
+      "btn": "Send another message",
       "message": "Thanks for reaching out. We'll get back to you within 24 hours.",
-      "btn": "Send another message"
+      "title": "Message sent!"
     },
-    "error": {
-      "title": "Something went wrong",
-      "message": "Please try again or email us directly at",
-      "btn": "Try again"
-    }
+    "title1": "Let's build",
+    "titleGrad": "something great"
   },
-  "about": {
-    "sectionLabel": "Who we are",
-    "titlePart1": "Meet the",
-    "titleGrad": "team",
-    "titlePart2": "behind JVM",
-    "description": "Two engineers and a business mind united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
-    "janis": {
-      "role": "Co-founder & Managing Director",
-      "bio": "Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds."
-    },
-    "vit": {
-      "role": "Co-founder & Full-stack Engineer",
-      "bio": "Builds across the full stack — Angular frontends, .NET backends, and native mobile in Swift and Kotlin. Obsessed with performance and clean architecture."
-    },
-    "michael": {
-      "role": "Co-founder & Full-stack Engineer",
-      "bio": "Full-stack across Angular, .NET, Swift, and Kotlin. Brings engineering precision to every layer — from data model to polished mobile UI."
-    }
-  },
-  "process": {
-    "sectionLabel": "How We Work",
-    "title1": "Built for",
-    "titleGrad": "predictability",
-    "subtitle": "You always know what's happening, what's next, and when you'll ship.",
-    "step1Num": "01",
-    "step1Title": "Discovery",
-    "step1Desc": "Two focused sessions to understand your goals, constraints, and users. We leave with a shared definition of done.",
-    "step2Num": "02",
-    "step2Title": "Spec & Estimate",
-    "step2Desc": "A clear technical spec, stack decision, and fixed-scope estimate — no surprise invoices.",
-    "step3Num": "03",
-    "step3Title": "Build",
-    "step3Desc": "Weekly demos, async updates, and a staging environment you can access from day one.",
-    "step4Num": "04",
-    "step4Title": "Ship & Hand Over",
-    "step4Desc": "Deploy, full handover docs, and a 30-day warranty. You get the code, you own the code."
+  "cta": {
+    "description": "We reply personally — no auto-responses. Drop us a message and hear back from Janis, Vít, or Michael directly.",
+    "title": "Have a project in mind?"
   },
   "faq": {
+    "a1": "Yes — roughly half our clients come to us pre-revenue. We know how to scope an MVP that ships without burning runway.",
+    "a2": "Absolutely. We've inherited everything from legacy PHP to half-migrated Angular apps. We audit first, give you an honest assessment, then move.",
+    "a3": "A scoped MVP is usually 6–12 weeks from kick-off to production. Our Discovery phase gives you the real number before any commitment.",
+    "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
+    "a5": "Yes — through a monthly retainer. Most clients stay on a light retainer for 3–6 months post-launch, then adjust based on need.",
+    "a6": "100% remote and async-first. We're based in the Czech Republic and work with clients across EU, US, and UK time zones.",
+    "q1": "Do you work with early-stage startups?",
+    "q2": "Can you take over an existing codebase?",
+    "q3": "What does a typical project timeline look like?",
+    "q4": "Do you sign NDAs?",
+    "q5": "Do you offer ongoing support after launch?",
+    "q6": "Do you work remotely?",
     "sectionLabel": "FAQ",
     "title1": "Questions we get",
-    "titleGrad": "every week",
-    "q1": "Do you work with early-stage startups?",
-    "a1": "Yes — roughly half our clients come to us pre-revenue. We know how to scope an MVP that ships without burning runway.",
-    "q2": "Can you take over an existing codebase?",
-    "a2": "Absolutely. We've inherited everything from legacy PHP to half-migrated Angular apps. We audit first, give you an honest assessment, then move.",
-    "q3": "What does a typical project timeline look like?",
-    "a3": "A scoped MVP is usually 6–12 weeks from kick-off to production. Our Discovery phase gives you the real number before any commitment.",
-    "q4": "Do you sign NDAs?",
-    "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
-    "q5": "Do you offer ongoing support after launch?",
-    "a5": "Yes — through a monthly retainer. Most clients stay on a light retainer for 3–6 months post-launch, then adjust based on need.",
-    "q6": "Do you work remotely?",
-    "a6": "100% remote and async-first. We're based in the Czech Republic and work with clients across EU, US, and UK time zones."
+    "titleGrad": "every week"
+  },
+  "footer": {
+    "builtWith": "Built with Angular",
+    "contact": "Get in Touch",
+    "nav": "Navigation",
+    "privacy": "Privacy Policy",
+    "tagline": "Engineering software that scales, performs, and lasts."
+  },
+  "hero": {
+    "ctaPrimary": "Start a Project",
+    "description": "JVM Yore builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
+    "eyebrow": "Software Studio",
+    "headlinePart1": "We craft software",
+    "typewriter": {
+      "ai": "AI Automation",
+      "backend": "Backend Systems",
+      "frontend": "Frontend Development",
+      "mobile": "Mobile Applications"
+    }
+  },
+  "nav": {
+    "about": "About",
+    "faq": "FAQ",
+    "getInTouch": "Get in Touch",
+    "pricing": "Pricing",
+    "services": "Services"
+  },
+  "portfolio": {
+    "adentics": {
+      "category": "Healthcare + Frontend",
+      "description": "Multi-site dental patient portal for German-speaking markets. Unified cross-clinic identity, treatment timelines, appointment scheduling, patient retention workflows, and family & referral tracking — deployed on Azure Static Web Apps.",
+      "title": "Adentics — Dental Patient Portal"
+    },
+    "ai": {
+      "category": "",
+      "description": "",
+      "title": ""
+    },
+    "caseStudy": "Case Study",
+    "ecommerce": {
+      "category": "Frontend + Backend",
+      "description": "High-performance headless e-commerce with custom CMS, multi-region inventory, and personalisation engine.",
+      "title": "Nexshop — E-commerce Platform"
+    },
+    "fintech": {
+      "category": "",
+      "description": "",
+      "title": ""
+    },
+    "jp": {
+      "category": "Real Estate + Frontend",
+      "description": "Premium client portal for an Austrian property group. Multi-division access across New Build, Rental Properties, Hospitality, and Serviced Apartments — built with Angular and Angular Material.",
+      "title": "JP Immobilien — Client Portal"
+    },
+    "karimpol": {
+      "category": "Real Estate + Frontend",
+      "description": "Corporate property development portal for a Central European real estate group. Project management and client access across five markets — Austria, Poland, Slovakia, Czech Republic, and Hungary.",
+      "title": "Karimpol — Property Development Portal"
+    },
+    "logistics": {
+      "category": "",
+      "description": "",
+      "title": ""
+    },
+    "neovize": {
+      "category": "Healthcare + Frontend",
+      "description": "Patient-facing portal for NeoVize Group's ophthalmology practice. Pre-operative assessment flows, consent management, and product-specific portals for NeoVize, DuoVize, NeoVizia, and Kukátko — built with a custom blue & teal design system.",
+      "title": "NeoVize — Patient Portal"
+    },
+    "omida": {
+      "category": "Logistics + Frontend",
+      "description": "Unified multi-entity shipper portal prototype for OMIDA Group S.A. — a €330M Polish logistics holding. Real-time cross-entity shipment visibility across road, ocean, rail, and warehousing operations for 9 operating companies under one login.",
+      "title": "OMIDA Group — Shipper Portal"
+    },
+    "sectionLabel": "Selected Work",
+    "subtitle": "A snapshot of what we've built — each one a partnership, a challenge, and a solution delivered.",
+    "title1": "Projects we're",
+    "title2": "proud of",
+    "vedos": {
+      "category": "Logistics + Frontend",
+      "description": "Real-time logistics operations portal for a Slovak transport company. Live fleet tracking, automotive JIT circuits, cold-chain monitoring, and cross-border (SK→DE) shipment management — deployed on Azure Static Web Apps.",
+      "title": "VEDOS — Shipper Portal"
+    }
   },
   "pricing": {
-    "sectionLabel": "Engagement Models",
-    "title1": "Transparent",
-    "titleGrad": "pricing",
-    "subtitle": "No hidden fees. No vague estimates. Pick the model that fits your situation.",
-    "note": "All prices are excluding VAT. Fixed-scope projects require a 50% upfront deposit.",
+    "consulting": {
+      "cta": "Book a Session",
+      "f1": "Architecture reviews & code audits",
+      "f2": "Team mentorship and code reviews",
+      "f3": "Stack selection & feasibility studies",
+      "f4": "Ideal for CTOs and engineering leads",
+      "f5": "Deliverable: written report or recording",
+      "label": "Technical Consulting",
+      "period": "per hour",
+      "price": "€150"
+    },
     "from": "from",
+    "note": "All prices are excluding VAT. Fixed-scope projects require a 50% upfront deposit.",
     "project": {
-      "label": "Fixed-Scope Project",
-      "price": "€8,000",
-      "period": "per project",
       "cta": "Start a Project",
       "f1": "Full technical spec before we write a line",
       "f2": "Weekly demos on a live staging environment",
       "f3": "Source code ownership — full handover",
       "f4": "30-day post-launch warranty",
-      "f5": "Urgent bug response within 4 hours"
+      "f5": "Urgent bug response within 4 hours",
+      "label": "Fixed-Scope Project",
+      "period": "per project",
+      "price": "€8,000"
     },
     "retainer": {
-      "price": "€20,500",
-      "period": "per month",
       "badge": "Most popular",
       "cta": "Book a Discovery Call",
       "f1": "All 3 of us — frontend, backend & mobile",
       "f2": "Sprint-based delivery with bi-weekly demos",
       "f3": "Async-first via Slack or Linear, daily updates",
       "f4": "Priority bug response — same day",
-      "f5": "Cancel anytime, no lock-in"
+      "f5": "Cancel anytime, no lock-in",
+      "label": "Full-Team Engagement",
+      "period": "per month",
+      "price": "€20,500"
     },
-    "consulting": {
-      "label": "Technical Consulting",
-      "price": "€150",
-      "period": "per hour",
-      "cta": "Book a Session",
-      "f1": "Architecture reviews & code audits",
-      "f2": "Team mentorship and code reviews",
-      "f3": "Stack selection & feasibility studies",
-      "f4": "Ideal for CTOs and engineering leads",
-      "f5": "Deliverable: written report or recording"
-    }
+    "sectionLabel": "Engagement Models",
+    "subtitle": "No hidden fees. No vague estimates. Pick the model that fits your situation.",
+    "title1": "Transparent",
+    "titleGrad": "pricing"
   },
   "privacy": {
-    "sectionLabel": "Legal",
-    "title": "Privacy Policy",
-    "lastUpdated": "Last updated: April 2026",
-    "intro": "This Privacy Policy explains how JVM Yore collects, uses, and protects personal data submitted through this website. We are committed to transparency and full compliance with the EU General Data Protection Regulation (GDPR).",
+    "contact": {
+      "body": "For all data protection requests, questions, or complaints, please email us at hello@jvm-yore.com. We will respond within 30 days.",
+      "title": "Contact"
+    },
     "controller": {
-      "title": "Data Controller",
-      "body": "JVM Yore is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-yore.com."
-    },
-    "dataCollected": {
-      "title": "What Data We Collect",
-      "body": "When you submit the contact form, we collect: your full name, email address, company name (optional), requested service type, and your message. We do not collect any other personal data through this website."
-    },
-    "purpose": {
-      "title": "Why We Collect It",
-      "body": "We use your contact data solely to respond to your enquiry and, where relevant, to send you a project proposal. We will never send you marketing communications without your explicit consent."
-    },
-    "legalBasis": {
-      "title": "Legal Basis",
-      "body": "Processing is based on our legitimate interest in responding to business enquiries (GDPR Art. 6(1)(f)). Where you have provided explicit consent for a specific purpose, processing is based on GDPR Art. 6(1)(a)."
-    },
-    "retention": {
-      "title": "Data Retention",
-      "body": "We retain contact form submissions for up to 12 months from the date of submission, after which all personal data is permanently deleted, unless an ongoing contractual relationship requires longer retention."
-    },
-    "thirdParties": {
-      "title": "Third Parties",
-      "body": "We use Cloudflare Turnstile to protect the contact form against automated abuse. Cloudflare may process your IP address and browser signals for CAPTCHA verification. We do not sell or share your personal data with any other third parties."
+      "body": "JVM Yore is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-yore.com.",
+      "title": "Data Controller"
     },
     "cookies": {
-      "title": "Cookies & Local Storage",
-      "body": "This website does not use cookies. We use browser localStorage solely to remember your language preference. No tracking or advertising technologies are employed."
+      "body": "This website does not use cookies. We use browser localStorage solely to remember your language preference. No tracking or advertising technologies are employed.",
+      "title": "Cookies & Local Storage"
+    },
+    "dataCollected": {
+      "body": "When you submit the contact form, we collect: your full name, email address, company name (optional), requested service type, and your message. We do not collect any other personal data through this website.",
+      "title": "What Data We Collect"
+    },
+    "intro": "This Privacy Policy explains how JVM Yore collects, uses, and protects personal data submitted through this website. We are committed to transparency and full compliance with the EU General Data Protection Regulation (GDPR).",
+    "lastUpdated": "Last updated: April 2026",
+    "legalBasis": {
+      "body": "Processing is based on our legitimate interest in responding to business enquiries (GDPR Art. 6(1)(f)). Where you have provided explicit consent for a specific purpose, processing is based on GDPR Art. 6(1)(a).",
+      "title": "Legal Basis"
+    },
+    "purpose": {
+      "body": "We use your contact data solely to respond to your enquiry and, where relevant, to send you a project proposal. We will never send you marketing communications without your explicit consent.",
+      "title": "Why We Collect It"
+    },
+    "retention": {
+      "body": "We retain contact form submissions for up to 12 months from the date of submission, after which all personal data is permanently deleted, unless an ongoing contractual relationship requires longer retention.",
+      "title": "Data Retention"
     },
     "rights": {
-      "title": "Your Rights",
-      "body": "Under GDPR you have the right to access, rectify, erase, and port your personal data. You also have the right to restrict or object to processing. To exercise any of these rights, contact us at hello@jvm-yore.com. You have the right to lodge a complaint with the Czech Data Protection Authority (UOOU)."
+      "body": "Under GDPR you have the right to access, rectify, erase, and port your personal data. You also have the right to restrict or object to processing. To exercise any of these rights, contact us at hello@jvm-yore.com. You have the right to lodge a complaint with the Czech Data Protection Authority (UOOU).",
+      "title": "Your Rights"
     },
-    "contact": {
-      "title": "Contact",
-      "body": "For all data protection requests, questions, or complaints, please email us at hello@jvm-yore.com. We will respond within 30 days."
-    }
+    "sectionLabel": "Legal",
+    "thirdParties": {
+      "body": "We use Cloudflare Turnstile to protect the contact form against automated abuse. Cloudflare may process your IP address and browser signals for CAPTCHA verification. We do not sell or share your personal data with any other third parties.",
+      "title": "Third Parties"
+    },
+    "title": "Privacy Policy"
+  },
+  "process": {
+    "sectionLabel": "How We Work",
+    "step1Desc": "Two focused sessions to understand your goals, constraints, and users. We leave with a shared definition of done.",
+    "step1Num": "01",
+    "step1Title": "Discovery",
+    "step2Desc": "A clear technical spec, stack decision, and fixed-scope estimate — no surprise invoices.",
+    "step2Num": "02",
+    "step2Title": "Spec & Estimate",
+    "step3Desc": "Weekly demos, async updates, and a staging environment you can access from day one.",
+    "step3Num": "03",
+    "step3Title": "Build",
+    "step4Desc": "Deploy, full handover docs, and a 30-day warranty. You get the code, you own the code.",
+    "step4Num": "04",
+    "step4Title": "Ship & Hand Over",
+    "subtitle": "You always know what's happening, what's next, and when you'll ship.",
+    "title1": "Built for",
+    "titleGrad": "predictability"
+  },
+  "services": {
+    "ai": {
+      "description": "LLM integrations, intelligent agents, and workflow automation that reduce manual effort and unlock new capabilities for your business.",
+      "title": "AI Automation"
+    },
+    "backend": {
+      "description": "Scalable APIs, microservices and cloud infrastructure built primarily on .NET. From REST to gRPC, designed for reliability, security and high throughput.",
+      "title": "Backend Systems"
+    },
+    "frontend": {
+      "description": "Blazing-fast, accessible web applications built with Angular, React or Vue. Pixel-perfect UIs with sophisticated animations and seamless UX.",
+      "title": "Frontend Development"
+    },
+    "mobile": {
+      "description": "Native iOS and Android apps built with Swift and Kotlin. Full-native performance, platform-specific UX, and direct access to every device API.",
+      "title": "Mobile Applications"
+    },
+    "sectionLabel": "What We Build",
+    "subtitle": "Whatever your challenge — we have the expertise to engineer the right solution.",
+    "title1": "End-to-end",
+    "title2": "digital solutions"
+  },
+  "stats": {
+    "clients": "Happy Clients",
+    "experience": "Years of Experience",
+    "projects": "Projects Delivered",
+    "services": "Core Services"
+  },
+  "testimonials": {
+    "clientsLabel": "Companies we've worked with",
+    "sectionLabel": "Testimonials",
+    "title1": "Trusted by",
+    "title2": "forward-thinking",
+    "title3": "teams"
   },
   "work": {
-    "back": "Back to work",
-    "problem": "The Problem",
-    "solution": "Our Solution",
-    "results": "Results",
-    "techStack": "Tech Stack",
-    "timeline": "Timeline",
-    "notFound": "Case study not found.",
-    "ctaText": "Like what you see? Let's build something together.",
-    "ctaBtn": "Start a Project",
-    "fintech": {
-      "subtitle": "Real-time financial analytics platform for mid-market investment firms",
-      "timeline": "63 days",
-      "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.",
-      "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports. The architecture was designed for 50+ concurrent users and integrates with their existing Auth0 SSO.",
-      "metric1Val": "12h → 45min",
-      "metric1Label": "weekly reporting time",
-      "metric2Val": "60%",
-      "metric2Label": "faster load vs. old tool",
-      "metric3Val": "50+",
-      "metric3Label": "analysts onboarded at launch"
-    },
-    "logistics": {
-      "subtitle": "Cross-platform mobile app for a growing logistics provider",
-      "timeline": "77 days",
-      "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism — creating disputes with enterprise clients.",
-      "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery, and GPS coordinates are logged automatically.",
-      "metric1Val": "8% → <0.5%",
-      "metric1Label": "missed delivery rate",
-      "metric2Val": "4.8★",
-      "metric2Label": "App Store rating",
-      "metric3Val": "77 days",
-      "metric3Label": "idea to App Store"
-    },
-    "ai": {
-      "subtitle": "Intelligent document processing and workflow automation engine",
-      "timeline": "56 days",
-      "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP. Error rates hovered around 4%, causing reconciliation delays every month-end.",
-      "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST. Edge cases are routed to a human review queue.",
-      "metric1Val": "30h/week",
-      "metric1Label": "manual work eliminated",
-      "metric2Val": "4% → 0.3%",
-      "metric2Label": "error rate",
-      "metric3Val": "Month 1",
-      "metric3Label": "ROI positive"
-    },
-    "vedos": {
-      "subtitle": "Real-time logistics portal for a Slovak transport & freight company",
-      "timeline": "70 days",
-      "problem": "VEDOS, a logistics company operating Automotive JIT circuits and cold-chain routes across Slovakia and Germany, managed dispatching through manual phone calls and spreadsheets. Dispatchers had no live visibility of fleet positions, JIT circuit status, or temperature alerts — making it impossible to react to delays before they became SLA breaches.",
-      "solution": "We built an Angular + Material Design 3 shipper portal backed by a .NET API. Dispatchers get a live fleet map (Leaflet, 30-second refresh), an Automotive JIT board with per-circuit SLA tracking (±15 min), cold-chain monitoring with real-time temperature alerts, and an integrated quoting workflow. The portal is role-scoped per customer and deployed globally on Azure Static Web Apps.",
-      "metric1Val": "16",
-      "metric1Label": "vehicles tracked live",
-      "metric2Val": "90%",
-      "metric2Label": "on-time SLA achieved",
-      "metric3Val": "70 days",
-      "metric3Label": "design to production"
-    },
-    "omida": {
-      "subtitle": "Unified multi-entity shipper portal MVP for a €330M Polish logistics holding",
-      "timeline": "42 days",
-      "problem": "OMIDA Group S.A. operates 9 separate logistics entities — road, ocean, rail, warehousing, and more — each with its own systems and customer logins. Enterprise clients using multiple OMIDA services had no unified view of their shipments, documents, or invoices, creating fragmented communication and a weak competitive story against integrated rivals like Rohlig SUUS.",
-      "solution": "We built an Angular MVP shipper portal that unifies all 9 OMIDA entities under one login. The centrepiece is a cross-entity shipment timeline showing road, ocean, rail, and warehouse activity in a single dashboard — the story no competitor can tell. The portal includes a live multi-mode map (Leaflet, real OMIDA corridors), a document vault, and an entity-badge system that tags every record with its operating company.",
-      "metric1Val": "9",
-      "metric1Label": "entities unified",
-      "metric2Val": "1 login",
-      "metric2Label": "for all modes",
-      "metric3Val": "42 days",
-      "metric3Label": "concept to live MVP"
-    },
     "adentics": {
-      "subtitle": "Premium multi-site patient portal for a German-speaking dental practice group",
-      "timeline": "56 days",
+      "metric1Label": "across all clinic locations",
+      "metric1Val": "1 login",
+      "metric2Label": "patient-facing features",
+      "metric2Val": "5 modules",
+      "metric3Label": "concept to live portal",
+      "metric3Val": "56 days",
       "problem": "A multi-location dental group operating across German-speaking cities had no unified digital experience for patients. Each clinic ran independently — separate appointment systems, no shared treatment history, and no structured retention process. Patients churned between visits, referrals were tracked manually, and staff had no central queue.",
       "solution": "We built Adentics in Angular: a cross-site patient portal where patients authenticate once and access their full treatment history across all clinic locations. Five patient modules cover the full journey — Treatment Timeline, Termine (appointment booking), Nachrichten (in-app messaging), Family & Referrals management, and an Academy for patient education. The admin side provides a Treatment Queue for staff. A premium teal-and-gold design system signals clinical trust. Deployed on Azure Static Web Apps.",
-      "metric1Val": "1 login",
-      "metric1Label": "across all clinic locations",
-      "metric2Val": "5 modules",
-      "metric2Label": "patient-facing features",
-      "metric3Val": "56 days",
-      "metric3Label": "concept to live portal"
+      "subtitle": "Premium multi-site patient portal for a German-speaking dental practice group",
+      "timeline": "56 days"
     },
-    "neovize": {
-      "subtitle": "Patient-facing multi-product ophthalmology portal for NeoVize Group",
-      "timeline": "4 days",
-      "problem": "NeoVize Group operates four distinct ophthalmology product brands — NeoVize (premium laser correction), DuoVize (duet vision packages), NeoVizia (IOL replacement), and Kukátko (paediatric vision) — each with its own consent documents and pre-operative assessment flows. Without a unified platform, patient coordinators managed paper forms and email threads per product, creating delays, compliance risk, and a fragmented patient experience.",
-      "solution": "We built a unified Angular patient portal that adapts per brand. Patients select their product portal on login and work through a structured digital pre-op assessment — biometric uploads, health questionnaire, and consent forms with e-signature capture. A custom blue & teal design system matches NeoVize Group's clinical identity across all four brands, while coordinators monitor pending assessments from a shared dashboard.",
-      "metric1Val": "4",
-      "metric1Label": "product portals unified",
-      "metric2Val": "100%",
-      "metric2Label": "digital consent",
-      "metric3Val": "4 days",
-      "metric3Label": "concept to live portal"
+    "ai": {
+      "metric1Label": "manual work eliminated",
+      "metric1Val": "30h/week",
+      "metric2Label": "error rate",
+      "metric2Val": "4% → 0.3%",
+      "metric3Label": "ROI positive",
+      "metric3Val": "Month 1",
+      "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP. Error rates hovered around 4%, causing reconciliation delays every month-end.",
+      "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST. Edge cases are routed to a human review queue.",
+      "subtitle": "Intelligent document processing and workflow automation engine",
+      "timeline": "56 days"
+    },
+    "back": "Back to work",
+    "ctaBtn": "Start a Project",
+    "ctaText": "Like what you see? Let's build something together.",
+    "ecommerce": {
+      "metric1Label": "page load time",
+      "metric1Val": "4s → 0.8s",
+      "metric2Label": "cart abandonment rate",
+      "metric2Val": "72% → 41%",
+      "metric3Label": "revenue in first quarter",
+      "metric3Val": "+34%",
+      "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.",
+      "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.",
+      "subtitle": "Headless e-commerce platform with a personalisation engine",
+      "timeline": "112 days"
+    },
+    "fintech": {
+      "metric1Label": "weekly reporting time",
+      "metric1Val": "12h → 45min",
+      "metric2Label": "faster load vs. old tool",
+      "metric2Val": "60%",
+      "metric3Label": "analysts onboarded at launch",
+      "metric3Val": "50+",
+      "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.",
+      "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports. The architecture was designed for 50+ concurrent users and integrates with their existing Auth0 SSO.",
+      "subtitle": "Real-time financial analytics platform for mid-market investment firms",
+      "timeline": "63 days"
     },
     "jp": {
-      "subtitle": "Premium multi-division client portal for an Austrian property group",
-      "timeline": "42 days",
+      "metric1Label": "divisions unified",
+      "metric1Val": "4",
+      "metric2Label": "for all properties",
+      "metric2Val": "1 login",
+      "metric3Label": "concept to live portal",
+      "metric3Val": "42 days",
       "problem": "JP Immobilien operates four distinct property divisions — New Build, Rental Properties, Hospitality, and Serviced Apartments — each with separate client touchpoints and manual process flows. Clients had no unified portal, account managers handled all requests via email, and there was no centralised visibility of contracts, documents, or project status across divisions.",
       "solution": "We built a premium Angular + Angular Material client portal with division-scoped access. Clients authenticate once and navigate between their active New Build, Rental, Hospitality, and Serviced Apartment accounts from a single dashboard. Document management, status tracking, and in-portal messaging consolidate all communication in one place and eliminate email back-and-forth. A clean gold-and-navy design system reflects JP Immobilien's premium market positioning.",
-      "metric1Val": "4",
-      "metric1Label": "divisions unified",
-      "metric2Val": "1 login",
-      "metric2Label": "for all properties",
-      "metric3Val": "42 days",
-      "metric3Label": "concept to live portal"
+      "subtitle": "Premium multi-division client portal for an Austrian property group",
+      "timeline": "42 days"
     },
     "karimpol": {
-      "subtitle": "Corporate property development portal for a Central European real estate group",
-      "timeline": "56 days",
+      "metric1Label": "markets covered",
+      "metric1Val": "5",
+      "metric2Label": "for all projects",
+      "metric2Val": "1 platform",
+      "metric3Label": "design to production",
+      "metric3Val": "56 days",
       "problem": "Karimpol operates across five markets — Austria, Poland, Slovakia, Czech Republic, and Hungary — with no unified platform for project tracking or client communication. Development teams and clients navigated multiple systems and email threads to track project milestones, documents, and approval workflows, creating visibility gaps and delays across borders.",
       "solution": "We built a multi-locale Angular + Angular Material portal spanning all five markets. Property development project pages surface real-time status, milestone tracking, and document repositories for each scheme. A role-based access model lets Karimpol staff manage projects per market while clients see only their relevant developments. Deployed globally on Azure Static Web Apps.",
-      "metric1Val": "5",
-      "metric1Label": "markets covered",
-      "metric2Val": "1 platform",
-      "metric2Label": "for all projects",
-      "metric3Val": "56 days",
-      "metric3Label": "design to production"
+      "subtitle": "Corporate property development portal for a Central European real estate group",
+      "timeline": "56 days"
+    },
+    "logistics": {
+      "metric1Label": "missed delivery rate",
+      "metric1Val": "8% → <0.5%",
+      "metric2Label": "App Store rating",
+      "metric2Val": "4.8★",
+      "metric3Label": "idea to App Store",
+      "metric3Val": "77 days",
+      "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism — creating disputes with enterprise clients.",
+      "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery, and GPS coordinates are logged automatically.",
+      "subtitle": "Cross-platform mobile app for a growing logistics provider",
+      "timeline": "77 days"
+    },
+    "neovize": {
+      "metric1Label": "product portals unified",
+      "metric1Val": "4",
+      "metric2Label": "digital consent",
+      "metric2Val": "100%",
+      "metric3Label": "concept to live portal",
+      "metric3Val": "4 days",
+      "problem": "NeoVize Group operates four distinct ophthalmology product brands — NeoVize (premium laser correction), DuoVize (duet vision packages), NeoVizia (IOL replacement), and Kukátko (paediatric vision) — each with its own consent documents and pre-operative assessment flows. Without a unified platform, patient coordinators managed paper forms and email threads per product, creating delays, compliance risk, and a fragmented patient experience.",
+      "solution": "We built a unified Angular patient portal that adapts per brand. Patients select their product portal on login and work through a structured digital pre-op assessment — biometric uploads, health questionnaire, and consent forms with e-signature capture. A custom blue & teal design system matches NeoVize Group's clinical identity across all four brands, while coordinators monitor pending assessments from a shared dashboard.",
+      "subtitle": "Patient-facing multi-product ophthalmology portal for NeoVize Group",
+      "timeline": "4 days"
+    },
+    "notFound": "Case study not found.",
+    "omida": {
+      "metric1Label": "entities unified",
+      "metric1Val": "9",
+      "metric2Label": "for all modes",
+      "metric2Val": "1 login",
+      "metric3Label": "concept to live MVP",
+      "metric3Val": "42 days",
+      "problem": "OMIDA Group S.A. operates 9 separate logistics entities — road, ocean, rail, warehousing, and more — each with its own systems and customer logins. Enterprise clients using multiple OMIDA services had no unified view of their shipments, documents, or invoices, creating fragmented communication and a weak competitive story against integrated rivals like Rohlig SUUS.",
+      "solution": "We built an Angular MVP shipper portal that unifies all 9 OMIDA entities under one login. The centrepiece is a cross-entity shipment timeline showing road, ocean, rail, and warehouse activity in a single dashboard — the story no competitor can tell. The portal includes a live multi-mode map (Leaflet, real OMIDA corridors), a document vault, and an entity-badge system that tags every record with its operating company.",
+      "subtitle": "Unified multi-entity shipper portal MVP for a €330M Polish logistics holding",
+      "timeline": "42 days"
+    },
+    "problem": "The Problem",
+    "solution": "Our Solution",
+    "techStack": "Tech Stack",
+    "timeline": "Timeline",
+    "vedos": {
+      "metric1Label": "vehicles tracked live",
+      "metric1Val": "16",
+      "metric2Label": "on-time SLA achieved",
+      "metric2Val": "90%",
+      "metric3Label": "design to production",
+      "metric3Val": "70 days",
+      "problem": "VEDOS, a logistics company operating Automotive JIT circuits and cold-chain routes across Slovakia and Germany, managed dispatching through manual phone calls and spreadsheets. Dispatchers had no live visibility of fleet positions, JIT circuit status, or temperature alerts — making it impossible to react to delays before they became SLA breaches.",
+      "solution": "We built an Angular + Material Design 3 shipper portal backed by a .NET API. Dispatchers get a live fleet map (Leaflet, 30-second refresh), an Automotive JIT board with per-circuit SLA tracking (±15 min), cold-chain monitoring with real-time temperature alerts, and an integrated quoting workflow. The portal is role-scoped per customer and deployed globally on Azure Static Web Apps.",
+      "subtitle": "Real-time logistics portal for a Slovak transport & freight company",
+      "timeline": "70 days"
     }
   }
 }

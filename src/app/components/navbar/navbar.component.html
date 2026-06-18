@@ -25,14 +25,33 @@
     </ul>
 
     <!-- Language switcher (desktop) -->
-    <div class="navbar__lang" role="group" aria-label="Language switcher">
-      @for (lang of languages; track lang.code) {
-        <button
-          class="navbar__lang-btn"
-          [class.is-active]="translate.currentLang === lang.code"
-          (click)="switchLang(lang.code)"
-          [attr.aria-pressed]="translate.currentLang === lang.code"
-        >{{ lang.label }}</button>
+    <div class="navbar__lang-dropdown">
+      <button
+        class="navbar__lang-trigger"
+        (click)="toggleLangDropdown()"
+        [attr.aria-expanded]="langDropdownOpen()"
+        aria-haspopup="listbox"
+        aria-label="Select language"
+      >
+        {{ translate.currentLang | uppercase }}
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      @if (langDropdownOpen()) {
+        <ul class="navbar__lang-menu" role="listbox" aria-label="Language options">
+          @for (lang of languages; track lang.code) {
+            <li>
+              <button
+                class="navbar__lang-option"
+                [class.is-active]="translate.currentLang === lang.code"
+                (click)="selectLang(lang.code)"
+                role="option"
+                [attr.aria-selected]="translate.currentLang === lang.code"
+              >{{ lang.label }}</button>
+            </li>
+          }
+        </ul>
       }
     </div>
 
@@ -56,11 +75,8 @@
         </svg>
       }
     </button>
-    <a class="navbar__cta btn-primary" routerLink="/contact" (click)="closeMenu()">
+    <a class="navbar__cta" routerLink="/contact" (click)="closeMenu()">
       {{ 'nav.getInTouch' | translate }}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
     </a>
 
     <!-- Hamburger -->

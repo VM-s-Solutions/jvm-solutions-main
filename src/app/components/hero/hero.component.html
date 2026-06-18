@@ -7,17 +7,14 @@
 
   <div class="hero__inner container">
 
-    <!-- Badge -->
-    <p class="hero__badge">
-      <span class="hero__badge-dot" aria-hidden="true"></span>
-      {{ 'hero.badge' | translate }}
-    </p>
+    <!-- Eyebrow -->
+    <p class="hero__eyebrow">{{ 'hero.eyebrow' | translate }}</p>
 
     <!-- Headline -->
     <h1 class="hero__headline">
       {{ 'hero.headlinePart1' | translate }}<br>
-      {{ 'hero.headlinePart2' | translate }}
-      <em class="hero__headline-em">{{ 'hero.headlineGrad1' | translate }} &amp; {{ 'hero.headlineGrad2' | translate }}</em>
+      <span class="hero__typewriter" aria-live="polite" aria-atomic="true"
+        >{{ typedText() }}<span class="hero__cursor" aria-hidden="true">|</span></span>
     </h1>
 
     <!-- Description -->
@@ -25,34 +22,13 @@
       {{ 'hero.description' | translate }}
     </p>
 
-    <!-- CTAs -->
-    <div class="hero__actions">
-      <a class="btn-primary" routerLink="/contact">
-        {{ 'hero.ctaPrimary' | translate }}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a class="btn-outline" href="#portfolio">
-        {{ 'hero.ctaSecondary' | translate }}
-      </a>
-    </div>
-
-    <!-- Stats -->
-    <div class="hero__stats" role="list">
-      <div class="hero__stat" role="listitem">
-        <strong>50+</strong>
-        <span>{{ 'hero.statsProjects' | translate }}</span>
-      </div>
-      <div class="hero__stat-sep" aria-hidden="true"></div>
-      <div class="hero__stat" role="listitem">
-        <strong>5 yrs</strong>
-        <span>{{ 'hero.statsExperience' | translate }}</span>
-      </div>
-      <div class="hero__stat-sep" aria-hidden="true"></div>
-      <div class="hero__stat" role="listitem">
-        <strong>30+</strong>
-        <span>{{ 'hero.statsClients' | translate }}</span>
-      </div>
-    </div>
+    <!-- Single editorial CTA -->
+    <a class="hero__cta" routerLink="/contact">
+      {{ 'hero.ctaPrimary' | translate }}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
 
   </div>
 

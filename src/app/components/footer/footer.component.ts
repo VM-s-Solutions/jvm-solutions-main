@@ -27,6 +27,7 @@ export class FooterComponent {
     { label: 'nav.services', fragment: 'services' },
     { label: 'nav.pricing',  routerLink: '/pricing' },
     { label: 'nav.about',    routerLink: '/about' },
+    { label: 'nav.faq',      routerLink: '/faq' },
   ];
 
   scrollToSection(fragment: string, event: MouseEvent): void {

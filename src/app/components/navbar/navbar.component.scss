@@ -105,21 +105,96 @@
 
     @include lg {
       display: inline-flex;
-      padding: $space-2 $space-4;
+      align-items: center;
       font-size: $text-sm;
-      min-width: 155px;
-      justify-content: center;
+      font-weight: 600;
+      color: $red-light;
+      text-decoration: none;
       white-space: nowrap;
+      transition: opacity $transition-fast;
+
+      &:hover { opacity: 0.75; }
     }
   }
 
-  // ── Language switcher ─────────────────────────────────────────────────────
-  &__lang {
+  // ── Language dropdown ─────────────────────────────────────────────────────
+  &__lang-dropdown {
     display: none;
+    position: relative;
+    margin-left: auto;
+
+    @include lg { display: block; }
+  }
+
+  &__lang-trigger {
+    display: flex;
     align-items: center;
     gap: $space-1;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: $radius-md;
+    color: var(--text-muted);
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: $space-2 $space-3;
+    height: 34px;
+    cursor: pointer;
+    transition: color $transition-fast, border-color $transition-fast;
+    white-space: nowrap;
 
-    @include lg { display: flex; }
+    svg { transition: transform $transition-fast; }
+
+    &[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+    &:hover {
+      color: var(--text-primary);
+      border-color: var(--border-light);
+    }
+  }
+
+  &__lang-menu {
+    position: absolute;
+    top: calc(100% + #{$space-2});
+    right: 0;
+    list-style: none;
+    background: var(--bg-primary-98);
+    border: 1px solid var(--border-color);
+    border-radius: $radius-md;
+    padding: $space-1;
+    min-width: 72px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+
+    li { display: block; }
+  }
+
+  &__lang-option {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: $radius-sm;
+    color: var(--text-muted);
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: $space-2 $space-3;
+    cursor: pointer;
+    transition: color $transition-fast, background $transition-fast;
+
+    &:hover {
+      color: var(--text-primary);
+      background: var(--bg-card);
+    }
+
+    &.is-active {
+      color: $red-light;
+      background: rgba($red, 0.07);
+    }
   }
 
   &__lang-btn {

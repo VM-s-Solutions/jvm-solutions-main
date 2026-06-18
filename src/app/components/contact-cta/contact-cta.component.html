@@ -1,23 +1,21 @@
 <section class="cta" aria-labelledby="cta-title">
-  <div class="container cta__content" appScrollReveal revealClass="reveal">
+  <div class="container">
+    <div class="cta__inner" appScrollReveal revealClass="reveal">
 
-    <p class="cta__eyebrow">{{ 'cta.sectionLabel' | translate }}</p>
+      <div class="cta__left">
+        <h2 id="cta-title" class="cta__title">{{ 'cta.title' | translate }}</h2>
+        <p class="cta__description">{{ 'cta.description' | translate }}</p>
+      </div>
 
-    <h2 id="cta-title" class="cta__title">
-      {{ 'cta.title1' | translate }}<br>
-      {{ 'cta.title2' | translate }} <span class="gradient-text">{{ 'cta.titleGrad' | translate }}</span>
-    </h2>
+      <div class="cta__right">
+        <a href="mailto:hello@jvm-yore.com" class="cta__email">hello&#64;jvm-yore.com</a>
+        <p class="cta__meta">
+          <span>{{ 'contact.responseValue' | translate }}</span>
+          <span class="cta__meta-dot" aria-hidden="true">·</span>
+          <span>{{ 'contact.locationValue' | translate }}</span>
+        </p>
+      </div>
 
-    <p class="cta__description">
-      {{ 'cta.description' | translate }}
-    </p>
-
-    <a class="btn-primary cta__btn" routerLink="/contact">
-      {{ 'cta.btn' | translate }}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
-
+    </div>
   </div>
 </section>

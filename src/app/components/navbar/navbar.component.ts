@@ -1,4 +1,5 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject, NgZone, signal } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, inject, NgZone, signal } from '@angular/core';
+import { UpperCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ScrollService } from '../../services/scroll.service';
@@ -7,7 +8,7 @@ import { ThemeService } from '../../services/theme.service';
 @Component({
   selector: 'jvm-navbar',
   standalone: true,
-  imports: [RouterLink, TranslateModule],
+  imports: [RouterLink, TranslateModule, UpperCasePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.scrolled]': 'scrolled()',
@@ -27,6 +28,9 @@ export class NavbarComponent {
   readonly scrolled = signal(false);
   readonly hidden = signal(false);
   readonly menuOpen = signal(false);
+  readonly langDropdownOpen = signal(false);
+
+  private readonly elementRef = inject(ElementRef);
 
   readonly languages = [
     { code: 'en', label: 'EN' },
@@ -37,8 +41,9 @@ export class NavbarComponent {
 
   readonly navLinks: { label: string; fragment?: string; routerLink?: string }[] = [
     { label: 'nav.services', fragment: 'services' },
-{ label: 'nav.pricing', routerLink: '/pricing' },
+    { label: 'nav.pricing', routerLink: '/pricing' },
     { label: 'nav.about', routerLink: '/about' },
+    { label: 'nav.faq', routerLink: '/faq' },
   ];
 
   constructor() {
@@ -54,27 +59,46 @@ export class NavbarComponent {
     afterNextRender(() => {
       let lastY = window.scrollY;
 
-      // Run outside NgZone — signals notify the reactive graph directly;
-      // no need to trigger zone-based CD on every scroll event.
+      // Listener is registered outside NgZone to avoid Zone.js tracking overhead
+      // on every scroll event. Signal writes are batched inside ngZone.run() only
+      // when values actually change, so CD is triggered reliably on all pages
+      // regardless of whether an IntersectionObserver or other Zone task has fired.
       this.ngZone.runOutsideAngular(() => {
       const onScroll = () => {
         const y = window.scrollY;
         const delta = y - lastY;
         lastY = y;
 
-        this.scrolled.set(y > 32);
-
+        const nextScrolled = y > 32;
+        let nextHidden = this.hidden();
         if (y <= 60) {
-          this.hidden.set(false);
+          nextHidden = false;
         } else if (!this.menuOpen() && y > 120 && delta > 6) {
-          this.hidden.set(true);
+          nextHidden = true;
         } else if (delta < -6) {
-          this.hidden.set(false);
+          nextHidden = false;
+        }
+
+        if (nextScrolled !== this.scrolled() || nextHidden !== this.hidden()) {
+          this.ngZone.run(() => {
+            this.scrolled.set(nextScrolled);
+            this.hidden.set(nextHidden);
+          });
         }
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
       this.destroyRef.onDestroy(() => window.removeEventListener('scroll', onScroll));
+
+      const onDocClick = (e: MouseEvent) => {
+        if (!this.elementRef.nativeElement.contains(e.target as Node)) {
+          if (this.langDropdownOpen()) {
+            this.langDropdownOpen.set(false);
+          }
+        }
+      };
+      document.addEventListener('click', onDocClick);
+      this.destroyRef.onDestroy(() => document.removeEventListener('click', onDocClick));
       }); // end runOutsideAngular
     });
   }
@@ -87,6 +111,15 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+  }
+
+  toggleLangDropdown(): void {
+    this.langDropdownOpen.update(v => !v);
+  }
+
+  selectLang(code: string): void {
+    this.switchLang(code);
+    this.langDropdownOpen.set(false);
   }
 
   switchLang(code: string): void {
