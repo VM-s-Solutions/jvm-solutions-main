@@ -14,6 +14,7 @@ interface PricingTier {
   badgeKey?: string;
   features: string[];
   highlighted: boolean;
+  showMeta: boolean;
 }
 
 @Component({
@@ -34,6 +35,7 @@ export class PricingComponent {
       ctaLink: '/contact',
       features: ['pricing.project.f1', 'pricing.project.f2', 'pricing.project.f3', 'pricing.project.f4', 'pricing.project.f5'],
       highlighted: false,
+      showMeta: false,
     },
     {
       labelKey: 'pricing.retainer.label',
@@ -44,6 +46,7 @@ export class PricingComponent {
       badgeKey: 'pricing.retainer.badge',
       features: ['pricing.retainer.f1', 'pricing.retainer.f2', 'pricing.retainer.f3', 'pricing.retainer.f4', 'pricing.retainer.f5'],
       highlighted: true,
+      showMeta: true,
     },
     {
       labelKey: 'pricing.consulting.label',
@@ -53,6 +56,7 @@ export class PricingComponent {
       ctaLink: '/contact',
       features: ['pricing.consulting.f1', 'pricing.consulting.f2', 'pricing.consulting.f3', 'pricing.consulting.f4', 'pricing.consulting.f5'],
       highlighted: false,
+      showMeta: true,
     },
   ];
 }

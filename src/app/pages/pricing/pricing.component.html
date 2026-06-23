@@ -29,10 +29,14 @@
           <div class="pricing-tier__header">
             <h2 class="pricing-tier__label">{{ tier.labelKey | translate }}</h2>
             <div class="pricing-tier__price-row">
-              <span class="pricing-tier__from">{{ 'pricing.from' | translate }}</span>
+              @if (tier.showMeta) {
+                <span class="pricing-tier__from">{{ 'pricing.from' | translate }}</span>
+              }
               <span class="pricing-tier__price">{{ tier.priceKey | translate }}</span>
             </div>
-            <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
+            @if (tier.showMeta) {
+              <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
+            }
           </div>
 
           <ul class="pricing-tier__features" role="list">

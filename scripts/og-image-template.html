@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #0A0A0A;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    color: #F1F5F9;
+    position: relative;
+  }
+
+  /* Top accent bar */
+  .accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #E53E3E, #F97316, #E53E3E);
+  }
+
+  /* Subtle background orbs */
+  .orb-1 {
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(229,62,62,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .orb-2 {
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Card container */
+  .card {
+    position: absolute;
+    top: 48px;
+    left: 64px;
+    right: 64px;
+    bottom: 48px;
+    background: #111111;
+    border: 1px solid #1C1C1C;
+    border-radius: 16px;
+    padding: 52px 56px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Top section */
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 28px;
+  }
+
+  .logo-jvm {
+    background: linear-gradient(135deg, #E53E3E, #F97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-rest {
+    color: #F1F5F9;
+  }
+
+  .tagline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8A9BB0;
+    margin-bottom: 24px;
+  }
+
+  /* Headline */
+  .headline {
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    color: #F1F5F9;
+    margin-bottom: 28px;
+  }
+
+  .headline-gradient {
+    background: linear-gradient(135deg, #E53E3E, #F97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Services row */
+  .services {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    color: #8A9BB0;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .dot {
+    color: #282828;
+    font-size: 18px;
+  }
+
+  /* Tech badges */
+  .badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+
+  .badge {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8A9BB0;
+    background: #181818;
+    border: 1px solid #282828;
+    border-radius: 6px;
+    padding: 6px 14px;
+  }
+
+  /* Bottom row */
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .email {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    color: #8A9BB0;
+  }
+
+  .domain {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    color: #606E7E;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+
+  <div class="card">
+    <div>
+      <div class="logo">
+        <span class="logo-jvm">JVM</span><span class="logo-rest"> Yore</span>
+      </div>
+      <div class="tagline">Software Agency &nbsp;·&nbsp; Czech Republic</div>
+      <div class="headline">
+        We craft software<br>
+        that <span class="headline-gradient">scales &amp; matters</span>
+      </div>
+      <div class="services">
+        <span>Frontend</span>
+        <span class="dot">·</span>
+        <span>Backend</span>
+        <span class="dot">·</span>
+        <span>Mobile</span>
+        <span class="dot">·</span>
+        <span>AI Automation</span>
+      </div>
+      <div class="badges">
+        <span class="badge">Angular</span>
+        <span class="badge">.NET</span>
+        <span class="badge">Swift / Kotlin</span>
+        <span class="badge">LLM / AI</span>
+      </div>
+    </div>
+    <div class="bottom-row">
+      <div class="email">hello@jvm-yore.com</div>
+      <div class="domain">jvm-yore.com</div>
+    </div>
+  </div>
+</body>
+</html>

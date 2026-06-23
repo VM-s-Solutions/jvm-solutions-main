@@ -77,13 +77,13 @@ const en = {
     "title": "Have a project in mind?"
   },
   "faq": {
-    "a1": "Yes — roughly half our clients come to us pre-revenue. We know how to scope an MVP that ships without burning runway.",
+    "a1": "Yes. We're happy to work with startups and established companies alike. We'll help you design and deliver an MVP or a full product — tailored to your scope and budget.",
     "a2": "Absolutely. We've inherited everything from legacy PHP to half-migrated Angular apps. We audit first, give you an honest assessment, then move.",
     "a3": "A scoped MVP is usually 6–12 weeks from kick-off to production. Our Discovery phase gives you the real number before any commitment.",
     "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
     "a5": "Yes — through a monthly retainer. Most clients stay on a light retainer for 3–6 months post-launch, then adjust based on need.",
     "a6": "100% remote and async-first. We're based in the Czech Republic and work with clients across EU, US, and UK time zones.",
-    "q1": "Do you work with early-stage startups?",
+    "q1": "Do you work with companies that are just starting out?",
     "q2": "Can you take over an existing codebase?",
     "q3": "What does a typical project timeline look like?",
     "q4": "Do you sign NDAs?",
@@ -102,7 +102,7 @@ const en = {
   },
   "hero": {
     "ctaPrimary": "Start a Project",
-    "description": "JVM Yore builds high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
+    "description": "We build high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
     "eyebrow": "Software Studio",
     "headlinePart1": "We craft software",
     "typewriter": {
@@ -199,14 +199,14 @@ const en = {
       "f5": "Urgent bug response within 4 hours",
       "label": "Fixed-Scope Project",
       "period": "per project",
-      "price": "€8,000"
+      "price": "Individual"
     },
     "retainer": {
       "badge": "Most popular",
       "cta": "Book a Discovery Call",
-      "f1": "All 3 of us — frontend, backend & mobile",
+      "f1": "Full team — Frontend, Backend, Mobile & Project Management",
       "f2": "Sprint-based delivery with bi-weekly demos",
-      "f3": "Async-first via Slack or Linear, daily updates",
+      "f3": "Communication via Google Meet or Teams, regular updates",
       "f4": "Priority bug response — same day",
       "f5": "Cancel anytime, no lock-in",
       "label": "Full-Team Engagement",

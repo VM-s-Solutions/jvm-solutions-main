@@ -77,13 +77,13 @@ const sk = {
     "title": "Máte projekt na mysli?"
   },
   "faq": {
-    "a1": "Áno — zhruba polovica našich klientov k nám prichádza pred prvou investíciou. Vieme, ako vytvoriť MVP, ktorý bude doručený bez zbytočného plytvanie prostriedkami.",
+    "a1": "Áno. Radi spolupracujeme so startupmi aj so zavedenými firmami. Pomôžeme vám navrhnúť a doručiť MVP alebo celý produkt — presne podľa vášho rozsahu a rozpočtu.",
     "a2": "Určite. Zdedili sme všetko od legacy PHP po napoly migrované Angular aplikácie. Najprv vykonáme audit, potom sa pustíme do práce.",
     "a3": "Vymedzený MVP zvyčajne trvá 6–12 týždňov od začiatku do produkcie. Discovery fáza vám dá reálne číslo.",
     "a4": "Áno, pred akýmkoľvek discovery hovorom. Všetko, čo s nami zdieľate, považujeme za dôverné.",
     "a5": "Áno — prostredníctvom mesačného retainera. Väčšina klientov zostáva 3–6 mes. po spustení.",
     "a6": "100% vzdialene. Sídlime v Českej republike a pracujeme s klientmi v EU, USA a UK.",
-    "q1": "Pracujete so začínajúcimi startupmi?",
+    "q1": "Spolupracujete aj s firmami, ktoré práve začínajú?",
     "q2": "Môžete prevziať existujúcu kódovú základňu?",
     "q3": "Ako vyzerá typický časový plán projektu?",
     "q4": "Podpisujete NDA?",
@@ -199,14 +199,14 @@ const sk = {
       "f5": "Reakcia na urgentné chyby do 4 hodín",
       "label": "Projekt s pevným rozsahom",
       "period": "za projekt",
-      "price": "€8 000"
+      "price": "Individuálna"
     },
     "retainer": {
       "badge": "Najobľúbenejší",
       "cta": "Rezervovať discovery hovor",
       "f1": "Všetci 3 — frontend, backend aj mobil",
       "f2": "Sprintové dodávky s demo každé 2 týždne",
-      "f3": "Async-first cez Slack alebo Linear, denné updaty",
+      "f3": "Komunikácia cez Google Meet alebo Teams a priebežné aktualizácie",
       "f4": "Prioritná reakcia na chyby — ten istý deň",
       "f5": "Zrušenie kedykoľvek, bez záväzkov",
       "label": "Full-Team Engagement",
