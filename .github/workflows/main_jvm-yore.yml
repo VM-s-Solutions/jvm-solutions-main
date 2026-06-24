@@ -94,7 +94,7 @@ jobs:
       - name: Configure Azure App settings
         uses: azure/appservice-settings@v1
         with:
-          app-name: 'jvm-solutions'
+          app-name: 'jvm-yore'
           app-settings-json: |
             [
               { "name": "RESEND_API_KEY",       "value": "${{ secrets.RESEND_API_KEY }}",       "slotSetting": false },
