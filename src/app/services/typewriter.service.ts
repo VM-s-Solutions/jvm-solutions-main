@@ -1,7 +1,9 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, NgZone, OnDestroy, inject } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class TypewriterService implements OnDestroy {
+  private readonly ngZone = inject(NgZone);
+
   private timeoutId: ReturnType<typeof setTimeout> | null = null;
   private currentIndex = 0;
   private charIndex = 0;
@@ -20,7 +22,7 @@ export class TypewriterService implements OnDestroy {
     this.currentIndex = 0;
     this.charIndex = 0;
     this.isDeleting = false;
-    this.tick(strings, onUpdate);
+    this.ngZone.runOutsideAngular(() => this.tick(strings, onUpdate));
   }
 
   private tick(strings: string[], onUpdate: (text: string, cursor: boolean) => void): void {
