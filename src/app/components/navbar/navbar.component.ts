@@ -12,7 +12,6 @@ import { ThemeService } from '../../services/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.scrolled]': 'scrolled()',
-    '[class.is-hidden]': 'hidden()',
   },
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -26,7 +25,6 @@ export class NavbarComponent {
   private readonly ngZone = inject(NgZone);
 
   readonly scrolled = signal(false);
-  readonly hidden = signal(false);
   readonly menuOpen = signal(false);
   readonly langDropdownOpen = signal(false);
 
@@ -66,23 +64,13 @@ export class NavbarComponent {
       this.ngZone.runOutsideAngular(() => {
       const onScroll = () => {
         const y = window.scrollY;
-        const delta = y - lastY;
         lastY = y;
 
         const nextScrolled = y > 32;
-        let nextHidden = this.hidden();
-        if (y <= 60) {
-          nextHidden = false;
-        } else if (!this.menuOpen() && y > 120 && delta > 6) {
-          nextHidden = true;
-        } else if (delta < -6) {
-          nextHidden = false;
-        }
 
-        if (nextScrolled !== this.scrolled() || nextHidden !== this.hidden()) {
+        if (nextScrolled !== this.scrolled()) {
           this.ngZone.run(() => {
             this.scrolled.set(nextScrolled);
-            this.hidden.set(nextHidden);
           });
         }
       };
@@ -104,9 +92,7 @@ export class NavbarComponent {
   }
 
   toggleMenu(): void {
-    const next = !this.menuOpen();
-    this.menuOpen.set(next);
-    if (next) this.hidden.set(false);
+    this.menuOpen.update(v => !v);
   }
 
   closeMenu(): void {

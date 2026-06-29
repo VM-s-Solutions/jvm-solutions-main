@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -21,7 +20,7 @@ interface PricingTier {
   selector: 'jvm-pricing',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],
+  imports: [FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],
   templateUrl: './pricing.component.html',
   styleUrl: './pricing.component.scss',
 })

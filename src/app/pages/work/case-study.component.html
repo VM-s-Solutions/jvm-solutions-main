@@ -1,5 +1,3 @@
-<jvm-navbar />
-
 @if (project(); as p) {
   <main id="main-content" class="case-study">
 
@@ -92,7 +90,6 @@
 } @else {
   <!-- 404 state -->
   <main class="case-study case-study--not-found container">
-    <jvm-navbar />
     <div class="case-study__not-found">
       <h1>{{ 'work.notFound' | translate }}</h1>
       <a routerLink="/" class="btn-primary">{{ 'work.back' | translate }}</a>

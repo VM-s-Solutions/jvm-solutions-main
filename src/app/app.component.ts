@@ -3,10 +3,11 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { filter, fromEvent } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ScrollService } from './services/scroll.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'jvm-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

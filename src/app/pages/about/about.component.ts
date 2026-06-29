@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { TeamGridComponent, TeamMember } from '../../components/team-grid/team-grid.component';
@@ -8,7 +7,7 @@ import { TeamGridComponent, TeamMember } from '../../components/team-grid/team-g
 @Component({
   selector: 'jvm-about',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, ScrollRevealDirective, TranslateModule, TeamGridComponent],
+  imports: [FooterComponent, ScrollRevealDirective, TranslateModule, TeamGridComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',

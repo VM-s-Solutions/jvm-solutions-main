@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { TurnstileComponent } from '../../components/turnstile/turnstile.component';
 import { ContactService } from '../../services/contact.service';
@@ -13,7 +12,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 @Component({
   selector: 'jvm-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, NavbarComponent, FooterComponent, TranslateModule, TurnstileComponent],
+  imports: [ReactiveFormsModule, RouterLink, FooterComponent, TranslateModule, TurnstileComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
