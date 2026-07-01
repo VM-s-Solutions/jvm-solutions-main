@@ -4,38 +4,7 @@
 .privacy-page {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
   padding-top: 80px;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.12;
-
-    &--purple {
-      width: 600px;
-      height: 600px;
-      background: $purple;
-      top: -100px;
-      left: -150px;
-    }
-
-    &--green {
-      width: 400px;
-      height: 400px;
-      background: $green;
-      bottom: 100px;
-      right: -100px;
-    }
-  }
 
   &__inner {
     position: relative;

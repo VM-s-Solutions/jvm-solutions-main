@@ -235,7 +235,7 @@
   margin-top: 5rem;
   padding: 3rem 2rem;
   border-radius: $radius-lg;
-  background: linear-gradient(135deg, rgba($purple, 0.12) 0%, rgba($green, 0.08) 100%);
+  background: var(--bg-surface);
   border: 1px solid rgba($purple, 0.2);
   display: flex;
   flex-direction: column;

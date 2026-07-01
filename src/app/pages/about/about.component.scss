@@ -3,32 +3,7 @@
 
 .about-page {
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &__orb {
-    position: absolute;
-    border-radius: 50%;
-
-    &--red {
-      @include orb($red, 600px, 140px);
-      top: -80px;
-      right: -150px;
-    }
-
-    &--green {
-      @include orb($green, 400px, 100px);
-      bottom: 100px;
-      left: -100px;
-    }
-  }
 
   &__inner {
     position: relative;

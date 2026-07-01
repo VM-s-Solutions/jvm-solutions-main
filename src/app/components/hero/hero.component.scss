@@ -9,41 +9,6 @@
   padding: 110px $space-6 $space-16;
   overflow: hidden;
 
-  // ── Background — very subtle dot grid, fades toward edges ─────────────────
-  &__bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-    background-size: 36px 36px;
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 12%,
-      black 88%,
-      transparent 100%
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      black 12%,
-      black 88%,
-      transparent 100%
-    );
-  }
-
-  // Faint red ambient glow — top-right to feel directional
-  &__glow {
-    position: absolute;
-    top: -10%;
-    right: -5%;
-    width: 640px;
-    height: 640px;
-    background: radial-gradient(ellipse, rgba($red, 0.08) 0%, transparent 70%);
-    filter: blur(64px);
-    pointer-events: none;
-  }
-
   // ── Inner — left-aligned ──────────────────────────────────────────────────
   &__inner {
     position: relative;
@@ -148,7 +113,7 @@
   &__scroll-line {
     width: 1px;
     height: 52px;
-    background: linear-gradient(var(--border-color), transparent);
+    background: var(--border-color);
     margin: 0 auto;
   }
 }

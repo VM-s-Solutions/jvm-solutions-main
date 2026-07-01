@@ -66,13 +66,7 @@
     top: $space-6;
     bottom: $space-6;
     width: 1px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba($red, 0.4) 15%,
-      rgba($red, 0.15) 85%,
-      transparent 100%
-    );
+    background: rgba($red, 0.25);
 
     @include md {
       left: 50%;

@@ -220,7 +220,7 @@
 
   // ── Theme toggle ──────────────────────────────────────────────────────────
   &__theme-toggle {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 34px;
@@ -232,8 +232,11 @@
     cursor: pointer;
     transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
     flex-shrink: 0;
+    margin-left: auto;
 
-    @include lg { display: flex; }
+    @include lg {
+      margin-left: 0;
+    }
 
     &:hover {
       color: var(--text-primary);
@@ -249,6 +252,7 @@
     background: none;
     border: none;
     padding: $space-2;
+    margin-left: $space-2;
     cursor: pointer;
 
     @include lg { display: none; }
