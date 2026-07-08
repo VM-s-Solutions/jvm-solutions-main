@@ -102,14 +102,18 @@
     @include lg {
       display: inline-flex;
       align-items: center;
+      height: 34px;
+      padding: 0 $space-4;
+      border-radius: $radius-full;
+      background: $red-dark;
       font-size: $text-sm;
       font-weight: 600;
-      color: $red-light;
+      color: #fff;
       text-decoration: none;
       white-space: nowrap;
-      transition: opacity $transition-fast;
+      transition: background $transition-fast;
 
-      &:hover { opacity: 0.75; }
+      &:hover { background: $red; }
     }
   }
 

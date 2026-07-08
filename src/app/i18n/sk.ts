@@ -102,6 +102,7 @@ const sk = {
   },
   "hero": {
     "ctaPrimary": "Spustiť projekt",
+    "ctaSecondary": "Pozrieť cenník",
     "description": "JVM Yore vytvára vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
     "eyebrow": "Softvérové štúdio",
     "headlinePart1": "Tvoríme softvér",

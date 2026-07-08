@@ -102,6 +102,7 @@ const cs = {
   },
   "hero": {
     "ctaPrimary": "Zahájit projekt",
+    "ctaSecondary": "Prohlédnout ceník",
     "description": "JVM Yore navrhuje a dodává výkonné digitální produkty — od precizních frontendů přes robustní backendové systémy až po mobilní aplikace a AI automatizaci, která zrychluje firemní procesy.",
     "eyebrow": "Softwarové studio",
     "headlinePart1": "Tvoříme software",

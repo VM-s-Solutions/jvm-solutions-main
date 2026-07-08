@@ -102,6 +102,7 @@ const en = {
   },
   "hero": {
     "ctaPrimary": "Start a Project",
+    "ctaSecondary": "View pricing",
     "description": "We build high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
     "eyebrow": "Software Studio",
     "headlinePart1": "We craft software",

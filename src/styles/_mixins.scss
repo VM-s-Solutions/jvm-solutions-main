@@ -56,15 +56,17 @@
 @mixin btn-base {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: $space-2;
-  padding: $space-3 $space-6;
-  border-radius: $radius-lg;
+  padding: $space-3 $space-8;
+  border-radius: $radius-full;
   font-family: $font-body;
   font-size: $text-sm;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
   cursor: pointer;
-  transition: all $transition-base;
+  transition: background $transition-base, border-color $transition-base,
+    color $transition-base, box-shadow $transition-base, transform $transition-base;
   border: none;
   text-decoration: none;
   white-space: nowrap;
@@ -74,11 +76,11 @@
   @include btn-base;
   background: $red-dark; // #C53030 → 5.2:1 contrast on white (WCAG AA)
   color: #fff;
-  box-shadow: 0 2px 16px rgba($red, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
   &:hover {
     background: $red; // #E53E3E on hover — acceptable transient state
-    box-shadow: 0 4px 24px rgba($red, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     transform: translateY(-1px);
   }
 
@@ -88,13 +90,12 @@
 @mixin btn-outline {
   @include btn-base;
   background: transparent;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   border: 1px solid var(--border-light);
 
   &:hover {
-    border-color: rgba($red, 0.45);
+    border-color: var(--text-muted);
     background: transparent;
-    color: var(--text-primary);
   }
 }
 
