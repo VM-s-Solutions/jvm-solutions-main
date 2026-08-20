@@ -44,7 +44,8 @@ export class AboutComponent {
       roleKey: 'about.michael.role',
       bioKey: 'about.michael.bio',
       linkedin: 'https://www.linkedin.com/in/michael-chaban/',
-      photo: 'images/about/michael_chaban.jpg',
+      // head-and-shoulders crop — the full photo is too wide for an 80px avatar
+      photo: 'images/about/michael_chaban_avatar.jpg',
     },
   ];
 
