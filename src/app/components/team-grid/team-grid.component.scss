@@ -13,23 +13,26 @@
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
-  max-width: 960px;
-  margin: 0 auto;
+  gap: $space-6;
+  width: 100%;
 
   @include md {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-// Single member column
+// Single member card — horizontal list row on mobile, portrait card from md up
 .team-member {
   display: flex;
-  flex-direction: column;
   gap: $space-4;
-  padding: $space-10 0;
-  border-top: 1px solid var(--border-color);
+  padding: $space-4;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-xl;
+  transition: border-color $transition-base,
+    opacity $transition-slow, transform $transition-slow;
 
-  &:last-child { border-bottom: 1px solid var(--border-color); }
+  &:hover { border-color: var(--border-light); }
 
   // stagger
   @for $i from 1 through 3 {
@@ -37,34 +40,47 @@
   }
 
   @include md {
-    padding: $space-12 $space-8;
-    border-top: 1px solid var(--border-color);
-    border-bottom: none;
-    border-right: 1px solid var(--border-color);
-
-    &:last-child { border-right: none; border-bottom: none; }
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
   }
 
-  &__avatar {
-    width: 72px;
-    height: 72px;
+  &__media {
+    position: relative;
+    width: 88px;
+    height: 88px;
     flex-shrink: 0;
-    margin-bottom: $space-2;
+
+    @include md {
+      width: 100%;
+      height: auto;
+      // the photo is absolutely positioned so its intrinsic ratio can't
+      // override this box's aspect ratio (flex min-height: auto quirk)
+      aspect-ratio: 4 / 5;
+    }
   }
 
   &__photo {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: $radius-lg;
     object-fit: cover;
     object-position: top;
     border: 1px solid var(--border-color);
+
+    @include md {
+      border-radius: 0;
+      border: none;
+    }
   }
 
   &__initials {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+    border-radius: $radius-lg;
     background: $gradient-brand;
     display: flex;
     align-items: center;
@@ -73,65 +89,65 @@
     font-size: $text-2xl;
     font-weight: 700;
     color: white;
-    border: 1px solid var(--border-color);
     user-select: none;
+
+    @include md {
+      border-radius: 0;
+      font-size: $text-6xl;
+    }
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    gap: $space-2;
-    flex: 1;
-  }
+    min-width: 0;
 
-  &__meta {
-    display: flex;
-    flex-direction: column;
-    gap: $space-1;
-    margin-bottom: $space-1;
+    @include md {
+      flex: 1;
+      padding: $space-6;
+    }
   }
 
   &__name {
     font-family: $font-heading;
     font-size: $text-lg;
     font-weight: 700;
-    color: var(--text-primary);
     letter-spacing: -0.01em;
-    white-space: nowrap;
+    color: var(--text-primary);
+    margin: 0;
   }
 
   &__role {
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: $red-light;
+    margin-top: $space-1;
   }
 
   &__bio {
     font-size: $text-sm;
     color: var(--text-secondary);
-    line-height: 1.75;
-    flex: 1;
+    line-height: 1.6;
+    margin: $space-3 0 0;
   }
 
   &__linkedin {
     display: inline-flex;
     align-items: center;
     gap: $space-2;
-    font-size: $text-xs;
-    font-weight: 500;
+    align-self: flex-start;
+    margin-top: $space-4;
+    font-size: $text-sm;
     color: var(--text-muted);
     text-decoration: none;
-    letter-spacing: 0.02em;
-    margin-top: $space-2;
     transition: color $transition-fast;
 
     &:hover { color: var(--text-primary); }
-  }
 
-  // Michael's photo is a full-body shot; nudge crop down to centre his face
-  &:nth-child(3) &__photo {
-    object-position: 50% 30%;
+    svg { flex-shrink: 0; }
+
+    @include md { margin-top: auto; padding-top: $space-4; }
   }
 }

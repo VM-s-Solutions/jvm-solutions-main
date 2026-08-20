@@ -3,6 +3,21 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const cs = {
   "about": {
+    "company": {
+      "directors": "Jednatelé",
+      "founded": "Datum vzniku",
+      "foundedValue": "3. června 2026",
+      "ico": "IČO",
+      "intro": "Jsme řádně zapsaná česká společnost s ručením omezeným. Tady jsou údaje, které si můžete kdykoli ověřit v obchodním rejstříku.",
+      "legalName": "Obchodní firma",
+      "registration": "Zápis v rejstříku",
+      "registrationValue": "Městský soud v Praze, oddíl C, vložka 449138",
+      "registryLink": "Zobrazit v obchodním rejstříku",
+      "scope": "Předmět podnikání",
+      "scopeValue": "Poskytování software, poradenství v oblasti informačních technologií, zpracování dat, hostingové a související činnosti a webové portály",
+      "seat": "Sídlo",
+      "title": "Firemní údaje"
+    },
     "description": "Dva inženýři a jeden R&D inženýr se společným cílem: dodávat software, na který je spoleh. Technická preciznost, srozumitelná komunikace a předvídatelné doručení.",
     "janis": {
       "bio": "Řídí klientské vztahy, dodávku projektů a rozvoj obchodu. Překlenovací článek mezi tím, co klienti potřebují, a tím, co tým dokáže postavit.",
@@ -23,7 +38,7 @@ const cs = {
   },
   "contact": {
     "backHome": "Zpět na hlavní stránku",
-    "description": "Popište nám svůj projekt a do 24 hodin se vám ozveme s konkrétním návrhem řešení.",
+    "description": "Popište nám svůj projekt a my se Vám do 24 hodin ozveme s konkrétním návrhem řešení.",
     "error": {
       "btn": "Zkusit znovu",
       "message": "Zkuste to prosím znovu nebo nám napište přímo na",
@@ -83,6 +98,8 @@ const cs = {
     "a4": "Ano, před jakýmkoliv discovery hovorem. Vše, co s námi sdílíte, považujeme za důvěrné.",
     "a5": "Ano — prostřednictvím měsíčního retaineru. Většina klientů zůstane 3–6 měsíců po spuštění.",
     "a6": "100% vzdáleně. Sídlíme v České republice a pracujeme s klienty v EU, USA a UK.",
+    "more": "Máte další otázky?",
+    "moreLink": "Napište nám",
     "q1": "Spolupracujete i s firmami, které teprve začínají?",
     "q2": "Můžete převzít existující kódovou základnu?",
     "q3": "Jak vypadá typický časový plán projektu?",
@@ -90,24 +107,23 @@ const cs = {
     "q5": "Nabízíte podporu po spuštění?",
     "q6": "Pracujete vzdáleně?",
     "sectionLabel": "FAQ",
+    "subtitle": "Přímé odpovědi na otázky, které nám zakladatelé a CTO kladou před startem projektu.",
     "title1": "Otázky, které dostáváme",
     "titleGrad": "každý týden"
   },
   "footer": {
     "builtWith": "Vytvořeno v Angular",
     "contact": "Kontakty",
+    "legal": "IČO 29633443 · Příčná 1892/4, Nové Město, 110 00 Praha 1 · Zapsáno u Městského soudu v Praze, oddíl C, vložka 449138",
     "nav": "Navigace",
     "privacy": "Zásady ochrany soukromí",
-    "more": "Máte další otázky?",
-    "moreLink": "Napište nám",
     "tagline": "Navrhujeme software, který škáluje, funguje spolehlivě a obstojí v čase."
   },
   "hero": {
     "ctaPrimary": "Zahájit projekt",
     "ctaSecondary": "Prohlédnout ceník",
-    "description": "JVM Yore navrhuje a dodává výkonné digitální produkty — od precizních frontendů přes robustní backendové systémy až po mobilní aplikace a AI automatizaci, která zrychluje firemní procesy.",
+    "description": "Navrhujeme a dodáváme výkonné digitální produkty — od precizních frontendů přes robustní backendové systémy až po mobilní aplikace a AI automatizaci, která zrychluje firemní procesy.",
     "eyebrow": "Softwarové studio",
-    "subtitle": "Přímé odpovědi na otázky, které nám zakladatelé a CTO kladou před startem projektu.",
     "headlinePart1": "Tvoříme software",
     "typewriter": {
       "ai": "AI automatizace",
@@ -182,45 +198,60 @@ const cs = {
   },
   "pricing": {
     "consulting": {
-      "cta": "Rezervovat schůzku",
-      "f1": "Revize architektury a code audity",
-      "f2": "Mentoring týmu a code review",
-      "f3": "Výběr technologií a studie proveditelnosti",
-      "f4": "Ideální pro CTO a technické vedoucí",
-      "f5": "Výstup: písemná zpráva nebo nahrávka",
-      "label": "Technické poradenství",
+      "cta": "Rezervovat konzultaci",
+      "f1": "Projdeme architekturu a uděláme audit kódu",
+      "f2": "Zaškolíme váš tým a nastavíme code review",
+      "f3": "Poradíme s výběrem technologií a ověříme, že se to dá postavit",
+      "f4": "Sedne CTO i vedoucím vývoje, kteří potřebují druhý názor",
+      "f5": "Odcházíte s písemným závěrem nebo záznamem hovoru",
+      "label": "Konzultace",
       "period": "za hodinu",
-      "price": "€150"
+      "price": "€80",
+      "tagline": "Druhý názor od lidí, kteří software sami staví."
     },
     "from": "od",
-    "note": "Všechny ceny jsou bez DPH. Projekty s pevným rozsahem vyžadují zálohu 50 %.",
+    "note": "Ceny jsou uvedené bez DPH. U projektů s pevným rozsahem si účtujeme 50 % zálohu předem, zbytek po předání.",
     "project": {
-      "cta": "Začít projekt",
-      "f1": "Kompletní technická specifikace ještě před zahájením vývoje",
-      "f2": "Týdenní demo v průběžně dostupném testovacím prostředí",
-      "f3": "Vlastnictví zdrojového kódu — kompletní předání",
-      "f4": "30denní záruka po spuštění",
-      "f5": "Reakce na urgentní chyby do 4 hodin",
-      "label": "Projekt s pevným rozsahem",
+      "cta": "Poptat projekt",
+      "f1": "Než napíšeme první řádek kódu, držíte v ruce technické zadání",
+      "f2": "Každý týden vidíte postup na živém testovacím prostředí",
+      "f3": "Kód je od začátku váš — po předání s ním naložíte, jak chcete",
+      "f4": "30 dní po spuštění opravujeme chyby zdarma",
+      "f5": "Na kritickou chybu reagujeme do 4 hodin",
+      "label": "Projekt na klíč",
       "period": "za projekt",
-      "price": "Individuální"
+      "price": "Na míru",
+      "tagline": "Máte zadání a potřebujete ho dodat celé — od návrhu po spuštění."
     },
     "retainer": {
-      "badge": "Nejoblíbenější",
-      "cta": "Rezervovat discovery hovor",
-      "f1": "Všichni 3 — frontend, backend i mobil",
-      "f2": "Sprintová dodávka s demo každé 2 týdny",
-      "f3": "Komunikace přes Google Meet nebo Teams a průběžné aktualizace",
-      "f4": "Prioritní reakce na chyby — tentýž den",
-      "f5": "Zrušení kdykoli, bez závazků",
-      "label": "Full-Team Engagement",
+      "badge": "Nejčastější volba",
+      "cta": "Domluvit úvodní hovor",
+      "f1": "Frontend, backend, mobil i vedení projektu — kompletní tým",
+      "f2": "Dvoutýdenní sprinty, na konci každého ukázka hotové práce",
+      "f3": "Google Meet nebo Teams, podle toho, na co jste zvyklí",
+      "f4": "Chyby s prioritou řešíme ještě tentýž den",
+      "f5": "Bez závazku na dobu určitou — skončit můžete kdykoli",
+      "label": "Celý tým",
       "period": "měsíčně",
-      "price": "€20 500"
+      "price": "€13 900",
+      "tagline": "Kompletní tým, který každý týden posouvá váš produkt dál."
     },
-    "sectionLabel": "Modely spolupráce",
-    "subtitle": "Bez skrytých poplatků a nejasných odhadů. Vyberte si model spolupráce, který odpovídá vašim cílům.",
-    "title1": "Transparentní",
-    "titleGrad": "ceník"
+    "sectionLabel": "Jak spolupracujeme",
+    "subtitle": "Žádné skryté položky, žádné mlžení kolem odhadů. Vyberte si model, který vám sedí — zbytek doladíme na první schůzce.",
+    "support": {
+      "cta": "Domluvit podporu",
+      "f1": "Převezmeme i aplikaci, kterou jsme nestavěli — po vstupním auditu kódu",
+      "f2": "Hlídáme běh aplikace, bezpečnostní záplaty a aktualizace knihoven",
+      "f3": "Prodloužená podpora LTS verzí i po konci oficiální podpory dodavatele",
+      "f4": "Domluvený balík hodin každý měsíc na drobné úpravy a vylepšení",
+      "f5": "SLA podle vaší potřeby — od reakce do druhého dne po nonstop pohotovost",
+      "label": "Podpora a LTS",
+      "period": "měsíčně",
+      "price": "€390",
+      "tagline": "Vaše aplikace poběží dál — bezpečně, aktuální a bez starostí."
+    },
+    "title1": "Ceník bez",
+    "titleGrad": "překvapení"
   },
   "privacy": {
     "contact": {
@@ -228,7 +259,7 @@ const cs = {
       "title": "Kontakt"
     },
     "controller": {
-      "body": "JVM Yore je softwarová agentura se sídlem v České republice. V případě dotazů týkajících se ochrany osobních údajů nás kontaktujte na hello@jvm-yore.com.",
+      "body": "Správcem osobních údajů je JVM Yore, s.r.o., IČO 29633443, se sídlem Příčná 1892/4, Nové Město, 110 00 Praha 1, zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 449138. V otázkách ochrany osobních údajů nás kontaktujte na hello@jvm-yore.com.",
       "title": "Správce osobních údajů"
     },
     "cookies": {

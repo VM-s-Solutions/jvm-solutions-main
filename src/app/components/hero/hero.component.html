@@ -8,8 +8,13 @@
     <!-- Headline -->
     <h1 class="hero__headline">
       {{ 'hero.headlinePart1' | translate }}<br>
-      <span class="hero__typewriter" aria-live="polite" aria-atomic="true"
-        >{{ typedText() }}<span class="hero__cursor" aria-hidden="true">|</span></span>
+      <span class="hero__typewriter">
+        @for (phrase of phrases(); track phrase) {
+          <span class="hero__typewriter-sizer" aria-hidden="true">{{ phrase }}</span>
+        }
+        <span class="hero__typewriter-text" aria-live="polite" aria-atomic="true"
+          >{{ typedText() }}<span class="hero__cursor" aria-hidden="true">|</span></span>
+      </span>
     </h1>
 
     <!-- Description -->

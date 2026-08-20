@@ -3,6 +3,21 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const en = {
   "about": {
+    "company": {
+      "directors": "Managing directors",
+      "founded": "Incorporated",
+      "foundedValue": "3 June 2026",
+      "ico": "Company ID (IČO)",
+      "intro": "We're a properly registered Czech limited company. Here are the details — every one of them can be checked in the public register.",
+      "legalName": "Legal name",
+      "registration": "Register entry",
+      "registrationValue": "Municipal Court in Prague, Section C, Insert 449138",
+      "registryLink": "View in the Czech business register",
+      "scope": "Scope of business",
+      "scopeValue": "Software provision, IT consulting, data processing, hosting and related activities, and web portals",
+      "seat": "Registered office",
+      "title": "Company details"
+    },
     "description": "Two engineers and one R&D engineer united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
     "janis": {
       "bio": "Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds.",
@@ -83,6 +98,8 @@ const en = {
     "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
     "a5": "Yes — through a monthly retainer. Most clients stay on a light retainer for 3–6 months post-launch, then adjust based on need.",
     "a6": "100% remote and async-first. We're based in the Czech Republic and work with clients across EU, US, and UK time zones.",
+    "more": "Still have questions?",
+    "moreLink": "Get in touch",
     "q1": "Do you work with companies that are just starting out?",
     "q2": "Can you take over an existing codebase?",
     "q3": "What does a typical project timeline look like?",
@@ -90,16 +107,16 @@ const en = {
     "q5": "Do you offer ongoing support after launch?",
     "q6": "Do you work remotely?",
     "sectionLabel": "FAQ",
+    "subtitle": "Straight answers to what founders and CTOs ask us before a project starts.",
     "title1": "Questions we get",
     "titleGrad": "every week"
   },
   "footer": {
     "builtWith": "Built with Angular",
     "contact": "Get in Touch",
+    "legal": "Company ID 29633443 · Příčná 1892/4, Nové Město, 110 00 Prague 1, Czech Republic · Municipal Court in Prague, Section C, Insert 449138",
     "nav": "Navigation",
     "privacy": "Privacy Policy",
-    "more": "Still have questions?",
-    "moreLink": "Get in touch",
     "tagline": "Engineering software that scales, performs, and lasts."
   },
   "hero": {
@@ -107,7 +124,6 @@ const en = {
     "ctaSecondary": "View pricing",
     "description": "We build high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
     "eyebrow": "Software Studio",
-    "subtitle": "Straight answers to what founders and CTOs ask us before a project starts.",
     "headlinePart1": "We craft software",
     "typewriter": {
       "ai": "AI Automation",
@@ -182,45 +198,60 @@ const en = {
   },
   "pricing": {
     "consulting": {
-      "cta": "Book a Session",
-      "f1": "Architecture reviews & code audits",
-      "f2": "Team mentorship and code reviews",
-      "f3": "Stack selection & feasibility studies",
-      "f4": "Ideal for CTOs and engineering leads",
-      "f5": "Deliverable: written report or recording",
-      "label": "Technical Consulting",
+      "cta": "Book a session",
+      "f1": "We go through the architecture and audit the codebase",
+      "f2": "We coach your team and set up a code review process",
+      "f3": "We help pick the stack and check the thing can actually be built",
+      "f4": "Made for CTOs and engineering leads who want a second opinion",
+      "f5": "You leave with a written summary or a recording of the call",
+      "label": "Consulting",
       "period": "per hour",
-      "price": "€150"
+      "price": "€80",
+      "tagline": "A second opinion from people who build software themselves."
     },
     "from": "from",
-    "note": "All prices are excluding VAT. Fixed-scope projects require a 50% upfront deposit.",
+    "note": "Prices exclude VAT. Fixed-scope projects are billed 50% upfront, the rest on handover.",
     "project": {
-      "cta": "Start a Project",
-      "f1": "Full technical spec before we write a line",
-      "f2": "Weekly demos on a live staging environment",
-      "f3": "Source code ownership — full handover",
-      "f4": "30-day post-launch warranty",
-      "f5": "Urgent bug response within 4 hours",
-      "label": "Fixed-Scope Project",
+      "cta": "Get a quote",
+      "f1": "You have a written technical spec before we write a line of code",
+      "f2": "Every week you see the progress on a live staging environment",
+      "f3": "The code is yours from day one — full handover, no strings",
+      "f4": "We fix bugs free of charge for 30 days after launch",
+      "f5": "Critical issues get an answer within 4 hours",
+      "label": "Fixed-scope project",
       "period": "per project",
-      "price": "Individual"
+      "price": "Custom",
+      "tagline": "You have a brief and need it delivered end to end — from design to launch."
     },
     "retainer": {
-      "badge": "Most popular",
-      "cta": "Book a Discovery Call",
-      "f1": "Full team — Frontend, Backend, Mobile & Project Management",
-      "f2": "Sprint-based delivery with bi-weekly demos",
-      "f3": "Communication via Google Meet or Teams, regular updates",
-      "f4": "Priority bug response — same day",
-      "f5": "Cancel anytime, no lock-in",
-      "label": "Full-Team Engagement",
+      "badge": "Most chosen",
+      "cta": "Book an intro call",
+      "f1": "Frontend, backend, mobile and project management — the full team",
+      "f2": "Two-week sprints, each one ending in a demo of finished work",
+      "f3": "Google Meet or Teams, whichever your team already lives in",
+      "f4": "Priority bugs are dealt with the same day",
+      "f5": "No fixed term — you can stop whenever it stops making sense",
+      "label": "The whole team",
       "period": "per month",
-      "price": "€20,500"
+      "price": "€13,900",
+      "tagline": "A complete team that moves your product forward every week."
     },
-    "sectionLabel": "Engagement Models",
-    "subtitle": "No hidden fees. No vague estimates. Pick the model that fits your situation.",
-    "title1": "Transparent",
-    "titleGrad": "pricing"
+    "sectionLabel": "How we work together",
+    "subtitle": "No hidden line items, no vague estimates. Pick the model that fits — we'll work out the details on the first call.",
+    "support": {
+      "cta": "Set up a support plan",
+      "f1": "We take over apps we didn't build, after a code audit up front",
+      "f2": "We watch uptime, ship security patches and keep dependencies current",
+      "f3": "Extended support for LTS versions, even past the vendor's end of life",
+      "f4": "An agreed block of hours every month for small changes and improvements",
+      "f5": "SLA to match the risk — from next business day to round-the-clock",
+      "label": "Support & LTS",
+      "period": "per month",
+      "price": "€390",
+      "tagline": "Your application keeps running — secure, up to date, and worry-free."
+    },
+    "title1": "Pricing without",
+    "titleGrad": "surprises"
   },
   "privacy": {
     "contact": {
@@ -228,7 +259,7 @@ const en = {
       "title": "Contact"
     },
     "controller": {
-      "body": "JVM Yore is a software agency registered in the Czech Republic. For all data-related enquiries, contact us at hello@jvm-yore.com.",
+      "body": "The data controller is JVM Yore, s.r.o., Company ID 29633443, registered office at Příčná 1892/4, Nové Město, 110 00 Prague 1, Czech Republic, recorded in the Commercial Register kept by the Municipal Court in Prague, Section C, Insert 449138. For any data-related enquiries, contact us at hello@jvm-yore.com.",
       "title": "Data Controller"
     },
     "cookies": {

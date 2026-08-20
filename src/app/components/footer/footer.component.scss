@@ -130,6 +130,14 @@
   }
 
   // ── Bottom bar ────────────────────────────────────────────────────────────
+  &__legal {
+    padding-top: $space-6;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: $text-xs;
+    line-height: 1.6;
+  }
+
   &__bottom {
     @include flex-between;
     padding-top: $space-8;

@@ -16,6 +16,7 @@ export class HeroComponent implements OnDestroy {
   private readonly translate = inject(TranslateService);
 
   readonly typedText = signal('');
+  readonly phrases = signal<string[]>([]);
 
   constructor() {
     afterNextRender(() => {
@@ -25,6 +26,7 @@ export class HeroComponent implements OnDestroy {
         this.translate.instant('hero.typewriter.mobile'),
         this.translate.instant('hero.typewriter.ai'),
       ];
+      this.phrases.set(strings);
       this.typewriter.start(strings, (text) => this.typedText.set(text));
     });
   }

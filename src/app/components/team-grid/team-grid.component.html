@@ -2,16 +2,16 @@
   @for (member of members(); track member.initials) {
     <article class="team-member" appScrollReveal revealClass="reveal">
 
-      <!-- Avatar -->
-      <div class="team-member__avatar">
+      <!-- Portrait -->
+      <div class="team-member__media">
         @if (member.photo) {
           <img
             loading="lazy"
             class="team-member__photo"
             [src]="member.photo"
             [alt]="member.name"
-            width="80"
-            height="80"
+            width="480"
+            height="600"
           />
         } @else {
           <div class="team-member__initials">{{ member.initials }}</div>
@@ -20,10 +20,8 @@
 
       <!-- Body -->
       <div class="team-member__body">
-        <div class="team-member__meta">
-          <h2 class="team-member__name">{{ member.name }}</h2>
-          <span class="team-member__role">{{ member.roleKey | translate }}</span>
-        </div>
+        <h2 class="team-member__name">{{ member.name }}</h2>
+        <span class="team-member__role">{{ member.roleKey | translate }}</span>
         <p class="team-member__bio">{{ member.bioKey | translate }}</p>
         <a
           class="team-member__linkedin"
