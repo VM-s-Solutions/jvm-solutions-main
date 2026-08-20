@@ -10,13 +10,7 @@
 }
 
 .section-label {
-  display: inline-block;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: $space-4;
+  @include section-label;
 }
 
 .reveal {
@@ -30,95 +24,195 @@
   }
 }
 
-// ── Header ────────────────────────────────────────────────────────────────────
-.faq__header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto $space-16;
+// ── Layout ────────────────────────────────────────────────────────────────────
+.faq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-12;
+
+  @include lg {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: $space-20;
+    align-items: start;
+  }
+}
+
+// ── Intro column ──────────────────────────────────────────────────────────────
+.faq__intro {
+  @include lg {
+    position: sticky;
+    top: $space-24;
+  }
 }
 
 .faq__title {
   font-family: $font-heading;
-  font-size: clamp($text-4xl, 5.5vw, $text-6xl);
+  font-size: clamp($text-4xl, 5vw, $text-5xl);
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.08;
   letter-spacing: -0.03em;
+  margin-bottom: $space-4;
+}
+
+.faq__subtitle {
+  font-size: $text-base;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.faq__more {
+  margin-top: $space-10;
+  padding-top: $space-8;
+  border-top: 1px solid var(--border-color);
+}
+
+.faq__more-label {
+  font-size: $text-sm;
+  color: var(--text-muted);
+  margin-bottom: $space-2;
+}
+
+.faq__more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  color: var(--text-primary);
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  svg {
+    transition: transform $transition-base;
+  }
+
+  &:hover {
+    color: $red-light;
+
+    svg {
+      transform: translateX($space-1);
+    }
+  }
 }
 
 // ── List ──────────────────────────────────────────────────────────────────────
 .faq__list {
-  max-width: 720px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: $space-3;
 }
 
 // ── Item ──────────────────────────────────────────────────────────────────────
 .faq__item {
-  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-lg;
+  transition: border-color $transition-base, box-shadow $transition-base;
 
-  &:first-child {
-    border-top: 1px solid var(--border-color);
+  &:hover {
+    border-color: var(--border-light);
   }
 
   &.is-open {
-    .faq__chevron {
-      transform: rotate(180deg);
+    border-color: rgba($red, 0.35);
+    box-shadow: $shadow-red;
+
+    .faq__num {
       color: $red-light;
     }
 
-    .faq__question {
+    .faq__question-text {
       color: var(--text-primary);
+    }
+
+    .faq__icon {
+      color: $red-light;
+      border-color: rgba($red, 0.35);
+      transform: rotate(45deg);
     }
   }
 }
 
-// ── Question button ───────────────────────────────────────────────────────────
+// ── Question row ──────────────────────────────────────────────────────────────
 .faq__question {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: $space-6;
-  padding: $space-6 0;
+  gap: $space-4;
+  padding: $space-4;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  color: var(--text-secondary);
-  font-family: $font-body;
-  font-size: $text-base;
-  font-weight: 500;
-  line-height: 1.5;
-  transition: color $transition-fast;
 
-  @include md { font-size: $text-lg; }
+  @include md {
+    padding: $space-6;
+    gap: $space-6;
+  }
 
-  &:hover {
+  &:hover .faq__question-text {
     color: var(--text-primary);
   }
 }
 
-.faq__chevron {
+.faq__num {
   flex-shrink: 0;
+  font-family: $font-heading;
+  font-size: $text-xs;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  transition: transform $transition-base, color $transition-base;
+  transition: color $transition-base;
+}
+
+.faq__question-text {
+  flex: 1;
+  font-family: $font-body;
+  font-size: $text-base;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: color $transition-fast;
+
+  @include md {
+    font-size: $text-lg;
+  }
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  width: $space-8;
+  height: $space-8;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform $transition-spring, color $transition-base, border-color $transition-base;
 }
 
 // ── Answer ────────────────────────────────────────────────────────────────────
 .faq__answer {
   overflow: hidden;
   height: 0;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height $transition-base;
 }
 
 .faq__answer-inner {
+  padding: 0 $space-4 $space-4;
+
+  @include md {
+    padding: 0 $space-6 $space-6;
+  }
+
   p {
     font-size: $text-base;
     color: var(--text-secondary);
     line-height: 1.75;
-    padding-bottom: $space-6;
     max-width: 560px;
   }
 }

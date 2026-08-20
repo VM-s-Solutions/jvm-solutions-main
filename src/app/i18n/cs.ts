@@ -98,6 +98,8 @@ const cs = {
     "contact": "Kontakty",
     "nav": "Navigace",
     "privacy": "Zásady ochrany soukromí",
+    "more": "Máte další otázky?",
+    "moreLink": "Napište nám",
     "tagline": "Navrhujeme software, který škáluje, funguje spolehlivě a obstojí v čase."
   },
   "hero": {
@@ -105,6 +107,7 @@ const cs = {
     "ctaSecondary": "Prohlédnout ceník",
     "description": "JVM Yore navrhuje a dodává výkonné digitální produkty — od precizních frontendů přes robustní backendové systémy až po mobilní aplikace a AI automatizaci, která zrychluje firemní procesy.",
     "eyebrow": "Softwarové studio",
+    "subtitle": "Přímé odpovědi na otázky, které nám zakladatelé a CTO kladou před startem projektu.",
     "headlinePart1": "Tvoříme software",
     "typewriter": {
       "ai": "AI automatizace",
