@@ -18,7 +18,7 @@ const sk = {
       "seat": "Sídlo",
       "title": "Firemné údaje"
     },
-    "description": "Dvaja inžinieri a jeden R&D inžinier spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
+    "description": "Dvaja senior vývojári a senior manažér spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
     "janis": {
       "bio": "Riadi klientske vzťahy, dodávku projektov a rozvoj obchodu. Prepojenie medzi tým, čo klienti potrebujú, a tým, čo tím dokáže postaviť.",
       "role": "Spoluzakladateľ & konateľ"
@@ -206,7 +206,7 @@ const sk = {
       "f5": "Odchádzate s písomným záverom alebo záznamom hovoru",
       "label": "Konzultácie",
       "period": "za hodinu",
-      "price": "€80",
+      "price": "€100",
       "tagline": "Druhý názor od ľudí, ktorí softvér sami stavajú."
     },
     "from": "od",
@@ -226,14 +226,14 @@ const sk = {
     "retainer": {
       "badge": "Najčastejšia voľba",
       "cta": "Dohodnúť úvodný hovor",
-      "f1": "Frontend, backend, mobil aj vedenie projektu — kompletný tím",
+      "f1": "Frontend, backend, mobil aj vedenie projektu — kompletný seniorný tím",
       "f2": "Dvojtýždňové šprinty, na konci každého ukážka hotovej práce",
       "f3": "Google Meet alebo Teams, podľa toho, na čo ste zvyknutí",
       "f4": "Chyby s prioritou riešime ešte v ten istý deň",
       "f5": "Bez záväzku na dobu určitú — skončiť môžete kedykoľvek",
       "label": "Celý tím",
       "period": "mesačne",
-      "price": "€13 900",
+      "price": "€17 900",
       "tagline": "Kompletný tím, ktorý každý týždeň posúva váš produkt ďalej."
     },
     "sectionLabel": "Ako spolupracujeme",

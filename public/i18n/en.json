@@ -15,7 +15,7 @@
       "seat": "Registered office",
       "title": "Company details"
     },
-    "description": "Two engineers and one R&D engineer united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
+    "description": "Two senior developers and a senior manager united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
     "janis": {
       "bio": "Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds.",
       "role": "Co-founder & Managing Director"
@@ -203,7 +203,7 @@
       "f5": "You leave with a written summary or a recording of the call",
       "label": "Consulting",
       "period": "per hour",
-      "price": "€80",
+      "price": "€100",
       "tagline": "A second opinion from people who build software themselves."
     },
     "from": "from",
@@ -223,14 +223,14 @@
     "retainer": {
       "badge": "Most chosen",
       "cta": "Book an intro call",
-      "f1": "Frontend, backend, mobile and project management — the full team",
+      "f1": "Frontend, backend, mobile and project management — the full senior team",
       "f2": "Two-week sprints, each one ending in a demo of finished work",
       "f3": "Google Meet or Teams, whichever your team already lives in",
       "f4": "Priority bugs are dealt with the same day",
       "f5": "No fixed term — you can stop whenever it stops making sense",
       "label": "The whole team",
       "period": "per month",
-      "price": "€13,900",
+      "price": "€17,900",
       "tagline": "A complete team that moves your product forward every week."
     },
     "sectionLabel": "How we work together",
