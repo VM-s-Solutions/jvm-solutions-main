@@ -2,44 +2,44 @@
   @for (member of members(); track member.initials) {
     <article class="team-member" appScrollReveal revealClass="reveal">
 
-      <!-- Avatar -->
-      <div class="team-member__avatar">
-        @if (member.photo) {
-          <img
-            loading="lazy"
-            class="team-member__photo"
-            [src]="member.photo"
-            [alt]="member.name"
-            width="80"
-            height="80"
-          />
-        } @else {
-          <div class="team-member__initials">{{ member.initials }}</div>
-        }
-      </div>
-
-      <!-- Body -->
-      <div class="team-member__body">
+      <!-- Avatar + name row -->
+      <div class="team-member__head">
+        <div class="team-member__media">
+          @if (member.photo) {
+            <img
+              loading="lazy"
+              class="team-member__photo"
+              [src]="member.photo"
+              [alt]="member.name"
+              width="80"
+              height="80"
+            />
+          } @else {
+            <div class="team-member__initials">{{ member.initials }}</div>
+          }
+        </div>
         <div class="team-member__meta">
           <h2 class="team-member__name">{{ member.name }}</h2>
           <span class="team-member__role">{{ member.roleKey | translate }}</span>
         </div>
-        <p class="team-member__bio">{{ member.bioKey | translate }}</p>
-        <a
-          class="team-member__linkedin"
-          [href]="member.linkedin"
-          target="_blank"
-          rel="noopener noreferrer"
-          [attr.aria-label]="member.name + ' on LinkedIn'"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
       </div>
+
+      <p class="team-member__bio">{{ member.bioKey | translate }}</p>
+
+      <a
+        class="team-member__linkedin"
+        [href]="member.linkedin"
+        target="_blank"
+        rel="noopener noreferrer"
+        [attr.aria-label]="member.name + ' on LinkedIn'"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
 
     </article>
   }

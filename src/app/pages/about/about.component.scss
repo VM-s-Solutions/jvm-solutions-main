@@ -43,3 +43,84 @@
     max-width: 520px;
   }
 }
+
+// ── Public-register details — head left, facts right from lg up ──────────────
+.about-company {
+  border-top: 1px solid var(--border-color);
+  padding-top: $space-16;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-10;
+
+  @include lg {
+    grid-template-columns: 320px 1fr;
+    gap: $space-20;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp($text-xl, 3vw, $text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  &__intro {
+    font-size: $text-base;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: $space-3 0 0;
+  }
+
+  &__facts {
+    margin: 0;
+    border-top: 1px solid var(--border-color);
+  }
+
+  &__fact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-1;
+    padding: $space-4 0;
+    border-bottom: 1px solid var(--border-color);
+
+    @include sm {
+      grid-template-columns: 220px 1fr;
+      gap: $space-6;
+      align-items: baseline;
+    }
+  }
+
+  &__term {
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  &__value {
+    font-size: $text-sm;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__registry {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-6;
+    font-size: $text-sm;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover { color: var(--text-primary); }
+
+    svg { flex-shrink: 0; }
+  }
+}

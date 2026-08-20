@@ -38,11 +38,23 @@
     animation-delay: 0.08s;
   }
 
-  // Typewriter line — gradient, same weight as rest of headline
+  // Typewriter line — all phrases stacked invisibly in one grid cell so the
+  // row is always as tall as the tallest phrase at the current viewport width
   &__typewriter {
-    display: block;
+    display: grid;
+    min-height: 1.06em; // fallback height until phrases are set after first render
+
+    > * {
+      grid-area: 1 / 1;
+    }
+  }
+
+  &__typewriter-sizer {
+    visibility: hidden;
+  }
+
+  &__typewriter-text {
     @include gradient-text($gradient-brand);
-    min-height: 1.06em; // prevent layout jump when text is empty on first tick
   }
 
   // Blinking cursor

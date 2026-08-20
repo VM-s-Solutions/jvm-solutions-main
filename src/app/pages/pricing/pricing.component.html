@@ -27,9 +27,12 @@
               }
               <span class="pricing-tier__price">{{ tier.priceKey | translate }}</span>
             </div>
-            @if (tier.showMeta) {
-              <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
-            }
+            <span class="pricing-tier__period">
+              @if (tier.showMeta) {
+                {{ tier.periodKey | translate }}
+              }
+            </span>
+            <p class="pricing-tier__tagline">{{ tier.taglineKey | translate }}</p>
           </div>
 
           <ul class="pricing-tier__features" role="list">

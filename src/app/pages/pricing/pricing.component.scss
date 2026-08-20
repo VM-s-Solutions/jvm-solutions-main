@@ -3,15 +3,7 @@
 
 :host { display: block; }
 
-.section-label {
-  display: inline-block;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: $space-4;
-}
+.section-label { @include section-label; }
 
 .gradient-text { @include gradient-text; }
 
@@ -35,10 +27,11 @@
   padding-top: 8rem;
 }
 
-// ── Page header ───────────────────────────────────────────────────────────────
+// ── Page header — centred on the tier grid's axis ────────────────────────────
 .pricing-header {
   max-width: 640px;
-  margin-bottom: $space-20;
+  margin: 0 auto $space-16;
+  text-align: center;
 
   &__title {
     font-family: $font-heading;
@@ -55,72 +48,74 @@
     font-size: clamp($text-base, 2vw, $text-lg);
     line-height: 1.7;
     max-width: 520px;
+    margin: 0 auto;
   }
 }
 
-// ── 3-column tiers ────────────────────────────────────────────────────────────
+// ── Tier grid — 1 / 2 / 4 columns ─────────────────────────────────────────────
 .pricing-tiers {
   display: grid;
   grid-template-columns: 1fr;
-  max-width: 960px;
-  margin: 0 auto;
+  gap: $space-6;
+  // room for the "most popular" badge overlapping the highlighted card's top edge
+  padding-top: $space-3;
 
   @include md {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-4;
   }
 }
 
-// ── Single tier ───────────────────────────────────────────────────────────────
+// ── Tier card ─────────────────────────────────────────────────────────────────
 .pricing-tier {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: $space-8;
-  padding: $space-10 0;
-  border-top: 1px solid var(--border-color);
-  position: relative;
+  gap: $space-6;
+  padding: $space-8 $space-6;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-xl;
+  transition: border-color $transition-base;
 
-  &:last-child { border-bottom: 1px solid var(--border-color); }
+  &:hover { border-color: var(--border-light); }
 
-  @include md {
-    padding: $space-12 $space-10;
-    border-top: 1px solid var(--border-color);
-    border-bottom: none;
-    border-right: 1px solid var(--border-color);
-
-    &:first-child { padding-left: 0; }
-    &:last-child  { padding-right: 0; border-right: none; border-bottom: none; }
-  }
-
-  // Featured column — red top accent
   &--highlighted {
-    border-top: 2px solid $red;
+    border-color: rgba($red, 0.4);
+    box-shadow: $shadow-red;
+
+    &:hover { border-color: rgba($red, 0.6); }
 
     .pricing-tier__price { @include gradient-text; }
   }
 }
 
-// ── Badge (Most Popular) ──────────────────────────────────────────────────────
+// ── Badge (Most Popular) — sits on the card's top border ─────────────────────
 .pricing-tier__badge {
-  display: inline-flex;
-  align-self: flex-start;
-  background: rgba($red, 0.1);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-elevated);
   color: $red-light;
-  border: 1px solid rgba($red, 0.25);
+  border: 1px solid rgba($red, 0.4);
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 3px $space-3;
+  padding: 4px $space-3;
   border-radius: $radius-full;
   white-space: nowrap;
-  margin-bottom: -$space-4;
 }
 
-// ── Tier header ───────────────────────────────────────────────────────────────
+// ── Tier header — fixed rhythm so prices align across cards ──────────────────
 .pricing-tier__header {
   display: flex;
   flex-direction: column;
-  gap: $space-1;
 }
 
 .pricing-tier__label {
@@ -137,7 +132,7 @@
   display: flex;
   align-items: baseline;
   gap: $space-2;
-  margin-top: $space-2;
+  margin-top: $space-4;
 }
 
 .pricing-tier__from {
@@ -147,27 +142,43 @@
 
 .pricing-tier__price {
   font-family: $font-heading;
-  font-size: clamp($text-4xl, 4.5vw, $text-5xl);
+  font-size: $text-4xl;
   font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .pricing-tier__period {
   font-size: $text-sm;
   color: var(--text-muted);
-  margin-top: $space-1;
+  margin-top: $space-2;
+  // reserved even when empty (project tier) so taglines align across cards
+  min-height: 1.5em;
+}
+
+.pricing-tier__tagline {
+  font-size: $text-sm;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: $space-4 0 0;
+
+  @include lg {
+    // three lines — keeps the divider aligned across cards
+    min-height: calc(3 * 1.6em);
+  }
 }
 
 // ── Feature list ──────────────────────────────────────────────────────────────
 .pricing-tier__features {
   list-style: none;
-  padding: 0;
+  padding: $space-6 0 0;
   margin: 0;
+  border-top: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  gap: $space-4;
+  gap: $space-3;
   flex: 1;
 }
 
@@ -188,19 +199,16 @@
 
 // ── CTA ───────────────────────────────────────────────────────────────────────
 .pricing-tier__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: $space-2;
-  text-decoration: none;
+  width: 100%;
   margin-top: auto;
 }
 
-// ── VAT note ──────────────────────────────────────────────────────────────────
+// ── VAT note — centred on the same axis as header and grid ───────────────────
 .pricing-note {
   font-size: $text-sm;
   color: var(--text-muted);
-  margin: $space-16 0 0;
-  max-width: 560px;
+  margin: $space-10 auto 0;
+  max-width: 640px;
   line-height: 1.6;
+  text-align: center;
 }

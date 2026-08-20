@@ -3,6 +3,21 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const sk = {
   "about": {
+    "company": {
+      "directors": "Konatelia",
+      "founded": "Dátum vzniku",
+      "foundedValue": "3. júna 2026",
+      "ico": "IČO",
+      "intro": "Sme riadne zapísaná česká spoločnosť s ručením obmedzeným. Tu sú údaje, ktoré si viete kedykoľvek overiť v obchodnom registri.",
+      "legalName": "Obchodné meno",
+      "registration": "Zápis v registri",
+      "registrationValue": "Mestský súd v Prahe, oddiel C, vložka 449138",
+      "registryLink": "Zobraziť v obchodnom registri",
+      "scope": "Predmet podnikania",
+      "scopeValue": "Poskytovanie softvéru, poradenstvo v oblasti informačných technológií, spracovanie dát, hostingové a súvisiace činnosti a webové portály",
+      "seat": "Sídlo",
+      "title": "Firemné údaje"
+    },
     "description": "Dvaja inžinieri a jeden R&D inžinier spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
     "janis": {
       "bio": "Riadi klientske vzťahy, dodávku projektov a rozvoj obchodu. Prepojenie medzi tým, čo klienti potrebujú, a tým, čo tím dokáže postaviť.",
@@ -83,6 +98,8 @@ const sk = {
     "a4": "Áno, pred akýmkoľvek discovery hovorom. Všetko, čo s nami zdieľate, považujeme za dôverné.",
     "a5": "Áno — prostredníctvom mesačného retainera. Väčšina klientov zostáva 3–6 mes. po spustení.",
     "a6": "100% vzdialene. Sídlime v Českej republike a pracujeme s klientmi v EU, USA a UK.",
+    "more": "Máte ďalšie otázky?",
+    "moreLink": "Napíšte nám",
     "q1": "Spolupracujete aj s firmami, ktoré práve začínajú?",
     "q2": "Môžete prevziať existujúcu kódovú základňu?",
     "q3": "Ako vyzerá typický časový plán projektu?",
@@ -90,24 +107,23 @@ const sk = {
     "q5": "Ponúkate podporu po spustení?",
     "q6": "Pracujete vzdialene?",
     "sectionLabel": "FAQ",
+    "subtitle": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred štartom projektu.",
     "title1": "Otázky, ktoré dostávame",
     "titleGrad": "každý týždeň"
   },
   "footer": {
     "builtWith": "Vytvorené v Angular",
     "contact": "Kontakty",
+    "legal": "IČO 29633443 · Příčná 1892/4, Nové Město, 110 00 Praha 1 · Zapísané na Mestskom súde v Prahe, oddiel C, vložka 449138",
     "nav": "Navigácia",
     "privacy": "Zásady ochrany súkromia",
-    "more": "Máte ďalšie otázky?",
-    "moreLink": "Napíšte nám",
     "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží."
   },
   "hero": {
     "ctaPrimary": "Spustiť projekt",
     "ctaSecondary": "Pozrieť cenník",
-    "description": "JVM Yore vytvára vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
+    "description": "Vytvárame vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
     "eyebrow": "Softvérové štúdio",
-    "subtitle": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred štartom projektu.",
     "headlinePart1": "Tvoríme softvér",
     "typewriter": {
       "ai": "AI automatizácia",
@@ -182,45 +198,60 @@ const sk = {
   },
   "pricing": {
     "consulting": {
-      "cta": "Rezervovať stretnutie",
-      "f1": "Revízie architektúry a code audity",
-      "f2": "Mentoring tímu a code review",
-      "f3": "Výber technológií a štúdie uskutočniteľnosti",
-      "f4": "Ideálne pre CTO a technických vedúcich",
-      "f5": "Výstup: písomná správa alebo nahrávka",
-      "label": "Technické poradenstvo",
+      "cta": "Rezervovať konzultáciu",
+      "f1": "Prejdeme architektúru a urobíme audit kódu",
+      "f2": "Zaškolíme váš tím a nastavíme code review",
+      "f3": "Poradíme s výberom technológií a overíme, že sa to dá postaviť",
+      "f4": "Sadne CTO aj vedúcim vývoja, ktorí potrebujú druhý názor",
+      "f5": "Odchádzate s písomným záverom alebo záznamom hovoru",
+      "label": "Konzultácie",
       "period": "za hodinu",
-      "price": "€150"
+      "price": "€80",
+      "tagline": "Druhý názor od ľudí, ktorí softvér sami stavajú."
     },
     "from": "od",
-    "note": "Všetky ceny sú bez DPH. Projekty s pevným rozsahom vyžadujú zálohu 50 %.",
+    "note": "Ceny sú uvedené bez DPH. Pri projektoch s pevným rozsahom účtujeme 50 % zálohu vopred, zvyšok po odovzdaní.",
     "project": {
-      "cta": "Začať projekt",
-      "f1": "Kompletná technická špecifikácia pred prvým riadkom kódu",
-      "f2": "Týždenné demá v živom testovacom prostredí",
-      "f3": "Vlastníctvo zdrojového kódu — kompletné odovzdanie",
-      "f4": "30-dňová záruka po spustení",
-      "f5": "Reakcia na urgentné chyby do 4 hodín",
-      "label": "Projekt s pevným rozsahom",
+      "cta": "Dopytovať projekt",
+      "f1": "Skôr než napíšeme prvý riadok kódu, držíte v ruke technické zadanie",
+      "f2": "Každý týždeň vidíte postup na živom testovacom prostredí",
+      "f3": "Kód je od začiatku váš — po odovzdaní s ním naložíte, ako chcete",
+      "f4": "30 dní po spustení opravujeme chyby zadarmo",
+      "f5": "Na kritickú chybu reagujeme do 4 hodín",
+      "label": "Projekt na kľúč",
       "period": "za projekt",
-      "price": "Individuálna"
+      "price": "Na mieru",
+      "tagline": "Máte zadanie a potrebujete ho dodať celé — od návrhu po spustenie."
     },
     "retainer": {
-      "badge": "Najobľúbenejší",
-      "cta": "Rezervovať discovery hovor",
-      "f1": "Všetci 3 — frontend, backend aj mobil",
-      "f2": "Sprintové dodávky s demo každé 2 týždne",
-      "f3": "Komunikácia cez Google Meet alebo Teams a priebežné aktualizácie",
-      "f4": "Prioritná reakcia na chyby — ten istý deň",
-      "f5": "Zrušenie kedykoľvek, bez záväzkov",
-      "label": "Full-Team Engagement",
+      "badge": "Najčastejšia voľba",
+      "cta": "Dohodnúť úvodný hovor",
+      "f1": "Frontend, backend, mobil aj vedenie projektu — kompletný tím",
+      "f2": "Dvojtýždňové šprinty, na konci každého ukážka hotovej práce",
+      "f3": "Google Meet alebo Teams, podľa toho, na čo ste zvyknutí",
+      "f4": "Chyby s prioritou riešime ešte v ten istý deň",
+      "f5": "Bez záväzku na dobu určitú — skončiť môžete kedykoľvek",
+      "label": "Celý tím",
       "period": "mesačne",
-      "price": "€20 500"
+      "price": "€13 900",
+      "tagline": "Kompletný tím, ktorý každý týždeň posúva váš produkt ďalej."
     },
-    "sectionLabel": "Modely spolupráce",
-    "subtitle": "Žiadne skryté poplatky. Žiadne vágne odhady. Vyberte model, ktorý vám vyhovuje.",
-    "title1": "Transparentný",
-    "titleGrad": "cenník"
+    "sectionLabel": "Ako spolupracujeme",
+    "subtitle": "Žiadne skryté položky, žiadne hmlisté odhady. Vyberte si model, ktorý vám sadne — zvyšok doladíme na prvom stretnutí.",
+    "support": {
+      "cta": "Dohodnúť podporu",
+      "f1": "Prevezmeme aj aplikáciu, ktorú sme nestavali — po vstupnom audite kódu",
+      "f2": "Strážime beh aplikácie, bezpečnostné záplaty a aktualizácie knižníc",
+      "f3": "Predĺžená podpora LTS verzií aj po konci oficiálnej podpory dodávateľa",
+      "f4": "Dohodnutý balík hodín každý mesiac na drobné úpravy a vylepšenia",
+      "f5": "SLA podľa vašej potreby — od reakcie do nasledujúceho dňa po nonstop pohotovosť",
+      "label": "Podpora a LTS",
+      "period": "mesačne",
+      "price": "€390",
+      "tagline": "Vaša aplikácia pobeží ďalej — bezpečne, aktuálna a bez starostí."
+    },
+    "title1": "Cenník bez",
+    "titleGrad": "prekvapení"
   },
   "privacy": {
     "contact": {
@@ -228,7 +259,7 @@ const sk = {
       "title": "Kontakt"
     },
     "controller": {
-      "body": "JVM Yore je softvérová agentúra so sídlom v Českej republike. V prípade otázok týkajúcich sa ochrany osobných údajov nás kontaktujte na hello@jvm-yore.com.",
+      "body": "Prevádzkovateľom osobných údajov je JVM Yore, s.r.o., IČO 29633443, so sídlom Příčná 1892/4, Nové Město, 110 00 Praha 1, zapísaná v obchodnom registri vedenom Mestským súdom v Prahe, oddiel C, vložka 449138. V otázkach ochrany osobných údajov nás kontaktujte na hello@jvm-yore.com.",
       "title": "Prevádzkovateľ osobných údajov"
     },
     "cookies": {

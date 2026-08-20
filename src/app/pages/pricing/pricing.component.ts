@@ -6,6 +6,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 
 interface PricingTier {
   labelKey: string;
+  taglineKey: string;
   priceKey: string;
   periodKey: string;
   ctaKey: string;
@@ -28,6 +29,7 @@ export class PricingComponent {
   readonly tiers: PricingTier[] = [
     {
       labelKey: 'pricing.project.label',
+      taglineKey: 'pricing.project.tagline',
       priceKey: 'pricing.project.price',
       periodKey: 'pricing.project.period',
       ctaKey: 'pricing.project.cta',
@@ -38,6 +40,7 @@ export class PricingComponent {
     },
     {
       labelKey: 'pricing.retainer.label',
+      taglineKey: 'pricing.retainer.tagline',
       priceKey: 'pricing.retainer.price',
       periodKey: 'pricing.retainer.period',
       ctaKey: 'pricing.retainer.cta',
@@ -48,7 +51,19 @@ export class PricingComponent {
       showMeta: true,
     },
     {
+      labelKey: 'pricing.support.label',
+      taglineKey: 'pricing.support.tagline',
+      priceKey: 'pricing.support.price',
+      periodKey: 'pricing.support.period',
+      ctaKey: 'pricing.support.cta',
+      ctaLink: '/contact',
+      features: ['pricing.support.f1', 'pricing.support.f2', 'pricing.support.f3', 'pricing.support.f4', 'pricing.support.f5'],
+      highlighted: false,
+      showMeta: true,
+    },
+    {
       labelKey: 'pricing.consulting.label',
+      taglineKey: 'pricing.consulting.tagline',
       priceKey: 'pricing.consulting.price',
       periodKey: 'pricing.consulting.period',
       ctaKey: 'pricing.consulting.cta',
