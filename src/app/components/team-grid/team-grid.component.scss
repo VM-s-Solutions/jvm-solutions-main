@@ -21,11 +21,11 @@
   }
 }
 
-// Single member card — horizontal list row on mobile, portrait card from md up
+// Single member card — compact avatar row + bio
 .team-member {
   display: flex;
-  gap: $space-4;
-  padding: $space-4;
+  flex-direction: column;
+  padding: $space-6;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xl;
@@ -39,26 +39,17 @@
     &:nth-child(#{$i}) { transition-delay: #{($i - 1) * 100}ms; }
   }
 
-  @include md {
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
   }
 
   &__media {
     position: relative;
-    width: 88px;
-    height: 88px;
+    width: 80px;
+    height: 80px;
     flex-shrink: 0;
-
-    @include md {
-      width: 100%;
-      height: auto;
-      // the photo is absolutely positioned so its intrinsic ratio can't
-      // override this box's aspect ratio (flex min-height: auto quirk)
-      aspect-ratio: 4 / 5;
-    }
   }
 
   &__photo {
@@ -70,11 +61,6 @@
     object-fit: cover;
     object-position: top;
     border: 1px solid var(--border-color);
-
-    @include md {
-      border-radius: 0;
-      border: none;
-    }
   }
 
   &__initials {
@@ -90,22 +76,12 @@
     font-weight: 700;
     color: white;
     user-select: none;
-
-    @include md {
-      border-radius: 0;
-      font-size: $text-6xl;
-    }
   }
 
-  &__body {
+  &__meta {
     display: flex;
     flex-direction: column;
     min-width: 0;
-
-    @include md {
-      flex: 1;
-      padding: $space-6;
-    }
   }
 
   &__name {
@@ -130,7 +106,7 @@
     font-size: $text-sm;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin: $space-3 0 0;
+    margin: $space-4 0 0;
   }
 
   &__linkedin {
@@ -138,7 +114,8 @@
     align-items: center;
     gap: $space-2;
     align-self: flex-start;
-    margin-top: $space-4;
+    margin-top: auto;
+    padding-top: $space-4;
     font-size: $text-sm;
     color: var(--text-muted);
     text-decoration: none;
@@ -147,7 +124,5 @@
     &:hover { color: var(--text-primary); }
 
     svg { flex-shrink: 0; }
-
-    @include md { margin-top: auto; padding-top: $space-4; }
   }
 }
