@@ -98,6 +98,8 @@ const sk = {
     "contact": "Kontakty",
     "nav": "Navigácia",
     "privacy": "Zásady ochrany súkromia",
+    "more": "Máte ďalšie otázky?",
+    "moreLink": "Napíšte nám",
     "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží."
   },
   "hero": {
@@ -105,6 +107,7 @@ const sk = {
     "ctaSecondary": "Pozrieť cenník",
     "description": "JVM Yore vytvára vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
     "eyebrow": "Softvérové štúdio",
+    "subtitle": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred štartom projektu.",
     "headlinePart1": "Tvoríme softvér",
     "typewriter": {
       "ai": "AI automatizácia",

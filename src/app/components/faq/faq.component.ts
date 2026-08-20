@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, QueryList, signal, ViewChildren } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -11,7 +12,7 @@ interface FaqItem {
   selector: 'jvm-faq',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule, ScrollRevealDirective],
+  imports: [RouterLink, TranslateModule, ScrollRevealDirective],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.scss',
 })

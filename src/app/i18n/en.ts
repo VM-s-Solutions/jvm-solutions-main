@@ -98,6 +98,8 @@ const en = {
     "contact": "Get in Touch",
     "nav": "Navigation",
     "privacy": "Privacy Policy",
+    "more": "Still have questions?",
+    "moreLink": "Get in touch",
     "tagline": "Engineering software that scales, performs, and lasts."
   },
   "hero": {
@@ -105,6 +107,7 @@ const en = {
     "ctaSecondary": "View pricing",
     "description": "We build high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
     "eyebrow": "Software Studio",
+    "subtitle": "Straight answers to what founders and CTOs ask us before a project starts.",
     "headlinePart1": "We craft software",
     "typewriter": {
       "ai": "AI Automation",
