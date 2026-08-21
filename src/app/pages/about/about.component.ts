@@ -37,7 +37,8 @@ export class AboutComponent {
       roleKey: 'about.vit.role',
       bioKey: 'about.vit.bio',
       linkedin: 'https://www.linkedin.com/in/vitchvoj/',
-      photo: 'images/about/vit_chvoj.JPG',
+      // head-and-shoulders crop — the full seated photo is too wide for an 80px avatar
+      photo: 'images/about/vit_chvoj_avatar.jpg',
     },
     {
       initials: 'M',
