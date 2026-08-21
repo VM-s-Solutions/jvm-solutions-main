@@ -2,7 +2,6 @@
 @use '../../../styles/mixins' as *;
 
 .footer {
-  border-top: 1px solid var(--border-color);
   padding: $space-16 $space-6 $space-8;
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
@@ -12,7 +11,6 @@
     grid-template-columns: 1fr;
     gap: $space-10;
     padding-bottom: $space-12;
-    border-bottom: 1px solid var(--border-color);
 
     @include md {
       grid-template-columns: 2fr 1fr 1fr;
@@ -130,17 +128,8 @@
   }
 
   // ── Bottom bar ────────────────────────────────────────────────────────────
-  &__legal {
-    padding-top: $space-6;
-    margin: 0;
-    color: var(--text-muted);
-    font-size: $text-xs;
-    line-height: 1.6;
-  }
-
   &__bottom {
     @include flex-between;
-    padding-top: $space-8;
     flex-wrap: wrap;
     gap: $space-4;
 

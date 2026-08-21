@@ -109,6 +109,24 @@
     margin: 0;
   }
 
+  &__toggle {
+    @include btn-outline;
+    margin-top: $space-6;
+    gap: $space-2;
+    font-size: $text-sm;
+
+    svg {
+      flex-shrink: 0;
+      transition: transform $transition-base;
+    }
+
+    &.is-open svg { transform: rotate(45deg); }
+  }
+
+  &__details {
+    animation: fade-in 0.4s ease both;
+  }
+
   &__registry {
     display: inline-flex;
     align-items: center;

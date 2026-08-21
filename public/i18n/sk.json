@@ -4,6 +4,7 @@
       "directors": "Konatelia",
       "founded": "Dátum vzniku",
       "foundedValue": "3. júna 2026",
+      "hide": "Skryť firemné údaje",
       "ico": "IČO",
       "intro": "Sme riadne zapísaná česká spoločnosť s ručením obmedzeným. Tu sú údaje, ktoré si viete kedykoľvek overiť v obchodnom registri.",
       "legalName": "Obchodné meno",
@@ -13,6 +14,7 @@
       "scope": "Predmet podnikania",
       "scopeValue": "Poskytovanie softvéru, poradenstvo v oblasti informačných technológií, spracovanie dát, hostingové a súvisiace činnosti a webové portály",
       "seat": "Sídlo",
+      "show": "Zobraziť firemné údaje",
       "title": "Firemné údaje"
     },
     "description": "Dvaja senior vývojári a senior manažér spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
@@ -111,7 +113,6 @@
   "footer": {
     "builtWith": "Vytvorené v Angular",
     "contact": "Kontakty",
-    "legal": "IČO 29633443 · Příčná 1892/4, Nové Město, 110 00 Praha 1 · Zapísané na Mestskom súde v Prahe, oddiel C, vložka 449138",
     "nav": "Navigácia",
     "privacy": "Zásady ochrany súkromia",
     "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží."

@@ -4,6 +4,7 @@
       "directors": "Managing directors",
       "founded": "Incorporated",
       "foundedValue": "3 June 2026",
+      "hide": "Hide company details",
       "ico": "Company ID (IČO)",
       "intro": "We're a properly registered Czech limited company. Here are the details — every one of them can be checked in the public register.",
       "legalName": "Legal name",
@@ -13,6 +14,7 @@
       "scope": "Scope of business",
       "scopeValue": "Software provision, IT consulting, data processing, hosting and related activities, and web portals",
       "seat": "Registered office",
+      "show": "Show company details",
       "title": "Company details"
     },
     "description": "Two senior developers and a senior manager united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
@@ -111,7 +113,6 @@
   "footer": {
     "builtWith": "Built with Angular",
     "contact": "Get in Touch",
-    "legal": "Company ID 29633443 · Příčná 1892/4, Nové Město, 110 00 Prague 1, Czech Republic · Municipal Court in Prague, Section C, Insert 449138",
     "nav": "Navigation",
     "privacy": "Privacy Policy",
     "tagline": "Engineering software that scales, performs, and lasts."

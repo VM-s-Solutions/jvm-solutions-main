@@ -28,24 +28,21 @@ export class FaqComponent {
     { qKey: 'faq.q6', aKey: 'faq.a6' },
   ];
 
-  readonly openIndex = signal<number | null>(null);
+  readonly openItems = signal<ReadonlySet<number>>(new Set());
 
   toggle(index: number): void {
-    const prev = this.openIndex();
-
-    if (prev !== null) {
-      const prevEl = this.answers.get(prev)?.nativeElement;
-      if (prevEl) this.collapse(prevEl);
-    }
-
-    if (prev === index) {
-      this.openIndex.set(null);
-      return;
-    }
-
-    this.openIndex.set(index);
+    const next = new Set(this.openItems());
     const el = this.answers.get(index)?.nativeElement;
-    if (el) this.expand(el);
+
+    if (next.has(index)) {
+      next.delete(index);
+      if (el) this.collapse(el);
+    } else {
+      next.add(index);
+      if (el) this.expand(el);
+    }
+
+    this.openItems.set(next);
   }
 
   private expand(el: HTMLElement): void {
