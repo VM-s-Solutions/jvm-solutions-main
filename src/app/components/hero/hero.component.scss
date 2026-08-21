@@ -128,10 +128,42 @@
     @include max-md { display: none; }
   }
 
+  // Pulse segment travels the full line height plus its own size so it
+  // enters and exits cleanly
+  $scroll-line-height: 52px;
+  $scroll-pulse-height: 18px;
+
   &__scroll-line {
+    position: relative;
     width: 1px;
-    height: 52px;
+    height: $scroll-line-height;
     background: var(--border-color);
     margin: 0 auto;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: $scroll-pulse-height;
+      background: linear-gradient(to bottom, transparent, rgba($red-light, 0.8));
+      animation: scroll-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+  }
+
+  @keyframes scroll-pulse {
+    0% {
+      transform: translateY(-$scroll-pulse-height);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY($scroll-line-height);
+      opacity: 0.3;
+    }
   }
 }
