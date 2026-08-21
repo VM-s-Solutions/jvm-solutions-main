@@ -78,9 +78,14 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xl;
-  transition: border-color $transition-base;
+  transition: border-color $transition-base, box-shadow $transition-base,
+    transform $transition-base;
 
-  &:hover { border-color: var(--border-light); }
+  &:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+    box-shadow: $shadow-md;
+  }
 
   @include lg {
     display: grid;
@@ -94,7 +99,10 @@
     border-color: rgba($red, 0.4);
     box-shadow: $shadow-red;
 
-    &:hover { border-color: rgba($red, 0.6); }
+    &:hover {
+      border-color: rgba($red, 0.6);
+      box-shadow: $shadow-red, $shadow-md;
+    }
 
     .pricing-tier__price { @include gradient-text; }
   }

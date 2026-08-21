@@ -29,14 +29,22 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-xl;
-  transition: border-color $transition-base,
-    opacity $transition-slow, transform $transition-slow;
+  // hover lift uses `translate` so it composes with the reveal's `transform`
+  translate: 0 0;
+  transition: border-color $transition-base, box-shadow $transition-base,
+    translate $transition-base, opacity $transition-slow, transform $transition-slow;
 
-  &:hover { border-color: var(--border-light); }
+  &:hover {
+    border-color: var(--border-light);
+    translate: 0 -3px;
+    box-shadow: $shadow-md;
+  }
 
-  // stagger
+  // stagger the reveal only — hover properties must react without delay
   @for $i from 1 through 3 {
-    &:nth-child(#{$i}) { transition-delay: #{($i - 1) * 100}ms; }
+    &:nth-child(#{$i}) {
+      transition-delay: 0ms, 0ms, 0ms, #{($i - 1) * 100}ms, #{($i - 1) * 100}ms;
+    }
   }
 
   &__head {
