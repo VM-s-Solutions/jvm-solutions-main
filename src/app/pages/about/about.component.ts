@@ -28,7 +28,8 @@ export class AboutComponent {
       roleKey: 'about.janis.role',
       bioKey: 'about.janis.bio',
       linkedin: 'https://www.linkedin.com/in/janis-joanu/',
-      photo: 'images/about/janis_joanu.jpg',
+      // head-and-shoulders crop — the full beach photo is too tall for an 80px avatar
+      photo: 'images/about/janis_joanu_avatar.jpg',
     },
     {
       initials: 'V',
