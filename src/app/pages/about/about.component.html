@@ -15,29 +15,48 @@
       <div class="about-company__head">
         <h2 class="about-company__title">{{ 'about.company.title' | translate }}</h2>
         <p class="about-company__intro">{{ 'about.company.intro' | translate }}</p>
-        <a class="about-company__registry" [href]="registryUrl" target="_blank" rel="noopener noreferrer">
-          {{ 'about.company.registryLink' | translate }}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/>
+        <button
+          type="button"
+          class="about-company__toggle"
+          [class.is-open]="detailsOpen()"
+          (click)="toggleDetails()"
+          [attr.aria-expanded]="detailsOpen()"
+          aria-controls="company-details"
+        >
+          <span>{{ (detailsOpen() ? 'about.company.hide' : 'about.company.show') | translate }}</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="7" y1="1" x2="7" y2="13"/>
+            <line x1="1" y1="7" x2="13" y2="7"/>
           </svg>
-        </a>
+        </button>
       </div>
 
-      <dl class="about-company__facts">
-        @for (fact of companyFacts; track fact.labelKey) {
-          <div class="about-company__fact">
-            <dt class="about-company__term">{{ fact.labelKey | translate }}</dt>
-            <dd class="about-company__value">
-              @if (fact.valueKey) {
-                {{ fact.valueKey | translate }}
-              } @else {
-                {{ fact.value }}
-              }
-            </dd>
-          </div>
-        }
-      </dl>
+      @if (detailsOpen()) {
+        <div class="about-company__details" id="company-details">
+          <dl class="about-company__facts">
+            @for (fact of companyFacts; track fact.labelKey) {
+              <div class="about-company__fact">
+                <dt class="about-company__term">{{ fact.labelKey | translate }}</dt>
+                <dd class="about-company__value">
+                  @if (fact.valueKey) {
+                    {{ fact.valueKey | translate }}
+                  } @else {
+                    {{ fact.value }}
+                  }
+                </dd>
+              </div>
+            }
+          </dl>
+          <a class="about-company__registry" [href]="registryUrl" target="_blank" rel="noopener noreferrer">
+            {{ 'about.company.registryLink' | translate }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/>
+            </svg>
+          </a>
+        </div>
+      }
     </section>
   </div>
 </main>

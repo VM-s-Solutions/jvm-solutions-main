@@ -23,13 +23,13 @@
 
       <div class="faq__list" appScrollReveal revealClass="reveal">
         @for (item of items; track item.qKey; let i = $index) {
-          <div class="faq__item" [class.is-open]="openIndex() === i">
+          <div class="faq__item" [class.is-open]="openItems().has(i)">
             <button
               type="button"
               class="faq__question"
               [id]="'faq-question-' + i"
               (click)="toggle(i)"
-              [attr.aria-expanded]="openIndex() === i"
+              [attr.aria-expanded]="openItems().has(i)"
               [attr.aria-controls]="'faq-answer-' + i"
             >
               <span class="faq__num" aria-hidden="true">0{{ i + 1 }}</span>
@@ -47,7 +47,7 @@
               [id]="'faq-answer-' + i"
               role="region"
               [attr.aria-labelledby]="'faq-question-' + i"
-              [attr.aria-hidden]="openIndex() !== i"
+              [attr.aria-hidden]="!openItems().has(i)"
             >
               <div class="faq__answer-inner">
                 <p>{{ item.aKey | translate }}</p>

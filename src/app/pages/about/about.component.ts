@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -63,4 +63,10 @@ export class AboutComponent {
   ];
 
   readonly registryUrl = 'https://or.justice.cz/ias/ui/rejstrik-$firma?ico=29633443';
+
+  readonly detailsOpen = signal(false);
+
+  toggleDetails(): void {
+    this.detailsOpen.update((open) => !open);
+  }
 }
