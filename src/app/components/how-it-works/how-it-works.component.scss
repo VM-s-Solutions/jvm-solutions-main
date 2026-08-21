@@ -107,9 +107,11 @@
   transition: border-color $transition-base, box-shadow $transition-base;
   flex-shrink: 0;
 
-  .process__step:hover & {
-    border-color: rgba($red, 0.55);
-    box-shadow: 0 0 24px rgba($red, 0.18);
+  @media (hover: hover) {
+    .process__step:hover & {
+      border-color: rgba($red, 0.55);
+      box-shadow: 0 0 24px rgba($red, 0.18);
+    }
   }
 
   span {
