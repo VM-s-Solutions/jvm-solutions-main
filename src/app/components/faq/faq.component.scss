@@ -110,27 +110,23 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: $radius-lg;
-  transition: border-color $transition-base, box-shadow $transition-base;
+  transition: border-color $transition-base;
 
-  &:hover {
-    border-color: var(--border-light);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--border-light);
+    }
   }
 
   &.is-open {
-    border-color: rgba($red, 0.35);
-    box-shadow: $shadow-red;
-
-    .faq__num {
-      color: $red-light;
-    }
+    border-color: var(--border-light);
 
     .faq__question-text {
       color: var(--text-primary);
     }
 
     .faq__icon {
-      color: $red-light;
-      border-color: rgba($red, 0.35);
+      color: var(--text-primary);
       transform: rotate(45deg);
     }
   }
@@ -153,8 +149,10 @@
     gap: $space-6;
   }
 
-  &:hover .faq__question-text {
-    color: var(--text-primary);
+  @media (hover: hover) {
+    &:hover .faq__question-text {
+      color: var(--text-primary);
+    }
   }
 }
 
@@ -192,7 +190,7 @@
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  transition: transform $transition-spring, color $transition-base, border-color $transition-base;
+  transition: transform $transition-spring, color $transition-base;
 }
 
 // ── Answer ────────────────────────────────────────────────────────────────────
