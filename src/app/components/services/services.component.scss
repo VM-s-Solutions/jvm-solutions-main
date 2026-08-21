@@ -72,17 +72,25 @@
   align-items: start;
   padding: $space-10 0;
   border-top: 1px solid var(--border-color);
+  transition: background $transition-base;
+
+  &:hover {
+    background: var(--bg-surface);
+  }
 
   &:last-child {
     border-bottom: 1px solid var(--border-color);
   }
 
+  // Side padding + negative margin so the hover surface breathes around
+  // the content instead of clipping at its edges
   @include md {
     grid-template-columns: 3rem 3rem 1fr auto;
     grid-template-rows: 1fr;
     align-items: center;
     gap: 0 $space-8;
-    padding: $space-10 0;
+    padding: $space-10 $space-8;
+    margin: 0 (-$space-8);
   }
 }
 
@@ -207,4 +215,9 @@
   font-weight: 500;
   letter-spacing: 0.03em;
   white-space: nowrap;
+  transition: border-color $transition-base;
+
+  .services__item:hover & {
+    border-color: var(--border-light);
+  }
 }

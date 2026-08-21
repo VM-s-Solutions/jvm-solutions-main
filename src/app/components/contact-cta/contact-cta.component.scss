@@ -66,16 +66,29 @@
   }
 
   &__email {
+    position: relative;
     font-family: $font-heading;
     font-size: clamp($text-xl, 2.2vw, $text-3xl);
     font-weight: 600;
     letter-spacing: -0.02em;
     text-decoration: none;
     @include gradient-text($gradient-brand);
-    transition: opacity $transition-fast;
 
-    &:hover {
-      opacity: 0.75;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -$space-1;
+      height: 1px;
+      background: $gradient-brand;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-base;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
     }
   }
 

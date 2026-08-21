@@ -3,6 +3,7 @@
 
 .footer {
   padding: $space-16 $space-6 $space-8;
+  background: var(--bg-footer);
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
 
