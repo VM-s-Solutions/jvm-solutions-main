@@ -2,13 +2,14 @@ import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, Elemen
 import { UpperCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LogoComponent } from '../logo/logo.component';
 import { ScrollService } from '../../services/scroll.service';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'jvm-navbar',
   standalone: true,
-  imports: [RouterLink, TranslateModule, UpperCasePipe],
+  imports: [LogoComponent, RouterLink, TranslateModule, UpperCasePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.scrolled]': 'scrolled()',

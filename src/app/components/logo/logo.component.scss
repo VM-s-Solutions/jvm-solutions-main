@@ -1,0 +1,15 @@
+// The lockup is sized by height alone; `aspect-ratio` derives the width so the
+// box never depends on how an engine resolves `width: auto` on an inline <svg>
+// (WebKit falls back to the containing block, which clipped the wordmark).
+:host {
+  display: block;
+  flex: 0 0 auto;
+  aspect-ratio: 1214 / 255;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
