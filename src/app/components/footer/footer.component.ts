@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { LogoComponent } from '../logo/logo.component';
 import { ScrollService } from '../../services/scroll.service';
 
 interface FooterLink {
@@ -12,7 +13,7 @@ interface FooterLink {
 @Component({
   selector: 'jvm-footer',
   standalone: true,
-  imports: [RouterLink, TranslateModule],
+  imports: [LogoComponent, RouterLink, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',

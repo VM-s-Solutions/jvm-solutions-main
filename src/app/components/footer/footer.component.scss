@@ -27,24 +27,13 @@
 
   &__logo {
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.3em;
-    font-family: $font-heading;
-    font-size: $text-xl;
-    font-weight: 700;
+    align-items: center;
     text-decoration: none;
-    letter-spacing: -0.01em;
-  }
+    color: var(--text-primary);
 
-  &__logo-jvm {
-    @include gradient-text;
-    font-weight: 800;
-  }
-
-  &__logo-solutions {
-    color: var(--text-secondary);
-    font-weight: 400;
-    font-size: $text-base;
+    jvm-logo {
+      height: 30px;
+    }
   }
 
   &__tagline {
