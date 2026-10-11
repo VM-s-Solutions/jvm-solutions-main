@@ -14,11 +14,11 @@
   --bg-elevated:    #181818;
   --border-color:   #222222;
   --border-light:   #303030;
-  // Neutral greys matching the light theme's zinc scale; every text step clears
-  // WCAG AA (4.5:1) on all three surfaces.
-  --text-primary:   #F4F4F5;
-  --text-secondary: #A1A1AA;
-  --text-muted:     #85858E;
+  // Neutral greys, set well above AA so they stay legible on a dimmed screen:
+  // ~18:1 / ~11:1 / ~7:1 against the page background.
+  --text-primary:   #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted:     #{$text-muted};
   // Brand orange from the logo — see _variables.scss for the two roles
   --accent:         #{$accent-dark};
   --accent-display: #{$accent-display-dark};
@@ -82,6 +82,13 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// macOS's grayscale smoothing thins light-on-dark glyphs; the default smoothing
+// keeps stems heavier, which is what keeps dark-theme text readable at low brightness
+[data-theme="dark"] body {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 }
 
 // ─── Typography ───────────────────────────────────────────────────────────────
