@@ -13,18 +13,18 @@ $green-light:  #34D399;
 $green-dark:   #059669;
 $green-darker: #047857;
 
-// Brand orange — the logo's hue (#F26100), toned down for UI use. The logo's
-// own saturation is too loud on large fills and near-black backgrounds.
-$orange-fill:       #C0571E;  // button fill — white text 4.5:1 (AA)
-$orange-fill-hover: #CD632D;
+// Brand orange — the logo's hue (#F26100) at full saturation but a deeper
+// lightness, so it reads rich instead of neon on near-black.
+$orange-fill:       #D14400;  // button fill — white text 4.6:1 (AA)
+$orange-fill-hover: #DF5200;
 
 // Theme accents — mirrored into --accent / --accent-display / --accent-rgb in
 // styles.scss. `accent` is for small text (≥ 4.5:1); `accent-display` for
 // headings ≥ 24px, icons and rules (≥ 3:1).
-$accent-dark:          #EA8751;
-$accent-light:         #B64E10;
+$accent-dark:          #E8651D;
+$accent-light:         #C33E00;
 $accent-display-dark:  $accent-dark;
-$accent-display-light: #C4530F;
+$accent-display-light: $orange-fill;
 
 // Legacy aliases kept so existing component files that reference $purple still compile
 $purple:       $red;
