@@ -163,7 +163,7 @@ $rule-draw: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
 }
 
 .process__step-desc {
-  font-size: $text-sm;
+  font-size: $text-md;
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 360px;

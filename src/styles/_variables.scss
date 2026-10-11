@@ -21,9 +21,9 @@ $orange-fill-hover: #DF5200;
 // Theme accents — mirrored into --accent / --accent-display / --accent-rgb in
 // styles.scss. `accent` is for small text (≥ 4.5:1); `accent-display` for
 // headings ≥ 24px, icons and rules (≥ 3:1).
-$accent-dark:          #E8651D;
+$accent-dark:          #F17633;  // small orange labels — lifted so they hold on dimmed screens
 $accent-light:         #C33E00;
-$accent-display-dark:  $accent-dark;
+$accent-display-dark:  #E8651D;
 $accent-display-light: $orange-fill;
 
 // Legacy aliases kept so existing component files that reference $purple still compile
@@ -31,9 +31,9 @@ $purple:       $red;
 $purple-light: $red-light;
 $purple-dark:  $red-dark;
 
-$text-primary: #F4F4F5;
-$text-secondary: #A1A1AA;
-$text-muted:   #85858E;
+$text-primary: #FAFAFA;
+$text-secondary: #C4C4CC;
+$text-muted:   #9E9EA7;
 
 // ─── Gradients ────────────────────────────────────────────────────────────────
 $gradient-brand:   linear-gradient(135deg, #FF8E1E, #ED5602);
@@ -46,6 +46,7 @@ $font-body:    'Inter', system-ui, sans-serif;
 
 $text-xs:  0.75rem;
 $text-sm:  0.875rem;
+$text-md:   0.9375rem;
 $text-base: 1rem;
 $text-lg:  1.125rem;
 $text-xl:  1.25rem;
