@@ -19,7 +19,7 @@ $tech-colors: (
   'Claude':     #D97757,
   'LangChain':  #1DC8A0,
   'Python':     #3776AB,
-  'Agents':     $orange,
+  'Agents':     $orange-fill-hover,
 );
 
 .services {
@@ -129,8 +129,8 @@ $tech-colors: (
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba($orange, 0.35);
-  background: rgba($orange, 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  background: rgba(var(--accent-rgb), 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,8 +146,8 @@ $tech-colors: (
 
   @media (hover: hover) {
     .services__item:hover & {
-      border-color: rgba($orange, 0.7);
-      background: rgba($orange, 0.14);
+      border-color: rgba(var(--accent-rgb), 0.7);
+      background: rgba(var(--accent-rgb), 0.14);
     }
   }
 }
