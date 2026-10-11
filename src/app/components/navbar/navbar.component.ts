@@ -13,6 +13,7 @@ import { ThemeService } from '../../services/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.scrolled]': 'scrolled()',
+    '[class.menu-open]': 'menuOpen()',
   },
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

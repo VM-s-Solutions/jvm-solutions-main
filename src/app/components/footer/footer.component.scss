@@ -2,7 +2,7 @@
 @use '../../../styles/mixins' as *;
 
 .footer {
-  padding: $space-16 $space-6 $space-8;
+  padding-block: $space-16 $space-8;
   background: var(--bg-footer);
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
@@ -42,39 +42,14 @@
     line-height: 1.7;
   }
 
-  // ── Socials ───────────────────────────────────────────────────────────────
-  &__socials {
-    display: flex;
-    gap: $space-3;
-    margin-top: $space-2;
-  }
-
-  &__social {
-    width: 38px;
-    height: 38px;
-    border-radius: $radius-lg;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: border-color $transition-base, color $transition-base, background $transition-base;
-
-    &:hover {
-      border-color: rgba($purple, 0.4);
-      color: $purple-light;
-      background: rgba($purple, 0.08);
-    }
-  }
-
   // ── Nav ───────────────────────────────────────────────────────────────────
   &__nav-title {
-    font-size: $text-sm;
+    font-family: $font-body;
+    font-size: $text-xs;
     font-weight: 600;
     color: var(--text-primary);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     margin-bottom: $space-4;
   }
 
@@ -95,26 +70,11 @@
   }
 
   // ── Contact col ───────────────────────────────────────────────────────────
+  // no gap: the email must sit on the same baseline as the first nav link
   &__contact {
     display: flex;
     flex-direction: column;
-    gap: $space-3;
-  }
-
-  &__availability {
-    display: flex;
-    align-items: center;
-    gap: $space-2;
-    font-size: $text-xs;
-    color: $green-light;
-    font-weight: 500;
-  }
-
-  &__dot {
-    width: 6px;
-    height: 6px;
-    background: $green;
-    border-radius: 50%;
+    align-items: flex-start;
   }
 
   // ── Bottom bar ────────────────────────────────────────────────────────────
@@ -142,11 +102,5 @@
     transition: color $transition-fast;
 
     &:hover { color: var(--text-primary); }
-  }
-
-  &__built {
-    @include gradient-text;
-    font-size: $text-sm !important;
-    font-weight: 600;
   }
 }

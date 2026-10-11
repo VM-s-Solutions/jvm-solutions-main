@@ -263,7 +263,7 @@ const cs = {
       "title": "Správce osobních údajů"
     },
     "cookies": {
-      "body": "Tento web nepoužívá cookies. Prohlížeč localStorage využíváme výhradně k zapamatování vašeho jazykového nastavení. Žádné sledovací ani reklamní technologie nejsou použity.",
+      "body": "Tento web nepoužívá cookies. Prohlížeč localStorage využíváme výhradně k zapamatování vašeho nastavení jazyka a barevného motivu. Žádné sledovací ani reklamní technologie nejsou použity.",
       "title": "Cookies a místní úložiště"
     },
     "dataCollected": {

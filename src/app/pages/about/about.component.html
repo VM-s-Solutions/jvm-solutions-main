@@ -3,7 +3,7 @@
     <header class="about-header" appScrollReveal revealClass="reveal">
       <span class="section-label">{{ 'about.sectionLabel' | translate }}</span>
       <h1 class="about-header__title">
-        {{ 'about.titlePart1' | translate }} <span class="gradient-text">{{ 'about.titleGrad' | translate }}</span><br>{{ 'about.titlePart2' | translate }}
+        {{ 'about.titlePart1' | translate }} <span class="text-accent">{{ 'about.titleGrad' | translate }}</span><br>{{ 'about.titlePart2' | translate }}
       </h1>
       <p class="about-header__subtitle">{{ 'about.description' | translate }}</p>
     </header>
@@ -32,8 +32,13 @@
         </button>
       </div>
 
-      @if (detailsOpen()) {
-        <div class="about-company__details" id="company-details">
+      <div
+        class="about-company__details"
+        id="company-details"
+        [class.is-open]="detailsOpen()"
+        [attr.inert]="detailsOpen() ? null : ''"
+      >
+        <div class="about-company__details-inner">
           <dl class="about-company__facts">
             @for (fact of companyFacts; track fact.labelKey) {
               <div class="about-company__fact">
@@ -56,7 +61,7 @@
             </svg>
           </a>
         </div>
-      }
+      </div>
     </section>
   </div>
 </main>

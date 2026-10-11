@@ -1,11 +1,6 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
-
 :host { display: block; }
 
 .faq-page {
   position: relative;
   min-height: 100vh;
-  padding-top: 80px;
 }
-

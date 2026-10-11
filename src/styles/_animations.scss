@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 // ─── Float ────────────────────────────────────────────────────────────────────
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -61,8 +63,8 @@
 // ─── Scroll Reveal ────────────────────────────────────────────────────────────
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(24px);
+  transition: opacity $transition-slow, transform $transition-slow;
 
   &.revealed {
     opacity: 1;

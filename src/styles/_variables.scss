@@ -2,8 +2,8 @@
 $bg-primary:   #0A0A0A;
 $bg-surface:   #111111;
 $bg-elevated:  #181818;
-$border-color: #1C1C1C;
-$border-light: #282828;
+$border-color: #222222;
+$border-light: #303030;
 
 $red:          #E53E3E;
 $red-light:    #FC8181;
@@ -11,18 +11,33 @@ $red-dark:     #C53030;
 $green:        #10B981;
 $green-light:  #34D399;
 $green-dark:   #059669;
+$green-darker: #047857;
+
+// Theme accents — mirrored into the --accent custom property in styles.scss
+// Brand orange — taken from the logo ("YORE" fill / ribbon gradient)
+$orange:       #F26100;  // the logo's own orange
+$orange-deep:  #E65100;  // button fill — white text 3.8:1 (AA large / UI)
+$orange-dark:  #C2410C;  // small accent text on light surfaces — 4.9:1
+
+// Theme accents — mirrored into --accent / --accent-display in styles.scss.
+// `accent` is for small text (≥ 4.5:1); `accent-display` for headings ≥ 30px,
+// icons and rules (≥ 3:1), so light theme can stay close to the logo colour.
+$accent-dark:          $orange;
+$accent-light:         $orange-dark;
+$accent-display-dark:  $orange;
+$accent-display-light: $orange-deep;
 
 // Legacy aliases kept so existing component files that reference $purple still compile
 $purple:       $red;
 $purple-light: $red-light;
 $purple-dark:  $red-dark;
 
-$text-primary: #F1F5F9;
-$text-secondary: #8A9BB0;
-$text-muted:   #606E7E;
+$text-primary: #F4F4F5;
+$text-secondary: #A1A1AA;
+$text-muted:   #85858E;
 
 // ─── Gradients ────────────────────────────────────────────────────────────────
-$gradient-brand:   linear-gradient(135deg, #{$red}, #F97316);
+$gradient-brand:   linear-gradient(135deg, #FF8E1E, #ED5602);
 $gradient-red:     linear-gradient(135deg, #{$red-dark}, #{$red});
 $gradient-surface: linear-gradient(135deg, #{$bg-surface}, #{$bg-elevated});
 
@@ -47,6 +62,7 @@ $space-1:  0.25rem;
 $space-2:  0.5rem;
 $space-3:  0.75rem;
 $space-4:  1rem;
+$space-5:  1.25rem;
 $space-6:  1.5rem;
 $space-8:  2rem;
 $space-10: 2.5rem;
@@ -79,6 +95,8 @@ $transition-fast:   150ms ease;
 $transition-base:   250ms ease;
 $transition-slow:   400ms ease;
 $transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+// Fast start, long settle — for expanding / collapsing content
+$transition-smooth: 300ms cubic-bezier(0.2, 0, 0, 1);
 
 // ─── Breakpoints ──────────────────────────────────────────────────────────────
 $bp-sm:  480px;
@@ -86,6 +104,12 @@ $bp-md:  768px;
 $bp-lg:  1024px;
 $bp-xl:  1280px;
 $bp-2xl: 1536px;
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+$container-max: 1200px;
+
+// Clearance for the fixed navbar (34px controls + 2 × 16px padding + 1px border)
+$nav-height: 4.25rem;
 
 // ─── Z-index ──────────────────────────────────────────────────────────────────
 $z-base:    0;

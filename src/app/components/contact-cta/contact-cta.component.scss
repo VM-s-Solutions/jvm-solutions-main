@@ -1,25 +1,15 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .cta {
-  padding: 6rem $space-6;
+  padding-block: 5rem;
   border-top: 1px solid var(--border-color);
   content-visibility: auto;
   contain-intrinsic-size: auto 280px;
 
+  @include md { padding-block: 6rem; }
+
   &__inner {
-    @include container;
     display: grid;
     grid-template-columns: 1fr;
     gap: $space-10;
@@ -38,19 +28,12 @@
   }
 
   &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-3xl, 4vw, $text-5xl);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    color: var(--text-primary);
+    @include heading-section;
     margin: 0;
   }
 
   &__description {
-    color: var(--text-secondary);
-    font-size: $text-base;
-    line-height: 1.75;
+    @include lead;
     margin: 0;
     max-width: 440px;
   }
@@ -67,12 +50,16 @@
 
   &__email {
     position: relative;
+    align-self: flex-start;
     font-family: $font-heading;
-    font-size: clamp($text-xl, 2.2vw, $text-3xl);
+    font-size: clamp(#{$text-xl}, 2.2vw, #{$text-3xl});
     font-weight: 600;
     letter-spacing: -0.02em;
     text-decoration: none;
-    @include gradient-text($gradient-brand);
+    color: var(--accent);
+    overflow-wrap: anywhere;
+
+    @include lg { align-self: flex-end; }
 
     &::after {
       content: '';
@@ -81,7 +68,7 @@
       right: 0;
       bottom: -$space-1;
       height: 1px;
-      background: $gradient-brand;
+      background: currentColor;
       transform: scaleX(0);
       transform-origin: left;
       transition: transform $transition-base;
@@ -94,6 +81,7 @@
 
   &__meta {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: $space-2;
     font-size: $text-sm;
@@ -102,6 +90,6 @@
   }
 
   &__meta-dot {
-    opacity: 0.35;
+    opacity: 0.5;
   }
 }

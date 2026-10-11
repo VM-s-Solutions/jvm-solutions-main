@@ -14,7 +14,8 @@
   // Limit repaint scope so backdrop-filter doesn't invalidate the whole page
   contain: layout style;
 
-  &.scrolled {
+  &.scrolled,
+  &.menu-open {
     background: var(--bg-primary-98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -23,7 +24,7 @@
 }
 
 .navbar {
-  padding: $space-4 $space-6;
+  padding-block: $space-4;
 
   // ── Inner layout ───────────────────────────────────────────────────────────
   &__inner {
@@ -81,7 +82,7 @@
       left: 0;
       width: 0;
       height: 1px;
-      background: $gradient-brand;
+      background: currentColor;
       border-radius: $radius-full;
       transition: width $transition-base;
     }
@@ -103,7 +104,7 @@
       height: 34px;
       padding: 0 $space-4;
       border-radius: $radius-full;
-      background: $red-dark;
+      background: $orange-deep;
       font-size: $text-sm;
       font-weight: 600;
       color: #fff;
@@ -111,7 +112,7 @@
       white-space: nowrap;
       transition: background $transition-fast;
 
-      &:hover { background: $red; }
+      &:hover { background: $orange; }
     }
   }
 
@@ -131,7 +132,7 @@
     background: none;
     border: 1px solid var(--border-color);
     border-radius: $radius-md;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: $text-xs;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -165,6 +166,11 @@
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     z-index: 10;
+    transform-origin: top right;
+
+    // played by Angular's animate.enter / animate.leave, so it fades both ways
+    &.is-entering { animation: lang-menu-in 150ms ease-out; }
+    &.is-leaving { animation: lang-menu-in 120ms ease-in reverse forwards; }
 
     li { display: block; }
   }
@@ -186,12 +192,12 @@
 
     &:hover {
       color: var(--text-primary);
-      background: var(--bg-card);
+      background: var(--bg-elevated);
     }
 
     &.is-active {
-      color: $red-light;
-      background: rgba($red, 0.07);
+      color: var(--accent);
+      background: var(--bg-elevated);
     }
   }
 
@@ -199,12 +205,13 @@
     background: none;
     border: 1px solid transparent;
     border-radius: $radius-sm;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: $text-xs;
     font-weight: 600;
     letter-spacing: 0.05em;
-    padding: $space-2 $space-2;
-    min-height: 28px;
+    padding: $space-2 $space-3;
+    min-width: 44px;
+    min-height: 36px;
     cursor: pointer;
     transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
 
@@ -214,9 +221,9 @@
     }
 
     &.is-active {
-      color: $red-light;
-      border-color: rgba($red, 0.4);
-      background: rgba($red, 0.07);
+      color: var(--accent);
+      border-color: var(--border-light);
+      background: var(--bg-elevated);
     }
   }
 
@@ -230,7 +237,7 @@
     background: none;
     border: 1px solid var(--border-color);
     border-radius: $radius-md;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: color $transition-fast, border-color $transition-fast, background $transition-fast;
     flex-shrink: 0;
@@ -250,11 +257,17 @@
   &__hamburger {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
-    padding: $space-2;
-    margin-left: $space-2;
+    padding: 0;
+    // pull the 44px tap target out so the 24px lines sit on the gutter edge
+    margin-left: $space-1;
+    margin-right: calc((24px - 44px) / 2);
     cursor: pointer;
 
     @include lg { display: none; }
@@ -285,23 +298,32 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--bg-primary-98);
+      // Opaque: a translucent panel lets the hero headline ghost through
+      background: var(--bg-primary);
       border-bottom: 1px solid var(--border-color);
       opacity: 0;
       transform: translateY(-6px);
       pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      // visibility drops the closed panel's links out of the tab order;
+      // its delay lets the fade-out finish first
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
     }
 
     &.is-open {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+      visibility: visible;
+      transition-delay: 0s;
     }
 
     ul {
       list-style: none;
       padding: $space-4 $space-6 $space-6;
+
+      @include md { padding-inline: $space-8; }
+
       display: flex;
       flex-direction: column;
       gap: $space-2;
@@ -336,3 +358,9 @@
   }
 }
 
+@keyframes lang-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-#{$space-1}) scale(0.97);
+  }
+}

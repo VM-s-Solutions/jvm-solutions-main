@@ -4,42 +4,24 @@
 .privacy-page {
   min-height: 100vh;
   position: relative;
-  padding-top: 80px;
 
   &__inner {
     position: relative;
     z-index: 1;
-    padding-top: $space-16;
-    padding-bottom: $space-24;
     display: flex;
     flex-direction: column;
     gap: $space-12;
+    @include section-padding;
+    @include page-top;
   }
 }
 
-// ── Section label helper ──────────────────────────────────────────────────────
-.section-label {
-  display: inline-block;
-  font-size: $text-sm;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $purple-light;
-  margin-bottom: $space-4;
-}
-
-// ── Page header ──────────────────────────────────────────────────────────────
+// ── Page header — same left edge as every other page header ─────────────────
 .privacy-header {
-  text-align: center;
   max-width: 720px;
-  margin: 0 auto;
 
   &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-3xl, 5vw, $text-5xl);
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.15;
+    @include heading-section;
     margin-bottom: $space-3;
   }
 
@@ -50,9 +32,7 @@
   }
 
   &__intro {
-    font-size: $text-lg;
-    color: var(--text-secondary);
-    line-height: 1.7;
+    @include lead;
   }
 }
 
@@ -60,24 +40,29 @@
 .privacy-sections {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-6;
+  gap: $space-4;
 
   @include md {
     grid-template-columns: repeat(2, 1fr);
+    gap: $space-6;
   }
 }
 
 // ── Policy card ──────────────────────────────────────────────────────────────
 .privacy-card {
   @include card;
-  padding: $space-8;
+  padding: $space-6;
+  // keep the scroll-reveal fade — the card mixin's transition would override it
+  transition: border-color $transition-base, opacity $transition-slow, transform $transition-slow;
+
+  @include md { padding: $space-8; }
 
   &__title {
     font-family: $font-heading;
     font-size: $text-xl;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: $space-4;
+    margin-bottom: $space-3;
   }
 
   &__body {
@@ -88,32 +73,16 @@
 }
 
 // ── Back link ────────────────────────────────────────────────────────────────
-.privacy-back {
-  text-align: center;
+.privacy-back__link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  color: var(--text-muted);
+  font-size: $text-sm;
+  text-decoration: none;
+  transition: color $transition-fast;
 
-  &__link {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
-    color: var(--text-muted);
-    font-size: $text-sm;
-    text-decoration: none;
-    transition: color $transition-fast;
-
-    &:hover {
-      color: var(--text-primary);
-    }
-  }
-}
-
-// ── Reveal animation ─────────────────────────────────────────────────────────
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
+  &:hover {
+    color: var(--text-primary);
   }
 }

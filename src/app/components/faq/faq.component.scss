@@ -3,133 +3,42 @@
 
 .faq {
   @include section-padding;
+  @include page-top;
 }
 
-.gradient-text {
-  @include gradient-text;
-}
+// ── Header — same placement as every other page header ──────────────────────
+.faq__header {
+  max-width: 640px;
+  margin-bottom: $space-12;
 
-.section-label {
-  @include section-label;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// ── Layout ────────────────────────────────────────────────────────────────────
-.faq__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: $space-12;
-
-  @include lg {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: $space-20;
-    align-items: start;
-  }
-}
-
-// ── Intro column ──────────────────────────────────────────────────────────────
-.faq__intro {
-  @include lg {
-    position: sticky;
-    top: $space-24;
-  }
+  @include md { margin-bottom: $space-16; }
 }
 
 .faq__title {
-  font-family: $font-heading;
-  font-size: clamp($text-4xl, 5vw, $text-5xl);
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  @include heading-section;
   margin-bottom: $space-4;
 }
 
 .faq__subtitle {
-  font-size: $text-base;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 400px;
+  @include lead;
+  max-width: 520px;
 }
 
-.faq__more {
-  margin-top: $space-10;
-  padding-top: $space-8;
+// ── List — one grouped panel with hairline rows (iOS inset-grouped list) ─────
+.faq__list {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: $radius-xl;
+  overflow: hidden;
+}
+
+.faq__item + .faq__item {
   border-top: 1px solid var(--border-color);
 }
 
-.faq__more-label {
-  font-size: $text-sm;
-  color: var(--text-muted);
-  margin-bottom: $space-2;
-}
-
-.faq__more-link {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-2;
-  color: var(--text-primary);
-  font-family: $font-body;
-  font-size: $text-sm;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color $transition-fast;
-
-  svg {
-    transition: transform $transition-base;
-  }
-
-  &:hover {
-    color: $red-light;
-
-    svg {
-      transform: translateX($space-1);
-    }
-  }
-}
-
-// ── List ──────────────────────────────────────────────────────────────────────
-.faq__list {
-  display: flex;
-  flex-direction: column;
-  gap: $space-3;
-}
-
-// ── Item ──────────────────────────────────────────────────────────────────────
-.faq__item {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: $radius-lg;
-  transition: border-color $transition-base;
-
-  @media (hover: hover) {
-    &:hover {
-      border-color: var(--border-light);
-    }
-  }
-
-  &.is-open {
-    border-color: var(--border-light);
-
-    .faq__question-text {
-      color: var(--text-primary);
-    }
-
-    .faq__icon {
-      color: var(--text-primary);
-      transform: rotate(45deg);
-    }
-  }
+.faq__heading {
+  margin: 0;
+  font: inherit;
 }
 
 // ── Question row ──────────────────────────────────────────────────────────────
@@ -137,80 +46,106 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: $space-4;
-  padding: $space-4;
+  justify-content: space-between;
+  gap: $space-6;
+  padding: $space-5;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
+  color: var(--text-primary);
+  transition: background $transition-fast;
 
-  @include md {
-    padding: $space-6;
-    gap: $space-6;
-  }
+  @include md { padding: $space-6 $space-8; }
 
   @media (hover: hover) {
-    &:hover .faq__question-text {
-      color: var(--text-primary);
-    }
+    &:hover { background: var(--bg-elevated); }
   }
-}
 
-.faq__num {
-  flex-shrink: 0;
-  font-family: $font-heading;
-  font-size: $text-xs;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  transition: color $transition-base;
+  // ring sits inside the row — the list clips anything drawn outside it
+  &:focus-visible {
+    outline-offset: -2px;
+    border-radius: $radius-xl;
+  }
 }
 
 .faq__question-text {
-  flex: 1;
-  font-family: $font-body;
+  font-family: $font-heading;
   font-size: $text-base;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--text-secondary);
-  transition: color $transition-fast;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 
-  @include md {
-    font-size: $text-lg;
+  @include md { font-size: $text-lg; }
+}
+
+.faq__chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform $transition-base, color $transition-base;
+
+  .is-open & {
+    transform: rotate(180deg);
+    color: var(--accent-display);
   }
 }
 
-.faq__icon {
-  flex-shrink: 0;
-  width: $space-8;
-  height: $space-8;
-  border-radius: 50%;
-  border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  transition: transform $transition-spring, color $transition-base;
-}
-
-// ── Answer ────────────────────────────────────────────────────────────────────
+// ── Answer — 0fr ↔ 1fr animates the real height both ways, no JS measuring ──
 .faq__answer {
-  overflow: hidden;
-  height: 0;
-  transition: height $transition-base;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows $transition-base;
+
+  .is-open & { grid-template-rows: 1fr; }
 }
 
 .faq__answer-inner {
-  padding: 0 $space-4 $space-4;
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity $transition-fast;
 
-  @include md {
-    padding: 0 $space-6 $space-6;
+  .is-open & {
+    opacity: 1;
+    transition: opacity $transition-base;
   }
 
   p {
+    padding: 0 $space-5 $space-5;
+    max-width: 720px;
     font-size: $text-base;
     color: var(--text-secondary);
     line-height: 1.75;
-    max-width: 560px;
+
+    @include md { padding: 0 $space-8 $space-6; }
+  }
+}
+
+// ── Contact nudge under the list ──────────────────────────────────────────────
+.faq__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2 $space-3;
+  margin-top: $space-8;
+  font-size: $text-sm;
+  color: var(--text-muted);
+}
+
+.faq__more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  svg { transition: transform $transition-base; }
+
+  &:hover {
+    color: var(--accent);
+
+    svg { transform: translateX($space-1); }
   }
 }

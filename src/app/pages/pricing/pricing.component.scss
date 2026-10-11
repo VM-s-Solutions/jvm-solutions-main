@@ -3,17 +3,6 @@
 
 :host { display: block; }
 
-.section-label { @include section-label; }
-
-.gradient-text { @include gradient-text; }
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-  &.revealed { opacity: 1; transform: translateY(0); }
-}
-
 // ── Page shell ────────────────────────────────────────────────────────────────
 .pricing-page {
   position: relative;
@@ -24,7 +13,7 @@
   position: relative;
   z-index: 1;
   @include section-padding;
-  padding-top: 8rem;
+  @include page-top;
 }
 
 // ── Page header — flush with the tier rows' left edge ────────────────────────
@@ -33,19 +22,12 @@
   margin-bottom: $space-16;
 
   &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-4xl, 5.5vw, $text-6xl);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
-    color: var(--text-primary);
-    margin: $space-3 0;
+    @include heading-section;
+    margin: 0 0 $space-4;
   }
 
   &__subtitle {
-    color: var(--text-secondary);
-    font-size: clamp($text-base, 2vw, $text-lg);
-    line-height: 1.7;
+    @include lead;
     max-width: 520px;
   }
 }
@@ -81,10 +63,12 @@
   transition: border-color $transition-base, box-shadow $transition-base,
     transform $transition-base;
 
-  &:hover {
-    border-color: var(--border-light);
-    transform: translateY(-3px);
-    box-shadow: $shadow-md;
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--border-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
   }
 
   @include lg {
@@ -96,15 +80,11 @@
   }
 
   &--highlighted {
-    border-color: rgba($red, 0.4);
-    box-shadow: $shadow-red;
+    border-color: rgba($orange, 0.5);
 
-    &:hover {
-      border-color: rgba($red, 0.6);
-      box-shadow: $shadow-red, $shadow-md;
+    @media (hover: hover) {
+      &:hover { border-color: rgba($orange, 0.8); }
     }
-
-    .pricing-tier__price { @include gradient-text; }
   }
 }
 
@@ -114,14 +94,15 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: var(--bg-elevated);
-  color: $red-light;
-  border: 1px solid rgba($red, 0.4);
-  font-size: 10px;
-  font-weight: 700;
+  background: var(--bg-surface);
+  color: var(--accent);
+  border: 1px solid rgba($orange, 0.5);
+  font-size: $text-xs;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 4px $space-3;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  padding: 2px $space-3;
   border-radius: $radius-full;
   white-space: nowrap;
 }
@@ -157,7 +138,7 @@
 .pricing-tier__price {
   font-family: $font-heading;
   font-size: $text-4xl;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.03em;
   line-height: 1;
@@ -166,10 +147,18 @@
 
 .pricing-tier__period {
   font-size: $text-sm;
+  line-height: 1.5;
   color: var(--text-muted);
   margin-top: $space-2;
-  // reserved even when empty (project tier) so taglines start on one line
-  min-height: 1.5em;
+
+  // Placeholder for tiers without a period. Only the side-by-side cards (md)
+  // need it, so their taglines start on one line; stacked cards and lg rows don't.
+  &--spacer {
+    display: none;
+
+    @include md { display: block; height: 1.5em; }
+    @include lg { display: none; }
+  }
 }
 
 .pricing-tier__tagline {
@@ -216,7 +205,7 @@
 
   svg {
     flex-shrink: 0;
-    color: $green;
+    color: var(--success);
     margin-top: 2px;
   }
 }
