@@ -5,7 +5,7 @@
     <header class="pricing-header" appScrollReveal revealClass="reveal">
       <span class="section-label">{{ 'pricing.sectionLabel' | translate }}</span>
       <h1 class="pricing-header__title">
-        {{ 'pricing.title1' | translate }} <span class="gradient-text">{{ 'pricing.titleGrad' | translate }}</span>
+        {{ 'pricing.title1' | translate }} <span class="text-accent">{{ 'pricing.titleGrad' | translate }}</span>
       </h1>
       <p class="pricing-header__subtitle">{{ 'pricing.subtitle' | translate }}</p>
     </header>
@@ -27,11 +27,11 @@
               }
               <span class="pricing-tier__price">{{ tier.priceKey | translate }}</span>
             </div>
-            <span class="pricing-tier__period">
-              @if (tier.showMeta) {
-                {{ tier.periodKey | translate }}
-              }
-            </span>
+            @if (tier.showMeta) {
+              <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
+            } @else {
+              <span class="pricing-tier__period pricing-tier__period--spacer" aria-hidden="true"></span>
+            }
             <p class="pricing-tier__tagline">{{ tier.taglineKey | translate }}</p>
           </div>
 

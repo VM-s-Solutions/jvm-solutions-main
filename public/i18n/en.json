@@ -261,7 +261,7 @@
       "title": "Data Controller"
     },
     "cookies": {
-      "body": "This website does not use cookies. We use browser localStorage solely to remember your language preference. No tracking or advertising technologies are employed.",
+      "body": "This website does not use cookies. We use browser localStorage solely to remember your language and colour theme preference. No tracking or advertising technologies are employed.",
       "title": "Cookies & Local Storage"
     },
     "dataCollected": {

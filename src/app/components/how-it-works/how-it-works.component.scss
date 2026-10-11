@@ -1,200 +1,170 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
+$node-size: 44px;
+// the timeline rule reads as a progress bar: it draws itself once in view
+$rule-color: rgba($orange, 0.55);
+$rule-draw: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+
 .process {
   @include section-padding;
 }
 
-.section-label {
-  display: inline-block;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: $space-4;
-}
-
-.gradient-text {
-  @include gradient-text;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-
-  &.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-// ── Header ────────────────────────────────────────────────────────────────────
+// ── Header — same left edge and scale as the services header ─────────────────
 .process__header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto $space-20;
+  max-width: 640px;
+  margin-bottom: $space-16;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-3;
+
+  .section-label { margin-bottom: 0; }
 }
 
 .process__title {
-  font-family: $font-heading;
-  font-size: clamp($text-4xl, 5.5vw, $text-6xl);
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-bottom: $space-4;
+  @include heading-section;
 }
 
 .process__subtitle {
-  font-size: clamp($text-base, 2vw, $text-lg);
-  color: var(--text-secondary);
-  line-height: 1.7;
+  @include lead;
+  max-width: 520px;
 }
 
-// ── Steps container with timeline ─────────────────────────────────────────────
+// ── Steps ─────────────────────────────────────────────────────────────────────
+// phone: vertical timeline, nodes on the left
+// md:    2 × 2 grid
+// lg:    four columns on one horizontal rule
 .process__steps {
   position: relative;
-  max-width: 900px;
-  margin: 0 auto;
+  list-style: none;
+  display: grid;
+  gap: $space-10;
 
-  &::before {
+  @include md {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-12 $space-8;
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $space-8;
+
+    // horizontal rule from the first node centre to the last
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(#{$node-size} / 2);
+      left: calc(#{$node-size} / 2);
+      right: calc((100% - 3 * #{$space-8}) / 4 - #{$node-size} / 2);
+      height: 1px;
+      background: $rule-color;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: $rule-draw;
+    }
+
+    &.revealed::before { transform: scaleX(1); }
+  }
+}
+
+.process__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: $node-size minmax(0, 1fr);
+  gap: $space-6;
+  align-items: start;
+  // a shorter step stretched to its row's height must not grow its own tracks
+  align-content: start;
+
+  // phone timeline: connector from this node down to the next one
+  &:not(:last-child)::after {
     content: '';
     position: absolute;
-    left: 26px;
-    top: $space-6;
-    bottom: $space-6;
+    top: $node-size;
+    bottom: -$space-10;
+    left: calc(#{$node-size} / 2);
     width: 1px;
-    background: rgba($red, 0.25);
+    background: $rule-color;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.6s ease 0.3s;
 
-    @include md {
-      left: 50%;
-      transform: translateX(-50%);
+    @include md { display: none; }
+  }
+
+  &.revealed::after { transform: scaleY(1); }
+
+  @include md {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-6;
+  }
+
+  @include lg {
+    // stagger the reveal left → right
+    @for $i from 2 through 4 {
+      &:nth-child(#{$i}) { transition-delay: #{($i - 1) * 80}ms; }
     }
   }
 }
 
-// ── Single step ───────────────────────────────────────────────────────────────
-.process__step {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 0 $space-8;
-  align-items: center;
-  padding: $space-8 0;
-
-  @include md {
-    grid-template-columns: 1fr 52px 1fr;
-    gap: 0 $space-10;
-  }
-}
-
-// ── Timeline node ─────────────────────────────────────────────────────────────
+// ── Node ──────────────────────────────────────────────────────────────────────
 .process__step-node {
-  grid-column: 1;
-  grid-row: 1;
-  width: 52px;
-  height: 52px;
+  position: relative;
+  z-index: 1;
+  width: $node-size;
+  height: $node-size;
   border-radius: 50%;
-  border: 1px solid rgba($red, 0.25);
-  background: var(--bg-primary-90);
+  border: 1px solid rgba($orange, 0.45);
+  // opaque so the rule passes behind it; the tint is layered on top
+  background: linear-gradient(rgba($orange, 0.08), rgba($orange, 0.08)), var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $red-light;
-  position: relative;
-  z-index: 1;
-  transition: border-color $transition-base, box-shadow $transition-base;
-  flex-shrink: 0;
-
-  @media (hover: hover) {
-    .process__step:hover & {
-      border-color: rgba($red, 0.55);
-      box-shadow: 0 0 24px rgba($red, 0.18);
-    }
-  }
+  color: var(--accent-display);
+  transition: border-color $transition-base;
 
   span {
     display: flex;
-    align-items: center;
-    justify-content: center;
     line-height: 0;
   }
 
-  @include md {
-    grid-column: 2;
-    grid-row: 1;
+  @media (hover: hover) {
+    .process__step:hover & { border-color: rgba($orange, 0.8); }
   }
 }
 
-// ── Step content ──────────────────────────────────────────────────────────────
+// ── Copy ──────────────────────────────────────────────────────────────────────
 .process__step-content {
-  grid-column: 2;
-  grid-row: 1;
-  padding-left: $space-2;
+  // optically centre the index on the node on phones
+  padding-top: $space-3;
 
-  @include md {
-    grid-column: 1;
-    grid-row: 1;
-    text-align: right;
-    padding-left: 0;
-    padding-right: $space-8;
-  }
+  @include md { padding-top: 0; }
 }
 
-.process__step--right {
-  .process__step-content {
-    @include md {
-      grid-column: 3;
-      grid-row: 1;
-      text-align: left;
-      padding-right: 0;
-      padding-left: $space-8;
-    }
-  }
-
-  .process__step-node {
-    @include md {
-      grid-column: 2;
-      grid-row: 1;
-    }
-  }
-}
-
-// ── Step text elements ────────────────────────────────────────────────────────
 .process__step-num {
   display: block;
   font-family: $font-heading;
   font-size: $text-xs;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  @include gradient-text;
-  margin-bottom: $space-3;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  margin-bottom: $space-2;
 }
 
 .process__step-title {
   font-family: $font-heading;
-  font-size: $text-xl;
+  font-size: $text-lg;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-  margin-bottom: $space-3;
+  margin-bottom: $space-2;
 }
 
 .process__step-desc {
   font-size: $text-sm;
   color: var(--text-secondary);
-  line-height: 1.75;
-  max-width: 280px;
-
-  @include md {
-    margin-left: auto;
-  }
-
-  .process__step--right & {
-    @include md {
-      margin-left: 0;
-    }
-  }
+  line-height: 1.7;
+  max-width: 360px;
 }

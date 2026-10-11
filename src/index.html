@@ -18,14 +18,14 @@
   <meta name="twitter:description" content="We build world-class Frontend, Backend, Mobile Apps and AI Automation solutions.">
   <meta name="twitter:image" content="https://jvm-yore.com/og-image.png">
   <link rel="canonical" href="https://jvm-yore.com/">
-  <meta name="theme-color" content="#09090F">
+  <meta name="theme-color" content="#0A0A0A">
   <meta name="format-detection" content="telephone=no">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <!-- Locale preload: detect browser language early and prefetch the right translation
        file so it downloads in parallel with main.js instead of after Angular boots. -->
   <script>(function(){try{var s=localStorage.getItem('lang'),b=(navigator.language||'').split('-')[0].toLowerCase(),l=s&&['cs','sk','uk'].includes(s)?s:['cs','sk','uk'].includes(b)?b:null;if(l){var e=document.createElement('link');e.rel='preload';e.as='fetch';e.href='/i18n/'+l+'.json';e.crossOrigin='';document.head.appendChild(e);}}catch(e){}})();</script>
   <!-- Theme: apply before first paint to prevent flash of wrong theme. Default is always dark. -->
-  <script>(function(){try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';}catch(e){document.documentElement.dataset.theme='dark';}})();</script>
+  <script>(function(){var t='dark';try{var s=localStorage.getItem('theme');if(s==='light')t=s;}catch(e){}document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]').content=t==='light'?'#F8F8F8':'#0A0A0A';})();</script>
   <!-- Fonts: preconnect first, then load async (non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

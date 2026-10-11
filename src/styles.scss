@@ -7,14 +7,23 @@
 // ─── CSS Custom Properties (theme tokens) ─────────────────────────────────────
 // Dark is the default. Light overrides applied via [data-theme="light"] on <html>.
 :root {
+  color-scheme: dark;
   --bg-primary:     #0A0A0A;
   --bg-surface:     #111111;
   --bg-elevated:    #181818;
-  --border-color:   #1C1C1C;
-  --border-light:   #282828;
-  --text-primary:   #F1F5F9;
-  --text-secondary: #8A9BB0;
-  --text-muted:     #606E7E;
+  --border-color:   #222222;
+  --border-light:   #303030;
+  // Neutral greys matching the light theme's zinc scale; every text step clears
+  // WCAG AA (4.5:1) on all three surfaces.
+  --text-primary:   #F4F4F5;
+  --text-secondary: #A1A1AA;
+  --text-muted:     #85858E;
+  // Brand orange from the logo — see _variables.scss for the two roles
+  --accent:         #{$accent-dark};
+  --accent-display: #{$accent-display-dark};
+  --success:        #{$green-light};
+  --danger:         #F87171;
+  --shadow-hover:   0 8px 24px rgba(0, 0, 0, 0.5);
   --bg-footer:      #0A0A0A;
   // Pre-multiplied alpha variants used in rgba() contexts
   --bg-primary-98:    rgba(10, 10, 10, 0.98);
@@ -25,14 +34,20 @@
 }
 
 [data-theme="light"] {
+  color-scheme: light;
   --bg-primary:    #F8F8F8;
   --bg-surface:    #FFFFFF;
   --bg-elevated:   #F0F0F0;
   --border-color:  #E5E5E5;
-  --border-light:  #DCDCDC;
+  --border-light:  #D4D4D8;
   --text-primary:  #0F0F0F;
   --text-secondary:#3F3F46;
-  --text-muted:    #71717A;
+  --text-muted:    #67676F;
+  --accent:        #{$accent-light};
+  --accent-display:#{$accent-display-light};
+  --success:       #{$green-darker};
+  --danger:        #B91C1C;
+  --shadow-hover:  0 8px 24px rgba(0, 0, 0, 0.08);
   --bg-footer:     #F4F4F4;
   --bg-primary-98:   rgba(248, 248, 248, 0.98);
   --bg-primary-90:   rgba(248, 248, 248, 0.90);
@@ -90,7 +105,7 @@ button {
 
 // ─── Selection ────────────────────────────────────────────────────────────────
 ::selection {
-  background: rgba($red, 0.25);
+  background: rgba($orange, 0.3);
   color: var(--text-primary);
 }
 
@@ -107,12 +122,12 @@ button {
   background: var(--border-light);
   border-radius: $radius-full;
 
-  &:hover { background: $red; }
+  &:hover { background: var(--text-muted); }
 }
 
 // ─── Focus Ring ───────────────────────────────────────────────────────────────
 :focus-visible {
-  outline: 2px solid $red;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: $radius-sm;
 }
@@ -124,7 +139,7 @@ button {
   left: $space-4;
   z-index: 9999;
   padding: $space-2 $space-4;
-  background: $red;
+  background: $orange-dark;
   color: #fff;
   border-radius: $radius-lg;
   font-size: $text-sm;
@@ -149,8 +164,9 @@ button {
   }
 }
 
-.gradient-text {
-  @include gradient-text;
+// Accent words inside headings — one solid brand colour, no gradient
+.text-accent {
+  color: var(--accent-display);
 }
 
 .section-label {

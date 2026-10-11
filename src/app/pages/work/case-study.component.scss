@@ -180,7 +180,7 @@
   color: var(--text-primary);
   margin: 0;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(var(--text-primary), 0.08);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .case-study__section-body {

@@ -2,12 +2,16 @@ import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
+  effect,
   ElementRef,
+  inject,
   OnDestroy,
   input,
   output,
+  untracked,
   viewChild,
 } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 
 interface TurnstileAPI {
   render(el: HTMLElement, options: TurnstileOptions): string;
@@ -62,21 +66,36 @@ export class TurnstileComponent implements OnDestroy {
   readonly resolved = output<string | null>();
 
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
+  private readonly themeService = inject(ThemeService);
   private widgetId: string | undefined;
   private cancelPoll: (() => void) | undefined;
 
   constructor() {
     afterNextRender(() => {
-      this.cancelPoll = whenTurnstileReady(() => {
-        const win = window as TurnstileWin;
-        this.widgetId = win.turnstile!.render(this.container().nativeElement, {
-          sitekey: this.siteKey(),
-          theme: 'dark',
-          callback: (token: string) => this.resolved.emit(token),
-          'expired-callback': () => this.resolved.emit(null),
-          'error-callback': () => this.resolved.emit(null),
-        });
+      this.cancelPoll = whenTurnstileReady(() => this.render());
+    });
+
+    // A live widget can't be restyled — re-mount it when the site theme flips.
+    effect(() => {
+      this.themeService.theme();
+      untracked(() => {
+        if (this.widgetId === undefined) return;
+        (window as TurnstileWin).turnstile?.remove(this.widgetId);
+        this.resolved.emit(null);
+        this.render();
       });
+    });
+  }
+
+  private render(): void {
+    const turnstile = (window as TurnstileWin).turnstile;
+    if (!turnstile) return;
+    this.widgetId = turnstile.render(this.container().nativeElement, {
+      sitekey: this.siteKey(),
+      theme: this.themeService.theme(),
+      callback: (token: string) => this.resolved.emit(token),
+      'expired-callback': () => this.resolved.emit(null),
+      'error-callback': () => this.resolved.emit(null),
     });
   }
 

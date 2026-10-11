@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, QueryList, signal, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -17,8 +17,6 @@ interface FaqItem {
   styleUrl: './faq.component.scss',
 })
 export class FaqComponent {
-  @ViewChildren('answer') private answers!: QueryList<ElementRef<HTMLElement>>;
-
   readonly items: FaqItem[] = [
     { qKey: 'faq.q1', aKey: 'faq.a1' },
     { qKey: 'faq.q2', aKey: 'faq.a2' },
@@ -32,29 +30,7 @@ export class FaqComponent {
 
   toggle(index: number): void {
     const next = new Set(this.openItems());
-    const el = this.answers.get(index)?.nativeElement;
-
-    if (next.has(index)) {
-      next.delete(index);
-      if (el) this.collapse(el);
-    } else {
-      next.add(index);
-      if (el) this.expand(el);
-    }
-
+    if (!next.delete(index)) next.add(index);
     this.openItems.set(next);
-  }
-
-  private expand(el: HTMLElement): void {
-    el.style.height = '0';
-    void el.offsetHeight;
-    el.style.height = el.scrollHeight + 'px';
-    el.addEventListener('transitionend', () => { el.style.height = 'auto'; }, { once: true });
-  }
-
-  private collapse(el: HTMLElement): void {
-    el.style.height = el.getBoundingClientRect().height + 'px';
-    void el.offsetHeight;
-    el.style.height = '0';
   }
 }

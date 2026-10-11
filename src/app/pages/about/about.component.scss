@@ -8,38 +8,26 @@
   &__inner {
     position: relative;
     z-index: 1;
-    @include section-padding;
-    padding-top: 8rem;
     display: flex;
     flex-direction: column;
-    gap: $space-20;
-  }
-}
+    gap: $space-16;
+    @include section-padding;
+    @include page-top;
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-  &.revealed { opacity: 1; transform: translateY(0); }
+    @include md { gap: $space-20; }
+  }
 }
 
 .about-header {
   max-width: 640px;
 
   &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-4xl, 5.5vw, $text-6xl);
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    margin: $space-3 0 $space-6;
+    @include heading-section;
+    margin: 0 0 $space-4;
   }
 
   &__subtitle {
-    font-size: clamp($text-base, 2vw, $text-lg);
-    color: var(--text-secondary);
-    line-height: 1.7;
+    @include lead;
     max-width: 520px;
   }
 }
@@ -47,14 +35,17 @@
 // ── Public-register details — head left, facts right from lg up ──────────────
 .about-company {
   border-top: 1px solid var(--border-color);
-  padding-top: $space-16;
+  padding-top: $space-12;
+
+  @include md { padding-top: $space-16; }
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-10;
 
+  // no row gap: stacked, the spacing lives inside the collapsible details so
+  // nothing is left behind when they're closed
   @include lg {
     grid-template-columns: 320px 1fr;
-    gap: $space-20;
+    column-gap: $space-20;
   }
 
   &__title {
@@ -75,8 +66,10 @@
   }
 
   &__facts {
-    margin: 0;
+    margin: $space-10 0 0;
     border-top: 1px solid var(--border-color);
+
+    @include lg { margin-top: 0; }
   }
 
   &__fact {
@@ -123,8 +116,28 @@
     &.is-open svg { transform: rotate(45deg); }
   }
 
+  // 0fr ↔ 1fr animates the real height, so it collapses as smoothly as it opens
   &__details {
-    animation: fade-in 0.4s ease both;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows $transition-slow;
+
+    &.is-open { grid-template-rows: 1fr; }
+  }
+
+  // no padding here: in a 0fr row the box can't shrink below its own padding
+  &__details-inner {
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-$space-2);
+    transition: opacity $transition-base, transform $transition-base;
+
+    .is-open > & {
+      opacity: 1;
+      transform: none;
+      transition: opacity $transition-slow 100ms, transform $transition-slow 100ms;
+    }
   }
 
   &__registry {

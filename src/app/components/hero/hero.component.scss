@@ -6,7 +6,7 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: 110px $space-6 $space-16;
+  padding-block: calc(#{$nav-height} + #{$space-10}) $space-16;
   overflow: hidden;
 
   // ── Inner — left-aligned ──────────────────────────────────────────────────
@@ -54,7 +54,7 @@
   }
 
   &__typewriter-text {
-    @include gradient-text($gradient-brand);
+    color: var(--accent-display);
   }
 
   // Blinking cursor
@@ -63,8 +63,6 @@
     font-weight: 300;
     opacity: 1;
     animation: blink-cursor 0.9s step-start infinite;
-    // Override gradient-text fill so the cursor is solid
-    -webkit-text-fill-color: rgba($red-light, 0.7);
   }
 
   @keyframes blink-cursor {
@@ -148,7 +146,7 @@
       left: 0;
       width: 100%;
       height: $scroll-pulse-height;
-      background: linear-gradient(to bottom, transparent, rgba($red-light, 0.8));
+      background: linear-gradient(to bottom, transparent, var(--accent-display));
       animation: scroll-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
   }

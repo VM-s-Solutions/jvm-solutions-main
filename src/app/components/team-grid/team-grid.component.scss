@@ -1,14 +1,6 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-// Reveal
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity $transition-slow, transform $transition-slow;
-  &.revealed { opacity: 1; transform: translateY(0); }
-}
-
 // List container
 .team-grid {
   display: grid;
@@ -34,10 +26,12 @@
   transition: border-color $transition-base, box-shadow $transition-base,
     translate $transition-base, opacity $transition-slow, transform $transition-slow;
 
-  &:hover {
-    border-color: var(--border-light);
-    translate: 0 -3px;
-    box-shadow: $shadow-md;
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--border-light);
+      translate: 0 -3px;
+      box-shadow: var(--shadow-hover);
+    }
   }
 
   // stagger the reveal only — hover properties must react without delay
@@ -75,7 +69,7 @@
     position: absolute;
     inset: 0;
     border-radius: $radius-lg;
-    background: $gradient-brand;
+    background: $orange-deep;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,11 +96,12 @@
   }
 
   &__role {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
     text-transform: uppercase;
-    color: $red-light;
+    color: var(--accent);
     margin-top: $space-1;
   }
 

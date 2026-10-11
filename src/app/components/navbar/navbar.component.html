@@ -38,7 +38,13 @@
         </svg>
       </button>
       @if (langDropdownOpen()) {
-        <ul class="navbar__lang-menu" role="listbox" aria-label="Language options">
+        <ul
+          class="navbar__lang-menu"
+          role="listbox"
+          aria-label="Language options"
+          animate.enter="is-entering"
+          animate.leave="is-leaving"
+        >
           @for (lang of languages; track lang.code) {
             <li>
               <button
