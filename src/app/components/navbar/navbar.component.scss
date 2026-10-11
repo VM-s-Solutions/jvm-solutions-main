@@ -104,7 +104,7 @@
       height: 34px;
       padding: 0 $space-4;
       border-radius: $radius-full;
-      background: $orange-deep;
+      background: $orange-fill;
       font-size: $text-sm;
       font-weight: 600;
       color: #fff;
@@ -112,7 +112,7 @@
       white-space: nowrap;
       transition: background $transition-fast;
 
-      &:hover { background: $orange; }
+      &:hover { background: $orange-fill-hover; }
     }
   }
 

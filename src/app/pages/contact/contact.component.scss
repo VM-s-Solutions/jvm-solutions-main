@@ -174,7 +174,7 @@ $split-edge: max(#{$space-8}, calc(100% - #{$container-max} / 2 + #{$space-8}));
       .contact-form__textarea {
         border-color: var(--danger);
 
-        &:focus { box-shadow: 0 0 0 3px rgba($orange, 0.2); }
+        &:focus { box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2); }
       }
     }
   }
@@ -213,7 +213,7 @@ $split-edge: max(#{$space-8}, calc(100% - #{$container-max} / 2 + #{$space-8}));
 
     &:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba($orange, 0.2);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
     }
   }
 
@@ -276,7 +276,7 @@ $split-edge: max(#{$space-8}, calc(100% - #{$container-max} / 2 + #{$space-8}));
     height: 18px;
     flex-shrink: 0;
     margin-top: 2px;
-    accent-color: $orange-deep;
+    accent-color: $orange-fill;
     cursor: pointer;
   }
 

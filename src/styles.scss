@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'styles/variables' as *;
 @use 'styles/mixins' as *;
 @use 'styles/animations';
@@ -21,6 +22,8 @@
   // Brand orange from the logo — see _variables.scss for the two roles
   --accent:         #{$accent-dark};
   --accent-display: #{$accent-display-dark};
+  // channels of --accent-display, for translucent tints and rules
+  --accent-rgb:     #{color.channel($accent-display-dark, 'red', $space: rgb)}, #{color.channel($accent-display-dark, 'green', $space: rgb)}, #{color.channel($accent-display-dark, 'blue', $space: rgb)};
   --success:        #{$green-light};
   --danger:         #F87171;
   --shadow-hover:   0 8px 24px rgba(0, 0, 0, 0.5);
@@ -45,6 +48,7 @@
   --text-muted:    #67676F;
   --accent:        #{$accent-light};
   --accent-display:#{$accent-display-light};
+  --accent-rgb:    #{color.channel($accent-display-light, 'red', $space: rgb)}, #{color.channel($accent-display-light, 'green', $space: rgb)}, #{color.channel($accent-display-light, 'blue', $space: rgb)};
   --success:       #{$green-darker};
   --danger:        #B91C1C;
   --shadow-hover:  0 8px 24px rgba(0, 0, 0, 0.08);
@@ -105,7 +109,7 @@ button {
 
 // ─── Selection ────────────────────────────────────────────────────────────────
 ::selection {
-  background: rgba($orange, 0.3);
+  background: rgba(var(--accent-rgb), 0.3);
   color: var(--text-primary);
 }
 
@@ -139,7 +143,7 @@ button {
   left: $space-4;
   z-index: 9999;
   padding: $space-2 $space-4;
-  background: $orange-dark;
+  background: $orange-fill;
   color: #fff;
   border-radius: $radius-lg;
   font-size: $text-sm;

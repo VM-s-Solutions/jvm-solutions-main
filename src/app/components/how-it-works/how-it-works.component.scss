@@ -3,7 +3,7 @@
 
 $node-size: 44px;
 // the timeline rule reads as a progress bar: it draws itself once in view
-$rule-color: rgba($orange, 0.55);
+$rule-color: rgba(var(--accent-rgb), 0.55);
 $rule-draw: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
 
 .process {
@@ -115,9 +115,9 @@ $rule-draw: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
   width: $node-size;
   height: $node-size;
   border-radius: 50%;
-  border: 1px solid rgba($orange, 0.45);
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
   // opaque so the rule passes behind it; the tint is layered on top
-  background: linear-gradient(rgba($orange, 0.08), rgba($orange, 0.08)), var(--bg-primary);
+  background: linear-gradient(rgba(var(--accent-rgb), 0.08), rgba(var(--accent-rgb), 0.08)), var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,7 +130,7 @@ $rule-draw: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
   }
 
   @media (hover: hover) {
-    .process__step:hover & { border-color: rgba($orange, 0.8); }
+    .process__step:hover & { border-color: rgba(var(--accent-rgb), 0.8); }
   }
 }
 
