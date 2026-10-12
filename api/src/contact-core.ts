@@ -106,17 +106,17 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
   };
 
   try {
-    const [notification] = await Promise.all([
+    const [notification, confirmation] = await Promise.all([
       resend.emails.send({
-        from: `JVM Solutions Website <${fromEmail}>`,
+        from: `JVM Yore Website <${fromEmail}>`,
         to: [toEmail],
         replyTo: `${name.trim()} <${email.trim()}>`,
-        subject: `[JVM Solutions] New enquiry — ${service.trim()}`,
+        subject: `[JVM Yore] New enquiry — ${service.trim()}`,
         text: internalNotificationText(templateData),
         html: internalNotificationHtml(templateData),
       }),
       resend.emails.send({
-        from: `JVM Solutions <${fromEmail}>`,
+        from: `JVM Yore <${fromEmail}>`,
         to: [email.trim()],
         subject: confirmationSubject(lang),
         text: confirmationText(templateData),
@@ -124,14 +124,22 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
       }),
     ]);
 
+    // Resend's message names the actual cause (e.g. unverified sender domain,
+    // revoked key) — log it, since the client only gets a generic error.
+    if (confirmation.error) {
+      console.error(`Resend rejected confirmation email from ${fromEmail}`, confirmation.error);
+    }
+
     if (notification.error) {
+      console.error(`Resend rejected notification email from ${fromEmail} to ${toEmail}`, notification.error);
       const resendErr = notification.error as { statusCode?: number };
       if (resendErr.statusCode === 401 || resendErr.statusCode === 403) {
         return { status: 500, body: { error: 'Email service misconfigured. Please contact us directly.' } };
       }
       return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
     }
-  } catch {
+  } catch (err) {
+    console.error('Resend request failed', err);
     return { status: 502, body: { error: 'Failed to send email. Please try again.' } };
   }
 

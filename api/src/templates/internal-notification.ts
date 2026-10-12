@@ -24,7 +24,7 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>New enquiry — JVM Solutions</title>
+  <title>New enquiry — JVM Yore</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap');
   </style>
@@ -44,7 +44,7 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
           <!-- Header -->
           <tr>
             <td style="background:#13131A;padding:32px 40px 28px;text-align:center;">
-              <p style="margin:0 0 6px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;color:#E53E3E;text-transform:uppercase;">JVM Solutions</p>
+              <p style="margin:0 0 6px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;color:#E53E3E;text-transform:uppercase;">JVM Yore</p>
               <h1 style="margin:0 0 12px;font-family:'Space Grotesk',system-ui,sans-serif;font-size:24px;font-weight:700;color:#F1F5F9;line-height:1.3;">New Website Enquiry</h1>
               <p style="margin:0;font-size:14px;color:#94A3B8;">
                 Service requested:
@@ -128,7 +128,7 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
             <td style="background:#09090F;border-top:1px solid #1E1E2E;padding:20px 40px;text-align:center;">
               <p style="margin:0;font-size:12px;color:#64748B;">
                 Sent from the contact form at
-                <a href="https://jvm-solutions.dev/contact" style="color:#64748B;text-decoration:none;">jvm-solutions.dev</a>
+                <a href="https://jvm-yore.com/contact" style="color:#64748B;text-decoration:none;">jvm-yore.com</a>
               </p>
             </td>
           </tr>
