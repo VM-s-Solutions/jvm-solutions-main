@@ -47,16 +47,23 @@ app.use(expressStaticGzip(DIST, {
     setHeaders(res, filePath) {
       if (filePath.includes('index.html')) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      } else if (filePath.includes(`${path.sep}i18n${path.sep}`)) {
-        // i18n JSON files have no content hash — use short cache so deploys take effect
+      } else if (filePath.includes(`${path.sep}i18n${path.sep}`) || /\.(txt|xml)(\.br|\.gz)?$/.test(filePath)) {
+        // i18n JSON, robots.txt, sitemap.xml and llms.txt have no content hash —
+        // use short cache so deploys take effect
         res.setHeader('Cache-Control', 'public, max-age=3600');
       }
     },
   },
 }));
 
-// SPA fallback — serve pre-compressed index.html for client-side routes
+// SPA fallback — serve pre-compressed index.html for client-side routes.
+// Routes never contain a file extension, so a missing file (e.g. a stale chunk or
+// /.well-known/ai-catalog.json probed by crawlers) gets a real 404, not HTML with 200.
 app.get('/{*path}', (req, res) => {
+  if (path.extname(req.path)) {
+    return res.sendStatus(404);
+  }
+
   const ae = req.headers['accept-encoding'] || '';
   if (ae.includes('br') && fs.existsSync(path.join(DIST, 'index.html.br'))) {
     res.setHeader('Content-Encoding', 'br');
