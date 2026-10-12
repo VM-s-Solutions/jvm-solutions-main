@@ -47,15 +47,6 @@ export class NavbarComponent {
   ];
 
   constructor() {
-    const SUPPORTED = ['en', 'cs', 'sk', 'uk'];
-    const saved = localStorage.getItem('lang');
-    const browser = navigator.language.split('-')[0].toLowerCase();
-    const lang = (saved && SUPPORTED.includes(saved))
-      ? saved
-      : (SUPPORTED.includes(browser) ? browser : 'en');
-    this.translate.setDefaultLang('en');
-    this.translate.use(lang);
-
     afterNextRender(() => {
       let lastY = window.scrollY;
 

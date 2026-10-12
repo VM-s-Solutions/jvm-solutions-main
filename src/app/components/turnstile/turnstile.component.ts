@@ -28,30 +28,32 @@ interface TurnstileOptions {
   'error-callback'?: () => void;
 }
 
-// Zone.js patches window.on* properties, which breaks the onload= callback approach.
-// Instead we poll for window.turnstile every 50 ms (max ~5 s) after the component mounts.
 type TurnstileWin = Window & {
   turnstile?: TurnstileAPI;
 };
 
-function whenTurnstileReady(callback: () => void): () => void {
-  const win = window as TurnstileWin;
-  if (win.turnstile) {
-    callback();
-    return () => {};
-  }
-  let attempts = 0;
-  const id = setInterval(() => {
-    attempts++;
-    if (win.turnstile) {
-      clearInterval(id);
-      callback();
-    } else if (attempts >= 100) {
-      // ~5 s timeout — give up silently; widget simply won't render
-      clearInterval(id);
-    }
-  }, 50);
-  return () => clearInterval(id);
+const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+
+let scriptLoad: Promise<void> | undefined;
+
+// Only the contact form needs Turnstile, so its script is injected on first use
+// rather than from index.html — every other page skips the ~27 kB download.
+// Readiness comes from the <script> element's load event, so no global ?onload= callback is needed.
+function loadTurnstile(): Promise<void> {
+  scriptLoad ??= new Promise<void>((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = SCRIPT_SRC;
+    script.async = true;
+    script.addEventListener('load', () => resolve());
+    script.addEventListener('error', () => {
+      // Drop the failed tag and promise so the next mount retries.
+      script.remove();
+      scriptLoad = undefined;
+      reject();
+    });
+    document.head.appendChild(script);
+  });
+  return scriptLoad;
 }
 
 @Component({
@@ -68,11 +70,17 @@ export class TurnstileComponent implements OnDestroy {
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
   private readonly themeService = inject(ThemeService);
   private widgetId: string | undefined;
-  private cancelPoll: (() => void) | undefined;
+  private destroyed = false;
 
   constructor() {
     afterNextRender(() => {
-      this.cancelPoll = whenTurnstileReady(() => this.render());
+      // On failure the widget simply doesn't render; submit then reports the missing captcha.
+      loadTurnstile().then(
+        () => {
+          if (!this.destroyed) this.render();
+        },
+        () => {},
+      );
     });
 
     // A live widget can't be restyled — re-mount it when the site theme flips.
@@ -108,7 +116,7 @@ export class TurnstileComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.cancelPoll?.();
+    this.destroyed = true;
     const win = window as TurnstileWin;
     if (this.widgetId !== undefined) {
       win.turnstile?.remove(this.widgetId);

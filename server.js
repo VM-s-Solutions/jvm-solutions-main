@@ -47,6 +47,10 @@ app.use(expressStaticGzip(DIST, {
     setHeaders(res, filePath) {
       if (filePath.includes('index.html')) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      } else if (/[\\/]fonts\.css(\.br|\.gz)?$/.test(filePath)) {
+        // index.html loads fonts.css by name, so it has no content hash but points at hashed
+        // font files — revalidate every time so a deploy never leaves it pointing at deleted files
+        res.setHeader('Cache-Control', 'no-cache');
       } else if (filePath.includes(`${path.sep}i18n${path.sep}`) || /\.(txt|xml)(\.br|\.gz)?$/.test(filePath)) {
         // i18n JSON, robots.txt, sitemap.xml and llms.txt have no content hash —
         // use short cache so deploys take effect

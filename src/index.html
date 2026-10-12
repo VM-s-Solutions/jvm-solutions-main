@@ -24,15 +24,12 @@
   <!-- Locale preload: detect browser language early and prefetch the right translation
        file so it downloads in parallel with main.js instead of after Angular boots. -->
   <script>(function(){try{var s=localStorage.getItem('lang'),b=(navigator.language||'').split('-')[0].toLowerCase(),l=s&&['cs','sk','uk'].includes(s)?s:['cs','sk','uk'].includes(b)?b:null;if(l){var e=document.createElement('link');e.rel='preload';e.as='fetch';e.href='/i18n/'+l+'.json';e.crossOrigin='';document.head.appendChild(e);}}catch(e){}})();</script>
+  <!-- Fonts (self-hosted): a first visit fetches them only after first contentful paint, so the
+       woff2 files never compete with the app's own JS; once cached they load straight away, so
+       repeat visits paint in the right font. Browsers without paint timing load them on window load. -->
+  <script>(function(){function f(){var l=document.createElement('link');l.rel='stylesheet';l.href='fonts.css';document.head.appendChild(l);try{localStorage.setItem('fontsCached','1');}catch(e){}}var c=null;try{c=localStorage.getItem('fontsCached');}catch(e){}var P=window.PerformanceObserver;if(c){f();}else if(P&&P.supportedEntryTypes&&P.supportedEntryTypes.indexOf('paint')>-1){var o=new P(function(list){if(list.getEntriesByName('first-contentful-paint').length){o.disconnect();f();}});o.observe({type:'paint',buffered:true});}else{addEventListener('load',f);}})();</script>
   <!-- Theme: apply before first paint to prevent flash of wrong theme. Default is always dark. -->
   <script>(function(){var t='dark';try{var s=localStorage.getItem('theme');if(s==='light')t=s;}catch(e){}document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]').content=t==='light'?'#F8F8F8':'#0A0A0A';})();</script>
-  <!-- Fonts: preconnect first, then load async (non-render-blocking) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"></noscript>
-  <!-- Cloudflare Turnstile — render=explicit so we control when widgets mount -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>

@@ -8,7 +8,7 @@ Software agency website for a 3-person team (Janis, Vít, Michael) based in Czec
 
 | Route | Component | Lazy |
 |---|---|---|
-| `/` | `HomeComponent` | no (eager — fix pending) |
+| `/` | `HomeComponent` | no — eager on purpose (landing page, keeps the hero/LCP off a lazy-chunk round trip) |
 | `/contact` | `ContactComponent` | yes |
 | `/about` | `AboutComponent` | yes |
 | `**` | redirect → `/` | — |
@@ -117,7 +117,6 @@ $gradient-brand: 135deg purple → green
 - `HomeComponent` missing `ChangeDetectionStrategy.OnPush` and `standalone: true` in decorator options
 - `AppComponent` and `NavbarComponent` use constructor injection instead of `inject()`
 - `HeroComponent` uses a manual `Subscription` — candidate for `takeUntilDestroyed()`
-- `app.routes.ts` — `/` route loads `HomeComponent` eagerly; should use `loadComponent()`
 - `ContactService.send()` has a `console.log` that must be removed before go-live
 
 ---
