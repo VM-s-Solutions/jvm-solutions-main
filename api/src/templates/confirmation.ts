@@ -1,3 +1,5 @@
+import { ACCENT, INK, LINE, MUTED, SITE, TEXT, emailLayout } from './theme';
+
 export interface ConfirmationData {
   safeName: string;
   safeEmail: string;
@@ -10,18 +12,6 @@ export interface ConfirmationData {
   rawCompany: string;
   lang: string;
 }
-
-// Light palette — email clients render best on white, and the customer reads
-// this in their own inbox, not on our dark site. Orange is the site's
-// $accent-light (AA on white); the logo is a PNG because Gmail/Outlook drop SVG.
-const SITE = 'https://jvm-yore.com';
-const LOGO_URL = `${SITE}/images/email-logo.png`;
-const INK = '#18181B';
-const TEXT = '#3F3F46';
-const MUTED = '#66666E';
-const LINE = '#E4E4E7';
-const ACCENT = '#C33E00';
-const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
 const strong = (text: string) => `<strong style="color:${INK};font-weight:600;">${text}</strong>`;
 
@@ -161,34 +151,7 @@ export function confirmationHtml(d: ConfirmationData): string {
                   </td>
                 </tr>`).join('');
 
-  return `<!DOCTYPE html>
-<html lang="${d.lang}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="color-scheme" content="light only">
-  <meta name="supported-color-schemes" content="light only">
-  <title>${t.subject}</title>
-  <style>
-    :root { color-scheme: light only; }
-    @media (max-width: 520px) { .pad { padding-left: 24px !important; padding-right: 24px !important; } }
-  </style>
-</head>
-<body style="margin:0;padding:0;background:#F4F4F5;font-family:${FONT};-webkit-font-smoothing:antialiased;">
-  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${t.thanks}</div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F4F5;">
-    <tr>
-      <td align="center" style="padding:40px 16px;">
-        <table role="presentation" width="560" cellpadding="0" cellspacing="0"
-               style="max-width:560px;width:100%;background:#FFFFFF;border:1px solid ${LINE};border-radius:12px;">
-          <tr>
-            <td class="pad" style="padding:36px 40px 8px;">
-              <a href="${SITE}" style="text-decoration:none;">
-                <img src="${LOGO_URL}" width="160" height="34" alt="JVM Yore"
-                     style="display:block;width:160px;height:34px;border:0;outline:none;color:${INK};font-size:18px;font-weight:700;">
-              </a>
-            </td>
-          </tr>
+  const body = `
           <tr>
             <td class="pad" style="padding:28px 40px 0;">
               <h1 style="margin:0 0 12px;font-size:24px;line-height:1.3;font-weight:700;letter-spacing:-0.2px;color:${INK};">${t.title}</h1>
@@ -229,23 +192,18 @@ export function confirmationHtml(d: ConfirmationData): string {
                 </tr>
               </table>
             </td>
-          </tr>
-        </table>
-        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;">
-          <tr>
-            <td class="pad" style="padding:24px 40px 0;font-size:12px;line-height:1.6;color:${MUTED};text-align:center;">
-              ${t.footerAuto}<br>
+          </tr>`;
+
+  return emailLayout({
+    lang: d.lang,
+    title: t.subject,
+    preheader: t.thanks,
+    body,
+    footer: `${t.footerAuto}<br>
               ${t.footerUrgent} <a href="mailto:hello@jvm-yore.com" style="color:${ACCENT};text-decoration:none;">hello@jvm-yore.com</a>
               <br><br>
-              &copy; ${new Date().getFullYear()} JVM Yore &middot; <a href="${SITE}" style="color:${MUTED};text-decoration:underline;">jvm-yore.com</a>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>`;
+              &copy; ${new Date().getFullYear()} JVM Yore &middot; <a href="${SITE}" style="color:${MUTED};text-decoration:underline;">jvm-yore.com</a>`,
+  });
 }
 
 export function confirmationText(d: ConfirmationData): string {
