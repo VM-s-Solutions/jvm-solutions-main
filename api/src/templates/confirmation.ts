@@ -20,7 +20,7 @@ export interface ConfirmationData {
 
 const I18N = {
   en: {
-    subject: "We've received your message \u2014 JVM Solutions",
+    subject: "We've received your message \u2014 JVM Yore",
     title: "We've received your message",
     greeting: (name: string) => `Hi <strong style='color:#FC8181;'>${name}</strong>, thanks for reaching out.`,
     greetingPlain: (name: string) => `Hi ${name},`,
@@ -41,16 +41,16 @@ const I18N = {
     from: (name: string) => `From ${name}`,
     footerAuto: 'This is an automated confirmation. Please do not reply to this email.',
     footerUrgent: 'For urgent matters reach us at',
-    thanks: "Thank you for reaching out to JVM Solutions. We've received your enquiry and will get back to you within 24 hours.",
+    thanks: "Thank you for reaching out to JVM Yore. We've received your enquiry and will get back to you within 24 hours.",
     whatsNext: 'What happens next:',
     plain1: '1. Our team reviews your enquiry',
     plain2: '2. We reply within 24 hours (business days)',
     plain3: '3. We schedule a discovery call to define scope and next steps',
     automated: 'This is an automated confirmation. Please do not reply to this email.',
-    urgent: 'For urgent matters contact us at hello@jvm-solutions.dev',
+    urgent: 'For urgent matters contact us at hello@jvm-yore.com',
   },
   cs: {
-    subject: 'P\u0159ijali jsme va\u0161i zpr\u00e1vu \u2014 JVM Solutions',
+    subject: 'P\u0159ijali jsme va\u0161i zpr\u00e1vu \u2014 JVM Yore',
     title: 'P\u0159ijali jsme va\u0161i zpr\u00e1vu',
     greeting: (name: string) => `Dobr\u00fd den, <strong style='color:#FC8181;'>${name}</strong>, d\u011bkujeme za kontakt.`,
     greetingPlain: (name: string) => `Dobr\u00fd den, ${name},`,
@@ -77,10 +77,10 @@ const I18N = {
     plain2: '2. Odpov\u00edme do 24 hodin (pracovn\u00ed dny)',
     plain3: '3. Domluv\u00edme \u00favodn\u00ed hovor k definici rozsahu a dal\u0161\u00edch krok\u016f',
     automated: 'Toto je automatick\u00e9 potvrzen\u00ed. Na tento e-mail pros\u00edm neodpov\u00eddejte.',
-    urgent: 'V nal\u00e9hav\u00fdch p\u0159\u00edpadech n\u00e1s kontaktujte na hello@jvm-solutions.dev',
+    urgent: 'V nal\u00e9hav\u00fdch p\u0159\u00edpadech n\u00e1s kontaktujte na hello@jvm-yore.com',
   },
   sk: {
-    subject: 'Va\u0161a spr\u00e1va bola prijat\u00e1 \u2014 JVM Solutions',
+    subject: 'Va\u0161a spr\u00e1va bola prijat\u00e1 \u2014 JVM Yore',
     title: 'Va\u0161a spr\u00e1va bola prijat\u00e1',
     greeting: (name: string) => `Dobr\u00fd de\u0148, <strong style='color:#FC8181;'>${name}</strong>, \u010fakujeme za kontakt.`,
     greetingPlain: (name: string) => `Dobr\u00fd de\u0148, ${name},`,
@@ -107,10 +107,10 @@ const I18N = {
     plain2: '2. Odpovieme do 24 hod\u00edn (pracovn\u00e9 dni)',
     plain3: '3. Dohodneme \u00favodn\u00fd hovor k defin\u00edcii rozsahu a \u010fal\u0161\u00edch krokov',
     automated: 'Toto je automatick\u00e9 potvrden\u00e9. Na tento e-mail pros\u00edm neodpovedajte.',
-    urgent: 'V naliehav\u00fdch pr\u00edpadoch n\u00e1s kontaktujte na hello@jvm-solutions.dev',
+    urgent: 'V naliehav\u00fdch pr\u00edpadoch n\u00e1s kontaktujte na hello@jvm-yore.com',
   },
   uk: {
-    subject: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e \u2014 JVM Solutions',
+    subject: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e \u2014 JVM Yore',
     title: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e',
     greeting: (name: string) => `\u041f\u0440\u0438\u0432\u0456\u0442, <strong style='color:#FC8181;'>${name}</strong>, \u0434\u044f\u043a\u0443\u0454\u043c\u043e \u0437\u0430 \u0437\u0432\u0435\u0440\u043d\u0435\u043d\u043d\u044f.`,
     greetingPlain: (name: string) => `\u041f\u0440\u0438\u0432\u0456\u0442, ${name},`,
@@ -131,13 +131,13 @@ const I18N = {
     from: (name: string) => `\u0412\u0456\u0434 ${name}`,
     footerAuto: '\u0426\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043d\u043d\u044f. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0439\u0442\u0435 \u043d\u0430 \u0446\u0435\u0439 \u043b\u0438\u0441\u0442.',
     footerUrgent: '\u0417 \u0442\u0435\u0440\u043c\u0456\u043d\u043e\u0432\u0438\u0445 \u043f\u0438\u0442\u0430\u043d\u044c \u0437\u0432\u0435\u0440\u0442\u0430\u0439\u0442\u0435\u0441\u044c \u0434\u043e \u043d\u0430\u0441 \u043d\u0430',
-    thanks: "\u0414\u044f\u043a\u0443\u0454\u043c\u043e, \u0449\u043e \u0437\u0432'\u044f\u0437\u0430\u043b\u0438\u0441\u044f \u0437 JVM Solutions. \u041c\u0438 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442 \u0456 \u0437\u0432'\u044f\u0436\u0435\u043c\u043e\u0441\u044f \u0437 \u0432\u0430\u043c\u0438 \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c 24 \u0433\u043e\u0434\u0438\u043d.",
+    thanks: "\u0414\u044f\u043a\u0443\u0454\u043c\u043e, \u0449\u043e \u0437\u0432'\u044f\u0437\u0430\u043b\u0438\u0441\u044f \u0437 JVM Yore. \u041c\u0438 \u0440\u043e\u0437\u0433\u043b\u044f\u043d\u0435\u043c\u043e \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442 \u0456 \u0437\u0432'\u044f\u0436\u0435\u043c\u043e\u0441\u044f \u0437 \u0432\u0430\u043c\u0438 \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c 24 \u0433\u043e\u0434\u0438\u043d.",
     whatsNext: '\u0429\u043e \u0431\u0443\u0434\u0435 \u0434\u0430\u043b\u0456:',
     plain1: '1. \u041d\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0440\u043e\u0437\u0433\u043b\u044f\u0434\u0430\u0454 \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442',
     plain2: '2. \u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454\u043c\u043e \u043f\u0440\u043e\u0442\u044f\u0433\u043e\u043c 24 \u0433\u043e\u0434\u0438\u043d (\u0440\u043e\u0431\u043e\u0447\u0456 \u0434\u043d\u0456)',
     plain3: '3. \u041f\u0440\u0438\u0437\u043d\u0430\u0447\u0430\u0454\u043c\u043e \u043e\u0437\u043d\u0430\u0439\u043e\u043c\u0447\u0438\u0439 \u0434\u0437\u0432\u0456\u043d\u043e\u043a \u0434\u043b\u044f \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043e\u0431\u0441\u044f\u0433\u0443 \u0442\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u043a\u0440\u043e\u043a\u0456\u0432',
     automated: '\u0426\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0435 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043d\u043d\u044f. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0439\u0442\u0435 \u043d\u0430 \u0446\u0435\u0439 \u043b\u0438\u0441\u0442.',
-    urgent: '\u0417 \u0442\u0435\u0440\u043c\u0456\u043d\u043e\u0432\u0438\u0445 \u043f\u0438\u0442\u0430\u043d\u044c \u0437\u0432\u0435\u0440\u0442\u0430\u0439\u0442\u0435\u0441\u044c \u0434\u043e \u043d\u0430\u0441 \u043d\u0430 hello@jvm-solutions.dev',
+    urgent: '\u0417 \u0442\u0435\u0440\u043c\u0456\u043d\u043e\u0432\u0438\u0445 \u043f\u0438\u0442\u0430\u043d\u044c \u0437\u0432\u0435\u0440\u0442\u0430\u0439\u0442\u0435\u0441\u044c \u0434\u043e \u043d\u0430\u0441 \u043d\u0430 hello@jvm-yore.com',
   },
 };
 
@@ -152,7 +152,7 @@ export function confirmationHtml(d: ConfirmationData): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>We received your message — JVM Solutions</title>
+  <title>We received your message — JVM Yore</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap');
   </style>
@@ -291,11 +291,11 @@ export function confirmationHtml(d: ConfirmationData): string {
               <p style="margin:0 0 8px;font-size:13px;color:#64748B;line-height:1.6;">
                 ${t.footerAuto}<br>
                 ${t.footerUrgent}
-                <a href="mailto:hello@jvm-solutions.dev" style="color:#E53E3E;text-decoration:none;">hello@jvm-solutions.dev</a>
+                <a href="mailto:hello@jvm-yore.com" style="color:#E53E3E;text-decoration:none;">hello@jvm-yore.com</a>
               </p>
               <p style="margin:12px 0 0;font-size:12px;color:#2A2A3E;">
-                &copy; ${new Date().getFullYear()} JVM Solutions &bull;
-                <a href="https://jvm-solutions.dev" style="color:#64748B;text-decoration:none;">jvm-solutions.dev</a>
+                &copy; ${new Date().getFullYear()} JVM Yore &bull;
+                <a href="https://jvm-yore.com" style="color:#64748B;text-decoration:none;">jvm-yore.com</a>
               </p>
             </td>
           </tr>
@@ -333,6 +333,6 @@ export function confirmationText(d: ConfirmationData): string {
     t.automated,
     t.urgent,
     '',
-    'JVM Solutions — https://jvm-solutions.dev',
+    'JVM Yore — https://jvm-yore.com',
   ].join('\n');
 }

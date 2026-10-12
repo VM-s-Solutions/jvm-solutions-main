@@ -40,7 +40,9 @@ export class ContactComponent {
     private contactService: ContactService,
     private translate: TranslateService
   ) {
-    this.form = this.fb.group({
+    // nonNullable: reset() restores these defaults instead of null — the API
+    // rejects a null company, which broke the "send another" flow.
+    this.form = this.fb.nonNullable.group({
       name:    ['', [Validators.required, Validators.minLength(2)]],
       email:   ['', [Validators.required, Validators.email]],
       company: [''],
