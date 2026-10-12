@@ -113,7 +113,7 @@ export class FeatureComponent {
 
 ## Routing
 
-- All routes use lazy loading via `loadComponent()`.
+- All routes use lazy loading via `loadComponent()` — except the landing route `/`, which is eager on purpose so the hero (LCP) doesn't wait on a lazy chunk.
 - Route data (title, breadcrumb) lives on the route definition, not inside components.
 - Scroll position management is handled by the `ScrollService` + `withInMemoryScrolling`.
 - Never call `Router.navigate()` from a template directly — always through a component method.
@@ -179,7 +179,7 @@ src/styles/
 ## Performance Rules
 
 - `OnPush` everywhere — this is non-negotiable.
-- Lazy-load every route.
+- Lazy-load every route except `/` (see Routing).
 - Prefer `@for` with `track` over `*ngFor` (Angular 17+ control flow syntax).
 - Use `@defer` for below-the-fold heavy components.
 - Never subscribe without unsubscribing. Prefer `toSignal()` (auto-unsubscribes) or `takeUntilDestroyed()`.

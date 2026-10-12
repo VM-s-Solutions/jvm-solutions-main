@@ -3,7 +3,7 @@
 @use 'styles/mixins' as *;
 @use 'styles/animations';
 
-// Fonts are loaded async via <link> in index.html
+// @font-face rules live in fonts/fonts.scss, loaded by index.html after first paint
 
 // ─── CSS Custom Properties (theme tokens) ─────────────────────────────────────
 // Dark is the default. Light overrides applied via [data-theme="light"] on <html>.

@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {
+    // Eager on purpose: nearly every visit lands here, and a lazy chunk would put an
+    // extra network round trip in front of the hero headline (the LCP element).
+    // Its below-the-fold sections stay lazy via @defer.
     path: '',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+    component: HomeComponent,
     title: 'JVM Yore — Frontend, Backend, Mobile & AI Development',
   },
   {
