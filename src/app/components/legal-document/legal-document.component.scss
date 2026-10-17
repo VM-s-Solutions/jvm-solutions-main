@@ -11,6 +11,9 @@
   &__inner {
     @include section-padding;
     @include page-top;
+    // The whole page is this one block, so skipping its rendering saves nothing — and on the
+    // first frame it would report a 600px-tall page to the contents highlight.
+    & { content-visibility: visible; }
   }
 }
 
