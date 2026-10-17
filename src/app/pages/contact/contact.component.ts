@@ -48,7 +48,6 @@ export class ContactComponent {
       company: [''],
       service: ['', Validators.required],
       message: ['', [Validators.required, Validators.minLength(20)]],
-      privacy: [false, Validators.requiredTrue],
     });
   }
 

@@ -1,7 +1,7 @@
 @use '../styles/variables' as *;
 @use '../styles/mixins' as *;
 
-main {
+.app-content {
   position: relative;
   min-height: 100vh;
 }

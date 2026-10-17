@@ -1,4 +1,4 @@
-<section class="hero" aria-label="Hero">
+<section class="hero">
 
   <div class="hero__inner container">
 
@@ -8,12 +8,14 @@
     <!-- Headline -->
     <h1 class="hero__headline">
       {{ 'hero.headlinePart1' | translate }}<br>
-      <span class="hero__typewriter">
+      <!-- The animation is visual only; screen readers get the whole list once instead of every keystroke -->
+      <span class="sr-only">{{ phrasesText() }}</span>
+      <span class="hero__typewriter" aria-hidden="true">
         @for (phrase of phrases(); track phrase) {
-          <span class="hero__typewriter-sizer" aria-hidden="true">{{ phrase }}</span>
+          <span class="hero__typewriter-sizer">{{ phrase }}</span>
         }
-        <span class="hero__typewriter-text" aria-live="polite" aria-atomic="true"
-          >{{ typedText() }}<span class="hero__cursor" aria-hidden="true">|</span></span>
+        <span class="hero__typewriter-text"
+          >{{ typedText() }}<span class="hero__cursor">|</span></span>
       </span>
     </h1>
 

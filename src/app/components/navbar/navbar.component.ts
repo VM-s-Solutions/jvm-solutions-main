@@ -1,5 +1,5 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, ElementRef, inject, NgZone, signal } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
+import { afterNextRender, ChangeDetectionStrategy, Component, computed, DestroyRef, ElementRef, inject, NgZone, signal, viewChild } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LogoComponent } from '../logo/logo.component';
@@ -9,11 +9,12 @@ import { ThemeService } from '../../services/theme.service';
 @Component({
   selector: 'jvm-navbar',
   standalone: true,
-  imports: [LogoComponent, RouterLink, TranslateModule, UpperCasePipe],
+  imports: [LogoComponent, RouterLink, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.scrolled]': 'scrolled()',
     '[class.menu-open]': 'menuOpen()',
+    '(document:keydown.escape)': 'closeOnEscape()',
   },
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -31,6 +32,8 @@ export class NavbarComponent {
   readonly langDropdownOpen = signal(false);
 
   private readonly elementRef = inject(ElementRef);
+  private readonly langTrigger = viewChild.required<ElementRef<HTMLButtonElement>>('langTrigger');
+  private readonly menuTrigger = viewChild.required<ElementRef<HTMLButtonElement>>('menuTrigger');
 
   readonly languages = [
     { code: 'en', label: 'EN' },
@@ -38,6 +41,12 @@ export class NavbarComponent {
     { code: 'sk', label: 'SK' },
     { code: 'uk', label: 'UK' },
   ];
+
+  private readonly lang = toSignal(this.translate.onLangChange, { initialValue: null });
+  readonly currentLangLabel = computed(() => (this.lang()?.lang ?? this.translate.currentLang).toUpperCase());
+  readonly themeToggleLabelKey = computed(() =>
+    this.themeService.theme() === 'dark' ? 'a11y.themeToLight' : 'a11y.themeToDark',
+  );
 
   readonly navLinks: { label: string; fragment?: string; routerLink?: string }[] = [
     { label: 'nav.services', fragment: 'services' },
@@ -90,6 +99,17 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+  }
+
+  /** Escape closes whichever menu is open and hands focus back to the button that opened it. */
+  closeOnEscape(): void {
+    if (this.langDropdownOpen()) {
+      this.langDropdownOpen.set(false);
+      this.langTrigger().nativeElement.focus();
+    } else if (this.menuOpen()) {
+      this.menuOpen.set(false);
+      this.menuTrigger().nativeElement.focus();
+    }
   }
 
   toggleLangDropdown(): void {

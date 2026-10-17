@@ -11,7 +11,15 @@ Software agency website for a 3-person team (Janis, Vít, Michael) based in Czec
 | `/` | `HomeComponent` | no — eager on purpose (landing page, keeps the hero/LCP off a lazy-chunk round trip) |
 | `/contact` | `ContactComponent` | yes |
 | `/about` | `AboutComponent` | yes |
+| `/faq` | `FaqPageComponent` | yes |
+| `/pricing` | `PricingComponent` | yes |
+| `/privacy` | `PrivacyComponent` | yes |
+| `/terms` | `TermsComponent` | yes |
+| `/refunds` | `RefundsComponent` | yes |
 | `**` | redirect → `/` | — |
+
+The three legal pages share `LegalDocumentComponent` (`components/legal-document/`): each page only lists its
+sections via `legalSection(doc, id, shape)`, and the i18n keys follow `<doc>.<id>.title / .p1… / .li1…`.
 
 ---
 
@@ -20,17 +28,18 @@ Software agency website for a 3-person team (Janis, Vít, Michael) based in Czec
 `HomeComponent` is a shell that composes these components top-to-bottom:
 
 ```
-NavbarComponent
-HeroComponent          ← typewriter effect, CTA buttons, stats
+HeroComponent          ← typewriter effect, CTA buttons
 ServicesComponent      ← 4 service cards (frontend/backend/mobile/AI)
-StatsComponent         ← numbers strip
-PortfolioComponent     ← 4 project cards (placeholder case studies)
-TestimonialsComponent  ← 3 quotes + client logo strip
+HowItWorksComponent    ← 4-step process
 ContactCtaComponent    ← final CTA banner
-FooterComponent
+FooterComponent        ← outside <main>; links to the legal pages
 ```
 
-Section fragment IDs for scroll-nav: `#services`, `#portfolio`, `#testimonials`.
+`NavbarComponent` and the skip link live in `AppComponent`. Section fragment ID for scroll-nav: `#services`.
+
+Testimonials, stats, portfolio and the `/work/:id` case studies were removed in the October 2026
+compliance pass (fake quotes, unverifiable numbers, client logos without consent). Only bring them
+back with real, verifiable content and the client's permission.
 
 ---
 
@@ -56,18 +65,12 @@ Section fragment IDs for scroll-nav: `#services`, `#portfolio`, `#testimonials`.
 - Signals: `typedText`
 - Restarts typewriter on `onLangChange` (manual `Subscription` — candidate for `toSignal` / `takeUntilDestroyed`)
 
-**TestimonialsComponent**
-- Data is hardcoded in the component class (not i18n keys) — real quotes, fake companies
-- Client logo strip is name-only (no actual logo assets yet)
-
-**PortfolioComponent**
-- 4 hardcoded projects; titles/descriptions use i18n keys
-- "Case Study →" links exist in the template but go nowhere — detail pages not yet built
-
 **ContactComponent**
 - `ReactiveFormsModule` + `FormBuilder`
 - `status` signal: `'idle' | 'submitting' | 'success' | 'error'`
-- `ContactService.send()` is a stub — no real API call yet
+- `ContactService.send()` posts to `/api/contact` (Turnstile check + Resend emails)
+- No consent checkbox on purpose: replying to an enquiry is GDPR art. 6(1)(b), so the form shows a
+  plain privacy notice instead — don't reintroduce a required "I consent" checkbox
 
 **AppComponent**
 - Uses constructor injection + `implements OnInit` (legacy — keep as-is unless refactoring)
@@ -78,8 +81,8 @@ Section fragment IDs for scroll-nav: `#services`, `#portfolio`, `#testimonials`.
 ## i18n
 
 - 4 locales: `public/i18n/en.json`, `cs.json`, `sk.json`, `uk.json`
-- Key namespaces: `nav`, `hero`, `services`, `stats`, `portfolio`, `testimonials`, `cta`, `footer`, `contact`, `about`
-- Testimonial quotes are **not** in i18n (hardcoded English in component)
+- Key namespaces: `nav`, `hero`, `services`, `process`, `pricing`, `faq`, `cta`, `footer`, `contact`, `about`,
+  `privacy`, `terms`, `refunds`, `legal` (shared legal-page labels), `a11y` (screen-reader labels)
 
 ---
 

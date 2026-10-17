@@ -91,11 +91,12 @@
 
   &__bottom-right {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: $space-6;
+    gap: $space-2 $space-6;
   }
 
-  &__privacy-link {
+  &__legal-link {
     color: var(--text-secondary);
     font-size: $text-sm;
     text-decoration: none;

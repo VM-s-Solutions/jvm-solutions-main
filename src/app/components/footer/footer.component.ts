@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { LEGAL_DOCS } from '../legal-document/legal-document.model';
 import { LogoComponent } from '../logo/logo.component';
 import { ScrollService } from '../../services/scroll.service';
 
@@ -23,6 +24,7 @@ export class FooterComponent {
   private readonly scrollService = inject(ScrollService);
 
   readonly year = new Date().getFullYear();
+  readonly legalDocs = LEGAL_DOCS;
 
   readonly footerLinks: FooterLink[] = [
     { label: 'nav.services', fragment: 'services' },

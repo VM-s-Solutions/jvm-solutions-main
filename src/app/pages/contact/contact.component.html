@@ -71,7 +71,9 @@
                 id="name" type="text" formControlName="name" class="contact-form__input"
                 [placeholder]="'contact.form.namePlaceholder' | translate"
                 autocomplete="name"
-                [attr.aria-invalid]="isInvalid('name')" aria-describedby="name-error"
+                aria-required="true"
+                [attr.aria-invalid]="isInvalid('name')"
+                [attr.aria-describedby]="isInvalid('name') ? 'name-error' : null"
               />
               @if (isInvalid('name')) {
                 <span id="name-error" class="contact-form__error" role="alert">{{ 'contact.form.nameError' | translate }}</span>
@@ -84,7 +86,9 @@
                 id="email" type="email" formControlName="email" class="contact-form__input"
                 [placeholder]="'contact.form.emailPlaceholder' | translate"
                 autocomplete="email"
-                [attr.aria-invalid]="isInvalid('email')" aria-describedby="email-error"
+                aria-required="true"
+                [attr.aria-invalid]="isInvalid('email')"
+                [attr.aria-describedby]="isInvalid('email') ? 'email-error' : null"
               />
               @if (isInvalid('email')) {
                 <span id="email-error" class="contact-form__error" role="alert">{{ 'contact.form.emailError' | translate }}</span>
@@ -106,7 +110,9 @@
               <label for="service" class="contact-form__label">{{ 'contact.form.serviceLabel' | translate }} <span aria-hidden="true">*</span></label>
               <select
                 id="service" formControlName="service" class="contact-form__select"
-                [attr.aria-invalid]="isInvalid('service')" aria-describedby="service-error"
+                aria-required="true"
+                [attr.aria-invalid]="isInvalid('service')"
+                [attr.aria-describedby]="isInvalid('service') ? 'service-error' : null"
               >
                 <option value="" disabled>{{ 'contact.form.servicePlaceholder' | translate }}</option>
                 @for (option of serviceOptionKeys; track option.value) {
@@ -125,7 +131,9 @@
               id="message" formControlName="message" class="contact-form__textarea"
               [placeholder]="'contact.form.messagePlaceholder' | translate"
               rows="5"
-              [attr.aria-invalid]="isInvalid('message')" aria-describedby="message-error"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('message')"
+              [attr.aria-describedby]="isInvalid('message') ? 'message-error' : null"
             ></textarea>
             @if (isInvalid('message')) {
               <span id="message-error" class="contact-form__error" role="alert">{{ 'contact.form.messageError' | translate }}</span>
@@ -143,18 +151,9 @@
           </div>
 
           <div class="contact-form__footer">
-            <div class="contact-form__field contact-form__consent-wrap" [class.is-invalid]="isInvalid('privacy')">
-              <label class="contact-form__consent-label" for="privacy">
-                <input
-                  id="privacy" type="checkbox" formControlName="privacy" class="contact-form__checkbox"
-                  [attr.aria-invalid]="isInvalid('privacy')" aria-describedby="privacy-error"
-                />
-                <span>{{ 'contact.form.privacyConsentPre' | translate }}<a routerLink="/privacy" target="_blank" rel="noopener noreferrer">{{ 'contact.form.privacyLink' | translate }}</a>{{ 'contact.form.privacyConsentPost' | translate }}</span>
-              </label>
-              @if (isInvalid('privacy')) {
-                <span id="privacy-error" class="contact-form__error" role="alert">{{ 'contact.form.privacyError' | translate }}</span>
-              }
-            </div>
+            <p class="contact-form__notice">
+              {{ 'contact.form.privacyNoticePre' | translate }}<a routerLink="/privacy" target="_blank" rel="noopener">{{ 'contact.form.privacyNoticeLink' | translate }}</a>{{ 'contact.form.privacyNoticePost' | translate }}
+            </p>
 
             <button
               type="submit"

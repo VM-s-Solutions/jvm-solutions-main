@@ -1,6 +1,6 @@
 # JVM Yore
 
-> JVM Yore is a three-person senior software studio from the Czech Republic (Prague and remote). We build frontend web apps (Angular, React, Vue), .NET backends, native iOS and Android apps (Swift, Kotlin), and LLM-based AI automation for companies across the EU, US and UK.
+> JVM Yore is a three-person senior software studio from the Czech Republic (Prague and remote). We build frontend web apps (Angular, React, Vue), .NET backends, native iOS and Android apps (Swift, Kotlin), and LLM-based AI automation.
 
 JVM Yore, s.r.o. (Company ID 29633443) is a Czech limited company registered with the Municipal Court in Prague, Section C, Insert 449138. The team is Janis (managing director, client delivery), Vít and Michael (full-stack engineers). Work is remote and async-first; new enquiries get a reply within 24 hours at hello@jvm-yore.com.
 
@@ -13,16 +13,7 @@ JVM Yore, s.r.o. (Company ID 29633443) is a Czech limited company registered wit
 
 ## Pricing
 
-- [Pricing](https://jvm-yore.com/pricing): consulting from €100/hour; the whole team on a monthly retainer from €17,900/month; fixed-scope projects quoted individually. Prices exclude VAT.
-
-## Selected work
-
-- [VEDOS shipper portal](https://jvm-yore.com/work/vedos): real-time logistics operations portal for a Slovak transport company
-- [OMIDA Group shipper portal](https://jvm-yore.com/work/omida): multi-entity shipment visibility prototype for a Polish logistics holding
-- [JP Immobilien client portal](https://jvm-yore.com/work/jp-immobilien): client portal for an Austrian property group
-- [Karimpol property development portal](https://jvm-yore.com/work/karimpol): project and client portal across five Central European markets
-- [NeoVize patient portal](https://jvm-yore.com/work/neovize): pre-operative assessment and consent flows for an ophthalmology practice
-- [Adentics dental patient portal](https://jvm-yore.com/work/adentics): multi-clinic patient portal for German-speaking markets
+- [Pricing](https://jvm-yore.com/pricing): consulting from €100/hour; the whole team on a monthly retainer from €17,900/month; fixed-scope projects quoted individually. JVM Yore is not VAT-registered, so no VAT is added.
 
 ## Company
 
@@ -33,4 +24,6 @@ JVM Yore, s.r.o. (Company ID 29633443) is a Czech limited company registered wit
 ## Optional
 
 - [Privacy policy](https://jvm-yore.com/privacy)
+- [Terms of service](https://jvm-yore.com/terms)
+- [Payments and refunds](https://jvm-yore.com/refunds)
 - [Sitemap](https://jvm-yore.com/sitemap.xml)

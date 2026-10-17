@@ -2,11 +2,24 @@
 // When updating sk.json, keep this in sync.
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const sk = {
+  "a11y": {
+    "footerNav": "Navigácia v päte stránky",
+    "home": "JVM Yore – úvodná stránka",
+    "language": "Jazyk: {{lang}}",
+    "legalNav": "Právne informácie",
+    "mainNav": "Hlavná navigácia",
+    "menu": "Menu",
+    "scrollTop": "Späť nahor",
+    "skipToContent": "Preskočiť na obsah",
+    "themeToDark": "Prepnúť na tmavý motív",
+    "themeToLight": "Prepnúť na svetlý motív"
+  },
   "about": {
     "company": {
       "directors": "Konatelia",
       "founded": "Dátum vzniku",
       "foundedValue": "3. júna 2026",
+      "hide": "Skryť firemné údaje",
       "ico": "IČO",
       "intro": "Sme riadne zapísaná česká spoločnosť s ručením obmedzeným. Tu sú údaje, ktoré si viete kedykoľvek overiť v obchodnom registri.",
       "legalName": "Obchodné meno",
@@ -16,6 +29,7 @@ const sk = {
       "scope": "Predmet podnikania",
       "scopeValue": "Poskytovanie softvéru, poradenstvo v oblasti informačných technológií, spracovanie dát, hostingové a súvisiace činnosti a webové portály",
       "seat": "Sídlo",
+      "show": "Zobraziť firemné údaje",
       "title": "Firemné údaje"
     },
     "description": "Dvaja senior vývojári a senior manažér spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
@@ -56,12 +70,11 @@ const sk = {
       "messageLabel": "Vaša správa",
       "messagePlaceholder": "Opíšte svoj projekt, ciele, termíny…",
       "nameError": "Zadajte prosím svoje meno (min. 2 znaky).",
-      "nameLabel": "Celé meno",
+      "nameLabel": "Meno",
       "namePlaceholder": "Ján Novák",
-      "privacyConsentPost": " a so spracovaním mojich osobných údajov.",
-      "privacyConsentPre": "Súhlasím so ",
-      "privacyError": "Pre odoslanie formulára musíte prijať zásady ochrany súkromia.",
-      "privacyLink": "zásadami ochrany súkromia",
+      "privacyNoticeLink": "zásadách ochrany osobných údajov",
+      "privacyNoticePost": ".",
+      "privacyNoticePre": "Údaje z formulára použijeme len na to, aby sme vám mohli odpovedať na správu. Viac sa dočítate v ",
       "serviceError": "Vyberte prosím službu.",
       "serviceLabel": "Potrebujem",
       "servicePlaceholder": "Vyberte službu…",
@@ -93,11 +106,11 @@ const sk = {
   },
   "faq": {
     "a1": "Áno. Radi spolupracujeme so startupmi aj so zavedenými firmami. Pomôžeme vám navrhnúť a doručiť MVP alebo celý produkt — presne podľa vášho rozsahu a rozpočtu.",
-    "a2": "Určite. Zdedili sme všetko od legacy PHP po napoly migrované Angular aplikácie. Najprv vykonáme audit, potom sa pustíme do práce.",
+    "a2": "Áno. Prevezmeme čokoľvek od legacy PHP až po rozpracovanú migráciu na Angular. Najprv urobíme audit, pripravíme plán a potom plynulo nadviažeme.",
     "a3": "Vymedzený MVP zvyčajne trvá 6–12 týždňov od začiatku do produkcie. Discovery fáza vám dá reálne číslo.",
     "a4": "Áno, pred akýmkoľvek discovery hovorom. Všetko, čo s nami zdieľate, považujeme za dôverné.",
-    "a5": "Áno — prostredníctvom mesačného retainera. Väčšina klientov zostáva 3–6 mes. po spustení.",
-    "a6": "100% vzdialene. Sídlime v Českej republike a pracujeme s klientmi v EU, USA a UK.",
+    "a5": "Áno – formou mesačnej podpory. Rozsah nastavíme podľa toho, koľko starostlivosti aplikácia po spustení potrebuje, a kedykoľvek ho môžete zmeniť.",
+    "a6": "Áno, 100 % na diaľku. Sídlime v Prahe a s klientmi spolupracujeme online, nech sú kdekoľvek.",
     "more": "Máte ďalšie otázky?",
     "moreLink": "Napíšte nám",
     "q1": "Spolupracujete aj s firmami, ktoré práve začínajú?",
@@ -108,15 +121,13 @@ const sk = {
     "q6": "Pracujete vzdialene?",
     "sectionLabel": "FAQ",
     "subtitle": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred štartom projektu.",
-    "title1": "Otázky, ktoré dostávame",
-    "titleGrad": "každý týždeň"
+    "title1": "Na čo sa nás",
+    "titleGrad": "najčastejšie pýtate"
   },
   "footer": {
     "builtWith": "Vytvorené v Angular",
     "contact": "Kontakty",
-    "legal": "IČO 29633443 · Příčná 1892/4, Nové Město, 110 00 Praha 1 · Zapísané na Mestskom súde v Prahe, oddiel C, vložka 449138",
     "nav": "Navigácia",
-    "privacy": "Zásady ochrany súkromia",
     "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží."
   },
   "hero": {
@@ -132,69 +143,21 @@ const sk = {
       "mobile": "Mobilné aplikácie"
     }
   },
+  "legal": {
+    "docs": {
+      "privacy": "Ochrana osobných údajov",
+      "refunds": "Platby a vrátenie peňazí",
+      "terms": "Obchodné podmienky"
+    },
+    "related": "Ďalšie dokumenty",
+    "toc": "Obsah"
+  },
   "nav": {
     "about": "O nás",
     "faq": "FAQ",
     "getInTouch": "Kontaktujte nás",
     "pricing": "Cenník",
     "services": "Služby"
-  },
-  "portfolio": {
-    "adentics": {
-      "category": "Zdravotníctvo + Frontend",
-      "description": "Multi-site pacientský portál pre nemecky hovoriace trhy. Jednotná krížová identita kliník, prehľady liečby, rezervácia termínov, retencia pacientov a sledovanie rodinných odporúčaní — nasadené na Azure Static Web Apps.",
-      "title": "Adentics — Zubný pacientský portál"
-    },
-    "ai": {
-      "category": "",
-      "description": "",
-      "title": ""
-    },
-    "caseStudy": "Prípadová štúdia",
-    "ecommerce": {
-      "category": "Frontend + Backend",
-      "description": "High-performance headless e-commerce with custom CMS, multi-region inventory, and personalisation engine.",
-      "title": "Nexshop — E-commerce Platform"
-    },
-    "fintech": {
-      "category": "",
-      "description": "",
-      "title": ""
-    },
-    "jp": {
-      "category": "Reality + Frontend",
-      "description": "Prémiový klientský portál pre rakúsku realitnú skupinu. Prístup k viacerým divíziám — nová výstavba, nájomné nehnuteľnosti, pohostinstvo a serviced apartments — vybudované v Angular a Angular Material.",
-      "title": "JP Immobilien — Klientský portál"
-    },
-    "karimpol": {
-      "category": "Reality + Frontend",
-      "description": "Firemný portál pre development nehnuteľností pre stredoeurópsku realitnú skupinu. Správa projektov a klientský prístup cez päť trhov — Rakúsko, Poľsko, Slovensko, ČR a Maďarsko.",
-      "title": "Karimpol — Portál správy nehnuteľností"
-    },
-    "logistics": {
-      "category": "",
-      "description": "",
-      "title": ""
-    },
-    "neovize": {
-      "category": "Zdravotníctvo + Frontend",
-      "description": "Portál pre pacientov oftalmologickej praxe NeoVize Group. Predoperačné hodnotenie, správa súhlasov a produktové portály NeoVize, DuoVize, NeoVizia a Kukátko — s vlastným modrým a tyrkysovým dizajnovým systémom.",
-      "title": "NeoVize — Pacientský portál"
-    },
-    "omida": {
-      "category": "Logistika + Frontend",
-      "description": "Prototyp unifikovaného multi-entitného portálu prepravcu pre OMIDA Group S.A. — poľský logistický holding s obratom €330M. Real-time prehľad zásielok naprieč cestnou, námornou, železničnou a skladovacou prepravou 9 prevádzkových spoločností.",
-      "title": "OMIDA Group — Portál prepravcu"
-    },
-    "sectionLabel": "Vybrané práce",
-    "subtitle": "Ukážka toho, čo sme vytvorili — každý projekt je partnerstvom, výzvou a dodaným riešením.",
-    "title1": "Projekty, na ktoré sme",
-    "title2": "hrdí",
-    "vedos": {
-      "category": "Logistika + Frontend",
-      "description": "Real-time logistický portál pre slovenského dopravcu. Live sledovanie flotily, automotive JIT okruhy, cold-chain monitoring a správa cezhraničnej prepravy (SK→DE) — nasadené na Azure Static Web Apps.",
-      "title": "VEDOS — Prepravný portál"
-    }
   },
   "pricing": {
     "consulting": {
@@ -210,7 +173,7 @@ const sk = {
       "tagline": "Druhý názor od ľudí, ktorí softvér sami stavajú."
     },
     "from": "od",
-    "note": "Ceny sú uvedené bez DPH. Pri projektoch s pevným rozsahom účtujeme 50 % zálohu vopred, zvyšok po odovzdaní.",
+    "note": "Nie sme platiteľmi DPH, preto k uvedeným cenám nič nepripočítavame. Pri projektoch s pevným rozsahom fakturujeme 50 % zálohu vopred, zvyšok po odovzdaní.",
     "project": {
       "cta": "Dopytovať projekt",
       "f1": "Skôr než napíšeme prvý riadok kódu, držíte v ruke technické zadanie",
@@ -224,7 +187,7 @@ const sk = {
       "tagline": "Máte zadanie a potrebujete ho dodať celé — od návrhu po spustenie."
     },
     "retainer": {
-      "badge": "Najčastejšia voľba",
+      "badge": "Odporúčame",
       "cta": "Dohodnúť úvodný hovor",
       "f1": "Frontend, backend, mobil aj vedenie projektu — kompletný seniorný tím",
       "f2": "Dvojtýždňové šprinty, na konci každého ukážka hotovej práce",
@@ -254,46 +217,89 @@ const sk = {
     "titleGrad": "prekvapení"
   },
   "privacy": {
-    "contact": {
-      "body": "Všetky žiadosti, otázky alebo sťažnosti týkajúce sa ochrany osobných údajov zasielajte na hello@jvm-yore.com. Odpovieme do 30 dní.",
-      "title": "Kontakt"
+    "changes": {
+      "p1": "Ak začneme údaje spracúvať inak, tieto zásady aktualizujeme a zmeníme dátum platnosti v hornej časti stránky. Vždy platí verzia zverejnená tu.",
+      "title": "Zmeny týchto zásad"
     },
     "controller": {
-      "body": "Prevádzkovateľom osobných údajov je JVM Yore, s.r.o., IČO 29633443, so sídlom Příčná 1892/4, Nové Město, 110 00 Praha 1, zapísaná v obchodnom registri vedenom Mestským súdom v Prahe, oddiel C, vložka 449138. V otázkach ochrany osobných údajov nás kontaktujte na hello@jvm-yore.com.",
-      "title": "Prevádzkovateľ osobných údajov"
+      "p1": "Prevádzkovateľom osobných údajov je spoločnosť JVM Yore, s.r.o., IČO 29633443, so sídlom Příčná 1892/4, Nové Město, 110 00 Praha 1, zapísaná v obchodnom registri vedenom Mestským súdom v Prahe, oddiel C, vložka 449138.",
+      "p2": "So všetkým, čo sa týka ochrany osobných údajov, sa na nás obráťte na hello@jvm-yore.com. Zodpovednú osobu (DPO) sme neurčili – firme nášho typu to GDPR neukladá.",
+      "title": "Kto spracúva vaše údaje"
     },
     "cookies": {
-      "body": "Táto webová stránka nepoužíva cookies. Prehliadač localStorage využívame výhradne na zapamätanie vášho nastavenia jazyka a farebného motívu. Žiadne sledovacie ani reklamné technológie nie sú použité.",
+      "li1": "lang – zvolený jazyk webu,",
+      "li2": "theme – svetlý alebo tmavý motív,",
+      "li3": "fontsCached – záznam o tom, že písma už máte stiahnuté, aby sa stránka nabudúce vykreslila rýchlejšie.",
+      "p1": "Náš web neukladá žiadne cookies. Do lokálneho úložiska prehliadača (localStorage) zapisujeme len tri technické nastavenia, ktoré nikdy neopustia vaše zariadenie:",
+      "p2": "Overenie Cloudflare Turnstile na stránke Kontakt beží vo vlastnom okne Cloudflare a môže si uložiť technické údaje potrebné na to, aby rozlíšilo človeka od robota. Podľa Cloudflare sa tieto údaje nepoužívajú na sledovanie ani na reklamu. Podrobnosti uvádza dokument Cloudflare Turnstile Privacy Addendum.",
       "title": "Cookies a lokálne úložisko"
     },
-    "dataCollected": {
-      "body": "Pri odoslaní kontaktného formulára zhromažďujeme: celé meno, e-mailovú adresu, názov spoločnosti (voliteľne), typ požadovanej služby a správu. Žiadne iné osobné údaje prostredníctvom tejto stránky nezhromažďujeme.",
-      "title": "Aké údaje zhromažďujeme"
+    "data": {
+      "li1": "Údaje z kontaktného formulára: meno, e-mail, názov firmy (voliteľné), službu, o ktorú máte záujem, text správy a jazyk, v ktorom ste web používali.",
+      "li2": "Obsah e-mailov, ktoré nám pošlete priamo, a našu ďalšiu vzájomnú komunikáciu.",
+      "li3": "Technické údaje pri odoslaní formulára: IP adresu a signály prehliadača, ktoré spracúva ochrana proti spamu Cloudflare Turnstile.",
+      "li4": "Technické údaje pri každej návšteve: IP adresu a údaje o požiadavke, ktoré krátkodobo spracúva poskytovateľ hostingu, aby web fungoval a bol zabezpečený. Sami žiadne záznamy o návštevách nevedieme.",
+      "p1": "Spracúvame len tieto údaje:",
+      "p2": "Nepoužívame žiadnu analytiku, sledovacie pixely, reklamné nástroje ani profilovanie a nežiadame od vás nič, čo na odpoveď nepotrebujeme.",
+      "title": "Aké údaje spracúvame"
     },
-    "intro": "Tieto zásady ochrany súkromia vysvetľujú, ako JVM Yore zhromažďuje, používa a chráni osobné údaje odoslané prostredníctvom tejto webovej stránky. Plne dodržiavame nariadenie GDPR.",
-    "lastUpdated": "Posledná aktualizácia: apríl 2026",
-    "legalBasis": {
-      "body": "Spracúvanie je založené na našom oprávnenom záujme reagovať na obchodné dopyty (čl. 6 ods. 1 písm. f) GDPR). Tam, kde ste udelili výslovný súhlas, je spracúvanie vykonávané na základe čl. 6 ods. 1 písm. a) GDPR.",
-      "title": "Právny základ spracúvania"
+    "deletion": {
+      "action": "Napísať žiadosť o vymazanie",
+      "p1": "Chcete, aby sme vaše údaje vymazali? Napíšte nám na hello@jvm-yore.com z adresy, ktorú ste uviedli vo formulári, s predmetom „Žiadosť o vymazanie údajov“. Dôvod uvádzať nemusíte.",
+      "p2": "Do jedného mesiaca vymažeme váš dopyt aj nadväzujúcu komunikáciu z našej schránky, o vymazanie požiadame aj našich sprostredkovateľov a vymazanie vám potvrdíme e-mailom. Ponecháme si len to, čo nám ukladá zákon – zvyčajne vystavené faktúry.",
+      "subject": "Žiadosť o vymazanie údajov",
+      "title": "Žiadosť o vymazanie údajov"
     },
-    "purpose": {
-      "body": "Vaše kontaktné údaje používame výhradne na odpoveď na váš dopyt a prípadne na zaslanie projektovej ponuky. Bez vášho výslovného súhlasu vám nikdy nezasielame marketingové oznámenia.",
-      "title": "Prečo ich zhromažďujeme"
+    "fonts": {
+      "p1": "Písma Inter a Space Grotesk načítavame z vlastného servera, nie zo služby Google Fonts ani z inej siete CDN. Pri návšteve webu sa tak vaša IP adresa nedostane ku Googlu ani k žiadnemu inému poskytovateľovi písiem. Jediným externým obsahom na webe je overenie Cloudflare Turnstile na stránke Kontakt.",
+      "title": "Písma a ďalšie externé zdroje"
+    },
+    "intro": "Chceme od vás len to, čo potrebujeme, aby sme mohli odpovedať na váš dopyt. Na tejto stránke nájdete, o aké údaje ide, na čo ich používame, komu ich poskytujeme a ako môžete uplatniť svoje práva.",
+    "lastUpdated": "Platné od 17. októbra 2026",
+    "purposes": {
+      "li1": "Odpoveď na dopyt, príprava ponuky a rokovanie o zmluve – vykonanie opatrení pred uzavretím zmluvy na vašu žiadosť (písm. b). Z rovnakého dôvodu vám po odoslaní formulára pošleme potvrdenie s kópiou správy.",
+      "li2": "Plnenie uzavretej zmluvy a komunikácia počas spolupráce – plnenie zmluvy (písm. b).",
+      "li3": "Ochrana formulára pred spamom a zneužitím a zabezpečenie webu – náš oprávnený záujem (písm. f).",
+      "li4": "Vedenie účtovníctva a plnenie daňových povinností, ak spolu uzavrieme zmluvu – splnenie zákonnej povinnosti (písm. c).",
+      "p1": "Každý účel má svoj právny základ podľa čl. 6 ods. 1 GDPR:",
+      "p2": "Váš súhlas so spracúvaním preto nepotrebujeme. Obchodné oznámenia ani newslettery vám bez vášho výslovného súhlasu posielať nebudeme a nerobíme o vás žiadne automatizované rozhodnutia.",
+      "title": "Prečo údaje spracúvame a na akom základe"
+    },
+    "recipients": {
+      "li1": "Microsoft Ireland Operations Ltd. (Microsoft Azure) – hosting webu a servera, ktorý odosiela formulár.",
+      "li2": "Resend, Inc. (USA) – doručovanie správ z formulára do našej schránky a potvrdení do tej vašej.",
+      "li3": "Cloudflare, Inc. (USA) – ochrana formulára pred robotmi (Turnstile).",
+      "li4": "Seznam.cz, a.s. (Česko) – e-mailová schránka hello@jvm-yore.com, v ktorej vaše správy uchovávame.",
+      "p1": "Vaše údaje nikomu nepredávame. Pracujú s nimi len títo sprostredkovatelia, ktorí nám pomáhajú prevádzkovať web, a to iba v rozsahu, ktorý si ich služba vyžaduje:",
+      "p2": "Inak údaje poskytneme len vtedy, keď nám to ukladá zákon (napríklad úradom na ich žiadosť).",
+      "title": "Komu údaje poskytujeme"
     },
     "retention": {
-      "body": "Kontaktné formuláre uchovávame po dobu až 12 mesiacov od dátumu odoslania, po ktorom sú všetky osobné údaje trvalo vymazané, pokiaľ ich dlhšie uchovávanie nevyžaduje prebiehajúci zmluvný vzťah.",
-      "title": "Doba uchovávania údajov"
+      "li1": "Dopyty a komunikáciu, z ktorej spolupráca nevznikne – najdlhšie 12 mesiacov od poslednej správy, potom ich vymažeme.",
+      "li2": "Ak spolu začneme pracovať – počas trvania zmluvy a potom až do uplynutia premlčacej lehoty pre prípadné nároky zo zmluvy (spravidla 3 roky).",
+      "li3": "Faktúry a ďalšie účtovné doklady – tak dlho, ako nám to ukladajú účtovné a daňové predpisy (spravidla 5 až 10 rokov).",
+      "li4": "Technické údaje z ochrany proti spamu a z hostingu – len krátkodobo, podľa pravidiel spoločností Cloudflare a Microsoft.",
+      "p1": "Údaje uchovávame len tak dlho, ako je to nevyhnutné:",
+      "title": "Ako dlho údaje uchovávame"
     },
     "rights": {
-      "body": "Podľa GDPR máte právo na prístup k svojim osobným údajom, ich opravu, vymazanie a prenosnosť. Máte tiež právo na obmedzenie spracúvania alebo vzniesť námietku. Na uplatnenie týchto práv nás kontaktujte na hello@jvm-yore.com. Máte právo podať sťažnosť na Úrade na ochranu osobných údajov SR.",
+      "li1": "zistiť, aké údaje o vás spracúvame, a získať ich kópiu (čl. 15 GDPR),",
+      "li2": "požadovať opravu nepresných údajov (čl. 16),",
+      "li3": "požiadať o vymazanie údajov (čl. 17) – viac v nasledujúcej časti,",
+      "li4": "požiadať o obmedzenie spracúvania (čl. 18),",
+      "li5": "získať údaje, ktoré ste nám poskytli, v strojovo čitateľnom formáte (čl. 20),",
+      "li6": "namietať proti spracúvaniu založenému na našom oprávnenom záujme (čl. 21),",
+      "li7": "podať sťažnosť Úradu pre ochranu osobných údajov ČR (Úřad pro ochranu osobních údajů), Pplk. Sochora 27, 170 00 Praha 7, www.uoou.gov.cz, alebo dozornému orgánu v štáte EÚ, v ktorom žijete.",
+      "p1": "V súvislosti so svojimi údajmi máte právo:",
+      "p2": "Žiadosti vybavujeme bezplatne a bez zbytočného odkladu, najneskôr do jedného mesiaca. Ak si nebudeme istí, že žiadosť posielate vy, môžeme vás požiadať o overenie – najčastejšie tak, že nám napíšete z e-mailu, ktorý ste uviedli vo formulári.",
       "title": "Vaše práva"
     },
     "sectionLabel": "Právne informácie",
-    "thirdParties": {
-      "body": "Na ochranu kontaktného formulára pred automatizovaným zneužitím používame Cloudflare Turnstile. Cloudflare môže spracúvať vašu IP adresu a signály prehliadača pre overenie CAPTCHA. Vaše osobné údaje nepredávame ani nezdieľame so žiadnymi inými tretími stranami.",
-      "title": "Tretie strany"
-    },
-    "title": "Zásady ochrany súkromia"
+    "title": "Zásady ochrany osobných údajov",
+    "transfers": {
+      "p1": "Spoločnosti Resend a Cloudflare sídlia v USA. Prenos údajov do USA je chránený rámcom ochrany osobných údajov medzi EÚ a USA (EU–U.S. Data Privacy Framework), ku ktorému sa obe spoločnosti pripojili, a štandardnými zmluvnými doložkami schválenými Európskou komisiou.",
+      "title": "Prenos údajov mimo EÚ"
+    }
   },
   "process": {
     "sectionLabel": "Ako pracujeme",
@@ -312,6 +318,52 @@ const sk = {
     "subtitle": "Vždy viete, čo sa deje, čo príde ďalej a kedy dodávame.",
     "title1": "Navrhnuté pre",
     "titleGrad": "predvídateľnosť"
+  },
+  "refunds": {
+    "consulting": {
+      "p1": "Konzultácie fakturujeme až po ich skončení, podľa skutočne stráveného času. Termín môžete bezplatne zrušiť alebo presunúť kedykoľvek vopred – stačí nám napísať.",
+      "title": "Konzultácie"
+    },
+    "consumers": {
+      "p1": "Ak ste spotrebiteľ a zmluvu sme uzavreli na diaľku (napríklad e-mailom), môžete od nej bez uvedenia dôvodu odstúpiť do 14 dní od jej uzavretia.",
+      "p2": "Ak ste výslovne požiadali, aby sme s prácou začali už počas tejto lehoty, pri odstúpení zaplatíte len pomernú časť ceny za prácu vykonanú do momentu odstúpenia. Pokiaľ sme službu s vaším súhlasom v tejto lehote už úplne dokončili, právo na odstúpenie zaniká.",
+      "title": "Práva spotrebiteľov"
+    },
+    "intro": "Platíte len za prácu, ktorú si objednáte a ktorú skutočne odvedieme. Tu prehľadne nájdete, kedy a ako fakturujeme a v akých prípadoch vraciame peniaze.",
+    "lastUpdated": "Platné od 17. októbra 2026",
+    "monthly": {
+      "p1": "Tieto služby fakturujeme mesačne vopred. Vypovedať ich môžete kedykoľvek e-mailom s účinnosťou ku koncu zaplateného mesiaca – ďalšie faktúry už nevystavíme a neplatíte žiadny poplatok za ukončenie.",
+      "p2": "Za rozbehnutý mesiac peniaze nevraciame, pretože tím má na váš projekt vyhradený čas. Ak sme však v danom mesiaci z dôvodov na našej strane nedodali dohodnutú kapacitu, rozdiel vám vrátime alebo odpočítame z ďalšej faktúry – podľa toho, čo vám viac vyhovuje.",
+      "title": "Celý tím a Podpora a LTS"
+    },
+    "payments": {
+      "p1": "Na webe nič neplatíte a nezbierame na ňom žiadne platobné údaje. Platí sa vždy až po uzavretí zmluvy, na základe faktúry, bankovým prevodom.",
+      "p2": "Kedy fakturujeme jednotlivé služby, popisujú obchodné podmienky v časti Ceny a platby.",
+      "title": "Ako platíte"
+    },
+    "projects": {
+      "li1": "Zrušíte ho ešte pred začatím práce – vrátime celú zálohu.",
+      "li2": "Zrušíte ho počas práce – vyúčtujeme len skutočne odvedenú prácu (podľa dokončených míľnikov, prípadne podľa odpracovaných hodín v sadzbe za konzultácie), zvyšok zálohy vrátime a rozpracované výstupy vám odovzdáme.",
+      "li3": "Z dôvodov na našej strane dielo nedodáme v dohodnutom rozsahu a termíne ani v primeranej dodatočnej lehote – vrátime vám všetko, čo ste zaplatili za nedodanú časť.",
+      "p1": "Pred začatím práce fakturujeme zálohu vo výške 50 % ceny, zvyšok po odovzdaní. Ak sa projekt nedokončí, postupujeme takto:",
+      "title": "Projekty s pevným rozsahom"
+    },
+    "request": {
+      "action": "Napísať žiadosť o vrátenie peňazí",
+      "li1": "číslo faktúry alebo zmluvy,",
+      "li2": "dôvod a sumu, ktorú požadujete,",
+      "li3": "číslo účtu, na ktorý vám máme peniaze poslať.",
+      "p1": "Napíšte nám na hello@jvm-yore.com a uveďte:",
+      "p2": "Odpovieme do 5 pracovných dní. Schválenú sumu vrátime bankovým prevodom najneskôr do 14 dní, bez akýchkoľvek poplatkov z našej strany.",
+      "subject": "Žiadosť o vrátenie peňazí",
+      "title": "Ako požiadať o vrátenie peňazí"
+    },
+    "sectionLabel": "Právne informácie",
+    "title": "Platby a vrátenie peňazí",
+    "warranty": {
+      "p1": "Chyby v dodanom diele opravujeme v rámci 30-dňovej záruky bezplatne (pozri obchodné podmienky). Vadu nám nahláste e-mailom aj s popisom, ako ju vyvolať; na kritické chyby reagujeme do 4 hodín. Vaše zákonné práva zo zodpovednosti za vady tým nie sú nijako dotknuté.",
+      "title": "Reklamácia vád"
+    }
   },
   "services": {
     "ai": {
@@ -335,147 +387,87 @@ const sk = {
     "title1": "Komplexné",
     "title2": "digitálne riešenia"
   },
-  "stats": {
-    "clients": "Spokojných klientov",
-    "experience": "Rokov skúseností",
-    "projects": "Dokončených projektov",
-    "services": "Kľúčové služby"
-  },
-  "testimonials": {
-    "clientsLabel": "Firmy, s ktorými sme spolupracovali",
-    "sectionLabel": "Referencie",
-    "title1": "Dôverujú nám",
-    "title2": "progresívne",
-    "title3": "tímy"
-  },
-  "work": {
-    "adentics": {
-      "metric1Label": "pre všetky pobočky",
-      "metric1Val": "1 prihlásenie",
-      "metric2Label": "pre pacientov",
-      "metric2Val": "5 modulov",
-      "metric3Label": "od konceptu k portálu",
-      "metric3Val": "56 dní",
-      "problem": "Zubná skupina s viacerými pobočkami v nemecky hovoriacich mestách nemala jednotný digitálny zážitok pre pacientov. Každá klinika fungovala samostatne — oddelené rezervačné systémy, žiadna zdieľaná história liečby a žiadny štruktúrovaný retenčný proces. Pacienti odchádzali bez následnej starostlivosti a personál nemal centrálny prehľad fronty.",
-      "solution": "Vytvorili sme Adentics v Angular: cross-site portál, kde sa pacienti prihlásia raz a pristupujú k celej histórii liečby naprieč všetkými pobočkami. Päť pacientskych modulov: Treatment Timeline, Termine (objednávanie), Nachrichten (správy), Family & Referrals a Academy. Admin strana poskytuje Treatment Queue pre personál. Prémiový dizajn v tyrkysovej a zlatej. Nasadené na Azure Static Web Apps.",
-      "subtitle": "Prémiový multi-site pacientský portál pre nemecky hovoriacu zubnú skupinu",
-      "timeline": "56 dní"
+  "terms": {
+    "changes": {
+      "p1": "Tieto podmienky môžeme aktualizovať. Na už uzavreté zmluvy sa použije verzia platná v deň ich uzavretia, ak sa nedohodneme inak.",
+      "title": "Zmeny podmienok"
     },
-    "ai": {
-      "metric1Label": "eliminovaná manuálna práca",
-      "metric1Val": "30h/týždeň",
-      "metric2Label": "chybovosť",
-      "metric2Val": "4% → 0,3%",
-      "metric3Label": "ROI kladné",
-      "metric3Val": "Mesiac 1",
-      "problem": "A document-heavy operations team was spending 30+ hours per week manually reading supplier invoices, extracting line-item data, and entering it into their ERP.",
-      "solution": "We built a Python + FastAPI pipeline that uses GPT-4 to extract structured data from unstructured PDFs, validates it against business rules, and pushes approved records directly into the ERP via REST.",
-      "subtitle": "Intelligent document processing and workflow automation engine",
-      "timeline": "56 dní"
+    "confidentiality": {
+      "p1": "Všetko, čo s nami zdieľate, či už ide o podklady, dáta alebo obchodné informácie, považujeme za dôverné a používame len pri práci na vašej zákazke. Na požiadanie podpíšeme NDA ešte pred prvým hovorom. Projekt uvedieme ako referenciu len s vaším súhlasom.",
+      "title": "Dôvernosť"
     },
-    "back": "Späť na portfólio",
-    "ctaBtn": "Začať projekt",
-    "ctaText": "Páči sa vám, čo vidíte? Poďme spoločne niečo vybudovať.",
-    "ecommerce": {
-      "metric1Label": "page load time",
-      "metric1Val": "4s → 0.8s",
-      "metric2Label": "cart abandonment rate",
-      "metric2Val": "72% → 41%",
-      "metric3Label": "revenue in first quarter",
-      "metric3Val": "+34%",
-      "problem": "The client's Magento store was hitting performance ceilings during sales events (4s+ load times, cart abandonment spiking to 72%), while the marketing team had zero ability to personalise listings without developer involvement.",
-      "solution": "We rebuilt the front end as a headless React + GraphQL storefront backed by a custom .NET CMS. A lightweight recommendation engine surfaces personalised product suggestions based on browsing history. Editors now manage all content via the CMS.",
-      "subtitle": "Headless e-commerce platform with a personalisation engine",
-      "timeline": "112 days"
+    "contract": {
+      "p1": "Ceny a popisy služieb na webe sú orientačné a nie sú záväzným návrhom na uzavretie zmluvy. Zmluva vzniká, až keď písomne (stačí e-mailom) potvrdíte našu konkrétnu ponuku alebo keď obe strany podpíšu samostatnú zmluvu.",
+      "p2": "Odoslaním kontaktného formulára sa k ničomu nezaväzujete a nič neplatíte.",
+      "title": "Ako uzatvárame zmluvu"
     },
-    "fintech": {
-      "metric1Label": "týždenný čas reportovania",
-      "metric1Val": "12h → 45min",
-      "metric2Label": "rýchlejšie načítanie",
-      "metric2Val": "60%",
-      "metric3Label": "analytici pri spustení",
-      "metric3Val": "50+",
-      "problem": "The client's analysts were exporting data from three separate tools into Excel, reconciling it manually, and generating PDF reports — a process that consumed 12+ hours per analyst per week and introduced errors at every step.",
-      "solution": "We built a unified Angular + .NET analytics platform that ingests data in real time via WebSocket feeds, visualises it with interactive Chart.js dashboards, and generates one-click PDF reports.",
-      "subtitle": "Real-time financial analytics platform for mid-market investment firms",
-      "timeline": "63 dní"
+    "cooperation": {
+      "p1": "Na začiatku spolu spíšeme zadanie a rozsah. Počas vývoja vidíte priebežné výsledky na testovacom prostredí. Zmeny rozsahu vždy najprv odhadneme a pustíme sa do nich až s vaším súhlasom.",
+      "p2": "Aby sme mohli dodať včas, potrebujeme od vás súčinnosť – podklady, prístupy a spätnú väzbu v dohodnutých termínoch. Ak sa v dôsledku oneskorenia na vašej strane posunie harmonogram, o rovnaký čas sa posúva aj termín dodania.",
+      "title": "Priebeh spolupráce"
     },
-    "jp": {
-      "metric1Label": "divízií zjednotených",
-      "metric1Val": "4",
-      "metric2Label": "pre všetky nehnuteľnosti",
-      "metric2Val": "1 prihlásenie",
-      "metric3Label": "od konceptu k portálu",
-      "metric3Val": "42 dní",
-      "problem": "JP Immobilien prevádzkuje štyri rôzne realitné divízie — Novostavby, Prenájom nehnuteľností, Pohostinstvo a Servisné apartmány — každá s oddelenými kontaktnými bodmi s klientmi a manuálnymi procesmi. Klienti nemali jednotný portál, správcovia účtov vybavovali všetky požiadavky e-mailom a neexistovala centralizovaná viditeľnosť zmlúv, dokumentov ani stavu projektu naprieč divíziami.",
-      "solution": "Vytvorili sme prémiový Angular + Angular Material klientský portál s prístupom rozdeleným podľa divízií. Klienti sa prihlásia raz a navigujú medzi aktívnymi účtami pre Novostavby, Prenájom, Pohostinstvo a Servisné apartmány z jedného dashboardu. Správa dokumentov, sledovanie stavu a in-portálové správy konsolidujú všetku komunikáciu na jednom mieste. Dizajnový systém v zlatej a námornickej modrej odráža prémiové trhové postavenie JP Immobilien.",
-      "subtitle": "Prémiový multi-divízny klientský portál pre rakúsku realitnú skupinu",
-      "timeline": "42 dní"
+    "disputes": {
+      "p1": "Zmluvy sa riadia českým právom. Prípadné spory sa vždy najprv pokúsime vyriešiť dohodou; ak to nepôjde, rozhodne ich príslušný český súd.",
+      "p2": "Ako spotrebiteľ môžete spor riešiť aj mimosúdne prostredníctvom Českej obchodnej inšpekcie (Česká obchodní inšpekce, www.coi.cz).",
+      "title": "Rozhodné právo a spory"
     },
-    "karimpol": {
-      "metric1Label": "trhov pokrytých",
-      "metric1Val": "5",
-      "metric2Label": "pre všetky projekty",
-      "metric2Val": "1 platforma",
-      "metric3Label": "od návrhu do produkcie",
-      "metric3Val": "56 dní",
-      "problem": "Karimpol pôsobí na piatich trhoch — Rakúsko, Poľsko, Slovensko, Česká republika a Maďarsko — bez jednotnej platformy pre sledovanie projektov alebo komunikáciu s klientmi. Vývojové tímy a klienti navigovali v niekoľkých systémoch a e-mailových vláknach pre sledovanie míľnikov a schvaľovacích postupov, čo vytváralo medzery vo viditeľnosti a oneskorenia naprieč hranicami.",
-      "solution": "Vytvorili sme multi-locale Angular + Angular Material portál pokrývajúci všetkých päť trhov. Stránky nehnuteľnostných projektov zobrazujú stav v reálnom čase, sledovanie míľnikov a úložiská dokumentov. Model prístupu na základe rolí umožňuje zamestnancom Karimpol spravovať projekty podľa trhu, zatiaľ čo klienti vidia iba pre nich relevantné projekty. Nasadené na Azure Static Web Apps.",
-      "subtitle": "Firemný portál pre správu nehnuteľnostných projektov pre stredoeurópsku realitnú skupinu",
-      "timeline": "56 dní"
+    "intro": "Tieto podmienky upravujú používanie webu jvm-yore.com a základné pravidlá spolupráce so spoločnosťou JVM Yore, s.r.o. Konkrétny rozsah, cenu a termíny vždy dohodneme v ponuke alebo v zmluve – tá má pred týmito podmienkami prednosť.",
+    "ip": {
+      "p1": "K zdrojovému kódu máte prístup od prvého dňa – vzniká vo vašom repozitári, alebo vám ho priebežne sprístupňujeme. Zaplatením ceny získavate výhradnú, časovo aj územne neobmedzenú licenciu na dielo vytvorené pre vás vrátane práva upravovať ho a odovzdať ho inému dodávateľovi.",
+      "p2": "Knižnice s otvoreným zdrojovým kódom a nástroje tretích strán zostávajú pod svojimi licenciami. Všeobecné know-how a vlastné nástroje, ktoré používame pri viacerých projektoch, môžeme využívať aj naďalej; na ich použitie vo vašom diele máte bezplatnú a neobmedzenú licenciu.",
+      "title": "Zdrojový kód a autorské práva"
     },
-    "logistics": {
-      "metric1Label": "chybovosť doručenia",
-      "metric1Val": "8% → <0.5%",
-      "metric2Label": "hodnotenie v App Store",
-      "metric2Val": "4.8★",
-      "metric3Label": "od nápadu po App Store",
-      "metric3Val": "77 dní",
-      "problem": "The client was coordinating 80+ drivers via WhatsApp and a shared Google Sheet. Deliveries were missed, routes were duplicated, and there was no proof-of-delivery mechanism.",
-      "solution": "We built a Flutter app (iOS + Android) with a .NET backend. Dispatchers assign jobs in real time on a map interface; drivers receive push notifications, capture signatures on delivery.",
-      "subtitle": "Cross-platform mobile app for a growing logistics provider",
-      "timeline": "77 dní"
+    "lastUpdated": "Platné od 17. októbra 2026",
+    "liability": {
+      "p1": "Zodpovedáme za škodu, ktorú spôsobíme porušením svojich povinností. Voči podnikateľom je celková náhrada škody obmedzená výškou ceny zaplatenej za dotknutú službu za posledných 12 mesiacov. Obmedzenie neplatí pre škodu spôsobenú úmyselne alebo z hrubej nedbanlivosti, pre ujmu na zdraví a voči spotrebiteľom.",
+      "p2": "Za obsah webov tretích strán, na ktoré odkazujeme, nezodpovedáme.",
+      "title": "Zodpovednosť"
     },
-    "neovize": {
-      "metric1Label": "portálov zjednotených",
-      "metric1Val": "4",
-      "metric2Label": "digitálny súhlas",
-      "metric2Val": "100 %",
-      "metric3Label": "od konceptu k živému portálu",
-      "metric3Val": "4 dni",
-      "problem": "NeoVize Group prevádzkuje štyri rôzne oftalmologické produktové značky — NeoVize (prémiová laserová korekcia), DuoVize (balíčky duetného videnia), NeoVizia (výmena IOL) a Kukátko (detské videnie) — každá s vlastnými súhlasmi a predoperačnými hodnotiacimi procesmi. Bez jednotnej platformy koordinátori pacientov spravovali papierové formuláre a e-mailové vlákna pre každý produkt, čo spôsobovalo oneskorenia, compliance riziká a fragmentovaný zážitok pacienta.",
-      "solution": "Vytvorili sme jednotný Angular portál pre pacientov, ktorý sa prispôsobuje každej značke. Pacienti si pri prihlásení zvolia produktový portál a prejdú štruktúrovaným digitálnym predoperačným hodnotením — nahrávanie biometrických údajov, zdravotný dotazník a súhlasy s elektronickým podpisom. Vlastný modrý a tyrkysový dizajnový systém zodpovedá klinickej identite NeoVize Group naprieč všetkými štyrmi značkami, zatiaľ čo koordinátori sledujú nevybavené hodnotenia zo zdieľaného dashboardu.",
-      "subtitle": "Pacientský portál pre multi-produktovú oftalmologickú prax NeoVize Group",
-      "timeline": "4 dni"
+    "licenses": {
+      "fontsLink": "Licencia písiem (OFL 1.1)",
+      "li1": "Písma Inter (© The Inter Project Authors) a Space Grotesk (© The Space Grotesk Project Authors) pod licenciou SIL Open Font License 1.1, uložené na našom vlastnom serveri.",
+      "li2": "Ikony zo sád Lucide (licencia ISC) a Feather (licencia MIT).",
+      "li3": "Open-source knižnice ako Angular, RxJS či ngx-translate pod licenciou MIT a ďalšími slobodnými licenciami.",
+      "li4": "Fotografie členov tímu sú naše vlastné. Fotky z fotobánk ani cudzie logá nepoužívame.",
+      "p1": "Na webe používame tieto zdroje tretích strán, vždy v súlade s ich licenciami:",
+      "softwareLink": "Licencie knižníc",
+      "title": "Licencie použitých zdrojov"
     },
-    "notFound": "Prípadová štúdia nenájdená.",
-    "omida": {
-      "metric1Label": "entít zjednotených",
-      "metric1Val": "9",
-      "metric2Label": "pre všetky módy",
-      "metric2Val": "1 prihlásenie",
-      "metric3Label": "od konceptu k live MVP",
-      "metric3Val": "42 dní",
-      "problem": "OMIDA Group S.A. prevádzkuje 9 samostatných logistických entít — cestné, námorné, železničné, skladovacie a ďalšie — každá s vlastnými systémami. Firemní klienti využívajúci viacero služieb OMIDA nemali jednotný prehľad zásielok, dokumentov ani faktúr.",
-      "solution": "Vybudovali sme Angular MVP portál prepravcu, ktorý zjednocuje všetkých 9 entít OMIDA pod jedným prihlásením. Centrom je cross-entitná časová os zásielok zobrazujúca cestnú, námornú, železničnú a skladovú aktivitu v jednom dashboarde. Portál zahŕňa live multi-módovú mapu (Leaflet), sklad dokumentov a systém entity-badge tagujúci každý záznam prevádzkovou spoločnosťou.",
-      "subtitle": "MVP unifikovaného multi-entitného portálu prepravcu pre poľský logistický holding €330M",
-      "timeline": "42 dní"
+    "pricing": {
+      "li1": "Nie sme platiteľmi DPH, preto k uvedeným cenám DPH nepripočítavame. Ak sa platiteľmi staneme, dáme vám to vedieť vopred a DPH budeme pripočítavať odo dňa registrácie.",
+      "li2": "Projekty s pevným rozsahom: 50 % ceny fakturujeme ako zálohu pred začatím práce, zvyšok po odovzdaní.",
+      "li3": "Celý tím a Podpora a LTS: fakturujeme mesačne vopred.",
+      "li4": "Konzultácie: fakturujeme po skončení podľa skutočne stráveného času, v hodinovej sadzbe z cenníka.",
+      "li5": "Faktúry sú splatné do 14 dní od vystavenia, bankovým prevodom.",
+      "li6": "Náklady tretích strán (napríklad hosting, licencie alebo poplatky obchodov s aplikáciami) platíte priamo vy, alebo vám ich prefakturujeme bez prirážky – vždy až s vaším súhlasom.",
+      "p1": "Ceny uvádzame bez skrytých poplatkov. Čokoľvek, čo v cene nie je, s vami vždy dohodneme vopred.",
+      "title": "Ceny a platby"
     },
-    "problem": "Problém",
-    "solution": "Naše riešenie",
-    "techStack": "Technológie",
-    "timeline": "Dĺžka projektu",
-    "vedos": {
-      "metric1Label": "vozidiel sledovaných naživo",
-      "metric1Val": "16",
-      "metric2Label": "plnenie SLA",
-      "metric2Val": "90 %",
-      "metric3Label": "od návrhu do produkcie",
-      "metric3Val": "70 dní",
-      "problem": "VEDOS, logistická spoločnosť prevádzkujúca automotive JIT okruhy a cold-chain trasy naprieč Slovenskom a Nemeckom, riadila dispečing ručne cez telefóny a tabuľky. Dispečeri nemali živý prehľad o pozíciách vozidiel, stave JIT okruhov ani teplotných alarmoch — nebolo možné reagovať na meškania skôr, ako sa z nich stalo porušenie SLA.",
-      "solution": "Vytvorili sme Angular + Material Design 3 prepravný portál s .NET API. Dispečeri majú live mapu flotily (Leaflet, aktualizácia každých 30 sekúnd), JIT board so sledovaním SLA (±15 min), cold-chain monitoring s teplotnými alarmami a integrovaný workflow pre cenové ponuky. Portál je nasadený na Azure Static Web Apps.",
-      "subtitle": "Real-time logistický portál pre slovenského dopravcu a prepravnú spoločnosť",
-      "timeline": "70 dní"
+    "provider": {
+      "p1": "Služby poskytuje spoločnosť JVM Yore, s.r.o., IČO 29633443, so sídlom Příčná 1892/4, Nové Město, 110 00 Praha 1, zapísaná v obchodnom registri vedenom Mestským súdom v Prahe, oddiel C, vložka 449138 (ďalej len „my“). Kontakt: hello@jvm-yore.com.",
+      "title": "Kto sme"
+    },
+    "scope": {
+      "p1": "Služby – vývoj softvéru, podporu a konzultácie – poskytujeme predovšetkým podnikateľom a firmám. Vzťahy s nimi sa riadia týmito podmienkami a českým Občianskym zákonníkom.",
+      "p2": "Ak s nami uzavriete zmluvu ako spotrebiteľ, máte navyše všetky práva, ktoré vám priznávajú predpisy na ochranu spotrebiteľa, a tieto podmienky ich nijako neobmedzujú. Týka sa to najmä práva odstúpiť od zmluvy uzavretej na diaľku – podrobnosti nájdete v dokumente Platby a vrátenie peňazí.",
+      "title": "Na koho sa podmienky vzťahujú"
+    },
+    "sectionLabel": "Právne informácie",
+    "termination": {
+      "p1": "Celý tím aj Podporu a LTS môžete kedykoľvek vypovedať e-mailom, s účinnosťou ku koncu aktuálneho fakturačného mesiaca. Nemáme žiadnu minimálnu dobu trvania ani poplatok za ukončenie.",
+      "p2": "Projekt s pevným rozsahom možno ukončiť dohodou alebo z dôvodov, ktoré stanovuje zákon. Ako v takom prípade vyúčtujeme odvedenú prácu a vrátime zálohu, popisuje dokument Platby a vrátenie peňazí.",
+      "title": "Ukončenie spolupráce"
+    },
+    "title": "Obchodné podmienky",
+    "warranty": {
+      "p1": "Po spustení projektu s pevným rozsahom 30 dní bezplatne opravujeme všetky chyby, ktoré sú v rozpore so zadaním. Na kritickú chybu, ktorá bráni používaniu aplikácie, reagujeme do 4 hodín.",
+      "p2": "Pri Podpore a LTS platia reakčné časy (SLA) dohodnuté v zmluve. Záruka sa nevzťahuje na chyby spôsobené zásahmi tretích strán, zmenami infraštruktúry mimo našej správy alebo používaním v rozpore s dokumentáciou.",
+      "title": "Záruka a oprava chýb"
+    },
+    "website": {
+      "p1": "Obsah webu – texty, grafika, logo a fotografie tímu – je chránený autorským právom a patrí nám. Bez nášho súhlasu ho, prosím, nekopírujte ani ďalej nešírte; bežné citovanie s uvedením zdroja je v poriadku.",
+      "p2": "Snažíme sa, aby informácie na webe boli presné a aktuálne, ale web môže byť občas nedostupný alebo obsahovať chybu. Rozhodujúce sú vždy údaje v ponuke a v zmluve.",
+      "title": "Používanie webu"
     }
   }
 } as const;

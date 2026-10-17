@@ -16,7 +16,7 @@ $green-darker: #047857;
 // Brand orange — the logo's hue (#F26100) at full saturation but a deeper
 // lightness, so it reads rich instead of neon on near-black.
 $orange-fill:       #D14400;  // button fill — white text 4.6:1 (AA)
-$orange-fill-hover: #DF5200;
+$orange-fill-hover: #BD3D00;  // darker on hover so white text stays AA (5.5:1)
 
 // Theme accents — mirrored into --accent / --accent-display / --accent-rgb in
 // styles.scss. `accent` is for small text (≥ 4.5:1); `accent-display` for

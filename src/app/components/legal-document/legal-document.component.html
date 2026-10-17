@@ -1,0 +1,76 @@
+<main id="main-content" class="legal">
+  <div class="legal__inner container">
+
+    <header class="legal__header" appScrollReveal revealClass="reveal">
+      <span class="section-label">{{ headerKeys().label | translate }}</span>
+      <h1 class="legal__title">{{ headerKeys().title | translate }}</h1>
+      <p class="legal__meta">{{ headerKeys().updated | translate }}</p>
+      <p class="legal__intro">{{ headerKeys().intro | translate }}</p>
+    </header>
+
+    <div class="legal__layout">
+
+      <!-- Table of contents (desktop) -->
+      <nav class="legal__toc" aria-labelledby="legal-toc-title">
+        <h2 id="legal-toc-title" class="legal__eyebrow">{{ 'legal.toc' | translate }}</h2>
+        <ol class="legal__toc-list">
+          @for (section of sections(); track section.id) {
+            <li>
+              <a class="legal__toc-link" [href]="section.href" (click)="jumpTo(section.id, $event)">
+                {{ section.titleKey | translate }}
+              </a>
+            </li>
+          }
+        </ol>
+      </nav>
+
+      <div class="legal__body">
+        @for (section of sections(); track section.id) {
+          <section class="legal__section">
+            <h2 class="legal__section-title" [id]="section.id" tabindex="-1">{{ section.titleKey | translate }}</h2>
+
+            @for (block of section.blocks; track block.keys[0]) {
+              @if (block.list) {
+                <ul class="legal__block legal__list">
+                  @for (key of block.keys; track key) {
+                    <li>{{ key | translate }}</li>
+                  }
+                </ul>
+              } @else {
+                <p class="legal__block">{{ block.keys[0] | translate }}</p>
+              }
+            }
+
+            @if (section.links.length) {
+              <ul class="legal__links">
+                @for (link of section.links; track link.labelKey) {
+                  <li>
+                    <a class="legal__link" [href]="link.href">
+                      {{ link.labelKey | translate }}
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                  </li>
+                }
+              </ul>
+            }
+          </section>
+        }
+
+        <nav class="legal__related" aria-labelledby="legal-related-title">
+          <h2 id="legal-related-title" class="legal__eyebrow">{{ 'legal.related' | translate }}</h2>
+          <ul class="legal__related-list">
+            @for (related of relatedDocs(); track related.id) {
+              <li>
+                <a class="legal__related-link" [routerLink]="related.path">
+                  {{ related.labelKey | translate }}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </li>
+            }
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </div>
+</main>
