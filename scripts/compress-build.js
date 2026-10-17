@@ -34,6 +34,14 @@ async function run() {
     console.error('dist not found — run ng build first');
     process.exit(1);
   }
+
+  // Angular writes the open-source licence notices next to browser/, where nothing serves
+  // them — copy them in so /3rdpartylicenses.txt (linked from the terms page) resolves.
+  const licenses = path.join(DIST, '../3rdpartylicenses.txt');
+  if (fs.existsSync(licenses)) {
+    fs.copyFileSync(licenses, path.join(DIST, '3rdpartylicenses.txt'));
+  }
+
   const files = [...walkDir(DIST)].filter(f =>
     COMPRESSIBLE.has(path.extname(f)) && !f.endsWith('.gz') && !f.endsWith('.br'));
 

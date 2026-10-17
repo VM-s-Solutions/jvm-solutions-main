@@ -31,15 +31,20 @@ export const routes: Routes = [
     title: 'Pricing — JVM Yore',
   },
   {
-    path: 'work/:id',
-    loadComponent: () => import('./pages/work/case-study.component').then(m => m.CaseStudyComponent),
-    title: 'Case Study — JVM Yore',
-  },
-  {
     path: 'privacy',
     loadComponent: () =>
       import('./pages/privacy/privacy.component').then(m => m.PrivacyComponent),
     title: 'Privacy Policy — JVM Yore',
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./pages/terms/terms.component').then(m => m.TermsComponent),
+    title: 'Terms of Service — JVM Yore',
+  },
+  {
+    path: 'refunds',
+    loadComponent: () => import('./pages/refunds/refunds.component').then(m => m.RefundsComponent),
+    title: 'Payments & Refunds — JVM Yore',
   },
   {
     path: '**',

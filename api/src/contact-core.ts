@@ -42,7 +42,12 @@ export async function processContactRequest(rawBody: unknown): Promise<ContactRe
     return { status: 400, body: { error: 'Invalid email address' } };
   }
 
-  if (name.length > MAX_LEN.name || email.length > MAX_LEN.email || message.length > MAX_LEN.message) {
+  if (
+    name.length > MAX_LEN.name ||
+    email.length > MAX_LEN.email ||
+    service.length > MAX_LEN.service ||
+    message.length > MAX_LEN.message
+  ) {
     return { status: 400, body: { error: 'One or more fields exceed maximum length' } };
   }
 

@@ -1,8 +1,8 @@
-<nav class="navbar">
+<nav class="navbar" [attr.aria-label]="'a11y.mainNav' | translate">
   <div class="navbar__inner container">
 
     <!-- Wordmark -->
-    <a class="navbar__logo" routerLink="/" (click)="closeMenu()" aria-label="JVM Yore home">
+    <a class="navbar__logo" routerLink="/" (click)="closeMenu()" [attr.aria-label]="'a11y.home' | translate">
       <jvm-logo />
     </a>
 
@@ -26,33 +26,34 @@
     <!-- Language switcher (desktop) -->
     <div class="navbar__lang-dropdown">
       <button
+        #langTrigger
+        type="button"
         class="navbar__lang-trigger"
         (click)="toggleLangDropdown()"
         [attr.aria-expanded]="langDropdownOpen()"
-        aria-haspopup="listbox"
-        aria-label="Select language"
+        aria-controls="lang-menu"
+        [attr.aria-label]="'a11y.language' | translate: { lang: currentLangLabel() }"
       >
-        {{ translate.currentLang | uppercase }}
+        {{ currentLangLabel() }}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </button>
       @if (langDropdownOpen()) {
         <ul
+          id="lang-menu"
           class="navbar__lang-menu"
-          role="listbox"
-          aria-label="Language options"
           animate.enter="is-entering"
           animate.leave="is-leaving"
         >
           @for (lang of languages; track lang.code) {
             <li>
               <button
+                type="button"
                 class="navbar__lang-option"
                 [class.is-active]="translate.currentLang === lang.code"
                 (click)="selectLang(lang.code)"
-                role="option"
-                [attr.aria-selected]="translate.currentLang === lang.code"
+                [attr.aria-pressed]="translate.currentLang === lang.code"
               >{{ lang.label }}</button>
             </li>
           }
@@ -62,10 +63,10 @@
 
     <!-- Theme toggle -->
     <button
+      type="button"
       class="navbar__theme-toggle"
       (click)="themeService.toggle()"
-      [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
-      [attr.aria-pressed]="themeService.theme() === 'light'"
+      [attr.aria-label]="themeToggleLabelKey() | translate"
     >
       @if (themeService.theme() === 'dark') {
         <!-- Sun -->
@@ -86,11 +87,14 @@
 
     <!-- Hamburger -->
     <button
+      #menuTrigger
+      type="button"
       class="navbar__hamburger"
       [class.is-open]="menuOpen()"
       (click)="toggleMenu()"
       [attr.aria-expanded]="menuOpen()"
-      aria-label="Toggle mobile menu"
+      aria-controls="mobile-menu"
+      [attr.aria-label]="'a11y.menu' | translate"
     >
       <span></span>
       <span></span>
@@ -99,7 +103,7 @@
   </div>
 
   <!-- Mobile Menu -->
-  <div class="navbar__mobile" [class.is-open]="menuOpen()" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div id="mobile-menu" class="navbar__mobile" [class.is-open]="menuOpen()">
     <ul role="list">
       @for (link of navLinks; track link.label) {
         <li>
@@ -118,6 +122,7 @@
       <li class="navbar__mobile-lang">
         @for (lang of languages; track lang.code) {
           <button
+            type="button"
             class="navbar__lang-btn"
             [class.is-active]="translate.currentLang === lang.code"
             (click)="switchLang(lang.code)"

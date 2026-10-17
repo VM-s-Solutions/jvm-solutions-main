@@ -4,7 +4,7 @@
 
       <!-- Brand -->
       <div class="footer__brand">
-        <a class="footer__logo" routerLink="/" aria-label="JVM Yore home">
+        <a class="footer__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
           <jvm-logo />
         </a>
         <p class="footer__tagline">
@@ -13,15 +13,15 @@
       </div>
 
       <!-- Links -->
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <h3 class="footer__nav-title">{{ 'footer.nav' | translate }}</h3>
+      <nav class="footer__nav" [attr.aria-label]="'a11y.footerNav' | translate">
+        <h2 class="footer__nav-title">{{ 'footer.nav' | translate }}</h2>
         <ul role="list">
           @for (link of footerLinks; track link.label) {
             <li>
               @if (link.routerLink) {
                 <a [routerLink]="link.routerLink" class="footer__link">{{ link.label | translate }}</a>
               } @else {
-                <a href="#" (click)="scrollToSection(link.fragment ?? '', $event)" class="footer__link">{{ link.label | translate }}</a>
+                <a href="/#{{ link.fragment }}" (click)="scrollToSection(link.fragment ?? '', $event)" class="footer__link">{{ link.label | translate }}</a>
               }
             </li>
           }
@@ -30,7 +30,7 @@
 
       <!-- Contact -->
       <div class="footer__contact">
-        <h3 class="footer__nav-title">{{ 'footer.contact' | translate }}</h3>
+        <h2 class="footer__nav-title">{{ 'footer.contact' | translate }}</h2>
         <a href="mailto:hello@jvm-yore.com" class="footer__link">hello&#64;jvm-yore.com</a>
       </div>
 
@@ -38,9 +38,11 @@
 
     <div class="footer__bottom">
       <p>&copy; {{ year }} JVM Yore, s.r.o.</p>
-      <div class="footer__bottom-right">
-        <a routerLink="/privacy" class="footer__privacy-link">{{ 'footer.privacy' | translate }}</a>
-      </div>
+      <nav class="footer__bottom-right" [attr.aria-label]="'a11y.legalNav' | translate">
+        @for (doc of legalDocs; track doc.id) {
+          <a [routerLink]="doc.path" class="footer__legal-link">{{ doc.labelKey | translate }}</a>
+        }
+      </nav>
     </div>
   </div>
 </footer>

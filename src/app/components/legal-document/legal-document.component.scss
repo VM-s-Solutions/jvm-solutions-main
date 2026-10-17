@@ -1,0 +1,190 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.legal {
+  min-height: 100vh;
+
+  &__inner {
+    @include section-padding;
+    @include page-top;
+  }
+}
+
+// ── Header — same left edge and measure as every other page header ──────────
+.legal__header {
+  max-width: 720px;
+  margin-bottom: $space-12;
+
+  @include md { margin-bottom: $space-16; }
+}
+
+.legal__title {
+  @include heading-section;
+  margin-bottom: $space-3;
+}
+
+.legal__meta {
+  font-size: $text-sm;
+  color: var(--text-muted);
+  margin-bottom: $space-6;
+}
+
+.legal__intro {
+  @include lead;
+}
+
+// ── Layout: contents rail + one readable text column ────────────────────────
+.legal__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  @include lg {
+    grid-template-columns: 15rem minmax(0, 720px);
+    gap: $space-16;
+  }
+}
+
+// Small uppercase heading shared by the contents rail and the related links
+.legal__eyebrow {
+  font-family: $font-body;
+  font-size: $text-xs;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: $space-4;
+}
+
+// ── Table of contents — desktop only; on mobile the sections simply follow ──
+.legal__toc {
+  display: none;
+
+  @include lg {
+    display: block;
+    position: sticky;
+    top: calc(#{$nav-height} + #{$space-8});
+    align-self: start;
+  }
+}
+
+.legal__toc-list {
+  list-style: none;
+  border-left: 1px solid var(--border-color);
+}
+
+.legal__toc-link {
+  display: block;
+  margin-left: -1px;
+  padding: $space-1 $space-4;
+  border-left: 1px solid transparent;
+  font-size: $text-sm;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: color $transition-fast, border-color $transition-fast;
+
+  &:hover {
+    color: var(--text-primary);
+    border-left-color: var(--text-muted);
+  }
+}
+
+// ── Sections — numbered by CSS so the keys stay free of numbering ──────────
+.legal__body {
+  counter-reset: legal-section;
+}
+
+.legal__section {
+  counter-increment: legal-section;
+  padding-block: $space-8;
+  border-top: 1px solid var(--border-color);
+
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+.legal__section-title {
+  font-size: $text-xl;
+  margin-bottom: $space-4;
+
+  @include md { font-size: $text-2xl; }
+
+  &::before {
+    content: counter(legal-section) '.';
+    margin-right: $space-2;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.legal__block {
+  font-size: $text-base;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+
+  & + & { margin-top: $space-4; }
+}
+
+.legal__list {
+  padding-left: $space-6;
+
+  li + li { margin-top: $space-2; }
+
+  li::marker { color: var(--text-muted); }
+}
+
+// ── Section links (mailto requests, licence files) ──────────────────────────
+.legal__links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3 $space-6;
+  margin-top: $space-6;
+}
+
+.legal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color $transition-fast;
+
+  &:hover { text-decoration-color: currentColor; }
+}
+
+// ── Related documents ───────────────────────────────────────────────────────
+.legal__related {
+  margin-top: $space-4;
+  padding-top: $space-8;
+  border-top: 1px solid var(--border-color);
+}
+
+.legal__related-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3 $space-8;
+}
+
+.legal__related-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color $transition-fast;
+
+  &:hover { color: var(--text-primary); }
+}
