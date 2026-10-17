@@ -3,7 +3,7 @@
 
     <header class="legal__header" appScrollReveal revealClass="reveal">
       <span class="section-label">{{ headerKeys().label | translate }}</span>
-      <h1 class="legal__title">{{ headerKeys().title | translate }}</h1>
+      <h1 #pageTitle class="legal__title">{{ headerKeys().title | translate }}</h1>
       <p class="legal__meta">{{ headerKeys().updated | translate }}</p>
       <p class="legal__intro">{{ headerKeys().intro | translate }}</p>
     </header>
@@ -35,7 +35,7 @@
       <div class="legal__body">
         @for (section of sections(); track section.id) {
           <section class="legal__section">
-            <h2 class="legal__section-title" [id]="section.id" tabindex="-1">{{ section.titleKey | translate }}</h2>
+            <h2 #sectionTitle class="legal__section-title" [id]="section.id" tabindex="-1">{{ section.titleKey | translate }}</h2>
 
             @for (block of section.blocks; track block.keys[0]) {
               @if (block.list) {
