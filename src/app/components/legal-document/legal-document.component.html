@@ -16,8 +16,16 @@
         <ol class="legal__toc-list">
           @for (section of sections(); track section.id) {
             <li>
-              <a class="legal__toc-link" [href]="section.href" (click)="jumpTo(section.id, $event)">
-                {{ section.titleKey | translate }}
+              <a
+                class="legal__toc-link"
+                [class.is-active]="activeId() === section.id"
+                [attr.aria-current]="activeId() === section.id ? 'true' : null"
+                [href]="section.href"
+                (click)="jumpTo(section.id, $event)"
+              >
+                <span class="legal__toc-label">{{ section.titleKey | translate }}</span>
+                <!-- invisible bold copy reserves the bold line breaks, so highlighting never shifts the list -->
+                <span class="legal__toc-label legal__toc-label--sizer" aria-hidden="true">{{ section.titleKey | translate }}</span>
               </a>
             </li>
           }
