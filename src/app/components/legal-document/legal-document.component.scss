@@ -77,10 +77,10 @@
 }
 
 .legal__toc-link {
-  display: block;
+  display: grid;
   margin-left: -1px;
   padding: $space-1 $space-4;
-  border-left: 1px solid transparent;
+  border-left: 2px solid transparent;
   font-size: $text-sm;
   line-height: 1.5;
   color: var(--text-secondary);
@@ -89,6 +89,22 @@
   &:hover {
     color: var(--text-primary);
     border-left-color: var(--text-muted);
+  }
+
+  // The section being read — set on click and while scrolling
+  &.is-active {
+    color: var(--text-primary);
+    font-weight: 600;
+    border-left-color: var(--accent-display);
+  }
+}
+
+.legal__toc-label {
+  grid-area: 1 / 1;
+
+  &--sizer {
+    font-weight: 600;
+    visibility: hidden;
   }
 }
 
