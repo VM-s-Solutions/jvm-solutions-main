@@ -1,0 +1,36 @@
+<div class="card spec">
+  <b><jvm-swap-text [text]="product()" /></b>
+  <span class="card__sub">{{ 'paper.board.spec.label' | translate }}</span>
+  <ul>
+    @for (item of specItems; track item) {
+      <li>{{ item | translate }}</li>
+    }
+  </ul>
+  <p class="card__line">Angular · .NET · PostgreSQL</p>
+  <p class="card__price"><jvm-icon name="check" />{{ 'paper.board.spec.price' | translate }}</p>
+  <p class="card__foot">{{ 'paper.board.spec.terms' | translate }}</p>
+</div>
+
+<div class="card card--dark staging">
+  <b><jvm-swap-text [text]="product()" /></b>
+  <span class="card__sub">{{ 'paper.board.staging.label' | translate }}</span>
+  <dl>
+    @for (row of stagingRows; track row.term) {
+      <div>
+        <dt>{{ row.term | translate }}</dt>
+        <dd>{{ row.value | translate }}</dd>
+      </div>
+    }
+  </dl>
+</div>
+
+<div class="card handover">
+  <b><jvm-swap-text [text]="product()" /></b>
+  <span class="card__sub">{{ 'paper.board.handover.label' | translate }}</span>
+  <ul class="checks">
+    @for (item of handoverItems; track item) {
+      <li><jvm-icon name="check" />{{ item | translate }}</li>
+    }
+  </ul>
+  <p class="card__sign hand">Janis, Vít, Michael</p>
+</div>

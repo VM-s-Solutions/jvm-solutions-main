@@ -1,0 +1,47 @@
+<section class="section section--soft" id="team" aria-labelledby="team-title">
+  <div class="container">
+    <div class="sec-head sec-head--center">
+      <div>
+        <h2 class="h2" id="team-title" [jvmSplit]="'team.title' | translate"></h2>
+        <p class="sec-head__p" jvmReveal>{{ 'team.meaning' | translate }} {{ 'team.tap' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="trio" role="tablist" [attr.aria-label]="'a11y.team' | translate" jvmReveal>
+      @for (member of members; track member.id; let i = $index) {
+        <button
+          #tab
+          type="button"
+          role="tab"
+          class="trio__tab"
+          [id]="member.tabId"
+          [attr.aria-controls]="member.panelId"
+          [attr.aria-selected]="i === selected()"
+          [tabIndex]="i === selected() ? 0 : -1"
+          (click)="select(i)"
+          (keydown)="onKeydown($event, i)"
+        >
+          <span class="trio__img">
+            <img [src]="member.avatar" alt="" width="152" height="152" loading="lazy" decoding="async" />
+            <em aria-hidden="true">{{ member.initial }}</em>
+          </span>
+          <b class="trio__name">{{ member.full }}</b>
+          <span class="trio__role">{{ member.roleKey | translate }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="bios" jvmReveal [revealDelay]="0.1">
+      @for (member of members; track member.id; let i = $index) {
+        <p
+          class="bio"
+          role="tabpanel"
+          [id]="member.panelId"
+          [attr.aria-labelledby]="member.tabId"
+          [attr.aria-hidden]="i !== selected() || null"
+          [class.is-on]="i === selected()"
+        >{{ member.bioKey | translate }}</p>
+      }
+    </div>
+  </div>
+</section>

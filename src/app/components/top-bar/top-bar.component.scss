@@ -1,0 +1,145 @@
+@use 'abstracts' as *;
+
+:host {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: $z-nav;
+  display: block;
+  padding-top: env(safe-area-inset-top, 0px);
+  view-transition-name: topbar;
+  color: var(--ink);
+  transition: color $duration-base $ease-out;
+
+  // The frosted sheet fades in once the page has scrolled
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: $z-below;
+    @include frosted(rgba($color-bg, 0.8));
+    box-shadow: inset 0 -1px 0 rgba($color-ink, 0.06);
+    opacity: 0;
+    transition:
+      opacity $duration-base $ease-out,
+      background-color $duration-base $ease-out,
+      box-shadow $duration-base $ease-out;
+  }
+}
+
+:host(.is-scrolled)::before {
+  opacity: 1;
+}
+
+:host(.is-dark) {
+  color: var(--night-ink);
+
+  &::before {
+    background: rgba($color-night, 0.78);
+    box-shadow: inset 0 -1px 0 rgba($color-bg, 0.06);
+  }
+}
+
+.top__in {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: $space-6;
+  height: var(--nav-h);
+
+  @include md { grid-template-columns: 1fr auto 1fr; }
+}
+
+.top__logo {
+  justify-self: start;
+  display: block;
+  border-radius: 6px;
+
+  jvm-logo {
+    height: 1.625rem;
+    aspect-ratio: 1214 / 255;
+  }
+}
+
+// ─── Tabs (desktop) ───────────────────────────────────────────────────────────
+.tabs {
+  position: relative;
+  display: none;
+  gap: 2px;
+  padding: 5px;
+  border-radius: $radius-pill;
+  background: rgba($color-soft, 0.9);
+  box-shadow: inset 0 0 0 1px rgba($color-ink, 0.04);
+  transition: background-color $duration-base $ease-out, box-shadow $duration-base $ease-out;
+
+  @include md { display: flex; }
+}
+
+// Labels sit above the thumb that slides beneath them
+.tabs__link {
+  position: relative;
+  z-index: $z-raised;
+  padding: $space-2 $space-4;
+  border-radius: $radius-pill;
+  font-size: $text-md;
+  font-weight: $weight-medium;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color $duration-short $ease-out;
+
+  @include hover { color: var(--ink); }
+
+  // The page that's showing, and whichever tab the thumb sits under (hovered or focused)
+  &.is-active,
+  &.is-thumb { color: var(--ink); }
+}
+
+.tabs__thumb {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  border-radius: $radius-pill;
+  background: var(--bg);
+  box-shadow:
+    0 1px 2px rgba($color-ink, 0.08),
+    0 6px 16px -8px rgba($color-ink, 0.25);
+  opacity: 0;
+  transition:
+    transform $duration-slow $ease-ios,
+    width $duration-slow $ease-ios,
+    opacity $duration-quick $ease-out;
+}
+
+:host(.is-dark) {
+  .tabs {
+    background: rgba($color-bg, 0.1);
+    box-shadow: none;
+  }
+
+  // Light on the dark pill; the active tab stays light when the thumb has moved to another one
+  .tabs__link {
+    color: var(--night-muted);
+
+    @include hover { color: var(--night-ink); }
+
+    &.is-active { color: var(--night-ink); }
+
+    // Last, so it wins: the tab under the white thumb reads dark on it
+    &.is-thumb { color: var(--ink); }
+  }
+}
+
+// ─── End: language + call to action ───────────────────────────────────────────
+.top__end {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.top__cta {
+  display: none;
+
+  @include md { display: inline-flex; }
+}

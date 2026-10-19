@@ -1,0 +1,134 @@
+@use 'abstracts' as *;
+
+// Everything inside the screen is sized in cqi (the card's mock-screen container), so
+// the screen scales as one picture from a phone to a wide desktop.
+$tab-pad: 0.6cqi;
+$tab-gap: 0.4cqi;
+// The incoming text waits until the outgoing one has begun to fade
+$stagger: $duration-fast * 0.5;
+
+:host {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--soft-2);
+}
+
+.lang {
+  width: 82%;
+  overflow: hidden;
+  border-radius: 3cqi;
+  background: var(--bg);
+  box-shadow:
+    0 0 0 0.25cqi var(--line),
+    0 5cqi 9cqi -5cqi rgba($color-ink, 0.3);
+}
+
+// ─── Title bar: the product's name and the language tabs ──────────────────────
+.lang__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3cqi;
+  padding: 2.6cqi 3.4cqi;
+  box-shadow: inset 0 -0.2cqi 0 var(--soft-2);
+}
+
+.lang__name {
+  font: $weight-semibold 3cqi/1 $font-display;
+  @include ellipsis;
+}
+
+// Equal columns, so the thumb can find a tab from its index alone
+.lang__tabs {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: $tab-gap;
+  padding: $tab-pad;
+  border-radius: 2cqi;
+  background: var(--soft);
+}
+
+.lang__thumb {
+  position: absolute;
+  top: $tab-pad;
+  bottom: $tab-pad;
+  left: $tab-pad;
+  width: calc((100% - 2 * #{$tab-pad} - (var(--n, 4) - 1) * #{$tab-gap}) / var(--n, 4));
+  border-radius: 1.6cqi;
+  background: var(--bg);
+  box-shadow: 0 0.3cqi 0.8cqi rgba($color-ink, 0.12);
+  transform: translateX(calc(var(--k, 0) * (100% + #{$tab-gap})));
+  transition: transform $duration-slow $ease-ios;
+}
+
+// Above the thumb; the mock-screen container is its own stacking context, so this stays local
+.lang__tab {
+  position: relative;
+  z-index: $z-raised;
+  padding: 0.8cqi 1.8cqi;
+  font: $weight-semibold 2.2cqi/1 $font-text;
+  text-align: center;
+  color: var(--muted);
+  transition: color $duration-base $ease-out;
+
+  &.is-on { color: var(--ink); }
+}
+
+// ─── The form ─────────────────────────────────────────────────────────────────
+.lang__body {
+  display: grid;
+  gap: 2cqi;
+  padding: 5cqi 5cqi 5.4cqi;
+}
+
+// All four languages share one cell, so the screen never changes size as they swap
+.lang__stack {
+  display: grid;
+
+  > span {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(1.4cqi);
+    transition:
+      opacity $duration-base $ease-out,
+      transform $duration-slow $ease-out;
+
+    &.is-on {
+      opacity: 1;
+      transform: none;
+      transition-delay: $stagger;
+    }
+  }
+}
+
+.lang__title > span {
+  font: $weight-semibold 5cqi/1.1 $font-display;
+  letter-spacing: -0.03em;
+}
+
+.lang__sub > span {
+  font-size: 2.6cqi;
+  color: var(--muted);
+}
+
+.lang__field {
+  display: block;
+  height: 6.4cqi;
+  border-radius: 1.6cqi;
+  background: var(--soft);
+  box-shadow: inset 0 0 0 0.25cqi var(--line);
+}
+
+.lang__cta {
+  justify-self: start;
+  margin-top: 0.6cqi;
+  padding: 1.8cqi 4cqi;
+  border-radius: 4cqi;
+  background: var(--orange);
+  color: var(--ink);
+  font: $weight-semibold 2.6cqi/1 $font-text;
+}

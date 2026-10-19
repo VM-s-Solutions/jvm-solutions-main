@@ -1,15 +1,18 @@
-import { ACCENT, ACCENT_FILL, INK, LINE, MUTED, SITE, emailLayout } from './theme';
+import { ACCENT, ACCENT_FILL, INK, LINE, MUTED, NOT_PROVIDED, SITE, emailLayout } from './theme';
 
 export interface InternalNotificationData {
   safeName: string;
   safeEmail: string;
   safeCompany: string;
+  /** The idea's name from the Subject line, or NOT_PROVIDED when they left it empty */
+  safeProject: string;
   safeService: string;
   safeMessage: string;
   rawName: string;
   rawEmail: string;
   rawService: string;
   rawCompany: string;
+  rawProject: string;
   rawMessage: string;
   lang: string;
 }
@@ -28,11 +31,13 @@ function detailRow(label: string, value: string): string {
 }
 
 export function internalNotificationHtml(d: InternalNotificationData): string {
-  const hasCompany = d.safeCompany !== '—';
+  const hasCompany = d.rawCompany !== NOT_PROVIDED;
+  const hasProject = d.rawProject !== NOT_PROVIDED;
   const language = LANGUAGES[d.lang] ?? d.lang;
   // Message preview for the inbox list; drop a trailing half-cut HTML entity.
   const preview = d.safeMessage.replace(/<br>/g, ' ').slice(0, PREVIEW_LENGTH).replace(/&[^;\s]*$/, '');
-  const replyHref = `mailto:${d.safeEmail}?subject=${encodeURIComponent(`Re: JVM Yore — ${d.rawService}`)}`;
+  const replySubject = hasProject ? `Re: JVM Yore — ${d.rawService} — ${d.rawProject}` : `Re: JVM Yore — ${d.rawService}`;
+  const replyHref = `mailto:${d.safeEmail}?subject=${encodeURIComponent(replySubject)}`;
 
   const body = `
           <tr>
@@ -46,6 +51,7 @@ export function internalNotificationHtml(d: InternalNotificationData): string {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid ${LINE};">${[
                 detailRow('Email', `<a href="mailto:${d.safeEmail}" style="color:${ACCENT};text-decoration:none;">${d.safeEmail}</a>`),
                 detailRow('Company', hasCompany ? d.safeCompany : `<span style="color:${MUTED};">Not provided</span>`),
+                detailRow('Project', hasProject ? d.safeProject : `<span style="color:${MUTED};">Not provided</span>`),
                 detailRow('Service', d.safeService),
                 detailRow('Language', language),
               ].join('')}
@@ -88,6 +94,7 @@ export function internalNotificationText(d: InternalNotificationData): string {
     `Name:     ${d.rawName}`,
     `Email:    ${d.rawEmail}`,
     `Company:  ${d.rawCompany}`,
+    `Project:  ${d.rawProject}`,
     `Service:  ${d.rawService}`,
     `Language: ${LANGUAGES[d.lang] ?? d.lang}`,
     '',

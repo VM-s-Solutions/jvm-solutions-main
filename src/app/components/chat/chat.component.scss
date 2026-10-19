@@ -1,0 +1,388 @@
+@use 'abstracts' as *;
+
+// The window's height steps up with the layout: phone, large phone / tablet, desktop
+$chat-h: 31.25rem;      // 500px
+$chat-h-sm: 33.75rem;   // 540px
+$chat-h-md: 37.5rem;    // 600px
+
+$face: $space-10;
+$face-overlap: $face * 0.25;
+
+// The thread's side padding
+$body-pad-x: $space-4;
+
+// One row of chips: the reply area never collapses below it, so the thread doesn't jump
+$reply-min-h: 4.75rem;  // 76px
+
+// The action button hangs below its bubble, so the face stays level with the bubble
+$act-h: 2.375rem;       // 38px
+$act-gap: $space-3;
+// Theirs start past the face and its gap (MessageComponent). An action may run on past its
+// bubble to the window's inner edge, never beyond it: a longer label ends in "…"
+$msg-indent: calc(#{$msg-face} + #{$space-2});
+$act-max-w: calc(100cqi + #{$body-pad-x} - #{$msg-indent});
+
+// Chips, the name box and the action button rise in one after another
+$stagger: $stagger-lg;
+$stagger-lead: $stagger-xs;
+
+// A chip turns into the visitor's bubble, so it keeps the bubble's padding (MessageComponent)
+$chip-pad: $bubble-pad;
+$chip-ring: inset 0 0 0 1.5px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: $chat-h;
+  overflow: hidden;
+  // keeps the rounded clip on Safari while the thread scrolls
+  isolation: isolate;
+  border-radius: $radius-lg;
+  background: var(--bg);
+  @include window-shadow;
+
+  @include sm {
+    height: $chat-h-sm;
+    border-radius: $radius-xl;
+  }
+
+  @include md { height: $chat-h-md; }
+}
+
+// ─── Head: the three of us ────────────────────────────────────────────────────
+.chat__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  background: rgba($color-bg, 0.9);
+  box-shadow: inset 0 -1px 0 var(--line);
+}
+
+.faces {
+  display: flex;
+  padding-left: $face-overlap;
+
+  img {
+    width: $face;
+    height: $face;
+    margin-left: -$face-overlap;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+}
+
+.chat__who {
+  min-width: 0;
+
+  b {
+    display: block;
+    font: $weight-semibold #{$text-base}/1.2 $font-display;
+    letter-spacing: $tracking-title;
+  }
+
+  span {
+    font-size: $text-xs;
+    color: var(--muted);
+  }
+}
+
+// ─── The thread: messages sit at the bottom and push older ones up ────────────
+// In layout the thread hangs from the top; while it is shorter than the window a transform
+// (set in code) carries it to the bottom. New messages then never move the others' layout,
+// so the conversation causes no layout shift (CLS).
+.chat__body {
+  flex: 1;
+  min-height: 0;
+  padding: $space-5 $body-pad-x $space-3;
+  // an action reaching into the side padding must not make the thread scroll sideways
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  @include no-scrollbar;
+
+  // the ring sits inside, where the window's rounded clip can't cut it off
+  &:focus-visible { outline-offset: -2px; }
+
+  .msg { transform-origin: bottom left; }
+
+  .msg.is-new {
+    animation:
+      fade-in $duration-base $ease-out backwards,
+      msg-rise $duration-slow $ease-spring backwards;
+  }
+
+  // room for the action hanging below the bubble
+  .msg.has-act { margin-bottom: $act-gap + $act-h; }
+}
+
+.chat__thread {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  // the actions measure the thread's width (cqi)
+  container-type: inline-size;
+}
+
+// Action under an answer: a dark pill that leads onward. Its negative bottom margin keeps it
+// out of the row's height, so the face lines up with the bubble, as on a row of its own.
+.msg__act {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: $act-max-w;
+  height: $act-h;
+  margin-top: $act-gap;
+  margin-bottom: -($act-gap + $act-h);
+  padding: 0 $space-4;
+  border: 0;
+  border-radius: $radius-pill;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transform-origin: bottom left;
+  transition:
+    background-color $duration-fast $ease-out,
+    transform $duration-fast $ease-out;
+
+  .icon {
+    flex: none;
+    width: 0.875rem;
+    height: 0.875rem;
+    transition: transform $duration-base $ease-out;
+  }
+
+  &.is-new {
+    animation:
+      fade-in $duration-base $ease-out backwards,
+      msg-rise $duration-slow $ease-spring backwards;
+  }
+
+  @include hover {
+    background: var(--night-line);
+
+    .icon { transform: translateX(3px); }
+  }
+
+  &:active { transform: scale(0.96); }
+}
+
+.msg__act-label {
+  min-width: 0;
+  @include ellipsis;
+}
+
+// ─── Reply area: the name box, then the question chips ────────────────────────
+.chat__chips {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: $space-2;
+  min-height: $reply-min-h;
+  padding: $space-3 $space-4 $space-5;
+
+  // Phones: the questions swipe sideways in one row that fades out at the edge
+  &.is-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    mask-image: linear-gradient(90deg, var(--ink) calc(100% - #{$space-7}), transparent);
+    @include no-scrollbar;
+
+    .qchip { flex: none; }
+
+    @include sm {
+      flex-wrap: wrap;
+      overflow-x: visible;
+      mask-image: none;
+
+      .qchip { flex: 0 1 auto; }
+    }
+  }
+}
+
+.qchip {
+  padding: $chip-pad;
+  border: 0;
+  border-radius: $radius-pill;
+  background: var(--bg);
+  box-shadow: $chip-ring var(--orange);
+  color: var(--orange-text);
+  font-size: $text-sm;
+  font-weight: $weight-semibold;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    opacity $duration-base $ease-out,
+    transform $duration-slow $ease-spring,
+    background-color $duration-fast $ease-out,
+    color $duration-fast $ease-out;
+  animation:
+    fade-in $duration-base $ease-out backwards,
+    chip-rise $duration-slow $ease-spring backwards;
+  animation-delay: calc(var(--i, 0) * #{$stagger} + #{$stagger-lead});
+
+  @include hover {
+    background: var(--orange);
+    color: var(--ink);
+  }
+
+  &:active { transform: scale(0.95); }
+
+  // it became the visitor's bubble
+  &.is-flown { visibility: hidden; }
+}
+
+.qchip--quiet {
+  box-shadow: $chip-ring var(--line);
+  color: var(--muted);
+
+  @include hover {
+    background: var(--soft);
+    color: var(--ink);
+  }
+}
+
+.namebox {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  width: 100%;
+  padding: 6px 6px 6px $space-4;
+  border-radius: $radius-pill;
+  background: var(--soft);
+  box-shadow: $chip-ring transparent;
+  transition:
+    opacity $duration-base $ease-out,
+    transform $duration-slow $ease-spring,
+    box-shadow $duration-fast $ease-out,
+    background-color $duration-fast $ease-out;
+  animation:
+    fade-in $duration-base $ease-out backwards,
+    box-rise $duration-slow $ease-spring backwards;
+  animation-delay: $stagger-lead;
+
+  &:focus-within {
+    background: var(--bg);
+    box-shadow:
+      $chip-ring var(--orange),
+      0 0 0 4px rgba($color-orange, 0.14);
+  }
+
+  // Sent empty: the ring turns red and the box says what it needs in place of its placeholder
+  &.is-invalid {
+    box-shadow: $chip-ring var(--err);
+
+    &:focus-within {
+      box-shadow:
+        $chip-ring var(--err),
+        0 0 0 4px rgba($color-err, 0.14);
+    }
+
+    .namebox__input::placeholder { color: transparent; }
+  }
+}
+
+.namebox__field {
+  position: relative;
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+
+.namebox__input {
+  flex: 1;
+  min-width: 0;
+  height: $space-10;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: $text-base;
+  // The box's ring shows focus; the global outline stays, unseen, for forced colours
+  outline-color: transparent;
+
+  &::placeholder { color: var(--muted); }
+}
+
+// Over the empty field, so the box keeps its height: up to two lines fit in it
+.namebox__error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  color: var(--err);
+  font-size: $text-xs;
+  line-height: $leading-snug;
+  pointer-events: none;
+}
+
+.namebox__send {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: $space-10;
+  height: $space-10;
+  border: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    transform $duration-fast $ease-spring,
+    background-color $duration-fast $ease-out;
+
+  @include hover {
+    background: var(--orange-2);
+    transform: scale(1.06);
+  }
+
+  &:active { transform: scale(0.92); }
+}
+
+// The visitor answered: what's left fades back down
+.is-leaving {
+  .qchip {
+    opacity: 0;
+    transform: translateY($space-2-5) scale(0.96);
+    pointer-events: none;
+  }
+
+  .namebox {
+    opacity: 0;
+    transform: translateY($space-2-5);
+    pointer-events: none;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes msg-rise {
+  from { transform: translateY($space-3) scale(0.94); }
+}
+
+@keyframes chip-rise {
+  from { transform: translateY($space-2-5) scale(0.96); }
+}
+
+@keyframes box-rise {
+  from { transform: translateY($space-2-5); }
+}
+
+@include reduced-motion {
+  .chat__body .msg.is-new,
+  .msg__act.is-new,
+  .qchip,
+  .namebox {
+    animation: none;
+  }
+}

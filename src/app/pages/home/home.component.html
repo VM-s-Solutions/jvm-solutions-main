@@ -1,29 +1,43 @@
-<main id="main-content">
-  <jvm-hero />
+<jvm-hero />
 
-  <div id="services">
-    @defer (on viewport; prefetch on idle) {
-      <jvm-services />
-    } @placeholder {
-      <div style="min-height:700px"></div>
-    }
-  </div>
-
-  @defer (on viewport; prefetch on idle) {
-    <jvm-how-it-works />
+<!-- Each section renders as it nears the viewport. It doesn't wait for a scroll: the first Tab renders them
+     all, so keyboard users meet them in reading order, and otherwise each has its own timer, once the page
+     has loaded and 400ms apart, so screen reader users find them too and no single task renders them all.
+     The anchor stays outside the deferred block, so "see how we'd build it" can scroll here before it loads. -->
+<div id="how">
+  @defer (on viewport; on timer(5000ms); when tabbed(); prefetch on idle) {
+    <jvm-paper />
   } @placeholder {
-    <div style="min-height:500px"></div>
+    <div class="ph ph--paper"></div>
   }
+</div>
 
-  @defer (on viewport; prefetch on idle) {
-    <jvm-contact-cta />
-  } @placeholder {
-    <div style="min-height:300px"></div>
-  }
-</main>
-
-@defer (on viewport; prefetch on idle) {
-  <jvm-footer />
+@defer (on viewport; on timer(5400ms); when tabbed(); prefetch on idle) {
+  <jvm-trades />
 } @placeholder {
-  <div style="min-height:300px"></div>
+  <div class="ph ph--trades"></div>
+}
+
+@defer (on viewport; on timer(5800ms); when tabbed(); prefetch on idle) {
+  <jvm-team-trio />
+} @placeholder {
+  <div class="ph ph--team"></div>
+}
+
+@defer (on viewport; on timer(6200ms); when tabbed(); prefetch on idle) {
+  <jvm-price-band />
+} @placeholder {
+  <div class="ph ph--price"></div>
+}
+
+@defer (on viewport; on timer(6600ms); when tabbed(); prefetch on idle) {
+  <jvm-asked />
+} @placeholder {
+  <div class="ph ph--asked"></div>
+}
+
+@defer (on viewport; on timer(7000ms); when tabbed(); prefetch on idle) {
+  <jvm-compose />
+} @placeholder {
+  <div class="ph ph--compose"></div>
 }

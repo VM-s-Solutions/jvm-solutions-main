@@ -12,6 +12,12 @@ export const ACCENT = '#C33E00';
 export const ACCENT_FILL = '#D14400';
 export const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
+/**
+ * Stands in for an optional field the sender left empty. The templates print "Not provided"
+ * in its place; the team's plain-text email shows it as it is.
+ */
+export const NOT_PROVIDED = '—';
+
 export interface EmailLayout {
   lang: string;
   title: string;

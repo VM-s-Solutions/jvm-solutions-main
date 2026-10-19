@@ -1,0 +1,8 @@
+<div class="prompt">
+  <span class="prompt__label">{{ 'trades.prompt.label' | translate }}</span>
+  <p class="prompt__text">
+    {{ 'trades.prompt.start' | translate }}&nbsp;<b class="prompt__subject"><jvm-swap-text [text]="subjectKey() | translate: { name: name() }" /></b>
+    {{ 'trades.prompt.end' | translate }}
+  </p>
+  <span class="prompt__chip">Claude</span>
+</div>

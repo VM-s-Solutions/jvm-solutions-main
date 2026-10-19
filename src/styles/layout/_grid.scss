@@ -1,0 +1,79 @@
+@use '../abstracts' as *;
+
+// One left edge for every section, the top bar and the footer
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-left: max(#{$gutter}, env(safe-area-inset-left, 0px));
+  padding-right: max(#{$gutter}, env(safe-area-inset-right, 0px));
+}
+
+// ─── Sections ─────────────────────────────────────────────────────────────────
+.section {
+  padding-block: $section-y;
+}
+
+.section--tight {
+  padding-top: $space-4;
+}
+
+.section--soft {
+  background: var(--soft);
+}
+
+// A dark band: re-points the text tokens so everything inside reads light
+.section--ink {
+  background: var(--night);
+  color: var(--night-ink);
+  --muted: var(--night-muted);
+  --ink-2: var(--night-muted);
+}
+
+// ─── Page heads ───────────────────────────────────────────────────────────────
+// Top of a route page: clears the fixed top bar, then the page-hero rhythm
+.page-hero {
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + #{$page-hero-y});
+  padding-bottom: $page-hero-bottom;
+}
+
+.page-hero--short {
+  padding-bottom: $space-10;
+}
+
+// Section heading row: title block on the left, controls on the right
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-6;
+}
+
+.sec-head__p {
+  max-width: 34em;
+  margin-top: $space-4;
+  font-size: $text-lg;
+  color: var(--ink-2);
+}
+
+.sec-head--center {
+  justify-content: center;
+  text-align: center;
+
+  .sec-head__p { margin-inline: auto; }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  margin-top: $space-9;
+
+  // Phones: the buttons stretch to share the row, or take a full row each
+  .btn {
+    flex: 1 1 auto;
+
+    @include sm { flex: 0 1 auto; }
+  }
+}

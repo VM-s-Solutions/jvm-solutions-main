@@ -6,14 +6,14 @@ JVM Yore, s.r.o. (Company ID 29633443) is a Czech limited company registered wit
 
 ## Services
 
-- [Frontend development](https://jvm-yore.com/#services): fast, accessible web applications in Angular, React or Vue
-- [Backend systems](https://jvm-yore.com/#services): APIs, microservices and cloud infrastructure, primarily on .NET (REST and gRPC)
-- [Mobile applications](https://jvm-yore.com/#services): native iOS and Android apps in Swift and Kotlin
-- [AI automation](https://jvm-yore.com/#services): LLM integrations, agents and workflow automation
+- [Web apps](https://jvm-yore.com/services): fast, accessible web applications in Angular or React, in as many languages as their users speak
+- [Backends](https://jvm-yore.com/services): APIs, data models and cloud infrastructure on .NET and PostgreSQL (REST and gRPC)
+- [Mobile apps](https://jvm-yore.com/services): native iOS and Android apps in Swift and Kotlin
+- [AI agents](https://jvm-yore.com/services): LLM integrations and agents (Claude, LangChain, Python) that take repetitive work off a team
 
 ## Pricing
 
-- [Pricing](https://jvm-yore.com/pricing): consulting from €100/hour; the whole team on a monthly retainer from €17,900/month; fixed-scope projects quoted individually. JVM Yore is not VAT-registered, so no VAT is added.
+- [Pricing](https://jvm-yore.com/pricing): consulting €100/hour; Support & LTS from €390/month; the whole team from €17,900/month; fixed-scope projects quoted once, after two discovery sessions. JVM Yore is not VAT-registered, so no VAT is added.
 
 ## Company
 

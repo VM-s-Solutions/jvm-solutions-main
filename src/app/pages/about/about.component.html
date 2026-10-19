@@ -1,73 +1,73 @@
-<main id="main-content" class="about-page">
-  <div class="about-page__inner container">
-    <header class="about-header" appScrollReveal revealClass="reveal">
-      <span class="section-label">{{ 'about.sectionLabel' | translate }}</span>
-      <h1 class="about-header__title">
-        {{ 'about.titlePart1' | translate }} <span class="text-accent">{{ 'about.titleGrad' | translate }}</span><br>{{ 'about.titlePart2' | translate }}
-      </h1>
-      <p class="about-header__subtitle">{{ 'about.description' | translate }}</p>
-    </header>
-
-    <jvm-team-grid [members]="team" />
-
-    <!-- Public-register details -->
-    <section class="about-company" appScrollReveal revealClass="reveal">
-      <div class="about-company__head">
-        <h2 class="about-company__title">{{ 'about.company.title' | translate }}</h2>
-        <p class="about-company__intro">{{ 'about.company.intro' | translate }}</p>
-        <button
-          type="button"
-          class="about-company__toggle"
-          [class.is-open]="detailsOpen()"
-          (click)="toggleDetails()"
-          [attr.aria-expanded]="detailsOpen()"
-          aria-controls="company-details"
-        >
-          <span>{{ (detailsOpen() ? 'about.company.hide' : 'about.company.show') | translate }}</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <line x1="7" y1="1" x2="7" y2="13"/>
-            <line x1="1" y1="7" x2="13" y2="7"/>
-          </svg>
-        </button>
-      </div>
-
-      <div
-        class="about-company__details"
-        id="company-details"
-        [class.is-open]="detailsOpen()"
-        [attr.inert]="detailsOpen() ? null : ''"
-      >
-        <div class="about-company__details-inner">
-          <dl class="about-company__facts">
-            @for (fact of companyFacts; track fact.labelKey) {
-              <div class="about-company__fact">
-                <dt class="about-company__term">{{ fact.labelKey | translate }}</dt>
-                <dd class="about-company__value">
-                  @if (fact.valueKey) {
-                    {{ fact.valueKey | translate }}
-                  } @else {
-                    {{ fact.value }}
-                  }
-                </dd>
-              </div>
-            }
-          </dl>
-          <a class="about-company__registry" [href]="registryUrl" target="_blank" rel="noopener noreferrer">
-            {{ 'about.company.registryLink' | translate }}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
+<section class="page-hero">
+  <div class="container">
+    <h1 class="display" [jvmSplit]="'about.title' | translate"></h1>
+    <p class="lead" jvmReveal="lift" [revealDelay]="0.3">{{ 'team.meaning' | translate }}</p>
   </div>
-</main>
+</section>
 
-@defer (on viewport; prefetch on idle) {
-  <jvm-footer />
-} @placeholder {
-  <div style="min-height:300px"></div>
-}
+<section class="section section--tight">
+  <div class="container portraits">
+    @for (p of portraits; track p.id) {
+      <!-- Focusable, so a tap or the keyboard can unfold the bio where there is no hover -->
+      <article class="portrait" jvmReveal [revealDelay]="p.delay" tabindex="0" [attr.aria-labelledby]="p.nameId">
+        <!-- The first photo is the largest thing in a phone's first view (its LCP): it loads at once, ahead of the rest -->
+        <img
+          [loading]="$first ? 'eager' : 'lazy'"
+          [attr.fetchpriority]="$first ? 'high' : null"
+          [src]="p.photo"
+          [alt]="p.full"
+          [style.--focus]="p.focus"
+          decoding="async"
+        />
+        <div class="portrait__card">
+          <h2 class="portrait__name" [id]="p.nameId">{{ p.full }}</h2>
+          <span class="portrait__role">{{ p.roleKey | translate }}</span>
+          <div class="portrait__more">
+            <p class="portrait__bio">{{ p.bioKey | translate }}</p>
+            <a class="link portrait__link" [href]="p.linkedin" target="_blank" rel="noopener">
+              <span aria-hidden="true">LinkedIn</span>
+              <span class="sr-only">{{ 'a11y.linkedin' | translate: { name: p.full } }} {{ 'a11y.opensInNewTab' | translate }}</span>
+              <jvm-icon name="arrow" />
+            </a>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <h2 class="h2" [jvmSplit]="'about.ways.title' | translate"></h2>
+    <div class="ways__grid">
+      @for (way of ways; track way.titleKey) {
+        <div class="ways__card" jvmReveal [revealDelay]="way.delay">
+          <h3 class="ways__title">{{ way.titleKey | translate }}</h3>
+          <p>{{ way.bodyKey | translate }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container reg" jvmReveal>
+    <div>
+      <h2 class="h2">{{ 'about.register.title' | translate }}</h2>
+      <p class="sec-head__p">{{ 'about.register.lead' | translate }}</p>
+      <a class="btn btn--ghost" [href]="registerUrl" target="_blank" rel="noopener">
+        <span>{{ 'about.company.registryLink' | translate }}</span>
+        <span class="sr-only"> {{ 'a11y.opensInNewTab' | translate }}</span>
+        <jvm-icon name="arrow" />
+      </a>
+    </div>
+    <dl class="reg__list">
+      @for (row of registerRows; track row.labelKey) {
+        <div class="reg__row">
+          <dt>{{ row.labelKey | translate }}</dt>
+          <dd>@if (row.valueKey) { {{ row.valueKey | translate }} } @else { {{ row.value }} }</dd>
+        </div>
+      }
+    </dl>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<nav class="tabbar" [attr.aria-label]="'a11y.mobileNav' | translate">
+  @for (tab of tabs; track tab.path; let i = $index) {
+    <a
+      class="tabbar__link"
+      [routerLink]="tab.path"
+      [class.is-active]="active() === i"
+      [attr.aria-current]="active() === i ? 'page' : null"
+    >
+      <jvm-icon [name]="tab.icon" />
+      <span>{{ (tab.shortKey ?? tab.labelKey) | translate }}</span>
+    </a>
+  }
+</nav>

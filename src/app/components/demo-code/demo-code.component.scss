@@ -1,0 +1,92 @@
+@use 'sass:color';
+@use 'abstracts' as *;
+
+// Sized in cqi (the card's mock-screen container), so the editor scales as one picture.
+// Syntax colours are the brand and status tokens, lifted to read on the dark editor.
+$code-text: color.mix($color-night-ink, $color-night, 88%);
+$code-dim: color.mix($color-night-muted, $color-night, 75%);
+$code-keyword: color.mix($color-orange-2, $color-bg, 85%);
+$code-string: color.scale($color-ok, $lightness: 55%);
+$code-method: color.mix($color-app, $color-bg, 50%);
+
+:host {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  background: var(--night);
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  padding: 4cqi 5cqi;
+  color: $code-text;
+}
+
+.code__bar {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqi;
+  margin-bottom: 3.4cqi;
+  font: $weight-medium 2.4cqi/1 $font-mono;
+  color: $code-dim;
+}
+
+.code__dot {
+  width: 1.8cqi;
+  height: 1.8cqi;
+  border-radius: 50%;
+  background: var(--night-line);
+}
+
+.code__file {
+  margin-left: 1.4cqi;
+}
+
+pre {
+  margin: 0;
+  font: $weight-regular 2.75cqi/1.75 $font-mono;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code__k { color: $code-keyword; }
+.code__s { color: $code-string; }
+
+// ─── The response, once the card is in view ───────────────────────────────────
+.code__res {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4cqi;
+  margin-top: auto;
+  padding: 2cqi 2.4cqi;
+  border-radius: 2cqi;
+  background: var(--night-2);
+  font: $weight-regular 2.4cqi/1.4 $font-mono;
+  opacity: 0;
+  transform: translateY(2cqi);
+  transition:
+    opacity $duration-slow $ease-out $duration-base,
+    transform $duration-slower $ease-out $duration-base;
+
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:host-context(.is-in) .code__res {
+  opacity: 1;
+  transform: none;
+}
+
+.code__method {
+  padding: 0.3cqi 1.2cqi;
+  border-radius: 0.8cqi;
+  background: rgba($color-app, 0.22);
+  color: $code-method;
+}
+
+.code__ok { color: $code-string; }
+.code__json { color: var(--night-muted); }

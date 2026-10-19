@@ -1,0 +1,43 @@
+@use '../abstracts' as *;
+
+// Runtime tokens. Colours live here so a dark surface can re-point them locally
+// (a section, the board on a dark chapter) without any component branching on it.
+:root {
+  color-scheme: light;
+
+  --bg: #{$color-bg};
+  --soft: #{$color-soft};
+  --soft-2: #{$color-soft-2};
+  --ink: #{$color-ink};
+  --ink-2: #{$color-ink-2};
+  --muted: #{$color-muted};
+  --placeholder: #{$color-placeholder};
+  --line: #{$color-line};
+
+  --orange: #{$color-orange};
+  --orange-2: #{$color-orange-2};
+  --orange-text: #{$color-orange-text};
+  --orange-tint: #{$color-orange-tint};
+  --note: #{$color-note};
+  --them: #{$color-them};
+
+  --night: #{$color-night};
+  --night-2: #{$color-night-2};
+  --night-3: #{$color-night-3};
+  --night-line: #{$color-night-line};
+  --night-ink: #{$color-night-ink};
+  --night-muted: #{$color-night-muted};
+
+  --ok: #{$color-ok};
+  --ok-tint: #{$color-ok-tint};
+  --app: #{$color-app};
+  --err: #{$color-err};
+
+  --ease: #{$ease-out};
+  --ios: #{$ease-ios};
+  --spring: #{$ease-spring};
+
+  --nav-h: #{$nav-h-mobile};
+
+  @include md { --nav-h: #{$nav-h}; }
+}

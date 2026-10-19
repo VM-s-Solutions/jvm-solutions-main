@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Source of public/og-image.png (1200×630). Open it in a browser at 1200×630 and screenshot the page;
+     fonts and photos load from the repo, so the image matches the live site. -->
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+  @font-face { font-family: 'Geologica'; font-weight: 400 700; src: url('../src/fonts/geologica-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Geologica'; font-weight: 400 700; src: url('../src/fonts/geologica-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF; }
+  @font-face { font-family: 'Inter'; font-weight: 300 600; src: url('../src/fonts/inter-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 300 600; src: url('../src/fonts/inter-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -11,164 +16,114 @@
     width: 1200px;
     height: 630px;
     overflow: hidden;
-    background: #0A0A0A;
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    color: #F1F5F9;
-    position: relative;
-  }
-
-  /* Top accent bar */
-  .accent-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: #1F2937;
-  }
-
-  /* Card container */
-  .card {
-    position: absolute;
-    top: 48px;
-    left: 64px;
-    right: 64px;
-    bottom: 48px;
-    background: #111111;
-    border: 1px solid #1C1C1C;
-    border-radius: 16px;
-    padding: 52px 56px 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  /* Top section */
-  .logo {
-    margin-bottom: 28px;
-    line-height: 0;
-  }
-
-  .logo-svg {
-    display: block;
-    height: 40px;
-    width: auto;
-  }
-
-  .tagline {
+    background: #FFFFFF;
+    color: #0B0C0E;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8A9BB0;
-    margin-bottom: 24px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Headline */
-  .headline {
-    font-size: 66px;
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -2px;
-    color: #F1F5F9;
-    margin-bottom: 28px;
-  }
-
-  .headline-gradient {
-    background: linear-gradient(135deg, #E53E3E, #F97316);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Services row */
-  .services {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 16px;
-    color: #8A9BB0;
-    margin-bottom: 28px;
-    display: flex;
-    gap: 8px;
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 56px;
     align-items: center;
+    height: 100%;
+    padding: 64px 72px;
   }
 
-  .dot {
-    color: #282828;
+  .logo { display: block; height: 36px; width: auto; }
+
+  h1 {
+    margin-top: 44px;
+    font-family: 'Geologica', system-ui, sans-serif;
+    font-size: 76px;
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
+
+  .lead {
+    margin-top: 26px;
+    max-width: 30em;
+    font-size: 22px;
+    line-height: 1.45;
+    color: #3C4048;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 40px;
     font-size: 18px;
-  }
-
-  /* Tech badges */
-  .badges {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 0;
-  }
-
-  .badge {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 13px;
     font-weight: 500;
-    color: #8A9BB0;
-    background: #181818;
-    border: 1px solid #282828;
-    border-radius: 6px;
-    padding: 6px 14px;
+    color: #656A72;
   }
 
-  /* Bottom row */
-  .bottom-row {
+  .faces { display: flex; padding-left: 10px; }
+  .faces img { width: 44px; height: 44px; margin-left: -10px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #FFFFFF; }
+
+  .chat {
+    border-radius: 36px;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 1px rgba(11,12,14,.06), 0 2px 6px rgba(11,12,14,.04), 0 40px 80px -32px rgba(11,12,14,.32);
+    overflow: hidden;
+  }
+
+  .chat__head {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    box-shadow: inset 0 -1px 0 #E7E8EB;
   }
 
-  .email {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 14px;
-    color: #8A9BB0;
+  .chat__head b { display: block; font: 600 18px/1.2 'Geologica', sans-serif; letter-spacing: -0.02em; }
+  .chat__head span { font-size: 14px; color: #656A72; }
+
+  .chat__body { display: flex; flex-direction: column; gap: 8px; padding: 22px 22px 28px; }
+
+  .bubble {
+    max-width: 82%;
+    padding: 11px 16px;
+    border-radius: 20px 20px 20px 6px;
+    background: #EEEFF2;
+    font-size: 17px;
+    line-height: 1.4;
   }
 
-  .domain {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 14px;
-    color: #606E7E;
+  .bubble--me {
+    align-self: flex-end;
+    margin-top: 6px;
+    border-radius: 20px 20px 6px 20px;
+    background: #F26100;
   }
 </style>
 </head>
 <body>
-  <div class="accent-bar"></div>
-
-  <div class="card">
+  <div class="page">
     <div>
-      <div class="logo">
-        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1214 255" role="img" aria-label="JVM Yore"><defs><linearGradient id="ogMark" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#FF8E1E"/><stop offset="1" stop-color="#ED5602"/></linearGradient></defs><g transform="translate(-163.0 -371.0)"><path fill="url(#ogMark)" d="M364.2 371.0Q351.2 371.0 340.1 386.0L179.5 604.0Q170.3 616.5 163.0 616.5L228.0 616.5A31.3 31.3 0 0 0 253.1 603.9L421.5 378.0Q426.7 371.0 421.7 371.0ZM419.5 401.5L509.5 554.0L466.5 614.0L376.5 461.5ZM623.1 418.0Q610.1 418.0 599.2 433.0L466.5 614.0L531.0 614.0A17.3 17.3 0 0 0 544.9 607.0L684.9 418.0ZM703.7 418.0L820.0 614.0L739.4 614.0L664.4 471.0Z"/><path fill="#FFFFFF" d="M943 466L966.5 466.0L966.5 525.0A35.5 35.5 0 0 1 931.0 560.5L859.0 560.5L859.0 537.0L931.0 537.0A12.0 12.0 0 0 0 943.0 525.0ZM993 466L1023.5 466.0L1082.8 542.8L1142.0 466.0L1172.5 466.0L1099.3 561.0L1066.2 561.0ZM1200 466L1222.5 466.0L1288.2 527.4L1354.0 466.0L1376.5 466.0L1376.5 561.0L1354.0 561.0L1354.0 499.5L1288.0 561.1L1222.5 499.9L1222.5 561.0L1200.0 561.0Z"/><path fill="#F26100" d="M860 594L866.2 594.0L881.5 608.6L896.8 594.0L903.0 594.0L884.6 617.4L884.6 626.0L878.4 626.0L878.4 617.4ZM994.0 594.0H1017.5A9 9 0 0 1 1026.5 603.0V617.0A9 9 0 0 1 1017.5 626.0H994.0A9 9 0 0 1 985.0 617.0V603.0A9 9 0 0 1 994.0 594.0ZM994.5 599.0A4.5 4.5 0 0 0 990.0 603.5V616.5A4.5 4.5 0 0 0 994.5 621.0H1017.0A4.5 4.5 0 0 0 1021.5 616.5V603.5A4.5 4.5 0 0 0 1017.0 599.0ZM1109 594H1141A8 8 0 0 1 1149 602V607A8 8 0 0 1 1141 615H1133.4L1147.7 626H1140.7L1126.4 615H1114.5V626H1109ZM1114.5 598.5V610.5H1140.5A3.5 3.5 0 0 0 1144 607V602A3.5 3.5 0 0 0 1140.5 598.5ZM1230.0 594H1266.5V598.5H1234.5V608.5H1264.5V612.5H1234.5V621.5H1266.5V626H1230.0Z"/></g></svg>
-      </div>
-      <div class="tagline">Software Agency &nbsp;·&nbsp; Czech Republic</div>
-      <div class="headline">
-        We craft software<br>
-        that <span class="headline-gradient">scales &amp; matters</span>
-      </div>
-      <div class="services">
-        <span>Frontend</span>
-        <span class="dot">·</span>
-        <span>Backend</span>
-        <span class="dot">·</span>
-        <span>Mobile</span>
-        <span class="dot">·</span>
-        <span>AI Automation</span>
-      </div>
-      <div class="badges">
-        <span class="badge">Angular</span>
-        <span class="badge">.NET</span>
-        <span class="badge">Swift / Kotlin</span>
-        <span class="badge">LLM / AI</span>
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1214 255" role="img" aria-label="JVM Yore"><g transform="translate(-163.0 -371.0)"><path fill="#F26100" d="M364.2 371.0Q351.2 371.0 340.1 386.0L179.5 604.0Q170.3 616.5 163.0 616.5L228.0 616.5A31.3 31.3 0 0 0 253.1 603.9L421.5 378.0Q426.7 371.0 421.7 371.0ZM419.5 401.5L509.5 554.0L466.5 614.0L376.5 461.5ZM623.1 418.0Q610.1 418.0 599.2 433.0L466.5 614.0L531.0 614.0A17.3 17.3 0 0 0 544.9 607.0L684.9 418.0ZM703.7 418.0L820.0 614.0L739.4 614.0L664.4 471.0Z"/><path fill="#0B0C0E" d="M943 466L966.5 466.0L966.5 525.0A35.5 35.5 0 0 1 931.0 560.5L859.0 560.5L859.0 537.0L931.0 537.0A12.0 12.0 0 0 0 943.0 525.0ZM993 466L1023.5 466.0L1082.8 542.8L1142.0 466.0L1172.5 466.0L1099.3 561.0L1066.2 561.0ZM1200 466L1222.5 466.0L1288.2 527.4L1354.0 466.0L1376.5 466.0L1376.5 561.0L1354.0 561.0L1354.0 499.5L1288.0 561.1L1222.5 499.9L1222.5 561.0L1200.0 561.0Z"/><path fill="#F26100" d="M860 594L866.2 594.0L881.5 608.6L896.8 594.0L903.0 594.0L884.6 617.4L884.6 626.0L878.4 626.0L878.4 617.4ZM994.0 594.0H1017.5A9 9 0 0 1 1026.5 603.0V617.0A9 9 0 0 1 1017.5 626.0H994.0A9 9 0 0 1 985.0 617.0V603.0A9 9 0 0 1 994.0 594.0ZM994.5 599.0A4.5 4.5 0 0 0 990.0 603.5V616.5A4.5 4.5 0 0 0 994.5 621.0H1017.0A4.5 4.5 0 0 0 1021.5 616.5V603.5A4.5 4.5 0 0 0 1017.0 599.0ZM1109 594H1141A8 8 0 0 1 1149 602V607A8 8 0 0 1 1141 615H1133.4L1147.7 626H1140.7L1126.4 615H1114.5V626H1109ZM1114.5 598.5V610.5H1140.5A3.5 3.5 0 0 0 1144 607V602A3.5 3.5 0 0 0 1140.5 598.5ZM1230.0 594H1266.5V598.5H1234.5V608.5H1264.5V612.5H1234.5V621.5H1266.5V626H1230.0Z"/></g></svg>
+      <h1>Ask the people who’ll build&nbsp;it.</h1>
+      <p class="lead">Web apps, .NET backends, native mobile apps and AI automation, from the three people who build them.</p>
+      <div class="meta">
+        <span class="faces"><img src="../public/images/team/janis-avatar.jpg" alt=""><img src="../public/images/team/vit-avatar.jpg" alt=""><img src="../public/images/team/michael-avatar.jpg" alt=""></span>
+        <span>Janis, Vít &amp; Michael · Prague · jvm-yore.com</span>
       </div>
     </div>
-    <div class="bottom-row">
-      <div class="email">hello@jvm-yore.com</div>
-      <div class="domain">jvm-yore.com</div>
+
+    <div class="chat">
+      <div class="chat__head">
+        <span class="faces"><img src="../public/images/team/janis-avatar.jpg" alt=""><img src="../public/images/team/vit-avatar.jpg" alt=""><img src="../public/images/team/michael-avatar.jpg" alt=""></span>
+        <div><b>Janis, Vít &amp; Michael</b><span>Replies within 24 hours</span></div>
+      </div>
+      <div class="chat__body">
+        <p class="bubble">Hi, we’re Janis, Vít and Michael.</p>
+        <p class="bubble">We build web apps, .NET backends, native mobile apps and AI.</p>
+        <p class="bubble">What’s your idea called?</p>
+        <p class="bubble bubble--me">Bloom</p>
+        <p class="bubble">Bloom. Good name.</p>
+      </div>
     </div>
   </div>
 </body>

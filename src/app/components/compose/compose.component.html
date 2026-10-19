@@ -1,0 +1,33 @@
+<section class="section section--tight" id="write" aria-labelledby="write-title">
+  <div class="container">
+    <div class="compose" jvmReveal="up">
+      <h2 class="compose__title" id="write-title" [jvmSplit]="'compose.title' | translate"></h2>
+      <p class="lead compose__when" [innerHTML]="'compose.when' | translate: when()"></p>
+
+      <form class="composer" (submit)="onSubmit($event, message.value)">
+        <div class="composer__to">
+          <span>{{ 'compose.to' | translate }}</span>
+          @for (person of team; track person.id) {
+            <span class="to">
+              <img [src]="person.avatar" alt="" width="22" height="22" loading="lazy" decoding="async" />{{ person.first }}
+            </span>
+          }
+        </div>
+
+        <label class="sr-only" for="compose-message">{{ 'contact.message' | translate }}</label>
+        <textarea
+          #message
+          id="compose-message"
+          class="composer__input"
+          rows="3"
+          [placeholder]="placeholderKey() | translate: ideaParams()"
+          (keydown)="onKeydown($event, message.value)"
+        ></textarea>
+
+        <button class="send" type="submit" [attr.aria-label]="'a11y.toForm' | translate">
+          <jvm-icon name="up" />
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

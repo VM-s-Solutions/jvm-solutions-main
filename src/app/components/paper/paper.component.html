@@ -1,0 +1,55 @@
+<section class="paper" aria-labelledby="paper-title">
+  <div class="container paper__intro">
+    <!-- tabindex="-1": "See how we'd build it" takes keyboard focus here once it has scrolled down -->
+    <h2 class="paper__title" id="paper-title" tabindex="-1" jvmReveal>
+      {{ 'paper.titleStart' | translate }}
+      <label class="slot">
+        <input
+          #field
+          class="slot__input"
+          [attr.aria-label]="'a11y.ideaName' | translate"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          enterkeyhint="done"
+          [maxLength]="maxLength"
+          [placeholder]="placeholder()"
+          (focus)="onFocus(field.value)"
+          (input)="onInput(field.value)"
+          (blur)="onBlur(field.value)"
+          (keydown.enter)="onEnter($event, field)"
+        />
+        <span #mirror class="slot__mirror" aria-hidden="true">{{ mirrorText() }}</span>
+      </label>&ngsp;<span class="paper__end">{{ 'paper.titleEnd' | translate }}</span>
+    </h2>
+    <p class="sec-head__p" jvmReveal [revealDelay]="0.1">{{ 'paper.lead' | translate }}</p>
+  </div>
+
+  <div
+    #track
+    class="paper__track"
+    [class.is-dark]="isDark()"
+    [class.is-murky]="isMurky()"
+    [jvmDarkSurface]="isDark()"
+  >
+    <div #sticky class="paper__sticky">
+      <div class="container paper__grid" [attr.data-stage]="stage()">
+        <div class="paper__side">
+          <div class="how__num" aria-hidden="true">
+            <span class="roll"><i>1</i><i>2</i><i>3</i><i>4</i></span>
+          </div>
+          <ol class="pv-list">
+            @for (step of steps(); track step.id) {
+              <li class="pv" [class.is-on]="$index === stage()">
+                <h3>{{ step.title | translate }}</h3>
+                <p><jvm-swap-text [text]="step.body | translate: nameParams()" /></p>
+              </li>
+            }
+          </ol>
+          <div class="how__bar" aria-hidden="true"><i></i></div>
+        </div>
+        <jvm-board [stage]="stage()" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<div #surface class="bd" [attr.data-stage]="stage()">
+  <div class="frame">
+    <jvm-board-sketch [stage]="stage()" [drawn]="drawn()" [product]="product()" />
+    <jvm-board-app [stage]="stage()" [product]="product()" [initial]="initial()" />
+  </div>
+
+  <p class="note note--who hand">{{ 'paper.board.notes.who' | translate }}</p>
+  <p class="note note--what hand">{{ 'paper.board.notes.what' | translate }}</p>
+  <p class="note note--limits hand">{{ 'paper.board.notes.limits' | translate }}</p>
+
+  <jvm-board-cards [stage]="stage()" [product]="product()" />
+</div>

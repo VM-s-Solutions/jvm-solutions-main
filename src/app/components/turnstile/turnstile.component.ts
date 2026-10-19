@@ -11,7 +11,7 @@ import {
   untracked,
   viewChild,
 } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
+import { LangService } from '../../services/lang.service';
 
 interface TurnstileAPI {
   render(el: HTMLElement, options: TurnstileOptions): string;
@@ -23,6 +23,8 @@ interface TurnstileOptions {
   sitekey: string;
   theme?: 'light' | 'dark' | 'auto';
   size?: 'normal' | 'compact' | 'flexible';
+  /** ISO 639-1 code; without it Cloudflare follows the browser's language, not the site's */
+  language?: string;
   callback?: (token: string) => void;
   'expired-callback'?: () => void;
   'error-callback'?: () => void;
@@ -67,8 +69,8 @@ export class TurnstileComponent implements OnDestroy {
   readonly siteKey = input.required<string>();
   readonly resolved = output<string | null>();
 
+  private readonly lang = inject(LangService);
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
-  private readonly themeService = inject(ThemeService);
   private widgetId: string | undefined;
   private destroyed = false;
 
@@ -83,12 +85,15 @@ export class TurnstileComponent implements OnDestroy {
       );
     });
 
-    // A live widget can't be restyled — re-mount it when the site theme flips.
+    // A live widget can't change its language: re-mount it in the one the visitor switched to.
+    // Emitting from here is intended: the old token goes with the old widget, so the parent
+    // holds none until the new one passes.
     effect(() => {
-      this.themeService.theme();
+      this.lang.current();
       untracked(() => {
         if (this.widgetId === undefined) return;
         (window as TurnstileWin).turnstile?.remove(this.widgetId);
+        this.widgetId = undefined;
         this.resolved.emit(null);
         this.render();
       });
@@ -100,7 +105,9 @@ export class TurnstileComponent implements OnDestroy {
     if (!turnstile) return;
     this.widgetId = turnstile.render(this.container().nativeElement, {
       sitekey: this.siteKey(),
-      theme: this.themeService.theme(),
+      theme: 'light',
+      size: 'flexible',
+      language: this.lang.current(),
       callback: (token: string) => this.resolved.emit(token),
       'expired-callback': () => this.resolved.emit(null),
       'error-callback': () => this.resolved.emit(null),

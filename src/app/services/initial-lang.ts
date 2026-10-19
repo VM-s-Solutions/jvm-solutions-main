@@ -1,15 +1,19 @@
 import { inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { catchError, firstValueFrom, of } from 'rxjs';
-
-const SUPPORTED_LANGS = ['en', 'cs', 'sk', 'uk'];
+import { Lang, SUPPORTED_LANGS, isLang } from './lang.service';
 
 /** The saved choice, else the browser language, else English. */
-function detectLang(): string {
-  const saved = localStorage.getItem('lang');
-  if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+function detectLang(): Lang {
+  let saved: string | null = null;
+  try {
+    saved = localStorage.getItem('lang');
+  } catch {
+    // storage blocked: fall through to the browser language
+  }
+  if (isLang(saved)) return saved;
   const browser = navigator.language.split('-')[0].toLowerCase();
-  return SUPPORTED_LANGS.includes(browser) ? browser : 'en';
+  return isLang(browser) ? browser : SUPPORTED_LANGS[0];
 }
 
 /**
@@ -19,7 +23,7 @@ function detectLang(): string {
  */
 export function initTranslations(): Promise<unknown> {
   const translate = inject(TranslateService);
-  translate.setDefaultLang('en');
+  translate.setFallbackLang('en');
   // A failed locale download falls back to English instead of blocking bootstrap.
   return firstValueFrom(translate.use(detectLang()).pipe(catchError(() => of(null))));
 }

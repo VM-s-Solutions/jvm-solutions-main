@@ -1,0 +1,39 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+}
+
+// Heading above the thread on phones; beside it from the desktop layout up
+.asked {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $stack-gap;
+  align-items: start;
+
+  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .msg {
+    max-width: 88%;
+    transform-origin: bottom left;
+  }
+
+  // Each question opens a new exchange, so it sits a little apart from the answer before it
+  .msg--me {
+    margin-top: $space-4;
+    transform-origin: bottom right;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  // Bubbles arrive from just below, like messages, rather than the usual longer rise
+  .reveal:not(.is-in) {
+    transform: translateY($space-4) scale(0.96);
+  }
+}

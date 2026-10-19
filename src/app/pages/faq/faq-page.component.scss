@@ -1,6 +1,63 @@
-:host { display: block; }
+@use 'abstracts' as *;
 
-.faq-page {
-  position: relative;
-  min-height: 100vh;
+// The reading column of the conversation, shared with the box under it
+$thread-max: 48.75rem; // 780px
+
+:host {
+  display: block;
+}
+
+// ─── The conversation ─────────────────────────────────────────────────────────
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .msg {
+    max-width: 88%;
+    transform-origin: bottom left;
+
+    // Bubbles rise less than other reveals and settle from a slightly smaller size
+    &.reveal:not(.is-in) { transform: translateY(18px) scale(0.96); }
+  }
+
+  .msg--me {
+    margin-top: $space-5;
+    transform-origin: bottom right;
+
+    &:first-child { margin-top: 0; }
+  }
+}
+
+// Page-size bubbles, as on the concept's FAQ page
+.thread--page {
+  --bubble-pad: #{$bubble-pad-page};
+  --bubble-size: #{$text-body};
+  max-width: $thread-max;
+  margin-inline: auto;
+}
+
+// Questions are headings for the outline; they read like the rest of the bubble
+.thread__text {
+  font: inherit;
+  text-wrap: pretty;
+}
+
+// ─── Still have a question? ───────────────────────────────────────────────────
+.ask {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-4;
+  max-width: $thread-max;
+  margin: $space-14 auto 0;
+  padding: $space-6 $space-7;
+  border-radius: $radius-lg;
+  background: var(--soft);
+}
+
+.ask__text {
+  font: $weight-semibold #{$text-2xl}/1.2 $font-display;
+  letter-spacing: $tracking-title;
 }

@@ -1,0 +1,12 @@
+<div class="lock">
+  <span class="lock__date">{{ date() }}</span>
+  <span class="lock__time">9:41</span>
+  <div class="lock__notif">
+    <span class="lock__icon"><jvm-swap-text [text]="initial()" /></span>
+    <div class="lock__msg">
+      <b class="lock__app"><jvm-swap-text [text]="product()" /></b>
+      <span class="lock__text">{{ 'trades.lock.notice' | translate }}</span>
+    </div>
+    <small class="lock__now">{{ 'trades.lock.now' | translate }}</small>
+  </div>
+</div>

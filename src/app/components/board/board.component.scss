@@ -1,0 +1,121 @@
+@use 'sass:color';
+@use 'abstracts' as *;
+
+// Height the pinned view keeps free beside the board: on phones the steps above it and
+// the tab bar below, on desktop a margin around it.
+$room-phone: 330px;
+$room-desktop: $space-24;
+
+// In the stacked layout the spec card hangs below the board, down to this depth (em)
+$stacked-depth: 42;
+
+// The sticky notes' own ink: a deep shade of their yellow
+$note-ink: color.scale($color-note, $lightness: -80%, $saturation: -56%);
+
+// The three notes land one after another
+$note-step: $duration-quick * 0.5;
+
+// The board is drawn in em, so one font-size scales all of it: the column's width or the
+// height left in the pinned view, whichever is tighter.
+:host {
+  display: block;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.bd {
+  position: relative;
+  width: 40em;
+  height: 36em;
+  margin: 0 auto;
+  font-size: min(calc(100cqi / 40), calc((100svh - var(--nav-h) - $room-phone) / 36));
+  color: var(--pink);
+  transition: color $duration-slow $ease-out;
+
+  // Tablets in portrait stack like phones but with a far bigger board: lay out the
+  // hanging spec card too, or the tab bar covers its last lines
+  @include sm {
+    height: $stacked-depth * 1em;
+    font-size: min(calc(100cqi / 40), calc((100svh - var(--nav-h) - $room-phone) / $stacked-depth));
+  }
+
+  @include md {
+    width: 60em;
+    height: 36em;
+    margin: 0 0 0 auto;
+    font-size: min(calc(100cqi / 60), calc((100svh - var(--nav-h) - $room-desktop) / 36));
+  }
+}
+
+// Sketch and app share the frame; it lies a little askew until the app is built
+.frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40em;
+  height: 27em;
+  transform: rotate(-1.4deg);
+  transition: transform $duration-reveal $ease-ios;
+
+  @include md {
+    left: 0.5em;
+    top: 3em;
+    height: 28em;
+  }
+}
+
+.bd[data-stage='2'] .frame,
+.bd[data-stage='3'] .frame {
+  transform: none;
+}
+
+// ─── Sticky notes: the first session's three questions (desktop only) ─────────
+.note {
+  position: absolute;
+  display: none;
+  width: 11.5em;
+  padding: 0.9em 1.1em;
+  border-radius: 0.3em;
+  background: var(--note);
+  color: $note-ink;
+  font-size: 1.55em;
+  line-height: 1.1;
+  box-shadow:
+    0 0.1em 0.2em rgba($note-ink, 0.12),
+    0 1em 2em -1em rgba($note-ink, 0.35);
+  opacity: 0;
+  transform: translateY(1em) rotate(var(--r));
+  transition:
+    opacity $duration-slow $ease-out,
+    transform $duration-slower $ease-spring;
+
+  @include md { display: block; }
+}
+
+.note--who {
+  --r: -3deg;
+  left: 69%;
+  top: 6%;
+}
+
+.note--what {
+  --r: 2deg;
+  left: 70%;
+  top: 31%;
+}
+
+.note--limits {
+  --r: -1.5deg;
+  left: 68.5%;
+  top: 56%;
+}
+
+.bd[data-stage='0'] {
+  .note {
+    opacity: 1;
+    transform: rotate(var(--r));
+  }
+
+  .note--what { transition-delay: $note-step; }
+  .note--limits { transition-delay: $note-step * 2; }
+}

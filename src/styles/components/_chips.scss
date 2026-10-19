@@ -1,0 +1,19 @@
+@use '../abstracts' as *;
+
+// Tech chips under a service ("Angular", ".NET") — the carousel and the services page
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: $space-4 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: $chip-pad-sm;
+    border-radius: $radius-pill;
+    background: var(--bg);
+    font: $weight-medium #{$text-xs}/#{$leading-snug} $font-mono;
+    color: var(--ink-2);
+  }
+}

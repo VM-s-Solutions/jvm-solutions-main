@@ -1,0 +1,20 @@
+<div class="code">
+  <div class="code__bar">
+    <span class="code__dot"></span>
+    <span class="code__dot"></span>
+    <span class="code__dot"></span>
+    <span class="code__file">Program.cs</span>
+  </div>
+  <pre><span class="code__k">var</span> app = WebApplication.Create(args);
+
+app.MapGet(<span class="code__s">"/health"</span>, () =&gt;
+    <span class="code__k">new</span> &#123; app = <span class="code__s">"<jvm-swap-text [text]="product()" />"</span>, status = <span class="code__s">"up"</span> &#125;);
+
+app.Run();</pre>
+  <div class="code__res">
+    <span class="code__method">GET</span>
+    <span>/health</span>
+    <span class="code__ok">200</span>
+    <span class="code__json">&#123;"app":"<jvm-swap-text [text]="product()" />","status":"up"&#125;</span>
+  </div>
+</div>

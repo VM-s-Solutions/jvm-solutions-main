@@ -1,19 +1,40 @@
-import { ACCENT, INK, LINE, MUTED, SITE, TEXT, emailLayout } from './theme';
+import { ACCENT, INK, LINE, MUTED, NOT_PROVIDED, SITE, TEXT, emailLayout } from './theme';
 
 export interface ConfirmationData {
   safeName: string;
   safeEmail: string;
   safeCompany: string;
+  /** The idea's name from the Subject line, or NOT_PROVIDED when they left it empty */
+  safeProject: string;
   safeService: string;
   safeMessage: string;
   rawName: string;
   rawService: string;
   rawMessage: string;
   rawCompany: string;
+  rawProject: string;
   lang: string;
 }
 
 const strong = (text: string) => `<strong style="color:${INK};font-weight:600;">${text}</strong>`;
+
+/** The English value the form sends for each service pill (CONTACT_SERVICES in src/app/services/contact.service.ts). */
+type ServiceValue =
+  | 'Frontend Development'
+  | 'Backend Systems'
+  | 'Mobile Application'
+  | 'AI Automation'
+  | 'Full-stack Product'
+  | 'Other';
+
+/** Each pill's label as the visitor saw it on the form (contact.services.* in public/i18n/<lang>.json). */
+type ServiceLabels = Readonly<Record<ServiceValue, string>>;
+
+/** The label of the pill the visitor picked, in their language; undefined for a value the form never sends. */
+function serviceLabel(labels: ServiceLabels, value: string): string | undefined {
+  // The value comes from the request, so only the table's own keys count (a plain lookup of "constructor" finds a function)
+  return Object.hasOwn(labels, value) ? labels[value as ServiceValue] : undefined;
+}
 
 const I18N = {
   en: {
@@ -30,9 +51,18 @@ const I18N = {
     step3title: 'We set up a short call',
     step3desc: 'To talk through scope, timeline and next steps.',
     sectionSubmissionPlain: '--- SUMMARY ---',
+    labelProject: 'Project',
     labelService: 'Service',
     labelCompany: 'Company',
     notFilled: 'Not provided',
+    services: {
+      'Frontend Development': 'Frontend',
+      'Backend Systems': 'Backend',
+      'Mobile Application': 'Mobile app',
+      'AI Automation': 'AI automation',
+      'Full-stack Product': 'Full product',
+      'Other': 'Other',
+    } satisfies ServiceLabels,
     sectionMessage: 'Your message',
     footerAuto: "This is an automated message, please don't reply to it.",
     footerUrgent: 'In a hurry? Write to us at',
@@ -58,9 +88,18 @@ const I18N = {
     step3title: 'Domluv\u00edme si kr\u00e1tk\u00fd hovor',
     step3desc: 'Probereme rozsah, term\u00edny a dal\u0161\u00ed postup.',
     sectionSubmissionPlain: '--- SHRNUT\u00cd ---',
+    labelProject: 'Projekt',
     labelService: 'Slu\u017eba',
     labelCompany: 'Firma',
     notFilled: 'Neuvedeno',
+    services: {
+      'Frontend Development': 'Frontend',
+      'Backend Systems': 'Backend',
+      'Mobile Application': 'Mobiln\u00ed aplikace',
+      'AI Automation': 'AI automatizace',
+      'Full-stack Product': 'Cel\u00fd produkt',
+      'Other': 'Jin\u00e9',
+    } satisfies ServiceLabels,
     sectionMessage: 'Va\u0161e zpr\u00e1va',
     footerAuto: 'Tento e-mail je automatick\u00fd, neodpov\u00eddejte na n\u011bj pros\u00edm.',
     footerUrgent: 'Sp\u011bch\u00e1te? Napi\u0161te n\u00e1m na',
@@ -86,9 +125,18 @@ const I18N = {
     step3title: 'Dohodneme si kr\u00e1tky hovor',
     step3desc: 'Preberieme rozsah, term\u00edny a \u010fal\u0161\u00ed postup.',
     sectionSubmissionPlain: '--- ZHRNUTIE ---',
+    labelProject: 'Projekt',
     labelService: 'Slu\u017eba',
     labelCompany: 'Firma',
     notFilled: 'Neuveden\u00e9',
+    services: {
+      'Frontend Development': 'Frontend',
+      'Backend Systems': 'Backend',
+      'Mobile Application': 'Mobiln\u00e1 aplik\u00e1cia',
+      'AI Automation': 'AI automatiz\u00e1cia',
+      'Full-stack Product': 'Cel\u00fd produkt',
+      'Other': 'In\u00e9',
+    } satisfies ServiceLabels,
     sectionMessage: 'Va\u0161a spr\u00e1va',
     footerAuto: 'Tento e-mail je automatick\u00fd, pros\u00edm, neodpovedajte na\u0148.',
     footerUrgent: 'Pon\u00e1h\u013eate sa? Nap\u00ed\u0161te n\u00e1m na',
@@ -114,9 +162,18 @@ const I18N = {
     step3title: '\u0414\u043e\u043c\u043e\u0432\u0438\u043c\u043e\u0441\u044f \u043f\u0440\u043e \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u0439 \u0434\u0437\u0432\u0456\u043d\u043e\u043a',
     step3desc: '\u041e\u0431\u0433\u043e\u0432\u043e\u0440\u0438\u043c\u043e \u043e\u0431\u0441\u044f\u0433, \u0442\u0435\u0440\u043c\u0456\u043d\u0438 \u0442\u0430 \u043f\u043e\u0434\u0430\u043b\u044c\u0448\u0456 \u043a\u0440\u043e\u043a\u0438.',
     sectionSubmissionPlain: '--- \u041f\u0406\u0414\u0421\u0423\u041c\u041e\u041a ---',
+    labelProject: '\u041f\u0440\u043e\u0454\u043a\u0442',
     labelService: '\u041f\u043e\u0441\u043b\u0443\u0433\u0430',
     labelCompany: '\u041a\u043e\u043c\u043f\u0430\u043d\u0456\u044f',
     notFilled: '\u041d\u0435 \u0432\u043a\u0430\u0437\u0430\u043d\u043e',
+    services: {
+      'Frontend Development': '\u0424\u0440\u043e\u043d\u0442\u0435\u043d\u0434',
+      'Backend Systems': '\u0411\u0435\u043a\u0435\u043d\u0434',
+      'Mobile Application': '\u041c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a',
+      'AI Automation': '\u0428\u0406-\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0456\u044f',
+      'Full-stack Product': '\u041f\u0440\u043e\u0434\u0443\u043a\u0442 \u043f\u0456\u0434 \u043a\u043b\u044e\u0447',
+      'Other': '\u0406\u043d\u0448\u0435',
+    } satisfies ServiceLabels,
     sectionMessage: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f',
     footerAuto: '\u0426\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0439 \u043b\u0438\u0441\u0442, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0435 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0439\u0442\u0435 \u043d\u0430 \u043d\u044c\u043e\u0433\u043e.',
     footerUrgent: '\u0422\u0435\u0440\u043c\u0456\u043d\u043e\u0432\u043e? \u041d\u0430\u043f\u0438\u0448\u0456\u0442\u044c \u043d\u0430\u043c \u043d\u0430',
@@ -136,7 +193,9 @@ export function confirmationSubject(lang: string): string {
 
 export function confirmationHtml(d: ConfirmationData): string {
   const t = I18N[d.lang as keyof typeof I18N] ?? I18N.en;
-  const hasCompany = d.safeCompany !== '—';
+  const hasCompany = d.rawCompany !== NOT_PROVIDED;
+  const hasProject = d.rawProject !== NOT_PROVIDED;
+  const service = serviceLabel(t.services, d.rawService) ?? d.safeService;
   const steps = [
     [t.step1title, t.step1desc],
     [t.step2title, t.step2desc],
@@ -177,8 +236,12 @@ export function confirmationHtml(d: ConfirmationData): string {
                   <td style="padding:16px 20px 0;font-size:14px;line-height:1.5;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                       <tr>
+                        <td width="110" style="width:110px;padding:0 12px 8px 0;vertical-align:top;color:${MUTED};">${t.labelProject}</td>
+                        <td style="padding:0 0 8px;vertical-align:top;color:${hasProject ? INK : MUTED};">${hasProject ? d.safeProject : t.notFilled}</td>
+                      </tr>
+                      <tr>
                         <td width="110" style="width:110px;padding:0 12px 8px 0;vertical-align:top;color:${MUTED};">${t.labelService}</td>
-                        <td style="padding:0 0 8px;vertical-align:top;color:${INK};">${d.safeService}</td>
+                        <td style="padding:0 0 8px;vertical-align:top;color:${INK};">${service}</td>
                       </tr>
                       <tr>
                         <td width="110" style="width:110px;padding:0 12px 16px 0;vertical-align:top;color:${MUTED};">${t.labelCompany}</td>
@@ -208,14 +271,16 @@ export function confirmationHtml(d: ConfirmationData): string {
 
 export function confirmationText(d: ConfirmationData): string {
   const t = I18N[d.lang as keyof typeof I18N] ?? I18N.en;
-  const companyLabel = `${t.labelCompany}: ${d.rawCompany !== '—' ? d.rawCompany : t.notFilled}`;
+  const projectLabel = `${t.labelProject}: ${d.rawProject !== NOT_PROVIDED ? d.rawProject : t.notFilled}`;
+  const companyLabel = `${t.labelCompany}: ${d.rawCompany !== NOT_PROVIDED ? d.rawCompany : t.notFilled}`;
   return [
     t.greetingPlain(d.rawName),
     '',
     t.thanks,
     '',
     t.sectionSubmissionPlain,
-    `${t.labelService}: ${d.rawService}`,
+    projectLabel,
+    `${t.labelService}: ${serviceLabel(t.services, d.rawService) ?? d.rawService}`,
     companyLabel,
     '',
     `${t.sectionMessage}:`,

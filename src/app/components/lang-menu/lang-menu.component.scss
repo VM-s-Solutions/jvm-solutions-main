@@ -1,0 +1,91 @@
+@use 'abstracts' as *;
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+.lang__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 2.625rem;
+  padding: 0 $space-3 0 $space-4;
+  border: 0;
+  border-radius: $radius-pill;
+  background: rgba($color-soft, 0.9);
+  box-shadow: inset 0 0 0 1px rgba($color-ink, 0.04);
+  font-size: $text-md;
+  font-weight: $weight-semibold;
+  color: var(--ink);
+  transition: background-color $duration-base $ease-out, color $duration-base $ease-out;
+
+  @include hover { background: var(--soft-2); }
+}
+
+// The top bar carries .is-dark while it sits over a dark surface
+:host-context(.is-dark) .lang__btn {
+  background: rgba($color-bg, 0.1);
+  box-shadow: none;
+  color: var(--night-ink);
+}
+
+.lang__chev {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform $duration-base $ease-ios;
+
+  &.is-open { transform: rotate(180deg); }
+}
+
+.lang__list {
+  position: absolute;
+  top: calc(100% + #{$space-2});
+  right: 0;
+  z-index: $z-menu;
+  min-width: 12rem;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: $radius-md;
+  background: var(--bg);
+  @include window-shadow;
+  transform-origin: top right;
+
+  &.is-entering { animation: menu-in $duration-quick $ease-out; }
+  &.is-leaving { animation: menu-in $duration-fast $ease-in reverse; }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+}
+
+.lang__opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-2-5 $space-3;
+  border: 0;
+  border-radius: $radius-sm;
+  background: none;
+  font-size: $text-md;
+  font-weight: $weight-medium;
+  color: var(--ink);
+  text-align: left;
+  transition: background-color $duration-fast $ease-out;
+
+  @include hover { background: var(--soft); }
+
+  &.is-on { font-weight: $weight-semibold; }
+}
+
+.lang__tick {
+  width: 1rem;
+  height: 1rem;
+  color: var(--orange-text);
+}

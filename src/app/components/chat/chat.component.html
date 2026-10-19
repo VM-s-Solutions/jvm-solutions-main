@@ -1,0 +1,123 @@
+<div class="chat__head">
+  <div class="faces">
+    @for (person of faces; track person.id) {
+      <img [src]="person.avatar" alt="" width="40" height="40" decoding="async" />
+    }
+  </div>
+  <div class="chat__who">
+    <b>{{ 'chat.who' | translate }}</b>
+    <span>{{ 'chat.status' | translate }}</span>
+  </div>
+</div>
+
+<div
+  #body
+  class="chat__body"
+  role="log"
+  aria-relevant="additions"
+  tabindex="0"
+  [attr.aria-label]="'a11y.conversation' | translate"
+>
+  <div #thread class="chat__thread">
+  @for (m of messages(); track m.id) {
+    <jvm-message
+      [from]="m.from"
+      [first]="m.first"
+      [typing]="m.typing"
+      [pop]="m.pop"
+      [class.is-new]="m.enter"
+      [class.has-act]="m.hasAction"
+      [attr.data-msg]="m.id"
+    >
+      @if (m.key) {
+        {{ m.key | translate: m.params }}
+      } @else {
+        {{ m.typed }}
+      }
+      @if (m.route; as route) {
+        <a msgAction class="msg__act" [class.is-new]="m.actionEnter" [routerLink]="route">
+          <span class="msg__act-label">{{ m.actionKey | translate }}</span><jvm-icon name="arrow" />
+        </a>
+      } @else if (m.scrollTo; as target) {
+        <button msgAction class="msg__act" type="button" [class.is-new]="m.actionEnter" (click)="scrollTo(target)">
+          <span class="msg__act-label">{{ m.actionKey | translate }}</span><jvm-icon name="arrow" />
+        </button>
+      }
+    </jvm-message>
+  }
+  </div>
+</div>
+
+<div
+  #replyGroup
+  class="chat__chips"
+  role="group"
+  tabindex="-1"
+  [attr.aria-label]="'a11y.reply' | translate"
+  [class.is-row]="isRow()"
+  [class.is-leaving]="leaving()"
+>
+  @switch (reply()) {
+    @case ('name') {
+      <form
+        #nameForm
+        class="namebox"
+        novalidate
+        [class.is-invalid]="nameMissing()"
+        (submit)="submitName($event, nameForm, nameInput)"
+      >
+        <label class="sr-only" for="jvm-chat-name">{{ 'chat.nameLabel' | translate }}</label>
+        <span class="namebox__field">
+          <input
+            #nameInput
+            id="jvm-chat-name"
+            class="namebox__input"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            enterkeyhint="send"
+            [maxLength]="maxLength"
+            [placeholder]="'chat.namePlaceholder' | translate"
+            [value]="draft()"
+            aria-describedby="jvm-chat-name-error"
+            [attr.aria-invalid]="nameMissing() || null"
+            (input)="onDraft(nameInput.value)"
+          />
+          <!-- Stands in the empty box in place of the placeholder; always there, so it is announced -->
+          <span id="jvm-chat-name-error" class="namebox__error" aria-live="polite">
+            @if (nameMissing()) {
+              {{ 'chat.nameRequired' | translate }}
+            }
+          </span>
+        </span>
+        <button class="namebox__send" type="submit" [attr.aria-label]="'a11y.send' | translate">
+          <jvm-icon name="up" />
+        </button>
+      </form>
+      <button
+        #skipChip
+        class="qchip qchip--quiet"
+        type="button"
+        [style.--i]="1"
+        [class.is-flown]="skipFlown()"
+        (click)="skip(skipChip)"
+      >{{ 'chat.noName' | translate }}</button>
+    }
+    @case ('chips') {
+      @for (chip of chips(); track chip.id; let i = $index) {
+        @if (chip.kind === 'question') {
+          <button
+            #chipEl
+            class="qchip"
+            type="button"
+            [style.--i]="i"
+            [class.is-flown]="chip.flown"
+            (click)="ask(chip.id, chipEl)"
+          >{{ chip.key | translate: chip.params }}</button>
+        } @else {
+          <a class="qchip qchip--quiet" routerLink="/contact" [style.--i]="i">{{ 'chat.write' | translate }}</a>
+        }
+      }
+    }
+  }
+</div>

@@ -1,0 +1,37 @@
+@use 'abstracts' as *;
+
+// Each word sits in a mask; the padding/margin pair keeps descenders inside it.
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.04em 0.02em 0.12em;
+  margin: -0.04em -0.02em -0.12em;
+
+  > span {
+    display: inline-block;
+    transition: transform $duration-reveal $ease-out;
+    transition-delay: calc(var(--i) * #{$stagger-md} + var(--d, 0s));
+  }
+}
+
+:host(:not(.is-in)) .w > span {
+  transform: translateY(110%);
+}
+
+// After a text change only the new words stagger, starting from the first one that changed
+:host(.is-swapped) .w > span {
+  transition-delay: calc(max(0, var(--i) - var(--from, 0)) * #{$stagger-sm});
+}
+
+// The changed words drop out together, within --out (the component's OUT_MS), so they are gone
+// before it swaps the text. .is-out only comes with .is-swapped; matching both outranks its stagger.
+:host(.is-swapped) .w.is-out > span {
+  transform: translateY(-110%);
+  transition: transform var(--out) $ease-in;
+}
+
+.w.is-enter > span {
+  transform: translateY(110%);
+  transition: none;
+}

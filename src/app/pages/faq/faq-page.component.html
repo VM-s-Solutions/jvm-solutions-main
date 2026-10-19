@@ -1,9 +1,29 @@
-<main id="main-content" class="faq-page">
-  <jvm-faq />
-</main>
+<section class="page-hero">
+  <div class="container">
+    <h1 class="display" [jvmSplit]="'faq.title' | translate"></h1>
+    <p class="lead" jvmReveal="lift" [revealDelay]="0.3">{{ 'faq.lead' | translate }}</p>
+  </div>
+</section>
 
-@defer (on viewport; prefetch on idle) {
-  <jvm-footer />
-} @placeholder {
-  <div style="min-height:300px"></div>
-}
+<section class="section section--tight">
+  <div class="container">
+    <div class="thread thread--page">
+      @for (pair of pairs; track pair.q) {
+        <jvm-message from="me" jvmReveal>
+          <h2 class="thread__text">{{ pair.q | translate }}</h2>
+        </jvm-message>
+        <jvm-message [from]="pair.by" jvmReveal [revealDelay]="0.12">
+          <p class="thread__text">{{ pair.a | translate: answerParams() }}</p>
+        </jvm-message>
+      }
+    </div>
+
+    <div class="ask" jvmReveal>
+      <p class="ask__text">{{ 'faq.more' | translate }}</p>
+      <a class="btn btn--primary" routerLink="/contact">
+        <span>{{ 'faq.moreCta' | translate }}</span>
+        <jvm-icon name="arrow" />
+      </a>
+    </div>
+  </div>
+</section>

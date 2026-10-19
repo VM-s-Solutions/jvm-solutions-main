@@ -1,0 +1,53 @@
+@use 'abstracts' as *;
+
+// Sized in cqi (the card's mock-screen container), so the panel scales as one picture.
+
+:host {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--soft-2);
+}
+
+.prompt {
+  width: 80%;
+  padding: 4.4cqi 4.8cqi;
+  border-radius: 3cqi;
+  background: var(--bg);
+  box-shadow:
+    0 0 0 0.25cqi var(--line),
+    0 5cqi 9cqi -5cqi rgba($color-ink, 0.3);
+}
+
+.prompt__label {
+  font: $weight-medium 2.3cqi/1 $font-mono;
+  color: var(--placeholder);
+}
+
+.prompt__text {
+  margin-top: 2.6cqi;
+  font-size: 3.2cqi;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+// The idea, highlighted; the highlight wraps with it if a long name breaks
+.prompt__subject {
+  padding: 0 0.8cqi;
+  border-radius: 0.8cqi;
+  background: var(--orange-tint);
+  color: var(--orange-text);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.prompt__chip {
+  display: inline-block;
+  margin-top: 3cqi;
+  padding: 1cqi 2.4cqi;
+  border-radius: 2cqi;
+  background: var(--soft);
+  font-size: 2.3cqi;
+  font-weight: $weight-semibold;
+}
