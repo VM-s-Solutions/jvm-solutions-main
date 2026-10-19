@@ -1,157 +1,178 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use 'abstracts' as *;
 
-.about-page {
-  position: relative;
-  min-height: 100vh;
-
-  &__inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: $space-16;
-    @include section-padding;
-    @include page-top;
-
-    @include md { gap: $space-20; }
-  }
+:host {
+  display: block;
 }
 
-.about-header {
-  max-width: 640px;
-
-  &__title {
-    @include heading-section;
-    margin: 0 0 $space-4;
-  }
-
-  &__subtitle {
-    @include lead;
-    max-width: 520px;
-  }
-}
-
-// ── Public-register details — head left, facts right from lg up ──────────────
-.about-company {
-  border-top: 1px solid var(--border-color);
-  padding-top: $space-12;
-
-  @include md { padding-top: $space-16; }
+// ─── Portraits ────────────────────────────────────────────────────────────────
+// A tall photo each, with a frosted card. Phones always show the bio; from the desktop
+// layout up it unfolds on hover, or on focus where there is no hover.
+.portraits {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
 
-  // no row gap: stacked, the spacing lives inside the collapsible details so
-  // nothing is left behind when they're closed
-  @include lg {
-    grid-template-columns: 320px 1fr;
-    column-gap: $space-20;
+  @include md { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.portrait {
+  position: relative;
+  isolation: isolate; // keeps the zooming photo inside the rounded corners in Safari
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: var(--soft-2);
+  outline-offset: 4px;
+
+  @include md { aspect-ratio: 3 / 4; }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--focus, 50% 50%);
+    transition: transform $duration-linger $ease-out;
   }
+}
 
-  &__title {
-    font-family: $font-heading;
-    font-size: clamp($text-xl, 3vw, $text-3xl);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
-    margin: 0;
-  }
+@media (prefers-reduced-motion: no-preference) {
+  .portrait {
+    &:focus-within img { transform: scale(1.05); }
 
-  &__intro {
-    font-size: $text-base;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 560px;
-    margin: $space-3 0 0;
-  }
-
-  &__facts {
-    margin: $space-10 0 0;
-    border-top: 1px solid var(--border-color);
-
-    @include lg { margin-top: 0; }
-  }
-
-  &__fact {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $space-1;
-    padding: $space-4 0;
-    border-bottom: 1px solid var(--border-color);
-
-    @include sm {
-      grid-template-columns: 220px 1fr;
-      gap: $space-6;
-      align-items: baseline;
+    @include hover {
+      img { transform: scale(1.05); }
     }
   }
+}
 
-  &__term {
-    font-size: $text-xs;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin: 0;
-  }
+.portrait__card {
+  position: absolute;
+  inset: auto $space-3 $space-3;
+  padding: $space-5;
+  border-radius: $radius-md;
+  background: rgba($color-night, 0.78);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--bg);
+}
 
-  &__value {
-    font-size: $text-sm;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
-  }
+.portrait__name {
+  font: $weight-semibold #{$text-xl}/1.2 $font-display;
+  letter-spacing: $tracking-title;
+}
 
-  &__toggle {
-    @include btn-outline;
-    margin-top: $space-6;
-    gap: $space-2;
-    font-size: $text-sm;
+.portrait__role {
+  font-size: $text-sm;
+  color: rgba($color-bg, 0.76);
+}
 
-    svg {
-      flex-shrink: 0;
-      transition: transform $transition-base;
-    }
+.portrait__more {
+  margin-top: $space-2;
+}
 
-    &.is-open svg { transform: rotate(45deg); }
-  }
+.portrait__bio {
+  font-size: $text-md;
+  line-height: 1.5;
+  color: rgba($color-bg, 0.88);
+}
 
-  // 0fr ↔ 1fr animates the real height, so it collapses as smoothly as it opens
-  &__details {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows $transition-slow;
+.portrait__link {
+  margin-top: $space-3;
+}
 
-    &.is-open { grid-template-rows: 1fr; }
-  }
+@mixin more-open {
+  max-height: 14em;
+  margin-top: $space-2;
+  opacity: 1;
+  pointer-events: auto;
+}
 
-  // no padding here: in a 0fr row the box can't shrink below its own padding
-  &__details-inner {
-    min-height: 0;
+@include md {
+  .portrait__more {
+    // The clipped box keeps 6px of room for the link's focus ring and gives it back to the layout
+    margin: 0 -6px -6px;
+    padding: 0 6px 6px;
+    max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(-$space-2);
-    transition: opacity $transition-base, transform $transition-base;
+    pointer-events: none;
+    transition:
+      max-height $duration-long $ease-ios,
+      opacity $duration-base $ease-out,
+      margin $duration-long $ease-ios;
+  }
 
-    .is-open > & {
-      opacity: 1;
-      transform: none;
-      transition: opacity $transition-slow 100ms, transform $transition-slow 100ms;
+  .portrait:focus-within .portrait__more {
+    @include more-open;
+  }
+
+  .portrait {
+    @include hover {
+      .portrait__more { @include more-open; }
     }
   }
+}
 
-  &__registry {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
-    margin-top: $space-6;
-    font-size: $text-sm;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color $transition-fast;
+// ─── How we work ──────────────────────────────────────────────────────────────
+.ways__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4;
+  margin-top: $space-10;
 
-    &:hover { color: var(--text-primary); }
+  @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @include lg { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 
-    svg { flex-shrink: 0; }
+.ways__card {
+  padding: $space-6;
+  border-radius: $radius-md;
+  background: var(--bg);
+
+  p {
+    margin-top: $space-2;
+    font-size: $text-md;
+    color: var(--ink-2);
   }
+}
+
+// 1.5 keeps the line as tall as the concept's inline title on its body-text line
+.ways__title {
+  font: $weight-semibold #{$text-lg}/1.5 $font-display;
+  letter-spacing: -0.02em;
+}
+
+// ─── Public register ──────────────────────────────────────────────────────────
+.reg {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $stack-gap;
+  align-items: start;
+
+  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+
+  .sec-head__p { margin-bottom: $space-7; }
+}
+
+// Rows share one pair of columns, and the label column never gets narrower than its longest word
+.reg__list {
+  display: grid;
+  grid-template-columns: minmax(min-content, 0.8fr) minmax(0, 1.2fr);
+  column-gap: $space-4;
+}
+
+.reg__row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  padding: $space-4 0;
+  box-shadow: inset 0 -1px 0 var(--line);
+  overflow-wrap: break-word;
+
+  dt {
+    font-size: $text-md;
+    color: var(--muted);
+  }
+
+  dd { font-weight: $weight-medium; }
 }

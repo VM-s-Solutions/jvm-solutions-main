@@ -1,3 +1,24 @@
+@use 'abstracts' as *;
+
 :host {
   display: block;
 }
+
+// Placeholders hold roughly the height each section will take, so nothing above the
+// fold moves when a section renders.
+.ph--paper {
+  min-height: calc(420vh + 16rem);
+
+  @include md { min-height: calc(460vh + 20rem); }
+}
+
+.ph--trades {
+  min-height: 60rem;
+
+  @include md { min-height: 72rem; }
+}
+
+.ph--team { min-height: 44rem; background: var(--soft); }
+.ph--price { min-height: 44rem; background: var(--night); }
+.ph--asked { min-height: 36rem; }
+.ph--compose { min-height: 36rem; }

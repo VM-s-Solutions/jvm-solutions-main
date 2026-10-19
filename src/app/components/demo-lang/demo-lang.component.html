@@ -1,0 +1,31 @@
+<div class="lang">
+  <div class="lang__bar">
+    <b class="lang__name"><jvm-swap-text [text]="product()" /></b>
+    <span class="lang__tabs" [style.--k]="active()" [style.--n]="samples.length">
+      <span class="lang__thumb"></span>
+      @for (sample of samples; track sample.code; let i = $index) {
+        <span class="lang__tab" [class.is-on]="i === active()">{{ sample.short }}</span>
+      }
+    </span>
+  </div>
+
+  <div class="lang__body">
+    <div class="lang__stack lang__title">
+      @for (sample of samples; track sample.code; let i = $index) {
+        <span [class.is-on]="i === active()" [attr.lang]="sample.code">{{ sample.titleKey | translate }}</span>
+      }
+    </div>
+    <div class="lang__stack lang__sub">
+      @for (sample of samples; track sample.code; let i = $index) {
+        <span [class.is-on]="i === active()" [attr.lang]="sample.code">{{ sample.subKey | translate }}</span>
+      }
+    </div>
+    <span class="lang__field"></span>
+    <span class="lang__field"></span>
+    <div class="lang__stack lang__cta">
+      @for (sample of samples; track sample.code; let i = $index) {
+        <span [class.is-on]="i === active()" [attr.lang]="sample.code">{{ sample.ctaKey | translate }}</span>
+      }
+    </div>
+  </div>
+</div>

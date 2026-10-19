@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { LegalDocumentComponent } from '../../components/legal-document/legal-document.component';
 import { legalSection, mailtoHref } from '../../components/legal-document/legal-document.model';
 
 @Component({
   selector: 'jvm-refunds',
   standalone: true,
-  imports: [FooterComponent, LegalDocumentComponent],
+  imports: [LegalDocumentComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './refunds.component.html',
 })

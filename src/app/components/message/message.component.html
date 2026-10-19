@@ -1,0 +1,20 @@
+@if (person(); as p) {
+  @if (first()) {
+    <img class="msg__face" [src]="p.avatar" alt="" width="30" height="30" loading="lazy" decoding="async" />
+  } @else {
+    <span class="msg__pad"></span>
+  }
+}
+<div class="msg__body">
+  @if (person(); as p) {
+    @if (first()) {
+      <span class="msg__name">{{ p.first }}</span>
+    }
+  }
+  @if (typing()) {
+    <p class="bubble bubble--typing"><i></i><i></i><i></i></p>
+  } @else {
+    <div class="bubble" [class.bubble--pop]="pop()"><ng-content /></div>
+  }
+  <ng-content select="[msgAction]" />
+</div>

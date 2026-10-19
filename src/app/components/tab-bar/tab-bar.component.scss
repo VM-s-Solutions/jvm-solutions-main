@@ -1,0 +1,60 @@
+@use 'abstracts' as *;
+
+// The bar's inner padding: its corners are the links' radius plus this, so the two curves nest
+$bar-pad: 6px;
+
+:host {
+  display: block;
+
+  @include md { display: none; }
+}
+
+.tabbar {
+  position: fixed;
+  left: max(#{$space-3}, env(safe-area-inset-left, 0px));
+  right: max(#{$space-3}, env(safe-area-inset-right, 0px));
+  bottom: calc(env(safe-area-inset-bottom, 0px) + #{$space-3});
+  z-index: $z-tabbar;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: $bar-pad;
+  border-radius: calc($radius-md + $bar-pad);
+  @include frosted(rgba($color-bg, 0.86));
+  box-shadow:
+    0 0 0 1px rgba($color-ink, 0.06),
+    0 12px 32px -12px rgba($color-ink, 0.35);
+  view-transition-name: tabbar;
+}
+
+.tabbar__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 7px 0 6px;
+  border-radius: $radius-md;
+  font-size: $text-3xs;
+  font-weight: $weight-semibold;
+  text-decoration: none;
+  // --ink-2, not --muted: the bar is translucent, and over a dark section the labels must still read
+  color: var(--ink-2);
+  transition: color $duration-swift $ease-out, background-color $duration-swift $ease-out;
+
+  span {
+    max-width: 100%;
+    @include ellipsis;
+  }
+
+  .icon {
+    width: 1.4375rem;
+    height: 1.4375rem;
+  }
+
+  &.is-active {
+    color: var(--ink);
+    background: var(--soft);
+
+    .icon { color: var(--orange); }
+  }
+}

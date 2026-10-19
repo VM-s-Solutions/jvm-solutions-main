@@ -1,0 +1,14 @@
+<section class="section" id="asked" aria-labelledby="asked-title">
+  <div class="container asked">
+    <div>
+      <h2 class="h2" id="asked-title" [jvmSplit]="'faq.title' | translate"></h2>
+      <a class="link" routerLink="/faq" jvmReveal>{{ 'faq.all' | translate }}<jvm-icon name="arrow" /></a>
+    </div>
+
+    <div class="thread">
+      @for (line of thread; track line.key) {
+        <jvm-message [from]="line.from" jvmReveal [revealDelay]="line.delay">{{ line.key | translate }}</jvm-message>
+      }
+    </div>
+  </div>
+</section>

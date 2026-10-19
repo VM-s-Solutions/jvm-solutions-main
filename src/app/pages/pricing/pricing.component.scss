@@ -1,230 +1,85 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use 'abstracts' as *;
 
-:host { display: block; }
-
-// ── Page shell ────────────────────────────────────────────────────────────────
-.pricing-page {
-  position: relative;
-  min-height: 100vh;
+:host {
+  display: block;
 }
 
-.pricing-page__inner {
-  position: relative;
-  z-index: 1;
-  @include section-padding;
-  @include page-top;
+// ─── Side by side ─────────────────────────────────────────────────────────────
+// The table keeps a readable width and its frame scrolls sideways on narrow screens.
+.table-wrap {
+  margin-top: $space-10;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border-radius: $radius-lg;
+  background: var(--bg);
+  box-shadow: 0 1px 2px rgba($color-ink, 0.04);
 }
 
-// ── Page header — flush with the tier rows' left edge ────────────────────────
-.pricing-header {
-  max-width: 640px;
-  margin-bottom: $space-16;
-
-  &__title {
-    @include heading-section;
-    margin: 0 0 $space-4;
-  }
-
-  &__subtitle {
-    @include lead;
-    max-width: 520px;
-  }
-}
-
-// ── Tier list — stacked cards up to md, full-width rows from lg ──────────────
-.pricing-tiers {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-6;
-  // room for the "most popular" badge overlapping the highlighted card's top edge
-  padding-top: $space-3;
-
-  @include md {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include lg {
-    grid-template-columns: 1fr;
-    gap: $space-4;
-  }
-}
-
-// ── Tier — card on small screens, one full-width row on lg+ ──────────────────
-.pricing-tier {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: $space-6;
-  padding: $space-8 $space-6;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: $radius-xl;
-  transition: border-color $transition-base, box-shadow $transition-base,
-    transform $transition-base;
-
-  @media (hover: hover) {
-    &:hover {
-      border-color: var(--border-light);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-  }
-
-  @include lg {
-    display: grid;
-    grid-template-columns: 280px 1fr 220px;
-    gap: $space-8;
-    align-items: center;
-    padding: $space-8;
-  }
-
-  &--highlighted {
-    border-color: rgba(var(--accent-rgb), 0.5);
-
-    @media (hover: hover) {
-      &:hover { border-color: rgba(var(--accent-rgb), 0.8); }
-    }
-  }
-}
-
-// ── Badge (Most Popular) — sits on the tier's top border ─────────────────────
-.pricing-tier__badge {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--bg-surface);
-  color: var(--accent);
-  border: 1px solid rgba(var(--accent-rgb), 0.5);
-  font-size: $text-xs;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
-  padding: 2px $space-3;
-  border-radius: $radius-full;
-  white-space: nowrap;
-}
-
-// ── Tier identity ─────────────────────────────────────────────────────────────
-.pricing-tier__header {
-  display: flex;
-  flex-direction: column;
-}
-
-.pricing-tier__label {
-  font-family: $font-heading;
-  font-size: $text-xs;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.pricing-tier__price-row {
-  display: flex;
-  align-items: baseline;
-  gap: $space-2;
-  margin-top: $space-4;
-}
-
-.pricing-tier__from {
-  font-size: $text-sm;
-  color: var(--text-muted);
-}
-
-.pricing-tier__price {
-  font-family: $font-heading;
-  font-size: $text-4xl;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.pricing-tier__period {
-  font-size: $text-sm;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin-top: $space-2;
-
-  // Placeholder for tiers without a period. Only the side-by-side cards (md)
-  // need it, so their taglines start on one line; stacked cards and lg rows don't.
-  &--spacer {
-    display: none;
-
-    @include md { display: block; height: 1.5em; }
-    @include lg { display: none; }
-  }
-}
-
-.pricing-tier__tagline {
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: $space-4 0 0;
-}
-
-// ── Feature list — divider on top as card, on the left as row ────────────────
-.pricing-tier__features {
-  list-style: none;
-  padding: $space-6 0 0;
-  margin: 0;
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  gap: $space-3;
-  flex: 1;
-
-  @include lg {
-    border-top: none;
-    border-left: 1px solid var(--border-color);
-    padding: $space-2 0 $space-2 $space-8;
-    align-self: stretch;
-    justify-content: center;
-  }
-
-  @include xl {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $space-3 $space-8;
-    align-content: center;
-  }
-}
-
-.pricing-tier__feature {
-  display: flex;
-  align-items: flex-start;
-  gap: $space-3;
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  line-height: 1.5;
-
-  svg {
-    flex-shrink: 0;
-    color: var(--success);
-    margin-top: 2px;
-  }
-}
-
-// ── CTA ───────────────────────────────────────────────────────────────────────
-.pricing-tier__cta {
+.compare {
   width: 100%;
-  margin-top: auto;
+  min-width: 55rem;
+  border-collapse: collapse;
+  font-size: $text-md;
 
-  @include lg {
-    margin-top: 0;
+  th,
+  td {
+    padding: $space-5 $space-6;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    padding-top: $space-6;
+    font: $weight-semibold #{$text-lg}/1.25 $font-display;
+    letter-spacing: -0.02em;
+  }
+
+  tbody th {
+    width: 13%;
+    font-size: $text-sm;
+    font-weight: $weight-semibold;
+    color: var(--muted);
+  }
+
+  tbody tr + tr th,
+  tbody tr + tr td {
+    box-shadow: inset 0 1px 0 var(--line);
+  }
+
+  // The amount in a price ("from <b>€390</b> / month") comes from the translation
+  td ::ng-deep b {
+    font: $weight-semibold #{$text-2xl}/1.2 $font-display;
+    letter-spacing: -0.03em;
+  }
+
+  // The recommended plan runs down a dark column, with its own hairlines
+  .rec {
+    background: var(--night);
+    color: var(--night-ink);
+  }
+
+  tbody tr + tr .rec {
+    box-shadow: inset 0 1px 0 var(--night-line);
   }
 }
 
-// ── VAT note — same left edge as the rows ────────────────────────────────────
-.pricing-note {
-  font-size: $text-sm;
-  color: var(--text-muted);
-  margin: $space-10 0 0;
-  max-width: 640px;
-  line-height: 1.6;
+.compare__badge {
+  display: block;
+  width: max-content;
+  margin-top: $space-2;
+  padding: 3px $space-2;
+  border-radius: $radius-pill;
+  background: var(--orange);
+  color: var(--ink);
+  font: $weight-semibold #{$text-2xs}/1.4 $font-text;
+}
+
+.compare__cta td {
+  padding-bottom: $space-6;
+}
+
+.note-p {
+  margin-top: $space-6;
+  font-size: $text-md;
+  color: var(--muted);
 }

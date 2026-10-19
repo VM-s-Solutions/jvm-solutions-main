@@ -1,144 +1,217 @@
 {
   "a11y": {
-    "footerNav": "Navigácia v päte stránky",
-    "home": "JVM Yore – úvodná stránka",
+    "carousel": "Služby, posúvajte do strán",
+    "conversation": "Konverzácia",
+    "footerNav": "Päta stránky",
+    "home": "JVM Yore, úvodná stránka",
+    "howMuch": "Koľko pomoci potrebujete",
+    "ideaName": "Pomenujte svoj nápad",
     "language": "Jazyk: {{lang}}",
+    "languageMenu": "Vyberte jazyk",
     "legalNav": "Právne informácie",
-    "mainNav": "Hlavná navigácia",
-    "menu": "Menu",
-    "scrollTop": "Späť nahor",
+    "linkedin": "LinkedIn: {{name}}",
+    "mainNav": "Hlavné menu",
+    "mobileNav": "Mobilné menu",
+    "next": "Ďalej",
+    "opensInNewTab": "(otvorí sa v novej karte)",
+    "previous": "Späť",
+    "reply": "Odpoveď",
+    "send": "Odoslať",
+    "services": "Služby",
     "skipToContent": "Preskočiť na obsah",
-    "themeToDark": "Prepnúť na tmavý motív",
-    "themeToLight": "Prepnúť na svetlý motív"
+    "team": "Náš tím",
+    "toForm": "Pokračovať na kontaktný formulár"
   },
   "about": {
     "company": {
       "directors": "Konatelia",
       "founded": "Dátum vzniku",
       "foundedValue": "3. júna 2026",
-      "hide": "Skryť firemné údaje",
       "ico": "IČO",
-      "intro": "Sme riadne zapísaná česká spoločnosť s ručením obmedzeným. Tu sú údaje, ktoré si viete kedykoľvek overiť v obchodnom registri.",
       "legalName": "Obchodné meno",
       "registration": "Zápis v registri",
       "registrationValue": "Mestský súd v Prahe, oddiel C, vložka 449138",
       "registryLink": "Zobraziť v obchodnom registri",
       "scope": "Predmet podnikania",
       "scopeValue": "Poskytovanie softvéru, poradenstvo v oblasti informačných technológií, spracovanie dát, hostingové a súvisiace činnosti a webové portály",
-      "seat": "Sídlo",
-      "show": "Zobraziť firemné údaje",
-      "title": "Firemné údaje"
+      "seat": "Sídlo"
     },
-    "description": "Dvaja senior vývojári a senior manažér spojení jediným cieľom: dodávať softvér, na ktorý sa klienti môžu spoľahnúť. Technická hĺbka a obchodná jasnosť — každý projekt, načas a v rozpočte.",
-    "janis": {
-      "bio": "Riadi klientske vzťahy, dodávku projektov a rozvoj obchodu. Prepojenie medzi tým, čo klienti potrebujú, a tým, čo tím dokáže postaviť.",
-      "role": "Spoluzakladateľ & konateľ"
+    "register": {
+      "lead": "Od 3. júna 2026 sme riadne zapísaná česká spoločnosť s ručením obmedzeným. Všetky údaje nižšie si môžete overiť v obchodnom registri.",
+      "title": "Overte si nás v registri"
     },
-    "michael": {
-      "bio": "Full-stack cez Angular, .NET, Swift a Kotlin. Prináša technickú precíznosť na každú vrstvu — od dátového modelu po vybrúsené mobilné UI.",
-      "role": "Spoluzakladateľ & full-stack inžinier"
-    },
-    "sectionLabel": "Náš tím",
-    "titleGrad": "tím",
-    "titlePart1": "Spoznajte",
-    "titlePart2": "za JVM",
-    "vit": {
-      "bio": "Stavia naprieč celým stackom — Angular frontendy, .NET backendy a natívne mobilné aplikácie v Swifte a Kotline. Posadnutý výkonom a čistou architektúrou.",
-      "role": "Spoluzakladateľ & full-stack inžinier"
+    "title": "Janis, Vít a Michael.",
+    "ways": {
+      "langs": {
+        "body": "Angličtina, čeština, slovenčina a ukrajinčina.",
+        "title": "Štyri jazyky"
+      },
+      "nda": {
+        "body": "Dohodu o mlčanlivosti podpíšeme ešte pred prvým hovorom, ak ju potrebujete. Všetko, čo s nami zdieľate, zostáva v každom prípade dôverné.",
+        "title": "Najprv NDA"
+      },
+      "remote": {
+        "body": "Sídlime v Prahe 1 na Novom Meste a s klientmi spolupracujeme online, nech sú kdekoľvek.",
+        "title": "Na diaľku, asynchrónne"
+      },
+      "title": "Ako pracujeme",
+      "tools": {
+        "body": "Google Meet alebo Teams – podľa toho, kde je váš tím ako doma.",
+        "title": "Vaše nástroje"
+      }
     }
   },
+  "chat": {
+    "a": {
+      "advice1": "Radi pomôžeme. Konzultácia stojí {{price}} za hodinu: posúdime architektúru, urobíme audit kódu alebo overíme, či sa váš nápad dá postaviť tak, ako si ho predstavujete.",
+      "advice1Named": "Radi pomôžeme. Konzultácia stojí {{price}} za hodinu: posúdime architektúru, urobíme audit kódu alebo overíme, či sa projekt {{name}} dá postaviť tak, ako si ho predstavujete.",
+      "advice2": "Odídete s písomným zhrnutím alebo so záznamom hovoru.",
+      "care1": "Prevezmeme ju, aj keď sme ju nerobili my. Najprv urobíme audit a úprimne vám povieme, čo zistíme.",
+      "care1Named": "Aplikáciu {{name}} prevezmeme, aj keď sme ju nerobili my. Najprv urobíme audit a úprimne vám povieme, čo zistíme.",
+      "care2": "Podporu a LTS máme od {{price}} mesačne: bezpečnostné záplaty, aktuálne knižnice a SLA podľa vašich potrieb.",
+      "idea1": "Tak začneme dvoma cielenými stretnutiami: kto to otvorí ako prvý, čo v tom potrebuje urobiť, termín a rozpočet.",
+      "idea1Named": "Tak začneme dvoma cielenými stretnutiami: kto ako prvý otvorí aplikáciu {{name}}, čo v nej potrebuje urobiť, termín a rozpočet.",
+      "idea2": "Skôr než napíšeme jediný riadok kódu, dostanete písomnú špecifikáciu a jednu pevnú cenu. MVP s jasným rozsahom zvyčajne trvá 6–12 týždňov.",
+      "team1": "V tom prípade nastúpime všetci traja: frontend, backend, mobil aj vedenie projektu, od {{price}} mesačne.",
+      "team1Named": "V tom prípade na projekt {{name}} nastúpime všetci traja: frontend, backend, mobil aj jeho vedenie, od {{price}} mesačne.",
+      "team2": "Dvojtýždňové šprinty, na konci každého ukážka hotovej práce. Bez viazanosti."
+    },
+    "act": {
+      "advice": "Rezervovať konzultáciu",
+      "care": "Plány podpory",
+      "idea": "Pozrieť si to na papieri",
+      "team": "Porovnať plány"
+    },
+    "askName": "Ako sa volá váš nápad?",
+    "intro1": "Zdravíme, sme Janis, Vít a Michael.",
+    "intro2": "Robíme webové aplikácie a backendy v .NET.",
+    "intro3": "A natívne aplikácie pre iOS a Android, plus AI, ktorá vášmu tímu zoberie z krku otravnú rutinu.",
+    "nameLabel": "Názov vášho nápadu",
+    "namePlaceholder": "Pomenujte svoj nápad…",
+    "nameRequired": "Napíšte názov alebo zvoľte „Zatiaľ bez názvu“.",
+    "named1": "{{name}}. Pekný názov.",
+    "named2": "Posuňte sa nižšie a projekt {{name}} vám rozkreslíme presne tak, ako by sme ho stavali.",
+    "noName": "Zatiaľ bez názvu",
+    "q": {
+      "advice": "Stačí mi druhý názor",
+      "care": "Naša aplikácia potrebuje údržbu",
+      "careNamed": "{{name}} už existuje a potrebuje údržbu",
+      "idea": "Mám nápad na produkt",
+      "ideaNamed": "{{name}} je nový produkt",
+      "team": "Potrebujeme celý tím",
+      "teamNamed": "{{name}} potrebuje celý tím"
+    },
+    "seeOnPaper": "Pozrieť si to na papieri",
+    "skipped": "Nevadí. Pomenovať ho môžete aj nižšie na stránke, kedykoľvek budete chcieť.",
+    "status": "Odpoveď do 24 hodín",
+    "who": "Janis, Vít a Michael",
+    "write": "Napíšem vám priamo"
+  },
+  "compose": {
+    "draftNamed": "Dobrý deň, pracujeme na projekte {{name}}. ",
+    "placeholder": "Dobrý deň, pracujeme na…",
+    "placeholderNamed": "Dobrý deň, pracujeme na projekte {{name}}…",
+    "title": "Začnime rozhovor.",
+    "to": "Komu",
+    "when": "Napíšte teraz a ozveme sa vám do <b>{{date}} o {{time}}</b> podľa vášho času."
+  },
   "contact": {
-    "backHome": "Späť na hlavnú stránku",
-    "description": "Povedzte nám o svojom projekte a do 24 hodín sa ohlásime s individuálnou ponukou.",
+    "about": "Téma",
+    "aside": {
+      "email": "Radšej e-mailom?",
+      "reply": "Odpoveď",
+      "replyValue": "Do 24 hodín v pracovné dni",
+      "where": "Kde",
+      "whereValue": "Praha, úplne na diaľku"
+    },
+    "check": "Overenie",
+    "company": "Firma",
+    "companyPlaceholder": "Voliteľné",
+    "email": "E-mail",
+    "emailPlaceholder": "jan@firma.sk",
     "error": {
-      "btn": "Skúsiť znova",
-      "message": "Skúste to prosím znovu alebo nám napíšte priamo na",
-      "title": "Niečo sa pokazilo"
+      "body": "Skúste to prosím o chvíľu znova alebo nám napíšte priamo na",
+      "bodyEnd": ".",
+      "retry": "Skúsiť znova",
+      "title": "Správa neodišla."
     },
-    "form": {
-      "captchaError": "Prosím dokončite overenie CAPTCHA.",
-      "companyLabel": "Firma",
-      "companyOptional": "(voliteľné)",
-      "companyPlaceholder": "Acme s.r.o.",
-      "emailError": "Zadajte prosím platnú e-mailovú adresu.",
-      "emailLabel": "E-mail",
-      "emailPlaceholder": "jan@firma.sk",
-      "messageError": "Správa musí mať aspoň 20 znakov.",
-      "messageLabel": "Vaša správa",
-      "messagePlaceholder": "Opíšte svoj projekt, ciele, termíny…",
-      "nameError": "Zadajte prosím svoje meno (min. 2 znaky).",
-      "nameLabel": "Meno",
-      "namePlaceholder": "Ján Novák",
-      "privacyNoticeLink": "zásadách ochrany osobných údajov",
-      "privacyNoticePost": ".",
-      "privacyNoticePre": "Údaje z formulára použijeme len na to, aby sme vám mohli odpovedať na správu. Viac sa dočítate v ",
-      "serviceError": "Vyberte prosím službu.",
-      "serviceLabel": "Potrebujem",
-      "servicePlaceholder": "Vyberte službu…",
-      "submit": "Odoslať správu",
-      "submitting": "Odosiela sa…"
+    "errors": {
+      "captcha": "Dokončite prosím overenie.",
+      "email": "Zadajte prosím platnú e-mailovú adresu.",
+      "message": "Správa musí mať aspoň 20 znakov.",
+      "name": "Zadajte prosím svoje meno (min. 2 znaky).",
+      "service": "Vyberte prosím, čoho sa správa týka."
     },
-    "locationValue": "Praha & Remote",
-    "responseValue": "Do 24 hodín",
-    "sectionLabel": "Kontaktujte nás",
+    "lead": "Povedzte nám, v akom štádiu je dnes váš nápad. Ak napíšete teraz, ozveme sa vám do <b>{{date}} o {{time}}</b> podľa vášho času.",
+    "leadNamed": "Povedzte nám, v akom štádiu je dnes {{name}}. Ak napíšete teraz, ozveme sa vám do <b>{{date}} o {{time}}</b> podľa vášho času.",
+    "message": "Vaša správa",
+    "messagePlaceholder": "Čo to je, pre koho to je, ako ďaleko ste a dokedy to potrebujete.",
+    "name": "Meno",
+    "namePlaceholder": "Ján Novák",
+    "noticeEnd": ".",
+    "noticeLink": "zásadách ochrany osobných údajov",
+    "noticeStart": "Tieto údaje použijeme len na to, aby sme vám mohli odpovedať na správu. Viac sa dočítate v ",
+    "send": "Odoslať",
+    "sending": "Odosiela sa…",
+    "sent": {
+      "again": "Napísať ďalšiu",
+      "body": "Správa je už v našej schránke a potvrdenie letí do tej vašej. Jeden z nás sa vám ozve do <b>{{date}} o {{time}}</b>.",
+      "delivered": "Doručené",
+      "title": "Je na ceste."
+    },
     "services": {
       "ai": "AI automatizácia",
-      "backend": "Backendové systémy",
-      "frontend": "Vývoj frontendu",
-      "fullstack": "Full-stack produkt",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "fullstack": "Celý produkt",
       "mobile": "Mobilná aplikácia",
       "other": "Iné"
     },
-    "success": {
-      "btn": "Odoslať ďalšiu správu",
-      "message": "Ďakujeme za váš záujem. Ozveme sa vám do 24 hodín.",
-      "title": "Správa odoslaná!"
-    },
-    "title1": "Poďme vytvoriť",
-    "titleGrad": "niečo skvelé"
-  },
-  "cta": {
-    "description": "Odpovedáme osobne — žiadne automatické odpovede. Napíšte nám a dostanete priamu odpoveď od Janisa, Víta alebo Michaela.",
-    "title": "Máte projekt na mysli?"
+    "subject": "Predmet",
+    "subjectPlaceholder": "Názov vášho nápadu",
+    "title": "Postavme niečo skvelé.",
+    "titleNamed": "{{name}}? Poďme to postaviť.",
+    "to": "Komu",
+    "window": "Nová správa"
   },
   "faq": {
-    "a1": "Áno. Radi spolupracujeme so startupmi aj so zavedenými firmami. Pomôžeme vám navrhnúť a doručiť MVP alebo celý produkt — presne podľa vášho rozsahu a rozpočtu.",
-    "a2": "Áno. Prevezmeme čokoľvek od legacy PHP až po rozpracovanú migráciu na Angular. Najprv urobíme audit, pripravíme plán a potom plynulo nadviažeme.",
-    "a3": "Vymedzený MVP zvyčajne trvá 6–12 týždňov od začiatku do produkcie. Discovery fáza vám dá reálne číslo.",
-    "a4": "Áno, pred akýmkoľvek discovery hovorom. Všetko, čo s nami zdieľate, považujeme za dôverné.",
-    "a5": "Áno – formou mesačnej podpory. Rozsah nastavíme podľa toho, koľko starostlivosti aplikácia po spustení potrebuje, a kedykoľvek ho môžete zmeniť.",
-    "a6": "Áno, 100 % na diaľku. Sídlime v Prahe a s klientmi spolupracujeme online, nech sú kdekoľvek.",
-    "more": "Máte ďalšie otázky?",
-    "moreLink": "Napíšte nám",
-    "q1": "Spolupracujete aj s firmami, ktoré práve začínajú?",
+    "a1": "Áno, so startupmi aj so zavedenými firmami. Pomôžeme vám navrhnúť a spustiť MVP alebo celý produkt, presne podľa vášho rozsahu a rozpočtu.",
+    "a2": "Áno, čokoľvek od legacy PHP až po rozpracovanú migráciu na Angular. Najprv urobíme audit, úprimne vám povieme, čo sme našli, a potom sa pustíme do práce.",
+    "a3": "MVP s jasným rozsahom zvyčajne trvá 6–12 týždňov od štartu po ostrú prevádzku. Po dvoch úvodných stretnutiach poznáte skutočný termín, ešte skôr, než sa k čomukoľvek zaviažete.",
+    "a4": "Áno, a ak treba, tak už pred prvým hovorom. Všetko, čo s nami zdieľate, považujeme v každom prípade za dôverné.",
+    "a5": "Pri každom projekte s pevným rozsahom 30 dní po spustení opravujeme chyby zadarmo a na kritické reagujeme do 4 hodín. Potom ponúkame mesačnú podporu od {{price}}. Jej rozsah nastavíme podľa toho, koľko starostlivosti aplikácia potrebuje, a kedykoľvek ho môžete zmeniť.",
+    "a6": "Áno, úplne na diaľku a prevažne asynchrónne. Sídlime v Prahe a s klientmi spolupracujeme online, nech sú kdekoľvek.",
+    "all": "Všetky otázky",
+    "lead": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred začiatkom projektu – tak, ako na ne zvyčajne odpovedáme.",
+    "more": "Máte ešte otázku?",
+    "moreCta": "Opýtajte sa nás priamo",
+    "q1": "Spolupracujete aj s firmami, ktoré práve začínajú?",
     "q2": "Môžete prevziať existujúcu kódovú základňu?",
-    "q3": "Ako vyzerá typický časový plán projektu?",
+    "q3": "Ako dlho trvá projekt?",
     "q4": "Podpisujete NDA?",
-    "q5": "Ponúkate podporu po spustení?",
+    "q5": "Čo bude po spustení?",
     "q6": "Pracujete vzdialene?",
-    "sectionLabel": "FAQ",
-    "subtitle": "Priame odpovede na otázky, ktoré nám zakladatelia a CTO kladú pred štartom projektu.",
-    "title1": "Na čo sa nás",
-    "titleGrad": "najčastejšie pýtate"
+    "title": "Najprv vaše otázky, potom naše"
   },
   "footer": {
-    "builtWith": "Vytvorené v Angular",
-    "contact": "Kontakty",
-    "nav": "Navigácia",
-    "tagline": "Tvoríme softvér, ktorý rastie, vykonáva a vydrží."
+    "bottom": "Praha, © {{year}} JVM Yore, s.r.o. · IČO 29633443",
+    "contact": "Kontakt",
+    "legal": "Právne informácie",
+    "note1": "Sme Janis, Vít a Michael – trojčlenné softvérové štúdio.",
+    "note2": "Praha, úplne na diaľku. V pracovné dni odpovedáme do 24 hodín.",
+    "note3": "Žiadne cookies, žiadna analytika.",
+    "place": "Praha 1, Nové Město",
+    "studio": "Štúdio"
   },
   "hero": {
-    "ctaPrimary": "Spustiť projekt",
-    "ctaSecondary": "Pozrieť cenník",
-    "description": "Vytvárame vysokovýkonné digitálne produkty — od pixel-perfect frontendov po inteligentné backendy, multiplatformové mobilné aplikácie a AI automatizáciu transformujúcu pracovné postupy.",
-    "eyebrow": "Softvérové štúdio",
-    "headlinePart1": "Tvoríme softvér",
-    "typewriter": {
-      "ai": "AI automatizácia",
-      "backend": "Backendové systémy",
-      "frontend": "Vývoj frontendu",
-      "mobile": "Mobilné aplikácie"
-    }
+    "cta": "Napíšte nám",
+    "lead": "Pomenujte svoj nápad a porozprávajte sa s Janisom, Vítom a Michaelom – presne s tou trojicou, ktorá z neho postaví webovú aplikáciu, .NET backend, natívne mobilné aplikácie aj AI automatizáciu.",
+    "secondary": "Ako by sme to postavili",
+    "title": "Opýtajte sa ľudí, ktorí to postavia.",
+    "titleNamed": "Opýtajte sa ľudí, s ktorými vznikne {{name}}."
+  },
+  "idea": {
+    "product": "Váš produkt"
   },
   "legal": {
     "docs": {
@@ -150,68 +223,189 @@
     "toc": "Obsah"
   },
   "nav": {
-    "about": "O nás",
+    "about": "O nás",
     "faq": "FAQ",
-    "getInTouch": "Kontaktujte nás",
+    "home": "Domov",
+    "message": "Napíšte nám",
+    "messageShort": "Napísať",
     "pricing": "Cenník",
     "services": "Služby"
   },
-  "pricing": {
-    "consulting": {
-      "cta": "Rezervovať konzultáciu",
-      "f1": "Prejdeme architektúru a urobíme audit kódu",
-      "f2": "Zaškolíme váš tím a nastavíme code review",
-      "f3": "Poradíme s výberom technológií a overíme, že sa to dá postaviť",
-      "f4": "Sadne CTO aj vedúcim vývoja, ktorí potrebujú druhý názor",
-      "f5": "Odchádzate s písomným záverom alebo záznamom hovoru",
-      "label": "Konzultácie",
-      "period": "za hodinu",
-      "price": "€100",
-      "tagline": "Druhý názor od ľudí, ktorí softvér sami stavajú."
+  "paper": {
+    "board": {
+      "app": {
+        "home": "Domov",
+        "inbox": "Schránka",
+        "item1": "Účet vytvorený",
+        "item2": "Tím pozvaný",
+        "item3": "Dáta prepojené",
+        "item4": "Upozornenia zapnuté",
+        "search": "Hľadať…",
+        "settings": "Nastavenia",
+        "team": "Tím",
+        "toast": "Nová registrácia"
+      },
+      "handover": {
+        "critical": "Reakcia na kritické chyby do 4 hodín",
+        "docs": "Dokumentácia k odovzdaniu",
+        "fixes": "Opravy zadarmo 30 dní po spustení",
+        "label": "Odovzdanie",
+        "repo": "Repozitár: váš od prvého dňa"
+      },
+      "notes": {
+        "limits": "Termín, rozpočet, systémy, na ktoré sa napojí",
+        "what": "Čo v tom potrebuje urobiť?",
+        "who": "Kto to otvorí ako prvý?"
+      },
+      "spec": {
+        "constraints": "Obmedzenia",
+        "done": "Definícia hotového",
+        "goals": "Ciele",
+        "label": "Technická špecifikácia",
+        "price": "Jedna pevná cena za tento rozsah",
+        "terms": "Polovica vopred, zvyšok po odovzdaní. DPH sa nepripočítava.",
+        "users": "Používatelia"
+      },
+      "staging": {
+        "demo": "Ukážka",
+        "demoValue": "5. týždeň",
+        "label": "Testovacie prostredie",
+        "link": "Odkaz",
+        "linkValue": "Dostupný od prvého dňa",
+        "now": "Tento týždeň",
+        "nowValue": "Upozornenia"
+      },
+      "tags": {
+        "checklist": "Zoznam úloh",
+        "nav": "Navigácia",
+        "search": "Vyhľadávanie"
+      }
     },
+    "lead": "Dve stretnutia a je to na papieri. Potom to spíšeme, každý týždeň vám to ukážeme a nakoniec odovzdáme. Posúvajte a sledujte, ako to vzniká.",
+    "slotPlaceholder": "váš nápad",
+    "steps": {
+      "handover": {
+        "body": "Spustenie, dokumentácia k odovzdaniu, 30 dní bezplatných opráv a reakcia na kritické chyby do 4 hodín. Kód je váš.",
+        "title": "Odovzdáme"
+      },
+      "show": {
+        "body": "Každý týždeň vám ukážeme fungujúci softvér na testovacom prostredí, kam máte prístup od prvého dňa.",
+        "title": "Ukážeme"
+      },
+      "sketch": {
+        "body": "Dve cielené stretnutia: kto to otvorí ako prvý, čo v tom potrebuje urobiť, termín, rozpočet a systémy, na ktoré sa to napojí. Odídete s týmto náčrtom a so spoločnou definíciou hotového.",
+        "bodyNamed": "Dve cielené stretnutia: kto ako prvý otvorí aplikáciu {{name}}, čo v nej potrebuje urobiť, termín, rozpočet a systémy, na ktoré sa napojí. Odídete s týmto náčrtom a so spoločnou definíciou hotového.",
+        "title": "Načrtneme"
+      },
+      "write": {
+        "body": "Potom to spíšeme: technickú špecifikáciu, zvolené technológie a jednu pevnú cenu za tento rozsah – ešte pred prvým riadkom kódu.",
+        "title": "Spíšeme"
+      }
+    },
+    "titleEnd": "dostane na papier.",
+    "titleStart": "Takto sa"
+  },
+  "price": {
+    "compare": "Porovnať všetky plány",
     "from": "od",
-    "note": "Nie sme platiteľmi DPH, preto k uvedeným cenám nič nepripočítavame. Pri projektoch s pevným rozsahom fakturujeme 50 % zálohu vopred, zvyšok po odovzdaní.",
-    "project": {
-      "cta": "Dopytovať projekt",
-      "f1": "Skôr než napíšeme prvý riadok kódu, držíte v ruke technické zadanie",
-      "f2": "Každý týždeň vidíte postup na živom testovacom prostredí",
-      "f3": "Kód je od začiatku váš — po odovzdaní s ním naložíte, ako chcete",
-      "f4": "30 dní po spustení opravujeme chyby zadarmo",
-      "f5": "Na kritickú chybu reagujeme do 4 hodín",
-      "label": "Projekt na kľúč",
-      "period": "za projekt",
-      "price": "Na mieru",
-      "tagline": "Máte zadanie a potrebujete ho dodať celé — od návrhu po spustenie."
+    "lead": "Posúvajte a porovnávajte. Projekt na kľúč naceníme raz – po dvoch stretnutiach a za dohodnutý rozsah. Nie sme platiteľmi DPH, preto nič nepripočítavame.",
+    "plans": {
+      "hour": {
+        "cta": "Rezervovať konzultáciu",
+        "desc": "Druhý názor od ľudí, ktorí softvér sami stavajú: posúdenie architektúry, audit kódu, zaškolenie tímu alebo výber technológií.",
+        "name": "Konzultácie",
+        "per": "za hodinu"
+      },
+      "lts": {
+        "cta": "Dohodnúť podporu",
+        "desc": "Vaša aplikácia pobeží ďalej: bezpečnostné záplaty, aktuálne knižnice a SLA podľa vašich potrieb. Po audite prevezmeme aj aplikácie, ktoré sme nestavali my.",
+        "name": "Podpora a LTS",
+        "per": "mesačne"
+      },
+      "project": {
+        "amount": "Na mieru",
+        "cta": "Dopytovať projekt",
+        "desc": "Máte zadanie a potrebujete ho dodať celé, od návrhu po spustenie. Najprv písomná špecifikácia, 50 % vopred a 50 % po odovzdaní.",
+        "name": "Projekt na kľúč",
+        "nameNamed": "{{name}}, za jednu pevnú cenu",
+        "per": "za projekt"
+      },
+      "team": {
+        "cta": "Dohodnúť úvodný hovor",
+        "desc": "Frontend, backend, mobil aj vedenie projektu v dvojtýždňových šprintoch, z ktorých každý končí ukážkou. Bez viazanosti.",
+        "name": "Celý tím",
+        "per": "mesačne"
+      }
     },
-    "retainer": {
-      "badge": "Odporúčame",
-      "cta": "Dohodnúť úvodný hovor",
-      "f1": "Frontend, backend, mobil aj vedenie projektu — kompletný seniorný tím",
-      "f2": "Dvojtýždňové šprinty, na konci každého ukážka hotovej práce",
-      "f3": "Google Meet alebo Teams, podľa toho, na čo ste zvyknutí",
-      "f4": "Chyby s prioritou riešime ešte v ten istý deň",
-      "f5": "Bez záväzku na dobu určitú — skončiť môžete kedykoľvek",
-      "label": "Celý tím",
-      "period": "mesačne",
-      "price": "€17 900",
-      "tagline": "Kompletný tím, ktorý každý týždeň posúva váš produkt ďalej."
+    "ticks": {
+      "hour": "Hodina",
+      "lts": "Podpora",
+      "project": "Projekt",
+      "team": "Celý tím"
     },
-    "sectionLabel": "Ako spolupracujeme",
-    "subtitle": "Žiadne skryté položky, žiadne hmlisté odhady. Vyberte si model, ktorý vám sadne — zvyšok doladíme na prvom stretnutí.",
-    "support": {
-      "cta": "Dohodnúť podporu",
-      "f1": "Prevezmeme aj aplikáciu, ktorú sme nestavali — po vstupnom audite kódu",
-      "f2": "Strážime beh aplikácie, bezpečnostné záplaty a aktualizácie knižníc",
-      "f3": "Predĺžená podpora LTS verzií aj po konci oficiálnej podpory dodávateľa",
-      "f4": "Dohodnutý balík hodín každý mesiac na drobné úpravy a vylepšenia",
-      "f5": "SLA podľa vašej potreby — od reakcie do nasledujúceho dňa po nonstop pohotovosť",
-      "label": "Podpora a LTS",
-      "period": "mesačne",
-      "price": "€390",
-      "tagline": "Vaša aplikácia pobeží ďalej — bezpečne, aktuálna a bez starostí."
+    "title": "Koľko pomoci potrebujete?"
+  },
+  "pricing": {
+    "action": "Ďalší krok",
+    "cells": {
+      "billing": {
+        "hour": "Po konzultácii",
+        "lts": "Mesačne vopred",
+        "project": "Polovica vopred, zvyšok po odovzdaní",
+        "team": "Mesačne vopred"
+      },
+      "for": {
+        "hour": "CTO a vedúci vývoja, ktorí chcú druhý názor",
+        "lts": "Aplikácie, ktoré musia zostať bezpečné a aktuálne",
+        "project": "Zadanie, ktoré potrebujete dodať celé",
+        "team": "Produkt, ktorý potrebuje kompletný seniorný tím"
+      },
+      "get": {
+        "hour": "Audity architektúry a kódu, zaškolenie, písomné zhrnutie alebo záznam",
+        "lts": "Záplaty, aktuálne knižnice, LTS aj po konci životnosti, mesačný balík hodín",
+        "project": "Najprv písomná špecifikácia, každý týždeň testovacia verzia, kód od prvého dňa",
+        "team": "Frontend, backend, mobil a vedenie projektu v dvojtýždňových šprintoch"
+      },
+      "price": {
+        "hour": "<b>{{price}}</b> / hodina",
+        "lts": "od <b>{{price}}</b> / mesiac",
+        "project": "Ponuka <b>na mieru</b>",
+        "team": "od <b>{{price}}</b> / mesiac"
+      },
+      "response": {
+        "hour": "Osobná odpoveď do 24 hodín",
+        "lts": "SLA od nasledujúceho pracovného dňa až po nonstop pohotovosť",
+        "project": "Kritické chyby do 4 hodín",
+        "team": "Prioritné chyby ešte v ten istý deň"
+      },
+      "term": {
+        "hour": "Každá konzultácia zvlášť",
+        "lts": "Bez viazanosti",
+        "project": "Do odovzdania, potom 30 dní opráv zadarmo",
+        "team": "Bez viazanosti, skončiť môžete kedykoľvek"
+      }
     },
-    "title1": "Cenník bez",
-    "titleGrad": "prekvapení"
+    "cols": {
+      "hour": "Jeden z nás, na hodiny",
+      "lts": "Podpora a LTS",
+      "project": "Váš nápad za jednu pevnú cenu",
+      "projectNamed": "{{name}} za jednu pevnú cenu",
+      "team": "Všetci traja, každý mesiac"
+    },
+    "lead": "Žiadne skryté položky, žiadne hmlisté odhady. Projekt na kľúč naceníme raz, po dvoch úvodných stretnutiach, ešte predtým, než napíšeme prvý riadok kódu.",
+    "note": "Nie sme platiteľmi DPH, preto nič nepripočítavame. Faktúry sú splatné do 14 dní, bankovým prevodom. Mesačné plány môžete vypovedať e-mailom s účinnosťou ku koncu zaplateného mesiaca.",
+    "plan": "Plán",
+    "recommended": "Odporúčame",
+    "rows": {
+      "billing": "Fakturácia",
+      "for": "Ideálne pre",
+      "get": "Čo dostanete",
+      "price": "Cena",
+      "response": "Reakcia",
+      "term": "Viazanosť"
+    },
+    "sideBySide": "Porovnanie plánov",
+    "title": "Cenník bez prekvapení"
   },
   "privacy": {
     "changes": {
@@ -225,14 +419,14 @@
     },
     "cookies": {
       "li1": "lang – zvolený jazyk webu,",
-      "li2": "theme – svetlý alebo tmavý motív,",
+      "li2": "idea – názov, ktorý ste na úvodnej stránke dali svojmu nápadu, aby ho web mohol používať počas prehliadania. K nám sa dostane, len ak odošlete kontaktný formulár, kde sa predvyplní do poľa Predmet; ak názov vymažete, záznam sa odstráni,",
       "li3": "fontsCached – záznam o tom, že písma už máte stiahnuté, aby sa stránka nabudúce vykreslila rýchlejšie.",
-      "p1": "Náš web neukladá žiadne cookies. Do lokálneho úložiska prehliadača (localStorage) zapisujeme len tri technické nastavenia, ktoré nikdy neopustia vaše zariadenie:",
+      "p1": "Náš web neukladá žiadne cookies. Do lokálneho úložiska prehliadača (localStorage) zapisujeme len tri položky:",
       "p2": "Overenie Cloudflare Turnstile na stránke Kontakt beží vo vlastnom okne Cloudflare a môže si uložiť technické údaje potrebné na to, aby rozlíšilo človeka od robota. Podľa Cloudflare sa tieto údaje nepoužívajú na sledovanie ani na reklamu. Podrobnosti uvádza dokument Cloudflare Turnstile Privacy Addendum.",
       "title": "Cookies a lokálne úložisko"
     },
     "data": {
-      "li1": "Údaje z kontaktného formulára: meno, e-mail, názov firmy (voliteľné), službu, o ktorú máte záujem, text správy a jazyk, v ktorom ste web používali.",
+      "li1": "Údaje z kontaktného formulára: meno, e-mail, názov firmy (voliteľné), názov vášho projektu (voliteľné), službu, o ktorú máte záujem, text správy a jazyk, v ktorom ste web používali.",
       "li2": "Obsah e-mailov, ktoré nám pošlete priamo, a našu ďalšiu vzájomnú komunikáciu.",
       "li3": "Technické údaje pri odoslaní formulára: IP adresu a signály prehliadača, ktoré spracúva ochrana proti spamu Cloudflare Turnstile.",
       "li4": "Technické údaje pri každej návšteve: IP adresu a údaje o požiadavke, ktoré krátkodobo spracúva poskytovateľ hostingu, aby web fungoval a bol zabezpečený. Sami žiadne záznamy o návštevách nevedieme.",
@@ -248,11 +442,11 @@
       "title": "Žiadosť o vymazanie údajov"
     },
     "fonts": {
-      "p1": "Písma Inter a Space Grotesk načítavame z vlastného servera, nie zo služby Google Fonts ani z inej siete CDN. Pri návšteve webu sa tak vaša IP adresa nedostane ku Googlu ani k žiadnemu inému poskytovateľovi písiem. Jediným externým obsahom na webe je overenie Cloudflare Turnstile na stránke Kontakt.",
+      "p1": "Písma Geologica, Inter, JetBrains Mono a Caveat načítavame z vlastného servera, nie zo služby Google Fonts ani z inej siete CDN. Pri návšteve webu sa tak vaša IP adresa nedostane ku Googlu ani k žiadnemu inému poskytovateľovi písiem. Jediným externým obsahom na webe je overenie Cloudflare Turnstile na stránke Kontakt.",
       "title": "Písma a ďalšie externé zdroje"
     },
     "intro": "Chceme od vás len to, čo potrebujeme, aby sme mohli odpovedať na váš dopyt. Na tejto stránke nájdete, o aké údaje ide, na čo ich používame, komu ich poskytujeme a ako môžete uplatniť svoje práva.",
-    "lastUpdated": "Platné od 17. októbra 2026",
+    "lastUpdated": "Platné od 19. októbra 2026",
     "purposes": {
       "li1": "Odpoveď na dopyt, príprava ponuky a rokovanie o zmluve – vykonanie opatrení pred uzavretím zmluvy na vašu žiadosť (písm. b). Z rovnakého dôvodu vám po odoslaní formulára pošleme potvrdenie s kópiou správy.",
       "li2": "Plnenie uzavretej zmluvy a komunikácia počas spolupráce – plnenie zmluvy (písm. b).",
@@ -297,24 +491,6 @@
       "p1": "Spoločnosti Resend a Cloudflare sídlia v USA. Prenos údajov do USA je chránený rámcom ochrany osobných údajov medzi EÚ a USA (EU–U.S. Data Privacy Framework), ku ktorému sa obe spoločnosti pripojili, a štandardnými zmluvnými doložkami schválenými Európskou komisiou.",
       "title": "Prenos údajov mimo EÚ"
     }
-  },
-  "process": {
-    "sectionLabel": "Ako pracujeme",
-    "step1Desc": "Dve cielené stretnutia pre pochopenie vašich cieľov, obmedzení a používateľov. Odchádzame so zdielanou definíciou hotového.",
-    "step1Num": "01",
-    "step1Title": "Discovery",
-    "step2Desc": "Jasná technická špecifikácia a odhad s pevným rozsahom — žiadne prekvapivé faktúry.",
-    "step2Num": "02",
-    "step2Title": "Špecifikácia a odhad",
-    "step3Desc": "Týždenné demá, asynchrónne aktualizácie a testovacie prostredie od prvého dňa.",
-    "step3Num": "03",
-    "step3Title": "Vývoj",
-    "step4Desc": "Nasadenie, kompletná dokumentácia a 30-dňová záruka. Kód je váš.",
-    "step4Num": "04",
-    "step4Title": "Spustenie a odovzdanie",
-    "subtitle": "Vždy viete, čo sa deje, čo príde ďalej a kedy dodávame.",
-    "title1": "Navrhnuté pre",
-    "titleGrad": "predvídateľnosť"
   },
   "refunds": {
     "consulting": {
@@ -362,27 +538,93 @@
       "title": "Reklamácia vád"
     }
   },
+  "samples": {
+    "signup": {
+      "cs": {
+        "cta": "Pokračovat",
+        "sub": "Zabere to méně než minutu.",
+        "title": "Vytvořte si účet"
+      },
+      "en": {
+        "cta": "Continue",
+        "sub": "It takes less than a minute.",
+        "title": "Create your account"
+      },
+      "sk": {
+        "cta": "Pokračovať",
+        "sub": "Zaberie to menej ako minútu.",
+        "title": "Vytvorte si účet"
+      },
+      "uk": {
+        "cta": "Продовжити",
+        "sub": "Це займе менше хвилини.",
+        "title": "Створіть обліковий запис"
+      }
+    }
+  },
+  "service": {
+    "agents": "Agenti",
+    "ai": "AI agenti",
+    "api": "Backendy",
+    "mobile": "Mobilné aplikácie",
+    "web": "Webové aplikácie"
+  },
   "services": {
     "ai": {
-      "description": "Integrácie LLM, inteligentní agenti a automatizácia pracovných postupov, ktorá znižuje manuálne úsilie a odomyká nové možnosti pre vaše podnikanie.",
-      "title": "AI automatizácia"
+      "body": "Claude, LangChain a Python. Agenti a integrácie LLM, ktoré odbremenia váš tím od rutinnej práce, a to priamo v nástrojoch, ktoré už používa.",
+      "li1": "Asistenti nad vašimi vlastnými dokumentmi",
+      "li2": "Automatizácia dokumentov a e-mailov",
+      "li3": "Agenti napojení na vaše nástroje"
     },
-    "backend": {
-      "description": "Škálovateľné API, mikroservisy a cloudová infraštruktúra primárne na .NET. Od REST po gRPC, navrhnuté pre spoľahlivosť, bezpečnosť a vysoký výkon.",
-      "title": "Backendové systémy"
+    "api": {
+      "body": ".NET a C#, PostgreSQL a Docker. Navrhujeme API a dátové modely, v ktorých sa vyzná aj ďalší vývojár, a strážime ich aj po spustení. REST alebo gRPC.",
+      "li1": "API a integrácie so službami tretích strán",
+      "li2": "Cloudová infraštruktúra a nasadenie",
+      "li3": "Audit a modernizácia starších systémov"
     },
-    "frontend": {
-      "description": "Rýchle, prístupné webové aplikácie vytvorené v Angular, React alebo Vue. Pixel-perfect rozhrania so sofistikovanými animáciami a plynulým UX.",
-      "title": "Vývoj frontendu"
-    },
+    "get": "Čo dostanete",
+    "lead": "Každú časť vášho produktu stavajú tí istí traja ľudia, takže sa nič nestratí medzi tímami, dodávateľmi či časovými pásmami.",
+    "leadNamed": "Každú časť produktu {{name}} stavajú tí istí traja ľudia, takže sa nič nestratí medzi tímami, dodávateľmi či časovými pásmami.",
     "mobile": {
-      "description": "Natívne aplikácie pre iOS a Android vyvíjané vo Swift a Kotlin. Plný natívny výkon, UX prispôsobené platforme a priamy prístup ku každému API zariadenia.",
-      "title": "Mobilné aplikácie"
+      "body": "Natívny Swift pre iOS a Kotlin pre Android, aby sa aplikácia správala tak, ako to každý telefón očakáva, až po upozornenia.",
+      "li1": "Aplikácia pre iOS v Swifte",
+      "li2": "Aplikácia pre Android v Kotline",
+      "li3": "Vydanie v App Store a na Google Play"
     },
-    "sectionLabel": "Čo stavíme",
-    "subtitle": "Nech je vaša výzva akákoľvek — máme odbornosť pre správne riešenie.",
-    "title1": "Komplexné",
-    "title2": "digitálne riešenia"
+    "stack": "Technológie",
+    "take": {
+      "body": "Prevezmeme čokoľvek od legacy PHP až po rozpracovanú migráciu na Angular. Najprv urobíme audit, úprimne vám povieme, čo sme našli, a potom sa pustíme do práce. Po spustení sa v rámci Podpory a LTS postaráme, aby všetko zostalo bezpečné a aktuálne.",
+      "cta": "Povedzte nám viac",
+      "cta2": "Plány podpory",
+      "nav": "Prevzatie projektu",
+      "title": "Už máte vlastný kód?"
+    },
+    "web": {
+      "body": "Angular alebo React, TypeScript a SCSS. Rýchle a prístupné rozhrania, ktoré sa dajú ovládať aj klávesnicou, v toľkých jazykoch, koľkými hovoria vaši používatelia.",
+      "li1": "Zákaznícke portály a webové aplikácie",
+      "li2": "Administračné a interné nástroje",
+      "li3": "Dizajnové systémy v kóde"
+    }
+  },
+  "team": {
+    "bio": {
+      "j": "„Prvý hovor máte so mnou. Potom strážim plán, rozpočet aj termíny.“",
+      "m": "„Pracujem naprieč tým istým stackom, od dátového modelu až po posledný detail obrazovky.“",
+      "v": "„Píšem Angular a .NET aj natívne aplikácie v Swifte a Kotline a dbám na to, aby všetko zostalo rýchle.“"
+    },
+    "meaning": "J, V a M sú iniciály našich krstných mien. Yore znamená „kedysi dávno“: chceme, aby to, čo staviame, vydržalo.",
+    "role": {
+      "j": "Konateľ",
+      "m": "Full-stack inžinier",
+      "v": "Full-stack inžinier"
+    },
+    "roleLong": {
+      "j": "Spoluzakladateľ, konateľ",
+      "m": "Spoluzakladateľ, full-stack inžinier",
+      "v": "Spoluzakladateľ, full-stack inžinier"
+    },
+    "tap": "Ťuknite na tvár.",
+    "title": "My traja."
   },
   "terms": {
     "changes": {
@@ -414,7 +656,7 @@
       "p2": "Knižnice s otvoreným zdrojovým kódom a nástroje tretích strán zostávajú pod svojimi licenciami. Všeobecné know-how a vlastné nástroje, ktoré používame pri viacerých projektoch, môžeme využívať aj naďalej; na ich použitie vo vašom diele máte bezplatnú a neobmedzenú licenciu.",
       "title": "Zdrojový kód a autorské práva"
     },
-    "lastUpdated": "Platné od 17. októbra 2026",
+    "lastUpdated": "Platné od 19. októbra 2026",
     "liability": {
       "p1": "Zodpovedáme za škodu, ktorú spôsobíme porušením svojich povinností. Voči podnikateľom je celková náhrada škody obmedzená výškou ceny zaplatenej za dotknutú službu za posledných 12 mesiacov. Obmedzenie neplatí pre škodu spôsobenú úmyselne alebo z hrubej nedbanlivosti, pre ujmu na zdraví a voči spotrebiteľom.",
       "p2": "Za obsah webov tretích strán, na ktoré odkazujeme, nezodpovedáme.",
@@ -422,10 +664,9 @@
     },
     "licenses": {
       "fontsLink": "Licencia písiem (OFL 1.1)",
-      "li1": "Písma Inter (© The Inter Project Authors) a Space Grotesk (© The Space Grotesk Project Authors) pod licenciou SIL Open Font License 1.1, uložené na našom vlastnom serveri.",
-      "li2": "Ikony zo sád Lucide (licencia ISC) a Feather (licencia MIT).",
-      "li3": "Open-source knižnice ako Angular, RxJS či ngx-translate pod licenciou MIT a ďalšími slobodnými licenciami.",
-      "li4": "Fotografie členov tímu sú naše vlastné. Fotky z fotobánk ani cudzie logá nepoužívame.",
+      "li1": "Písma Geologica (© The Geologica Project Authors), Inter (© The Inter Project Authors), JetBrains Mono (© The JetBrains Mono Project Authors) a Caveat (© The Caveat Project Authors) pod licenciou SIL Open Font License 1.1, uložené na našom vlastnom serveri.",
+      "li2": "Open-source knižnice ako Angular, RxJS či ngx-translate pod licenciou MIT a ďalšími slobodnými licenciami.",
+      "li3": "Fotografie členov tímu sú naše vlastné. Fotky z fotobánk ani cudzie logá nepoužívame.",
       "p1": "Na webe používame tieto zdroje tretích strán, vždy v súlade s ich licenciami:",
       "softwareLink": "Licencie knižníc",
       "title": "Licencie použitých zdrojov"
@@ -466,5 +707,25 @@
       "p2": "Snažíme sa, aby informácie na webe boli presné a aktuálne, ale web môže byť občas nedostupný alebo obsahovať chybu. Rozhodujúce sú vždy údaje v ponuke a v zmluve.",
       "title": "Používanie webu"
     }
+  },
+  "trades": {
+    "ai": "Claude, LangChain a Python. Agenti a integrácie LLM, ktoré odbremenia váš tím od rutinnej práce, a to priamo v nástrojoch, ktoré už používa.",
+    "api": ".NET a C#, PostgreSQL a Docker. API a dátové modely, v ktorých sa vyzná aj ďalší vývojár – a ktoré strážime aj po spustení.",
+    "lead": "Tieto obrazovky sme nakreslili pre váš nápad. Ani jedna nepochádza z klientskej zákazky.",
+    "leadNamed": "Tieto obrazovky sme nakreslili pre projekt {{name}}. Ani jedna nepochádza z klientskej zákazky.",
+    "lock": {
+      "notice": "Práve sa zaregistroval váš prvý používateľ.",
+      "now": "teraz"
+    },
+    "mobile": "Natívny Swift pre iOS a Kotlin pre Android, aby sa aplikácia správala tak, ako to každý telefón očakáva, až po upozornenia.",
+    "prompt": {
+      "end": "a čerpáš pritom len z jeho vlastných dokumentov. Ak si nie si istý, povedz to a otázku odovzdaj človeku.",
+      "label": "Systémový prompt",
+      "start": "Odpovedáš na otázky o",
+      "subject": "vašom produkte",
+      "subjectNamed": "produkte {{name}}"
+    },
+    "title": "Štyri remeslá, traja ľudia.",
+    "web": "Angular alebo React, TypeScript a SCSS. Rýchle rozhrania, ktoré sa dajú ovládať aj klávesnicou, v toľkých jazykoch, koľkými hovoria vaši používatelia. Web jvm-yore.com beží v štyroch."
   }
 }

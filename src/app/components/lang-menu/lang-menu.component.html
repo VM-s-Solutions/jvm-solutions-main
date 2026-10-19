@@ -1,0 +1,34 @@
+<button
+  #trigger
+  type="button"
+  class="lang__btn"
+  (click)="toggle()"
+  [attr.aria-expanded]="open()"
+  aria-controls="lang-list"
+  [attr.aria-label]="'a11y.language' | translate: { lang: currentShort() }"
+>
+  {{ currentShort() }}
+  <jvm-icon name="down" class="lang__chev" [class.is-open]="open()" />
+</button>
+
+@if (open()) {
+  <ul id="lang-list" class="lang__list" animate.enter="is-entering" animate.leave="is-leaving">
+    @for (l of langs; track l.code) {
+      <li>
+        <button
+          type="button"
+          class="lang__opt"
+          [class.is-on]="l.code === current()"
+          [attr.aria-current]="l.code === current() ? 'true' : null"
+          [attr.lang]="l.code"
+          (click)="choose(l.code)"
+        >
+          <span>{{ l.name }}</span>
+          @if (l.code === current()) {
+            <jvm-icon name="check" class="lang__tick" />
+          }
+        </button>
+      </li>
+    }
+  </ul>
+}

@@ -1,48 +1,52 @@
-<footer class="footer" role="contentinfo">
+<footer class="foot">
   <div class="container">
-    <div class="footer__top">
-
-      <!-- Brand -->
-      <div class="footer__brand">
-        <a class="footer__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
-          <jvm-logo />
-        </a>
-        <p class="footer__tagline">
-          {{ 'footer.tagline' | translate }}
-        </p>
+    <div class="foot__top">
+      <div class="foot__note">
+        <p>{{ 'footer.note1' | translate }}</p>
+        <p>{{ 'footer.note2' | translate }}</p>
+        <p>{{ 'footer.note3' | translate }}</p>
       </div>
 
-      <!-- Links -->
-      <nav class="footer__nav" [attr.aria-label]="'a11y.footerNav' | translate">
-        <h2 class="footer__nav-title">{{ 'footer.nav' | translate }}</h2>
-        <ul role="list">
-          @for (link of footerLinks; track link.label) {
-            <li>
-              @if (link.routerLink) {
-                <a [routerLink]="link.routerLink" class="footer__link">{{ link.label | translate }}</a>
-              } @else {
-                <a href="/#{{ link.fragment }}" (click)="scrollToSection(link.fragment ?? '', $event)" class="footer__link">{{ link.label | translate }}</a>
-              }
-            </li>
+      <div class="foot__cols">
+        <nav [attr.aria-label]="'a11y.footerNav' | translate">
+          <h2 class="foot__h">{{ 'footer.studio' | translate }}</h2>
+          @for (link of links; track link.path) {
+            <a [routerLink]="link.path">{{ link.labelKey | translate }}</a>
           }
-        </ul>
-      </nav>
-
-      <!-- Contact -->
-      <div class="footer__contact">
-        <h2 class="footer__nav-title">{{ 'footer.contact' | translate }}</h2>
-        <a href="mailto:hello@jvm-yore.com" class="footer__link">hello&#64;jvm-yore.com</a>
+        </nav>
+        <div>
+          <h2 class="foot__h">{{ 'footer.contact' | translate }}</h2>
+          <a class="select-all" href="mailto:hello@jvm-yore.com">hello&#64;jvm-yore.com</a>
+          <span>{{ 'footer.place' | translate }}</span>
+        </div>
+        <nav [attr.aria-label]="'a11y.legalNav' | translate">
+          <h2 class="foot__h">{{ 'footer.legal' | translate }}</h2>
+          @for (doc of legalDocs; track doc.id) {
+            <a [routerLink]="doc.path">{{ doc.labelKey | translate }}</a>
+          }
+        </nav>
       </div>
-
     </div>
 
-    <div class="footer__bottom">
-      <p>&copy; {{ year }} JVM Yore, s.r.o.</p>
-      <nav class="footer__bottom-right" [attr.aria-label]="'a11y.legalNav' | translate">
-        @for (doc of legalDocs; track doc.id) {
-          <a [routerLink]="doc.path" class="footer__legal-link">{{ doc.labelKey | translate }}</a>
+    <a class="foot__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
+      <jvm-logo />
+    </a>
+
+    <div class="foot__bottom">
+      <span>{{ 'footer.bottom' | translate: { year } }}</span>
+      <ul class="foot__langs" [attr.aria-label]="'a11y.languageMenu' | translate">
+        @for (l of langs; track l.code) {
+          <li>
+            <button
+              type="button"
+              [attr.lang]="l.code"
+              [class.is-on]="l.code === current()"
+              [attr.aria-current]="l.code === current() ? 'true' : null"
+              (click)="choose(l.code)"
+            >{{ l.name }}</button>
+          </li>
         }
-      </nav>
+      </ul>
     </div>
   </div>
 </footer>

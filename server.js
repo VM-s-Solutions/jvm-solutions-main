@@ -22,8 +22,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 const DIST = path.join(__dirname, 'dist/jvm-solutions/browser');
 
-// Parse JSON bodies for API routes (limit to prevent abuse)
-app.use('/api', express.json({ limit: '10kb' }));
+// Parse JSON bodies for API routes (limit to prevent abuse). 32kb fits the longest enquiry the
+// form allows (CONTACT_LIMITS in src/app/services/contact.service.ts) at up to 3 bytes a
+// character, plus a full-length (2,048-character) Turnstile token.
+app.use('/api', express.json({ limit: '32kb' }));
 
 // ── Contact form API ────────────────────────────────────────────────────────
 app.post('/api/contact', async (req, res) => {
@@ -51,8 +53,12 @@ app.use(expressStaticGzip(DIST, {
         // index.html loads fonts.css by name, so it has no content hash but points at hashed
         // font files — revalidate every time so a deploy never leaves it pointing at deleted files
         res.setHeader('Cache-Control', 'no-cache');
-      } else if (filePath.includes(`${path.sep}i18n${path.sep}`) || /\.(txt|xml)(\.br|\.gz)?$/.test(filePath)) {
-        // i18n JSON, robots.txt, sitemap.xml and llms.txt have no content hash —
+      } else if (filePath.includes(`${path.sep}i18n${path.sep}`)) {
+        // The app loads the locale files by name, while its own code is hashed — revalidate every
+        // time so a deploy never pairs new code with old copy (an unchanged file comes back as a 304)
+        res.setHeader('Cache-Control', 'no-cache');
+      } else if (/\.(txt|xml)(\.br|\.gz)?$/.test(filePath)) {
+        // robots.txt, sitemap.xml and llms.txt have no content hash —
         // use short cache so deploys take effect
         res.setHeader('Cache-Control', 'public, max-age=3600');
       }

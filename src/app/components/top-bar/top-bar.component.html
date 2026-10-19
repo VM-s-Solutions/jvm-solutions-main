@@ -1,0 +1,30 @@
+<div class="container top__in">
+  <a class="top__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
+    <jvm-logo />
+  </a>
+
+  <nav class="tabs" [attr.aria-label]="'a11y.mainNav' | translate" (mouseleave)="hovered.set(null)">
+    <span #thumb class="tabs__thumb" aria-hidden="true"></span>
+    @for (tab of tabs; track tab.path; let i = $index) {
+      <a
+        #tab
+        class="tabs__link"
+        [routerLink]="tab.path"
+        [class.is-active]="active() === i"
+        [class.is-thumb]="thumbAt() === i"
+        [attr.aria-current]="active() === i ? 'page' : null"
+        (pointerenter)="hoverTab($event, i)"
+        (focus)="hovered.set(i)"
+        (blur)="hovered.set(null)"
+      >{{ tab.labelKey | translate }}</a>
+    }
+  </nav>
+
+  <div class="top__end">
+    <jvm-lang-menu />
+    <a class="btn btn--primary btn--sm top__cta" routerLink="/contact">
+      <jvm-icon name="chat" />
+      <span>{{ 'nav.message' | translate }}</span>
+    </a>
+  </div>
+</div>

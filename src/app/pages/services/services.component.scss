@@ -1,0 +1,206 @@
+@use 'abstracts' as *;
+
+// The container's side gutters, notch-aware: the phone pill row bleeds through them
+$edge-left: max(#{$gutter}, env(safe-area-inset-left, 0px));
+$edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px));
+
+:host {
+  display: block;
+}
+
+// ─── Contents: pinned pills above the trades (phones), a list beside them (desktop) ──
+// Phones keep a plain block flow, so nothing limits how long the pill row stays pinned.
+.docs {
+  @include md {
+    display: grid;
+    grid-template-columns: 13.75rem minmax(0, 1fr);
+    gap: clamp(#{$space-8}, 5vw, #{$space-18});
+    align-items: start;
+  }
+}
+
+.docs__nav {
+  position: sticky;
+  top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  z-index: $z-raised;
+  display: flex;
+  gap: 6px;
+  margin: 0 calc(-1 * #{$edge-right}) 0 calc(-1 * #{$edge-left});
+  padding: $space-2 $edge-right $space-2 $edge-left;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  background: rgba($color-bg, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  @include no-scrollbar;
+
+  // Pinned on a short viewport, it would leave next to no room for the text between the top bar
+  // and the tab bar. Relative rather than static: the row stays the offset parent its pills are measured against.
+  @include short {
+    position: relative;
+    top: auto;
+  }
+
+  @include md {
+    position: sticky; // beside the text it covers nothing, so it stays pinned at any height
+    top: calc(var(--nav-h) + #{$space-8});
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+// The soft highlight behind the entry being read (desktop)
+.docs__thumb {
+  display: none;
+
+  @include md {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 0;
+    border-radius: $radius-sm;
+    background: var(--soft);
+  }
+
+  // Added once it has been placed: it appears in place, then glides from entry to entry
+  &.is-placed {
+    transition:
+      transform $duration-slow $ease-ios,
+      height $duration-slow $ease-ios;
+  }
+}
+
+.docs__link {
+  position: relative;
+  z-index: $z-raised; // above the thumb gliding behind it
+  flex: none;
+  padding: $space-2 $space-4;
+  border: 0;
+  border-radius: $radius-pill;
+  background: var(--soft);
+  font-weight: $weight-medium;
+  white-space: nowrap;
+  color: var(--muted);
+  transition:
+    color $duration-base $ease-out,
+    background-color $duration-base $ease-out;
+
+  @include hover { color: var(--ink); }
+
+  &.is-on {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  @include md {
+    border-radius: $radius-sm;
+    background: none;
+    text-align: left;
+    white-space: normal;
+
+    &.is-on {
+      background: none;
+      color: var(--ink);
+    }
+  }
+}
+
+// ─── The trades ───────────────────────────────────────────────────────────────
+.docs__body {
+  display: grid;
+  gap: $space-5;
+  margin-top: clamp(#{$space-8}, 5vw, #{$space-18});
+
+  @include md { margin-top: 0; }
+}
+
+.doc-sec {
+  padding: clamp(#{$space-7}, 4vw, #{$space-12});
+  border-radius: $radius-lg;
+  background: var(--soft);
+  scroll-margin-top: calc(var(--nav-h) + #{$space-6});
+
+  h2 {
+    font-size: $fs-h3;
+    letter-spacing: -0.04em;
+  }
+
+  > p {
+    max-width: 38em;
+    margin-top: $space-3;
+    font-size: $text-lg;
+    color: var(--ink-2);
+  }
+}
+
+.doc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-8;
+  margin-top: $space-8;
+
+  @include md { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+
+  b {
+    display: block;
+    margin-bottom: $space-3;
+    font: $weight-semibold #{$text-md}/1 $font-text;
+  }
+
+  .chips { margin-top: 0; }
+}
+
+// "What you get": an orange disc with an ink tick before each line
+.ticks {
+  display: grid;
+  gap: $space-3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: $space-7;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      top: 0.32em;
+      left: 0;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    &::after {
+      top: calc(0.32em + 4px);
+      left: 6px;
+      width: 5px;
+      height: 8px;
+      border: solid var(--ink);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+// ─── Taking over: the dark closing card ───────────────────────────────────────
+.doc-sec--dark {
+  background: var(--night);
+  color: var(--night-ink);
+
+  > p { color: var(--night-muted); }
+}

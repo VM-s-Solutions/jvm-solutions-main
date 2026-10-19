@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>JVM Yore — Frontend, Backend, Mobile &amp; AI Development</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="JVM Yore is a three-person software studio from Prague. We build frontend web apps, .NET backends, native mobile apps and AI automation.">
   <meta property="og:title" content="JVM Yore">
   <meta property="og:description" content="Frontend, backend, mobile apps and AI automation from a three-person software studio in Prague.">
@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="Frontend, backend, mobile apps and AI automation from a three-person software studio in Prague.">
   <meta name="twitter:image" content="https://jvm-yore.com/og-image.png">
   <link rel="canonical" href="https://jvm-yore.com/">
-  <meta name="theme-color" content="#0A0A0A">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="format-detection" content="telephone=no">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <!-- Locale preload: detect browser language early and prefetch the right translation
@@ -28,8 +28,6 @@
        woff2 files never compete with the app's own JS; once cached they load straight away, so
        repeat visits paint in the right font. Browsers without paint timing load them on window load. -->
   <script>(function(){function f(){var l=document.createElement('link');l.rel='stylesheet';l.href='fonts.css';document.head.appendChild(l);try{localStorage.setItem('fontsCached','1');}catch(e){}}var c=null;try{c=localStorage.getItem('fontsCached');}catch(e){}var P=window.PerformanceObserver;if(c){f();}else if(P&&P.supportedEntryTypes&&P.supportedEntryTypes.indexOf('paint')>-1){var o=new P(function(list){if(list.getEntriesByName('first-contentful-paint').length){o.disconnect();f();}});o.observe({type:'paint',buffered:true});}else{addEventListener('load',f);}})();</script>
-  <!-- Theme: apply before first paint to prevent flash of wrong theme. Default is always dark. -->
-  <script>(function(){var t='dark';try{var s=localStorage.getItem('theme');if(s==='light')t=s;}catch(e){}document.documentElement.dataset.theme=t;document.querySelector('meta[name="theme-color"]').content=t==='light'?'#F8F8F8':'#0A0A0A';})();</script>
 </head>
 <body>
   <jvm-root></jvm-root>

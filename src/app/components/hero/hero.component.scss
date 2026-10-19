@@ -1,167 +1,33 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use 'abstracts' as *;
+
+// Space between the top bar and the headline, and below the hero: 40 → 88px, 72 → 120px
+$hero-top: clamp(#{$space-10}, 6vw, #{$space-10 + $space-12});
+$hero-bottom: clamp(#{$space-18}, 9vw, #{$space-24 + $space-6});
+
+:host {
+  display: block;
+}
 
 .hero {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  padding-block: calc(#{$nav-height} + #{$space-10}) $space-16;
-  overflow: hidden;
-
-  // ── Inner — left-aligned ──────────────────────────────────────────────────
-  &__inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  // ── Eyebrow ───────────────────────────────────────────────────────────────
-  &__eyebrow {
-    @include section-label;
-    animation: fade-in 0.5s ease both;
-  }
-
-  // ── Headline ──────────────────────────────────────────────────────────────
-  &__headline {
-    font-size: clamp(2.25rem, 4.5vw, 4.25rem);
-    font-weight: 700;
-    line-height: 1.06;
-    letter-spacing: -0.04em;
-    color: var(--text-primary);
-    max-width: 900px;
-    margin-bottom: $space-6;
-    animation: slide-in-up 0.6s ease both;
-    animation-delay: 0.08s;
-  }
-
-  // Typewriter line — all phrases stacked invisibly in one grid cell so the
-  // row is always as tall as the tallest phrase at the current viewport width
-  &__typewriter {
-    display: grid;
-    min-height: 1.06em; // fallback height until phrases are set after first render
-
-    > * {
-      grid-area: 1 / 1;
-    }
-  }
-
-  &__typewriter-sizer {
-    visibility: hidden;
-  }
-
-  &__typewriter-text {
-    color: var(--accent-display);
-  }
-
-  // Blinking cursor
-  &__cursor {
-    display: inline-block;
-    font-weight: 300;
-    opacity: 1;
-    animation: blink-cursor 0.9s step-start infinite;
-  }
-
-  @keyframes blink-cursor {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
-
-  // ── Description ───────────────────────────────────────────────────────────
-  &__description {
-    max-width: 520px;
-    color: var(--text-secondary);
-    font-size: clamp($text-base, 1.6vw, $text-lg);
-    line-height: 1.75;
-    text-wrap: pretty;
-    animation: fade-in 0.6s ease both;
-    animation-delay: 0.2s;
-  }
-
-  // ── CTA row ───────────────────────────────────────────────────────────────
-  &__actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: $space-4 $space-8;
-    margin-top: $space-10;
-    animation: fade-in 0.6s ease both;
-    animation-delay: 0.3s;
-  }
-
-  &__cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2;
-    color: var(--text-secondary);
-    font-size: $text-sm;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    transition: color $transition-base;
-
-    svg {
-      transition: transform $transition-base;
-      flex-shrink: 0;
-    }
-
-    &:hover {
-      color: var(--text-primary);
-
-      svg { transform: translateX(3px); }
-    }
-  }
-
-  // ── Scroll indicator ──────────────────────────────────────────────────────
-  &__scroll {
-    position: absolute;
-    bottom: $space-8;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: fade-in 0.6s ease both;
-    animation-delay: 0.6s;
-    @include max-md { display: none; }
-  }
-
-  // Pulse segment travels the full line height plus its own size so it
-  // enters and exits cleanly
-  $scroll-line-height: 52px;
-  $scroll-pulse-height: 18px;
-
-  &__scroll-line {
-    position: relative;
-    width: 1px;
-    height: $scroll-line-height;
-    background: var(--border-color);
-    margin: 0 auto;
-    overflow: hidden;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: $scroll-pulse-height;
-      background: linear-gradient(to bottom, transparent, var(--accent-display));
-      animation: scroll-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-  }
-
-  @keyframes scroll-pulse {
-    0% {
-      transform: translateY(-$scroll-pulse-height);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY($scroll-line-height);
-      opacity: 0.3;
-    }
-  }
+  padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + #{$hero-top});
+  padding-bottom: $hero-bottom;
 }
+
+// Phones: the words, then the chat. Desktop: side by side, the chat a touch wider.
+.hero__in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $stack-gap;
+  align-items: center;
+
+  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+}
+
+.hero__title {
+  font-size: $fs-display-phone;
+  // a long idea name breaks instead of pushing the page sideways
+  overflow-wrap: anywhere;
+
+  @include sm { font-size: $fs-hero; }
+}
+

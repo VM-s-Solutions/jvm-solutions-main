@@ -1,144 +1,217 @@
 {
   "a11y": {
-    "footerNav": "Footer navigation",
-    "home": "JVM Yore – home",
+    "carousel": "Services, scroll sideways",
+    "conversation": "Conversation",
+    "footerNav": "Footer",
+    "home": "JVM Yore, home",
+    "howMuch": "How much help do you need",
+    "ideaName": "Name your idea",
     "language": "Language: {{lang}}",
+    "languageMenu": "Choose a language",
     "legalNav": "Legal",
-    "mainNav": "Main navigation",
-    "menu": "Menu",
-    "scrollTop": "Back to top",
-    "skipToContent": "Skip to main content",
-    "themeToDark": "Switch to dark theme",
-    "themeToLight": "Switch to light theme"
+    "linkedin": "LinkedIn: {{name}}",
+    "mainNav": "Main",
+    "mobileNav": "Main, mobile",
+    "next": "Next",
+    "opensInNewTab": "(opens in a new tab)",
+    "previous": "Previous",
+    "reply": "Reply",
+    "send": "Send",
+    "services": "Services",
+    "skipToContent": "Skip to content",
+    "team": "The team",
+    "toForm": "Continue to the message form"
   },
   "about": {
     "company": {
       "directors": "Managing directors",
       "founded": "Incorporated",
       "foundedValue": "3 June 2026",
-      "hide": "Hide company details",
       "ico": "Company ID (IČO)",
-      "intro": "We're a properly registered Czech limited company. Here are the details — every one of them can be checked in the public register.",
       "legalName": "Legal name",
       "registration": "Register entry",
       "registrationValue": "Municipal Court in Prague, Section C, Insert 449138",
       "registryLink": "View in the Czech business register",
       "scope": "Scope of business",
       "scopeValue": "Software provision, IT consulting, data processing, hosting and related activities, and web portals",
-      "seat": "Registered office",
-      "show": "Show company details",
-      "title": "Company details"
+      "seat": "Registered office"
     },
-    "description": "Two senior developers and a senior manager united by one goal: shipping software clients can rely on. Technical depth meets commercial clarity — every project, on time and on budget.",
-    "janis": {
-      "bio": "Drives client relationships, project delivery, and business development. The bridge between what clients need and what the team builds.",
-      "role": "Co-founder & Managing Director"
+    "register": {
+      "lead": "A properly registered Czech limited company since 3 June 2026. Every detail below can be checked in the public register.",
+      "title": "Check us in the register"
     },
-    "michael": {
-      "bio": "Full-stack across Angular, .NET, Swift, and Kotlin. Brings engineering precision to every layer — from data model to polished mobile UI.",
-      "role": "Co-founder & Full-stack Engineer"
-    },
-    "sectionLabel": "Our Team",
-    "titleGrad": "team",
-    "titlePart1": "Meet the",
-    "titlePart2": "behind JVM",
-    "vit": {
-      "bio": "Builds across the full stack — Angular frontends, .NET backends, and native mobile in Swift and Kotlin. Obsessed with performance and clean architecture.",
-      "role": "Co-founder & Full-stack Engineer"
+    "title": "Janis, Vít and Michael.",
+    "ways": {
+      "langs": {
+        "body": "English, Czech, Slovak and Ukrainian.",
+        "title": "Four languages"
+      },
+      "nda": {
+        "body": "Signed before the first call if you need one. Everything you share stays confidential either way.",
+        "title": "NDA first"
+      },
+      "remote": {
+        "body": "Based in Praha 1, Nové Město, working with clients online wherever they are.",
+        "title": "Remote, async-first"
+      },
+      "title": "How we work",
+      "tools": {
+        "body": "Google Meet or Teams, whichever your team already lives in.",
+        "title": "Your tools"
+      }
     }
+  },
+  "chat": {
+    "a": {
+      "advice1": "Happy to help. Consulting is {{price}} an hour: an architecture review, a code audit, or a check that your idea can be built the way you picture it.",
+      "advice1Named": "Happy to help. Consulting is {{price}} an hour: an architecture review, a code audit, or a check that {{name}} can be built the way you picture it.",
+      "advice2": "You leave with a written summary or a recording of the call.",
+      "care1": "We can take it over, even if we didn’t build it. We audit it first and tell you honestly what we find.",
+      "care1Named": "We can take {{name}} over, even if we didn’t build it. We audit it first and tell you honestly what we find.",
+      "care2": "Support & LTS starts at {{price}} a month: security patches, current dependencies and an SLA that fits.",
+      "idea1": "Then we start with two focused sessions: who opens it first, what they need to do in it, the deadline and the budget.",
+      "idea1Named": "Then we start with two focused sessions: who opens {{name}} first, what they need to do in it, the deadline and the budget.",
+      "idea2": "You get a written spec and one fixed price before we write any code. A scoped MVP is usually 6–12 weeks.",
+      "team1": "Then it’s all three of us: frontend, backend, mobile and project management, from {{price}} a month.",
+      "team1Named": "Then it’s all three of us on {{name}}: frontend, backend, mobile and project management, from {{price}} a month.",
+      "team2": "Two-week sprints, each ending in a demo of finished work. No fixed term."
+    },
+    "act": {
+      "advice": "Book a session",
+      "care": "Support plans",
+      "idea": "See it on paper",
+      "team": "Compare plans"
+    },
+    "askName": "What’s your idea called?",
+    "intro1": "Hi, we’re Janis, Vít and Michael.",
+    "intro2": "We build web apps and .NET backends.",
+    "intro3": "And native iOS and Android apps, plus AI that takes busywork off your team.",
+    "nameLabel": "Your idea’s name",
+    "namePlaceholder": "Name your idea…",
+    "nameRequired": "Type a name, or choose “No name yet”.",
+    "named1": "{{name}}. Good name.",
+    "named2": "Scroll down and we’ll put {{name}} on paper, the way we’d build it.",
+    "noName": "No name yet",
+    "q": {
+      "advice": "Just a second opinion",
+      "care": "Our app needs looking after",
+      "careNamed": "{{name}} exists and needs care",
+      "idea": "I have an idea for a product",
+      "ideaNamed": "{{name}} is a new product",
+      "team": "We need a whole team",
+      "teamNamed": "{{name}} needs a whole team"
+    },
+    "seeOnPaper": "See it on paper",
+    "skipped": "No problem. You can name it further down the page, whenever you like.",
+    "status": "Replies within 24 hours",
+    "who": "Janis, Vít & Michael",
+    "write": "Write to us directly"
+  },
+  "compose": {
+    "draftNamed": "Hi, we’re building {{name}}. ",
+    "placeholder": "Hi, we’re building…",
+    "placeholderNamed": "Hi, we’re building {{name}}…",
+    "title": "Start the conversation.",
+    "to": "To",
+    "when": "Write now and you’ll hear back by <b>{{date}} at {{time}}</b>, your time."
   },
   "contact": {
-    "backHome": "Back to home",
-    "description": "Tell us about your project and we'll get back to you within 24 hours with a tailored proposal.",
+    "about": "About",
+    "aside": {
+      "email": "Prefer e-mail?",
+      "reply": "Reply",
+      "replyValue": "Within 24 hours on business days",
+      "where": "Where",
+      "whereValue": "Prague, fully remote"
+    },
+    "check": "Check",
+    "company": "Company",
+    "companyPlaceholder": "Optional",
+    "email": "E-mail",
+    "emailPlaceholder": "jan@company.cz",
     "error": {
-      "btn": "Try again",
-      "message": "Please try again or email us directly at",
-      "title": "Something went wrong"
+      "body": "Please try again in a moment, or write to us directly at",
+      "bodyEnd": ".",
+      "retry": "Try again",
+      "title": "That didn’t go through."
     },
-    "form": {
-      "captchaError": "Please complete the CAPTCHA verification.",
-      "companyLabel": "Company",
-      "companyOptional": "(optional)",
-      "companyPlaceholder": "Acme Inc.",
-      "emailError": "Please enter a valid email address.",
-      "emailLabel": "Email",
-      "emailPlaceholder": "jan@company.cz",
-      "messageError": "Message must be at least 20 characters.",
-      "messageLabel": "Your Message",
-      "messagePlaceholder": "Describe your project, goals, timeline…",
-      "nameError": "Please enter your name (min. 2 characters).",
-      "nameLabel": "Name",
-      "namePlaceholder": "Jan Novák",
-      "privacyNoticeLink": "Privacy Policy",
-      "privacyNoticePost": ".",
-      "privacyNoticePre": "We use the details from this form only to reply to your message. Read more in our ",
-      "serviceError": "Please select a service.",
-      "serviceLabel": "I need",
-      "servicePlaceholder": "Select a service…",
-      "submit": "Send Message",
-      "submitting": "Sending…"
+    "errors": {
+      "captcha": "Please complete the check.",
+      "email": "Please enter a valid e-mail address.",
+      "message": "Message must be at least 20 characters.",
+      "name": "Please enter your name (min. 2 characters).",
+      "service": "Please pick what it’s about."
     },
-    "locationValue": "Praha & Remote",
-    "responseValue": "Within 24 hours",
-    "sectionLabel": "Contact Us",
+    "lead": "Tell us where your idea stands today. Write now and you’ll hear back by <b>{{date}} at {{time}}</b>, your time.",
+    "leadNamed": "Tell us where {{name}} stands today. Write now and you’ll hear back by <b>{{date}} at {{time}}</b>, your time.",
+    "message": "Your message",
+    "messagePlaceholder": "What it is, who it’s for, where it stands, and when you need it.",
+    "name": "Name",
+    "namePlaceholder": "Jan Novák",
+    "noticeEnd": ".",
+    "noticeLink": "Privacy Policy",
+    "noticeStart": "We use these details only to reply to your message. Read more in our ",
+    "send": "Send",
+    "sending": "Sending…",
+    "sent": {
+      "again": "Write another",
+      "body": "It’s in our inbox, and a confirmation is on its way to yours. One of us replies by <b>{{date}} at {{time}}</b>.",
+      "delivered": "Delivered",
+      "title": "On its way."
+    },
     "services": {
-      "ai": "AI Automation",
-      "backend": "Backend Systems",
-      "frontend": "Frontend Development",
-      "fullstack": "Full-stack Product",
-      "mobile": "Mobile Application",
+      "ai": "AI automation",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "fullstack": "Full product",
+      "mobile": "Mobile app",
       "other": "Other"
     },
-    "success": {
-      "btn": "Send another message",
-      "message": "Thanks for reaching out. We'll get back to you within 24 hours.",
-      "title": "Message sent!"
-    },
-    "title1": "Let's build",
-    "titleGrad": "something great"
-  },
-  "cta": {
-    "description": "We reply personally — no auto-responses. Drop us a message and hear back from Janis, Vít, or Michael directly.",
-    "title": "Have a project in mind?"
+    "subject": "Subject",
+    "subjectPlaceholder": "Your idea’s name",
+    "title": "Let’s build something great.",
+    "titleNamed": "Let’s build {{name}}.",
+    "to": "To",
+    "window": "New message"
   },
   "faq": {
-    "a1": "Yes. We're happy to work with startups and established companies alike. We'll help you design and deliver an MVP or a full product — tailored to your scope and budget.",
-    "a2": "Absolutely. We can take over anything from legacy PHP to a half-finished Angular migration. We audit first, give you an honest assessment, then move.",
-    "a3": "A scoped MVP is usually 6–12 weeks from kick-off to production. Our Discovery phase gives you the real number before any commitment.",
-    "a4": "Yes, before any discovery call if you need one. We treat everything shared with us as confidential regardless.",
-    "a5": "Yes — through monthly support. We size it to how much care the app needs after launch, and you can change it at any time.",
-    "a6": "Yes, 100% remote and async-first. We're based in Prague and work with clients online, wherever they are.",
-    "more": "Still have questions?",
-    "moreLink": "Get in touch",
+    "a1": "Yes, startups and established companies alike. We help you shape and ship an MVP or a full product, sized to your scope and budget.",
+    "a2": "Yes, from legacy PHP to a half-finished Angular migration. We audit it first, tell you honestly what we found, then get to work.",
+    "a3": "A scoped MVP usually takes 6–12 weeks from kick-off to production. After the two discovery sessions you know the real date, before you commit to anything.",
+    "a4": "Yes, before the first call if you need one. We treat everything you share with us as confidential either way.",
+    "a5": "Every fixed-scope project gets 30 days of free bug fixes, and we answer critical issues within 4 hours. After that we offer monthly support from {{price}}, sized to how much care the app needs, and you can change it at any time.",
+    "a6": "Yes, fully remote and async-first. We’re based in Prague and work with clients online, wherever they are.",
+    "all": "All questions",
+    "lead": "Straight answers to what founders and CTOs ask us before a project starts, in the form we usually give them.",
+    "more": "Still have a question?",
+    "moreCta": "Ask us directly",
     "q1": "Do you work with companies that are just starting out?",
     "q2": "Can you take over an existing codebase?",
-    "q3": "What does a typical project timeline look like?",
+    "q3": "How long does a project take?",
     "q4": "Do you sign NDAs?",
-    "q5": "Do you offer ongoing support after launch?",
+    "q5": "What happens after launch?",
     "q6": "Do you work remotely?",
-    "sectionLabel": "FAQ",
-    "subtitle": "Straight answers to what founders and CTOs ask us before a project starts.",
-    "title1": "Questions we",
-    "titleGrad": "get asked most"
+    "title": "Your questions, before ours"
   },
   "footer": {
-    "builtWith": "Built with Angular",
-    "contact": "Get in Touch",
-    "nav": "Navigation",
-    "tagline": "Engineering software that scales, performs, and lasts."
+    "bottom": "Prague, © {{year}} JVM Yore, s.r.o. · IČO 29633443",
+    "contact": "Contact",
+    "legal": "Legal",
+    "note1": "We’re Janis, Vít and Michael, a software studio of three.",
+    "note2": "Prague, fully remote. We reply within 24 hours on business days.",
+    "note3": "No cookies, no analytics.",
+    "place": "Praha 1, Nové Město",
+    "studio": "Studio"
   },
   "hero": {
-    "ctaPrimary": "Start a Project",
-    "ctaSecondary": "View pricing",
-    "description": "We build high-performance digital products — from pixel-perfect frontends to intelligent backends, cross-platform mobile apps, and AI-powered automation that transforms workflows.",
-    "eyebrow": "Software Studio",
-    "headlinePart1": "We craft software",
-    "typewriter": {
-      "ai": "AI Automation",
-      "backend": "Backend Systems",
-      "frontend": "Frontend Development",
-      "mobile": "Mobile Applications"
-    }
+    "cta": "Message us",
+    "lead": "Name your idea and talk to Janis, Vít and Michael: the same three people who’ll build its web app, .NET backend, native mobile apps and AI automation.",
+    "secondary": "See how we’d build it",
+    "title": "Ask the people who’ll build it.",
+    "titleNamed": "Ask the people who’ll build {{name}}."
+  },
+  "idea": {
+    "product": "Your product"
   },
   "legal": {
     "docs": {
@@ -152,66 +225,187 @@
   "nav": {
     "about": "About",
     "faq": "FAQ",
-    "getInTouch": "Get in Touch",
+    "home": "Home",
+    "message": "Message us",
+    "messageShort": "Message",
     "pricing": "Pricing",
     "services": "Services"
   },
-  "pricing": {
-    "consulting": {
-      "cta": "Book a session",
-      "f1": "We go through the architecture and audit the codebase",
-      "f2": "We coach your team and set up a code review process",
-      "f3": "We help pick the stack and check the thing can actually be built",
-      "f4": "Made for CTOs and engineering leads who want a second opinion",
-      "f5": "You leave with a written summary or a recording of the call",
-      "label": "Consulting",
-      "period": "per hour",
-      "price": "€100",
-      "tagline": "A second opinion from people who build software themselves."
+  "paper": {
+    "board": {
+      "app": {
+        "home": "Home",
+        "inbox": "Inbox",
+        "item1": "Account created",
+        "item2": "Team invited",
+        "item3": "Data connected",
+        "item4": "Notifications on",
+        "search": "Search…",
+        "settings": "Settings",
+        "team": "Team",
+        "toast": "New sign-up"
+      },
+      "handover": {
+        "critical": "Critical issues answered within 4 hours",
+        "docs": "Handover docs",
+        "fixes": "Free fixes for 30 days after launch",
+        "label": "Handover",
+        "repo": "Repository: yours since day one"
+      },
+      "notes": {
+        "limits": "Deadline, budget, the systems it connects to",
+        "what": "What do they need to do in it?",
+        "who": "Who opens it first?"
+      },
+      "spec": {
+        "constraints": "Constraints",
+        "done": "Definition of done",
+        "goals": "Goals",
+        "label": "Technical spec",
+        "price": "One fixed price for this scope",
+        "terms": "Half upfront, the rest on handover. No VAT added.",
+        "users": "Users"
+      },
+      "staging": {
+        "demo": "Demo",
+        "demoValue": "Week 5",
+        "label": "Staging",
+        "link": "Link",
+        "linkValue": "Open since day one",
+        "now": "This week",
+        "nowValue": "Notifications"
+      },
+      "tags": {
+        "checklist": "Checklist",
+        "nav": "Navigation",
+        "search": "Search"
+      }
     },
+    "lead": "Two sessions and it’s on paper. Then we write it down, show it to you every week and hand it over. Scroll and watch it happen.",
+    "slotPlaceholder": "your idea",
+    "steps": {
+      "handover": {
+        "body": "Launch, handover docs, 30 days of free fixes, and answers to critical issues within 4 hours. The code is yours.",
+        "title": "Hand over"
+      },
+      "show": {
+        "body": "Every week we show you working software, on a staging link you can open from day one.",
+        "title": "Show"
+      },
+      "sketch": {
+        "body": "Two focused sessions: who opens it first, what they need to do in it, the deadline, the budget and the systems it connects to. You leave with this sketch and a shared definition of done.",
+        "bodyNamed": "Two focused sessions: who opens {{name}} first, what they need to do in it, the deadline, the budget and the systems it connects to. You leave with this sketch and a shared definition of done.",
+        "title": "Sketch"
+      },
+      "write": {
+        "body": "Then we write it down: a technical spec, the stack, and one fixed price for that scope, before a line of code.",
+        "title": "Write"
+      }
+    },
+    "titleEnd": "on paper.",
+    "titleStart": "Put"
+  },
+  "price": {
+    "compare": "Compare all plans",
     "from": "from",
-    "note": "We're not VAT-registered, so nothing is added to the prices shown. Fixed-scope projects are billed 50% upfront, the rest on handover.",
-    "project": {
-      "cta": "Get a quote",
-      "f1": "You have a written technical spec before we write a line of code",
-      "f2": "Every week you see the progress on a live staging environment",
-      "f3": "The code is yours from day one — full handover, no strings",
-      "f4": "We fix bugs free of charge for 30 days after launch",
-      "f5": "Critical issues get an answer within 4 hours",
-      "label": "Fixed-scope project",
-      "period": "per project",
-      "price": "Custom",
-      "tagline": "You have a brief and need it delivered end to end — from design to launch."
+    "lead": "Slide to compare. A fixed-scope project is quoted once, after the two sessions, for the agreed scope. We’re not VAT-registered, so nothing is added.",
+    "plans": {
+      "hour": {
+        "cta": "Book a session",
+        "desc": "A second opinion from people who build software themselves: architecture review, code audit, team coaching or a stack decision.",
+        "name": "Consulting",
+        "per": "per hour"
+      },
+      "lts": {
+        "cta": "Set up support",
+        "desc": "Your app keeps running: security patches, current dependencies and an SLA that fits. Apps we didn’t build too, after an audit.",
+        "name": "Support & LTS",
+        "per": "per month"
+      },
+      "project": {
+        "amount": "Custom",
+        "cta": "Get a quote",
+        "desc": "You have a brief and need it delivered end to end. A written spec first, 50% upfront and 50% on handover.",
+        "name": "Fixed-scope project",
+        "nameNamed": "{{name}}, at one fixed price",
+        "per": "quote"
+      },
+      "team": {
+        "cta": "Book an intro call",
+        "desc": "Frontend, backend, mobile and project management in two-week sprints, each ending in a demo. No fixed term.",
+        "name": "The whole team",
+        "per": "per month"
+      }
     },
-    "retainer": {
-      "badge": "Recommended",
-      "cta": "Book an intro call",
-      "f1": "Frontend, backend, mobile and project management — the full senior team",
-      "f2": "Two-week sprints, each one ending in a demo of finished work",
-      "f3": "Google Meet or Teams, whichever your team already lives in",
-      "f4": "Priority bugs are dealt with the same day",
-      "f5": "No fixed term — you can stop whenever it stops making sense",
-      "label": "The whole team",
-      "period": "per month",
-      "price": "€17,900",
-      "tagline": "A complete team that moves your product forward every week."
+    "ticks": {
+      "hour": "An hour",
+      "lts": "Support",
+      "project": "A project",
+      "team": "Whole team"
     },
-    "sectionLabel": "How we work together",
-    "subtitle": "No hidden line items, no vague estimates. Pick the model that fits — we'll work out the details on the first call.",
-    "support": {
-      "cta": "Set up a support plan",
-      "f1": "We take over apps we didn't build, after a code audit up front",
-      "f2": "We watch uptime, ship security patches and keep dependencies current",
-      "f3": "Extended support for LTS versions, even past the vendor's end of life",
-      "f4": "An agreed block of hours every month for small changes and improvements",
-      "f5": "SLA to match the risk — from next business day to round-the-clock",
-      "label": "Support & LTS",
-      "period": "per month",
-      "price": "€390",
-      "tagline": "Your application keeps running — secure, up to date, and worry-free."
+    "title": "How much help do you need?"
+  },
+  "pricing": {
+    "action": "Action",
+    "cells": {
+      "billing": {
+        "hour": "After the session",
+        "lts": "Monthly in advance",
+        "project": "Half upfront, the rest on handover",
+        "team": "Monthly in advance"
+      },
+      "for": {
+        "hour": "CTOs and leads who want a second opinion",
+        "lts": "Apps that must stay secure and up to date",
+        "project": "A brief you need delivered end to end",
+        "team": "A product that needs a full senior team"
+      },
+      "get": {
+        "hour": "Architecture and code audits, coaching, a written summary or a recording",
+        "lts": "Patches, current dependencies, LTS past end of life, monthly hours",
+        "project": "Written spec first, weekly staging, the code from day one",
+        "team": "Frontend, backend, mobile and PM in two-week sprints"
+      },
+      "price": {
+        "hour": "<b>{{price}}</b> / hour",
+        "lts": "from <b>{{price}}</b> / month",
+        "project": "<b>Custom</b> quote",
+        "team": "from <b>{{price}}</b> / month"
+      },
+      "response": {
+        "hour": "A personal reply within 24 hours",
+        "lts": "SLA from next business day to 24/7",
+        "project": "Critical issues within 4 hours",
+        "team": "Priority bugs the same day"
+      },
+      "term": {
+        "hour": "Per session",
+        "lts": "No fixed term",
+        "project": "Until handover, then 30 days of free fixes",
+        "team": "No fixed term, stop at any time"
+      }
     },
-    "title1": "Pricing without",
-    "titleGrad": "surprises"
+    "cols": {
+      "hour": "One of us, by the hour",
+      "lts": "Support & LTS",
+      "project": "Your idea at one fixed price",
+      "projectNamed": "{{name}} at one fixed price",
+      "team": "All three of us, every month"
+    },
+    "lead": "No hidden line items, no vague estimates. A fixed-scope project is quoted once, after the two discovery sessions, before we write a line of code.",
+    "note": "We’re not VAT-registered, so nothing is added. Invoices are due within 14 days, by bank transfer. Monthly plans can be cancelled by e-mail, effective at the end of the paid month.",
+    "plan": "Plan",
+    "recommended": "Recommended",
+    "rows": {
+      "billing": "Billing",
+      "for": "Best for",
+      "get": "You get",
+      "price": "Price",
+      "response": "Response",
+      "term": "Term"
+    },
+    "sideBySide": "Side by side",
+    "title": "Pricing without surprises"
   },
   "privacy": {
     "changes": {
@@ -225,14 +419,14 @@
     },
     "cookies": {
       "li1": "lang – the site language you chose,",
-      "li2": "theme – light or dark theme,",
+      "li2": "idea – the name you gave your idea on our home page, so the site can use it while you browse. It reaches us only if you send the contact form, where it fills in the Subject field; clear the name to delete it,",
       "li3": "fontsCached – a note that you've already downloaded the fonts, so the page renders faster next time.",
-      "p1": "This website sets no cookies. In your browser's local storage (localStorage) we keep just three technical settings, which never leave your device:",
+      "p1": "This website sets no cookies. In your browser's local storage (localStorage) we keep just three items:",
       "p2": "The Cloudflare Turnstile check on the Contact page runs in Cloudflare's own frame and may store technical data needed to tell people from bots. According to Cloudflare, this data isn't used for tracking or advertising. Details are in Cloudflare's Turnstile Privacy Addendum.",
       "title": "Cookies and local storage"
     },
     "data": {
-      "li1": "Contact form details: your name, email address, company name (optional), the service you're interested in, your message and the language you used the site in.",
+      "li1": "Contact form details: your name, email address, company name (optional), the name of your project (optional), the service you’re interested in, your message and the language you used the site in.",
       "li2": "The content of emails you send us directly and our further correspondence.",
       "li3": "Technical data when you submit the form: your IP address and browser signals, processed by the Cloudflare Turnstile spam protection.",
       "li4": "Technical data on every visit: your IP address and request details, briefly processed by our hosting provider to run and secure the site. We don't keep any visitor logs ourselves.",
@@ -248,11 +442,11 @@
       "title": "Requesting deletion of your data"
     },
     "fonts": {
-      "p1": "We serve the Inter and Space Grotesk fonts from our own server — not from Google Fonts or any other CDN — so your IP address is never sent to Google or another font provider when you visit the site. The only external content on the site is the Cloudflare Turnstile check on the Contact page.",
+      "p1": "We serve the Geologica, Inter, JetBrains Mono and Caveat fonts from our own server — not from Google Fonts or any other CDN — so your IP address is never sent to Google or another font provider when you visit the site. The only external content on the site is the Cloudflare Turnstile check on the Contact page.",
       "title": "Fonts and other external resources"
     },
     "intro": "We only ask for what we need to answer your enquiry. This page explains which data that is, what we use it for, who we share it with and how you can exercise your rights.",
-    "lastUpdated": "Effective 17 October 2026",
+    "lastUpdated": "Effective 19 October 2026",
     "purposes": {
       "li1": "Replying to your enquiry, preparing a quote and negotiating a contract — steps taken at your request before entering into a contract (point b). On the same basis we email you a confirmation with a copy of your message after you submit the form.",
       "li2": "Performing a contract and communicating during the project — performance of a contract (point b).",
@@ -297,24 +491,6 @@
       "p1": "Resend and Cloudflare are based in the USA. Transfers to the USA are covered by the EU–U.S. Data Privacy Framework, under which both companies are certified, and by standard contractual clauses approved by the European Commission.",
       "title": "Transfers outside the EU"
     }
-  },
-  "process": {
-    "sectionLabel": "How We Work",
-    "step1Desc": "Two focused sessions to understand your goals, constraints, and users. We leave with a shared definition of done.",
-    "step1Num": "01",
-    "step1Title": "Discovery",
-    "step2Desc": "A clear technical spec, stack decision, and fixed-scope estimate — no surprise invoices.",
-    "step2Num": "02",
-    "step2Title": "Spec & Estimate",
-    "step3Desc": "Weekly demos, async updates, and a staging environment you can access from day one.",
-    "step3Num": "03",
-    "step3Title": "Build",
-    "step4Desc": "Deploy, full handover docs, and a 30-day warranty. You get the code, you own the code.",
-    "step4Num": "04",
-    "step4Title": "Ship & Hand Over",
-    "subtitle": "You always know what's happening, what's next, and when you'll ship.",
-    "title1": "Built for",
-    "titleGrad": "predictability"
   },
   "refunds": {
     "consulting": {
@@ -362,27 +538,93 @@
       "title": "Defect claims"
     }
   },
+  "samples": {
+    "signup": {
+      "cs": {
+        "cta": "Pokračovat",
+        "sub": "Zabere to méně než minutu.",
+        "title": "Vytvořte si účet"
+      },
+      "en": {
+        "cta": "Continue",
+        "sub": "It takes less than a minute.",
+        "title": "Create your account"
+      },
+      "sk": {
+        "cta": "Pokračovať",
+        "sub": "Zaberie to menej ako minútu.",
+        "title": "Vytvorte si účet"
+      },
+      "uk": {
+        "cta": "Продовжити",
+        "sub": "Це займе менше хвилини.",
+        "title": "Створіть обліковий запис"
+      }
+    }
+  },
+  "service": {
+    "agents": "Agents",
+    "ai": "AI agents",
+    "api": "Backends",
+    "mobile": "Mobile apps",
+    "web": "Web apps"
+  },
   "services": {
     "ai": {
-      "description": "LLM integrations, intelligent agents, and workflow automation that reduce manual effort and unlock new capabilities for your business.",
-      "title": "AI Automation"
+      "body": "Claude, LangChain and Python. Agents and LLM integrations that take repetitive work off your team, inside the tools it already uses.",
+      "li1": "Assistants on your own documents",
+      "li2": "Document and e-mail automation",
+      "li3": "Agents connected to your tools"
     },
-    "backend": {
-      "description": "Scalable APIs, microservices and cloud infrastructure built primarily on .NET. From REST to gRPC, designed for reliability, security and high throughput.",
-      "title": "Backend Systems"
+    "api": {
+      "body": ".NET and C#, PostgreSQL and Docker. We design APIs and data models the next developer can read, and watch over them once they’re live. REST or gRPC.",
+      "li1": "APIs and third-party integrations",
+      "li2": "Cloud infrastructure and deployment",
+      "li3": "Legacy systems, audited and modernised"
     },
-    "frontend": {
-      "description": "Blazing-fast, accessible web applications built with Angular, React or Vue. Pixel-perfect UIs with sophisticated animations and seamless UX.",
-      "title": "Frontend Development"
-    },
+    "get": "What you get",
+    "lead": "The same three people build every part of your product, so nothing gets lost between teams, vendors or time zones.",
+    "leadNamed": "The same three people build every part of {{name}}, so nothing gets lost between teams, vendors or time zones.",
     "mobile": {
-      "description": "Native iOS and Android apps built with Swift and Kotlin. Full-native performance, platform-specific UX, and direct access to every device API.",
-      "title": "Mobile Applications"
+      "body": "Native Swift for iOS and Kotlin for Android, so the app behaves the way each phone expects, down to its notifications.",
+      "li1": "An iOS app in Swift",
+      "li2": "An Android app in Kotlin",
+      "li3": "App Store and Google Play releases"
     },
-    "sectionLabel": "What We Build",
-    "subtitle": "Whatever your challenge — we have the expertise to engineer the right solution.",
-    "title1": "End-to-end",
-    "title2": "digital solutions"
+    "stack": "Stack",
+    "take": {
+      "body": "We take over anything from legacy PHP to a half-finished Angular migration. We audit it first, tell you honestly what we found, then get to work. After launch, Support & LTS keeps it secure and up to date.",
+      "cta": "Tell us about it",
+      "cta2": "Support plans",
+      "nav": "Taking over",
+      "title": "Already have a codebase?"
+    },
+    "web": {
+      "body": "Angular or React, TypeScript and SCSS. Fast, accessible interfaces that work from the keyboard too, in as many languages as your users speak.",
+      "li1": "Customer portals and web apps",
+      "li2": "Admin and internal tools",
+      "li3": "Design systems in code"
+    }
+  },
+  "team": {
+    "bio": {
+      "j": "“I take your first call, then keep the plan, the budget and the dates.”",
+      "m": "“I work across the same stack, from the data model to the last detail of a screen.”",
+      "v": "“I write Angular and .NET, and native apps in Swift and Kotlin, and I make sure it all stays fast.”"
+    },
+    "meaning": "J, V and M are the initials of our first names. Yore means “long ago”: we want what we build to last.",
+    "role": {
+      "j": "Managing director",
+      "m": "Full-stack engineer",
+      "v": "Full-stack engineer"
+    },
+    "roleLong": {
+      "j": "Co-founder, managing director",
+      "m": "Co-founder, full-stack engineer",
+      "v": "Co-founder, full-stack engineer"
+    },
+    "tap": "Tap a face.",
+    "title": "The three of us."
   },
   "terms": {
     "changes": {
@@ -414,7 +656,7 @@
       "p2": "Open-source libraries and third-party tools remain under their own licences. We may keep using general know-how and our own tools that we use across projects; you get a free, unlimited licence to use them as part of your work.",
       "title": "Source code and copyright"
     },
-    "lastUpdated": "Effective 17 October 2026",
+    "lastUpdated": "Effective 19 October 2026",
     "liability": {
       "p1": "We're liable for damage we cause by breaching our obligations. Towards businesses, total compensation is capped at the price paid for the affected service over the last 12 months. The cap doesn't apply to damage caused intentionally or through gross negligence, to harm to health, or towards consumers.",
       "p2": "We're not responsible for the content of third-party websites we link to.",
@@ -422,10 +664,9 @@
     },
     "licenses": {
       "fontsLink": "Font licences (OFL 1.1)",
-      "li1": "The Inter (© The Inter Project Authors) and Space Grotesk (© The Space Grotesk Project Authors) fonts under the SIL Open Font License 1.1, hosted on our own server.",
-      "li2": "Icons from the Lucide (ISC licence) and Feather (MIT licence) sets.",
-      "li3": "Open-source libraries such as Angular, RxJS and ngx-translate under the MIT and other free licences.",
-      "li4": "The team photos are our own. We use no stock photos and no third-party logos.",
+      "li1": "The Geologica (© The Geologica Project Authors), Inter (© The Inter Project Authors), JetBrains Mono (© The JetBrains Mono Project Authors) and Caveat (© The Caveat Project Authors) fonts under the SIL Open Font License 1.1, hosted on our own server.",
+      "li2": "Open-source libraries such as Angular, RxJS and ngx-translate under the MIT and other free licences.",
+      "li3": "The team photos are our own. We use no stock photos and no third-party logos.",
       "p1": "This website uses the following third-party resources, always in line with their licences:",
       "softwareLink": "Software licences",
       "title": "Licences for resources we use"
@@ -466,5 +707,25 @@
       "p2": "We try to keep the information here accurate and up to date, but the site may occasionally be unavailable or contain a mistake. The details in your quote and contract always prevail.",
       "title": "Using this website"
     }
+  },
+  "trades": {
+    "ai": "Claude, LangChain and Python. Agents and LLM integrations that take repetitive work off your team, inside the tools it already uses.",
+    "api": ".NET and C#, PostgreSQL and Docker. APIs and data models the next developer can read, watched over once they’re live.",
+    "lead": "We drew these screens for your idea. None of them come from client work.",
+    "leadNamed": "We drew these screens for {{name}}. None of them come from client work.",
+    "lock": {
+      "notice": "Your first user just signed up.",
+      "now": "now"
+    },
+    "mobile": "Native Swift for iOS and Kotlin for Android, so the app behaves the way each phone expects, down to its notifications.",
+    "prompt": {
+      "end": "using only its own documents. If you’re not sure, say so and hand the question to a person.",
+      "label": "System prompt",
+      "start": "You answer questions about",
+      "subject": "your product",
+      "subjectNamed": "{{name}}"
+    },
+    "title": "Four trades, three people.",
+    "web": "Angular or React, TypeScript and SCSS. Fast interfaces that work from the keyboard too, in as many languages as your users speak. jvm-yore.com runs in four."
   }
 }

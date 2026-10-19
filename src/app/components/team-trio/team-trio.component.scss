@@ -1,0 +1,134 @@
+@use 'abstracts' as *;
+
+// Face size. Phones: a third of the row at most, so three faces always fit; then the
+// concept's 96 → 152px.
+$face-phone: min(6rem, calc((100vw - 7rem) / 3));
+$face: clamp(6rem, 12vw, 9.5rem);
+
+:host {
+  display: block;
+}
+
+// ─── The faces (tabs) ─────────────────────────────────────────────────────────
+.trio {
+  display: flex;
+  justify-content: center;
+  gap: $space-2;
+  margin-top: $space-14;
+
+  @include sm { gap: clamp(#{$space-4}, 4vw, #{$space-14}); }
+}
+
+.trio__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: $space-2;
+  border: 0;
+  border-radius: $radius-lg;
+  background: none;
+  text-align: center;
+  cursor: pointer;
+
+  @include hover {
+    .trio__img {
+      transform: scale(0.94);
+      filter: saturate(0.7);
+    }
+  }
+
+  &[aria-selected='true'] .trio__img {
+    transform: none;
+    filter: none;
+    box-shadow:
+      0 0 0 5px var(--soft),
+      0 0 0 8px var(--orange);
+
+    em { transform: none; }
+  }
+}
+
+.trio__img {
+  position: relative;
+  display: block;
+  width: $face-phone;
+  aspect-ratio: 1;
+  margin-bottom: $space-3;
+  border-radius: 50%;
+  filter: saturate(0.35);
+  transform: scale(0.88);
+  transition:
+    transform $duration-slow $ease-ios,
+    filter $duration-slow $ease-out,
+    box-shadow $duration-slow $ease-out;
+
+  @include sm { width: $face; }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  // The orange initial: J, V or M
+  em {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    display: grid;
+    place-items: center;
+    width: 36%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--ink);
+    font: $weight-bold clamp(#{$text-md}, 1.6vw, #{$text-xl})/1 $font-display;
+    font-style: normal;
+    box-shadow: 0 0 0 4px var(--soft);
+    transform: scale(0);
+    transition: transform $duration-slow $ease-spring;
+  }
+}
+
+.trio__name {
+  font: $weight-semibold #{$text-lg}/1.2 $font-display;
+  letter-spacing: $tracking-title;
+}
+
+.trio__role {
+  font-size: $text-sm;
+  color: var(--muted);
+}
+
+// ─── Their words (panels) ─────────────────────────────────────────────────────
+// All three share one cell, so the section keeps its height while they crossfade.
+.bios {
+  display: grid;
+  max-width: 40rem;
+  margin: $space-9 auto 0;
+  text-align: center;
+}
+
+.bio {
+  grid-area: 1 / 1;
+  font: $weight-medium clamp(#{$text-2xl}, 2vw, #{$text-3xl})/1.4 $font-display;
+  letter-spacing: $tracking-title;
+  color: var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY($space-2-5);
+  transition:
+    opacity $duration-base $ease-out,
+    transform $duration-slow $ease-out,
+    visibility 0s linear $duration-base;
+
+  // the new line waits a beat, so the old one has begun to fade
+  &.is-on {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: $stagger-xl, $stagger-xl, 0s;
+  }
+}

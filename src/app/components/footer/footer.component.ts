@@ -1,46 +1,35 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LEGAL_DOCS } from '../legal-document/legal-document.model';
 import { LogoComponent } from '../logo/logo.component';
-import { ScrollService } from '../../services/scroll.service';
-
-interface FooterLink {
-  label: string;
-  fragment?: string;
-  routerLink?: string;
-}
+import { LANGS, Lang, LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'jvm-footer',
   standalone: true,
-  imports: [LogoComponent, RouterLink, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, TranslateModule, LogoComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  private readonly router = inject(Router);
-  private readonly scrollService = inject(ScrollService);
+  private readonly lang = inject(LangService);
 
-  readonly year = new Date().getFullYear();
-  readonly legalDocs = LEGAL_DOCS;
+  protected readonly year = new Date().getFullYear();
+  protected readonly legalDocs = LEGAL_DOCS;
+  protected readonly langs = LANGS;
+  protected readonly current = this.lang.current;
 
-  readonly footerLinks: FooterLink[] = [
-    { label: 'nav.services', fragment: 'services' },
-    { label: 'nav.pricing',  routerLink: '/pricing' },
-    { label: 'nav.about',    routerLink: '/about' },
-    { label: 'nav.faq',      routerLink: '/faq' },
-  ];
+  protected readonly links = [
+    { path: '/services', labelKey: 'nav.services' },
+    { path: '/pricing', labelKey: 'nav.pricing' },
+    { path: '/about', labelKey: 'nav.about' },
+    { path: '/faq', labelKey: 'nav.faq' },
+    { path: '/contact', labelKey: 'nav.message' },
+  ] as const;
 
-  scrollToSection(fragment: string, event: MouseEvent): void {
-    event.preventDefault();
-    const isHome = this.router.url === '/' || this.router.url === '';
-    if (isHome) {
-      this.scrollService.scrollTo(fragment);
-    } else {
-      this.scrollService.schedule(fragment);
-      this.router.navigate(['']);
-    }
+  choose(code: Lang): void {
+    this.lang.use(code);
   }
 }

@@ -1,0 +1,9 @@
+<svg class="sketch" viewBox="0 0 400 280" preserveAspectRatio="none" focusable="false">
+  @for (d of paths; track $index) {
+    <path pathLength="1" [class.rough]="$first" [attr.d]="d" [style.--i]="$index" />
+  }
+</svg>
+<span class="frame__name hand"><jvm-swap-text [text]="product()" /></span>
+<span class="tag tag--nav">{{ 'paper.board.tags.nav' | translate }}</span>
+<span class="tag tag--search">{{ 'paper.board.tags.search' | translate }}</span>
+<span class="tag tag--checklist">{{ 'paper.board.tags.checklist' | translate }}</span>

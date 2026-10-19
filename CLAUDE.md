@@ -13,11 +13,11 @@ You are an elite Angular architect with deep expertise across the entire Angular
 
 | Technology | Version |
 |---|---|
-| Angular | 19.x (standalone-first) |
-| TypeScript | 5.7 strict mode |
+| Angular | 21.x (standalone, zoneless) |
+| TypeScript | 5.9 strict mode |
 | ngx-translate | 17.x (`provideTranslateService` / `provideTranslateHttpLoader`) |
 | RxJS | 7.8 |
-| Styling | SCSS + custom design system (`src/styles/`) |
+| Styling | SCSS 7-1 + design tokens (`src/styles/`) |
 | State | Angular Signals (no NgRx) |
 | Testing | Jasmine + Karma |
 
@@ -59,7 +59,7 @@ HTTP / Browser APIs (infrastructure)
 
 ### DRY
 - Repeated UI patterns → shared component in `components/`.
-- Repeated SCSS patterns → mixin in `src/styles/_mixins.scss`.
+- Repeated SCSS patterns → mixin in `src/styles/abstracts/_mixins.scss`.
 - Repeated logic → service method or standalone utility function.
 - Do **not** DRY prematurely. Three identical lines are fine; a fourth copy warrants extraction.
 
@@ -129,27 +129,29 @@ Global styles follow the **7-1 pattern** — 7 folders, 1 entry file. All partia
 ```text
 src/styles/
 ├── abstracts/          # No CSS output — only tools
-│   ├── _variables.scss   design tokens (colors, spacing, typography, z-index, breakpoints)
-│   ├── _mixins.scss      responsive helpers, card, glass, btn-*, section-*, orb
-│   └── _functions.scss   pure SCSS functions (if needed)
+│   ├── _variables.scss   design tokens (colours, type, spacing, radius, motion, breakpoints, z-index)
+│   ├── _mixins.scss      sm/md/lg/xl, short, hover, reduced-motion, focus-ring, frosted, window-shadow, …
+│   └── _index.scss       forwards both, so components write @use 'abstracts' as *;
 ├── base/               # Unclassed HTML element defaults
-│   ├── _reset.scss       box-sizing, margin/padding resets
-│   └── _typography.scss  font-face, body, headings, links
+│   ├── _root.scss        colour + motion tokens as CSS custom properties on :root
+│   ├── _reset.scss       box-sizing, margin resets, focus ring, .sr-only
+│   ├── _typography.scss  body, headings, .display / .h2 / .lead / .hand
+│   └── _animations.scss  .reveal states, page push/pop view transitions, shared keyframes, reduced motion
 ├── layout/             # Structural regions shared across pages
-│   └── _grid.scss        container, section-padding defaults
+│   └── _grid.scss        .container, .section(--soft / --ink / --tight), .page-hero, .sec-head, .actions
 ├── components/         # Reusable visual patterns not tied to one Angular component
-│   └── _buttons.scss     .btn-primary / .btn-outline global classes (if used outside Angular)
-├── pages/              # One-off page overrides that cannot live in a component
-│   └── _home.scss
-├── themes/             # Reserved — dark theme variables live in abstracts/_variables.scss
-└── vendors/            # Third-party style overrides only
+│   ├── _buttons.scss     .btn (--primary / --ghost / --dark-ghost / --sm), .link, .round
+│   └── _chips.scss       .chips (tech-name lists)
+├── pages/              # Reserved — one-off page overrides that cannot live in a component
+├── themes/             # Reserved — one theme; dark surfaces re-point the colour tokens locally
+└── vendors/            # Reserved — third-party style overrides only
 └── styles.scss         # Entry point — @use each folder partial, no rules here
 ```
 
 **Rules:**
 
 - `abstracts/` must never produce CSS output on its own (variables + mixins only).
-- Component-scoped styles (`.component.scss`) are **not** part of the 7-1 tree — they live co-located with their component and import from `abstracts/` via `@use '../../../styles/abstracts/variables' as *`.
+- Component-scoped styles (`.component.scss`) are **not** part of the 7-1 tree — they live co-located with their component and start with `@use 'abstracts' as *;` (`src/styles` is a Sass load path in `project.json`).
 - Never write rules directly in `styles.scss` — it is a manifest only.
 - Add a new partial to the correct folder; never dump unrelated rules into an existing partial.
 - Folder order in `styles.scss` must match the hierarchy above (abstracts → base → layout → components → pages → themes → vendors).
@@ -159,9 +161,10 @@ src/styles/
 - Use design tokens from `abstracts/_variables.scss` — no magic numbers.
 - Use mixins from `abstracts/_mixins.scss` for responsive breakpoints and common patterns.
 - Component styles are scoped (`:host` selector) — never use `ViewEncapsulation.None` without strong justification.
-- Mobile-first: base styles for smallest viewport, override upwards via `@include sm/md/lg/xl`.
-- Dark theme is the only theme — do not introduce light-mode branches.
-- Animations belong in `base/_animations.scss` as keyframes or `.reveal-*` utility classes; use `scroll-reveal.directive.ts` for scroll-triggered animation.
+- Mobile-first: base styles for smallest viewport, override upwards via `@include sm/md/lg/xl` (641 / 901 / 1101 / 1281px).
+- One theme: light surfaces, with dark ones for contrast (`.section--ink`, the board's dark chapters) that re-point the colour custom properties locally. No theme switcher, no light/dark branches.
+- Colours come from the CSS custom properties in `base/_root.scss` (`var(--ink)`); everything else from the SCSS tokens.
+- Animations belong in `base/_animations.scss` (shared keyframes, `.reveal` states, page transitions); use `RevealDirective` (`jvmReveal`) for scroll-triggered reveals and `SplitTextComponent` (`[jvmSplit]`) for headings.
 - Never use inline `style=""` bindings for layout — that is CSS's job.
 - Never place a plain declaration after a nested rule or `@include` that expands to a nested rule — move it above or wrap in `& {}`.
 
@@ -172,7 +175,8 @@ src/styles/
 - Every user-visible string must go through `ngx-translate`.
 - Keys follow dot-notation namespacing: `section.element.variant` (e.g. `nav.services`, `contact.form.submit`).
 - In TypeScript use `TranslateService.instant()` only for values that do not change after page load. For reactive values, use `TranslateService.stream()` or the `translate` pipe.
-- New language strings must be added to **all four** locale files: `en.json`, `cs.json`, `sk.json`, `uk.json`.
+- New language strings must be added to **all four** locale files: `en.json`, `cs.json`, `sk.json`, `uk.json` — and to their mirrors in `src/app/i18n/*.ts`.
+- A sentence that mentions the visitor's idea comes as a pair, `key` and `keyNamed` with `{{name}}`; write the Czech, Slovak and Ukrainian versions around the name so it never needs declining.
 
 ---
 

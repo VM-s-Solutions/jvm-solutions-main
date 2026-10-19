@@ -1,75 +1,73 @@
-<main id="main-content" class="pricing-page">
-  <div class="pricing-page__inner container">
+<section class="page-hero">
+  <div class="container">
+    <h1 class="display" [jvmSplit]="'pricing.title' | translate"></h1>
+    <p class="lead" jvmReveal="lift" [revealDelay]="0.3">{{ 'pricing.lead' | translate }}</p>
+  </div>
+</section>
 
-    <!-- Page header -->
-    <header class="pricing-header" appScrollReveal revealClass="reveal">
-      <span class="section-label">{{ 'pricing.sectionLabel' | translate }}</span>
-      <h1 class="pricing-header__title">
-        {{ 'pricing.title1' | translate }} <span class="text-accent">{{ 'pricing.titleGrad' | translate }}</span>
-      </h1>
-      <p class="pricing-header__subtitle">{{ 'pricing.subtitle' | translate }}</p>
-    </header>
+<section class="section section--tight">
+  <div class="container">
+    <jvm-price-dial variant="light" jvmReveal="up" />
+  </div>
+</section>
 
-    <!-- Tiers -->
-    <div class="pricing-tiers" appScrollReveal revealClass="reveal">
-      @for (tier of tiers; track tier.labelKey) {
-        <article class="pricing-tier" [class.pricing-tier--highlighted]="tier.highlighted">
+<section class="section section--soft">
+  <div class="container">
+    <h2 id="compare-title" class="h2" [jvmSplit]="'pricing.sideBySide' | translate"></h2>
 
-          @if (tier.badgeKey) {
-            <span class="pricing-tier__badge">{{ tier.badgeKey | translate }}</span>
-          }
-
-          <div class="pricing-tier__header">
-            <h2 class="pricing-tier__label">{{ tier.labelKey | translate }}</h2>
-            <div class="pricing-tier__price-row">
-              @if (tier.showMeta) {
-                <span class="pricing-tier__from">{{ 'pricing.from' | translate }}</span>
+    <div
+      #tableWrap
+      class="table-wrap"
+      role="region"
+      aria-labelledby="compare-title"
+      [attr.tabindex]="scrollable() ? 0 : null"
+      jvmReveal
+    >
+      <table #table class="compare" aria-labelledby="compare-title">
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">{{ 'pricing.plan' | translate }}</span></th>
+            <th scope="col">{{ 'pricing.cols.hour' | translate }}</th>
+            <th scope="col">{{ 'pricing.cols.lts' | translate }}</th>
+            <th scope="col">{{ projectColumnKey() | translate: ideaParams() }}</th>
+            <th scope="col" class="rec">
+              {{ 'pricing.cols.team' | translate }}
+              <em class="compare__badge">{{ 'pricing.recommended' | translate }}</em>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ 'pricing.rows.price' | translate }}</th>
+            @for (cell of priceCells(); track cell.key) {
+              <td [class.rec]="cell.recommended" [innerHTML]="cell.key | translate: cell.params"></td>
+            }
+          </tr>
+          @for (row of textRows; track row.headKey) {
+            <tr>
+              <th scope="row">{{ row.headKey | translate }}</th>
+              @for (cell of row.cells; track cell.key) {
+                <td [class.rec]="cell.recommended">{{ cell.key | translate }}</td>
               }
-              <span class="pricing-tier__price">{{ tier.priceKey | translate }}</span>
-            </div>
-            @if (tier.showMeta) {
-              <span class="pricing-tier__period">{{ tier.periodKey | translate }}</span>
-            } @else {
-              <span class="pricing-tier__period pricing-tier__period--spacer" aria-hidden="true"></span>
+            </tr>
+          }
+          <tr class="compare__cta">
+            <th scope="row"><span class="sr-only">{{ 'pricing.action' | translate }}</span></th>
+            @for (column of columns; track column.id) {
+              <td [class.rec]="column.recommended">
+                <a
+                  class="btn btn--sm"
+                  [class.btn--primary]="column.recommended"
+                  [class.btn--ghost]="!column.recommended"
+                  routerLink="/contact"
+                >{{ column.ctaKey | translate }}</a>
+              </td>
             }
-            <p class="pricing-tier__tagline">{{ tier.taglineKey | translate }}</p>
-          </div>
-
-          <ul class="pricing-tier__features" role="list">
-            @for (feature of tier.features; track feature) {
-              <li class="pricing-tier__feature">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20,6 9,17 4,12"/>
-                </svg>
-                <span>{{ feature | translate }}</span>
-              </li>
-            }
-          </ul>
-
-          <a
-            class="pricing-tier__cta"
-            [class.btn-primary]="tier.highlighted"
-            [class.btn-outline]="!tier.highlighted"
-            [routerLink]="tier.ctaLink"
-          >
-            {{ tier.ctaKey | translate }}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-
-        </article>
-      }
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- VAT note -->
-    <p class="pricing-note" appScrollReveal revealClass="reveal">{{ 'pricing.note' | translate }}</p>
-
+    <p class="note-p" jvmReveal>{{ 'pricing.note' | translate }}</p>
   </div>
-</main>
-
-@defer (on viewport; prefetch on idle) {
-  <jvm-footer />
-} @placeholder {
-  <div style="min-height:300px"></div>
-}
+</section>

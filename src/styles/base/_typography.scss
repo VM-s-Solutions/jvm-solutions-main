@@ -1,0 +1,108 @@
+@use '../abstracts' as *;
+
+// @font-face rules for the real faces live in fonts/fonts.scss, loaded after first paint.
+// Until they arrive, text renders in local Arial scaled to each face's width, so lines don't
+// re-wrap when the real fonts swap in. Bold text gets Arial Bold (local('Arial') is only the
+// regular face). Widths were measured on our own headings and copy; the vertical overrides are
+// the real fonts' ascent and descent divided by the same scale.
+@font-face {
+  font-family: 'Geologica Fallback';
+  font-weight: 300 500;
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 107.8%;
+  ascent-override: 90.4%;
+  descent-override: 25.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Geologica Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  size-adjust: 103.1%;
+  ascent-override: 94.6%;
+  descent-override: 26.7%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  font-weight: 300 500;
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 106.4%;
+  ascent-override: 91%;
+  descent-override: 22.7%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  size-adjust: 99.1%;
+  ascent-override: 97.8%;
+  descent-override: 24.3%;
+  line-gap-override: 0%;
+}
+
+body {
+  font-family: $font-text;
+  font-size: $text-body;
+  line-height: $leading-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-display;
+  font-weight: $weight-semibold;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+// ─── Shared text styles ───────────────────────────────────────────────────────
+.display {
+  font-size: $fs-display-phone;
+  line-height: $leading-display;
+  letter-spacing: $tracking-display;
+  // A long idea name breaks inside its word mask instead of running off the screen
+  overflow-wrap: anywhere;
+
+  @include sm { font-size: $fs-display; }
+}
+
+.h2 {
+  font-size: $fs-h2;
+  line-height: 1.02;
+  letter-spacing: $tracking-heading;
+}
+
+.lead {
+  max-width: 34em;
+  margin-top: $space-6;
+  font-size: $fs-lead;
+  line-height: 1.55;
+  color: var(--ink-2);
+
+  b {
+    font-weight: $weight-semibold;
+    color: var(--ink);
+  }
+}
+
+// Handwriting on the board and the signatures
+.hand {
+  font-family: $font-hand;
+  font-weight: $weight-semibold;
+}
+
+// Selecting the e-mail address takes it whole
+.select-all {
+  user-select: all;
+}

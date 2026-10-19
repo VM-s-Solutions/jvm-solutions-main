@@ -1,0 +1,26 @@
+<div class="ui__top">
+  <span class="ui__brand">
+    <i class="ui__logo"><jvm-swap-text [text]="initial()" /></i>
+    <b><jvm-swap-text [text]="product()" /></b>
+  </span>
+  <span class="ui__search">{{ 'paper.board.app.search' | translate }}</span>
+  <span class="ui__me">JV</span>
+</div>
+<div class="ui__body">
+  <div class="ui__nav">
+    <b>{{ 'paper.board.app.home' | translate }}</b>
+    @for (item of navItems; track item) {
+      <span>{{ item | translate }}</span>
+    }
+  </div>
+  <div class="ui__main">
+    <b class="ui__title"><jvm-swap-text [text]="product()" /></b>
+    <ul class="ui__list">
+      @for (item of checklist; track item) {
+        <li [style.--i]="$index">{{ item | translate }}</li>
+      }
+    </ul>
+    <span class="ui__toast">{{ 'paper.board.app.toast' | translate }}</span>
+    <span class="ui__ver">v1.0 <jvm-logo variant="mark" /></span>
+  </div>
+</div>

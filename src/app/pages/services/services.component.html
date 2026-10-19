@@ -1,0 +1,60 @@
+<section class="page-hero">
+  <div class="container">
+    <h1 class="display" [jvmSplit]="'trades.title' | translate"></h1>
+    <p class="lead" jvmReveal="lift" [revealDelay]="0.3">{{ leadKey() | translate: leadParams() }}</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container docs">
+    <nav #nav class="docs__nav" [attr.aria-label]="'a11y.services' | translate">
+      <span #thumb class="docs__thumb" aria-hidden="true"></span>
+      @for (item of contents; track item.id; let i = $index) {
+        <button
+          #link
+          type="button"
+          class="docs__link"
+          [class.is-on]="active() === i"
+          [attr.aria-current]="active() === i ? 'true' : null"
+          (click)="go(i)"
+        >{{ item.labelKey | translate }}</button>
+      }
+    </nav>
+
+    <div class="docs__body">
+      @for (trade of trades; track trade.id) {
+        <article #section class="doc-sec" [id]="trade.id" jvmReveal>
+          <h2 #heading tabindex="-1">{{ trade.labelKey | translate }}</h2>
+          <p>{{ trade.bodyKey | translate }}</p>
+          <div class="doc-grid">
+            <div>
+              <b>{{ 'services.get' | translate }}</b>
+              <ul class="ticks">
+                @for (key of trade.itemKeys; track key) {
+                  <li>{{ key | translate }}</li>
+                }
+              </ul>
+            </div>
+            <div>
+              <b>{{ 'services.stack' | translate }}</b>
+              <ul class="chips">
+                @for (tech of trade.stack; track tech.text) {
+                  <li>{{ tech.i18n ? (tech.text | translate) : tech.text }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+        </article>
+      }
+
+      <article #section class="doc-sec doc-sec--dark" [id]="takeover.id" jvmReveal>
+        <h2 #heading tabindex="-1">{{ 'services.take.title' | translate }}</h2>
+        <p>{{ 'services.take.body' | translate }}</p>
+        <div class="actions">
+          <a class="btn btn--primary" routerLink="/contact">{{ 'services.take.cta' | translate }}</a>
+          <a class="btn btn--dark-ghost" routerLink="/pricing">{{ 'services.take.cta2' | translate }}</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

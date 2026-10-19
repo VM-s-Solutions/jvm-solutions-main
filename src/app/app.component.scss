@@ -1,49 +1,31 @@
-@use '../styles/variables' as *;
-@use '../styles/mixins' as *;
+@use 'abstracts' as *;
 
-.app-content {
-  position: relative;
-  min-height: 100vh;
+.skip {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + #{$space-2-5});
+  left: max(#{$space-4}, env(safe-area-inset-left, 0px));
+  z-index: $z-skip;
+  padding: $space-2-5 $space-4;
+  border-radius: $radius-pill;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: $weight-semibold;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform $duration-quick $ease-out;
+
+  &:focus { transform: none; }
 }
 
-.scroll-top-btn {
-  position: fixed;
-  bottom: $space-5;
-  right: $space-5;
-  z-index: 90;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--border-light);
-  background: var(--bg-surface);
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  visibility: hidden;
-  transition: opacity $transition-base, transform $transition-base, visibility 0s linear 250ms,
-    border-color $transition-fast, color $transition-fast;
+// At least a screen tall, so the footer's placeholder never sits in view (and jumps away) before a page renders
+main {
+  display: block;
+  min-height: 100vh;
+  min-height: 100svh;
+}
 
-  @include md {
-    bottom: $space-8;
-    right: $space-8;
-  }
-
-  &--visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    visibility: visible;
-    transition-delay: 0s;
-  }
-
-  &:hover,
-  &:focus-visible {
-    border-color: var(--text-muted);
-    color: var(--text-primary);
-  }
+// Holds the footer's place until it renders, so the page doesn't jump
+.footer-placeholder {
+  min-height: 37.5rem;
+  background: var(--soft);
 }

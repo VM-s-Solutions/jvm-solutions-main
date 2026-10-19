@@ -1,0 +1,107 @@
+@use '../abstracts' as *;
+
+// ─── Scroll reveal ────────────────────────────────────────────────────────────
+// RevealDirective adds .reveal on init and .is-in once the element scrolls into view;
+// --d staggers neighbours. Hidden states only exist once the directive has run.
+.reveal {
+  opacity: 0;
+  transform: translateY($space-7);
+  transition:
+    opacity $duration-slower $ease-out,
+    transform $duration-reveal $ease-out;
+  transition-delay: var(--d, 0s);
+
+  &.reveal--up {
+    transform: translateY($space-14) scale(0.97);
+  }
+
+  // Above the fold: visible from the first paint (it may be the largest contentful paint), it only settles
+  &.reveal--lift {
+    opacity: 1;
+    transform: translateY($space-4);
+  }
+
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// ─── Page transitions: iOS push and pop ───────────────────────────────────────
+// The router's view transition slides the whole page; html[data-dir] says which way.
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: $duration-slow;
+  animation-timing-function: $ease-ios;
+  mix-blend-mode: normal;
+}
+
+html[data-dir='fwd']::view-transition-old(root) { animation-name: push-out; }
+html[data-dir='fwd']::view-transition-new(root) { animation-name: push-in; }
+html[data-dir='back']::view-transition-old(root) { animation-name: pop-out; z-index: $z-vt-top; }
+html[data-dir='back']::view-transition-new(root) { animation-name: pop-in; }
+
+@keyframes push-in {
+  from {
+    transform: translateX(100%);
+    box-shadow: -30px 0 60px rgba($color-ink, 0.12);
+  }
+}
+
+@keyframes push-out {
+  to {
+    transform: translateX(-25%);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: translateX(-25%);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pop-out {
+  to { transform: translateX(100%); }
+}
+
+// ─── Shared keyframes ─────────────────────────────────────────────────────────
+// A word or name settling in after it changed
+@keyframes soft-in {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+// The three dots of someone typing
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: none;
+    opacity: 0.5;
+  }
+
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+@include reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

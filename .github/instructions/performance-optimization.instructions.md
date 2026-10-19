@@ -281,7 +281,7 @@ Angular's production build hashes all filenames. Tell browsers (and CDN) these n
     { "route": "/*.js",    "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
     { "route": "/*.css",   "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
     { "route": "/*.woff2", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
-    { "route": "/i18n/*.json", "headers": { "Cache-Control": "public, max-age=3600" } },
+    { "route": "/i18n/*.json", "headers": { "Cache-Control": "no-cache" } },
     { "route": "/index.html",  "headers": { "Cache-Control": "no-cache, no-store, must-revalidate" } }
   ]
 }

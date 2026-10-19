@@ -1,0 +1,183 @@
+// ─── Design tokens ────────────────────────────────────────────────────────────
+// Tools only: nothing in abstracts/ emits CSS. Colours and motion curves are also
+// published as CSS custom properties (base/_root.scss), because dark surfaces
+// re-point them at runtime; components read colours through var(--…).
+
+// ─── Colour: light surfaces ───────────────────────────────────────────────────
+$color-bg: #FFFFFF;
+$color-soft: #F3F4F6;
+$color-soft-2: #ECEDF0;
+$color-ink: #0B0C0E;
+$color-ink-2: #3C4048;
+$color-muted: #656A72;        // ≥ 4.6:1 on every light surface
+$color-placeholder: #727780;  // 4.5:1 on white
+$color-line: #E7E8EB;
+
+// ─── Colour: brand ────────────────────────────────────────────────────────────
+$color-orange: #F26100;       // fills carry ink text (6:1), never white
+$color-orange-2: #FF8E1E;     // hover fill
+$color-orange-text: #B84700;  // orange text on light surfaces (5.3:1)
+$color-orange-tint: #FFF0E5;
+$color-note: #FFF2B8;         // sticky notes on the board
+$color-them: #EEEFF2;         // their chat bubbles
+
+// ─── Colour: dark surfaces ────────────────────────────────────────────────────
+$color-night: #0B0C0E;
+$color-night-2: #16181C;
+$color-night-3: #202329;
+$color-night-line: #2B2E34;
+$color-night-ink: #F2F3F5;
+$color-night-muted: #A3A8B0;
+
+// ─── Colour: status ───────────────────────────────────────────────────────────
+$color-ok: #16935B;
+$color-ok-tint: #E4F5EC;
+$color-app: #2B63E6;
+$color-err: #C8331F;
+
+// ─── Colour: window chrome (the contact page's message window) ────────────────
+$color-chrome-close: #FF6159;
+$color-chrome-minimise: #FFBD2E;
+$color-chrome-zoom: #28C941;
+
+// ─── Typography ───────────────────────────────────────────────────────────────
+// The "Fallback" faces (base/_typography.scss) are local Arial scaled to each font's
+// width, so the first paint already wraps lines where the real font will.
+$font-display: 'Geologica', 'Geologica Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-text: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+$font-hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+
+$text-2xs: 0.75rem;     // 12px
+$text-xs: 0.8125rem;    // 13px
+$text-sm: 0.875rem;     // 14px
+$text-md: 0.9375rem;    // 15px
+$text-base: 1rem;       // 16px
+$text-body: 1.0625rem;  // 17px — running text
+$text-lg: 1.125rem;     // 18px
+$text-xl: 1.25rem;      // 20px
+$text-2xl: 1.375rem;    // 22px
+$text-3xl: 1.75rem;     // 28px
+$text-3xs: 0.6875rem;  // 11px — labels under the phone tab bar's icons
+
+// Fluid display sizes (phone → wide desktop)
+$fs-hero: clamp(2.875rem, 6vw, 5.5rem);       // home h1, 46 → 88px
+$fs-display: clamp(2.75rem, 6.6vw, 6rem);     // page h1, 44 → 96px
+$fs-display-phone: clamp(2.5rem, 11.5vw, 3.75rem); // page and home h1 below 641px, 40 → 60px
+$fs-h2: clamp(2.125rem, 4.4vw, 3.75rem);      // section h2, 34 → 60px
+$fs-compose: clamp(2.5rem, 6vw, 5.5rem);       // "Start the conversation.", 40 → 88px
+$fs-h3: clamp(1.875rem, 3.2vw, 2.875rem);     // step / document titles, 30 → 46px
+$fs-paper: clamp(2.5rem, 6.2vw, 5.75rem);     // "Put … on paper.", 40 → 92px
+$fs-paper-phone: clamp(2.375rem, 11vw, 3.5rem); // the same below 641px, 38 → 56px
+$fs-lead: clamp(1.125rem, 1.5vw, 1.25rem);    // intro paragraphs, 18 → 20px
+$fs-amount: clamp(3.25rem, 6vw, 5.5rem);      // the price on the dial, 52 → 88px
+$fs-step: clamp(6.875rem, 13vw, 12.5rem);     // the rolling step number on the board, 110 → 200px
+
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+
+$leading-display: 0.97;
+$leading-heading: 1.05;
+$leading-snug: 1.3;
+$leading-body: 1.6;
+
+$tracking-display: -0.05em;
+$tracking-heading: -0.045em;
+$tracking-title: -0.025em;
+
+// ─── Spacing (4px grid) ───────────────────────────────────────────────────────
+$space-1: 0.25rem;   // 4
+$space-2: 0.5rem;    // 8
+$space-3: 0.75rem;   // 12
+$space-4: 1rem;      // 16
+$space-5: 1.25rem;   // 20
+$space-6: 1.5rem;    // 24
+$space-7: 1.75rem;   // 28
+$space-8: 2rem;      // 32
+$space-9: 2.25rem;   // 36
+$space-10: 2.5rem;   // 40
+$space-12: 3rem;     // 48
+$space-14: 3.5rem;   // 56
+$space-16: 4rem;     // 64
+$space-18: 4.5rem;   // 72
+$space-24: 6rem;     // 96
+$space-2-5: 0.625rem; // 10 — chips, menu items and the skip link sit on it
+
+// Paddings shared by elements that must match (a chip turns into a chat bubble)
+$bubble-pad: 0.625rem 0.9375rem;      // 10 15
+$bubble-pad-page: 0.8125rem 1.125rem; // 13 18 — the FAQ's larger bubbles
+$chip-pad-sm: 0.3125rem 0.6875rem;    // 5 11 — tech chips
+$typing-pad-y: 0.875rem;              // 14 — above and below the three typing dots
+$msg-face: 30px;                      // the face beside a chat bubble; the chat indents past it
+
+$section-y: clamp(5.5rem, 10vw, 9rem);         // vertical rhythm of a section, 88 → 144px
+$page-hero-y: clamp(3.5rem, 8vw, 7rem);        // space above a page h1, 56 → 112px
+$stack-gap: clamp(2.5rem, 6vw, 6rem);          // gap between big side-by-side columns, 40 → 96px
+$page-hero-bottom: clamp(2.5rem, 5vw, 4.5rem);  // space under a page head, 40 → 72px
+$footer-y: clamp(4.5rem, 9vw, 7.5rem);         // the footer's top padding, 72 → 120px
+$footer-logo-gap: clamp(3.5rem, 8vw, 7rem);    // above the footer's big logo, 56 → 112px
+$compose-pad: clamp(2rem, 6vw, 5.5rem);        // inside the composer card, 32 → 88px
+
+// ─── Radius ───────────────────────────────────────────────────────────────────
+$radius-xs: 0.5rem;   // 8
+$radius-sm: 0.75rem;  // 12
+$radius-md: 1.25rem;  // 20
+$radius-lg: 1.75rem;  // 28
+$radius-xl: 2.5rem;   // 40
+$radius-pill: 999px;
+
+// ─── Motion ───────────────────────────────────────────────────────────────────
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);       // settles softly — the default
+$ease-ios: cubic-bezier(0.32, 0.72, 0, 1);       // iOS sheet curve — page pushes, thumbs
+$ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);  // small overshoot — chips, bubbles
+$ease-in: cubic-bezier(0.5, 0, 0.75, 0);         // leaving
+
+$duration-fast: 0.25s;
+$duration-base: 0.45s;
+$duration-slow: 0.6s;
+$duration-slower: 0.9s;
+$duration-reveal: 1.1s;
+// The concept's other timings, named so they move together
+$duration-quick: 0.3s;
+$duration-swift: 0.35s;
+$duration-short: 0.4s;
+$duration-half: 0.5s;
+$duration-press: 0.55s;
+$duration-long: 0.7s;
+$duration-longer: 0.8s;
+$duration-settle: 1s;
+$duration-cycle: 1.2s;   // one pass of the typing dots
+$duration-draw: 1.3s;    // a sketch stroke drawing itself
+$duration-linger: 1.4s;  // slow photo zoom, late arrivals on the board
+
+// Staggers between neighbours (words, chips, list items)
+$stagger-xs: 40ms;
+$stagger-sm: 45ms;
+$stagger-md: 55ms;
+$stagger-lg: 70ms;
+$stagger-xl: 110ms;
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+$container-max: 77.5rem;   // 1240px
+$gutter: 1.5rem;           // 24px side gutter
+$nav-h: 72px;              // desktop top bar (px: scripts read it back)
+$nav-h-mobile: 60px;       // phone top bar
+$tabbar-clearance: 5.5rem; // 88px — room for the floating tab bar on phones
+
+// ─── Breakpoints (mobile-first, min-width) ────────────────────────────────────
+$bp-sm: 641px;    // large phones and up
+$bp-md: 901px;    // desktop navigation and side-by-side layouts
+$bp-lg: 1101px;
+$bp-xl: 1281px;
+$bp-short: 480px; // max-height: a landscape phone or a page zoomed far in, too short to pin anything
+
+// ─── Z-index ──────────────────────────────────────────────────────────────────
+$z-below: -1;    // a pseudo-element behind its own element's content
+$z-raised: 5;
+$z-tabbar: 40;   // below the top bar, so the language menu opens over it
+$z-nav: 50;
+$z-vt-top: 2;    // the old page stays on top while it pops away
+$z-menu: 70;
+$z-skip: 100;

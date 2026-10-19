@@ -1,0 +1,96 @@
+@use 'abstracts' as *;
+
+:host {
+  display: flex;
+  align-items: flex-end;
+  gap: $space-2;
+  max-width: 86%;
+}
+
+:host(.msg--me) {
+  align-self: flex-end;
+  margin-top: $space-2;
+}
+
+:host(.msg--them.msg--first) {
+  margin-top: $space-2-5;
+}
+
+.msg__face {
+  flex: none;
+  width: $msg-face;
+  height: $msg-face;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.msg__pad {
+  flex: none;
+  width: $msg-face;
+}
+
+.msg__body {
+  min-width: 0;
+}
+
+.msg__name {
+  display: block;
+  margin: 0 0 3px $space-3;
+  font-size: $text-xs;
+  font-weight: $weight-semibold;
+  color: var(--muted);
+}
+
+// --bubble-pad / --bubble-size let a page set larger bubbles (the FAQ). The default padding is
+// the chat chips' too, so a chip that flies into the thread as a bubble keeps its size.
+.bubble {
+  padding: var(--bubble-pad, #{$bubble-pad});
+  border-radius: $radius-md;
+  font-size: var(--bubble-size, #{$text-md});
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  background: var(--them);
+  color: var(--ink);
+  border-bottom-left-radius: 6px;
+}
+
+:host(.msg--me) .bubble {
+  background: var(--orange);
+  color: var(--ink);
+  border-bottom-left-radius: $radius-md;
+  border-bottom-right-radius: 6px;
+}
+
+.bubble--pop {
+  transform-origin: bottom left;
+  animation: bubble-pop $duration-swift $ease-spring;
+}
+
+:host(.msg--me) .bubble--pop {
+  transform-origin: bottom right;
+}
+
+@keyframes bubble-pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0.4;
+  }
+}
+
+.bubble--typing {
+  display: flex;
+  gap: 5px;
+  padding: $typing-pad-y $space-4;
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--muted);
+    animation: typing-dot $duration-cycle $ease-out infinite;
+
+    // Each dot trails the one before by an eighth of a cycle
+    &:nth-child(2) { animation-delay: $duration-cycle * 0.125; }
+    &:nth-child(3) { animation-delay: $duration-cycle * 0.25; }
+  }
+}

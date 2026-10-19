@@ -1,0 +1,68 @@
+<section class="section" id="build" aria-labelledby="build-title">
+  <div class="container sec-head">
+    <div>
+      <h2 class="h2" id="build-title" [jvmSplit]="'trades.title' | translate"></h2>
+      <p class="sec-head__p" jvmReveal><jvm-swap-text [text]="leadKey() | translate: { name: name() }" /></p>
+    </div>
+    <div class="car-ctrl" jvmReveal>
+      <button
+        #prev
+        class="round"
+        type="button"
+        [attr.aria-label]="'a11y.previous' | translate"
+        [disabled]="atStart()"
+        (click)="step(-1)"
+      >
+        <jvm-icon name="left" />
+      </button>
+      <button
+        #next
+        class="round"
+        type="button"
+        [attr.aria-label]="'a11y.next' | translate"
+        [disabled]="atEnd()"
+        (click)="step(1)"
+      >
+        <jvm-icon name="right" />
+      </button>
+    </div>
+  </div>
+
+  <div #car class="car" role="region" tabindex="0" [attr.aria-label]="'a11y.carousel' | translate">
+    @for (card of cards; track card.id) {
+      <article
+        #card
+        class="scard"
+        jvmReveal
+        [revealDelay]="card.delay"
+        (pointerenter)="warm(card.id, $event)"
+        (pointerleave)="cool()"
+        (focusin)="warm(card.id)"
+        (focusout)="cool()"
+      >
+        <div class="scard__vis" aria-hidden="true">
+          @switch (card.id) {
+            @case ('web') { <jvm-demo-lang [replay]="hot() === card.id" /> }
+            @case ('api') { <jvm-demo-code /> }
+            @case ('mobile') { <jvm-demo-lock /> }
+            @case ('ai') { <jvm-demo-prompt /> }
+          }
+        </div>
+        <div class="scard__text">
+          <h3>{{ card.titleKey | translate }}</h3>
+          <p>{{ card.textKey | translate }}</p>
+          <ul class="chips">
+            @for (chip of card.chips; track chip.text) {
+              <li>{{ chip.i18n ? (chip.text | translate) : chip.text }}</li>
+            }
+          </ul>
+        </div>
+      </article>
+    }
+    <span class="car__end" aria-hidden="true"></span>
+  </div>
+
+  <div class="container">
+    <div class="car-progress" aria-hidden="true"><span #bar class="car-progress__bar"></span></div>
+  </div>
+</section>

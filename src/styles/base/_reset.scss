@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  // Focusing a field or jumping to an anchor keeps it clear of the fixed top bar,
+  // and on phones of the floating tab bar
+  scroll-padding-top: calc(var(--nav-h) + #{$space-3});
+  scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + #{$tabbar-clearance});
+
+  @include md { scroll-padding-bottom: 0; }
+}
+
+body {
+  margin: 0;
+  // clip, not hidden: it creates no scroll container, so sticky sections keep working
+  overflow-x: clip;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + #{$tabbar-clearance});
+  background: var(--bg);
+  color: var(--ink);
+
+  @include md { padding-bottom: 0; }
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+  margin: 0;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Targets focused from code (skip link, in-page jumps) need no ring of their own
+[tabindex='-1']:focus {
+  outline: none;
+}
+
+::selection {
+  background: var(--orange);
+  color: var(--ink);
+}
+
+.sr-only {
+  @include visually-hidden;
+}

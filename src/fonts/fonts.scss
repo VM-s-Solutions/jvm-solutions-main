@@ -1,54 +1,39 @@
 // ─── Self-hosted fonts ────────────────────────────────────────────────────────
-// Variable Inter and Space Grotesk (SIL Open Font License, embedded in each file).
-// Served from our own origin: no extra connections before text can swap in, and
-// no visitor IPs go to Google. Subsets cover our locales — latin + latin-ext for
-// en/cs/sk, cyrillic for uk (Inter only; Space Grotesk has none and falls back).
+// Variable Geologica (display), Inter (text), JetBrains Mono (code) and Caveat
+// (handwriting), all under the SIL Open Font License (embedded in each file; notices
+// in public/licenses/fonts.txt). Served from our own origin: no extra connections
+// before text can swap in, and no visitor IPs go to Google. Subsets cover our
+// locales — latin + latin-ext for en/cs/sk, cyrillic for uk. A browser downloads a
+// face only once text on the page uses it, so Caveat and JetBrains Mono wait for the
+// sections that need them.
 
 $range-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 $range-latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 $range-cyrillic: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 600;
-  font-display: swap;
-  src: url('./inter-latin.woff2') format('woff2');
-  unicode-range: $range-latin;
-}
+$subsets: (
+  'latin': $range-latin,
+  'latin-ext': $range-latin-ext,
+  'cyrillic': $range-cyrillic,
+);
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 600;
-  font-display: swap;
-  src: url('./inter-latin-ext.woff2') format('woff2');
-  unicode-range: $range-latin-ext;
-}
+// family name, file prefix, weight range
+$faces: (
+  ('Geologica', 'geologica', 400 700),
+  ('Inter', 'inter', 300 600),
+  ('JetBrains Mono', 'jetbrains-mono', 400 500),
+  ('Caveat', 'caveat', 500 600),
+);
 
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 600;
-  font-display: swap;
-  src: url('./inter-cyrillic.woff2') format('woff2');
-  unicode-range: $range-cyrillic;
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./space-grotesk-latin.woff2') format('woff2');
-  unicode-range: $range-latin;
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('./space-grotesk-latin-ext.woff2') format('woff2');
-  unicode-range: $range-latin-ext;
+@each $family, $file, $weights in $faces {
+  @each $subset, $range in $subsets {
+    @font-face {
+      font-family: $family;
+      font-style: normal;
+      font-weight: $weights;
+      font-display: swap;
+      src: url('./#{$file}-#{$subset}.woff2') format('woff2');
+      unicode-range: $range;
+    }
+  }
 }

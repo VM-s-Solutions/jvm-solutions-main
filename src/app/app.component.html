@@ -1,21 +1,16 @@
-<!-- Handled in code: with <base href="/"> a bare "#main-content" href would navigate to the home page -->
-<a class="skip-link" href="#main-content" (click)="skipToContent($event)">{{ 'a11y.skipToContent' | translate }}</a>
+<a class="skip" href="#main" (click)="skipToContent($event)">{{ 'a11y.skipToContent' | translate }}</a>
 
-<jvm-navbar />
+<jvm-top-bar />
+<jvm-tab-bar />
 
-<!-- Each page renders its own <main id="main-content">, so this wrapper stays a plain div -->
-<div class="app-content">
+<main #main id="main" tabindex="-1">
   <router-outlet />
-</div>
+</main>
 
-<button
-  class="scroll-top-btn"
-  [class.scroll-top-btn--visible]="showScrollTop()"
-  (click)="scrollToTop()"
-  [attr.aria-label]="'a11y.scrollTop' | translate"
-  type="button"
->
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
-  </svg>
-</button>
+<!-- Focus and screen readers skip an empty placeholder, so the footer doesn't wait for a scroll: it also
+     renders at the first Tab, or a few seconds in (pages/home explains the timing) -->
+@defer (on viewport; on timer(5000ms); when tabbed(); prefetch on idle) {
+  <jvm-footer />
+} @placeholder {
+  <div class="footer-placeholder"></div>
+}

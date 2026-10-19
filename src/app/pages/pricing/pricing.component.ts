@@ -1,76 +1,91 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  afterNextRender,
+  computed,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+import { TranslatePipe } from '@ngx-translate/core';
+import { PriceDialComponent } from '../../components/price-dial/price-dial.component';
+import { PLANS, type PlanId } from '../../services/plans';
+import { SplitTextComponent } from '../../components/split-text/split-text.component';
+import { RevealDirective } from '../../directives/reveal.directive';
+import { formatEuros } from '../../services/dates';
+import { IdeaService } from '../../services/idea.service';
+import { LangService } from '../../services/lang.service';
 
-interface PricingTier {
-  labelKey: string;
-  taglineKey: string;
-  priceKey: string;
-  periodKey: string;
-  ctaKey: string;
-  ctaLink: string;
-  badgeKey?: string;
-  features: string[];
-  highlighted: boolean;
-  showMeta: boolean;
-}
+/** The plan we recommend: a dark column and the primary button */
+const RECOMMENDED: PlanId = 'team';
 
+/** The table's columns: the dial's plans, in the dial's order. */
+const COLUMNS = PLANS.map(({ id, amount }) => ({
+  id,
+  amount,
+  ctaKey: `price.plans.${id}.cta`,
+  recommended: id === RECOMMENDED,
+}));
+
+/** The plain-text rows under the price, one cell per plan. */
+const TEXT_ROWS = (['for', 'get', 'response', 'term', 'billing'] as const).map((row) => ({
+  headKey: `pricing.rows.${row}`,
+  cells: COLUMNS.map(({ id, recommended }) => ({ key: `pricing.cells.${row}.${id}`, recommended })),
+}));
+
+/**
+ * The pricing page: the price dial on its light card, then every plan side by side in a
+ * table that scrolls sideways on narrow screens, with the recommended plan in a dark column.
+ */
 @Component({
   selector: 'jvm-pricing',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FooterComponent, ScrollRevealDirective, TranslateModule, RouterLink],
+  imports: [RouterLink, TranslatePipe, PriceDialComponent, SplitTextComponent, RevealDirective],
   templateUrl: './pricing.component.html',
   styleUrl: './pricing.component.scss',
 })
 export class PricingComponent {
-  readonly tiers: PricingTier[] = [
-    {
-      labelKey: 'pricing.project.label',
-      taglineKey: 'pricing.project.tagline',
-      priceKey: 'pricing.project.price',
-      periodKey: 'pricing.project.period',
-      ctaKey: 'pricing.project.cta',
-      ctaLink: '/contact',
-      features: ['pricing.project.f1', 'pricing.project.f2', 'pricing.project.f3', 'pricing.project.f4', 'pricing.project.f5'],
-      highlighted: false,
-      showMeta: false,
-    },
-    {
-      labelKey: 'pricing.retainer.label',
-      taglineKey: 'pricing.retainer.tagline',
-      priceKey: 'pricing.retainer.price',
-      periodKey: 'pricing.retainer.period',
-      ctaKey: 'pricing.retainer.cta',
-      ctaLink: '/contact',
-      badgeKey: 'pricing.retainer.badge',
-      features: ['pricing.retainer.f1', 'pricing.retainer.f2', 'pricing.retainer.f3', 'pricing.retainer.f4', 'pricing.retainer.f5'],
-      highlighted: true,
-      showMeta: true,
-    },
-    {
-      labelKey: 'pricing.support.label',
-      taglineKey: 'pricing.support.tagline',
-      priceKey: 'pricing.support.price',
-      periodKey: 'pricing.support.period',
-      ctaKey: 'pricing.support.cta',
-      ctaLink: '/contact',
-      features: ['pricing.support.f1', 'pricing.support.f2', 'pricing.support.f3', 'pricing.support.f4', 'pricing.support.f5'],
-      highlighted: false,
-      showMeta: true,
-    },
-    {
-      labelKey: 'pricing.consulting.label',
-      taglineKey: 'pricing.consulting.tagline',
-      priceKey: 'pricing.consulting.price',
-      periodKey: 'pricing.consulting.period',
-      ctaKey: 'pricing.consulting.cta',
-      ctaLink: '/contact',
-      features: ['pricing.consulting.f1', 'pricing.consulting.f2', 'pricing.consulting.f3', 'pricing.consulting.f4', 'pricing.consulting.f5'],
-      highlighted: false,
-      showMeta: true,
-    },
-  ];
+  private readonly idea = inject(IdeaService);
+  private readonly lang = inject(LangService);
+
+  protected readonly columns = COLUMNS;
+  protected readonly textRows = TEXT_ROWS;
+
+  /** "Your idea at one fixed price" until the visitor names it, then "Bloom at one fixed price" */
+  protected readonly projectColumnKey = computed(() =>
+    this.idea.hasName() ? 'pricing.cols.projectNamed' : 'pricing.cols.project',
+  );
+  protected readonly ideaParams = computed(() => ({ name: this.idea.name() }));
+
+  /** The price row, with amounts in the language's own format: €17,900 in English, 17 900 € in Czech */
+  protected readonly priceCells = computed(() => {
+    const lang = this.lang.current();
+    return COLUMNS.map(({ id, amount, recommended }) => ({
+      key: `pricing.cells.price.${id}`,
+      params: { price: amount === null ? '' : formatEuros(amount, lang) },
+      recommended,
+    }));
+  });
+
+  /** True while the table is wider than its frame; the frame then takes focus, so keys can scroll it */
+  protected readonly scrollable = signal(false);
+
+  private readonly tableWrap = viewChild.required<ElementRef<HTMLElement>>('tableWrap');
+  private readonly table = viewChild.required<ElementRef<HTMLElement>>('table');
+
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+
+    afterNextRender(() => {
+      const wrap = this.tableWrap().nativeElement;
+      const observer = new ResizeObserver(() => this.scrollable.set(wrap.scrollWidth > wrap.clientWidth));
+      observer.observe(wrap);
+      observer.observe(this.table().nativeElement);
+      destroyRef.onDestroy(() => observer.disconnect());
+    });
+  }
 }

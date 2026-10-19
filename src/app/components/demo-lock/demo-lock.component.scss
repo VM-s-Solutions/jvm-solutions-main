@@ -1,0 +1,97 @@
+@use 'sass:color';
+@use 'abstracts' as *;
+
+// Sized in cqi (the card's mock-screen container), so the phone scales as one picture.
+// The phone rises from the bottom edge of the frame, its lower half out of shot.
+$lock-dim: color.mix($color-night-ink, $color-night-2, 80%);
+
+:host {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end center;
+  background: var(--soft-2);
+}
+
+.lock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 52%;
+  height: 92%;
+  padding: 6cqi 3cqi 0;
+  border-radius: 6cqi 6cqi 0 0;
+  background: var(--night-2);
+  color: var(--night-ink);
+  box-shadow: 0 0 0 1.2cqi var(--night);
+}
+
+.lock__date {
+  font-size: 2.4cqi;
+  color: $lock-dim;
+}
+
+.lock__time {
+  font: $weight-medium 11cqi/1 $font-display;
+  letter-spacing: -0.04em;
+}
+
+// ─── The first push notification, once the card is in view ───────────────────
+.lock__notif {
+  display: grid;
+  grid-template-columns: 5.6cqi minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.8cqi;
+  width: 108%;
+  margin-top: 4cqi;
+  padding: 2.2cqi 2.4cqi;
+  border-radius: 3.2cqi;
+  background: rgba($color-bg, 0.94);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(-3cqi) scale(0.96);
+  transition:
+    opacity $duration-slow $ease-out $duration-base,
+    transform $duration-slower $ease-spring $duration-base;
+
+  @include reduced-motion {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:host-context(.is-in) .lock__notif {
+  opacity: 1;
+  transform: none;
+}
+
+// The app icon: the idea's initial on brand orange
+.lock__icon {
+  display: grid;
+  place-items: center;
+  width: 5.6cqi;
+  height: 5.6cqi;
+  border-radius: 1.4cqi;
+  background: var(--orange);
+  color: var(--ink);
+  font: $weight-bold 2.8cqi/1 $font-display;
+}
+
+.lock__app {
+  display: block;
+  font-size: 2.4cqi;
+  @include ellipsis;
+}
+
+.lock__text {
+  display: block;
+  font-size: 2.2cqi;
+  color: var(--ink-2);
+}
+
+.lock__now {
+  align-self: start;
+  font-size: 2cqi;
+  color: var(--muted);
+}

@@ -1,0 +1,73 @@
+@use 'variables' as *;
+
+// ─── Responsive (mobile-first) ────────────────────────────────────────────────
+@mixin sm { @media (min-width: $bp-sm) { @content; } }
+@mixin md { @media (min-width: $bp-md) { @content; } }
+@mixin lg { @media (min-width: $bp-lg) { @content; } }
+@mixin xl { @media (min-width: $bp-xl) { @content; } }
+@mixin short { @media (max-height: $bp-short) { @content; } }
+
+// Hover only where a real pointer can hover, so taps never leave a stuck state
+@mixin hover {
+  @media (hover: hover) {
+    &:hover { @content; }
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+
+// ─── Accessibility ────────────────────────────────────────────────────────────
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// The darker orange keeps 3:1 on every surface, light and dark (--orange is under 3:1 on --soft)
+@mixin focus-ring($offset: 3px) {
+  outline: 2px solid var(--orange-text);
+  outline-offset: $offset;
+}
+
+// ─── Surfaces ─────────────────────────────────────────────────────────────────
+// Frosted bar behind the top bar and the phone tab bar
+@mixin frosted($bg) {
+  background: $bg;
+  -webkit-backdrop-filter: saturate(1.8) blur(18px);
+  backdrop-filter: saturate(1.8) blur(18px);
+}
+
+// The soft, deep shadow every floating window uses (chat, mail, composer)
+@mixin window-shadow {
+  box-shadow:
+    0 0 0 1px rgba($color-ink, 0.05),
+    0 2px 6px rgba($color-ink, 0.04),
+    0 40px 80px -32px rgba($color-ink, 0.28);
+}
+
+@mixin no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ─── Text ─────────────────────────────────────────────────────────────────────
+@mixin display-type($size) {
+  font-family: $font-display;
+  font-size: $size;
+  font-weight: $weight-semibold;
+  line-height: $leading-display;
+  letter-spacing: $tracking-display;
+  text-wrap: balance;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

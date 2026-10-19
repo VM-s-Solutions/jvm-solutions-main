@@ -1,107 +1,105 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/mixins' as *;
+@use 'abstracts' as *;
 
-.footer {
-  padding-block: $space-16 $space-8;
-  background: var(--bg-footer);
-  content-visibility: auto;
-  contain-intrinsic-size: auto 400px;
+:host {
+  display: block;
+}
 
-  &__top {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: $space-10;
-    padding-bottom: $space-12;
+.foot {
+  padding: $footer-y 0 $space-7;
+  background: var(--soft);
+}
 
-    @include md {
-      grid-template-columns: 2fr 1fr 1fr;
-    }
-  }
+.foot__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-10;
+  align-items: start;
 
-  // ── Brand ─────────────────────────────────────────────────────────────────
-  &__brand {
-    display: flex;
-    flex-direction: column;
-    gap: $space-4;
-  }
+  @include lg { grid-template-columns: minmax(0, 1fr) auto; }
+}
 
-  &__logo {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-primary);
+.foot__note {
+  display: grid;
+  gap: 6px;
+  max-width: 30em;
+  font: $weight-medium #{$text-xl}/1.45 $font-display;
+  letter-spacing: -0.015em;
+}
 
-    jvm-logo {
-      height: 30px;
-    }
-  }
+.foot__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-8;
 
-  &__tagline {
-    color: var(--text-secondary);
-    font-size: $text-sm;
-    line-height: 1.7;
-  }
+  @include sm { grid-template-columns: repeat(3, minmax(0, 12.5rem)); }
 
-  // ── Nav ───────────────────────────────────────────────────────────────────
-  &__nav-title {
-    font-family: $font-body;
-    font-size: $text-xs;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: $space-4;
-  }
-
-  &__nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: $space-3;
-  }
-
-  &__link {
-    color: var(--text-secondary);
-    font-size: $text-sm;
-    text-decoration: none;
-    transition: color $transition-fast;
-
-    &:hover { color: var(--text-primary); }
-  }
-
-  // ── Contact col ───────────────────────────────────────────────────────────
-  // no gap: the email must sit on the same baseline as the first nav link
-  &__contact {
+  > * {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: $space-2-5;
+    font-size: $text-md;
+    color: var(--ink-2);
   }
 
-  // ── Bottom bar ────────────────────────────────────────────────────────────
-  &__bottom {
-    @include flex-between;
-    flex-wrap: wrap;
-    gap: $space-4;
-
-    p {
-      color: var(--text-secondary);
-      font-size: $text-sm;
-    }
-  }
-
-  &__bottom-right {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: $space-2 $space-6;
-  }
-
-  &__legal-link {
-    color: var(--text-secondary);
-    font-size: $text-sm;
+  a {
     text-decoration: none;
-    transition: color $transition-fast;
+    transition: color $duration-quick $ease-out;
 
-    &:hover { color: var(--text-primary); }
+    @include hover { color: var(--orange-text); }
+  }
+}
+
+.foot__h {
+  margin-bottom: 6px;
+  font: $weight-semibold #{$text-sm}/1 $font-text;
+  color: var(--ink);
+}
+
+.foot__logo {
+  display: block;
+  margin-top: $footer-logo-gap;
+  border-radius: $radius-sm;
+
+  jvm-logo {
+    width: 100%;
+    aspect-ratio: 1214 / 255;
+  }
+}
+
+.foot__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-3 $space-6;
+  margin-top: $space-7;
+  font-size: $text-sm;
+  color: var(--muted);
+}
+
+.foot__langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px $space-3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  button {
+    min-height: 1.75rem; // tap target
+    padding: 2px 0;
+    border: 0;
+    background: none;
+    font-size: $text-sm;
+    color: var(--muted);
+    transition: color $duration-quick $ease-out;
+
+    @include hover { color: var(--ink); }
+
+    &.is-on {
+      color: var(--ink);
+      font-weight: $weight-semibold;
+    }
   }
 }

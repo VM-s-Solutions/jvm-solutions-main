@@ -1,0 +1,119 @@
+@use 'abstracts' as *;
+
+// A card is 560px wide, so about two and a quarter fit the container; phones see one
+// card and the edge of the next.
+$card-width: 35rem;
+$card-width-phone: 84vw;
+
+// Where the container's content starts, measured against the full-bleed scroller
+$edge: calc((100% - #{$container-max}) / 2 + #{$gutter});
+$edge-left: max(#{$gutter}, env(safe-area-inset-left, 0px), #{$edge});
+$edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
+
+:host {
+  display: block;
+}
+
+// ─── Arrows: phones swipe instead ─────────────────────────────────────────────
+// A mouse can't swipe, so with one the arrows stay at every width (a narrow window, a
+// laptop zoomed in far)
+.car-ctrl {
+  display: none;
+  gap: $space-3;
+
+  @include sm { display: flex; }
+
+  @media (hover: hover) and (pointer: fine) { display: flex; }
+}
+
+// ─── The scroller ─────────────────────────────────────────────────────────────
+// Full bleed. The side padding lines the first card up with the container, and the
+// matching scroll padding makes every card snap to that same line.
+.car {
+  display: flex;
+  gap: $space-5;
+  margin-top: $space-12;
+  padding: $space-2 $edge-right $space-2 $edge-left;
+  overflow-x: auto;
+  // Cards still waiting to be revealed sit lower; they must not make the strip scroll vertically
+  overflow-y: hidden;
+  overscroll-behavior-x: contain; // a sideways swipe at the end never turns into "back"
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: $edge-left $edge-right;
+  outline-offset: -4px;
+  cursor: grab;
+  @include no-scrollbar;
+
+  // While a mouse drags, snapping waits and nothing underneath reacts
+  &.is-drag {
+    cursor: grabbing;
+    scroll-snap-type: none;
+
+    .scard {
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+}
+
+// Keeps the end padding scrollable in engines that drop it on flex overflow
+.car__end {
+  flex: 0 0 1px;
+}
+
+// ─── A card ───────────────────────────────────────────────────────────────────
+.scard {
+  flex: 0 0 min(#{$card-width}, #{$card-width-phone});
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: var(--soft);
+  scroll-snap-align: start;
+}
+
+// The mock screen. A size container, so each demo scales its type and geometry in cqi.
+.scard__vis {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: $space-3 $space-3 0;
+  overflow: hidden;
+  border-radius: $radius-lg - $space-3;
+  background: var(--bg);
+  container-type: inline-size;
+}
+
+.scard__text {
+  padding: $space-6 $space-7 $space-7;
+
+  h3 {
+    font-size: $text-3xl;
+    letter-spacing: $tracking-title;
+  }
+
+  p {
+    margin-top: $space-2;
+    color: var(--ink-2);
+  }
+}
+
+// ─── Progress: as wide as the share in view, travelling with the scroll ───────
+.car-progress {
+  position: relative;
+  height: 3px;
+  margin-top: $space-7;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.car-progress__bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 25%;
+  border-radius: 3px;
+  background: var(--ink);
+  transition:
+    transform $duration-fast linear,
+    width $duration-fast linear;
+}
