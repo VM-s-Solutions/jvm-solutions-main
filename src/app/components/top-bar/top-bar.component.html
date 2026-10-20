@@ -1,5 +1,6 @@
+<!-- The bar's links don't drag: a click that wobbles on the way stays a click (Safari would pick the link up) -->
 <div class="container top__in">
-  <a class="top__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
+  <a class="top__logo" routerLink="/" draggable="false" [attr.aria-label]="'a11y.home' | translate">
     <jvm-logo />
   </a>
 
@@ -9,6 +10,7 @@
       <a
         #tab
         class="tabs__link"
+        draggable="false"
         [routerLink]="tab.path"
         [class.is-active]="active() === i"
         [class.is-thumb]="thumbAt() === i"
@@ -22,7 +24,7 @@
 
   <div class="top__end">
     <jvm-lang-menu />
-    <a class="btn btn--primary btn--sm top__cta" routerLink="/contact">
+    <a class="btn btn--primary btn--sm top__cta" routerLink="/contact" draggable="false">
       <jvm-icon name="chat" />
       <span>{{ 'nav.message' | translate }}</span>
     </a>

@@ -29,7 +29,11 @@ keyframes move only transform and opacity, so the slide
 runs on the compositor (the incoming page's edge shadow is static); the top bar and the tab bar skip the default
 view-transition crossfade (`base/_animations.scss`). `PageTransitionService.whenSettled()` resolves once the slide under
 way is over (at once on a direct landing or a skipped slide); heavy work a new page starts waits for it — the contact
-form's Turnstile loads only then.
+form's Turnstile loads only then. While a slide runs, browsers hit-test its snapshots as `<html>` (no `pointer-events`
+setting changes that), so `PageTransitionService` hands a click there to the top bar's or tab bar's link or button
+under it (`clickThrough`): a tab clicked mid-slide opens its page at once, and its slide takes over. Clicks on the page
+itself go nowhere until the slide is over (it isn't where it's drawn yet). The bars' links are `draggable="false"`, so
+a click that wobbles stays a click instead of Safari picking the link up.
 
 The three legal pages share `LegalDocumentComponent`: each page lists its sections via `legalSection(doc, id, shape)`;
 keys follow `<doc>.<id>.title / .p1… / .li1…`.

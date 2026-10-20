@@ -34,8 +34,28 @@ function resyncAnimations(): void {
 }
 
 /**
+ * While a slide runs, browsers hit-test its snapshots as <html>: every press lands there, whatever
+ * pointer-events say, so a tab clicked mid-slide did nothing. The top bar and the tab bar sit out of
+ * the slide and stand where they're drawn, so a click there goes on to their link or button under
+ * it, and its page opens at once (its slide takes over from this one). The page itself isn't where
+ * it's drawn yet, so a click on it (the second half of a double click) still goes nowhere.
+ */
+function clickThrough(event: MouseEvent): void {
+  if (event.target !== document.documentElement || event.button !== 0) return;
+  const { clientX: x, clientY: y } = event;
+  const control = Array.from(document.querySelectorAll<HTMLElement>('a[href], button')).find((el) => {
+    if (el.closest('main, footer')) return false;
+    const { left, right, top, bottom, width } = el.getBoundingClientRect();
+    // A hidden control (the other bar's tabs, a closed menu) has no box
+    return width > 0 && x >= left && x <= right && y >= top && y <= bottom;
+  });
+  control?.click();
+}
+
+/**
  * Knows when the page slide under way is over, so heavy work a new page starts (a third-party
  * widget, more of the page to render) can wait for it instead of making the slide stutter.
+ * While it runs, the bars stay clickable (clickThrough).
  */
 @Injectable({ providedIn: 'root' })
 export class PageTransitionService {
@@ -53,7 +73,11 @@ export class PageTransitionService {
    */
   track(transition: ViewTransition): void {
     this.current = transition;
+    // On <html> itself, where the slide's presses land
+    const clicks = new AbortController();
+    document.documentElement.addEventListener('click', clickThrough, { signal: clicks.signal });
     const settle = (): void => {
+      clicks.abort();
       if (this.current !== transition) return;
       this.current = null;
       delete document.documentElement.dataset['dir'];
