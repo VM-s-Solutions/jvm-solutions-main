@@ -21,7 +21,11 @@ surfaces, brand orange on actions, dark chapters for contrast, smooth but restra
 | `**` | redirect → `/` | — |
 
 Route changes slide like iOS screens (`withViewTransitions` + `services/page-transition.ts` sets `html[data-dir]`
-from the page order; skipped under reduced motion). The slide keyframes move only transform and opacity, so the slide
+from the page order for as long as the slide runs; skipped under reduced motion). The incoming page makes its entrance
+inside the slide: while `html[data-dir]` is set, reveals and split headings run quicker (`$slide-entrance-*` tokens), so
+the last move lands before the slide ends. Safari restarts whatever still runs in the slide's snapshot when the slide
+ends, which played the entrance twice there; `resyncAnimations()` catches anything that still overruns. The slide
+keyframes move only transform and opacity, so the slide
 runs on the compositor (the incoming page's edge shadow is static); the top bar and the tab bar skip the default
 view-transition crossfade (`base/_animations.scss`). `PageTransitionService.whenSettled()` resolves once the slide under
 way is over (at once on a direct landing or a skipped slide); heavy work a new page starts waits for it — the contact

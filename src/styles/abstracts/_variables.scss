@@ -159,6 +159,12 @@ $stagger-md: 55ms;
 $stagger-lg: 70ms;
 $stagger-xl: 110ms;
 
+// A page sliding in ($duration-slow) makes its entrance inside the slide: its delays run this many
+// times faster and start no later than the lead, and each move takes $duration-quick, so the last
+// one has landed before the slide ends
+$slide-entrance-pace: 3;
+$slide-entrance-lead: 0.15s;
+
 // ─── Layout ───────────────────────────────────────────────────────────────────
 $container-max: 77.5rem;   // 1240px
 $gutter: 1.5rem;           // 24px side gutter

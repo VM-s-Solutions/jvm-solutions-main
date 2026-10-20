@@ -30,6 +30,14 @@
   }
 }
 
+// A page sliding in (html[data-dir] is set for as long as the slide runs) makes its entrance inside
+// the slide. Safari restarts whatever still runs in the slide's snapshot once the slide ends, so a
+// longer entrance would play again or stall there. Split headings do the same (split-text).
+html[data-dir] .reveal {
+  transition-duration: $duration-quick;
+  transition-delay: min(calc(var(--d, 0s) / #{$slide-entrance-pace}), #{$slide-entrance-lead});
+}
+
 // ─── Page transitions: iOS push and pop ───────────────────────────────────────
 // The router's view transition slides the whole page; html[data-dir] says which way.
 // The keyframes move only transform and opacity, so the slide runs on the compositor

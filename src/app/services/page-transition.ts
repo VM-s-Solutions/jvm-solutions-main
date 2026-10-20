@@ -21,30 +21,52 @@ function leafPath(snapshot: ActivatedRouteSnapshot): string {
 }
 
 /**
+ * Safari restarts the compositor's copy of every animation still running inside the slide's
+ * snapshot once the snapshot goes. The new page's entrance fits inside the slide, so normally
+ * nothing is left; this catches what still runs (a page that rendered late on a slow phone) by
+ * seeking each animation to its own current time, which hands the compositor the real time again.
+ * Everywhere else it changes nothing.
+ */
+function resyncAnimations(): void {
+  for (const animation of document.getAnimations()) {
+    if (animation.playState === 'running') animation.currentTime = animation.currentTime;
+  }
+}
+
+/**
  * Knows when the page slide under way is over, so heavy work a new page starts (a third-party
  * widget, more of the page to render) can wait for it instead of making the slide stutter.
  */
 @Injectable({ providedIn: 'root' })
 export class PageTransitionService {
   private settled: Promise<void> = Promise.resolve();
+  private current: ViewTransition | null = null;
 
   /** Resolves once the current page slide has finished or been cut short; at once when none runs. */
   whenSettled(): Promise<void> {
     return this.settled;
   }
 
-  /** Called as a slide starts. A failed or skipped one settles too: nothing is left to wait for. */
+  /**
+   * Called as a slide starts. A failed or skipped one settles too: nothing is left to wait for.
+   * Once it's over, html[data-dir] goes, unless the next slide has already taken over.
+   */
   track(transition: ViewTransition): void {
-    this.settled = transition.finished.then(
-      () => undefined,
-      () => undefined,
-    );
+    this.current = transition;
+    const settle = (): void => {
+      if (this.current !== transition) return;
+      this.current = null;
+      delete document.documentElement.dataset['dir'];
+      resyncAnimations();
+    };
+    this.settled = transition.finished.then(settle, settle);
   }
 }
 
 /**
- * Sets html[data-dir] so the page slides the right way (base/_animations.scss), and skips
- * the slide for visitors who asked for reduced motion or when the page stays the same.
+ * Sets html[data-dir] for the length of the slide: it says which way the page slides, and the
+ * incoming page makes a quicker entrance while it's set (base/_animations.scss). Skips the
+ * slide for visitors who asked for reduced motion or when the page stays the same.
  * The router calls it in an injection context, as each slide starts.
  */
 export function onPageTransition({ transition, from, to }: ViewTransitionInfo): void {

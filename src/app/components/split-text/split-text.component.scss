@@ -19,6 +19,15 @@
   transform: translateY(110%);
 }
 
+// On a page sliding in, the words rise within the slide (base/_animations.scss explains why)
+:host-context(html[data-dir]) .w > span {
+  transition-duration: $duration-quick;
+  transition-delay: min(
+    calc((var(--i) * #{$stagger-md} + var(--d, 0s)) / #{$slide-entrance-pace}),
+    #{$slide-entrance-lead}
+  );
+}
+
 // After a text change only the new words stagger, starting from the first one that changed, and
 // they rise a little quicker than on the first reveal, as in the concept
 :host(.is-swapped) .w > span {
