@@ -1,4 +1,4 @@
-import { formatEuros, lockScreenDate, replyByDate, replyByParts } from './dates';
+import { lockScreenDate, replyByDate, replyByParts } from './dates';
 
 describe('replyByDate', () => {
   // 19 October 2026 is a Monday
@@ -38,20 +38,5 @@ describe('replyByParts', () => {
 describe('lockScreenDate', () => {
   it('reads like a phone lock screen', () => {
     expect(lockScreenDate(new Date(2026, 9, 19), 'en')).toBe('Monday 19\u00A0October');
-  });
-});
-
-describe('formatEuros', () => {
-  it('formats whole euros the way each language writes them', () => {
-    expect(formatEuros(17900, 'en')).toBe('€17,900');
-    expect(formatEuros(17900, 'cs').replace(/\s/g, ' ')).toBe('17 900 €');
-  });
-
-  it('prints the euro sign in Ukrainian too', () => {
-    expect(formatEuros(390, 'uk')).toContain('€');
-  });
-
-  it('rounds to whole euros', () => {
-    expect(formatEuros(389.6, 'en')).toBe('€390');
   });
 });

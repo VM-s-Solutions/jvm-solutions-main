@@ -65,8 +65,8 @@ const en = {
   },
   "chat": {
     "a": {
-      "advice1": "Happy to help. Consulting is {{price}} an hour: an architecture review, a code audit, or a check that your idea can be built the way you picture it.",
-      "advice1Named": "Happy to help. Consulting is {{price}} an hour: an architecture review, a code audit, or a check that {{name}} can be built the way you picture it.",
+      "advice1": "Happy to help. The first consultation is free: an architecture review, a code audit, or a check that your idea can be built the way you picture it.",
+      "advice1Named": "Happy to help. The first consultation is free: an architecture review, a code audit, or a check that {{name}} can be built the way you picture it.",
       "advice2": "You leave with a written summary or a recording of the call.",
       "care1": "We can take it over, even if we didn’t build it. We audit it first and tell you honestly what we find.",
       "care1Named": "We can take {{name}} over, even if we didn’t build it. We audit it first and tell you honestly what we find.",
@@ -183,7 +183,7 @@ const en = {
       "cta": "Book a consultation",
       "desc": "A second opinion from people who build software themselves: architecture review, code audit, team coaching or a stack decision.",
       "name": "Consultation with one of us",
-      "price": "{{price}} an hour"
+      "price": "The first one is free"
     },
     "lead": "It depends on what you need, so we don’t publish a price list. Once we know the scope, we agree the price with you, before we write any code. We’re not VAT-registered, so nothing is added.",
     "title": "What will it cost?",
@@ -196,7 +196,7 @@ const en = {
     "a4": "Yes, before the first call if you need one. We treat everything you share with us as confidential either way.",
     "a5": "Every fixed-scope project gets 30 days of free bug fixes, and we answer critical issues within 4 hours. After that we offer monthly support, sized to how much care the app needs, at a price we agree with you. You can change it at any time.",
     "a6": "Yes, fully remote and async-first. We’re based in Prague and work with clients online, wherever they are.",
-    "a7": "It depends on the scope, so there’s no price list. Once we understand what you need, we agree the price with you, before we write any code. Consulting with one of us is {{price}} an hour.",
+    "a7": "It depends on the scope, so there’s no price list. Once we understand what you need, we agree the price with you, before we write any code. The first consultation with one of us is free.",
     "all": "All questions",
     "lead": "Straight answers to what founders and CTOs ask us before a project starts, in the form we usually give them.",
     "more": "Still have a question?",

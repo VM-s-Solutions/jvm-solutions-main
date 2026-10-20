@@ -1,9 +1,7 @@
 import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { CONSULTATION_PARAMS, HOURLY_RATE } from './consultation';
-import { formatEuros } from './dates';
+import { CONSULTATION_PARAMS } from './consultation';
 import { IdeaService, cleanIdea } from './idea.service';
-import { Lang, LangService } from './lang.service';
 import { prefersReducedMotion } from './motion';
 import { PersonId } from './team';
 
@@ -22,16 +20,9 @@ export type OfferId = QuestionId | 'write';
 /** The reply-area control that just turned into the visitor's bubble. */
 export type FlownId = QuestionId | 'noName';
 
-/** Values a message is written around. Prices stay numbers, so they format in the language on screen. */
+/** Values a message is written around: the idea's name. */
 export interface ChatParams {
   readonly name?: string;
-  readonly price?: number;
-}
-
-/** Params as the translate pipe takes them. */
-export interface ChatInterpolation {
-  name?: string;
-  price?: string;
 }
 
 /** A place further down the page; keyboard focus follows to `focusId` once the page is there. */
@@ -85,8 +76,6 @@ interface Phrase {
 
 interface Line extends Phrase {
   readonly from: PersonId;
-  /** Whole euros for the sentence's {{price}} */
-  readonly price?: number;
 }
 
 type Words = { readonly typed: string } | { readonly key: string; readonly params?: ChatParams };
@@ -165,7 +154,7 @@ const QUESTIONS: Readonly<Record<QuestionId, Question>> = {
   advice: {
     label: { key: 'chat.q.advice' },
     answers: [
-      { from: 'v', key: 'chat.a.advice1', named: 'chat.a.advice1Named', price: HOURLY_RATE },
+      { from: 'v', key: 'chat.a.advice1', named: 'chat.a.advice1Named' },
       { from: 'v', key: 'chat.a.advice2' },
     ],
     action: { key: 'chat.act.advice', target: TO_CONSULTATION },
@@ -181,14 +170,6 @@ export function questionKey(id: QuestionId, name: string): string {
   return phraseKey(QUESTIONS[id].label, name);
 }
 
-/** Message params as the translate pipe takes them, prices formatted for the language on screen. */
-export function chatInterpolation({ name, price }: ChatParams, lang: Lang): ChatInterpolation {
-  const params: ChatInterpolation = {};
-  if (name !== undefined) params.name = name;
-  if (price !== undefined) params.price = formatEuros(price, lang);
-  return params;
-}
-
 /**
  * The hero chat's conversation: who said what, what the reply area offers, and the timers
  * that pace it. It lives at the root, so a visitor who leaves the home page and comes back
@@ -200,7 +181,6 @@ export function chatInterpolation({ name, price }: ChatParams, lang: Lang): Chat
 @Injectable({ providedIn: 'root' })
 export class ChatFlowService {
   private readonly translate = inject(TranslateService);
-  private readonly lang = inject(LangService);
   private readonly idea = inject(IdeaService);
   private readonly timers = new Set<number>();
   private readonly asked = new Set<QuestionId>();
@@ -326,9 +306,9 @@ export class ChatFlowService {
   /** One of us types for a moment, then the text appears. */
   private async say(line: Line, name: string): Promise<void> {
     const key = phraseKey(line, name);
-    const params: ChatParams = { ...(name ? { name } : {}), ...(line.price === undefined ? {} : { price: line.price }) };
+    const params: ChatParams = name ? { name } : {};
     const id = this.push(line.from, { key, params }, true);
-    const text: unknown = this.translate.instant(key, chatInterpolation(params, this.lang.current()));
+    const text: unknown = this.translate.instant(key, params);
     const length = typeof text === 'string' ? text.length : 0;
     await this.wait(Math.min(TYPING_MAX, TYPING_BASE + length * TYPING_PER_CHAR));
     this.patch(id, { typing: false, shownAt: this.tick() });

@@ -8,7 +8,7 @@
 
     <div class="hour" jvmReveal="up" [revealDelay]="0.1">
       <h3 class="hour__name">{{ 'cost.hour.name' | translate }}</h3>
-      <p class="hour__price">{{ 'cost.hour.price' | translate: priceParams() }}</p>
+      <p class="hour__price">{{ 'cost.hour.price' | translate }}</p>
       <p class="hour__desc">{{ 'cost.hour.desc' | translate }}</p>
       <a class="btn btn--primary hour__cta" routerLink="/contact" [queryParams]="consultation">
         <span>{{ 'cost.hour.cta' | translate }}</span>

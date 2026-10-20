@@ -1,13 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { IconComponent } from '../../components/icon/icon.component';
 import { MessageComponent } from '../../components/message/message.component';
 import { SplitTextComponent } from '../../components/split-text/split-text.component';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { HOURLY_RATE } from '../../services/consultation';
-import { formatEuros } from '../../services/dates';
-import { LangService } from '../../services/lang.service';
 import { PersonId } from '../../services/team';
 
 /** A question as visitors ask it, and which of us usually answers it. */
@@ -41,12 +38,5 @@ const PAIRS: readonly FaqPair[] = [
   styleUrl: './faq-page.component.scss',
 })
 export class FaqPageComponent {
-  private readonly lang = inject(LangService);
-
   protected readonly pairs = PAIRS;
-
-  /** The consulting rate in the reader's own format: €100 in English, 100 € in Czech */
-  protected readonly answerParams = computed(() => ({
-    price: formatEuros(HOURLY_RATE, this.lang.current()),
-  }));
 }

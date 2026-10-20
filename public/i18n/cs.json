@@ -62,8 +62,8 @@
   },
   "chat": {
     "a": {
-      "advice1": "Rádi pomůžeme. Konzultace stojí {{price}} za hodinu: revize architektury, audit kódu nebo ověření, že se váš nápad dá postavit tak, jak si ho představujete.",
-      "advice1Named": "Rádi pomůžeme. Konzultace stojí {{price}} za hodinu: revize architektury, audit kódu nebo ověření, že se {{name}} dá postavit tak, jak si to představujete.",
+      "advice1": "Rádi pomůžeme. První konzultace je zdarma: revize architektury, audit kódu nebo ověření, že se váš nápad dá postavit tak, jak si ho představujete.",
+      "advice1Named": "Rádi pomůžeme. První konzultace je zdarma: revize architektury, audit kódu nebo ověření, že se {{name}} dá postavit tak, jak si to představujete.",
       "advice2": "Odejdete s písemným shrnutím nebo záznamem hovoru.",
       "care1": "Klidně ji převezmeme, i když jsme ji nestavěli my. Nejdřív uděláme audit a narovinu vám řekneme, co zjistíme.",
       "care1Named": "Aplikaci {{name}} klidně převezmeme, i když jsme ji nestavěli my. Nejdřív uděláme audit a narovinu vám řekneme, co zjistíme.",
@@ -180,7 +180,7 @@
       "cta": "Rezervovat konzultaci",
       "desc": "Druhý názor od lidí, kteří software sami staví: revize architektury, audit kódu, zaškolení týmu nebo výběr technologií.",
       "name": "Konzultace s jedním z nás",
-      "price": "{{price}} za hodinu"
+      "price": "První je zdarma"
     },
     "lead": "Záleží na tom, co potřebujete, proto ceník nezveřejňujeme. Cenu s vámi domluvíme podle rozsahu, ještě než napíšeme první řádek kódu. Nejsme plátci DPH, takže k ceně nic nepřipočítáváme.",
     "title": "Kolik to bude stát?",
@@ -193,7 +193,7 @@
     "a4": "Ano, a když je potřeba, tak ještě před prvním hovorem. Vše, co s námi sdílíte, považujeme za důvěrné tak jako tak.",
     "a5": "U každého projektu s pevným rozsahem máte 30 dní oprav zdarma a na kritické chyby reagujeme do 4 hodin. Potom nabízíme měsíční podporu za cenu, na které se spolu dohodneme. Rozsah nastavíme podle toho, kolik péče aplikace potřebuje, a kdykoli ho můžete změnit.",
     "a6": "Ano, plně na dálku a hlavně asynchronně. Sídlíme v Praze a s klienty spolupracujeme online, ať jsou kdekoli.",
-    "a7": "Záleží na rozsahu, proto ceník nezveřejňujeme. Jakmile pochopíme, co potřebujete, domluvíme se s vámi na ceně, ještě než napíšeme první řádek kódu. Konzultace s jedním z nás stojí {{price}} za hodinu.",
+    "a7": "Záleží na rozsahu, proto ceník nezveřejňujeme. Jakmile pochopíme, co potřebujete, domluvíme se s vámi na ceně, ještě než napíšeme první řádek kódu. První konzultace s jedním z nás je zdarma.",
     "all": "Všechny otázky",
     "lead": "Přímé odpovědi na otázky, které nám zakladatelé a CTO kladou před startem projektu. Tak, jak je od nás obvykle slyší.",
     "more": "Máte ještě nějakou otázku?",

@@ -71,7 +71,7 @@ HeroComponent        ← headline (swaps in the idea's name) + ChatComponent (li
 PaperComponent       ← "Put [name] on paper." + pinned board: sketch → spec → staging → handover on light/dark chapters
 TradesComponent      ← services carousel with four live demo screens (demo-lang, demo-code, demo-lock, demo-prompt)
 TeamTrioComponent    ← tap a face, read a first-person line
-CostComponent        ← ink band: no price list, the price is agreed per scope; a card with consulting at HOURLY_RATE
+CostComponent        ← ink band: no price list, the price is agreed per scope; a card for the free first consultation
 AskedComponent       ← two questions as a chat thread
 ComposeComponent     ← composer that carries a draft to /contact
 ```
@@ -95,10 +95,10 @@ Anchor for "See how we'd build it": `#how` (wraps the deferred paper section, so
 | `NavToneService` | Which registered dark surface is under the top bar |
 | `ContactDraftService` | Carries the home composer's text to the contact form once |
 | `ContactService` | POST `/api/contact` via `postJson` (Turnstile token + Resend e-mails); optional `project` = the idea's name. `CONTACT_SERVICES` ids double as `?about=` topics (`serviceValueFor`) |
-| `consultation.ts` | `HOURLY_RATE` (€100, the only price the site quotes) and `CONSULTATION_PARAMS` for every "Book a consultation" link |
+| `consultation.ts` | `CONSULTATION_PARAMS` for every "Book a consultation" link (the contact form opens on Consultation) |
 | `ScrollService` | Smooth scroll to an id below the top bar (waits for deferred sections); `scrollTo(id, focusId)` also moves focus; `topBarHeight()` is cached and kept current by a ResizeObserver, so scroll handlers read no layout |
 | `KeyboardService` | `tabbed` signal: on from the first Tab press; deferred sections render then |
-| `dates.ts` | Pure helpers: reply-by time (24h, past weekends), lock-screen date, euro formatting per language (one cached `Intl.NumberFormat` each) |
+| `dates.ts` | Pure helpers: reply-by time (24h, past weekends) and the lock-screen date (one cached `Intl.DateTimeFormat` per language and format) |
 | `team.ts` | The three of us: names, avatars (120px) and faces (320px), portraits (JPEG + AVIF srcset), LinkedIn |
 | `motion.ts` | `prefersReducedMotion()`, read at the moment of use, so a mid-visit change is respected |
 | `clock.ts` | `injectNow()`: a minute clock signal (also ticks on focus / tab return) for reply-by times |
@@ -119,8 +119,9 @@ with real, verifiable content and the client's permission. The mock screens on t
 visitor's idea and say so ("None of them come from client work").
 
 No price list, on purpose (October 2026): projects, the whole team and Support & LTS are priced by agreement for the
-scope, so the pricing page, the price dial and the plans were removed. The site quotes one price, consulting at
-`HOURLY_RATE`. Don't bring back published prices or plans without the owners.
+scope, so the pricing page, the price dial and the plans were removed. The site quotes no price at all: the first
+consultation is free, and later consulting is billed at an hourly rate agreed in advance (terms and refunds say so).
+Don't bring back published prices, rates or plans without the owners.
 
 ---
 
@@ -153,7 +154,7 @@ scope, so the pricing page, the price dial and the plans were removed. The site 
 - Sentences that mention the idea come in pairs: `key` and `keyNamed` with `{{name}}`. Slavic copy is written around
   the name (classifier nouns, nominative positions) because a typed name can't be declined — never splice names in.
 - `samples.*` is the four-language demo text on the web-app card: identical in every locale, not translated.
-- Keys containing `<b>` are bound with `[innerHTML]`; prices come from `formatEuros()` as `{{price}}`.
+- Keys containing `<b>` are bound with `[innerHTML]`.
 
 ---
 

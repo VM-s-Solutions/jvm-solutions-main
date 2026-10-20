@@ -89,7 +89,7 @@ const en = {
   },
   "refunds": {
     "consulting": {
-      "p1": "Consulting is invoiced after the session, based on the time actually spent. You can cancel or reschedule free of charge at any time beforehand — just let us know.",
+      "p1": "The first consultation is free. Further consulting is invoiced after each session, based on the time actually spent. You can cancel or reschedule free of charge at any time beforehand — just let us know.",
       "title": "Consulting"
     },
     "consumers": {
@@ -98,7 +98,7 @@ const en = {
       "title": "Consumer rights"
     },
     "intro": "You only pay for work you order and that we actually deliver. Here's a clear overview of when and how we invoice, and when we give money back.",
-    "lastUpdated": "Effective 17 October 2026",
+    "lastUpdated": "Effective 20 October 2026",
     "monthly": {
       "p1": "These services are invoiced monthly in advance. You can cancel by email at any time, effective at the end of the paid month — we won't issue any further invoices, and there's no cancellation fee.",
       "p2": "We don't refund a month that has already started, because the team has reserved that time for your project. But if in a given month we didn't deliver the agreed capacity for reasons on our side, we'll refund the difference or deduct it from the next invoice — whichever suits you.",
@@ -111,7 +111,7 @@ const en = {
     },
     "projects": {
       "li1": "You cancel before work starts — we refund the full deposit.",
-      "li2": "You cancel during the project — we invoice only the work actually done (by completed milestones, or by hours worked at the consulting rate), refund the rest of the deposit and hand over the work in progress.",
+      "li2": "You cancel during the project — we invoice only the work actually done (by completed milestones, or by hours worked at the agreed hourly rate), refund the rest of the deposit and hand over the work in progress.",
       "li3": "For reasons on our side, we fail to deliver the agreed scope on time, even after a reasonable extra period — we refund everything you paid for the undelivered part.",
       "p1": "Before work starts we invoice a 50% deposit; the rest is due on handover. If a project isn't completed, this is how we settle it:",
       "title": "Fixed-scope projects"
@@ -182,7 +182,7 @@ const en = {
       "li1": "We're not VAT-registered, so no VAT is added to our prices. If we register, we'll let you know in advance and add VAT from the registration date.",
       "li2": "Fixed-scope projects: 50% of the price is invoiced as a deposit before work starts, the rest on handover.",
       "li3": "Whole team and Support & LTS: invoiced monthly in advance.",
-      "li4": "Consulting: invoiced after the session for the time actually spent, at the hourly rate stated on this website.",
+      "li4": "Consulting: the first consultation is free. Further consulting is invoiced after each session for the time actually spent, at the hourly rate agreed in advance.",
       "li5": "Invoices are due within 14 days of issue, by bank transfer.",
       "li6": "Third-party costs (such as hosting, licences or app store fees) are paid by you directly, or passed on at cost — always with your approval first.",
       "p1": "Our prices have no hidden fees. Anything not included in the price is always agreed with you in advance.",

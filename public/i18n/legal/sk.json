@@ -86,7 +86,7 @@
   },
   "refunds": {
     "consulting": {
-      "p1": "Konzultácie fakturujeme až po ich skončení, podľa skutočne stráveného času. Termín môžete bezplatne zrušiť alebo presunúť kedykoľvek vopred – stačí nám napísať.",
+      "p1": "Prvá konzultácia je zadarmo. Ďalšie fakturujeme až po ich skončení, podľa skutočne stráveného času. Termín môžete bezplatne zrušiť alebo presunúť kedykoľvek vopred – stačí nám napísať.",
       "title": "Konzultácie"
     },
     "consumers": {
@@ -95,7 +95,7 @@
       "title": "Práva spotrebiteľov"
     },
     "intro": "Platíte len za prácu, ktorú si objednáte a ktorú skutočne odvedieme. Tu prehľadne nájdete, kedy a ako fakturujeme a v akých prípadoch vraciame peniaze.",
-    "lastUpdated": "Platné od 17. októbra 2026",
+    "lastUpdated": "Platné od 20. októbra 2026",
     "monthly": {
       "p1": "Tieto služby fakturujeme mesačne vopred. Vypovedať ich môžete kedykoľvek e-mailom s účinnosťou ku koncu zaplateného mesiaca – ďalšie faktúry už nevystavíme a neplatíte žiadny poplatok za ukončenie.",
       "p2": "Za rozbehnutý mesiac peniaze nevraciame, pretože tím má na váš projekt vyhradený čas. Ak sme však v danom mesiaci z dôvodov na našej strane nedodali dohodnutú kapacitu, rozdiel vám vrátime alebo odpočítame z ďalšej faktúry – podľa toho, čo vám viac vyhovuje.",
@@ -108,7 +108,7 @@
     },
     "projects": {
       "li1": "Zrušíte ho ešte pred začatím práce – vrátime celú zálohu.",
-      "li2": "Zrušíte ho počas práce – vyúčtujeme len skutočne odvedenú prácu (podľa dokončených míľnikov, prípadne podľa odpracovaných hodín v sadzbe za konzultácie), zvyšok zálohy vrátime a rozpracované výstupy vám odovzdáme.",
+      "li2": "Zrušíte ho počas práce – vyúčtujeme len skutočne odvedenú prácu (podľa dokončených míľnikov, prípadne podľa odpracovaných hodín v dohodnutej hodinovej sadzbe), zvyšok zálohy vrátime a rozpracované výstupy vám odovzdáme.",
       "li3": "Z dôvodov na našej strane dielo nedodáme v dohodnutom rozsahu a termíne ani v primeranej dodatočnej lehote – vrátime vám všetko, čo ste zaplatili za nedodanú časť.",
       "p1": "Pred začatím práce fakturujeme zálohu vo výške 50 % ceny, zvyšok po odovzdaní. Ak sa projekt nedokončí, postupujeme takto:",
       "title": "Projekty s pevným rozsahom"
@@ -179,7 +179,7 @@
       "li1": "Nie sme platiteľmi DPH, preto k našim cenám DPH nepripočítavame. Ak sa platiteľmi staneme, dáme vám to vedieť vopred a DPH budeme pripočítavať odo dňa registrácie.",
       "li2": "Projekty s pevným rozsahom: 50 % ceny fakturujeme ako zálohu pred začatím práce, zvyšok po odovzdaní.",
       "li3": "Celý tím a Podpora a LTS: fakturujeme mesačne vopred.",
-      "li4": "Konzultácie: fakturujeme po skončení podľa skutočne stráveného času, v hodinovej sadzbe uvedenej na tomto webe.",
+      "li4": "Konzultácie: prvá je zadarmo, ďalšie fakturujeme po skončení podľa skutočne stráveného času, v hodinovej sadzbe dohodnutej vopred.",
       "li5": "Faktúry sú splatné do 14 dní od vystavenia, bankovým prevodom.",
       "li6": "Náklady tretích strán (napríklad hosting, licencie alebo poplatky obchodov s aplikáciami) platíte priamo vy, alebo vám ich prefakturujeme bez prirážky – vždy až s vaším súhlasom.",
       "p1": "Ceny uvádzame bez skrytých poplatkov. Čokoľvek, čo v cene nie je, s vami vždy dohodneme vopred.",

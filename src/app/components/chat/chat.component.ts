@@ -18,16 +18,14 @@ import { IconComponent } from '../icon/icon.component';
 import { MessageComponent } from '../message/message.component';
 import {
   ChatFlowService,
-  ChatInterpolation,
+  ChatParams,
   ChatRouteTarget,
   ChatScrollTarget,
   QuestionId,
   Sender,
-  chatInterpolation,
   questionKey,
 } from '../../services/chat-flow.service';
 import { IDEA_MAX_LENGTH, IdeaService, cleanIdea } from '../../services/idea.service';
-import { LangService } from '../../services/lang.service';
 import { prefersReducedMotion } from '../../services/motion';
 import { ScrollService } from '../../services/scroll.service';
 import { TEAM, TEAM_ORDER } from '../../services/team';
@@ -43,7 +41,7 @@ interface MessageView {
   /** The text appeared while this view was on screen: the bubble pops */
   readonly pop: boolean;
   readonly key: string | null;
-  readonly params: ChatInterpolation;
+  readonly params: ChatParams;
   readonly typed: string;
   readonly hasAction: boolean;
   readonly actionKey: string;
@@ -57,7 +55,7 @@ type ChipView =
       readonly kind: 'question';
       readonly id: QuestionId;
       readonly key: string;
-      readonly params: ChatInterpolation;
+      readonly params: ChatParams;
       readonly flown: boolean;
     }
   | { readonly kind: 'write'; readonly id: 'write' };
@@ -138,7 +136,6 @@ function textOrigin(el: HTMLElement): FlipOrigin {
 export class ChatComponent {
   private readonly flow = inject(ChatFlowService);
   private readonly idea = inject(IdeaService);
-  private readonly lang = inject(LangService);
   private readonly scroll = inject(ScrollService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
 
@@ -169,7 +166,6 @@ export class ChatComponent {
   private readonly mountedAt = this.flow.stamp();
 
   protected readonly messages = computed<readonly MessageView[]>(() => {
-    const lang = this.lang.current();
     const since = this.mountedAt;
     let previous: Sender | null = null;
     return this.flow.messages().map(({ id, from, key, params, typed, typing, shownAt, action }) => {
@@ -183,7 +179,7 @@ export class ChatComponent {
         enter: theirs && id > since,
         pop: theirs && shownAt > since,
         key,
-        params: chatInterpolation(params, lang),
+        params,
         typed,
         hasAction: action !== null,
         actionKey: action?.key ?? '',

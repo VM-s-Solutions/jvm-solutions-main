@@ -55,22 +55,3 @@ export function replyByParts(date: Date, lang: Lang): { date: string; time: stri
 export function lockScreenDate(date: Date, lang: Lang): string {
   return bindDay(dateFormat(lang, 'weekdayDayMonth').format(date));
 }
-
-/** One euro format per language, built on first use: making one costs far more than using it */
-const EURO_FORMATS = new Map<Lang, Intl.NumberFormat>();
-
-/** Whole euros in the language's own format: €17,900 in English, 17 900 € in Czech and Ukrainian. */
-export function formatEuros(amount: number, lang: Lang): string {
-  let euros = EURO_FORMATS.get(lang);
-  if (!euros) {
-    euros = new Intl.NumberFormat(localeOf(lang), {
-      style: 'currency',
-      currency: 'EUR',
-      // Ukrainian would otherwise print "EUR"
-      currencyDisplay: 'narrowSymbol',
-      maximumFractionDigits: 0,
-    });
-    EURO_FORMATS.set(lang, euros);
-  }
-  return euros.format(Math.round(amount));
-}
