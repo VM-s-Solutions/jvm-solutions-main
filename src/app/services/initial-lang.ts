@@ -24,6 +24,15 @@ function detectLang(): Lang {
 export function initTranslations(): Promise<unknown> {
   const translate = inject(TranslateService);
   translate.setFallbackLang('en');
-  // A failed locale download falls back to English instead of blocking bootstrap.
-  return firstValueFrom(translate.use(detectLang()).pipe(catchError(() => of(null))));
+  const lang = detectLang();
+  // A failed locale download falls back to English instead of blocking bootstrap, and is forgotten,
+  // so a later switch to that language loads and stores it afresh.
+  return firstValueFrom(
+    translate.use(lang).pipe(
+      catchError(() => {
+        translate.resetLang(lang);
+        return of(null);
+      }),
+    ),
+  );
 }

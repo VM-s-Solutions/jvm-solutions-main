@@ -62,7 +62,7 @@ $stagger: $duration-fast * 0.5;
   background: var(--bg);
   box-shadow: 0 0.3cqi 0.8cqi rgba($color-ink, 0.12);
   transform: translateX(calc(var(--k, 0) * (100% + #{$tab-gap})));
-  transition: transform $duration-slow $ease-ios;
+  transition: transform $duration-press $ease-ios;
 }
 
 // Above the thumb; the mock-screen container is its own stacking context, so this stays local
@@ -95,7 +95,7 @@ $stagger: $duration-fast * 0.5;
     transform: translateY(1.4cqi);
     transition:
       opacity $duration-base $ease-out,
-      transform $duration-slow $ease-out;
+      transform $duration-long $ease-out;
 
     &.is-on {
       opacity: 1;

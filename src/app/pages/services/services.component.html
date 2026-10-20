@@ -52,7 +52,7 @@
         <p>{{ 'services.take.body' | translate }}</p>
         <div class="actions">
           <a class="btn btn--primary" routerLink="/contact">{{ 'services.take.cta' | translate }}</a>
-          <a class="btn btn--dark-ghost" routerLink="/pricing">{{ 'services.take.cta2' | translate }}</a>
+          <a class="btn btn--dark-ghost" routerLink="/contact" [queryParams]="consultation">{{ 'services.take.cta2' | translate }}</a>
         </div>
       </article>
     </div>

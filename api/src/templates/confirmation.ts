@@ -25,6 +25,7 @@ type ServiceValue =
   | 'Mobile Application'
   | 'AI Automation'
   | 'Full-stack Product'
+  | 'Consultation'
   | 'Other';
 
 /** Each pill's label as the visitor saw it on the form (contact.services.* in public/i18n/<lang>.json). */
@@ -61,6 +62,7 @@ const I18N = {
       'Mobile Application': 'Mobile app',
       'AI Automation': 'AI automation',
       'Full-stack Product': 'Full product',
+      'Consultation': 'Consultation',
       'Other': 'Other',
     } satisfies ServiceLabels,
     sectionMessage: 'Your message',
@@ -98,6 +100,7 @@ const I18N = {
       'Mobile Application': 'Mobiln\u00ed aplikace',
       'AI Automation': 'AI automatizace',
       'Full-stack Product': 'Cel\u00fd produkt',
+      'Consultation': 'Konzultace',
       'Other': 'Jin\u00e9',
     } satisfies ServiceLabels,
     sectionMessage: 'Va\u0161e zpr\u00e1va',
@@ -135,6 +138,7 @@ const I18N = {
       'Mobile Application': 'Mobiln\u00e1 aplik\u00e1cia',
       'AI Automation': 'AI automatiz\u00e1cia',
       'Full-stack Product': 'Cel\u00fd produkt',
+      'Consultation': 'Konzult\u00e1cia',
       'Other': 'In\u00e9',
     } satisfies ServiceLabels,
     sectionMessage: 'Va\u0161a spr\u00e1va',
@@ -172,6 +176,7 @@ const I18N = {
       'Mobile Application': '\u041c\u043e\u0431\u0456\u043b\u044c\u043d\u0438\u0439 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a',
       'AI Automation': '\u0428\u0406-\u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0456\u044f',
       'Full-stack Product': '\u041f\u0440\u043e\u0434\u0443\u043a\u0442 \u043f\u0456\u0434 \u043a\u043b\u044e\u0447',
+      'Consultation': '\u041a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0456\u044f',
       'Other': '\u0406\u043d\u0448\u0435',
     } satisfies ServiceLabels,
     sectionMessage: '\u0412\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f',

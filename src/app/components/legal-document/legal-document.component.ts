@@ -65,16 +65,25 @@ export class LegalDocumentComponent {
     afterNextRender(() => {
       const listeners = new AbortController();
       const options = { passive: true, signal: listeners.signal };
+      let frame = 0;
 
+      // One pass per frame, however many scroll events arrive in it
       window.addEventListener('scroll', () => {
-        if (!this.pinned) this.syncActive();
+        if (this.pinned || frame) return;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          if (!this.pinned) this.syncActive();
+        });
       }, options);
       // Only real input unpins (wheel, touch, keys, scrollbar drag) — the smooth scroll a click starts fires none.
       for (const type of ['wheel', 'touchmove', 'keydown', 'pointerdown']) {
         window.addEventListener(type, () => (this.pinned = false), options);
       }
 
-      this.destroyRef.onDestroy(() => listeners.abort());
+      this.destroyRef.onDestroy(() => {
+        listeners.abort();
+        cancelAnimationFrame(frame);
+      });
       this.syncActive();
     });
   }
@@ -98,8 +107,10 @@ export class LegalDocumentComponent {
   private syncActive(): void {
     const anchors = [this.pageTitle(), ...this.sectionTitles()];
     const tops = anchors.map((ref) => ref.nativeElement.getBoundingClientRect().top);
-    const passed = this.lastPassed(tops);
-    const inView = this.topmostInView(tops);
+    // The bar's height per pass, not per heading
+    const { navbarHeight, topOffset } = this.scrollService;
+    const passed = this.lastPassed(tops, topOffset);
+    const inView = this.topmostInView(tops, navbarHeight);
     // Never behind a heading that has reached the top, never ahead of the topmost one in view.
     const index = Math.min(Math.max(this.activeIndex(), passed), Math.max(inView, passed));
     this.activeId.set(index > 0 ? this.sections()[index - 1].id : null);
@@ -110,8 +121,8 @@ export class LegalDocumentComponent {
    * scroll that high, so the line slides down to meet them — each still gets its turn in order,
    * and the last one lands at the very bottom.
    */
-  private lastPassed(tops: readonly number[]): number {
-    const topLine = this.scrollService.topOffset + HEADING_SLACK;
+  private lastPassed(tops: readonly number[], topOffset: number): number {
+    const topLine = topOffset + HEADING_SLACK;
     const remaining = Math.max(0, document.documentElement.scrollHeight - window.innerHeight - window.scrollY);
     // How far below the top line the last heading will still sit once the page can't scroll further
     const shortfall = tops[tops.length - 1] - remaining - topLine;
@@ -125,8 +136,8 @@ export class LegalDocumentComponent {
   }
 
   /** The topmost heading visible under the navbar — or, if the next one is still below the screen, the one we're inside. */
-  private topmostInView(tops: readonly number[]): number {
-    const firstBelowNavbar = tops.findIndex((top) => top >= this.scrollService.navbarHeight);
+  private topmostInView(tops: readonly number[], navbarHeight: number): number {
+    const firstBelowNavbar = tops.findIndex((top) => top >= navbarHeight);
     if (firstBelowNavbar < 0) return tops.length - 1;
     return tops[firstBelowNavbar] < window.innerHeight ? firstBelowNavbar : Math.max(0, firstBelowNavbar - 1);
   }

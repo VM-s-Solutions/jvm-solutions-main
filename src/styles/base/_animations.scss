@@ -1,8 +1,8 @@
 @use '../abstracts' as *;
 
 // ─── Scroll reveal ────────────────────────────────────────────────────────────
-// RevealDirective adds .reveal on init and .is-in once the element scrolls into view;
-// --d staggers neighbours. Hidden states only exist once the directive has run.
+// RevealDirective puts .reveal on its element as the element is created, so it is hidden from its
+// very first style, and adds .is-in once it scrolls into view; --d staggers neighbours.
 .reveal {
   opacity: 0;
   transform: translateY($space-7);
@@ -15,10 +15,13 @@
     transform: translateY($space-14) scale(0.97);
   }
 
-  // Above the fold: visible from the first paint (it may be the largest contentful paint), it only settles
+  // Above the fold: visible from the first paint (it may be the largest contentful paint), it only
+  // settles. Its opacity never transitions, so even a class that lands after a style read shows at once.
   &.reveal--lift {
     opacity: 1;
     transform: translateY($space-4);
+    transition: transform $duration-reveal $ease-out;
+    transition-delay: var(--d, 0s);
   }
 
   &.is-in {
@@ -29,6 +32,8 @@
 
 // ─── Page transitions: iOS push and pop ───────────────────────────────────────
 // The router's view transition slides the whole page; html[data-dir] says which way.
+// The keyframes move only transform and opacity, so the slide runs on the compositor
+// while the new page is still rendering.
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: $duration-slow;
@@ -37,15 +42,20 @@
 }
 
 html[data-dir='fwd']::view-transition-old(root) { animation-name: push-out; }
-html[data-dir='fwd']::view-transition-new(root) { animation-name: push-in; }
+
+// The incoming page carries its edge shadow at full strength, painted once with it: animated in
+// the keyframes, the shadow would put the whole slide back on the main thread. It ends just past
+// the left edge, out of sight.
+html[data-dir='fwd']::view-transition-new(root) {
+  animation-name: push-in;
+  box-shadow: -30px 0 60px rgba($color-ink, 0.12);
+}
+
 html[data-dir='back']::view-transition-old(root) { animation-name: pop-out; z-index: $z-vt-top; }
 html[data-dir='back']::view-transition-new(root) { animation-name: pop-in; }
 
 @keyframes push-in {
-  from {
-    transform: translateX(100%);
-    box-shadow: -30px 0 60px rgba($color-ink, 0.12);
-  }
+  from { transform: translateX(100%); }
 }
 
 @keyframes push-out {
@@ -66,15 +76,22 @@ html[data-dir='back']::view-transition-new(root) { animation-name: pop-in; }
   to { transform: translateX(100%); }
 }
 
-// ─── Shared keyframes ─────────────────────────────────────────────────────────
-// A word or name settling in after it changed
-@keyframes soft-in {
-  from {
-    opacity: 0;
-    filter: blur(3px);
-  }
+// The bars stay put while the page slides, so they skip the default snapshot crossfade and size
+// animation: the live bar shows its new state at once, and its own transitions (the tab thumb
+// gliding to the new page) play as usual.
+::view-transition-group(topbar),
+::view-transition-group(tabbar),
+::view-transition-new(topbar),
+::view-transition-new(tabbar) {
+  animation: none;
 }
 
+::view-transition-old(topbar),
+::view-transition-old(tabbar) {
+  display: none;
+}
+
+// ─── Shared keyframes ─────────────────────────────────────────────────────────
 // The three dots of someone typing
 @keyframes typing-dot {
   0%, 60%, 100% {

@@ -17,11 +17,22 @@
   &:focus { transform: none; }
 }
 
-// At least a screen tall, so the footer's placeholder never sits in view (and jumps away) before a page renders
+// Over the page's first pixels: once it leaves the viewport, the top bar frosts (AppComponent)
+.top-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: $space-2;
+  pointer-events: none;
+}
+
+// Taller than a screen, so the footer's placeholder never sits in view (and jumps away) before a page
+// renders. The extra pixel matters: an observer counts an edge that only touches the viewport as in view.
 main {
   display: block;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: calc(100vh + 1px);
+  min-height: calc(100svh + 1px);
 }
 
 // Holds the footer's place until it renders, so the page doesn't jump

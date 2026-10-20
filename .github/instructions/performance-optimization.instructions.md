@@ -11,7 +11,7 @@ Lessons extracted from real Lighthouse audit cycles on this codebase. Apply thes
 ## 1. Angular Bundle & Runtime
 
 ### provideNoopAnimations, not provideAnimations
-If no `@Component({ animations: [...] })` exists anywhere in the app, swap `provideAnimations()` for `provideNoopAnimations()`. The full animations engine is tree-shaken away.
+If no `@Component({ animations: [...] })` exists anywhere in the app, swap `provideAnimations()` for `provideNoopAnimations()`. The full animations engine is tree-shaken away. (This site provides neither: its motion is CSS and the native `animate.enter`/`animate.leave`, and `@angular/animations` isn't installed — add the package back first if you ever need it.)
 
 ```ts
 // app.config.ts
@@ -282,6 +282,7 @@ Angular's production build hashes all filenames. Tell browsers (and CDN) these n
     { "route": "/*.css",   "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
     { "route": "/*.woff2", "headers": { "Cache-Control": "public, max-age=31536000, immutable" } },
     { "route": "/i18n/*.json", "headers": { "Cache-Control": "no-cache" } },
+    { "route": "/i18n/legal/*.json", "headers": { "Cache-Control": "no-cache" } },
     { "route": "/index.html",  "headers": { "Cache-Control": "no-cache, no-store, must-revalidate" } }
   ]
 }

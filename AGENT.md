@@ -73,7 +73,9 @@ conflicts and red pipelines left behind.
 - **i18n is fourfold + one**: every string change goes to `public/i18n/en.json`,
   `cs.json`, `sk.json`, `uk.json` **and** the bundled mirror
   `src/app/i18n/*.ts` (en/cs/sk/uk) in the same pass. Missing `en.ts` sync
-  means empty strings on first paint.
+  means empty strings on first paint. Legal copy (`privacy.*`, `terms.*`,
+  `refunds.*`) lives in its own part: `public/i18n/legal/*.json` +
+  `src/app/i18n/legal/*.ts`.
 - **Performance is a gate**, not a nice-to-have — "insanely slow" /
   "ridiculously slow" complaints came with measurements. If something takes
   seconds, fix the query/payload before closing.

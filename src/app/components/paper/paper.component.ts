@@ -29,8 +29,12 @@ import { RevealDirective } from '../../directives/reveal.directive';
 import { IDEA_MAX_LENGTH, IdeaService } from '../../services/idea.service';
 import { prefersReducedMotion } from '../../services/motion';
 
-/** Each frame, the eased progress closes this share of the gap to the real scroll position. */
+/** Each 60 Hz frame, the eased progress closes this share of the gap to the real scroll position. */
 const LERP = 0.14;
+/** The frame LERP is tuned for: other refresh rates ease by the time that has passed, so they feel the same */
+const FRAME_MS = 1000 / 60;
+/** A longer gap between frames (a stall, a tab coming back) counts as this long, so the board doesn't leap */
+const MAX_FRAME_MS = 100;
 /** Closer than this and the easing snaps to the target and stops. */
 const SETTLE = 0.0005;
 /** Quiet time after typing in the heading before the name is taken. */
@@ -66,7 +70,8 @@ function isPinned(sticky: HTMLElement): boolean {
  * "Put [your idea] on paper.": the heading has a slot to name the idea in, and below it
  * a pinned board walks through our four steps as the visitor scrolls. The scroll loop
  * eases the progress, paints the chapter colour straight onto the track every frame,
- * and only touches signals when the chapter or the light/dark tone changes.
+ * and only touches signals when the chapter or the light/dark tone changes. Nothing reads
+ * layout while the section renders, so its first layout happens once, in the frame.
  */
 @Component({
   selector: 'jvm-paper',
@@ -117,8 +122,6 @@ export class PaperComponent {
   private readonly sticky = viewChild.required<ElementRef<HTMLElement>>('sticky');
   private readonly field = viewChild.required<ElementRef<HTMLInputElement>>('field');
   private readonly mirror = viewChild.required<ElementRef<HTMLElement>>('mirror');
-  /** Bumped when the viewport or the fonts change, so the slot measures its text again */
-  private readonly layoutTick = signal(0);
   private saveTimer = 0;
 
   constructor() {
@@ -132,25 +135,7 @@ export class PaperComponent {
       },
     });
 
-    // The slot is as wide as its text (the input's width transition animates it).
-    afterRenderEffect({
-      earlyRead: () => {
-        this.mirrorText();
-        this.layoutTick();
-        return this.mirror().nativeElement.offsetWidth;
-      },
-      write: (width) => {
-        this.field().nativeElement.style.setProperty('--slot-w', `${width() + CARET_ROOM}px`);
-      },
-    });
-
-    const remeasure = () => this.layoutTick.update((n) => n + 1);
-    window.addEventListener('resize', remeasure, { passive: true });
-    document.fonts?.addEventListener('loadingdone', remeasure);
-
     destroyRef.onDestroy(() => {
-      window.removeEventListener('resize', remeasure);
-      document.fonts?.removeEventListener('loadingdone', remeasure);
       // Leaving mid-word still keeps the name
       if (this.saveTimer) {
         clearTimeout(this.saveTimer);
@@ -158,7 +143,11 @@ export class PaperComponent {
       }
     });
 
-    afterNextRender(() => this.startScrollLoop(destroyRef));
+    // Both only start watching here; their first reads wait for the frame
+    afterNextRender(() => {
+      this.startScrollLoop(destroyRef);
+      this.sizeSlot(destroyRef);
+    });
   }
 
   protected onFocus(value: string): void {
@@ -194,15 +183,45 @@ export class PaperComponent {
   }
 
   /**
+   * The slot is as wide as its text, measured on the hidden mirror beside it. A ResizeObserver
+   * reports the mirror's size after layout, so measuring never forces one, and it reports again
+   * whenever the text, the viewport or the font changes it. The input's width transition
+   * animates every change but the first.
+   */
+  private sizeSlot(destroyRef: DestroyRef): void {
+    const field = this.field().nativeElement;
+    const mirror = this.mirror().nativeElement;
+    let first = true;
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      field.style.setProperty('--slot-w', `${mirror.offsetWidth + CARET_ROOM}px`);
+      if (!first) return;
+      first = false;
+      // The first width is simply there: the transition only comes back from the next frame
+      field.style.transition = 'none';
+      frame = requestAnimationFrame(() => field.style.removeProperty('transition'));
+    });
+    observer.observe(mirror);
+    destroyRef.onDestroy(() => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    });
+  }
+
+  /**
    * Eases the scroll position through the track and paints it. Runs only while the eased
    * value is still catching up; a scroll or resize starts it again.
    */
   private startScrollLoop(destroyRef: DestroyRef): void {
     const track = this.track().nativeElement;
     const sticky = this.sticky().nativeElement;
-    const tones = readChapterTones(track);
+    /** The chapters' colours, read on the first frame (undefined until then; null if they can't be) */
+    let tones: readonly Rgb[] | null | undefined;
+    /** Whether the board is pinned, from its computed style: read once, and again after a resize */
+    let pinned: boolean | null = null;
     let smooth = 0;
     let frame = 0;
+    let last = 0;
     let painted = '';
 
     const progress = (): number => {
@@ -211,12 +230,16 @@ export class PaperComponent {
     };
 
     const paint = (p: number): void => {
+      // Everything is read before anything is written, so a frame works out layout only once
+      if (tones === undefined) tones = readChapterTones(track);
+      pinned ??= isPinned(sticky);
       if (tones) {
-        // Pinned, the track blends through the chapters' colours; listed, it stays on paper
-        const tone = chapterTone(isPinned(sticky) ? p : 0, tones);
+        // Pinned, the track blends through the chapters' colours; listed, it stays on paper.
+        // Its own background colour, which restyles the track alone (not all of the board).
+        const tone = chapterTone(pinned ? p : 0, tones);
         if (tone.color !== painted) {
           painted = tone.color;
-          track.style.setProperty('--pbg', tone.color);
+          track.style.backgroundColor = tone.color;
         }
         if (tone.dark !== this.isDark()) this.isDark.set(tone.dark);
         if (tone.murky !== this.isMurky()) this.isMurky.set(tone.murky);
@@ -225,29 +248,43 @@ export class PaperComponent {
       if (stage !== this.stage()) this.stage.set(stage);
     };
 
-    const loop = (): void => {
+    const loop = (now: number): void => {
       frame = 0;
+      const elapsed = last ? Math.min(now - last, MAX_FRAME_MS) : FRAME_MS;
+      last = now;
       const target = progress();
-      smooth = prefersReducedMotion() ? target : smooth + (target - smooth) * LERP;
+      // LERP of the gap per 60 Hz frame's worth of time, whatever the display's refresh rate
+      const ease = 1 - Math.pow(1 - LERP, elapsed / FRAME_MS);
+      smooth = prefersReducedMotion() ? target : smooth + (target - smooth) * ease;
       if (Math.abs(target - smooth) < SETTLE) smooth = target;
       paint(smooth);
-      if (smooth !== target) frame = requestAnimationFrame(loop);
+      if (smooth === target) last = 0;
+      else frame = requestAnimationFrame(loop);
     };
 
     const kick = (): void => {
       if (!frame) frame = requestAnimationFrame(loop);
     };
+    // A viewport too short to pin the board lists the steps instead (a media query on height)
+    const onResize = (): void => {
+      pinned = null;
+      kick();
+    };
 
     window.addEventListener('scroll', kick, { passive: true });
-    window.addEventListener('resize', kick, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
     destroyRef.onDestroy(() => {
       window.removeEventListener('scroll', kick);
-      window.removeEventListener('resize', kick);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(frame);
     });
 
-    // Arriving mid-track (a reload, a jump to #how) starts on the right chapter, unanimated
-    smooth = progress();
-    paint(smooth);
+    // The first frame reads the new section's layout, the one the browser works out for that frame
+    // anyway. Arriving mid-track (a reload, a jump to #how) starts on the right chapter, unanimated.
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      smooth = progress();
+      paint(smooth);
+    });
   }
 }

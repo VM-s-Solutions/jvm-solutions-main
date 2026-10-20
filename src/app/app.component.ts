@@ -3,11 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   DOCUMENT,
+  DestroyRef,
   ElementRef,
   Injector,
   afterNextRender,
   effect,
   inject,
+  signal,
   viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -19,7 +21,11 @@ import { TabBarComponent } from './components/tab-bar/tab-bar.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { KeyboardService } from './services/keyboard.service';
 import { LangService } from './services/lang.service';
+import { RenderQueueService } from './services/render-queue.service';
 import { ScrollService } from './services/scroll.service';
+
+/** The footer's place in the render queue: after the page's own deferred sections (order 0) */
+const FOOTER_ORDER = 1;
 
 @Component({
   selector: 'jvm-root',
@@ -35,11 +41,29 @@ export class AppComponent {
   private readonly router = inject(Router);
   private readonly injector = inject(Injector);
   private readonly main = viewChild.required<ElementRef<HTMLElement>>('main');
+  private readonly topSentinel = viewChild.required<ElementRef<HTMLElement>>('topSentinel');
   protected readonly tabbed = inject(KeyboardService).tabbed;
+  /** The render queue has reached the footer */
+  protected readonly footerReady = signal(false);
+  /** The page has scrolled past its first few pixels: the top bar frosts */
+  protected readonly scrolled = signal(false);
 
   constructor() {
     // Screen readers pick pronunciation from <html lang>, so it follows the language switcher.
     effect(() => (this.document.documentElement.lang = this.lang.current()));
+
+    // A sentinel over the page's first pixels tells the top bar when the page has scrolled.
+    // An observer, not a scroll listener: reading scrollY on every scroll event forced style.
+    const destroyRef = inject(DestroyRef);
+    afterNextRender(() => {
+      // A batch can hold several entries for the sentinel: the newest tells where the page is now
+      const observer = new IntersectionObserver((entries) => this.scrolled.set(!entries[entries.length - 1].isIntersecting));
+      observer.observe(this.topSentinel().nativeElement);
+      destroyRef.onDestroy(() => observer.disconnect());
+    });
+
+    // The footer renders in an idle moment of its own, once the page's sections have had theirs
+    inject(RenderQueueService).add(() => this.footerReady.set(true), FOOTER_ORDER);
 
     // A link to a section (/privacy#cookies) lands it below the fixed top bar.
     const scroll = inject(ScrollService);

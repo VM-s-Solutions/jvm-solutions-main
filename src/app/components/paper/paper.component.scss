@@ -87,15 +87,15 @@ $track-desktop: 460vh;
 }
 
 // ─── The pinned track ─────────────────────────────────────────────────────────
-// --pbg is painted by the scroll loop; the text tokens flip on the dark chapters.
+// The scroll loop paints the chapter colour over this paper as the track's own background
+// colour (it restyles the track alone); the text tokens flip on the dark chapters.
 .paper__track {
-  --pbg: var(--bg);
   --pink: var(--ink);
   --pdim: #{rgba($color-ink, 0.62)};
   --ptrack: #{rgba($color-ink, 0.12)};
   position: relative;
   height: $track-phone;
-  background: var(--pbg);
+  background: var(--bg);
   color: var(--pink);
   transition: color $duration-slow $ease-out;
 
@@ -170,10 +170,10 @@ $track-desktop: 460vh;
 }
 
 // Half-way through a hand-off between a light chapter and a dark one the track is a mid
-// grey, where the dimmed copy reads in neither colour: the steps step aside until it's past
+// grey, where the dimmed copy reads in neither colour: the steps step aside until it's past,
+// in one soft dip (the list's own fade, out and back)
 .paper__track.is-murky .pv-list {
   opacity: 0;
-  transition-duration: $duration-fast;
 }
 
 .pv {

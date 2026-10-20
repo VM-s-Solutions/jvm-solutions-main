@@ -19,8 +19,10 @@
   transform: translateY(110%);
 }
 
-// After a text change only the new words stagger, starting from the first one that changed
+// After a text change only the new words stagger, starting from the first one that changed, and
+// they rise a little quicker than on the first reveal, as in the concept
 :host(.is-swapped) .w > span {
+  transition-duration: $duration-rise;
   transition-delay: calc(max(0, var(--i) - var(--from, 0)) * #{$stagger-sm});
 }
 
@@ -34,4 +36,11 @@
 .w.is-enter > span {
   transform: translateY(110%);
   transition: none;
+}
+
+// No rise at all: the words are there from the start
+@include reduced-motion {
+  .w > span {
+    transform: none !important;
+  }
 }

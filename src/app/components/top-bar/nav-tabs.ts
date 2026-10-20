@@ -12,17 +12,13 @@ export interface NavTab {
 export const NAV_TABS: readonly NavTab[] = [
   { path: '/', labelKey: 'nav.home', icon: 'home' },
   { path: '/services', labelKey: 'nav.services', icon: 'grid' },
-  { path: '/pricing', labelKey: 'nav.pricing', icon: 'tag' },
   { path: '/about', labelKey: 'nav.about', icon: 'people' },
-  { path: '/faq', labelKey: 'nav.faq', icon: 'chat' },
+  { path: '/faq', labelKey: 'nav.faq', icon: 'help' },
 ];
 
-/** The phone tab bar trades FAQ for the contact page — FAQ stays one tap away in the footer. */
+/** The phone tab bar: the same pages, then the contact page (five, as its grid is laid out). */
 export const TAB_BAR: readonly NavTab[] = [
-  NAV_TABS[0],
-  NAV_TABS[1],
-  NAV_TABS[2],
-  NAV_TABS[3],
+  ...NAV_TABS,
   { path: '/contact', labelKey: 'nav.message', shortKey: 'nav.messageShort', icon: 'chat' },
 ];
 

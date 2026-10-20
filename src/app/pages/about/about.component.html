@@ -10,15 +10,23 @@
     @for (p of portraits; track p.id) {
       <!-- Focusable, so a tap or the keyboard can unfold the bio where there is no hover -->
       <article class="portrait" jvmReveal [revealDelay]="p.delay" tabindex="0" [attr.aria-labelledby]="p.nameId">
-        <!-- The first photo is the largest thing in a phone's first view (its LCP): it loads at once, ahead of the rest -->
-        <img
-          [loading]="$first ? 'eager' : 'lazy'"
-          [attr.fetchpriority]="$first ? 'high' : null"
-          [src]="p.photo"
-          [alt]="p.full"
-          [style.--focus]="p.focus"
-          decoding="async"
-        />
+        <!-- The first photo is the largest thing in a phone's first view (its LCP): it loads at once, ahead of the rest.
+             sizes mirrors .portraits: one column inside the 24px gutters, three from 901px, capped by the 1240px container -->
+        <picture>
+          <source
+            type="image/avif"
+            [attr.srcset]="p.photoSet"
+            sizes="(min-width: 1240px) 387px, (min-width: 901px) calc((100vw - 80px) / 3), calc(100vw - 48px)"
+          />
+          <img
+            [loading]="$first ? 'eager' : 'lazy'"
+            [attr.fetchpriority]="$first ? 'high' : null"
+            [src]="p.photo"
+            [alt]="p.full"
+            [style.--focus]="p.focus"
+            decoding="async"
+          />
+        </picture>
         <div class="portrait__card">
           <h2 class="portrait__name" [id]="p.nameId">{{ p.full }}</h2>
           <span class="portrait__role">{{ p.roleKey | translate }}</span>

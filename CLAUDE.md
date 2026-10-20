@@ -15,7 +15,7 @@ You are an elite Angular architect with deep expertise across the entire Angular
 |---|---|
 | Angular | 21.x (standalone, zoneless) |
 | TypeScript | 5.9 strict mode |
-| ngx-translate | 17.x (`provideTranslateService` / `provideTranslateHttpLoader`) |
+| ngx-translate | 17.x (`provideTranslateService` with the app's own `TranslationLoader` over `fetch()`; no http-loader, no HttpClient) |
 | RxJS | 7.8 |
 | Styling | SCSS 7-1 + design tokens (`src/styles/`) |
 | State | Angular Signals (no NgRx) |
@@ -28,7 +28,7 @@ You are an elite Angular architect with deep expertise across the entire Angular
 ### Standalone-First — No NgModules
 - Every component, directive, and pipe must use `standalone: true`.
 - Never introduce or suggest `NgModule`.
-- Providers live in `app.config.ts` via functional providers (`provideRouter`, `provideHttpClient`, `provideTranslateService`, etc.).
+- Providers live in `app.config.ts` via functional providers (`provideRouter`, `provideTranslateService`, etc.).
 
 ### Domain-Driven Design (DDD)
 - **pages/** — route-level smart components (one per route). Own routing state, orchestrate child components.
@@ -47,7 +47,7 @@ Service (domain/application) — owns signals, orchestrates HTTP
     ↓ uses
 HTTP / Browser APIs (infrastructure)
 ```
-- Components never call `HttpClient` directly — always through a service.
+- Components never call `fetch()` directly — always through a service (the helpers live in `services/fetch-json.ts`). Don't add `provideHttpClient` back: it costs ~21 kB of main.js.
 - Services never import component classes.
 - Cross-cutting concerns (scroll, i18n, analytics) live in dedicated singleton services.
 
@@ -165,6 +165,8 @@ src/styles/
 - One theme: light surfaces, with dark ones for contrast (`.section--ink`, the board's dark chapters) that re-point the colour custom properties locally. No theme switcher, no light/dark branches.
 - Colours come from the CSS custom properties in `base/_root.scss` (`var(--ink)`); everything else from the SCSS tokens.
 - Animations belong in `base/_animations.scss` (shared keyframes, `.reveal` states, page transitions); use `RevealDirective` (`jvmReveal`) for scroll-triggered reveals and `SplitTextComponent` (`[jvmSplit]`) for headings.
+- Animate transform and opacity. Page-transition keyframes animate nothing else: any other property (box-shadow, filter, size) takes the whole slide off the compositor. Work a page starts on arrival (third-party scripts, large renders) waits for `PageTransitionService.whenSettled()`. Hidden reveal states are host classes, present from the element's creation; never add them in `afterNextRender`.
+- Self-hosted fonts are cut to the weights the SCSS uses: Geologica 500–700, Inter 400–600, JetBrains Mono 400–500, Caveat 600, covering latin, Latin Extended-A + Romanian ș ț, and Cyrillic. Before using another weight, widen `$faces` in `src/fonts/fonts.scss` and `WEIGHTS` in `scripts/subset-fonts.py`, run the script and commit the woff2 files with `fonts.scss` (`--check` verifies).
 - Never use inline `style=""` bindings for layout — that is CSS's job.
 - Never place a plain declaration after a nested rule or `@include` that expands to a nested rule — move it above or wrap in `& {}`.
 
@@ -175,7 +177,7 @@ src/styles/
 - Every user-visible string must go through `ngx-translate`.
 - Keys follow dot-notation namespacing: `section.element.variant` (e.g. `nav.services`, `contact.form.submit`).
 - In TypeScript use `TranslateService.instant()` only for values that do not change after page load. For reactive values, use `TranslateService.stream()` or the `translate` pipe.
-- New language strings must be added to **all four** locale files: `en.json`, `cs.json`, `sk.json`, `uk.json` — and to their mirrors in `src/app/i18n/*.ts`.
+- New language strings must be added to **all four** locale files: `en.json`, `cs.json`, `sk.json`, `uk.json` — and to their mirrors in `src/app/i18n/*.ts`. Strings of the legal pages (`privacy.*`, `terms.*`, `refunds.*`) go to the legal part instead: `public/i18n/legal/{en,cs,sk,uk}.json` and `src/app/i18n/legal/*.ts`. Mirrors stay JSON-identical to their public files.
 - A sentence that mentions the visitor's idea comes as a pair, `key` and `keyNamed` with `{{name}}`; write the Czech, Slovak and Ukrainian versions around the name so it never needs declining.
 
 ---
@@ -185,9 +187,9 @@ src/styles/
 - `OnPush` everywhere — this is non-negotiable.
 - Lazy-load every route except `/` (see Routing).
 - Prefer `@for` with `track` over `*ngFor` (Angular 17+ control flow syntax).
-- Use `@defer` for below-the-fold heavy components.
+- Use `@defer` for below-the-fold heavy components. Let page sections in through `RenderQueueService` (`when ready() > N || tabbed()`, one per idle period) with `on viewport({ rootMargin: '0px 0px 100% 0px' })`; never `on idle` or fixed `on timer` for them.
 - Never subscribe without unsubscribing. Prefer `toSignal()` (auto-unsubscribes) or `takeUntilDestroyed()`.
-- Bundle budget limits are set in `angular.json`: respect them. 500 kB initial, 8 kB per component style.
+- Bundle budgets live in `project.json` (production): respect them. 400 kB initial (error at 450 kB), 8 kB per component style.
 
 ---
 
@@ -221,6 +223,7 @@ src/styles/
 - Do not add speculative abstractions — solve the problem at hand.
 - Do not commit debug code, TODOs without a ticket, or dead import statements.
 - Do not bypass `ChangeDetectionStrategy.OnPush` with `markForCheck()` or `detectChanges()` unless you can justify why the signal/async pipe approach does not work.
+- Do not import `@angular/forms`: the site's only form (`ContactComponent`) uses signals and native inputs, and the forms module would add ~34 kB raw to a chunk every visitor preloads.
 
 ---
 
@@ -230,7 +233,7 @@ After every code change, verify **all** of the following before responding that 
 
 ### 1. Translations
 
-- Every new user-visible string has a key in **all four** locale files: `public/i18n/en.json`, `cs.json`, `sk.json`, `uk.json`.
+- Every new user-visible string has a key in **all four** locale files: `public/i18n/en.json`, `cs.json`, `sk.json`, `uk.json` (legal pages: `public/i18n/legal/*.json`), and the TS mirrors match.
 - No hardcoded display strings exist in templates or TypeScript.
 - Key names follow dot-notation namespacing (`section.element.variant`).
 - No orphan keys left in locale files (keys added but not referenced in templates).
@@ -260,7 +263,7 @@ Run these checks mentally against every changed file:
 - Heavy or below-the-fold components are wrapped in `@defer`.
 - No inline `style=""` bindings for layout.
 - No new third-party libraries added without explicit user approval.
-- Bundle budget not breached: 500 kB initial chunk, 8 kB per component style.
+- Bundle budget not breached: 400 kB initial (error at 450 kB), 8 kB per component style.
 
 ### 5. SCSS / Styling
 

@@ -1,0 +1,220 @@
+// Czech strings of the legal pages (privacy, terms, refunds): a mirror of public/i18n/legal/cs.json,
+// which the app fetches on the first legal page of a visit. When updating that file, keep this in sync.
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const cs = {
+  "privacy": {
+    "changes": {
+      "p1": "Pokud začneme údaje zpracovávat jinak, tyto zásady aktualizujeme a změníme datum platnosti nahoře na stránce. Platí vždy verze zveřejněná zde.",
+      "title": "Změny těchto zásad"
+    },
+    "controller": {
+      "p1": "Správcem osobních údajů je společnost JVM Yore, s.r.o., IČO 29633443, se sídlem Příčná 1892/4, Nové Město, 110 00 Praha 1, zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 449138.",
+      "p2": "Ve všech otázkách ochrany osobních údajů nám pište na hello@jvm-yore.com. Pověřence pro ochranu osobních údajů jsme nejmenovali – firmě našeho typu tuto povinnost GDPR neukládá.",
+      "title": "Kdo vaše údaje zpracovává"
+    },
+    "cookies": {
+      "li1": "lang – zvolený jazyk webu,",
+      "li2": "idea – název, který jste na úvodní stránce dali svému nápadu, aby ho web mohl během prohlížení používat. K nám se dostane, jen pokud odešlete kontaktní formulář, kde se předvyplní do pole Předmět; smazáním názvu položku odstraníte,",
+      "li3": "fontsCached – poznámka, že už máte písma stažená, aby se stránka příště vykreslila rychleji.",
+      "p1": "Náš web nenastavuje žádné cookies. Do místního úložiště prohlížeče (localStorage) ukládáme jen tři položky:",
+      "p2": "Ověření Cloudflare Turnstile na stránce Kontakt běží ve vlastním okně Cloudflare a může si uložit technické údaje potřebné k rozlišení člověka od robota. Podle Cloudflare se tyto údaje nepoužívají ke sledování ani k reklamě. Podrobnosti uvádí dokument Cloudflare Turnstile Privacy Addendum.",
+      "title": "Cookies a místní úložiště"
+    },
+    "data": {
+      "li1": "Údaje z kontaktního formuláře: jméno, e-mail, název firmy (nepovinné), název projektu (nepovinné), služba, o kterou máte zájem, text zprávy a jazyk, ve kterém jste web používali.",
+      "li2": "Obsah e-mailů, které nám pošlete napřímo, a naši další vzájemnou komunikaci.",
+      "li3": "Technické údaje při odeslání formuláře: IP adresu a signály prohlížeče, které zpracovává ochrana proti spamu Cloudflare Turnstile.",
+      "li4": "Technické údaje při každé návštěvě: IP adresu a údaje o požadavku, které krátkodobě zpracovává poskytovatel hostingu kvůli provozu a zabezpečení webu. My sami žádné záznamy o návštěvách nevedeme.",
+      "p1": "Zpracováváme jen tyto údaje:",
+      "p2": "Nepoužíváme žádnou analytiku, sledovací pixely, reklamní nástroje ani profilování a nechceme po vás nic, co k odpovědi nepotřebujeme.",
+      "title": "Jaké údaje zpracováváme"
+    },
+    "deletion": {
+      "action": "Napsat žádost o výmaz",
+      "p1": "Chcete, abychom vaše údaje smazali? Napište nám na hello@jvm-yore.com z adresy, kterou jste uvedli ve formuláři, s předmětem „Žádost o výmaz údajů“. Důvod uvádět nemusíte.",
+      "p2": "Do jednoho měsíce smažeme vaši poptávku i navazující komunikaci z naší schránky, požádáme o výmaz i naše zpracovatele a výmaz vám potvrdíme e-mailem. Ponecháme jen to, co nám ukládá zákon – typicky vystavené faktury.",
+      "subject": "Žádost o výmaz údajů",
+      "title": "Žádost o výmaz údajů"
+    },
+    "fonts": {
+      "p1": "Písma Geologica, Inter, JetBrains Mono a Caveat načítáme z vlastního serveru, ne ze služby Google Fonts ani z jiné sítě CDN. Při návštěvě webu se tak vaše IP adresa nedostane ke Googlu ani k žádnému jinému poskytovateli písem. Jediným externím obsahem na webu je ověření Cloudflare Turnstile na stránce Kontakt.",
+      "title": "Písma a další externí zdroje"
+    },
+    "intro": "Chceme od vás jen to, co potřebujeme k odpovědi na vaši poptávku. Na této stránce najdete, o jaké údaje jde, k čemu je používáme, komu je předáváme a jak můžete uplatnit svá práva.",
+    "lastUpdated": "Platné od 19. října 2026",
+    "purposes": {
+      "li1": "Odpověď na poptávku, příprava nabídky a jednání o smlouvě – provedení opatření před uzavřením smlouvy na vaši žádost (písm. b). Ze stejného důvodu vám po odeslání formuláře pošleme potvrzení s kopií zprávy.",
+      "li2": "Plnění uzavřené smlouvy a komunikace během spolupráce – plnění smlouvy (písm. b).",
+      "li3": "Ochrana formuláře před spamem a zneužitím a zabezpečení webu – náš oprávněný zájem (písm. f).",
+      "li4": "Vedení účetnictví a plnění daňových povinností, pokud spolu uzavřeme smlouvu – plnění právní povinnosti (písm. c).",
+      "p1": "Každý účel má svůj právní důvod podle čl. 6 odst. 1 GDPR:",
+      "p2": "Váš souhlas ke zpracování proto nepotřebujeme. Obchodní sdělení ani newslettery vám bez vašeho výslovného souhlasu posílat nebudeme a nic o vás nerozhodujeme automatizovaně.",
+      "title": "Proč údaje zpracováváme a na jakém základě"
+    },
+    "recipients": {
+      "li1": "Microsoft Ireland Operations Ltd. (Microsoft Azure) – hosting webu a serveru, který odesílá formulář.",
+      "li2": "Resend, Inc. (USA) – doručení zpráv z formuláře do naší schránky a potvrzení do té vaší.",
+      "li3": "Cloudflare, Inc. (USA) – ochrana formuláře proti robotům (Turnstile).",
+      "li4": "Seznam.cz, a.s. (Česko) – e-mailová schránka hello@jvm-yore.com, ve které vaše zprávy uchováváme.",
+      "p1": "Vaše údaje nikomu neprodáváme. Pracují s nimi jen tito zpracovatelé, kteří nám pomáhají web provozovat, a to jen v rozsahu, který jejich služba vyžaduje:",
+      "p2": "Jinak údaje předáme jen tehdy, když nám to ukládá zákon (například úřadům na jejich žádost).",
+      "title": "Komu údaje předáváme"
+    },
+    "retention": {
+      "li1": "Poptávky a komunikaci, ze které spolupráce nevznikne – nejdéle 12 měsíců od poslední zprávy, pak je smažeme.",
+      "li2": "Pokud spolu začneme pracovat – po dobu trvání smlouvy a poté do uplynutí promlčecí lhůty pro případné nároky ze smlouvy (zpravidla 3 roky).",
+      "li3": "Faktury a další účetní doklady – po dobu, kterou nám ukládají účetní a daňové předpisy (zpravidla 5 až 10 let).",
+      "li4": "Technické údaje z ochrany proti spamu a z hostingu – jen krátkodobě, podle pravidel společností Cloudflare a Microsoft.",
+      "p1": "Údaje uchováváme jen po nezbytně nutnou dobu:",
+      "title": "Jak dlouho údaje uchováváme"
+    },
+    "rights": {
+      "li1": "zjistit, jaké údaje o vás zpracováváme, a získat jejich kopii (čl. 15 GDPR),",
+      "li2": "nechat nepřesné údaje opravit (čl. 16),",
+      "li3": "požádat o výmaz údajů (čl. 17) – viz další oddíl,",
+      "li4": "požádat o omezení zpracování (čl. 18),",
+      "li5": "získat údaje, které jste nám poskytli, ve strojově čitelném formátu (čl. 20),",
+      "li6": "vznést námitku proti zpracování založenému na našem oprávněném zájmu (čl. 21),",
+      "li7": "podat stížnost u Úřadu pro ochranu osobních údajů, Pplk. Sochora 27, 170 00 Praha 7, www.uoou.gov.cz, nebo u dozorového úřadu ve státě EU, kde žijete.",
+      "p1": "V souvislosti se svými údaji máte právo:",
+      "p2": "Žádosti vyřizujeme zdarma a bez zbytečného odkladu, nejpozději do jednoho měsíce. Pokud si nebudeme jisti, že žádost posíláte vy, můžeme vás požádat o ověření – nejčastěji tak, že nám napíšete z e-mailu, který jste uvedli ve formuláři.",
+      "title": "Vaše práva"
+    },
+    "sectionLabel": "Právní informace",
+    "title": "Zásady ochrany osobních údajů",
+    "transfers": {
+      "p1": "Společnosti Resend a Cloudflare sídlí v USA. Předání údajů do USA je chráněno rámcem EU–USA pro ochranu osobních údajů (EU–U.S. Data Privacy Framework), ke kterému se obě společnosti připojily, a standardními smluvními doložkami schválenými Evropskou komisí.",
+      "title": "Předání údajů mimo EU"
+    }
+  },
+  "refunds": {
+    "consulting": {
+      "p1": "Konzultace fakturujeme až po jejich skončení, podle skutečně stráveného času. Termín můžete zdarma zrušit nebo přesunout kdykoli předem – stačí nám napsat.",
+      "title": "Konzultace"
+    },
+    "consumers": {
+      "p1": "Pokud jste spotřebitel a smlouvu jsme uzavřeli na dálku (například e-mailem), můžete od ní bez udání důvodu odstoupit do 14 dnů od jejího uzavření.",
+      "p2": "Jestliže jste výslovně požádali, abychom s prací začali už během této lhůty, zaplatíte při odstoupení jen poměrnou část ceny za práci odvedenou do okamžiku odstoupení. Pokud jsme službu s vaším souhlasem v této lhůtě už úplně dokončili, právo na odstoupení zaniká.",
+      "title": "Práva spotřebitelů"
+    },
+    "intro": "Platíte jen za práci, kterou si objednáte a kterou skutečně odvedeme. Tady přehledně najdete, kdy a jak fakturujeme a v jakých případech peníze vracíme.",
+    "lastUpdated": "Platné od 17. října 2026",
+    "monthly": {
+      "p1": "Tyto služby fakturujeme měsíčně předem. Vypovědět je můžete kdykoli e-mailem s účinností ke konci zaplaceného měsíce – další faktury už nevystavíme a žádný poplatek za ukončení neplatíte.",
+      "p2": "Za rozběhnutý měsíc peníze nevracíme, protože tým má na váš projekt vyhrazený čas. Pokud jsme ale v daném měsíci z našeho důvodu nedodali sjednanou kapacitu, rozdíl vám vrátíme nebo odečteme z další faktury – podle toho, co vám vyhovuje víc.",
+      "title": "Celý tým a Podpora a LTS"
+    },
+    "payments": {
+      "p1": "Na webu nic neplatíte a nesbíráme na něm žádné platební údaje. Platí se vždy až po uzavření smlouvy, na základě faktury, bankovním převodem.",
+      "p2": "Kdy jednotlivé služby fakturujeme, popisují obchodní podmínky v oddílu Ceny a platby.",
+      "title": "Jak platíte"
+    },
+    "projects": {
+      "li1": "Zrušíte ho ještě před zahájením práce – vrátíme celou zálohu.",
+      "li2": "Zrušíte ho během práce – vyúčtujeme jen skutečně odvedenou práci (podle dokončených milníků, případně podle odpracovaných hodin v sazbě za konzultace), zbytek zálohy vrátíme a rozpracované výstupy vám předáme.",
+      "li3": "Z našeho důvodu dílo nedodáme v dohodnutém rozsahu a termínu ani v přiměřené dodatečné lhůtě – vrátíme vám vše, co jste zaplatili za nedodanou část.",
+      "p1": "Před zahájením práce fakturujeme zálohu 50 % ceny, zbytek po předání. Když se projekt nedokončí, postupujeme takto:",
+      "title": "Projekty s pevným rozsahem"
+    },
+    "request": {
+      "action": "Napsat žádost o vrácení peněz",
+      "li1": "číslo faktury nebo smlouvy,",
+      "li2": "důvod a částku, kterou požadujete,",
+      "li3": "číslo účtu, na který máme peníze poslat.",
+      "p1": "Napište nám na hello@jvm-yore.com a uveďte:",
+      "p2": "Odpovíme do 5 pracovních dnů. Schválenou částku vrátíme bankovním převodem nejpozději do 14 dnů, bez jakýchkoli poplatků z naší strany.",
+      "subject": "Žádost o vrácení peněz",
+      "title": "Jak požádat o vrácení peněz"
+    },
+    "sectionLabel": "Právní informace",
+    "title": "Platby a vracení peněz",
+    "warranty": {
+      "p1": "Chyby v dodaném díle opravujeme v rámci 30denní záruky zdarma (viz obchodní podmínky). Vadu nám nahlaste e-mailem i s popisem, jak ji vyvolat; na kritické chyby reagujeme do 4 hodin. Vaše zákonná práva z vadného plnění tím nejsou nijak dotčena.",
+      "title": "Reklamace vad"
+    }
+  },
+  "terms": {
+    "changes": {
+      "p1": "Tyto podmínky můžeme aktualizovat. Na už uzavřené smlouvy se použije verze platná v den jejich uzavření, pokud se nedohodneme jinak.",
+      "title": "Změny podmínek"
+    },
+    "confidentiality": {
+      "p1": "Vše, co s námi sdílíte – podklady, data i obchodní informace –, považujeme za důvěrné a použijeme jen pro vaši zakázku. Na požádání podepíšeme NDA ještě před prvním hovorem. Projekt uvedeme jako referenci jen s vaším souhlasem.",
+      "title": "Důvěrnost"
+    },
+    "contract": {
+      "p1": "Ceny a popisy služeb na webu jsou orientační a nejsou závazným návrhem na uzavření smlouvy. Smlouva vzniká, až když písemně (stačí e-mailem) potvrdíte naši konkrétní nabídku, nebo když obě strany podepíšeme samostatnou smlouvu.",
+      "p2": "Odesláním kontaktního formuláře se k ničemu nezavazujete a nic neplatíte.",
+      "title": "Jak uzavíráme smlouvu"
+    },
+    "cooperation": {
+      "p1": "Na začátku společně sepíšeme zadání a rozsah. Během vývoje vidíte průběžné výsledky na testovacím prostředí. Změny rozsahu vždy nejdřív odhadneme a pustíme se do nich až s vaším souhlasem.",
+      "p2": "Abychom mohli dodat včas, potřebujeme od vás součinnost – podklady, přístupy a zpětnou vazbu v domluvených termínech. Pokud se kvůli zpoždění na vaší straně posune harmonogram, posouvá se o stejnou dobu i termín dodání.",
+      "title": "Průběh spolupráce"
+    },
+    "disputes": {
+      "p1": "Smlouvy se řídí českým právem. Případné spory se vždy nejdřív pokusíme vyřešit dohodou; pokud to nepůjde, rozhodne je příslušný český soud.",
+      "p2": "Jako spotřebitel můžete spor řešit také mimosoudně u České obchodní inspekce (www.coi.cz).",
+      "title": "Rozhodné právo a spory"
+    },
+    "intro": "Tyto podmínky upravují používání webu jvm-yore.com a základní pravidla spolupráce se společností JVM Yore, s.r.o. Konkrétní rozsah, cenu a termíny vždy sjednáme v nabídce nebo ve smlouvě – ta má před těmito podmínkami přednost.",
+    "ip": {
+      "p1": "Ke zdrojovému kódu máte přístup od prvního dne – vzniká ve vašem repozitáři, nebo vám ho průběžně zpřístupňujeme. Zaplacením ceny získáváte výhradní, časově i územně neomezenou licenci k dílu vytvořenému pro vás, včetně práva ho upravovat a předat jinému dodavateli.",
+      "p2": "Knihovny s otevřeným zdrojovým kódem a nástroje třetích stran zůstávají pod svými licencemi. Obecné know-how a vlastní nástroje, které používáme napříč projekty, můžeme využívat dál; k jejich užití ve vašem díle máte bezplatnou a neomezenou licenci.",
+      "title": "Zdrojový kód a autorská práva"
+    },
+    "lastUpdated": "Platné od 20. října 2026",
+    "liability": {
+      "p1": "Odpovídáme za škodu, kterou způsobíme porušením svých povinností. Vůči podnikatelům je celková náhrada škody omezena výší ceny zaplacené za dotčenou službu za posledních 12 měsíců. Omezení neplatí pro škodu způsobenou úmyslně nebo z hrubé nedbalosti, pro újmu na zdraví a vůči spotřebitelům.",
+      "p2": "Za obsah webů třetích stran, na které odkazujeme, neodpovídáme.",
+      "title": "Odpovědnost"
+    },
+    "licenses": {
+      "fontsLink": "Licence písem (OFL 1.1)",
+      "li1": "Písma Geologica (© The Geologica Project Authors), Inter (© The Inter Project Authors), JetBrains Mono (© The JetBrains Mono Project Authors) a Caveat (© The Caveat Project Authors) pod licencí SIL Open Font License 1.1, hostovaná na našem serveru.",
+      "li2": "Open-source knihovny jako Angular, RxJS nebo ngx-translate pod licencí MIT a dalšími svobodnými licencemi.",
+      "li3": "Fotografie členů týmu jsou naše vlastní. Fotky z fotobank ani cizí loga nepoužíváme.",
+      "p1": "Na webu používáme tyto zdroje třetích stran, vždy v souladu s jejich licencemi:",
+      "softwareLink": "Licence knihoven",
+      "title": "Licence použitých zdrojů"
+    },
+    "pricing": {
+      "li1": "Nejsme plátci DPH, k našim cenám proto DPH nepřipočítáváme. Pokud se plátci staneme, dáme vám to vědět předem a DPH budeme připočítávat od data registrace.",
+      "li2": "Projekty s pevným rozsahem: 50 % ceny fakturujeme jako zálohu před zahájením práce, zbytek po předání.",
+      "li3": "Celý tým a Podpora a LTS: fakturujeme měsíčně předem.",
+      "li4": "Konzultace: fakturujeme po skončení podle skutečně stráveného času, v hodinové sazbě uvedené na tomto webu.",
+      "li5": "Faktury jsou splatné do 14 dnů od vystavení, bankovním převodem.",
+      "li6": "Náklady třetích stran (například hosting, licence nebo poplatky obchodů s aplikacemi) platíte přímo vy, nebo vám je přeúčtujeme bez přirážky – vždy až s vaším souhlasem.",
+      "p1": "Ceny uvádíme bez skrytých poplatků. Cokoli, co v ceně není, s vámi vždy domluvíme předem.",
+      "title": "Ceny a platby"
+    },
+    "provider": {
+      "p1": "Služby poskytuje společnost JVM Yore, s.r.o., IČO 29633443, se sídlem Příčná 1892/4, Nové Město, 110 00 Praha 1, zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka 449138 (dále jen „my“). Kontakt: hello@jvm-yore.com.",
+      "title": "Kdo jsme"
+    },
+    "scope": {
+      "p1": "Služby – vývoj softwaru, podporu a konzultace – poskytujeme především podnikatelům a firmám. Na vztahy s nimi se vztahují tyto podmínky a občanský zákoník.",
+      "p2": "Pokud s námi uzavřete smlouvu jako spotřebitel, máte navíc všechna práva, která vám dává zákon na ochranu spotřebitele, a tyto podmínky je nijak neomezují. Týká se to hlavně práva odstoupit od smlouvy uzavřené na dálku – podrobnosti najdete v dokumentu Platby a vracení peněz.",
+      "title": "Pro koho podmínky platí"
+    },
+    "sectionLabel": "Právní informace",
+    "termination": {
+      "p1": "Celý tým i Podporu a LTS můžete kdykoli vypovědět e-mailem, s účinností ke konci aktuálního fakturačního měsíce. Žádná minimální doba trvání ani poplatek za ukončení neplatí.",
+      "p2": "Projekt s pevným rozsahem lze ukončit dohodou nebo z důvodů, které stanoví zákon. Jak v takovém případě vyúčtujeme odvedenou práci a vrátíme zálohu, popisuje dokument Platby a vracení peněz.",
+      "title": "Ukončení spolupráce"
+    },
+    "title": "Obchodní podmínky",
+    "warranty": {
+      "p1": "Po spuštění projektu s pevným rozsahem 30 dní zdarma opravujeme všechny chyby, které odporují zadání. Na kritickou chybu, která brání používání aplikace, reagujeme do 4 hodin.",
+      "p2": "U Podpory a LTS platí reakční doby (SLA) sjednané ve smlouvě. Záruka se nevztahuje na chyby způsobené zásahy třetích stran, změnami infrastruktury mimo naši správu nebo používáním v rozporu s dokumentací.",
+      "title": "Záruka a oprava chyb"
+    },
+    "website": {
+      "p1": "Obsah webu – texty, grafika, logo a fotografie týmu – je chráněn autorským právem a patří nám. Bez našeho souhlasu ho prosím nekopírujte ani dál nešiřte; běžné citování s uvedením zdroje je v pořádku.",
+      "p2": "Snažíme se, aby informace na webu byly přesné a aktuální, ale web může být občas nedostupný nebo obsahovat chybu. Rozhodující jsou vždy údaje v nabídce a ve smlouvě.",
+      "title": "Používání webu"
+    }
+  }
+} as const;
+
+export default cs;

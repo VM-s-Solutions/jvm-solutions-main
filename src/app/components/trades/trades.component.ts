@@ -119,7 +119,11 @@ export class TradesComponent {
     return card.getBoundingClientRect().width + (parseFloat(getComputedStyle(car).columnGap) || 0);
   }
 
-  /** Progress bar, arrow states and mouse dragging. Scroll frames write to the DOM directly. */
+  /**
+   * Progress bar, arrow states and mouse dragging. Scroll frames write to the DOM directly. Nothing
+   * is measured while the section renders: the ResizeObserver's first report, after the browser's
+   * own layout, brings the first measure in the frame after.
+   */
   private wire(destroyRef: DestroyRef): void {
     const car = this.car().nativeElement;
     const bar = this.bar().nativeElement;
@@ -214,8 +218,6 @@ export class TradesComponent {
       resize.disconnect();
       cancelAnimationFrame(frame);
     });
-
-    measure();
   }
 
   private setEnds(car: HTMLElement, atStart: boolean, atEnd: boolean): void {

@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { map } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
+import { TranslationPartsService } from './translation-parts.service';
 
 export const SUPPORTED_LANGS = ['en', 'cs', 'sk', 'uk'] as const;
 export type Lang = (typeof SUPPORTED_LANGS)[number];
@@ -31,19 +32,34 @@ export function isLang(value: string | null | undefined): value is Lang {
 @Injectable({ providedIn: 'root' })
 export class LangService {
   private readonly translate = inject(TranslateService);
+  private readonly parts = inject(TranslationPartsService);
 
   readonly current = toSignal(
     this.translate.onLangChange.pipe(map((e) => toLang(e.lang))),
     { initialValue: toLang(this.translate.getCurrentLang()) },
   );
 
+  /** The language asked for last, so an earlier switch that lands later can't take over */
+  private requested: Lang | null = null;
+
   use(code: Lang): void {
-    this.translate.use(code);
+    this.requested = code;
     try {
       localStorage.setItem('lang', code);
     } catch {
       // storage blocked: the choice lasts for this visit
     }
+    // The open page's parts in that language come first, so the switch swaps every string at once
+    void this.parts.ensure(code).then(() => {
+      if (this.requested !== code) return;
+      // A part asked for while this language was on its way, or one that failed with it, follows right after
+      void firstValueFrom(this.translate.use(code)).then(
+        () => this.parts.ensure(code),
+        // Download failed: the page stays in the language it was in. Forget ngx-translate's dead request,
+        // or the next pick re-fetches through it and switches without ever storing the strings.
+        () => this.translate.resetLang(code),
+      );
+    });
   }
 }
 

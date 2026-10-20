@@ -1,8 +1,10 @@
 import {
+  AfterRenderRef,
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   ElementRef,
+  Injector,
   afterNextRender,
   effect,
   inject,
@@ -10,6 +12,7 @@ import {
   signal,
   untracked,
 } from '@angular/core';
+import { whenRevealed } from '../../directives/reveal.directive';
 import { prefersReducedMotion } from '../../services/motion';
 
 /** Splits on ordinary whitespace only, so a no-break space keeps two words together. */
@@ -58,11 +61,13 @@ export class SplitTextComponent {
   protected readonly swapped = signal(false);
   protected readonly outDuration = `${OUT_MS}ms`;
 
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+  private readonly injector = inject(Injector);
   private timer = 0;
-  private frame = 0;
+  /** The pending hand-over from 'enter' to the rise, run right after the entering words render */
+  private rise: AfterRenderRef | null = null;
 
   constructor() {
-    const el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const destroyRef = inject(DestroyRef);
 
     effect(() => {
@@ -71,18 +76,7 @@ export class SplitTextComponent {
     });
 
     afterNextRender(() => {
-      if (!('IntersectionObserver' in window)) {
-        this.shown.set(true);
-        return;
-      }
-      const observer = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          this.shown.set(true);
-          observer.disconnect();
-        }
-      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
-      observer.observe(el);
-      destroyRef.onDestroy(() => observer.disconnect());
+      destroyRef.onDestroy(whenRevealed(this.host, () => this.shown.set(true)));
     });
 
     destroyRef.onDestroy(() => this.callOff());
@@ -111,22 +105,28 @@ export class SplitTextComponent {
       this.timer = 0;
       this.words.set(next);
       this.phase.set('enter');
-      // two frames: the entering words must paint below their masks before they rise
-      this.frame = requestAnimationFrame(() => {
-        this.frame = requestAnimationFrame(() => {
-          this.frame = 0;
+      // In the same render: the entering words get styled below their masks (the style read), then
+      // the rise starts from there on the next frame, with no frames lost in between. Without the
+      // read, a reused word would rise from where it dropped out, above the mask.
+      this.rise = afterNextRender(
+        () => {
+          this.rise = null;
+          const entering = this.host.querySelector('.w.is-enter > span');
+          // A style-only property: the read applies the styles without laying the page out
+          if (entering) getComputedStyle(entering).getPropertyValue('opacity');
           this.phase.set('idle');
-        });
-      });
+        },
+        { injector: this.injector },
+      );
     }, OUT_MS);
   }
 
-  /** Stops a swap in flight (its timer and frames), so a stale one can't land later. */
+  /** Stops a swap in flight (its timer and pending rise), so a stale one can't land later. */
   private callOff(): void {
     clearTimeout(this.timer);
-    cancelAnimationFrame(this.frame);
+    this.rise?.destroy();
     this.timer = 0;
-    this.frame = 0;
+    this.rise = null;
     this.phase.set('idle');
   }
 }

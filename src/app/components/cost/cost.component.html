@@ -1,0 +1,19 @@
+<section class="section section--ink" id="cost" aria-labelledby="cost-title" jvmDarkSurface>
+  <div class="container cost">
+    <div>
+      <h2 class="h2 cost__title" id="cost-title" [jvmSplit]="titleKey() | translate: titleParams()"></h2>
+      <p class="sec-head__p" jvmReveal>{{ 'cost.lead' | translate }}</p>
+      <a class="link" routerLink="/contact" jvmReveal>{{ 'cost.ask' | translate }}<jvm-icon name="arrow" /></a>
+    </div>
+
+    <div class="hour" jvmReveal="up" [revealDelay]="0.1">
+      <h3 class="hour__name">{{ 'cost.hour.name' | translate }}</h3>
+      <p class="hour__price">{{ 'cost.hour.price' | translate: priceParams() }}</p>
+      <p class="hour__desc">{{ 'cost.hour.desc' | translate }}</p>
+      <a class="btn btn--primary hour__cta" routerLink="/contact" [queryParams]="consultation">
+        <span>{{ 'cost.hour.cta' | translate }}</span>
+        <jvm-icon name="arrow" />
+      </a>
+    </div>
+  </div>
+</section>

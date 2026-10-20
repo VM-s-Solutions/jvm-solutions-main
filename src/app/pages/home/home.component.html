@@ -1,42 +1,46 @@
 <jvm-hero />
 
-<!-- Each section renders as it nears the viewport. It doesn't wait for a scroll: the first Tab renders them
-     all, so keyboard users meet them in reading order, and otherwise each has its own timer, once the page
-     has loaded and 400ms apart, so screen reader users find them too and no single task renders them all.
+<!-- Below the hero, each section renders in an idle moment of its own, top down (RenderQueueService
+     lets them in through ready()): once the hero has made its entrance, and only while the visitor
+     isn't scrolling, tapping or typing, so no task renders two and none renders mid-gesture. A section
+     the visitor heads for renders a screen before it shows; the paper section, whose placeholder already
+     starts within a screen of the fold, renders as soon as it's in view (a screen ahead would mean
+     during the hero's entrance). The first Tab renders them all, so keyboard users meet them in reading
+     order, and screen reader users find them all without a scroll.
      The anchor stays outside the deferred block, so "see how we'd build it" can scroll here before it loads. -->
 <div id="how">
-  @defer (on viewport; on timer(5000ms); when tabbed(); prefetch on idle) {
+  @defer (on viewport; when ready() > 0 || tabbed(); prefetch on idle) {
     <jvm-paper />
   } @placeholder {
     <div class="ph ph--paper"></div>
   }
 </div>
 
-@defer (on viewport; on timer(5400ms); when tabbed(); prefetch on idle) {
+@defer (on viewport({ rootMargin: '0px 0px 100% 0px' }); when ready() > 1 || tabbed(); prefetch on idle) {
   <jvm-trades />
 } @placeholder {
   <div class="ph ph--trades"></div>
 }
 
-@defer (on viewport; on timer(5800ms); when tabbed(); prefetch on idle) {
+@defer (on viewport({ rootMargin: '0px 0px 100% 0px' }); when ready() > 2 || tabbed(); prefetch on idle) {
   <jvm-team-trio />
 } @placeholder {
   <div class="ph ph--team"></div>
 }
 
-@defer (on viewport; on timer(6200ms); when tabbed(); prefetch on idle) {
-  <jvm-price-band />
+@defer (on viewport({ rootMargin: '0px 0px 100% 0px' }); when ready() > 3 || tabbed(); prefetch on idle) {
+  <jvm-cost />
 } @placeholder {
-  <div class="ph ph--price"></div>
+  <div class="ph ph--cost"></div>
 }
 
-@defer (on viewport; on timer(6600ms); when tabbed(); prefetch on idle) {
+@defer (on viewport({ rootMargin: '0px 0px 100% 0px' }); when ready() > 4 || tabbed(); prefetch on idle) {
   <jvm-asked />
 } @placeholder {
   <div class="ph ph--asked"></div>
 }
 
-@defer (on viewport; on timer(7000ms); when tabbed(); prefetch on idle) {
+@defer (on viewport({ rootMargin: '0px 0px 100% 0px' }); when ready() > 5 || tabbed(); prefetch on idle) {
   <jvm-compose />
 } @placeholder {
   <div class="ph ph--compose"></div>

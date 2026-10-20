@@ -12,6 +12,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { LangService } from '../../services/lang.service';
+import { PageTransitionService } from '../../services/page-transition';
 
 interface TurnstileAPI {
   render(el: HTMLElement, options: TurnstileOptions): string;
@@ -70,19 +71,25 @@ export class TurnstileComponent implements OnDestroy {
   readonly resolved = output<string | null>();
 
   private readonly lang = inject(LangService);
+  private readonly pages = inject(PageTransitionService);
   private readonly container = viewChild.required<ElementRef<HTMLElement>>('container');
   private widgetId: string | undefined;
   private destroyed = false;
 
   constructor() {
     afterNextRender(() => {
+      // The script and the widget's iframe wait until the page has slid in, so they can't make the
+      // slide stutter; a page opened directly has no slide and loads them at once.
       // On failure the widget simply doesn't render; submit then reports the missing captcha.
-      loadTurnstile().then(
-        () => {
-          if (!this.destroyed) this.render();
-        },
-        () => {},
-      );
+      this.pages.whenSettled().then(() => {
+        if (this.destroyed) return;
+        loadTurnstile().then(
+          () => {
+            if (!this.destroyed) this.render();
+          },
+          () => {},
+        );
+      });
     });
 
     // A live widget can't change its language: re-mount it in the one the visitor switched to.

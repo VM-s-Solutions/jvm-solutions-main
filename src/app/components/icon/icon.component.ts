@@ -9,8 +9,8 @@ export type IconName =
   | 'check'
   | 'home'
   | 'grid'
-  | 'tag'
   | 'people'
+  | 'help'
   | 'chat';
 
 /**
@@ -38,13 +38,14 @@ export type IconName =
           <rect x="4" y="13" width="7" height="7" rx="2" stroke-width="1.8" />
           <rect x="13" y="13" width="7" height="7" rx="2" stroke-width="1.8" />
         }
-        @case ('tag') {
-          <path d="M3.5 12.2V5a1.5 1.5 0 0 1 1.5-1.5h7.2a1.5 1.5 0 0 1 1 .44l7.4 7.4a1.5 1.5 0 0 1 0 2.12l-7.2 7.2a1.5 1.5 0 0 1-2.12 0l-7.4-7.4a1.5 1.5 0 0 1-.38-1.06z" stroke-width="1.8" />
-          <circle cx="8.5" cy="8.5" r="1.6" fill="currentColor" stroke="none" />
-        }
         @case ('people') {
           <circle cx="9" cy="8.5" r="3.2" stroke-width="1.8" />
           <path d="M3.5 19a5.5 5.5 0 0 1 11 0M15.5 5.6a3.2 3.2 0 0 1 0 5.8M17 14.2a5.5 5.5 0 0 1 3.5 4.8" stroke-width="1.8" />
+        }
+        @case ('help') {
+          <circle cx="12" cy="12" r="8.5" stroke-width="1.8" />
+          <path d="M9.6 9.7a2.4 2.4 0 1 1 3.6 2.1c-.7.4-1.2.9-1.2 1.7v.3" stroke-width="1.8" />
+          <circle cx="12" cy="16.6" r="1.1" fill="currentColor" stroke="none" />
         }
         @case ('chat') { <path d="M12 4c4.7 0 8.5 3.1 8.5 7s-3.8 7-8.5 7c-1 0-2-.13-2.9-.4L5 19.5l1.2-3.6C4.5 14.6 3.5 12.9 3.5 11 3.5 7.1 7.3 4 12 4z" stroke-width="1.8" /> }
       }

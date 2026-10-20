@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   computed,
+  effect,
   inject,
   signal,
   viewChild,
@@ -21,7 +22,6 @@ import { LANGS, Lang, LangService } from '../../services/lang.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslateModule, IconComponent],
   host: {
-    '(document:click)': 'closeOnOutside($event)',
     '(document:keydown.escape)': 'closeOnEscape()',
     '(focusout)': 'closeOnFocusOut($event)',
   },
@@ -38,6 +38,21 @@ export class LangMenuComponent {
   protected readonly current = this.lang.current;
   protected readonly currentShort = computed(() => LANGS.find((l) => l.code === this.current())?.short ?? 'EN');
 
+  constructor() {
+    // A click anywhere else closes the list. The listener lives only while the list is open: one
+    // bound for good would run change detection on every click on the page. The effect runs after
+    // the opening click has finished, so that click can't close the list it opened.
+    effect((onCleanup) => {
+      if (!this.open()) return;
+      const closeOnOutside = (event: MouseEvent) => {
+        const { target } = event;
+        if (!(target instanceof Node && this.host.nativeElement.contains(target))) this.open.set(false);
+      };
+      document.addEventListener('click', closeOnOutside);
+      onCleanup(() => document.removeEventListener('click', closeOnOutside));
+    });
+  }
+
   toggle(): void {
     this.open.update((v) => !v);
   }
@@ -48,10 +63,6 @@ export class LangMenuComponent {
     this.trigger().nativeElement.focus();
   }
 
-  closeOnOutside(event: MouseEvent): void {
-    if (this.open() && !this.host.nativeElement.contains(event.target as Node)) this.open.set(false);
-  }
-
   closeOnEscape(): void {
     if (!this.open()) return;
     this.open.set(false);
@@ -60,7 +71,7 @@ export class LangMenuComponent {
 
   /**
    * Tabbing out of the list closes it. Focus going nowhere (a click on the page; Safari doesn't
-   * focus buttons on click) is left to closeOnOutside.
+   * focus buttons on click) is left to the outside-click listener.
    */
   closeOnFocusOut(event: FocusEvent): void {
     const next = event.relatedTarget;

@@ -68,7 +68,7 @@ $turnstile-h: 65px;
 
 .mail__form {
   transition:
-    opacity $duration-base $ease-out,
+    opacity $duration-half $ease-out,
     transform $duration-slower $ease-ios;
 
   .is-away & {

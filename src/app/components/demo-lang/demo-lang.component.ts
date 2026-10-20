@@ -36,7 +36,8 @@ const SAMPLES: readonly Sample[] = LANGS.map(({ code, short }) => ({
 
 /**
  * Time on each language during a pass. A pass shows the other three and comes back to
- * English: four switches, so it is over, last crossfade included, within five seconds.
+ * English: four switches, so from the first switch to the end of the last crossfade it
+ * moves for well under five seconds.
  */
 const STEP_MS = 1050;
 /** Share of the screen that must be in view before it plays its pass */

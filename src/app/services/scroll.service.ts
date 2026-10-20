@@ -7,12 +7,40 @@ const TOP_GAP = 12;
 /** How long we wait for a deferred element to render before giving up. */
 const RENDER_WAIT_MS = 3000;
 
-/** The fixed top bar's rendered height; falls back to the --nav-h token (in px) before it renders. */
+/** The top bar being watched, and its height as last laid out */
+let watchedBar: Element | null = null;
+let watchedHeight = 0;
+let barSizes: ResizeObserver | undefined;
+
+/**
+ * The fixed top bar's rendered height; falls back to the --nav-h token (in px) before it renders.
+ * Scroll handlers ask for it every frame, so after the first measure a ResizeObserver keeps it
+ * current and asking reads no layout.
+ */
 export function topBarHeight(): number {
+  if (watchedHeight && watchedBar?.isConnected) return watchedHeight;
   const bar = document.querySelector('jvm-top-bar');
   const measured = bar?.getBoundingClientRect().height;
-  if (measured) return measured;
-  return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+  if (!bar || !measured) {
+    return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+  }
+  watch(bar, measured);
+  return measured;
+}
+
+/** Keeps `height` as the bar's and follows the bar's resizes from now on. */
+function watch(bar: Element, height: number): void {
+  if (typeof ResizeObserver === 'undefined') return;
+  barSizes ??= new ResizeObserver(([entry]) => {
+    // The border box: the bar's padding holds the notch inset
+    watchedHeight = entry?.borderBoxSize[0]?.blockSize ?? 0;
+  });
+  if (watchedBar !== bar) {
+    if (watchedBar) barSizes.unobserve(watchedBar);
+    barSizes.observe(bar);
+    watchedBar = bar;
+  }
+  watchedHeight = height;
 }
 
 @Injectable({ providedIn: 'root' })

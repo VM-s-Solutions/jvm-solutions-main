@@ -8,7 +8,8 @@ import { SplitTextComponent } from '../split-text/split-text.component';
 interface Member {
   id: PersonId;
   full: string;
-  avatar: string;
+  /** The 320px face: the row shows faces up to 152 CSS px */
+  face: string;
   /** The letter of "JVM" that comes from their name */
   initial: string;
   tabId: string;
@@ -18,11 +19,11 @@ interface Member {
 }
 
 const MEMBERS: readonly Member[] = TEAM_ORDER.map((id) => {
-  const { first, full, avatar } = TEAM[id];
+  const { first, full, face } = TEAM[id];
   return {
     id,
     full,
-    avatar,
+    face,
     initial: first.charAt(0),
     tabId: `team-tab-${id}`,
     panelId: `team-bio-${id}`,

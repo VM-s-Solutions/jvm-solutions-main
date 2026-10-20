@@ -1,0 +1,51 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+}
+
+// Copy above the card on phones; side by side from the desktop layout up
+.cost {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $stack-gap;
+  align-items: center;
+
+  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+}
+
+// A long idea name breaks inside its word mask instead of running off a phone screen
+.cost__title {
+  overflow-wrap: anywhere;
+}
+
+// ─── The hour ─────────────────────────────────────────────────────────────────
+// The one price we publish, on a raised card of the band
+.hour {
+  padding: clamp(#{$space-7}, 4vw, #{$space-12});
+  border-radius: $radius-xl;
+  background: var(--night-2);
+  box-shadow: inset 0 0 0 1px rgba($color-bg, 0.05);
+}
+
+.hour__name {
+  font: $weight-semibold #{$text-md}/#{$leading-snug} $font-text;
+  color: var(--muted);
+}
+
+.hour__price {
+  margin-top: $space-2;
+  font: $weight-semibold #{$fs-h3}/#{$leading-heading} $font-display;
+  letter-spacing: $tracking-heading;
+}
+
+.hour__desc {
+  max-width: 30em;
+  margin-top: $space-4;
+  font-size: $text-base;
+  color: var(--muted);
+}
+
+.hour__cta {
+  margin-top: $space-7;
+}

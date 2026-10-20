@@ -59,7 +59,7 @@ $face: clamp(6rem, 12vw, 9.5rem);
   filter: saturate(0.35);
   transform: scale(0.88);
   transition:
-    transform $duration-slow $ease-ios,
+    transform $duration-long $ease-ios,
     filter $duration-slow $ease-out,
     box-shadow $duration-slow $ease-out;
 
@@ -121,7 +121,7 @@ $face: clamp(6rem, 12vw, 9.5rem);
   transform: translateY($space-2-5);
   transition:
     opacity $duration-base $ease-out,
-    transform $duration-slow $ease-out,
+    transform $duration-long $ease-out,
     visibility 0s linear $duration-base;
 
   // the new line waits a beat, so the old one has begun to fade

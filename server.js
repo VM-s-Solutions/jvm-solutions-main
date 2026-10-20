@@ -39,6 +39,11 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// ── Retired pages ───────────────────────────────────────────────────────────
+// Prices are agreed per scope now, so the pricing page is gone: old links and search results
+// get a permanent redirect to the home page instead of the SPA fallback's 200.
+app.get('/pricing', (req, res) => res.redirect(301, '/'));
+
 // Serve pre-compressed static assets (*.br preferred, *.gz fallback, raw otherwise)
 app.use(expressStaticGzip(DIST, {
   enableBrotli: true,
@@ -54,8 +59,9 @@ app.use(expressStaticGzip(DIST, {
         // font files — revalidate every time so a deploy never leaves it pointing at deleted files
         res.setHeader('Cache-Control', 'no-cache');
       } else if (filePath.includes(`${path.sep}i18n${path.sep}`)) {
-        // The app loads the locale files by name, while its own code is hashed — revalidate every
-        // time so a deploy never pairs new code with old copy (an unchanged file comes back as a 304)
+        // The app loads the locale files by name (subfolders too: i18n/legal/), while its own code is
+        // hashed — revalidate every time so a deploy never pairs new code with old copy (an unchanged
+        // file comes back as a 304)
         res.setHeader('Cache-Control', 'no-cache');
       } else if (/\.(txt|xml)(\.br|\.gz)?$/.test(filePath)) {
         // robots.txt, sitemap.xml and llms.txt have no content hash —

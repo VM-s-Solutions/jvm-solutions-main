@@ -1,8 +1,10 @@
 Font licences — jvm-yore.com
 
-This website serves the Geologica, Inter, JetBrains Mono and Caveat typefaces (woff2 subsets)
-from its own server. All four are distributed under the SIL Open Font License 1.1; the full
-notices follow.
+This website serves the Geologica, Inter, JetBrains Mono and Caveat typefaces from its own
+server, as woff2 files cut down to the characters and weights the site uses: Modified Versions
+in the licence's terms (none of the four declares a Reserved Font Name), each keeping its
+copyright notice and licence URL. All four are distributed under the SIL Open Font License 1.1;
+the full notices follow.
 
 === Inter ===
 

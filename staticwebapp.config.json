@@ -17,6 +17,11 @@
   },
   "routes": [
     {
+      "route": "/pricing",
+      "redirect": "/",
+      "statusCode": 301
+    },
+    {
       "route": "/fonts.css",
       "headers": {
         "Cache-Control": "no-cache"
@@ -44,6 +49,12 @@
       "route": "/*.woff",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/i18n/legal/*.json",
+      "headers": {
+        "Cache-Control": "no-cache"
       }
     },
     {

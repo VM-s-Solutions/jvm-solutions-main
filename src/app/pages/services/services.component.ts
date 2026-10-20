@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { SplitTextComponent } from '../../components/split-text/split-text.component';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { CONSULTATION_PARAMS } from '../../services/consultation';
 import { IdeaService } from '../../services/idea.service';
 import { prefersReducedMotion } from '../../services/motion';
 import { ScrollService } from '../../services/scroll.service';
@@ -95,6 +96,7 @@ export class ServicesComponent {
   protected readonly trades = TRADES;
   protected readonly takeover = TAKEOVER;
   protected readonly contents = CONTENTS;
+  protected readonly consultation = CONSULTATION_PARAMS;
 
   /** "…every part of your product" until the visitor names their idea, then "…every part of Bloom" */
   protected readonly leadKey = computed(() => (this.idea.hasName() ? 'services.leadNamed' : 'services.lead'));

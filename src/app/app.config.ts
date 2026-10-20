@@ -1,8 +1,7 @@
 import { ApplicationConfig, provideAppInitializer, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
-import { createInlineTranslateLoader } from './services/inline-translate-loader';
+import { TranslationLoader } from './services/translation-loader';
 import { AfterLoadPreloadingStrategy } from './services/after-load-preloading.strategy';
 import { initTranslations } from './services/initial-lang';
 import { onPageTransition } from './services/page-transition';
@@ -21,14 +20,12 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions({ skipInitialTransition: true, onViewTransitionCreated: onPageTransition }),
       withPreloading(AfterLoadPreloadingStrategy),
     ),
-    provideHttpClient(withFetch()),
+    // Locale files and the contact form go through fetch() (services/fetch-json.ts), so there's no
+    // HttpClient (21 kB off the initial load).
     provideTranslateService({
       lang: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createInlineTranslateLoader,
-        deps: [HttpClient],
-      },
+      // The root TranslationLoader itself, so ngx-translate and TranslationPartsService share its wanted parts
+      loader: { provide: TranslateLoader, useExisting: TranslationLoader },
     }),
     provideAppInitializer(initTranslations),
   ],

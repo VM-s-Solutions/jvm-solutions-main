@@ -35,7 +35,7 @@
         {{ m.typed }}
       }
       @if (m.route; as route) {
-        <a msgAction class="msg__act" [class.is-new]="m.actionEnter" [routerLink]="route">
+        <a msgAction class="msg__act" [class.is-new]="m.actionEnter" [routerLink]="route.path" [queryParams]="route.queryParams">
           <span class="msg__act-label">{{ m.actionKey | translate }}</span><jvm-icon name="arrow" />
         </a>
       } @else if (m.scrollTo; as target) {

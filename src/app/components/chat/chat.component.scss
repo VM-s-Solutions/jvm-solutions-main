@@ -97,6 +97,9 @@ $chip-ring: inset 0 0 0 1.5px;
   flex: 1;
   min-height: 0;
   padding: $space-5 $body-pad-x $space-3;
+  // Opaque, like the window behind it: a browser can then scroll it on the compositor even on a
+  // 1x screen, where a see-through scroller scrolls on the main thread to keep its text crisp
+  background: var(--bg);
   // an action reaching into the side padding must not make the thread scroll sideways
   overflow-x: hidden;
   overflow-y: auto;
@@ -110,7 +113,7 @@ $chip-ring: inset 0 0 0 1.5px;
 
   .msg.is-new {
     animation:
-      fade-in $duration-base $ease-out backwards,
+      fade-in $duration-short $ease-out backwards,
       msg-rise $duration-slow $ease-spring backwards;
   }
 
@@ -161,7 +164,7 @@ $chip-ring: inset 0 0 0 1.5px;
 
   &.is-new {
     animation:
-      fade-in $duration-base $ease-out backwards,
+      fade-in $duration-short $ease-out backwards,
       msg-rise $duration-slow $ease-spring backwards;
   }
 

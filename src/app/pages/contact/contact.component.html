@@ -14,11 +14,12 @@
       </div>
 
       <form
+        #form
         class="mail__form"
+        novalidate
         aria-labelledby="mail-title"
-        [formGroup]="form"
         [attr.inert]="away() ? '' : null"
-        (ngSubmit)="submit()"
+        (submit)="submit($event)"
       >
         <div class="mrow">
           <span class="mrow__k" id="f-to">{{ 'contact.to' | translate }}</span>
@@ -35,13 +36,13 @@
           <label class="mrow__k" for="f-subject">{{ 'contact.subject' | translate }}</label>
           <div class="mrow__v">
             <input
+              #subjectInput
               class="minput minput--subject"
               id="f-subject"
-              formControlName="subject"
               autocomplete="off"
-              [maxlength]="limits.project"
+              [maxLength]="limits.project"
               [placeholder]="'contact.subjectPlaceholder' | translate"
-              (input)="onSubjectInput()"
+              (input)="onSubjectInput(subjectInput.value)"
             />
           </div>
         </div>
@@ -53,13 +54,13 @@
               #nameInput
               class="minput"
               id="f-name"
-              formControlName="name"
               autocomplete="name"
               aria-required="true"
-              [maxlength]="limits.name"
+              [maxLength]="limits.name"
               [placeholder]="'contact.namePlaceholder' | translate"
               [attr.aria-invalid]="errors().name || null"
               [attr.aria-describedby]="errors().name ? 'f-name-err' : null"
+              (input)="onField('name', nameInput.value)"
               (blur)="onBlur('name')"
             />
             @if (errors().name) {
@@ -76,14 +77,14 @@
               class="minput"
               id="f-email"
               type="email"
-              formControlName="email"
               autocomplete="email"
               spellcheck="false"
               aria-required="true"
-              [maxlength]="limits.email"
+              [maxLength]="limits.email"
               [placeholder]="'contact.emailPlaceholder' | translate"
               [attr.aria-invalid]="errors().email || null"
               [attr.aria-describedby]="errors().email ? 'f-email-err' : null"
+              (input)="onField('email', emailInput.value)"
               (blur)="onBlur('email')"
             />
             @if (errors().email) {
@@ -96,12 +97,13 @@
           <label class="mrow__k" for="f-company">{{ 'contact.company' | translate }}</label>
           <div class="mrow__v">
             <input
+              #companyInput
               class="minput"
               id="f-company"
-              formControlName="company"
               autocomplete="organization"
-              [maxlength]="limits.company"
+              [maxLength]="limits.company"
               [placeholder]="'contact.companyPlaceholder' | translate"
+              (input)="onField('company', companyInput.value)"
             />
           </div>
         </div>
@@ -119,7 +121,14 @@
             <div class="pills">
               @for (option of services; track option.value) {
                 <label>
-                  <input #serviceInput type="radio" name="service" formControlName="service" [value]="option.value" />
+                  <input
+                    #serviceInput
+                    type="radio"
+                    name="service"
+                    [value]="option.value"
+                    [checked]="option.preset"
+                    (change)="onField('service', option.value)"
+                  />
                   <span>{{ option.labelKey | translate }}</span>
                 </label>
               }
@@ -138,12 +147,13 @@
               class="minput"
               id="f-msg"
               rows="7"
-              formControlName="message"
               aria-required="true"
-              [maxlength]="limits.message"
+              [value]="draft"
+              [maxLength]="limits.message"
               [placeholder]="'contact.messagePlaceholder' | translate"
               [attr.aria-invalid]="errors().message || null"
               [attr.aria-describedby]="errors().message ? 'f-msg-err' : null"
+              (input)="onField('message', messageInput.value)"
               (blur)="onBlur('message')"
             ></textarea>
             @if (errors().message) {

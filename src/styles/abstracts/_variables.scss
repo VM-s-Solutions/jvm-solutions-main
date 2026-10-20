@@ -70,7 +70,6 @@ $fs-h3: clamp(1.875rem, 3.2vw, 2.875rem);     // step / document titles, 30 → 
 $fs-paper: clamp(2.5rem, 6.2vw, 5.75rem);     // "Put … on paper.", 40 → 92px
 $fs-paper-phone: clamp(2.375rem, 11vw, 3.5rem); // the same below 641px, 38 → 56px
 $fs-lead: clamp(1.125rem, 1.5vw, 1.25rem);    // intro paragraphs, 18 → 20px
-$fs-amount: clamp(3.25rem, 6vw, 5.5rem);      // the price on the dial, 52 → 88px
 $fs-step: clamp(6.875rem, 13vw, 12.5rem);     // the rolling step number on the board, 110 → 200px
 
 $weight-regular: 400;
@@ -147,6 +146,7 @@ $duration-half: 0.5s;
 $duration-press: 0.55s;
 $duration-long: 0.7s;
 $duration-longer: 0.8s;
+$duration-rise: 0.85s;   // a changed heading word rising back into its mask
 $duration-settle: 1s;
 $duration-cycle: 1.2s;   // one pass of the typing dots
 $duration-draw: 1.3s;    // a sketch stroke drawing itself

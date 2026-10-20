@@ -5,9 +5,9 @@ import { IconComponent } from '../../components/icon/icon.component';
 import { MessageComponent } from '../../components/message/message.component';
 import { SplitTextComponent } from '../../components/split-text/split-text.component';
 import { RevealDirective } from '../../directives/reveal.directive';
+import { HOURLY_RATE } from '../../services/consultation';
 import { formatEuros } from '../../services/dates';
 import { LangService } from '../../services/lang.service';
-import { PRICE } from '../../services/plans';
 import { PersonId } from '../../services/team';
 
 /** A question as visitors ask it, and which of us usually answers it. */
@@ -21,6 +21,8 @@ const PAIRS: readonly FaqPair[] = [
   { q: 'faq.q1', a: 'faq.a1', by: 'j' },
   { q: 'faq.q2', a: 'faq.a2', by: 'v' },
   { q: 'faq.q3', a: 'faq.a3', by: 'j' },
+  // What it costs, right after how long it takes
+  { q: 'faq.q7', a: 'faq.a7', by: 'j' },
   { q: 'faq.q4', a: 'faq.a4', by: 'm' },
   { q: 'faq.q5', a: 'faq.a5', by: 'm' },
   { q: 'faq.q6', a: 'faq.a6', by: 'v' },
@@ -43,8 +45,8 @@ export class FaqPageComponent {
 
   protected readonly pairs = PAIRS;
 
-  /** Prices in the reader's own format: €390 in English, 390 € in Czech */
+  /** The consulting rate in the reader's own format: €100 in English, 100 € in Czech */
   protected readonly answerParams = computed(() => ({
-    price: formatEuros(PRICE.lts, this.lang.current()),
+    price: formatEuros(HOURLY_RATE, this.lang.current()),
   }));
 }

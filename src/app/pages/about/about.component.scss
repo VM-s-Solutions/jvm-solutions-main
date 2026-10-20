@@ -6,7 +6,8 @@
 
 // ─── Portraits ────────────────────────────────────────────────────────────────
 // A tall photo each, with a frosted card. Phones always show the bio; from the desktop
-// layout up it unfolds on hover, or on focus where there is no hover.
+// layout up it unfolds on hover, or on focus where there is no hover. The photos' sizes
+// attribute (about.component.html) follows this grid: change both together.
 .portraits {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -25,6 +26,9 @@
   outline-offset: 4px;
 
   @include md { aspect-ratio: 3 / 4; }
+
+  // Only there to offer the AVIF: the photo sizes itself to the card as before
+  picture { display: contents; }
 
   img {
     width: 100%;
@@ -54,6 +58,14 @@
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   color: var(--bg);
+
+  // Touch screens scroll all three cards over their photos, and a blur is redrawn on every
+  // frame of that: a denser tint keeps the look without the GPU cost
+  @media (hover: none) {
+    background: rgba($color-night, 0.86);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 .portrait__name {

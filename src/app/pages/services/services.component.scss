@@ -29,9 +29,9 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px));
   padding: $space-2 $edge-right $space-2 $edge-left;
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  background: rgba($color-bg, 0.92);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  // Opaque, not frosted: under the top bar's own blur, a second one would cost the GPU every
+  // scroll frame for text that barely shows through. Opaque also lets the row scroll on the compositor.
+  background: var(--bg);
   @include no-scrollbar;
 
   // Pinned on a short viewport, it would leave next to no room for the text between the top bar
@@ -50,8 +50,6 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px));
     padding: 0;
     overflow: visible;
     background: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
   }
 }
 
@@ -70,11 +68,11 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px));
     background: var(--soft);
   }
 
-  // Added once it has been placed: it appears in place, then glides from entry to entry
+  // Added once it has been placed: it appears in place, then glides from entry to entry. Only its
+  // position glides, as a height transition would lay out every frame; the entries are one line
+  // each in every language, so a height change is rare and simply snaps.
   &.is-placed {
-    transition:
-      transform $duration-slow $ease-ios,
-      height $duration-slow $ease-ios;
+    transition: transform $duration-slow $ease-ios;
   }
 }
 

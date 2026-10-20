@@ -24,6 +24,8 @@
   transition:
     opacity $duration-slow $ease-out,
     transform $duration-settle $ease-ios;
+  // Each card keeps a layer of its own between hand-offs, like the app window (board-app)
+  will-change: opacity;
 
   > b {
     display: block;

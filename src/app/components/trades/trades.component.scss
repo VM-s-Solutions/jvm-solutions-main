@@ -34,6 +34,9 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
   gap: $space-5;
   margin-top: $space-12;
   padding: $space-2 $edge-right $space-2 $edge-left;
+  // Opaque, like the page behind it: a browser can then scroll it on the compositor even on a
+  // 1x screen, where a see-through scroller scrolls on the main thread to keep its text crisp
+  background: var(--bg);
   overflow-x: auto;
   // Cards still waiting to be revealed sit lower; they must not make the strip scroll vertically
   overflow-y: hidden;
@@ -113,7 +116,9 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
   width: 25%;
   border-radius: 3px;
   background: var(--ink);
-  transition:
-    transform $duration-fast linear,
-    width $duration-fast linear;
+  // Each scroll frame writes its position, so the bar keeps up with the cards; only a change of
+  // width eases. A transition on the position would start over every frame and trail the swipe.
+  // Its own layer, so moving it repaints nothing else.
+  transition: width $duration-fast linear;
+  will-change: transform;
 }

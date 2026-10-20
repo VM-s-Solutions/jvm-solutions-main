@@ -1,15 +1,17 @@
+<div #topSentinel class="top-sentinel" aria-hidden="true"></div>
 <a class="skip" href="#main" (click)="skipToContent($event)">{{ 'a11y.skipToContent' | translate }}</a>
 
-<jvm-top-bar />
+<jvm-top-bar [scrolled]="scrolled()" />
 <jvm-tab-bar />
 
 <main #main id="main" tabindex="-1">
   <router-outlet />
 </main>
 
-<!-- Focus and screen readers skip an empty placeholder, so the footer doesn't wait for a scroll: it also
-     renders at the first Tab, or a few seconds in (pages/home explains the timing) -->
-@defer (on viewport; on timer(5000ms); when tabbed(); prefetch on idle) {
+<!-- Focus and screen readers skip an empty placeholder, so the footer doesn't wait for a scroll: the render
+     queue lets it in after the page's own sections, and the first Tab renders it too (pages/home explains the
+     timing). No viewport lead: with one, a short page would build its footer during boot. -->
+@defer (on viewport; when footerReady() || tabbed(); prefetch on idle) {
   <jvm-footer />
 } @placeholder {
   <div class="footer-placeholder"></div>

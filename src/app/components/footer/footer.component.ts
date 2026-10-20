@@ -23,7 +23,6 @@ export class FooterComponent {
 
   protected readonly links = [
     { path: '/services', labelKey: 'nav.services' },
-    { path: '/pricing', labelKey: 'nav.pricing' },
     { path: '/about', labelKey: 'nav.about' },
     { path: '/faq', labelKey: 'nav.faq' },
     { path: '/contact', labelKey: 'nav.message' },

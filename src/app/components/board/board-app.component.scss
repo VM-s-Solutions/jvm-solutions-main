@@ -25,6 +25,10 @@ $check-step: $stagger-xl * 2;
     opacity $duration-longer $ease-out,
     transform $duration-settle $ease-out,
     box-shadow $duration-longer $ease-out;
+  // A layer of its own for good: one made only while it fades and settles is drawn twice at
+  // every hand-off, as it's created and as it's merged back. Opacity alone as the hint, so the
+  // window is still drawn at the scale it settles at (a transform hint can keep the 97% one).
+  will-change: opacity;
 }
 
 :host([data-stage='2']),

@@ -19,6 +19,13 @@
 }
 
 .ph--team { min-height: 44rem; background: var(--soft); }
-.ph--price { min-height: 44rem; background: var(--night); }
+
+.ph--cost {
+  min-height: 50rem;
+  background: var(--night);
+
+  @include md { min-height: 38rem; }
+}
+
 .ph--asked { min-height: 36rem; }
 .ph--compose { min-height: 36rem; }

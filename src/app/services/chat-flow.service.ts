@@ -1,10 +1,10 @@
 import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { CONSULTATION_PARAMS, HOURLY_RATE } from './consultation';
 import { formatEuros } from './dates';
 import { IdeaService, cleanIdea } from './idea.service';
 import { Lang, LangService } from './lang.service';
 import { prefersReducedMotion } from './motion';
-import { PRICE } from './plans';
 import { PersonId } from './team';
 
 /** Who said it: one of us, or the visitor. */
@@ -41,7 +41,14 @@ export interface ChatScrollTarget {
   readonly focusId: string;
 }
 
-export type ChatTarget = ChatScrollTarget | { readonly kind: 'route'; readonly path: string };
+/** A page to open; `queryParams` can pick the contact form's topic (CONSULTATION_PARAMS). */
+export interface ChatRouteTarget {
+  readonly kind: 'route';
+  readonly path: string;
+  readonly queryParams?: Readonly<Record<string, string>>;
+}
+
+export type ChatTarget = ChatScrollTarget | ChatRouteTarget;
 
 export interface ChatAction {
   readonly key: string;
@@ -109,8 +116,8 @@ const TYPING_PER_CHAR = 13;
 const TYPING_MAX = 1500;
 
 const TO_PAPER: ChatTarget = { kind: 'scroll', id: 'how', focusId: 'paper-title' };
-const TO_PRICING: ChatTarget = { kind: 'route', path: '/pricing' };
 const TO_CONTACT: ChatTarget = { kind: 'route', path: '/contact' };
+const TO_CONSULTATION: ChatTarget = { kind: 'route', path: '/contact', queryParams: CONSULTATION_PARAMS };
 
 const INTRO: readonly Line[] = [
   { from: 'j', key: 'chat.intro1' },
@@ -142,26 +149,26 @@ const QUESTIONS: Readonly<Record<QuestionId, Question>> = {
   team: {
     label: { key: 'chat.q.team', named: 'chat.q.teamNamed' },
     answers: [
-      { from: 'j', key: 'chat.a.team1', named: 'chat.a.team1Named', price: PRICE.team },
+      { from: 'j', key: 'chat.a.team1', named: 'chat.a.team1Named' },
       { from: 'v', key: 'chat.a.team2' },
     ],
-    action: { key: 'chat.act.team', target: TO_PRICING },
+    action: { key: 'chat.act.team', target: TO_CONTACT },
   },
   care: {
     label: { key: 'chat.q.care', named: 'chat.q.careNamed' },
     answers: [
       { from: 'm', key: 'chat.a.care1', named: 'chat.a.care1Named' },
-      { from: 'm', key: 'chat.a.care2', price: PRICE.lts },
+      { from: 'm', key: 'chat.a.care2' },
     ],
-    action: { key: 'chat.act.care', target: TO_PRICING },
+    action: { key: 'chat.act.care', target: TO_CONTACT },
   },
   advice: {
     label: { key: 'chat.q.advice' },
     answers: [
-      { from: 'v', key: 'chat.a.advice1', named: 'chat.a.advice1Named', price: PRICE.hour },
+      { from: 'v', key: 'chat.a.advice1', named: 'chat.a.advice1Named', price: HOURLY_RATE },
       { from: 'v', key: 'chat.a.advice2' },
     ],
-    action: { key: 'chat.act.advice', target: TO_CONTACT },
+    action: { key: 'chat.act.advice', target: TO_CONSULTATION },
   },
 };
 
