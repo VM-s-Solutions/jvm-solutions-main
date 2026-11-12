@@ -52,7 +52,7 @@ app.use(expressStaticGzip(DIST, {
     maxAge: '1y',
     immutable: true,
     setHeaders(res, filePath) {
-      if (filePath.includes('index.html')) {
+      if (/\.html(\.br|\.gz)?$/.test(filePath)) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       } else if (/[\\/]fonts\.css(\.br|\.gz)?$/.test(filePath)) {
         // index.html loads fonts.css by name, so it has no content hash but points at hashed
@@ -72,7 +72,17 @@ app.use(expressStaticGzip(DIST, {
   },
 }));
 
-// SPA fallback — serve pre-compressed index.html for client-side routes.
+// Every page has its own HTML: the same app with that page's title, description and canonical URL
+// in the head (scripts/page-heads.js writes them at build time), so search engines index /about or
+// /contact as pages of their own. Read once; a request can only pick a name from this list.
+const PAGES_DIR = path.join(DIST, 'pages');
+const PAGE_FILES = new Set(
+  fs.existsSync(PAGES_DIR)
+    ? fs.readdirSync(PAGES_DIR).filter((file) => file.endsWith('.html')).map((file) => file.slice(0, -'.html'.length))
+    : [],
+);
+
+// SPA fallback — serve the route's pre-compressed HTML (index.html for a route without its own).
 // Routes never contain a file extension, so a missing file (e.g. a stale chunk or
 // /.well-known/ai-catalog.json probed by crawlers) gets a real 404, not HTML with 200.
 app.get('/{*path}', (req, res) => {
@@ -80,21 +90,23 @@ app.get('/{*path}', (req, res) => {
     return res.sendStatus(404);
   }
 
+  const route = req.path.replace(/^\/+|\/+$/g, '');
+  const html = path.join(DIST, PAGE_FILES.has(route) ? path.join('pages', `${route}.html`) : 'index.html');
+
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Vary', 'Accept-Encoding');
   const ae = req.headers['accept-encoding'] || '';
-  if (ae.includes('br') && fs.existsSync(path.join(DIST, 'index.html.br'))) {
+  if (ae.includes('br') && fs.existsSync(`${html}.br`)) {
     res.setHeader('Content-Encoding', 'br');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    return res.sendFile(path.join(DIST, 'index.html.br'));
+    return res.sendFile(`${html}.br`);
   }
-  if (ae.includes('gzip') && fs.existsSync(path.join(DIST, 'index.html.gz'))) {
+  if (ae.includes('gzip') && fs.existsSync(`${html}.gz`)) {
     res.setHeader('Content-Encoding', 'gzip');
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    return res.sendFile(path.join(DIST, 'index.html.gz'));
+    return res.sendFile(`${html}.gz`);
   }
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(DIST, 'index.html'));
+  res.sendFile(html);
 });
 
 app.listen(PORT, () => {

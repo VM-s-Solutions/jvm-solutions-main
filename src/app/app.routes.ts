@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { ResolveFn, Router, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { PAGES } from './seo/pages';
 import { TranslationPartsService } from './services/translation-parts.service';
 
 /**
@@ -25,12 +26,12 @@ export const routes: Routes = [
     // Its below-the-fold sections stay lazy via @defer.
     path: '',
     component: HomeComponent,
-    title: 'JVM Yore — Frontend, Backend, Mobile & AI Development',
+    title: PAGES[''].title,
   },
   {
     path: 'services',
     loadComponent: () => import('./pages/services/services.component').then((m) => m.ServicesComponent),
-    title: 'Services — JVM Yore',
+    title: PAGES.services.title,
   },
   {
     // The pricing page is gone (prices are agreed per scope now): old links land on the home page.
@@ -41,35 +42,35 @@ export const routes: Routes = [
   {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then((m) => m.AboutComponent),
-    title: 'About — JVM Yore',
+    title: PAGES.about.title,
   },
   {
     path: 'faq',
     loadComponent: () => import('./pages/faq/faq-page.component').then((m) => m.FaqPageComponent),
-    title: 'FAQ — JVM Yore',
+    title: PAGES.faq.title,
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component').then((m) => m.ContactComponent),
-    title: 'Message us — JVM Yore',
+    title: PAGES.contact.title,
   },
   {
     path: 'privacy',
     loadComponent: () => import('./pages/privacy/privacy.component').then((m) => m.PrivacyComponent),
     resolve: { strings: legalStrings },
-    title: 'Privacy Policy — JVM Yore',
+    title: PAGES.privacy.title,
   },
   {
     path: 'terms',
     loadComponent: () => import('./pages/terms/terms.component').then((m) => m.TermsComponent),
     resolve: { strings: legalStrings },
-    title: 'Terms of Service — JVM Yore',
+    title: PAGES.terms.title,
   },
   {
     path: 'refunds',
     loadComponent: () => import('./pages/refunds/refunds.component').then((m) => m.RefundsComponent),
     resolve: { strings: legalStrings },
-    title: 'Payments & Refunds — JVM Yore',
+    title: PAGES.refunds.title,
   },
   {
     path: '**',

@@ -218,6 +218,7 @@ const cs = {
     "note2": "Praha, plně na dálku. Odpovídáme do 24 hodin v pracovní dny.",
     "note3": "Žádné cookies, žádná analytika.",
     "place": "Praha 1, Nové Město",
+    "review": "Ohodnoťte nás na Googlu",
     "studio": "Studio"
   },
   "hero": {

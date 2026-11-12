@@ -18,6 +18,12 @@
           <h2 class="foot__h">{{ 'footer.contact' | translate }}</h2>
           <a class="select-all" href="mailto:hello@jvm-yore.com">hello&#64;jvm-yore.com</a>
           <span>{{ 'footer.place' | translate }}</span>
+          @if (reviewUrl) {
+            <a [href]="reviewUrl" target="_blank" rel="noopener">
+              {{ 'footer.review' | translate }}
+              <span class="sr-only">{{ 'a11y.opensInNewTab' | translate }}</span>
+            </a>
+          }
         </div>
         <nav [attr.aria-label]="'a11y.legalNav' | translate">
           <h2 class="foot__h">{{ 'footer.legal' | translate }}</h2>

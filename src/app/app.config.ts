@@ -1,9 +1,10 @@
-import { ApplicationConfig, provideAppInitializer, provideZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withInMemoryScrolling, withPreloading, withViewTransitions } from '@angular/router';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { TranslationLoader } from './services/translation-loader';
 import { AfterLoadPreloadingStrategy } from './services/after-load-preloading.strategy';
 import { initTranslations } from './services/initial-lang';
+import { PageMetaService } from './services/page-meta.service';
 import { onPageTransition } from './services/page-transition';
 
 import { routes } from './app.routes';
@@ -28,5 +29,7 @@ export const appConfig: ApplicationConfig = {
       loader: { provide: TranslateLoader, useExisting: TranslationLoader },
     }),
     provideAppInitializer(initTranslations),
+    // Created before the first navigation, so the head follows every page from the first one on
+    provideAppInitializer(() => void inject(PageMetaService)),
   ],
 };

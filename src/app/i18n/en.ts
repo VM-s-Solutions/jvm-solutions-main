@@ -218,6 +218,7 @@ const en = {
     "note2": "Prague, fully remote. We reply within 24 hours on business days.",
     "note3": "No cookies, no analytics.",
     "place": "Praha 1, Nové Město",
+    "review": "Review us on Google",
     "studio": "Studio"
   },
   "hero": {
