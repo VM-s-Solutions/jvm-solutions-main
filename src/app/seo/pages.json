@@ -1,0 +1,42 @@
+{
+  "": {
+    "name": "JVM Yore",
+    "title": "JVM Yore — Frontend, Backend, Mobile & AI Development",
+    "description": "JVM Yore is a three-person software studio from Prague. We build frontend web apps, .NET backends, native mobile apps and AI automation."
+  },
+  "services": {
+    "name": "Services",
+    "title": "Services — JVM Yore",
+    "description": "What JVM Yore builds: web apps in Angular and React, .NET backends, native iOS and Android apps, and AI agents that take repetitive work off your team."
+  },
+  "about": {
+    "name": "About",
+    "title": "About — JVM Yore",
+    "description": "Meet Janis, Vít and Michael, the three engineers behind JVM Yore, a software studio in Prague. Who we are, how we work and our company details."
+  },
+  "faq": {
+    "name": "FAQ",
+    "title": "FAQ — JVM Yore",
+    "description": "Answers about working with JVM Yore: what a project costs, how long it takes, NDAs, taking over an existing codebase and support after launch."
+  },
+  "contact": {
+    "name": "Contact",
+    "title": "Contact — JVM Yore",
+    "description": "Message JVM Yore about your project or book a consultation. Janis, Vít or Michael replies within 24 hours on business days."
+  },
+  "privacy": {
+    "name": "Privacy Policy",
+    "title": "Privacy Policy — JVM Yore",
+    "description": "How JVM Yore, s.r.o. handles personal data: what the contact form collects, how long it is kept and your rights under the GDPR."
+  },
+  "terms": {
+    "name": "Terms of Service",
+    "title": "Terms of Service — JVM Yore",
+    "description": "The terms under which JVM Yore, s.r.o. provides software development and consulting services."
+  },
+  "refunds": {
+    "name": "Payments & Refunds",
+    "title": "Payments & Refunds — JVM Yore",
+    "description": "How payments, invoicing, cancellations and refunds work for JVM Yore projects and consultations."
+  }
+}

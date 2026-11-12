@@ -40,6 +40,20 @@ keys follow `<doc>.<id>.title / .p1… / .li1…`.
 
 ---
 
+## Search engines
+
+Every URL answers with its own head. `src/app/seo/pages.json` lists each page's name, `<title>` and meta description
+(English, like the route titles; one list, keyed by route path). The routes take their `title` from it,
+`PageMetaService` keeps the description, canonical URL and share tags on the page on screen during in-app navigation,
+and `scripts/page-heads.js` (run by `scripts/compress-build.js` after the build) writes `pages/<route>.html`: index.html
+with that page's title, description, canonical URL and a BreadcrumbList. `server.js` sends that file for `/<route>`.
+Without it every URL carried the home page's canonical URL, so search engines read the pages as copies of the home page
+and had nothing to list under the site's result. A new page needs an entry in `pages.json` and in `public/sitemap.xml`.
+`src/index.html` carries the Organization and WebSite structured data (the company as the register lists it).
+
+`GOOGLE_REVIEW_URL` (`services/reviews.ts`) is the "write a review" link of the Google Business Profile; the footer
+shows "Review us on Google" once it is set. No review or rating markup on the site: Google ignores a company's own.
+
 ## App shell
 
 `AppComponent` renders the skip link, `TopBarComponent` (logo, page tabs with a sliding thumb, `LangMenuComponent`,

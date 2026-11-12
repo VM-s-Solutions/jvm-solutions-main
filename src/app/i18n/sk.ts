@@ -218,6 +218,7 @@ const sk = {
     "note2": "Praha, úplne na diaľku. V pracovné dni odpovedáme do 24 hodín.",
     "note3": "Žiadne cookies, žiadna analytika.",
     "place": "Praha 1, Nové Město",
+    "review": "Ohodnoťte nás na Googli",
     "studio": "Štúdio"
   },
   "hero": {

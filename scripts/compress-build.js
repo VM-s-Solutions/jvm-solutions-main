@@ -1,8 +1,10 @@
-// Post-build: pre-compress all static assets with gzip (level 9) and brotli (level 11).
+// Post-build: write each page's own HTML (page-heads.js), then pre-compress all static assets with
+// gzip (level 9) and brotli (level 11).
 // express-static-gzip will serve *.br / *.gz with correct Content-Encoding headers.
 const zlib = require('zlib');
 const fs = require('fs');
 const path = require('path');
+const { writePageHeads } = require('./page-heads');
 
 const DIST = path.join(__dirname, '../dist/jvm-solutions/browser');
 const COMPRESSIBLE = new Set(['.js', '.css', '.html', '.json', '.svg', '.xml', '.txt']);
@@ -41,6 +43,9 @@ async function run() {
   if (fs.existsSync(licenses)) {
     fs.copyFileSync(licenses, path.join(DIST, '3rdpartylicenses.txt'));
   }
+
+  // Before compression, so the pages get their .br / .gz like every other file
+  console.log(`Wrote ${writePageHeads(DIST)} page heads`);
 
   const files = [...walkDir(DIST)].filter(f =>
     COMPRESSIBLE.has(path.extname(f)) && !f.endsWith('.gz') && !f.endsWith('.br'));
