@@ -55,8 +55,8 @@
 }
 
 :host(.msg--me) .bubble {
-  background: var(--orange);
-  color: var(--ink);
+  background: var(--orange-fill);
+  color: var(--on-orange);
   border-bottom-left-radius: $radius-md;
   border-bottom-right-radius: 6px;
 }

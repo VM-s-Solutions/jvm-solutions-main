@@ -233,9 +233,11 @@ $chip-ring: inset 0 0 0 1.5px;
     chip-rise $duration-slow $ease-spring backwards;
   animation-delay: calc(var(--i, 0) * #{$stagger} + #{$stagger-lead});
 
+  // The ring takes the fill's colour too, or the brighter --orange would edge the filled chip
   @include hover {
-    background: var(--orange);
-    color: var(--ink);
+    background: var(--orange-fill);
+    box-shadow: $chip-ring var(--orange-fill);
+    color: var(--on-orange);
   }
 
   &:active { transform: scale(0.95); }
@@ -335,15 +337,15 @@ $chip-ring: inset 0 0 0 1.5px;
   height: $space-10;
   border: 0;
   border-radius: 50%;
-  background: var(--orange);
-  color: var(--ink);
+  background: var(--orange-fill);
+  color: var(--on-orange);
   cursor: pointer;
   transition:
     transform $duration-fast $ease-spring,
     background-color $duration-fast $ease-out;
 
   @include hover {
-    background: var(--orange-2);
+    background: var(--orange-fill-2);
     transform: scale(1.06);
   }
 

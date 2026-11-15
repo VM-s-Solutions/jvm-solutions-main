@@ -112,8 +112,8 @@ $composer-shadow:
   height: 2.875rem;
   border: 0;
   border-radius: 50%;
-  background: var(--orange);
-  color: var(--ink);
+  background: var(--orange-fill);
+  color: var(--on-orange);
   cursor: pointer;
   transition:
     transform $duration-fast $ease-spring,
@@ -126,7 +126,7 @@ $composer-shadow:
 
   @include hover {
     transform: scale(1.06);
-    background: var(--orange-2);
+    background: var(--orange-fill-2);
   }
 
   &:active { transform: scale(0.92); }

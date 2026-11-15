@@ -14,9 +14,14 @@ $color-placeholder: #727780;  // 4.5:1 on white
 $color-line: #E7E8EB;
 
 // ─── Colour: brand ────────────────────────────────────────────────────────────
-$color-orange: #F26100;       // fills carry ink text (6:1), never white
-$color-orange-2: #FF8E1E;     // hover fill
+$color-orange: #F26100;       // accents: logo, icons, rings, markers, the selection (ink text on it, 6:1)
+$color-orange-2: #FF8E1E;     // a lighter orange for code on dark screens
 $color-orange-text: #B84700;  // orange text on light surfaces (5.3:1)
+// Fills that carry text (buttons, the visitor's chat bubble) take a deeper orange, so white text
+// on them reads at 4.6:1; white on --orange would be 3.2:1, under what body-size text needs.
+$color-orange-fill: #CC4A00;
+$color-orange-fill-2: $color-orange-text; // their hover fill: a shade deeper again (white 5.3:1)
+$color-on-orange: #FFFFFF;    // text and icons on the orange fills
 $color-orange-tint: #FFF0E5;
 $color-note: #FFF2B8;         // sticky notes on the board
 $color-them: #EEEFF2;         // their chat bubbles

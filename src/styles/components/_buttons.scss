@@ -1,8 +1,8 @@
 @use '../abstracts' as *;
 
 // ─── Buttons ──────────────────────────────────────────────────────────────────
-// Pill buttons. Orange fills always carry ink text (6:1); the hover fill blooms
-// from the centre instead of snapping.
+// Pill buttons. The orange fill carries white text (the deeper --orange-fill, 4.6:1); on hover
+// a deeper fill blooms from the centre instead of snapping.
 .btn {
   --h: 3.25rem;
   position: relative;
@@ -54,8 +54,8 @@
 }
 
 .btn--primary {
-  background: var(--orange);
-  color: var(--ink);
+  background: var(--orange-fill);
+  color: var(--on-orange);
 
   &::before {
     content: '';
@@ -63,7 +63,7 @@
     inset: 0;
     z-index: $z-below;
     border-radius: inherit;
-    background: var(--orange-2);
+    background: var(--orange-fill-2);
     transform: scale(0);
     opacity: 0;
     transition: transform $duration-press $ease-out, opacity $duration-short $ease-out;

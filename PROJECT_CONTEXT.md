@@ -164,7 +164,9 @@ Tokens live in `src/styles/abstracts/_variables.scss`; colours are also CSS cust
 
 ```
 --bg #FFFFFF   --soft #F3F4F6   --soft-2 #ECEDF0   --ink #0B0C0E   --ink-2 #3C4048   --muted #656A72   --line #E7E8EB
---orange #F26100 (fills carry ink text, 6:1)   --orange-2 #FF8E1E (hover)   --orange-text #B84700 (orange text)
+--orange #F26100 (accents: logo, icons, rings, markers)   --orange-text #B84700 (orange text)
+--orange-fill #CC4A00 (fills that carry text: buttons, the visitor's bubble; white text 4.6:1)
+--orange-fill-2 #B84700 (their hover)   --on-orange #FFFFFF (text and icons on the fills)
 --night #0B0C0E  --night-2 #16181C  --night-ink #F2F3F5  --night-muted #A3A8B0   --note #FFF2B8   --them #EEEFF2
 Fonts: Geologica (display), Inter (text), JetBrains Mono (code), Caveat (handwriting) — self-hosted, OFL; cut to the
 weights in use (Geologica 500–700, Inter 400–600, JetBrains Mono 400–500, static Caveat 600)
