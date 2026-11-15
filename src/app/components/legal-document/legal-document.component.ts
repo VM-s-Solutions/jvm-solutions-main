@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { RevealDirective } from '../../directives/reveal.directive';
 import { IconComponent } from '../icon/icon.component';
 import { ScrollService } from '../../services/scroll.service';
 import { LEGAL_DOCS, LegalDocId, LegalSection } from './legal-document.model';
@@ -29,7 +28,7 @@ const HEADING_SLACK = 24;
   selector: 'jvm-legal-document',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, RevealDirective, IconComponent],
+  imports: [RouterLink, TranslateModule, IconComponent],
   templateUrl: './legal-document.component.html',
   styleUrl: './legal-document.component.scss',
 })

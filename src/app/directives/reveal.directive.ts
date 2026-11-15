@@ -9,8 +9,12 @@ import {
   input,
 } from '@angular/core';
 
-/** '' fades and lifts; 'up' rises further and scales; 'lift' only moves (stays opaque, so it can paint as the LCP). */
-export type RevealVariant = '' | 'up' | 'lift';
+/**
+ * '' fades and lifts; 'up' rises further and scales. Text that is on screen from the first paint
+ * (a page's lead, the hero's buttons) takes no reveal at all: moved after it can be read, it looked
+ * like the page dragging itself into place.
+ */
+export type RevealVariant = '' | 'up';
 
 /** The concept's trigger: 8% of the element in view, and above the bottom 6% of the screen */
 const OBSERVER_OPTIONS: IntersectionObserverInit = { rootMargin: '0px 0px -6% 0px', threshold: 0.08 };
@@ -66,7 +70,6 @@ export function whenRevealed(el: Element, show: () => void): () => void {
   host: {
     class: 'reveal',
     '[class.reveal--up]': "jvmReveal() === 'up'",
-    '[class.reveal--lift]': "jvmReveal() === 'lift'",
     '[style.--d]': 'delay()',
   },
 })
@@ -80,11 +83,11 @@ export class RevealDirective {
     const el = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const destroyRef = inject(DestroyRef);
 
-    // A variant written in the template (jvmReveal="lift") goes on with .reveal, at creation. Left to
+    // A variant written in the template (jvmReveal="up") goes on with .reveal, at creation. Left to
     // the input binding, it would land a tick later for views a route or @defer creates: a style read
-    // in between would commit the plain hidden state, and the lead would fade in instead of showing.
+    // in between would commit the plain hidden state, and the element would start from the wrong place.
     const written = inject(new HostAttributeToken('jvmReveal'), { optional: true });
-    if (written === 'up' || written === 'lift') el.classList.add(`reveal--${written}`);
+    if (written === 'up') el.classList.add('reveal--up');
 
     afterNextRender(() => {
       // A plain class, not a signal: showing an element needs no change detection

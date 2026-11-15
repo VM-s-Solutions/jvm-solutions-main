@@ -26,7 +26,8 @@ inside the slide: while `html[data-dir]` is set, reveals and split headings run 
 the last move lands before the slide ends. Safari restarts whatever still runs in the slide's snapshot when the slide
 ends, which played the entrance twice there; `resyncAnimations()` catches anything that still overruns. The slide
 keyframes move only transform and opacity, so the slide
-runs on the compositor (the incoming page's edge shadow is static); the top bar and the tab bar skip the default
+runs on the compositor. The snapshot pseudos paint nothing of their own (no edge shadow): Safari shows a snapshot as a
+plain image layer only then, and with a shadow it repainted the incoming page on every frame. The top bar and the tab bar skip the default
 view-transition crossfade (`base/_animations.scss`). `PageTransitionService.whenSettled()` resolves once the slide under
 way is over (at once on a direct landing or a skipped slide); heavy work a new page starts waits for it — the contact
 form's Turnstile loads only then. While a slide runs, browsers hit-test its snapshots as `<html>` (no `pointer-events`

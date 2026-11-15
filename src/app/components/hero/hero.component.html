@@ -2,8 +2,8 @@
   <div class="container hero__in">
     <div class="hero__copy">
       <h1 class="display hero__title" [jvmSplit]="titleKey() | translate: titleParams()"></h1>
-      <p class="lead" jvmReveal="lift" [revealDelay]="0.35">{{ 'hero.lead' | translate }}</p>
-      <div class="actions" jvmReveal="lift" [revealDelay]="0.45">
+      <p class="lead">{{ 'hero.lead' | translate }}</p>
+      <div class="actions">
         <a class="btn btn--primary" routerLink="/contact">
           <span>{{ 'hero.cta' | translate }}</span>
           <jvm-icon name="arrow" />
