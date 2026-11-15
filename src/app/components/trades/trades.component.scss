@@ -5,6 +5,10 @@
 $card-width: 35rem;
 $card-width-phone: 84vw;
 
+// The scrollbar's line, and how far above and below it a press still lands on it
+$scroll-line: 3px;
+$scroll-reach: $space-5;
+
 // Where the container's content starts, measured against the full-bleed scroller
 $edge: calc((100% - #{$container-max}) / 2 + #{$gutter});
 $edge-left: max(#{$gutter}, env(safe-area-inset-left, 0px), #{$edge});
@@ -100,23 +104,47 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
   }
 }
 
-// ─── Progress: as wide as the share in view, travelling with the scroll ───────
-.car-progress {
-  position: relative;
-  height: 3px;
-  margin-top: $space-7;
-  overflow: hidden;
-  border-radius: 3px;
-  background: var(--line);
+// ─── Scrollbar: the thumb as wide as the share in view, travelling with the scroll ──
+// A thin line in a taller strip that catches the press: the thumb drags, and a press on the track
+// brings the thumb there. The strip's margins take back its padding, so the line keeps its place
+// and the section its height.
+.car-scroll {
+  margin: ($space-7 - $scroll-reach) 0 (-$scroll-reach);
+  padding-block: $scroll-reach;
+  cursor: grab;
+  // A sideways drag moves the thumb; one up or down still scrolls the page
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  // The line thickens under the mouse and while dragged, as a desktop scrollbar does
+  @include hover {
+    .car-scroll__track { transform: scaleY(2); }
+  }
+
+  &.is-drag {
+    cursor: grabbing;
+
+    .car-scroll__track { transform: scaleY(2); }
+  }
 }
 
-.car-progress__bar {
+.car-scroll__track {
+  position: relative;
+  height: $scroll-line;
+  overflow: hidden;
+  border-radius: $scroll-line;
+  background: var(--line);
+  transition: transform $duration-fast $ease-out;
+}
+
+.car-scroll__thumb {
   position: absolute;
   inset: 0 auto 0 0;
   width: 25%;
-  border-radius: 3px;
+  border-radius: $scroll-line;
   background: var(--ink);
-  // Each scroll frame writes its position, so the bar keeps up with the cards; only a change of
+  // Each scroll frame writes its position, so the thumb keeps up with the cards; only a change of
   // width eases. A transition on the position would start over every frame and trail the swipe.
   // Its own layer, so moving it repaints nothing else.
   transition: width $duration-fast linear;

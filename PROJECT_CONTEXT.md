@@ -70,7 +70,8 @@ past a placeholder, and screen reader users get every section within a few secon
 ```
 HeroComponent        ← headline (swaps in the idea's name) + ChatComponent (live chat, asks for the idea's name)
 PaperComponent       ← "Put [name] on paper." + pinned board: sketch → spec → staging → handover on light/dark chapters
-TradesComponent      ← services carousel with four live demo screens (demo-lang, demo-code, demo-lock, demo-prompt)
+TradesComponent      ← services carousel with four live demo screens (demo-lang, demo-code, demo-lock, demo-prompt);
+                       the bar under it is its scrollbar (drag the thumb, press the track; pointer only)
 TeamTrioComponent    ← tap a face, read a first-person line
 CostComponent        ← ink band: no price list, the price is agreed per scope; a card for the free first consultation
 AskedComponent       ← two questions as a chat thread

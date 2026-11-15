@@ -22,6 +22,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
 import { IdeaService } from '../../services/idea.service';
 import { prefersReducedMotion } from '../../services/motion';
 import { STACK_SHORT, StackChip, TradeId } from '../../services/stack';
+import { scrollForThumb } from './scrollbar';
 
 interface TradeCard {
   readonly id: TradeId;
@@ -44,7 +45,7 @@ const CARDS: readonly TradeCard[] = TRADES.map((id, i) => ({
   delay: i * REVEAL_STAGGER,
 }));
 
-/** Mouse travel (px) before a press becomes a drag, so a plain click stays a click */
+/** Pointer travel (px) before a press becomes a drag, so a plain click stays a click */
 const DRAG_THRESHOLD = 5;
 /** Slack (px) when deciding whether the scroller sits at either end */
 const END_SLACK = 4;
@@ -52,8 +53,8 @@ const END_SLACK = 4;
 /**
  * "Four trades, three people": one card per service, each with a live mock screen,
  * in a sideways scroller. Cards snap to the container's left edge; the arrows step one
- * card, a mouse can drag it (touch and trackpads scroll natively), and the bar below
- * shows how much is in view and where.
+ * card, a mouse can drag it (touch and trackpads scroll natively), and the bar below is
+ * its scrollbar: it shows how much is in view and where, and takes a drag or a press.
  */
 @Component({
   selector: 'jvm-trades',
@@ -87,7 +88,8 @@ export class TradesComponent {
   protected readonly hot = signal<TradeId | null>(null);
 
   private readonly car = viewChild.required<ElementRef<HTMLElement>>('car');
-  private readonly bar = viewChild.required<ElementRef<HTMLElement>>('bar');
+  private readonly rail = viewChild.required<ElementRef<HTMLElement>>('rail');
+  private readonly thumb = viewChild.required<ElementRef<HTMLElement>>('thumb');
   private readonly prev = viewChild.required<ElementRef<HTMLButtonElement>>('prev');
   private readonly next = viewChild.required<ElementRef<HTMLButtonElement>>('next');
   private readonly cardEls = viewChildren('card', { read: ElementRef<HTMLElement> });
@@ -119,14 +121,21 @@ export class TradesComponent {
     return card.getBoundingClientRect().width + (parseFloat(getComputedStyle(car).columnGap) || 0);
   }
 
+  /** Snapping waits while a drag runs; after it the strip eases to the card nearest `left`. */
+  private settle(car: HTMLElement, left = car.scrollLeft): void {
+    const step = this.stepWidth(car);
+    car.classList.remove('is-drag');
+    car.scrollTo({ left: Math.round(left / step) * step, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+  }
+
   /**
-   * Progress bar, arrow states and mouse dragging. Scroll frames write to the DOM directly. Nothing
+   * Scrollbar, arrow states and mouse dragging. Scroll frames write to the DOM directly. Nothing
    * is measured while the section renders: the ResizeObserver's first report, after the browser's
    * own layout, brings the first measure in the frame after.
    */
   private wire(destroyRef: DestroyRef): void {
     const car = this.car().nativeElement;
-    const bar = this.bar().nativeElement;
+    const thumb = this.thumb().nativeElement;
     const life = new AbortController();
     let frame = 0;
 
@@ -137,8 +146,8 @@ export class TradesComponent {
       const max = car.scrollWidth - width;
       const visible = Math.min(1, width / car.scrollWidth);
       const progress = max > 0 ? car.scrollLeft / max : 0;
-      bar.style.width = `${visible * 100}%`;
-      bar.style.transform = `translateX(${progress * (1 / visible - 1) * 100}%)`;
+      thumb.style.width = `${visible * 100}%`;
+      thumb.style.transform = `translateX(${progress * (1 / visible - 1) * 100}%)`;
       this.setEnds(car, car.scrollLeft < END_SLACK, car.scrollLeft > max - END_SLACK);
     };
     const schedule = (): void => {
@@ -162,13 +171,7 @@ export class TradesComponent {
     const endDrag = (): void => {
       drag?.abort();
       drag = null;
-      if (!moved) return;
-      const step = this.stepWidth(car);
-      car.classList.remove('is-drag');
-      car.scrollTo({
-        left: Math.round(car.scrollLeft / step) * step,
-        behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-      });
+      if (moved) this.settle(car);
     };
 
     car.addEventListener(
@@ -212,12 +215,76 @@ export class TradesComponent {
       { capture: true, signal: life.signal },
     );
 
+    this.wireScrollbar(car, thumb, life.signal);
+
     destroyRef.onDestroy(() => {
       life.abort();
       drag?.abort();
       resize.disconnect();
       cancelAnimationFrame(frame);
     });
+  }
+
+  /**
+   * The bar under the cards scrolls them, for a mouse or a finger. Dragging the thumb moves the
+   * strip with snapping held off, as a mouse drag of the cards does; a press on the track brings
+   * the thumb's middle there. Keys scroll the strip itself, so the bar stays out of the tab order.
+   */
+  private wireScrollbar(car: HTMLElement, thumb: HTMLElement, signal: AbortSignal): void {
+    const rail = this.rail().nativeElement;
+    let pointer: number | null = null;
+    let startX = 0;
+    // The track's left edge, plus where along the thumb the pointer holds it
+    let origin = 0;
+    let travel = 0;
+    let onThumb = false;
+    let moved = false;
+
+    const scrollFor = (clientX: number): number =>
+      scrollForThumb(clientX - origin, travel, car.scrollWidth - car.clientWidth);
+
+    rail.addEventListener(
+      'pointerdown',
+      (down) => {
+        if (!down.isPrimary || down.button !== 0) return;
+        const track = rail.getBoundingClientRect();
+        const knob = thumb.getBoundingClientRect();
+        onThumb = down.clientX >= knob.left && down.clientX <= knob.right;
+        origin = track.left + (onThumb ? down.clientX - knob.left : knob.width / 2);
+        travel = track.width - knob.width;
+        pointer = down.pointerId;
+        startX = down.clientX;
+        moved = false;
+        rail.setPointerCapture(down.pointerId);
+        down.preventDefault(); // no text selection, and focus stays where it was
+      },
+      { signal },
+    );
+
+    rail.addEventListener(
+      'pointermove',
+      (move) => {
+        if (move.pointerId !== pointer) return;
+        if (!moved) {
+          if (Math.abs(move.clientX - startX) <= DRAG_THRESHOLD) return;
+          moved = true;
+          car.classList.add('is-drag');
+          rail.classList.add('is-drag');
+        }
+        car.scrollLeft = scrollFor(move.clientX);
+      },
+      { signal },
+    );
+
+    const release = (up: PointerEvent): void => {
+      if (up.pointerId !== pointer) return;
+      pointer = null;
+      rail.classList.remove('is-drag');
+      if (moved) this.settle(car);
+      else if (!onThumb && up.type === 'pointerup') this.settle(car, scrollFor(up.clientX));
+    };
+    rail.addEventListener('pointerup', release, { signal });
+    rail.addEventListener('pointercancel', release, { signal });
   }
 
   private setEnds(car: HTMLElement, atStart: boolean, atEnd: boolean): void {

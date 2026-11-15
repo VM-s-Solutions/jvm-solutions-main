@@ -62,7 +62,10 @@
     <span class="car__end" aria-hidden="true"></span>
   </div>
 
+  <!-- The strip's scrollbar, for a mouse or a finger; keys scroll the strip itself -->
   <div class="container">
-    <div class="car-progress" aria-hidden="true"><span #bar class="car-progress__bar"></span></div>
+    <div #rail class="car-scroll" aria-hidden="true">
+      <div class="car-scroll__track"><span #thumb class="car-scroll__thumb"></span></div>
+    </div>
   </div>
 </section>
