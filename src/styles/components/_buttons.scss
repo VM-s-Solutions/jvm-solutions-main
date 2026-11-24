@@ -2,12 +2,9 @@
 
 // ─── Buttons ──────────────────────────────────────────────────────────────────
 // Pill buttons. The orange fill carries white text (the deeper --orange-fill, 4.6:1); on hover
-// a deeper fill blooms from the centre instead of snapping.
+// the fill turns a shade deeper and nothing moves but the arrow.
 .btn {
-  --h: 3.25rem;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
+  --h: 2.875rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -15,18 +12,18 @@
   // A long label (some languages run long) wraps inside the pill instead of overflowing
   min-height: var(--h);
   max-width: 100%;
-  padding: $space-2 $space-6;
+  padding: $space-2 $space-5;
   border: 0;
   border-radius: $radius-pill;
-  font: $weight-semibold #{$text-base}/1.2 $font-text;
+  font: $weight-semibold #{$text-md}/1.2 $font-text;
   text-align: center;
   text-wrap: balance;
   text-decoration: none;
   cursor: pointer;
   transition:
     transform $duration-fast $ease-out,
-    background-color $duration-swift $ease-out,
-    color $duration-swift $ease-out;
+    background-color $duration-fast $ease-out,
+    color $duration-fast $ease-out;
 
   &:active { transform: scale(0.96); }
 
@@ -36,10 +33,10 @@
   }
 
   .icon {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 1rem;
+    height: 1rem;
     flex: none;
-    transition: transform $duration-base $ease-out;
+    transition: transform $duration-fast $ease-out;
   }
 
   @include hover {
@@ -48,33 +45,16 @@
 }
 
 .btn--sm {
-  --h: 2.625rem;
+  --h: 2.5rem;
   padding: 0 $space-4;
-  font-size: $text-md;
+  font-size: $text-sm;
 }
 
 .btn--primary {
   background: var(--orange-fill);
   color: var(--on-orange);
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: $z-below;
-    border-radius: inherit;
-    background: var(--orange-fill-2);
-    transform: scale(0);
-    opacity: 0;
-    transition: transform $duration-press $ease-out, opacity $duration-short $ease-out;
-  }
-
-  @include hover {
-    &::before {
-      transform: scale(1.02);
-      opacity: 1;
-    }
-  }
+  @include hover { background: var(--orange-fill-2); }
 }
 
 .btn--ghost {
@@ -88,7 +68,7 @@
   background: rgba($color-bg, 0.1);
   color: var(--bg);
 
-  @include hover { background: rgba($color-bg, 0.18); }
+  @include hover { background: rgba($color-bg, 0.14); }
 }
 
 // ─── Text link with a travelling arrow ────────────────────────────────────────
@@ -97,14 +77,15 @@
   align-items: center;
   gap: $space-2;
   margin-top: $space-6;
+  font-size: $text-md;
   font-weight: $weight-semibold;
   text-decoration: none;
-  color: inherit;
+  color: var(--orange-text);
 
   .icon {
     width: 1rem;
     height: 1rem;
-    transition: transform $duration-base $ease-out;
+    transition: transform $duration-fast $ease-out;
   }
 
   @include hover {
@@ -116,17 +97,17 @@
 .round {
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 0;
   border-radius: 50%;
   background: var(--soft);
   color: var(--ink);
   cursor: pointer;
   transition:
-    background-color $duration-quick $ease-out,
+    background-color $duration-fast $ease-out,
     transform $duration-fast $ease-out,
-    opacity $duration-quick $ease-out;
+    opacity $duration-fast $ease-out;
 
   &:active { transform: scale(0.92); }
 

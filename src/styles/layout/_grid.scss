@@ -28,6 +28,9 @@
   color: var(--night-ink);
   --muted: var(--night-muted);
   --ink-2: var(--night-muted);
+
+  // Orange text is for light surfaces; here a link takes the band's own text colour
+  .link { color: inherit; }
 }
 
 // ─── Page heads ───────────────────────────────────────────────────────────────
@@ -52,8 +55,8 @@
 
 .sec-head__p {
   max-width: 34em;
-  margin-top: $space-4;
-  font-size: $text-lg;
+  margin-top: $space-3;
+  font-size: $text-body;
   color: var(--ink-2);
 }
 
@@ -68,7 +71,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-3;
-  margin-top: $space-9;
+  margin-top: $space-8;
 
   // Phones: the buttons stretch to share the row, or take a full row each
   .btn {

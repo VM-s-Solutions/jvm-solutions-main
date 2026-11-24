@@ -15,9 +15,7 @@
   padding: 4.4cqi 4.8cqi;
   border-radius: 3cqi;
   background: var(--bg);
-  box-shadow:
-    0 0 0 0.25cqi var(--line),
-    0 5cqi 9cqi -5cqi rgba($color-ink, 0.3);
+  box-shadow: 0 0 0 0.25cqi var(--line);
 }
 
 .prompt__label {

@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { ComposeComponent } from '../../components/compose/compose.component';
 import { IconComponent } from '../../components/icon/icon.component';
 import { SplitTextComponent } from '../../components/split-text/split-text.component';
+import { DarkSurfaceDirective } from '../../directives/dark-surface.directive';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { Person, TEAM, TEAM_ORDER } from '../../services/team';
 
@@ -58,14 +60,14 @@ const REGISTER_ROWS: readonly RegisterRow[] = [
 ];
 
 /**
- * The three of us: a portrait each with the bio on a frosted card, how we work, and the
- * company as the public register lists it, with a link to check it there.
+ * The three of us: a tile each with a photo and a line in their own words, how we work, and the
+ * company as the public register lists it, with a link to check it there, then the composer.
  */
 @Component({
   selector: 'jvm-about',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule, SplitTextComponent, RevealDirective, IconComponent],
+  imports: [TranslateModule, SplitTextComponent, RevealDirective, DarkSurfaceDirective, IconComponent, ComposeComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })

@@ -9,24 +9,22 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  height: 2.625rem;
+  height: 2.5rem;
   padding: 0 $space-3 0 $space-4;
   border: 0;
   border-radius: $radius-pill;
-  background: rgba($color-soft, 0.9);
-  box-shadow: inset 0 0 0 1px rgba($color-ink, 0.04);
-  font-size: $text-md;
+  background: rgba($color-ink, 0.05);
+  font-size: $text-sm;
   font-weight: $weight-semibold;
   color: var(--ink);
-  transition: background-color $duration-base $ease-out, color $duration-base $ease-out;
+  transition: background-color $duration-fast $ease-out, color $duration-fast $ease-out;
 
-  @include hover { background: var(--soft-2); }
+  @include hover { background: rgba($color-ink, 0.09); }
 }
 
 // The top bar carries .is-dark while it sits over a dark surface
 :host-context(.is-dark) .lang__btn {
   background: rgba($color-bg, 0.1);
-  box-shadow: none;
   color: var(--night-ink);
 }
 
@@ -48,8 +46,7 @@
   padding: 6px;
   list-style: none;
   border-radius: $radius-md;
-  background: var(--bg);
-  @include window-shadow;
+  @include glass($glass-fill-strong, true, $shadow-float);
   transform-origin: top right;
 
   &.is-entering { animation: menu-in $duration-quick $ease-out; }
@@ -73,13 +70,13 @@
   border: 0;
   border-radius: $radius-sm;
   background: none;
-  font-size: $text-md;
+  font-size: $text-sm;
   font-weight: $weight-medium;
   color: var(--ink);
   text-align: left;
   transition: background-color $duration-fast $ease-out;
 
-  @include hover { background: var(--soft); }
+  @include hover { background: rgba($color-ink, 0.05); }
 
   &.is-on { font-weight: $weight-semibold; }
 }

@@ -27,7 +27,8 @@ const PAIRS: readonly FaqPair[] = [
 
 /**
  * The FAQ as one conversation: each question in the visitor's bubble, answered by one of
- * us. Questions are headings, so screen-reader users can skim them as well.
+ * us, with the way to ask another staying in view beside it. Questions are headings, so
+ * screen-reader users can skim them as well.
  */
 @Component({
   selector: 'jvm-faq-page',

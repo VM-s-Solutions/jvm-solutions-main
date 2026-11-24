@@ -13,9 +13,16 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ComposeComponent } from '../../components/compose/compose.component';
+import { DemoCodeComponent } from '../../components/demo-code/demo-code.component';
+import { DemoLangComponent } from '../../components/demo-lang/demo-lang.component';
+import { DemoLockComponent } from '../../components/demo-lock/demo-lock.component';
+import { DemoPromptComponent } from '../../components/demo-prompt/demo-prompt.component';
+import { IconComponent } from '../../components/icon/icon.component';
 import { SplitTextComponent } from '../../components/split-text/split-text.component';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { CONSULTATION_PARAMS } from '../../services/consultation';
+import { ContactServiceId } from '../../services/contact.service';
 import { IdeaService } from '../../services/idea.service';
 import { prefersReducedMotion } from '../../services/motion';
 import { ScrollService } from '../../services/scroll.service';
@@ -33,6 +40,10 @@ interface Trade extends ContentsItem {
   bodyKey: string;
   itemKeys: readonly string[];
   stack: readonly StackChip[];
+  /** Which live screen the trade shows */
+  demo: 'web' | 'api' | 'mobile' | 'ai';
+  /** Query params of its "Message us about it" link: the contact form opens on this topic */
+  about: { about: ContactServiceId };
 }
 
 const TRADES: readonly Trade[] = [
@@ -42,6 +53,8 @@ const TRADES: readonly Trade[] = [
     bodyKey: 'services.web.body',
     itemKeys: ['services.web.li1', 'services.web.li2', 'services.web.li3'],
     stack: STACK_FULL.web,
+    demo: 'web',
+    about: { about: 'frontend' },
   },
   {
     id: 's-api',
@@ -49,6 +62,8 @@ const TRADES: readonly Trade[] = [
     bodyKey: 'services.api.body',
     itemKeys: ['services.api.li1', 'services.api.li2', 'services.api.li3'],
     stack: STACK_FULL.api,
+    demo: 'api',
+    about: { about: 'backend' },
   },
   {
     id: 's-mob',
@@ -56,6 +71,8 @@ const TRADES: readonly Trade[] = [
     bodyKey: 'services.mobile.body',
     itemKeys: ['services.mobile.li1', 'services.mobile.li2', 'services.mobile.li3'],
     stack: STACK_FULL.mobile,
+    demo: 'mobile',
+    about: { about: 'mobile' },
   },
   {
     id: 's-ai',
@@ -63,6 +80,8 @@ const TRADES: readonly Trade[] = [
     bodyKey: 'services.ai.body',
     itemKeys: ['services.ai.li1', 'services.ai.li2', 'services.ai.li3'],
     stack: STACK_FULL.ai,
+    demo: 'ai',
+    about: { about: 'ai' },
   },
 ];
 
@@ -76,7 +95,8 @@ const CONTENTS: readonly ContentsItem[] = [...TRADES, TAKEOVER];
 const READING_BAND = '-30% 0px -60% 0px';
 
 /**
- * The services page: the four trades as documents, with contents that follow the reader.
+ * The services page: the four trades as documents, each beside its live screen, with contents
+ * that follow the reader, then the composer.
  * On desktop the contents are a sticky list beside the text with a soft thumb gliding to
  * the section being read; on phones they pin under the top bar as a row of pills that
  * scrolls the active one into view (on short viewports the row scrolls away with the page).
@@ -85,7 +105,18 @@ const READING_BAND = '-30% 0px -60% 0px';
   selector: 'jvm-services',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslatePipe, SplitTextComponent, RevealDirective],
+  imports: [
+    RouterLink,
+    TranslatePipe,
+    SplitTextComponent,
+    RevealDirective,
+    IconComponent,
+    ComposeComponent,
+    DemoLangComponent,
+    DemoCodeComponent,
+    DemoLockComponent,
+    DemoPromptComponent,
+  ],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss',
 })

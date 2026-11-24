@@ -79,15 +79,15 @@ p {
 
 .h2 {
   font-size: $fs-h2;
-  line-height: 1.02;
+  line-height: $leading-heading;
   letter-spacing: $tracking-heading;
 }
 
 .lead {
   max-width: 34em;
-  margin-top: $space-6;
+  margin-top: $space-5;
   font-size: $fs-lead;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink-2);
 
   b {

@@ -2,6 +2,13 @@
   <div class="container">
     <h1 class="display" [jvmSplit]="'trades.title' | translate"></h1>
     <p class="lead">{{ leadKey() | translate: leadParams() }}</p>
+    <div class="actions">
+      <a class="btn btn--primary" routerLink="/contact" [queryParams]="consultation">
+        <span>{{ 'cost.hour.cta' | translate }}</span>
+        <jvm-icon name="arrow" />
+      </a>
+      <a class="btn btn--ghost" routerLink="/contact">{{ 'hero.cta' | translate }}</a>
+    </div>
   </div>
 </section>
 
@@ -24,11 +31,21 @@
     <div class="docs__body">
       @for (trade of trades; track trade.id) {
         <article #section class="doc-sec" [id]="trade.id" jvmReveal>
+          <!-- The trade's live screen, drawn for the visitor's idea: the same four as on the home page -->
+          <div class="doc-vis" aria-hidden="true">
+            @switch (trade.demo) {
+              @case ('web') { <jvm-demo-lang /> }
+              @case ('api') { <jvm-demo-code /> }
+              @case ('mobile') { <jvm-demo-lock /> }
+              @case ('ai') { <jvm-demo-prompt /> }
+            }
+          </div>
+          <div class="doc-text">
           <h2 #heading tabindex="-1">{{ trade.labelKey | translate }}</h2>
-          <p>{{ trade.bodyKey | translate }}</p>
+          <p class="doc-lead">{{ trade.bodyKey | translate }}</p>
           <div class="doc-grid">
             <div>
-              <b>{{ 'services.get' | translate }}</b>
+              <b class="row__label">{{ 'services.get' | translate }}</b>
               <ul class="ticks">
                 @for (key of trade.itemKeys; track key) {
                   <li>{{ key | translate }}</li>
@@ -36,7 +53,7 @@
               </ul>
             </div>
             <div>
-              <b>{{ 'services.stack' | translate }}</b>
+              <b class="row__label">{{ 'services.stack' | translate }}</b>
               <ul class="chips">
                 @for (tech of trade.stack; track tech.text) {
                   <li>{{ tech.i18n ? (tech.text | translate) : tech.text }}</li>
@@ -44,12 +61,16 @@
               </ul>
             </div>
           </div>
+          <a class="link doc-ask" routerLink="/contact" [queryParams]="trade.about">
+            {{ 'services.take.cta' | translate }}<jvm-icon name="arrow" />
+          </a>
+          </div>
         </article>
       }
 
       <article #section class="doc-sec doc-sec--dark" [id]="takeover.id" jvmReveal>
         <h2 #heading tabindex="-1">{{ 'services.take.title' | translate }}</h2>
-        <p>{{ 'services.take.body' | translate }}</p>
+        <p class="doc-lead">{{ 'services.take.body' | translate }}</p>
         <div class="actions">
           <a class="btn btn--primary" routerLink="/contact">{{ 'services.take.cta' | translate }}</a>
           <a class="btn btn--dark-ghost" routerLink="/contact" [queryParams]="consultation">{{ 'services.take.cta2' | translate }}</a>
@@ -58,3 +79,5 @@
     </div>
   </div>
 </section>
+
+<jvm-compose />

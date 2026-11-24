@@ -1,8 +1,9 @@
 @use 'abstracts' as *;
 
-// Space between the top bar and the headline, and below the hero: 40 → 88px, 72 → 120px
-$hero-top: clamp(#{$space-10}, 6vw, #{$space-10 + $space-12});
-$hero-bottom: clamp(#{$space-18}, 9vw, #{$space-24 + $space-6});
+// Space between the top bar and the headline, and below the hero: 40 → 72px, 64 → 96px
+$hero-top: clamp(#{$space-10}, 5vw, #{$space-18});
+$hero-bottom: clamp(#{$space-16}, 7vw, #{$space-24});
+$hero-max-h: 60rem;
 
 :host {
   display: block;
@@ -11,6 +12,15 @@ $hero-bottom: clamp(#{$space-18}, 9vw, #{$space-24 + $space-6});
 .hero {
   padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + #{$hero-top});
   padding-bottom: $hero-bottom;
+
+  // Desktop: the hero has the first screen to itself, its content centred in what the bar leaves
+  @include md {
+    display: grid;
+    align-items: center;
+    min-height: min(100svh, #{$hero-max-h});
+  }
+
+  @include short { min-height: 0; }
 }
 
 // Phones: the words, then the chat. Desktop: side by side, the chat a touch wider.
@@ -20,7 +30,7 @@ $hero-bottom: clamp(#{$space-18}, 9vw, #{$space-24 + $space-6});
   gap: $stack-gap;
   align-items: center;
 
-  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); }
+  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
 .hero__title {

@@ -1,40 +1,46 @@
 @use 'abstracts' as *;
 
-// The reading column of the conversation, shared with the box under it
-$thread-max: 48.75rem; // 780px
-
 :host {
   display: block;
 }
 
+// Phones: the conversation, then the way to ask another question. Desktop: that box on the
+// left, staying in view beside the thread.
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-12 $stack-gap;
+  align-items: start;
+
+  @include md { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+}
+
 // ─── The conversation ─────────────────────────────────────────────────────────
+// Each question in the visitor's bubble on the right, answered by one of us on the left. The
+// pairs stand well apart, so the page reads as a list of questions as much as a chat.
 .thread {
+  --bubble-pad: #{$bubble-pad-page};
+  --bubble-size: #{$text-base};
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: $space-2;
+
+  @include md { grid-area: 1 / 2; }
 
   .msg {
-    max-width: 88%;
+    max-width: 86%;
     transform-origin: bottom left;
 
     // Bubbles rise less than other reveals and settle from a slightly smaller size
-    &.reveal:not(.is-in) { transform: translateY(18px) scale(0.96); }
+    &.reveal:not(.is-in) { transform: translateY($space-4) scale(0.96); }
   }
 
   .msg--me {
-    margin-top: $space-5;
+    margin-top: $space-9;
     transform-origin: bottom right;
 
     &:first-child { margin-top: 0; }
   }
-}
-
-// Page-size bubbles, as on the concept's FAQ page
-.thread--page {
-  --bubble-pad: #{$bubble-pad-page};
-  --bubble-size: #{$text-body};
-  max-width: $thread-max;
-  margin-inline: auto;
 }
 
 // Questions are headings for the outline; they read like the rest of the bubble
@@ -45,19 +51,19 @@ $thread-max: 48.75rem; // 780px
 
 // ─── Still have a question? ───────────────────────────────────────────────────
 .ask {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: $space-4;
-  max-width: $thread-max;
-  margin: $space-14 auto 0;
-  padding: $space-6 $space-7;
-  border-radius: $radius-lg;
-  background: var(--soft);
+  display: grid;
+  justify-items: start;
+  gap: $space-5;
+  grid-row: 2;
+
+  @include md {
+    position: sticky;
+    top: calc(var(--nav-h) + #{$space-8});
+    grid-area: 1 / 1;
+  }
 }
 
 .ask__text {
-  font: $weight-semibold #{$text-2xl}/1.2 $font-display;
+  font: $weight-semibold #{$fs-h3}/#{$leading-heading} $font-display;
   letter-spacing: $tracking-title;
 }

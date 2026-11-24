@@ -2,8 +2,9 @@
 
 Website of a three-person software studio (Janis, Vít, Michael) in Prague: web apps, .NET backends, native mobile
 apps and AI agents. The October 2026 redesign is built around one idea: the visitor names their product in a live chat
-with the founders, and the whole site then talks about it ("Ask the people who'll build Bloom."). Light, iOS-like
-surfaces, brand orange on actions, dark chapters for contrast, smooth but restrained motion.
+with the founders, and the whole site then talks about it ("Ask the people who'll build Bloom."). Light, flat, clean
+surfaces with glass only on the bars (November 2026 restyle), colours by the 60-30-10 rule (white, ink neutrals, brand orange),
+calm type (nothing above 60px), one dark band for contrast, smooth but restrained motion.
 
 ---
 
@@ -69,7 +70,8 @@ past a placeholder, and screen reader users get every section within a few secon
 
 ```
 HeroComponent        ← headline (swaps in the idea's name) + ChatComponent (live chat, asks for the idea's name)
-PaperComponent       ← "Put [name] on paper." + pinned board: sketch → spec → staging → handover on light/dark chapters
+PaperComponent       ← "Put [name] on paper." + a pinned 3D stage (Stage3dComponent, three.js): a paper sketch, the printed
+                       spec, then the sketch lifts onto a laptop's display and becomes the app; a quiet stepper beside it
 TradesComponent      ← services carousel with four live demo screens (demo-lang, demo-code, demo-lock, demo-prompt);
                        the bar under it is its scrollbar (drag the thumb, press the track; pointer only)
 TeamTrioComponent    ← tap a face, read a first-person line
@@ -165,7 +167,11 @@ Don't bring back published prices, rates or plans without the owners.
 Tokens live in `src/styles/abstracts/_variables.scss`; colours are also CSS custom properties (`base/_root.scss`).
 
 ```
---bg #FFFFFF   --soft #F3F4F6   --soft-2 #ECEDF0   --ink #0B0C0E   --ink-2 #3C4048   --muted #656A72   --line #E7E8EB
+60-30-10: 60% white and light surfaces, 30% ink neutrals (text, greys, dark surfaces), 10% brand orange. No other hue
+(functional exceptions only: error red, the "done" green). The rule is written out at the top of
+`_variables.scss`.
+--bg #FFFFFF   --soft #F5F6F8   --soft-2 #ECEEF1   --ink #0B0C0E   --ink-2 #3C4048   --muted #656A72   --line #E6E8EC
+--ground #F7F8FA
 --orange #F26100 (accents: logo, icons, rings, markers)   --orange-text #B84700 (orange text)
 --orange-fill #CC4A00 (fills that carry text: buttons, the visitor's bubble; white text 4.6:1)
 --orange-fill-2 #B84700 (their hover)   --on-orange #FFFFFF (text and icons on the fills)
@@ -182,6 +188,65 @@ Global classes: `.container .section .section--soft .section--ink .page-hero .se
 .btn--primary .btn--ghost .link .round .chips .hand`. Component styles start with `@use 'abstracts' as *;`.
 
 ---
+
+## Surfaces
+
+Flat, in the manner of apple.com (the owner asked for that): depth comes from the change of surface (white, the soft
+`--soft` #F5F5F7, the dark band), never from gradients, borders on cards or shadows on cards and buttons. No colour washes.
+
+| Tool | Use |
+|---|---|
+| `pane` (mixin) | a tile on the page's white: the soft fill and nothing else (service documents, home service cards, the contact facts) |
+| `glass($fill, $blur, $shadow)` | only what floats over content: the phone tab bar, the language menu |
+| `frosted($bg)` | the top bar's sheet once the page scrolls |
+
+Sections are white; only one dark band per page (cost on home, how we work on about, the takeover card on services)
+and the footer change the ground. Content sits on soft tiles: big tiles
+(chat, composer, service documents, portraits, register, the contact window, the consultation card) take `$radius-xl`,
+cards inside a row (home service cards, ways of working, contact facts) `$radius-lg`. On a soft tile, chips, pills,
+bubbles and fields are white. Text links (`.link`) are orange on light surfaces and take the text colour on the dark band.
+
+The hero's chat is itself one flat soft tile (no window frame, no shadow; our bubbles are white on it). The footer is full width on the soft ground, the wordmark first.
+
+Every page keeps its own device, and stays clean around it (the owner asked for atypical everywhere, never a standard
+layout): home is a chat, FAQ one conversation (questions in the visitor's bubble, answered by one of us, with the "ask
+us" box staying in view beside it), contact a message window (with neutral window dots), services four documents with
+contents that follow the reader, each beside its live demo screen (the home page's `demo-*` components) and its own
+link to the contact form (`?about=`), about three soft tiles (a square photo, name, role and a line in their own words as a chat bubble), four
+ways-of-working cards, and the register as one tile of facts. Services and
+about end on `ComposeComponent`; the services head carries the consultation button.
+
+Type is calm on purpose: hero 40 → 60px, page h1 38 → 56px, section h2 28 → 40px. One size per level: every section
+heading is `$fs-h2`, the composer's and "Put … on paper." included. Sections keep one rhythm (`$section-y`, 64 → 96px).
+Buttons are 46px (40px small).
+
+Hovers and presses are plain and quick: a colour change in `$duration-fast` (0.25 s), nothing grows or blooms; only a
+button's arrow moves. The mock screens on tiles are flat as well (a hairline, no drop). On the home page the three faces
+keep one size and full colour, and a ring marks who is speaking (grey under the pointer, orange when chosen). The idea
+slot in "Put … on paper." is a blank on an orange rule, which closes into a ring on the orange tint when focused. On
+phones, footer links and the language buttons are 44px tap targets.
+Radii: 8 / 12 / 16 / 20 / 28.
+
+## The 3D stage (home, "Put … on paper.")
+
+`components/stage3d/`: `stage3d.component` (canvas host, CSS paper placeholder, texts from i18n and the product name),
+`stage-scene.ts` (the only file that imports three; loaded by dynamic import when the section nears the viewport),
+`stage-textures.ts` (the sketch, spec, notes and app screen drawn on 2D canvases with the site's fonts),
+`stage-timeline.ts` (pure pose maths, unit-tested). Every pose is a function of one timeline number. The scroll only picks the chapter (a quarter of the track each);
+`PaperComponent` then plays the timeline to that chapter's rest (`STAGE_RESTS`, `play()`) at a capped pace, so a stopped
+scroll never leaves a move half done and a fast scroll can't rush it; scrolling back plays it in reverse. A wheel
+or a swipe moves the story one chapter at a time: while a step plays, wheel and touch scrolling is swallowed
+(`hold` in `PaperComponent`), and it is freed at the first pause in the gesture after the step has played, or after
+1.8 s at the latest, so one fling moves one step and nobody is trapped. Keys, links and the scrollbar are never held.
+No CSS scroll snapping (it made a touchpad fight the page). The track is 320vh, about half a screen of scroll per step.
+The scene warms its shaders and textures when it is built (`warm()`): left to their first frame in view they stalled
+the story as the laptop came in.
+The scene renders only while the playback moves. three.js sits in its own lazy chunk
+(~590 kB raw, ~150 kB gzip) and must never reach the initial bundle. A short viewport or reduced motion pins nothing:
+the steps are listed and one still frame shows the finished laptop. Shadows are baked contact cards, not shadow maps. The laptop's screen is a canvas texture repainted only when a row
+arrives or is ticked; its two cards (staging, handover) are planes of their own over the screen, drawn once per content,
+so they glide without any redraw. The screen texture has no mipmaps, so an update is one upload.
+The scene keeps the 60-30-10 rule too: neutral paper and aluminium, orange strokes and dots, ink ticks.
 
 ## Asset Locations
 

@@ -1,0 +1,37 @@
+@use '../abstracts' as *;
+
+// ─── Lists inside a document ──────────────────────────────────────────────────
+// A small label over a list ("What you get", "Technology")
+.row__label {
+  display: block;
+  margin-bottom: $space-3;
+  font: $weight-semibold #{$text-sm}/1.2 $font-text;
+  color: var(--muted);
+}
+
+// ─── Ticks ────────────────────────────────────────────────────────────────────
+// A plain list with an orange tick before each line
+.ticks {
+  display: grid;
+  gap: $space-2-5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: $space-6;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.42em;
+      left: 2px;
+      width: 0.4em;
+      height: 0.7em;
+      border: solid var(--orange);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+}

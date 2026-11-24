@@ -1,15 +1,15 @@
 @use 'abstracts' as *;
 
 // The window's height steps up with the layout: phone, large phone / tablet, desktop
-$chat-h: 31.25rem;      // 500px
-$chat-h-sm: 33.75rem;   // 540px
-$chat-h-md: 37.5rem;    // 600px
+$chat-h: 27.5rem;       // 440px
+$chat-h-sm: 28.75rem;   // 460px
+$chat-h-md: 30rem;      // 480px
 
-$face: $space-10;
+$face: $space-9;
 $face-overlap: $face * 0.25;
 
 // The thread's side padding
-$body-pad-x: $space-4;
+$body-pad-x: $space-5;
 
 // One row of chips: the reply area never collapses below it, so the thread doesn't jump
 $reply-min-h: 4.75rem;  // 76px
@@ -28,7 +28,7 @@ $stagger-lead: $stagger-xs;
 
 // A chip turns into the visitor's bubble, so it keeps the bubble's padding (MessageComponent)
 $chip-pad: $bubble-pad;
-$chip-ring: inset 0 0 0 1.5px;
+$chip-ring: inset 0 0 0 1px;
 
 :host {
   display: flex;
@@ -37,14 +37,12 @@ $chip-ring: inset 0 0 0 1.5px;
   overflow: hidden;
   // keeps the rounded clip on Safari while the thread scrolls
   isolation: isolate;
-  border-radius: $radius-lg;
-  background: var(--bg);
-  @include window-shadow;
+  // One flat tile, like the composer's card: no window, no shadow. Our bubbles are white on it.
+  --them: var(--bg);
+  border-radius: $radius-xl;
+  background: var(--soft);
 
-  @include sm {
-    height: $chat-h-sm;
-    border-radius: $radius-xl;
-  }
+  @include sm { height: $chat-h-sm; }
 
   @include md { height: $chat-h-md; }
 }
@@ -55,9 +53,7 @@ $chip-ring: inset 0 0 0 1.5px;
   display: flex;
   align-items: center;
   gap: $space-3;
-  padding: $space-4 $space-5;
-  background: rgba($color-bg, 0.9);
-  box-shadow: inset 0 -1px 0 var(--line);
+  padding: $space-5 $space-5 $space-2;
 }
 
 .faces {
@@ -70,7 +66,7 @@ $chip-ring: inset 0 0 0 1.5px;
     margin-left: -$face-overlap;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 0 3px var(--bg);
+    box-shadow: 0 0 0 3px var(--soft);
   }
 }
 
@@ -79,7 +75,7 @@ $chip-ring: inset 0 0 0 1.5px;
 
   b {
     display: block;
-    font: $weight-semibold #{$text-base}/1.2 $font-display;
+    font: $weight-semibold #{$text-md}/1.2 $font-display;
     letter-spacing: $tracking-title;
   }
 
@@ -96,10 +92,10 @@ $chip-ring: inset 0 0 0 1.5px;
 .chat__body {
   flex: 1;
   min-height: 0;
-  padding: $space-5 $body-pad-x $space-3;
+  padding: $space-4 $body-pad-x $space-3;
   // Opaque, like the window behind it: a browser can then scroll it on the compositor even on a
   // 1x screen, where a see-through scroller scrolls on the main thread to keep its text crisp
-  background: var(--bg);
+  background: var(--soft);
   // an action reaching into the side padding must not make the thread scroll sideways
   overflow-x: hidden;
   overflow-y: auto;
@@ -190,7 +186,7 @@ $chip-ring: inset 0 0 0 1.5px;
   align-content: flex-start;
   gap: $space-2;
   min-height: $reply-min-h;
-  padding: $space-3 $space-4 $space-5;
+  padding: $space-3 $space-5 $space-5;
 
   // Phones: the questions swipe sideways in one row that fades out at the edge
   &.is-row {
@@ -217,7 +213,7 @@ $chip-ring: inset 0 0 0 1.5px;
   border: 0;
   border-radius: $radius-pill;
   background: var(--bg);
-  box-shadow: $chip-ring var(--orange);
+  box-shadow: inset 0 0 0 1px rgba($color-orange, 0.55);
   color: var(--orange-text);
   font-size: $text-sm;
   font-weight: $weight-semibold;
@@ -251,7 +247,7 @@ $chip-ring: inset 0 0 0 1.5px;
   color: var(--muted);
 
   @include hover {
-    background: var(--soft);
+    background: var(--soft-2);
     color: var(--ink);
   }
 }
@@ -263,7 +259,7 @@ $chip-ring: inset 0 0 0 1.5px;
   width: 100%;
   padding: 6px 6px 6px $space-4;
   border-radius: $radius-pill;
-  background: var(--soft);
+  background: var(--bg);
   box-shadow: $chip-ring transparent;
   transition:
     opacity $duration-base $ease-out,

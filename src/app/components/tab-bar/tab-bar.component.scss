@@ -19,10 +19,7 @@ $bar-pad: 6px;
   grid-template-columns: repeat(5, 1fr);
   padding: $bar-pad;
   border-radius: calc($radius-md + $bar-pad);
-  @include frosted(rgba($color-bg, 0.86));
-  box-shadow:
-    0 0 0 1px rgba($color-ink, 0.06),
-    0 12px 32px -12px rgba($color-ink, 0.35);
+  @include glass($glass-fill-strong, true, $shadow-float);
   view-transition-name: tabbar;
 }
 
@@ -53,7 +50,7 @@ $bar-pad: 6px;
 
   &.is-active {
     color: var(--ink);
-    background: var(--soft);
+    background: rgba($color-ink, 0.06);
 
     .icon { color: var(--orange); }
   }
