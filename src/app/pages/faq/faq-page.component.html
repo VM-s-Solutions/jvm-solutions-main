@@ -6,8 +6,17 @@
 </section>
 
 <section class="section section--tight">
-  <div class="container">
-    <div class="thread thread--page">
+  <div class="container faq">
+    <!-- Beside the conversation on desktop and still in view as it scrolls; under it on phones -->
+    <aside class="ask" jvmReveal>
+      <p class="ask__text">{{ 'faq.more' | translate }}</p>
+      <a class="btn btn--primary" routerLink="/contact">
+        <span>{{ 'faq.moreCta' | translate }}</span>
+        <jvm-icon name="arrow" />
+      </a>
+    </aside>
+
+    <div class="thread">
       @for (pair of pairs; track pair.q) {
         <jvm-message from="me" jvmReveal>
           <h2 class="thread__text">{{ pair.q | translate }}</h2>
@@ -16,14 +25,6 @@
           <p class="thread__text">{{ pair.a | translate }}</p>
         </jvm-message>
       }
-    </div>
-
-    <div class="ask" jvmReveal>
-      <p class="ask__text">{{ 'faq.more' | translate }}</p>
-      <a class="btn btn--primary" routerLink="/contact">
-        <span>{{ 'faq.moreCta' | translate }}</span>
-        <jvm-icon name="arrow" />
-      </a>
     </div>
   </div>
 </section>

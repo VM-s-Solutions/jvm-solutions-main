@@ -1,12 +1,12 @@
 @use 'abstracts' as *;
 
-// A card is 560px wide, so about two and a quarter fit the container; phones see one
+// A card is 480px wide, so about two and a half fit the container; phones see one
 // card and the edge of the next.
-$card-width: 35rem;
+$card-width: 30rem;
 $card-width-phone: 84vw;
 
 // The scrollbar's line, and how far above and below it a press still lands on it
-$scroll-line: 3px;
+$scroll-line: 2px;
 $scroll-reach: $space-5;
 
 // Where the container's content starts, measured against the full-bleed scroller
@@ -35,8 +35,8 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
 // matching scroll padding makes every card snap to that same line.
 .car {
   display: flex;
-  gap: $space-5;
-  margin-top: $space-12;
+  gap: $space-4;
+  margin-top: $space-10;
   padding: $space-2 $edge-right $space-2 $edge-left;
   // Opaque, like the page behind it: a browser can then scroll it on the compositor even on a
   // 1x screen, where a see-through scroller scrolls on the main thread to keep its text crisp
@@ -75,7 +75,7 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
   flex-direction: column;
   overflow: hidden;
   border-radius: $radius-lg;
-  background: var(--soft);
+  @include pane;
   scroll-snap-align: start;
 }
 
@@ -83,23 +83,24 @@ $edge-right: max(#{$gutter}, env(safe-area-inset-right, 0px), #{$edge});
 .scard__vis {
   position: relative;
   aspect-ratio: 16 / 10;
-  margin: $space-3 $space-3 0;
+  margin: $space-2 $space-2 0;
   overflow: hidden;
-  border-radius: $radius-lg - $space-3;
+  border-radius: $radius-lg - $space-2;
   background: var(--bg);
   container-type: inline-size;
 }
 
 .scard__text {
-  padding: $space-6 $space-7 $space-7;
+  padding: $space-5 $space-6 $space-6;
 
   h3 {
-    font-size: $text-3xl;
+    font-size: $text-xl;
     letter-spacing: $tracking-title;
   }
 
   p {
     margin-top: $space-2;
+    font-size: $text-md;
     color: var(--ink-2);
   }
 }

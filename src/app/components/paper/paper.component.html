@@ -25,30 +25,26 @@
     <p class="sec-head__p" jvmReveal [revealDelay]="0.1">{{ 'paper.lead' | translate }}</p>
   </div>
 
-  <div
-    #track
-    class="paper__track"
-    [class.is-dark]="isDark()"
-    [class.is-murky]="isMurky()"
-    [jvmDarkSurface]="isDark()"
-  >
+  <div #track class="paper__track">
     <div #sticky class="paper__sticky">
-      <div class="container paper__grid" [attr.data-stage]="stage()">
+      <div class="container paper__grid">
         <div class="paper__side">
-          <div class="how__num" aria-hidden="true">
-            <span class="roll"><i>1</i><i>2</i><i>3</i><i>4</i></span>
-          </div>
-          <ol class="pv-list">
+          <p class="steps__count" aria-hidden="true">{{ stageNumber() }} / {{ count }}</p>
+          <ol class="steps">
             @for (step of steps(); track step.id) {
-              <li class="pv" [class.is-on]="$index === stage()">
-                <h3>{{ step.title | translate }}</h3>
-                <p><jvm-swap-text [text]="step.body | translate: nameParams()" /></p>
+              <li class="step" [class.is-on]="$index === stage()">
+                <h3 class="step__title">{{ step.title | translate }}</h3>
+                <div class="step__fold">
+                  <p class="step__body"><jvm-swap-text [text]="step.body | translate: nameParams()" /></p>
+                </div>
               </li>
             }
           </ol>
-          <div class="how__bar" aria-hidden="true"><i></i></div>
+          <div class="steps__bar" aria-hidden="true"><i></i></div>
         </div>
-        <jvm-board [stage]="stage()" />
+      </div>
+      <div class="paper__stage">
+        <jvm-stage3d />
       </div>
     </div>
   </div>

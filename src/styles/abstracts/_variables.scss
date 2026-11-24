@@ -3,15 +3,28 @@
 // published as CSS custom properties (base/_root.scss), because dark surfaces
 // re-point them at runtime; components read colours through var(--…).
 
+// ─── The 60-30-10 rule ────────────────────────────────────────────────────────
+// Every screen is built from three colour roles and nothing else:
+//   60% primary   — white and the light surfaces ($color-bg, $color-ground, $color-soft*)
+//   30% secondary — the ink neutrals: text, hairlines, greys and the dark surfaces ($color-ink*,
+//                   $color-muted, $color-line, $color-night*)
+//   10% loud      — the brand orange ($color-orange*): one action, markers, the visitor's bubble
+// Surfaces are flat: depth comes from the change of surface (white, soft, dark), never from
+// gradients, borders on cards or shadows. The blur is kept for bars and menus that float over
+// content, and so is the drop shadow. A mock screen drawn on a tile is flat too: a hairline, no drop.
+// No other hue belongs in the design. The only exceptions are functional: a field's error red,
+// and the "done" green of a status tick. Never as decoration.
+
 // ─── Colour: light surfaces ───────────────────────────────────────────────────
 $color-bg: #FFFFFF;
-$color-soft: #F3F4F6;
-$color-soft-2: #ECEDF0;
+$color-soft: #F5F5F7;
+$color-soft-2: #ECECEF;
 $color-ink: #0B0C0E;
 $color-ink-2: #3C4048;
 $color-muted: #656A72;        // ≥ 4.6:1 on every light surface
 $color-placeholder: #727780;  // 4.5:1 on white
-$color-line: #E7E8EB;
+$color-line: #E6E8EC;
+$color-ground: #F7F8FA;      // the page behind every surface: glass panels need something to sit on
 
 // ─── Colour: brand ────────────────────────────────────────────────────────────
 $color-orange: #F26100;       // accents: logo, icons, rings, markers, the selection (ink text on it, 6:1)
@@ -24,7 +37,7 @@ $color-orange-fill-2: $color-orange-text; // their hover fill: a shade deeper ag
 $color-on-orange: #FFFFFF;    // text and icons on the orange fills
 $color-orange-tint: #FFF0E5;
 $color-note: #FFF2B8;         // sticky notes on the board
-$color-them: #EEEFF2;         // their chat bubbles
+$color-them: $color-soft-2;   // their chat bubbles on white (on a soft tile they turn white)
 
 // ─── Colour: dark surfaces ────────────────────────────────────────────────────
 $color-night: #0B0C0E;
@@ -37,13 +50,7 @@ $color-night-muted: #A3A8B0;
 // ─── Colour: status ───────────────────────────────────────────────────────────
 $color-ok: #16935B;
 $color-ok-tint: #E4F5EC;
-$color-app: #2B63E6;
 $color-err: #C8331F;
-
-// ─── Colour: window chrome (the contact page's message window) ────────────────
-$color-chrome-close: #FF6159;
-$color-chrome-minimise: #FFBD2E;
-$color-chrome-zoom: #28C941;
 
 // ─── Typography ───────────────────────────────────────────────────────────────
 // The "Fallback" faces (base/_typography.scss) are local Arial scaled to each font's
@@ -66,30 +73,28 @@ $text-3xl: 1.75rem;     // 28px
 $text-3xs: 0.6875rem;  // 11px — labels under the phone tab bar's icons
 
 // Fluid display sizes (phone → wide desktop)
-$fs-hero: clamp(2.875rem, 6vw, 5.5rem);       // home h1, 46 → 88px
-$fs-display: clamp(2.75rem, 6.6vw, 6rem);     // page h1, 44 → 96px
-$fs-display-phone: clamp(2.5rem, 11.5vw, 3.75rem); // page and home h1 below 641px, 40 → 60px
-$fs-h2: clamp(2.125rem, 4.4vw, 3.75rem);      // section h2, 34 → 60px
-$fs-compose: clamp(2.5rem, 6vw, 5.5rem);       // "Start the conversation.", 40 → 88px
-$fs-h3: clamp(1.875rem, 3.2vw, 2.875rem);     // step / document titles, 30 → 46px
-$fs-paper: clamp(2.5rem, 6.2vw, 5.75rem);     // "Put … on paper.", 40 → 92px
-$fs-paper-phone: clamp(2.375rem, 11vw, 3.5rem); // the same below 641px, 38 → 56px
-$fs-lead: clamp(1.125rem, 1.5vw, 1.25rem);    // intro paragraphs, 18 → 20px
-$fs-step: clamp(6.875rem, 13vw, 12.5rem);     // the rolling step number on the board, 110 → 200px
+// Calm sizes on purpose: nothing on the site is set larger than 60px
+$fs-hero: clamp(2.5rem, 4.4vw, 3.75rem);      // home h1, 40 → 60px
+$fs-display: clamp(2.375rem, 4.2vw, 3.5rem);  // page h1, 38 → 56px
+$fs-display-phone: clamp(2.125rem, 9vw, 2.625rem); // page and home h1 below 641px, 34 → 42px
+// One size per level: every section heading is $fs-h2, the composer's and "Put … on paper." included
+$fs-h2: clamp(1.75rem, 3vw, 2.5rem);          // section h2, 28 → 40px
+$fs-h3: clamp(1.375rem, 2vw, 1.75rem);        // step / document titles, 22 → 28px
+$fs-lead: clamp(1.0625rem, 1.3vw, 1.1875rem); // intro paragraphs, 17 → 19px
 
 $weight-regular: 400;
 $weight-medium: 500;
 $weight-semibold: 600;
 $weight-bold: 700;
 
-$leading-display: 0.97;
-$leading-heading: 1.05;
+$leading-display: 1.06;
+$leading-heading: 1.12;
 $leading-snug: 1.3;
 $leading-body: 1.6;
 
-$tracking-display: -0.05em;
-$tracking-heading: -0.045em;
-$tracking-title: -0.025em;
+$tracking-display: -0.035em;
+$tracking-heading: -0.03em;
+$tracking-title: -0.02em;
 
 // ─── Spacing (4px grid) ───────────────────────────────────────────────────────
 $space-1: 0.25rem;   // 4
@@ -116,21 +121,31 @@ $chip-pad-sm: 0.3125rem 0.6875rem;    // 5 11 — tech chips
 $typing-pad-y: 0.875rem;              // 14 — above and below the three typing dots
 $msg-face: 30px;                      // the face beside a chat bubble; the chat indents past it
 
-$section-y: clamp(5.5rem, 10vw, 9rem);         // vertical rhythm of a section, 88 → 144px
-$page-hero-y: clamp(3.5rem, 8vw, 7rem);        // space above a page h1, 56 → 112px
+$section-y: clamp(4rem, 7vw, 6rem);            // vertical rhythm of a section, 64 → 96px
+$page-hero-y: clamp(3rem, 6vw, 5rem);          // space above a page h1, 48 → 80px
 $stack-gap: clamp(2.5rem, 6vw, 6rem);          // gap between big side-by-side columns, 40 → 96px
 $page-hero-bottom: clamp(2.5rem, 5vw, 4.5rem);  // space under a page head, 40 → 72px
-$footer-y: clamp(4.5rem, 9vw, 7.5rem);         // the footer's top padding, 72 → 120px
-$footer-logo-gap: clamp(3.5rem, 8vw, 7rem);    // above the footer's big logo, 56 → 112px
-$compose-pad: clamp(2rem, 6vw, 5.5rem);        // inside the composer card, 32 → 88px
+$compose-pad: clamp(1.5rem, 4.5vw, 4rem);      // inside the composer card, 24 → 64px
 
 // ─── Radius ───────────────────────────────────────────────────────────────────
 $radius-xs: 0.5rem;   // 8
 $radius-sm: 0.75rem;  // 12
-$radius-md: 1.25rem;  // 20
-$radius-lg: 1.75rem;  // 28
-$radius-xl: 2.5rem;   // 40
+$radius-md: 1rem;     // 16
+$radius-lg: 1.25rem;  // 20
+$radius-xl: 1.75rem;  // 28
 $radius-pill: 999px;
+
+// ─── Glass ────────────────────────────────────────────────────────────────────
+// One recipe for every glass surface (abstracts/_mixins.scss `glass`): a translucent white sheet,
+// a light edge and a soft drop. Used sparingly: bars, floating windows, a few cards.
+$glass-fill: rgba($color-bg, 0.66);
+$glass-fill-strong: rgba($color-bg, 0.82);
+$glass-edge: rgba($color-bg, 0.9);
+$glass-blur: 20px;
+$glass-edge-night: rgba(#FFFFFF, 0.12);
+$shadow-hairline: 0 0 0 1px rgba($color-ink, 0.06);
+$shadow-soft: 0 20px 48px -24px rgba($color-ink, 0.16);
+$shadow-float: 0 1px 2px rgba($color-ink, 0.04), 0 28px 64px -32px rgba($color-ink, 0.22);
 
 // ─── Motion ───────────────────────────────────────────────────────────────────
 $ease-out: cubic-bezier(0.22, 1, 0.36, 1);       // settles softly — the default
@@ -138,7 +153,7 @@ $ease-ios: cubic-bezier(0.32, 0.72, 0, 1);       // iOS sheet curve — page pus
 $ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);  // small overshoot — chips, bubbles
 $ease-in: cubic-bezier(0.5, 0, 0.75, 0);         // leaving
 
-$duration-fast: 0.25s;
+$duration-fast: 0.25s;   // every hover, press and focus change: feedback stays under 300ms
 $duration-base: 0.45s;
 $duration-slow: 0.6s;
 $duration-slower: 0.9s;

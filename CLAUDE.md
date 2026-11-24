@@ -19,6 +19,7 @@ You are an elite Angular architect with deep expertise across the entire Angular
 | RxJS | 7.8 |
 | Styling | SCSS 7-1 + design tokens (`src/styles/`) |
 | State | Angular Signals (no NgRx) |
+| 3D | three.js 0.187, only in the home page's stage (`components/stage3d/stage-scene.ts`), imported dynamically (its own lazy chunk; never in the initial bundle) |
 | Testing | Jasmine + Karma |
 
 ---
@@ -130,7 +131,7 @@ Global styles follow the **7-1 pattern** — 7 folders, 1 entry file. All partia
 src/styles/
 ├── abstracts/          # No CSS output — only tools
 │   ├── _variables.scss   design tokens (colours, type, spacing, radius, motion, breakpoints, z-index)
-│   ├── _mixins.scss      sm/md/lg/xl, short, hover, reduced-motion, focus-ring, frosted, window-shadow, …
+│   ├── _mixins.scss      sm/md/lg/xl, short, hover, reduced-motion, focus-ring, frosted, glass, pane, …
 │   └── _index.scss       forwards both, so components write @use 'abstracts' as *;
 ├── base/               # Unclassed HTML element defaults
 │   ├── _root.scss        colour + motion tokens as CSS custom properties on :root
@@ -141,7 +142,8 @@ src/styles/
 │   └── _grid.scss        .container, .section(--soft / --ink / --tight), .page-hero, .sec-head, .actions
 ├── components/         # Reusable visual patterns not tied to one Angular component
 │   ├── _buttons.scss     .btn (--primary / --ghost / --dark-ghost / --sm), .link, .round
-│   └── _chips.scss       .chips (tech-name lists)
+│   ├── _chips.scss       .chips (tech-name lists)
+│   └── _rows.scss        .row__label, .ticks (labelled lists inside a document)
 ├── pages/              # Reserved — one-off page overrides that cannot live in a component
 ├── themes/             # Reserved — one theme; dark surfaces re-point the colour tokens locally
 └── vendors/            # Reserved — third-party style overrides only
@@ -162,7 +164,11 @@ src/styles/
 - Use mixins from `abstracts/_mixins.scss` for responsive breakpoints and common patterns.
 - Component styles are scoped (`:host` selector) — never use `ViewEncapsulation.None` without strong justification.
 - Mobile-first: base styles for smallest viewport, override upwards via `@include sm/md/lg/xl` (641 / 901 / 1101 / 1281px).
-- One theme: light surfaces, with dark ones for contrast (`.section--ink`, the board's dark chapters) that re-point the colour custom properties locally. No theme switcher, no light/dark branches.
+- One theme: light surfaces, with dark ones for contrast (`.section--ink`) that re-point the colour custom properties locally. No theme switcher, no light/dark branches.
+- Colours follow 60-30-10: 60% white and light surfaces, 30% ink neutrals (text, greys, dark surfaces), 10% brand orange. No other hue in the design; error red and the "done" green are functional exceptions, never decoration.
+- Surfaces are flat: a card is a `pane` (the soft fill, no border, no shadow), sections alternate white, soft and the dark band. No gradients or colour washes, no shadows on cards or buttons. Blur (`glass`, `frosted`) only on what floats over content: the top bar, the phone tab bar, menus. No drop shadows on the page's own surfaces.
+- Every page keeps its own device (chat, conversation, message window, documents with live screens, portrait tiles that speak in a chat bubble): don't replace one with a standard layout.
+- Nothing is set larger than 60px; headings use the `$fs-*` tokens.
 - Colours come from the CSS custom properties in `base/_root.scss` (`var(--ink)`); everything else from the SCSS tokens.
 - Animations belong in `base/_animations.scss` (shared keyframes, `.reveal` states, page transitions); use `RevealDirective` (`jvmReveal`) for scroll-triggered reveals and `SplitTextComponent` (`[jvmSplit]`) for headings.
 - Animate transform and opacity. Page-transition keyframes animate nothing else: any other property (box-shadow, filter, size) takes the whole slide off the compositor. Work a page starts on arrival (third-party scripts, large renders) waits for `PageTransitionService.whenSettled()`. An entrance on a page that slides in must finish inside the slide: give a new entrance effect a `html[data-dir]` timing like `.reveal` and split-text have (`$slide-entrance-*`), because Safari replays or stalls transitions still running when the slide ends. Hidden reveal states are host classes, present from the element's creation; never add them in `afterNextRender`.

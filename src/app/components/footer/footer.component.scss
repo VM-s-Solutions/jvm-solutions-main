@@ -1,11 +1,15 @@
 @use 'abstracts' as *;
 
+$foot-logo-w: 8.5rem;
+$tap: 2.75rem; // 44px: the least a finger needs
+
 :host {
   display: block;
 }
 
+// Full width: the soft ground closes the page
 .foot {
-  padding: $footer-y 0 $space-7;
+  padding: clamp(#{$space-12}, 6vw, #{$space-18}) 0 $space-6;
   background: var(--soft);
 }
 
@@ -18,12 +22,25 @@
   @include lg { grid-template-columns: minmax(0, 1fr) auto; }
 }
 
+// The wordmark, then three plain lines about us
 .foot__note {
   display: grid;
-  gap: 6px;
-  max-width: 30em;
-  font: $weight-medium #{$text-xl}/1.45 $font-display;
-  letter-spacing: -0.015em;
+  gap: $space-1;
+  max-width: 26em;
+  font-size: $text-md;
+  color: var(--ink-2);
+}
+
+.foot__logo {
+  display: block;
+  width: fit-content;
+  margin-bottom: $space-4;
+  border-radius: $radius-xs;
+
+  jvm-logo {
+    width: $foot-logo-w;
+    aspect-ratio: 1214 / 255;
+  }
 }
 
 .foot__cols {
@@ -37,14 +54,25 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: $space-2-5;
-    font-size: $text-md;
+    font-size: $text-sm;
     color: var(--ink-2);
+
+    @include md { gap: $space-2-5; }
+  }
+
+  // Phones: each line is a full tap target, so the lines need no gap between them
+  a,
+  span {
+    display: inline-flex;
+    align-items: center;
+    min-height: $tap;
+
+    @include md { min-height: 0; }
   }
 
   a {
     text-decoration: none;
-    transition: color $duration-quick $ease-out;
+    transition: color $duration-fast $ease-out;
 
     @include hover { color: var(--orange-text); }
   }
@@ -56,24 +84,15 @@
   color: var(--ink);
 }
 
-.foot__logo {
-  display: block;
-  margin-top: $footer-logo-gap;
-  border-radius: $radius-sm;
-
-  jvm-logo {
-    width: 100%;
-    aspect-ratio: 1214 / 255;
-  }
-}
-
 .foot__bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: $space-3 $space-6;
-  margin-top: $space-7;
+  margin-top: clamp(#{$space-8}, 5vw, #{$space-14});
+  padding-top: $space-5;
+  box-shadow: inset 0 1px 0 var(--line);
   font-size: $text-sm;
   color: var(--muted);
 }
@@ -81,19 +100,21 @@
 .foot__langs {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px $space-3;
+  gap: 0 $space-4;
   margin: 0;
   padding: 0;
   list-style: none;
 
   button {
-    min-height: 1.75rem; // tap target
+    min-height: $tap;
     padding: 2px 0;
     border: 0;
     background: none;
     font-size: $text-sm;
     color: var(--muted);
-    transition: color $duration-quick $ease-out;
+    transition: color $duration-fast $ease-out;
+
+    @include md { min-height: 1.75rem; }
 
     @include hover { color: var(--ink); }
 

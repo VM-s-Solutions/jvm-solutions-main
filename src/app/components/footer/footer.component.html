@@ -2,6 +2,9 @@
   <div class="container">
     <div class="foot__top">
       <div class="foot__note">
+        <a class="foot__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
+          <jvm-logo />
+        </a>
         <p>{{ 'footer.note1' | translate }}</p>
         <p>{{ 'footer.note2' | translate }}</p>
         <p>{{ 'footer.note3' | translate }}</p>
@@ -27,10 +30,6 @@
         </nav>
       </div>
     </div>
-
-    <a class="foot__logo" routerLink="/" [attr.aria-label]="'a11y.home' | translate">
-      <jvm-logo />
-    </a>
 
     <div class="foot__bottom">
       <span>{{ 'footer.bottom' | translate: { year } }}</span>

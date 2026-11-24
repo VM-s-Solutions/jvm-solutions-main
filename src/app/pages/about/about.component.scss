@@ -4,10 +4,14 @@
   display: block;
 }
 
+// The composer closes the page, a section's space below the register
+jvm-compose {
+  display: block;
+}
+
 // ─── Portraits ────────────────────────────────────────────────────────────────
-// A tall photo each, with a frosted card. Phones always show the bio; from the desktop
-// layout up it unfolds on hover, or on focus where there is no hover. The photos' sizes
-// attribute (about.component.html) follows this grid: change both together.
+// A soft tile each: the photo, the name and role, and a line in their own words as a chat
+// bubble. The photos' sizes attribute (about.component.html) follows this grid: change both together.
 .portraits {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -17,55 +21,34 @@
 }
 
 .portrait {
-  position: relative;
-  isolation: isolate; // keeps the zooming photo inside the rounded corners in Safari
-  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  padding: $space-2;
+  border-radius: $radius-xl;
+  @include pane;
+}
+
+.portrait__photo {
+  display: block;
+  aspect-ratio: 1;
   overflow: hidden;
-  border-radius: $radius-lg;
+  border-radius: $radius-xl - $space-2;
   background: var(--soft-2);
-  outline-offset: 4px;
-
-  @include md { aspect-ratio: 3 / 4; }
-
-  // Only there to offer the AVIF: the photo sizes itself to the card as before
-  picture { display: contents; }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: var(--focus, 50% 50%);
-    transition: transform $duration-linger $ease-out;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .portrait {
-    &:focus-within img { transform: scale(1.05); }
-
-    @include hover {
-      img { transform: scale(1.05); }
-    }
-  }
-}
-
-.portrait__card {
-  position: absolute;
-  inset: auto $space-3 $space-3;
-  padding: $space-5;
-  border-radius: $radius-md;
-  background: rgba($color-night, 0.78);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  color: var(--bg);
-
-  // Touch screens scroll all three cards over their photos, and a blur is redrawn on every
-  // frame of that: a denser tint keeps the look without the GPU cost
-  @media (hover: none) {
-    background: rgba($color-night, 0.86);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
+.portrait__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: $space-5 $space-4 $space-4;
 }
 
 .portrait__name {
@@ -74,55 +57,25 @@
 }
 
 .portrait__role {
+  margin-top: $space-1;
   font-size: $text-sm;
-  color: rgba($color-bg, 0.76);
+  color: var(--muted);
 }
 
-.portrait__more {
-  margin-top: $space-2;
-}
-
-.portrait__bio {
+// The bubble of someone speaking to you: white on the tile, its tail corner bottom left
+.portrait__say {
+  margin-top: $space-4;
+  padding: $bubble-pad-page;
+  border-radius: $radius-md;
+  border-bottom-left-radius: 6px;
+  background: var(--bg);
   font-size: $text-md;
   line-height: 1.5;
-  color: rgba($color-bg, 0.88);
 }
 
 .portrait__link {
-  margin-top: $space-3;
-}
-
-@mixin more-open {
-  max-height: 14em;
-  margin-top: $space-2;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-@include md {
-  .portrait__more {
-    // The clipped box keeps 6px of room for the link's focus ring and gives it back to the layout
-    margin: 0 -6px -6px;
-    padding: 0 6px 6px;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition:
-      max-height $duration-long $ease-ios,
-      opacity $duration-base $ease-out,
-      margin $duration-long $ease-ios;
-  }
-
-  .portrait:focus-within .portrait__more {
-    @include more-open;
-  }
-
-  .portrait {
-    @include hover {
-      .portrait__more { @include more-open; }
-    }
-  }
+  margin-top: auto;
+  padding-top: $space-4;
 }
 
 // ─── How we work ──────────────────────────────────────────────────────────────
@@ -138,8 +91,8 @@
 
 .ways__card {
   padding: $space-6;
-  border-radius: $radius-md;
-  background: var(--bg);
+  border-radius: $radius-lg;
+  background: var(--night-2);
 
   p {
     margin-top: $space-2;
@@ -155,36 +108,56 @@
 }
 
 // ─── Public register ──────────────────────────────────────────────────────────
+// One soft tile: what it is and the way to check it, then the facts as the register lists them
 .reg {
+  padding: clamp(#{$space-6}, 4vw, #{$space-14});
+  border-radius: $radius-xl;
+  @include pane;
+}
+
+.reg__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-5 $space-8;
+}
+
+// White on the tile, where the ghost button's soft fill would not show
+.reg__link {
+  background: var(--bg);
+  color: var(--ink);
+
+  @include hover { background: var(--soft-2); }
+}
+
+.reg__facts {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: $stack-gap;
-  align-items: start;
+  gap: $space-6 $space-10;
+  margin: clamp(#{$space-8}, 4vw, #{$space-12}) 0 0;
 
-  @include md { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
-
-  .sec-head__p { margin-bottom: $space-7; }
+  @include sm { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @include lg { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-// Rows share one pair of columns, and the label column never gets narrower than its longest word
-.reg__list {
-  display: grid;
-  grid-template-columns: minmax(min-content, 0.8fr) minmax(0, 1.2fr);
-  column-gap: $space-4;
-}
-
-.reg__row {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: subgrid;
-  padding: $space-4 0;
-  box-shadow: inset 0 -1px 0 var(--line);
+.reg__fact {
   overflow-wrap: break-word;
 
   dt {
-    font-size: $text-md;
+    font-size: $text-sm;
     color: var(--muted);
   }
 
-  dd { font-weight: $weight-medium; }
+  dd {
+    margin: $space-1 0 0;
+    font: $weight-medium #{$text-lg}/1.4 $font-display;
+    letter-spacing: $tracking-title;
+  }
+
+  // The longest fact (what the company does) takes the row's remaining width
+  &:last-child {
+    @include sm { grid-column: span 2; }
+    @include lg { grid-column: span 3; }
+  }
 }

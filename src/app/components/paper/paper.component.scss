@@ -1,8 +1,14 @@
 @use 'abstracts' as *;
 
-// Scroll length of the pinned board: four chapters, a little longer on desktop
-$track-phone: 420vh;
-$track-desktop: 460vh;
+// Scroll length of the pinned stage: four chapters, a little longer on desktop
+$track-phone: 300vh;
+$track-desktop: 320vh;
+// The 3D stage's box: about half a phone's screen, a tall box beside the steps on desktop
+$stage-phone: 40svh;
+// Where the stage starts on desktop: about 36% into the container, never under the steps
+$stage-left: max(36%, calc(50% - #{$container-max * 0.14}));
+$stage-listed: 20rem;
+$bar: 2px;
 
 :host {
   display: block;
@@ -16,18 +22,16 @@ $track-desktop: 460vh;
 }
 
 .paper__title {
-  font-size: $fs-paper-phone;
+  font-size: $fs-h2;
   line-height: $leading-heading;
-  letter-spacing: $tracking-display;
-
-  @include sm { font-size: $fs-paper; }
+  letter-spacing: $tracking-heading;
 }
 
 .paper__end {
   white-space: nowrap;
 }
 
-// The slot: an input in the heading's own type, as wide as what's in it
+// The slot: a blank in the heading's own type, as wide as what's in it, on an orange rule
 .slot {
   position: relative;
   display: inline-block;
@@ -42,15 +46,13 @@ $track-desktop: 460vh;
   margin: 0 0.06em;
   padding: 0 0.16em;
   border: 0;
-  border-radius: 0.14em;
-  background: var(--bg);
+  border-radius: 0.14em 0.14em 0 0;
+  background: none;
   color: var(--ink);
   font: inherit;
   letter-spacing: inherit;
   line-height: $leading-heading;
-  box-shadow:
-    inset 0 0 0 0.045em var(--orange),
-    0 0.14em 0.4em -0.2em rgba($color-orange, 0.5);
+  box-shadow: inset 0 -0.06em 0 var(--orange);
   caret-color: var(--orange);
   // The ring below shows focus; the global outline stays, unseen, for forced colours
   outline-color: transparent;
@@ -58,18 +60,20 @@ $track-desktop: 460vh;
   text-overflow: ellipsis;
   transition:
     width $duration-swift $ease-out,
-    box-shadow $duration-swift $ease-out;
+    border-radius $duration-fast $ease-out,
+    background-color $duration-fast $ease-out,
+    box-shadow $duration-fast $ease-out;
 
   &::placeholder {
     color: var(--placeholder);
     opacity: 1;
   }
 
-  // The ring thickens and an orange halo opens: the slot's own focus indicator
+  // The rule closes into a ring on the orange tint: the slot's own focus indicator
   &:focus {
-    box-shadow:
-      inset 0 0 0 0.06em var(--orange),
-      0 0 0 0.14em rgba($color-orange, 0.16);
+    border-radius: 0.14em;
+    background: var(--orange-tint);
+    box-shadow: inset 0 0 0 0.06em var(--orange);
   }
 }
 
@@ -87,184 +91,248 @@ $track-desktop: 460vh;
 }
 
 // ─── The pinned track ─────────────────────────────────────────────────────────
-// The scroll loop paints the chapter colour over this paper as the track's own background
-// colour (it restyles the track alone); the text tokens flip on the dark chapters.
+// One calm light stage: the 3D scene draws on a clear canvas over the page's own ground.
+// The scroll loop writes --p (0–1) here for the progress line.
 .paper__track {
-  --pink: var(--ink);
-  --pdim: #{rgba($color-ink, 0.62)};
-  --ptrack: #{rgba($color-ink, 0.12)};
+  --p: 0;
   position: relative;
   height: $track-phone;
-  background: var(--bg);
-  color: var(--pink);
-  transition: color $duration-slow $ease-out;
 
   @include md { height: $track-desktop; }
-
-  &.is-dark {
-    --pink: var(--night-ink);
-    --pdim: #{rgba($color-night-ink, 0.62)};
-    --ptrack: #{rgba($color-bg, 0.14)};
-  }
 }
 
-// Phones centre it between the top bar and the floating tab bar
 .paper__sticky {
   position: sticky;
   top: 0;
   display: flex;
-  align-items: center;
+  // Phones: the step sits right under the stage, not centred in what is left of the screen
+  align-items: flex-start;
   height: 100vh;
   height: 100svh;
   overflow: hidden;
   padding-top: var(--nav-h);
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + #{$tabbar-clearance});
 
-  @include md { padding-bottom: 0; }
+  @include md {
+    align-items: center;
+    padding-bottom: 0;
+  }
 }
 
-// Phones stack the steps above the board; from 901px they sit side by side
+// The steps: under the stage on phones, the left 38% of the container from 901px
 .paper__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: $space-7;
   align-items: center;
+  padding-top: $stage-phone;
 
   @include md {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-    gap: clamp($space-8, 5vw, $space-18);
+    grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
+    padding-top: 0;
+  }
+}
+
+// The stage is laid over the pinned screen rather than boxed in a column: it runs under the top
+// bar and out to the screen's edge, so nothing that slides in is cut off in mid-air. Its inner
+// edge fades out instead.
+.paper__stage {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--nav-h) + #{$stage-phone});
+  -webkit-mask-image: linear-gradient(#000 88%, transparent);
+  mask-image: linear-gradient(#000 88%, transparent);
+
+  @include md {
+    inset: 0 0 0 $stage-left;
+    height: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%);
+    mask-image: linear-gradient(to right, transparent, #000 10%);
   }
 }
 
 // ─── Steps ────────────────────────────────────────────────────────────────────
-.how__num {
-  display: none;
-  height: 1em;
-  overflow: hidden;
-  font: $weight-semibold #{$fs-step}/1 $font-display;
-  letter-spacing: -0.07em;
-  transition: color $duration-slow $ease-out;
+.paper__side {
+  position: relative;
+  z-index: 1;
 
-  @include md { display: block; }
+  @include md { padding-left: $space-7; }
 }
 
-.roll {
-  display: block;
-  transition: transform $duration-slower $ease-ios;
+.steps__count {
+  margin: 0 0 $space-2;
+  font: $weight-medium #{$text-xs}/1.4 $font-text;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
 
-  i {
-    display: block;
-    height: 1em;
-    font-style: normal;
+  @include md { margin-bottom: $space-5; }
+}
+
+// Phones show one step at a time in a shared cell; desktop lists all four, the one on show open
+.steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include md {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
   }
 }
 
-// All four steps share one cell, so the column never changes height. The ones not on
-// show are only faded out: screen readers still get the whole list.
-.pv-list {
-  display: grid;
-  margin: $space-3 0 0;
-  padding: 0;
-  list-style: none;
-  transition: opacity $duration-base $ease-out;
-}
-
-// Half-way through a hand-off between a light chapter and a dark one the track is a mid
-// grey, where the dimmed copy reads in neither colour: the steps step aside until it's past,
-// in one soft dip (the list's own fade, out and back)
-.paper__track.is-murky .pv-list {
-  opacity: 0;
-}
-
-.pv {
+.step {
   grid-area: 1 / 1;
   opacity: 0;
-  transform: translateY($space-4);
+  transform: translateY($space-3);
   pointer-events: none;
   transition:
-    opacity $duration-half $ease-out,
-    transform $duration-longer $ease-out;
+    opacity $duration-short $ease-out,
+    transform $duration-slow $ease-out;
 
   &.is-on {
     opacity: 1;
     transform: none;
     pointer-events: auto;
-    transition-delay: $stagger-xs * 2;
   }
 
-  h3 {
-    font-size: $text-3xl;
-    line-height: $leading-heading;
-    letter-spacing: -0.04em;
-
-    @include md { font-size: $fs-h3; }
-  }
-
-  p {
-    max-width: 26em;
-    margin-top: $space-3;
-    font-size: $text-md;
-    line-height: 1.55;
-    color: var(--pdim);
-    transition: color $duration-slow $ease-out;
-
-    @include md { font-size: $text-lg; }
+  @include md {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
   }
 }
 
-.how__bar {
-  max-width: 18.75rem;
-  height: 4px;
-  margin-top: $space-4;
-  border-radius: 4px;
-  background: var(--ptrack);
-  overflow: hidden;
-  transition: background-color $duration-slow $ease-out;
+.step__title {
+  font-size: $text-2xl;
+  line-height: $leading-snug;
+  letter-spacing: $tracking-title;
+  transition: color $duration-base $ease-out;
 
-  @include md { margin-top: $space-7; }
+  @include md {
+    font-size: $text-xl;
+    color: var(--muted);
+
+    .is-on & { color: var(--ink); }
+  }
+}
+
+// The body folds open under the step on show (a grid row from 0fr to 1fr animates its height)
+.step__fold {
+  display: grid;
+
+  @include md {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows $duration-slow $ease-out,
+      opacity $duration-base $ease-out;
+
+    .is-on & {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+  }
+}
+
+.step__body {
+  min-height: 0;
+  max-width: 28em;
+  margin: 0;
+  padding-top: $space-2;
+  overflow: hidden;
+  font-size: $text-md;
+  line-height: 1.55;
+  color: var(--ink-2);
+
+  @include md { font-size: $text-base; }
+}
+
+// The progress line: a bar under the step on phones, a rule beside the list on desktop
+.steps__bar {
+  height: $bar;
+  max-width: 12rem;
+  margin-top: $space-4;
+  border-radius: $bar;
+  background: var(--line);
+  overflow: hidden;
 
   i {
     display: block;
+    width: 100%;
     height: 100%;
+    border-radius: inherit;
     background: var(--orange);
-    transform-origin: left;
-    transform: scaleX(0.25);
-    transition: transform $duration-slower $ease-ios;
+    transform-origin: left top;
+    transform: scaleX(var(--p));
+  }
+
+  @include md {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $bar;
+    max-width: none;
+    height: auto;
+    margin: 0;
+
+    i { transform: scaleY(var(--p)); }
   }
 }
 
-// Each chapter rolls the number on and fills a quarter more of the bar
-@for $s from 1 through 3 {
-  .paper__grid[data-stage='#{$s}'] {
-    .roll { transform: translateY(-1em * $s); }
-    .how__bar i { transform: scaleX(0.25 * ($s + 1)); }
-  }
-}
-
-// ─── A short viewport: nothing is pinned, the four steps read as a list ───────
-// A pinned chapter can't fit between the top bar and the tab bar there. The scroll loop
-// keeps the track on paper (it checks whether .paper__sticky sticks).
-@include short {
+// ─── Nothing pinned: a short viewport, or reduced motion ──────────────────────
+// The four steps read as a plain list beside one still frame of the finished scene
+// (the scroll loop checks whether .paper__sticky sticks).
+@mixin listed {
   .paper__track { height: auto; }
 
   .paper__sticky {
     position: static;
+    display: block;
     height: auto;
     overflow: visible;
+    padding-block: $space-10;
   }
 
-  .pv-list { gap: $space-6; }
+  .paper__grid {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 0;
+  }
 
-  .pv {
-    grid-area: auto;
+  .paper__stage {
+    position: relative;
+    inset: auto;
+    height: $stage-listed;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  .step {
     opacity: 1;
     transform: none;
     pointer-events: auto;
   }
 
-  // The chapter number and its bar only mean something while the board is pinned
-  .how__num,
-  .how__bar {
+  .step__title { color: var(--ink); }
+
+  .step__fold {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  // The count and the line only mean something while the stage is pinned
+  .steps__count,
+  .steps__bar {
     display: none;
   }
 }
+
+@include short { @include listed; }
+@include reduced-motion { @include listed; }

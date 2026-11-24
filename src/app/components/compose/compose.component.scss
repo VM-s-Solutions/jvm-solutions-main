@@ -1,9 +1,5 @@
 @use 'abstracts' as *;
 
-$composer-shadow:
-  0 1px 2px rgba($color-ink, 0.05),
-  0 30px 60px -36px rgba($color-ink, 0.35);
-
 :host {
   display: block;
 }
@@ -19,37 +15,31 @@ $composer-shadow:
 }
 
 .compose__title {
-  font-size: $fs-compose;
-  line-height: $leading-display;
-  letter-spacing: $tracking-display;
+  font-size: $fs-h2;
+  line-height: $leading-heading;
+  letter-spacing: $tracking-heading;
 }
 
 // .lead brings the size, colour and the bold reply-by date; here it spans the whole card
 .compose__when {
   max-width: none;
-  margin-top: $space-4;
+  margin-top: $space-3;
 }
 
 // ─── The composer ─────────────────────────────────────────────────────────────
 .composer {
   position: relative;
-  max-width: 45rem;
-  margin: $space-10 auto 0;
+  max-width: 40rem;
+  margin: $space-8 auto 0;
   padding: $space-4 $space-4 $space-4 $space-5;
   border-radius: $radius-lg;
   background: var(--bg);
   text-align: left;
   // The same 2px ring as every other focus on the site, drawn as a shadow so it eases in
-  box-shadow:
-    0 0 0 0 rgba($color-orange-text, 0),
-    $composer-shadow;
-  transition: box-shadow $duration-base $ease-out;
+  box-shadow: 0 0 0 0 rgba($color-orange-text, 0);
+  transition: box-shadow $duration-fast $ease-out;
 
-  &:focus-within {
-    box-shadow:
-      0 0 0 2px var(--orange-text),
-      $composer-shadow;
-  }
+  &:focus-within { box-shadow: 0 0 0 2px var(--orange-text); }
 }
 
 .composer__to {
@@ -69,7 +59,7 @@ $composer-shadow:
   gap: 6px;
   padding: $space-1 $space-3 $space-1 $space-1;
   border-radius: $radius-pill;
-  background: var(--soft);
+  background: rgba($color-ink, 0.05);
   color: var(--ink);
   font-size: $text-sm;
   font-weight: $weight-medium;
@@ -86,12 +76,12 @@ $composer-shadow:
 .composer__input {
   display: block;
   width: 100%;
-  min-height: 6rem;
+  min-height: 5rem;
   margin-top: $space-3;
   padding: 0 $space-16 0 0;
   border: 0;
   background: none;
-  font-size: $text-body;
+  font-size: $text-base;
   line-height: 1.5;
   resize: none;
   outline-color: transparent;
@@ -108,15 +98,15 @@ $composer-shadow:
   bottom: $space-3;
   display: grid;
   place-items: center;
-  width: 2.875rem;
-  height: 2.875rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 0;
   border-radius: 50%;
   background: var(--orange-fill);
   color: var(--on-orange);
   cursor: pointer;
   transition:
-    transform $duration-fast $ease-spring,
+    transform $duration-fast $ease-out,
     background-color $duration-fast $ease-out;
 
   .icon {
@@ -124,10 +114,7 @@ $composer-shadow:
     height: 1.25rem;
   }
 
-  @include hover {
-    transform: scale(1.06);
-    background: var(--orange-fill-2);
-  }
+  @include hover { background: var(--orange-fill-2); }
 
   &:active { transform: scale(0.92); }
 }

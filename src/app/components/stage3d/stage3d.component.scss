@@ -1,0 +1,39 @@
+@use 'abstracts' as *;
+
+// The scene's paper, so the placeholder sheet and the real one are the same white
+$paper: #FBFAF6;
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity $duration-slow $ease-out;
+}
+
+// Until the scene has drawn (and where it can't): a sheet of paper lying on the desk
+.sheet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(62%, 26rem);
+  aspect-ratio: 1.414;
+  border-radius: 2px;
+  background: $paper;
+  box-shadow: $shadow-hairline;
+  transform: translate(-50%, -50%) perspective(60rem) rotateX(38deg) rotateZ(-5deg);
+  transition: opacity $duration-slow $ease-out;
+}
+
+:host(.is-ready) {
+  .canvas { opacity: 1; }
+  .sheet { opacity: 0; }
+}

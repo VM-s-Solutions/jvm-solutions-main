@@ -8,11 +8,10 @@
 <section class="section section--tight">
   <div class="container portraits">
     @for (p of portraits; track p.id) {
-      <!-- Focusable, so a tap or the keyboard can unfold the bio where there is no hover -->
-      <article class="portrait" jvmReveal [revealDelay]="p.delay" tabindex="0" [attr.aria-labelledby]="p.nameId">
+      <article class="portrait" jvmReveal [revealDelay]="p.delay" [attr.aria-labelledby]="p.nameId">
         <!-- The first photo is the largest thing in a phone's first view (its LCP): it loads at once, ahead of the rest.
              sizes mirrors .portraits: one column inside the 24px gutters, three from 901px, capped by the 1240px container -->
-        <picture>
+        <picture class="portrait__photo">
           <source
             type="image/avif"
             [attr.srcset]="p.photoSet"
@@ -27,24 +26,23 @@
             decoding="async"
           />
         </picture>
-        <div class="portrait__card">
+        <div class="portrait__text">
           <h2 class="portrait__name" [id]="p.nameId">{{ p.full }}</h2>
           <span class="portrait__role">{{ p.roleKey | translate }}</span>
-          <div class="portrait__more">
-            <p class="portrait__bio">{{ p.bioKey | translate }}</p>
-            <a class="link portrait__link" [href]="p.linkedin" target="_blank" rel="noopener">
-              <span aria-hidden="true">LinkedIn</span>
-              <span class="sr-only">{{ 'a11y.linkedin' | translate: { name: p.full } }} {{ 'a11y.opensInNewTab' | translate }}</span>
-              <jvm-icon name="arrow" />
-            </a>
-          </div>
+          <!-- Their own words, as a bubble: the way each of us speaks everywhere else on the site -->
+          <p class="portrait__say">{{ p.bioKey | translate }}</p>
+          <a class="link portrait__link" [href]="p.linkedin" target="_blank" rel="noopener">
+            <span aria-hidden="true">LinkedIn</span>
+            <span class="sr-only">{{ 'a11y.linkedin' | translate: { name: p.full } }} {{ 'a11y.opensInNewTab' | translate }}</span>
+            <jvm-icon name="arrow" />
+          </a>
         </div>
       </article>
     }
   </div>
 </section>
 
-<section class="section section--soft">
+<section class="section section--ink" jvmDarkSurface>
   <div class="container">
     <h2 class="h2" [jvmSplit]="'about.ways.title' | translate"></h2>
     <div class="ways__grid">
@@ -59,23 +57,29 @@
 </section>
 
 <section class="section">
-  <div class="container reg" jvmReveal>
-    <div>
-      <h2 class="h2">{{ 'about.register.title' | translate }}</h2>
-      <p class="sec-head__p">{{ 'about.register.lead' | translate }}</p>
-      <a class="btn btn--ghost" [href]="registerUrl" target="_blank" rel="noopener">
-        <span>{{ 'about.company.registryLink' | translate }}</span>
-        <span class="sr-only"> {{ 'a11y.opensInNewTab' | translate }}</span>
-        <jvm-icon name="arrow" />
-      </a>
-    </div>
-    <dl class="reg__list">
-      @for (row of registerRows; track row.labelKey) {
-        <div class="reg__row">
-          <dt>{{ row.labelKey | translate }}</dt>
-          <dd>@if (row.valueKey) { {{ row.valueKey | translate }} } @else { {{ row.value }} }</dd>
+  <div class="container">
+    <div class="reg" jvmReveal>
+      <div class="reg__head">
+        <div>
+          <h2 class="h2">{{ 'about.register.title' | translate }}</h2>
+          <p class="sec-head__p">{{ 'about.register.lead' | translate }}</p>
         </div>
-      }
-    </dl>
+        <a class="btn reg__link" [href]="registerUrl" target="_blank" rel="noopener">
+          <span>{{ 'about.company.registryLink' | translate }}</span>
+          <span class="sr-only"> {{ 'a11y.opensInNewTab' | translate }}</span>
+          <jvm-icon name="arrow" />
+        </a>
+      </div>
+      <dl class="reg__facts">
+        @for (row of registerRows; track row.labelKey) {
+          <div class="reg__fact">
+            <dt>{{ row.labelKey | translate }}</dt>
+            <dd>@if (row.valueKey) { {{ row.valueKey | translate }} } @else { {{ row.value }} }</dd>
+          </div>
+        }
+      </dl>
+    </div>
   </div>
 </section>
+
+<jvm-compose />

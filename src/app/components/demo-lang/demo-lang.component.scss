@@ -20,9 +20,7 @@ $stagger: $duration-fast * 0.5;
   overflow: hidden;
   border-radius: 3cqi;
   background: var(--bg);
-  box-shadow:
-    0 0 0 0.25cqi var(--line),
-    0 5cqi 9cqi -5cqi rgba($color-ink, 0.3);
+  box-shadow: 0 0 0 0.25cqi var(--line);
 }
 
 // ─── Title bar: the product's name and the language tabs ──────────────────────
@@ -60,7 +58,6 @@ $stagger: $duration-fast * 0.5;
   width: calc((100% - 2 * #{$tab-pad} - (var(--n, 4) - 1) * #{$tab-gap}) / var(--n, 4));
   border-radius: 1.6cqi;
   background: var(--bg);
-  box-shadow: 0 0.3cqi 0.8cqi rgba($color-ink, 0.12);
   transform: translateX(calc(var(--k, 0) * (100% + #{$tab-gap})));
   transition: transform $duration-press $ease-ios;
 }

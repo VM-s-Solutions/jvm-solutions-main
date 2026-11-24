@@ -7,25 +7,30 @@
 // Placeholders hold roughly the height each section will take, so nothing above the
 // fold moves when a section renders.
 .ph--paper {
-  min-height: calc(420vh + 16rem);
+  min-height: calc(300vh + 12rem);
 
-  @include md { min-height: calc(460vh + 20rem); }
+  @include md { min-height: calc(320vh + 14rem); }
 }
 
 .ph--trades {
-  min-height: 60rem;
+  min-height: 53rem;
 
-  @include md { min-height: 72rem; }
+  @include md { min-height: 55rem; }
 }
 
-.ph--team { min-height: 44rem; background: var(--soft); }
+.ph--team { min-height: 38rem; }
 
 .ph--cost {
-  min-height: 50rem;
+  min-height: 44rem;
   background: var(--night);
 
-  @include md { min-height: 38rem; }
+  @include md { min-height: 30rem; }
 }
 
-.ph--asked { min-height: 36rem; }
-.ph--compose { min-height: 36rem; }
+.ph--asked {
+  min-height: 46rem;
+
+  @include md { min-height: 33rem; }
+}
+
+.ph--compose { min-height: 32rem; }

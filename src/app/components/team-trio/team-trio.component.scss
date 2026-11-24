@@ -3,7 +3,10 @@
 // Face size. Phones: a third of the row at most, so three faces always fit; then the
 // concept's 96 → 152px.
 $face-phone: min(6rem, calc((100vw - 7rem) / 3));
-$face: clamp(6rem, 12vw, 9.5rem);
+$face: clamp(5.5rem, 9vw, 7.5rem);
+// The ring round a face: a gap of the page's white, then the ring itself
+$ring-gap: 0 0 0 4px var(--bg);
+$ring: 0 0 0 6px;
 
 :host {
   display: block;
@@ -14,7 +17,7 @@ $face: clamp(6rem, 12vw, 9.5rem);
   display: flex;
   justify-content: center;
   gap: $space-2;
-  margin-top: $space-14;
+  margin-top: $space-10;
 
   @include sm { gap: clamp(#{$space-4}, 4vw, #{$space-14}); }
 }
@@ -31,19 +34,13 @@ $face: clamp(6rem, 12vw, 9.5rem);
   text-align: center;
   cursor: pointer;
 
+  // A grey ring under the pointer, the orange one on whoever is speaking: nothing changes size
   @include hover {
-    .trio__img {
-      transform: scale(0.94);
-      filter: saturate(0.7);
-    }
+    .trio__img { box-shadow: $ring-gap, $ring var(--placeholder); }
   }
 
   &[aria-selected='true'] .trio__img {
-    transform: none;
-    filter: none;
-    box-shadow:
-      0 0 0 5px var(--soft),
-      0 0 0 8px var(--orange);
+    box-shadow: $ring-gap, $ring var(--orange);
 
     em { transform: none; }
   }
@@ -56,12 +53,8 @@ $face: clamp(6rem, 12vw, 9.5rem);
   aspect-ratio: 1;
   margin-bottom: $space-3;
   border-radius: 50%;
-  filter: saturate(0.35);
-  transform: scale(0.88);
-  transition:
-    transform $duration-long $ease-ios,
-    filter $duration-slow $ease-out,
-    box-shadow $duration-slow $ease-out;
+  box-shadow: $ring-gap, $ring transparent;
+  transition: box-shadow $duration-fast $ease-out;
 
   @include sm { width: $face; }
 
@@ -86,14 +79,14 @@ $face: clamp(6rem, 12vw, 9.5rem);
     color: var(--ink);
     font: $weight-bold clamp(#{$text-md}, 1.6vw, #{$text-xl})/1 $font-display;
     font-style: normal;
-    box-shadow: 0 0 0 4px var(--soft);
+    box-shadow: $ring-gap;
     transform: scale(0);
-    transition: transform $duration-slow $ease-spring;
+    transition: transform $duration-swift $ease-spring;
   }
 }
 
 .trio__name {
-  font: $weight-semibold #{$text-lg}/1.2 $font-display;
+  font: $weight-semibold #{$text-base}/1.2 $font-display;
   letter-spacing: $tracking-title;
 }
 
@@ -106,14 +99,14 @@ $face: clamp(6rem, 12vw, 9.5rem);
 // All three share one cell, so the section keeps its height while they crossfade.
 .bios {
   display: grid;
-  max-width: 40rem;
-  margin: $space-9 auto 0;
+  max-width: 36rem;
+  margin: $space-8 auto 0;
   text-align: center;
 }
 
 .bio {
   grid-area: 1 / 1;
-  font: $weight-medium clamp(#{$text-2xl}, 2vw, #{$text-3xl})/1.4 $font-display;
+  font: $weight-medium clamp(#{$text-lg}, 1.6vw, #{$text-2xl})/1.45 $font-display;
   letter-spacing: $tracking-title;
   color: var(--ink);
   opacity: 0;

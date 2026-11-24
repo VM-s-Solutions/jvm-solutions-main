@@ -2,12 +2,13 @@
 @use 'abstracts' as *;
 
 // Sized in cqi (the card's mock-screen container), so the editor scales as one picture.
-// Syntax colours are the brand and status tokens, lifted to read on the dark editor.
+// Syntax colours stay inside the site's three colour roles: light neutrals for the code, the
+// brand orange for keywords and the method badge, a paler orange for strings.
 $code-text: color.mix($color-night-ink, $color-night, 88%);
 $code-dim: color.mix($color-night-muted, $color-night, 75%);
 $code-keyword: color.mix($color-orange-2, $color-bg, 85%);
-$code-string: color.scale($color-ok, $lightness: 55%);
-$code-method: color.mix($color-app, $color-bg, 50%);
+$code-string: color.mix($color-orange-2, $color-bg, 45%);
+$code-method: color.mix($color-orange-2, $color-bg, 70%);
 
 :host {
   position: absolute;
@@ -84,7 +85,7 @@ pre {
 .code__method {
   padding: 0.3cqi 1.2cqi;
   border-radius: 0.8cqi;
-  background: rgba($color-app, 0.22);
+  background: rgba($color-orange, 0.2);
   color: $code-method;
 }
 
